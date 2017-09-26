@@ -10,14 +10,6 @@
 namespace cisco_ios_xe {
 namespace cisco_ospf {
 
-class PrefixApplicability : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protected_;
-        static const ydk::Enum::YLeaf all;
-
-};
-
 class AccessListInOutType : public ydk::Enum
 {
     public:
@@ -31,6 +23,14 @@ class OspfExternalType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_1;
         static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class PrefixApplicability : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protected_;
+        static const ydk::Enum::YLeaf all;
 
 };
 

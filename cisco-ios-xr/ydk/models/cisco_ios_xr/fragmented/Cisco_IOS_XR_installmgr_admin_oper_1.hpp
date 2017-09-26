@@ -13,15 +13,15 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_installmgr_admin_oper {
 
 
-class Install::Logs::Log::Communication::LogContents::V3 : public ydk::Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath : public ydk::Entity
 {
     public:
-        V3();
-        ~V3();
+        LoadPath();
+        ~LoadPath();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -29,24 +29,24 @@ class Install::Logs::Log::Communication::LogContents::V3 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
-        ydk::YLeaf message; //type: string
-        class Scope; //type: Install::Logs::Log::Communication::LogContents::V3::Scope
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
+        class Package; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
-        std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication::LogContents::V3::Scope> scope;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package> package;
         
-}; // Install::Logs::Log::Communication::LogContents::V3
+}; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
 
-class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package : public ydk::Entity
 {
     public:
-        Scope();
-        ~Scope();
+        Package();
+        ~Package();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -54,10 +54,10 @@ class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf admin_read; //type: boolean
-        ydk::YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
-}; // Install::Logs::Log::Communication::LogContents::V3::Scope
+}; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
 
 }

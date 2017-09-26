@@ -17,7 +17,7 @@ Controller::Controller()
 {
     dpa->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-fia-internal-tcam-oper";
+    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-fia-internal-tcam-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Controller::~Controller()
@@ -39,26 +39,15 @@ std::string Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,7 @@ Controller::Dpa::Dpa()
 {
     nodes->parent = this;
 
-    yang_name = "dpa"; yang_parent_name = "controller";
+    yang_name = "dpa"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Controller::Dpa::~Dpa()
@@ -151,33 +140,26 @@ bool Controller::Dpa::has_operation() const
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
+std::string Controller::Dpa::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Controller::Dpa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dpa";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -223,7 +205,8 @@ bool Controller::Dpa::has_leaf_or_child_of_name(const std::string & name) const
 
 Controller::Dpa::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "dpa";
+
+    yang_name = "nodes"; yang_parent_name = "dpa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Controller::Dpa::Nodes::~Nodes()
@@ -250,33 +233,26 @@ bool Controller::Dpa::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Controller::Dpa::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/dpa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Controller::Dpa::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/dpa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -335,10 +311,9 @@ Controller::Dpa::Nodes::Node::Node()
 	,internal_tcam_resources(std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources>())
 {
     external_tcam_resources->parent = this;
-
     internal_tcam_resources->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Controller::Dpa::Nodes::Node::~Node()
@@ -360,34 +335,27 @@ bool Controller::Dpa::Nodes::Node::has_operation() const
 	|| (internal_tcam_resources !=  nullptr && internal_tcam_resources->has_operation());
 }
 
+std::string Controller::Dpa::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/dpa/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Controller::Dpa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fia-internal-tcam-oper:controller/dpa/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -457,7 +425,8 @@ bool Controller::Dpa::Nodes::Node::has_leaf_or_child_of_name(const std::string &
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::ExternalTcamResources()
 {
-    yang_name = "external-tcam-resources"; yang_parent_name = "node";
+
+    yang_name = "external-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::~ExternalTcamResources()
@@ -488,29 +457,15 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "external-tcam-resources";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::ExternalTcamResources::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::ExternalTcamResources::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExternalTcamResources' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -565,7 +520,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::NpuTcam()
     :
     npu_id{YType::uint32, "npu-id"}
 {
-    yang_name = "npu-tcam"; yang_parent_name = "external-tcam-resources";
+
+    yang_name = "npu-tcam"; yang_parent_name = "external-tcam-resources"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::~NpuTcam()
@@ -597,30 +553,16 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-tcam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuTcam' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -690,7 +632,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::TcamBank
     nof_dbs{YType::uint32, "nof-dbs"},
     owner{YType::str, "owner"}
 {
-    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam";
+
+    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::~TcamBank()
@@ -732,23 +675,11 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-bank";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamBank' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
@@ -758,9 +689,7 @@ const EntityPath Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::T
     if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
     if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -877,7 +806,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::
     db_inuse_entries{YType::uint32, "db-inuse-entries"},
     db_prefix{YType::str, "db-prefix"}
 {
-    yang_name = "bank-db"; yang_parent_name = "tcam-bank";
+
+    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::~BankDb()
@@ -903,32 +833,18 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "bank-db";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BankDb' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (db_id.is_set || is_set(db_id.yfilter)) leaf_name_data.push_back(db_id.get_name_leafdata());
     if (db_inuse_entries.is_set || is_set(db_inuse_entries.yfilter)) leaf_name_data.push_back(db_inuse_entries.get_name_leafdata());
     if (db_prefix.is_set || is_set(db_prefix.yfilter)) leaf_name_data.push_back(db_prefix.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -990,7 +906,8 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::Ban
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::InternalTcamResources()
 {
-    yang_name = "internal-tcam-resources"; yang_parent_name = "node";
+
+    yang_name = "internal-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::~InternalTcamResources()
@@ -1021,29 +938,15 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-tcam-resources";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::InternalTcamResources::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InternalTcamResources' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1098,7 +1001,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::NpuTcam()
     :
     npu_id{YType::uint32, "npu-id"}
 {
-    yang_name = "npu-tcam"; yang_parent_name = "internal-tcam-resources";
+
+    yang_name = "npu-tcam"; yang_parent_name = "internal-tcam-resources"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::~NpuTcam()
@@ -1130,30 +1034,16 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-tcam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuTcam' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1223,7 +1113,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::TcamBank
     nof_dbs{YType::uint32, "nof-dbs"},
     owner{YType::str, "owner"}
 {
-    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam";
+
+    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::~TcamBank()
@@ -1265,23 +1156,11 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-bank";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamBank' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bank_free_entries.is_set || is_set(bank_free_entries.yfilter)) leaf_name_data.push_back(bank_free_entries.get_name_leafdata());
@@ -1291,9 +1170,7 @@ const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::T
     if (nof_dbs.is_set || is_set(nof_dbs.yfilter)) leaf_name_data.push_back(nof_dbs.get_name_leafdata());
     if (owner.is_set || is_set(owner.yfilter)) leaf_name_data.push_back(owner.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1410,7 +1287,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::
     db_inuse_entries{YType::uint32, "db-inuse-entries"},
     db_prefix{YType::str, "db-prefix"}
 {
-    yang_name = "bank-db"; yang_parent_name = "tcam-bank";
+
+    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::~BankDb()
@@ -1436,32 +1314,18 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "bank-db";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BankDb' in Cisco_IOS_XR_fia_internal_tcam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (db_id.is_set || is_set(db_id.yfilter)) leaf_name_data.push_back(db_id.get_name_leafdata());
     if (db_inuse_entries.is_set || is_set(db_inuse_entries.yfilter)) leaf_name_data.push_back(db_inuse_entries.get_name_leafdata());
     if (db_prefix.is_set || is_set(db_prefix.yfilter)) leaf_name_data.push_back(db_prefix.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

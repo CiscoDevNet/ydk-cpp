@@ -11,65 +11,50 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_UNIFIED_FIREWALL_MIB {
 
-CiscoUnifiedFirewallMib::CiscoUnifiedFirewallMib()
+CISCOUNIFIEDFIREWALLMIB::CISCOUNIFIEDFIREWALLMIB()
     :
-    cufwaaicglobals(std::make_shared<CiscoUnifiedFirewallMib::Cufwaaicglobals>())
-	,cufwaaichttpprotocolstats(std::make_shared<CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats>())
-	,cufwappconnsummarytable(std::make_shared<CiscoUnifiedFirewallMib::Cufwappconnsummarytable>())
-	,cufwapplinspectiongrp(std::make_shared<CiscoUnifiedFirewallMib::Cufwapplinspectiongrp>())
-	,cufwconnectionglobals(std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionglobals>())
-	,cufwconnectionreportsettings(std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionreportsettings>())
-	,cufwconnectionresources(std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionresources>())
-	,cufwconnsummarytable(std::make_shared<CiscoUnifiedFirewallMib::Cufwconnsummarytable>())
-	,cufwinspectiontable(std::make_shared<CiscoUnifiedFirewallMib::Cufwinspectiontable>())
-	,cufwl2fwglobals(std::make_shared<CiscoUnifiedFirewallMib::Cufwl2Fwglobals>())
-	,cufwnotifcntlgrp(std::make_shared<CiscoUnifiedFirewallMib::Cufwnotifcntlgrp>())
-	,cufwpolicyappconnsummarytable(std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable>())
-	,cufwpolicyconnsummarytable(std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable>())
-	,cufwurlfilterglobals(std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfilterglobals>())
-	,cufwurlfilterresourceusage(std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage>())
-	,cufwurlfservertable(std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfservertable>())
+    cufwaaicglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals>())
+	,cufwaaichttpprotocolstats(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats>())
+	,cufwappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable>())
+	,cufwapplinspectiongrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp>())
+	,cufwconnectionglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals>())
+	,cufwconnectionreportsettings(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings>())
+	,cufwconnectionresources(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources>())
+	,cufwconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable>())
+	,cufwinspectiontable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable>())
+	,cufwl2fwglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals>())
+	,cufwnotifcntlgrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp>())
+	,cufwpolicyappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable>())
+	,cufwpolicyconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable>())
+	,cufwurlfilterglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals>())
+	,cufwurlfilterresourceusage(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage>())
+	,cufwurlfservertable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable>())
 {
     cufwaaicglobals->parent = this;
-
     cufwaaichttpprotocolstats->parent = this;
-
     cufwappconnsummarytable->parent = this;
-
     cufwapplinspectiongrp->parent = this;
-
     cufwconnectionglobals->parent = this;
-
     cufwconnectionreportsettings->parent = this;
-
     cufwconnectionresources->parent = this;
-
     cufwconnsummarytable->parent = this;
-
     cufwinspectiontable->parent = this;
-
     cufwl2fwglobals->parent = this;
-
     cufwnotifcntlgrp->parent = this;
-
     cufwpolicyappconnsummarytable->parent = this;
-
     cufwpolicyconnsummarytable->parent = this;
-
     cufwurlfilterglobals->parent = this;
-
     cufwurlfilterresourceusage->parent = this;
-
     cufwurlfservertable->parent = this;
 
-    yang_name = "CISCO-UNIFIED-FIREWALL-MIB"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+    yang_name = "CISCO-UNIFIED-FIREWALL-MIB"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::~CiscoUnifiedFirewallMib()
+CISCOUNIFIEDFIREWALLMIB::~CISCOUNIFIEDFIREWALLMIB()
 {
 }
 
-bool CiscoUnifiedFirewallMib::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::has_data() const
 {
     return (cufwaaicglobals !=  nullptr && cufwaaicglobals->has_data())
 	|| (cufwaaichttpprotocolstats !=  nullptr && cufwaaichttpprotocolstats->has_data())
@@ -89,7 +74,7 @@ bool CiscoUnifiedFirewallMib::has_data() const
 	|| (cufwurlfservertable !=  nullptr && cufwurlfservertable->has_data());
 }
 
-bool CiscoUnifiedFirewallMib::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cufwaaicglobals !=  nullptr && cufwaaicglobals->has_operation())
@@ -110,40 +95,29 @@ bool CiscoUnifiedFirewallMib::has_operation() const
 	|| (cufwurlfservertable !=  nullptr && cufwurlfservertable->has_operation());
 }
 
-std::string CiscoUnifiedFirewallMib::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwAaicGlobals")
     {
         if(cufwaaicglobals == nullptr)
         {
-            cufwaaicglobals = std::make_shared<CiscoUnifiedFirewallMib::Cufwaaicglobals>();
+            cufwaaicglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals>();
         }
         return cufwaaicglobals;
     }
@@ -152,7 +126,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwaaichttpprotocolstats == nullptr)
         {
-            cufwaaichttpprotocolstats = std::make_shared<CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats>();
+            cufwaaichttpprotocolstats = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats>();
         }
         return cufwaaichttpprotocolstats;
     }
@@ -161,7 +135,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwappconnsummarytable == nullptr)
         {
-            cufwappconnsummarytable = std::make_shared<CiscoUnifiedFirewallMib::Cufwappconnsummarytable>();
+            cufwappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable>();
         }
         return cufwappconnsummarytable;
     }
@@ -170,7 +144,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwapplinspectiongrp == nullptr)
         {
-            cufwapplinspectiongrp = std::make_shared<CiscoUnifiedFirewallMib::Cufwapplinspectiongrp>();
+            cufwapplinspectiongrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp>();
         }
         return cufwapplinspectiongrp;
     }
@@ -179,7 +153,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwconnectionglobals == nullptr)
         {
-            cufwconnectionglobals = std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionglobals>();
+            cufwconnectionglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals>();
         }
         return cufwconnectionglobals;
     }
@@ -188,7 +162,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwconnectionreportsettings == nullptr)
         {
-            cufwconnectionreportsettings = std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionreportsettings>();
+            cufwconnectionreportsettings = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings>();
         }
         return cufwconnectionreportsettings;
     }
@@ -197,7 +171,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwconnectionresources == nullptr)
         {
-            cufwconnectionresources = std::make_shared<CiscoUnifiedFirewallMib::Cufwconnectionresources>();
+            cufwconnectionresources = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources>();
         }
         return cufwconnectionresources;
     }
@@ -206,7 +180,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwconnsummarytable == nullptr)
         {
-            cufwconnsummarytable = std::make_shared<CiscoUnifiedFirewallMib::Cufwconnsummarytable>();
+            cufwconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable>();
         }
         return cufwconnsummarytable;
     }
@@ -215,7 +189,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwinspectiontable == nullptr)
         {
-            cufwinspectiontable = std::make_shared<CiscoUnifiedFirewallMib::Cufwinspectiontable>();
+            cufwinspectiontable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable>();
         }
         return cufwinspectiontable;
     }
@@ -224,7 +198,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwl2fwglobals == nullptr)
         {
-            cufwl2fwglobals = std::make_shared<CiscoUnifiedFirewallMib::Cufwl2Fwglobals>();
+            cufwl2fwglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals>();
         }
         return cufwl2fwglobals;
     }
@@ -233,7 +207,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwnotifcntlgrp == nullptr)
         {
-            cufwnotifcntlgrp = std::make_shared<CiscoUnifiedFirewallMib::Cufwnotifcntlgrp>();
+            cufwnotifcntlgrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp>();
         }
         return cufwnotifcntlgrp;
     }
@@ -242,7 +216,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwpolicyappconnsummarytable == nullptr)
         {
-            cufwpolicyappconnsummarytable = std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable>();
+            cufwpolicyappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable>();
         }
         return cufwpolicyappconnsummarytable;
     }
@@ -251,7 +225,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwpolicyconnsummarytable == nullptr)
         {
-            cufwpolicyconnsummarytable = std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable>();
+            cufwpolicyconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable>();
         }
         return cufwpolicyconnsummarytable;
     }
@@ -260,7 +234,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwurlfilterglobals == nullptr)
         {
-            cufwurlfilterglobals = std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfilterglobals>();
+            cufwurlfilterglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals>();
         }
         return cufwurlfilterglobals;
     }
@@ -269,7 +243,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwurlfilterresourceusage == nullptr)
         {
-            cufwurlfilterresourceusage = std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage>();
+            cufwurlfilterresourceusage = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage>();
         }
         return cufwurlfilterresourceusage;
     }
@@ -278,7 +252,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     {
         if(cufwurlfservertable == nullptr)
         {
-            cufwurlfservertable = std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfservertable>();
+            cufwurlfservertable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable>();
         }
         return cufwurlfservertable;
     }
@@ -286,7 +260,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cufwaaicglobals != nullptr)
@@ -372,47 +346,731 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::get_chil
     return children;
 }
 
-void CiscoUnifiedFirewallMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoUnifiedFirewallMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoUnifiedFirewallMib>();
+    return std::make_shared<CISCOUNIFIEDFIREWALLMIB>();
 }
 
-std::string CiscoUnifiedFirewallMib::get_bundle_yang_models_location() const
+std::string CISCOUNIFIEDFIREWALLMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoUnifiedFirewallMib::get_bundle_name() const
+std::string CISCOUNIFIEDFIREWALLMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoUnifiedFirewallMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOUNIFIEDFIREWALLMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoUnifiedFirewallMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOUNIFIEDFIREWALLMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoUnifiedFirewallMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAaicGlobals" || name == "cufwAaicHttpProtocolStats" || name == "cufwAppConnSummaryTable" || name == "cuFwApplInspectionGrp" || name == "cuFwConnectionGlobals" || name == "cuFwConnectionReportSettings" || name == "cuFwConnectionResources" || name == "cufwConnSummaryTable" || name == "cufwInspectionTable" || name == "cufwL2FwGlobals" || name == "cuFwNotifCntlGrp" || name == "cufwPolicyAppConnSummaryTable" || name == "cufwPolicyConnSummaryTable" || name == "cufwUrlFilterGlobals" || name == "cufwUrlFilterResourceUsage" || name == "cufwUrlfServerTable")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionglobals::Cufwconnectionglobals()
+CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::Cufwaaicglobals()
+    :
+    cufwaaicglobalnumbadpdusize{YType::uint64, "cufwAaicGlobalNumBadPDUSize"},
+    cufwaaicglobalnumbadportrange{YType::uint64, "cufwAaicGlobalNumBadPortRange"},
+    cufwaaicglobalnumbadprotocolops{YType::uint64, "cufwAaicGlobalNumBadProtocolOps"}
+{
+
+    yang_name = "cufwAaicGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::~Cufwaaicglobals()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_data() const
+{
+    return cufwaaicglobalnumbadpdusize.is_set
+	|| cufwaaicglobalnumbadportrange.is_set
+	|| cufwaaicglobalnumbadprotocolops.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwaaicglobalnumbadpdusize.yfilter)
+	|| ydk::is_set(cufwaaicglobalnumbadportrange.yfilter)
+	|| ydk::is_set(cufwaaicglobalnumbadprotocolops.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwAaicGlobals";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwaaicglobalnumbadpdusize.is_set || is_set(cufwaaicglobalnumbadpdusize.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadpdusize.get_name_leafdata());
+    if (cufwaaicglobalnumbadportrange.is_set || is_set(cufwaaicglobalnumbadportrange.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadportrange.get_name_leafdata());
+    if (cufwaaicglobalnumbadprotocolops.is_set || is_set(cufwaaicglobalnumbadprotocolops.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadprotocolops.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwAaicGlobalNumBadPDUSize")
+    {
+        cufwaaicglobalnumbadpdusize = value;
+        cufwaaicglobalnumbadpdusize.value_namespace = name_space;
+        cufwaaicglobalnumbadpdusize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicGlobalNumBadPortRange")
+    {
+        cufwaaicglobalnumbadportrange = value;
+        cufwaaicglobalnumbadportrange.value_namespace = name_space;
+        cufwaaicglobalnumbadportrange.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicGlobalNumBadProtocolOps")
+    {
+        cufwaaicglobalnumbadprotocolops = value;
+        cufwaaicglobalnumbadprotocolops.value_namespace = name_space;
+        cufwaaicglobalnumbadprotocolops.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwAaicGlobalNumBadPDUSize")
+    {
+        cufwaaicglobalnumbadpdusize.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicGlobalNumBadPortRange")
+    {
+        cufwaaicglobalnumbadportrange.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicGlobalNumBadProtocolOps")
+    {
+        cufwaaicglobalnumbadprotocolops.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwAaicGlobalNumBadPDUSize" || name == "cufwAaicGlobalNumBadPortRange" || name == "cufwAaicGlobalNumBadProtocolOps")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::Cufwaaichttpprotocolstats()
+    :
+    cufwaaichttpnumbadcontent{YType::uint64, "cufwAaicHttpNumBadContent"},
+    cufwaaichttpnumbadpdusize{YType::uint64, "cufwAaicHttpNumBadPDUSize"},
+    cufwaaichttpnumbadprotocolops{YType::uint64, "cufwAaicHttpNumBadProtocolOps"},
+    cufwaaichttpnumdoubleencodedpkts{YType::uint64, "cufwAaicHttpNumDoubleEncodedPkts"},
+    cufwaaichttpnumlargeuris{YType::uint64, "cufwAaicHttpNumLargeURIs"},
+    cufwaaichttpnummismatchcontent{YType::uint64, "cufwAaicHttpNumMismatchContent"},
+    cufwaaichttpnumtunneledconns{YType::uint64, "cufwAaicHttpNumTunneledConns"}
+{
+
+    yang_name = "cufwAaicHttpProtocolStats"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::~Cufwaaichttpprotocolstats()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_data() const
+{
+    return cufwaaichttpnumbadcontent.is_set
+	|| cufwaaichttpnumbadpdusize.is_set
+	|| cufwaaichttpnumbadprotocolops.is_set
+	|| cufwaaichttpnumdoubleencodedpkts.is_set
+	|| cufwaaichttpnumlargeuris.is_set
+	|| cufwaaichttpnummismatchcontent.is_set
+	|| cufwaaichttpnumtunneledconns.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwaaichttpnumbadcontent.yfilter)
+	|| ydk::is_set(cufwaaichttpnumbadpdusize.yfilter)
+	|| ydk::is_set(cufwaaichttpnumbadprotocolops.yfilter)
+	|| ydk::is_set(cufwaaichttpnumdoubleencodedpkts.yfilter)
+	|| ydk::is_set(cufwaaichttpnumlargeuris.yfilter)
+	|| ydk::is_set(cufwaaichttpnummismatchcontent.yfilter)
+	|| ydk::is_set(cufwaaichttpnumtunneledconns.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwAaicHttpProtocolStats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwaaichttpnumbadcontent.is_set || is_set(cufwaaichttpnumbadcontent.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadcontent.get_name_leafdata());
+    if (cufwaaichttpnumbadpdusize.is_set || is_set(cufwaaichttpnumbadpdusize.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadpdusize.get_name_leafdata());
+    if (cufwaaichttpnumbadprotocolops.is_set || is_set(cufwaaichttpnumbadprotocolops.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadprotocolops.get_name_leafdata());
+    if (cufwaaichttpnumdoubleencodedpkts.is_set || is_set(cufwaaichttpnumdoubleencodedpkts.yfilter)) leaf_name_data.push_back(cufwaaichttpnumdoubleencodedpkts.get_name_leafdata());
+    if (cufwaaichttpnumlargeuris.is_set || is_set(cufwaaichttpnumlargeuris.yfilter)) leaf_name_data.push_back(cufwaaichttpnumlargeuris.get_name_leafdata());
+    if (cufwaaichttpnummismatchcontent.is_set || is_set(cufwaaichttpnummismatchcontent.yfilter)) leaf_name_data.push_back(cufwaaichttpnummismatchcontent.get_name_leafdata());
+    if (cufwaaichttpnumtunneledconns.is_set || is_set(cufwaaichttpnumtunneledconns.yfilter)) leaf_name_data.push_back(cufwaaichttpnumtunneledconns.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwAaicHttpNumBadContent")
+    {
+        cufwaaichttpnumbadcontent = value;
+        cufwaaichttpnumbadcontent.value_namespace = name_space;
+        cufwaaichttpnumbadcontent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumBadPDUSize")
+    {
+        cufwaaichttpnumbadpdusize = value;
+        cufwaaichttpnumbadpdusize.value_namespace = name_space;
+        cufwaaichttpnumbadpdusize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumBadProtocolOps")
+    {
+        cufwaaichttpnumbadprotocolops = value;
+        cufwaaichttpnumbadprotocolops.value_namespace = name_space;
+        cufwaaichttpnumbadprotocolops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumDoubleEncodedPkts")
+    {
+        cufwaaichttpnumdoubleencodedpkts = value;
+        cufwaaichttpnumdoubleencodedpkts.value_namespace = name_space;
+        cufwaaichttpnumdoubleencodedpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumLargeURIs")
+    {
+        cufwaaichttpnumlargeuris = value;
+        cufwaaichttpnumlargeuris.value_namespace = name_space;
+        cufwaaichttpnumlargeuris.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumMismatchContent")
+    {
+        cufwaaichttpnummismatchcontent = value;
+        cufwaaichttpnummismatchcontent.value_namespace = name_space;
+        cufwaaichttpnummismatchcontent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAaicHttpNumTunneledConns")
+    {
+        cufwaaichttpnumtunneledconns = value;
+        cufwaaichttpnumtunneledconns.value_namespace = name_space;
+        cufwaaichttpnumtunneledconns.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwAaicHttpNumBadContent")
+    {
+        cufwaaichttpnumbadcontent.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumBadPDUSize")
+    {
+        cufwaaichttpnumbadpdusize.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumBadProtocolOps")
+    {
+        cufwaaichttpnumbadprotocolops.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumDoubleEncodedPkts")
+    {
+        cufwaaichttpnumdoubleencodedpkts.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumLargeURIs")
+    {
+        cufwaaichttpnumlargeuris.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumMismatchContent")
+    {
+        cufwaaichttpnummismatchcontent.yfilter = yfilter;
+    }
+    if(value_path == "cufwAaicHttpNumTunneledConns")
+    {
+        cufwaaichttpnumtunneledconns.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwAaicHttpNumBadContent" || name == "cufwAaicHttpNumBadPDUSize" || name == "cufwAaicHttpNumBadProtocolOps" || name == "cufwAaicHttpNumDoubleEncodedPkts" || name == "cufwAaicHttpNumLargeURIs" || name == "cufwAaicHttpNumMismatchContent" || name == "cufwAaicHttpNumTunneledConns")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummarytable()
+{
+
+    yang_name = "cufwAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::~Cufwappconnsummarytable()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_data() const
+{
+    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
+    {
+        if(cufwappconnsummaryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_operation() const
+{
+    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
+    {
+        if(cufwappconnsummaryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwAppConnSummaryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cufwAppConnSummaryEntry")
+    {
+        for(auto const & c : cufwappconnsummaryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry>();
+        c->parent = this;
+        cufwappconnsummaryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cufwappconnsummaryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwAppConnSummaryEntry")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::Cufwappconnsummaryentry()
+    :
+    cufwappconnprotocol{YType::enumeration, "cufwAppConnProtocol"},
+    cufwappconnnumaborted{YType::uint64, "cufwAppConnNumAborted"},
+    cufwappconnnumactive{YType::uint32, "cufwAppConnNumActive"},
+    cufwappconnnumattempted{YType::uint64, "cufwAppConnNumAttempted"},
+    cufwappconnnumhalfopen{YType::uint32, "cufwAppConnNumHalfOpen"},
+    cufwappconnnumpolicydeclined{YType::uint64, "cufwAppConnNumPolicyDeclined"},
+    cufwappconnnumresdeclined{YType::uint64, "cufwAppConnNumResDeclined"},
+    cufwappconnnumsetupsaborted{YType::uint64, "cufwAppConnNumSetupsAborted"},
+    cufwappconnsetuprate1{YType::uint32, "cufwAppConnSetupRate1"},
+    cufwappconnsetuprate5{YType::uint32, "cufwAppConnSetupRate5"}
+{
+
+    yang_name = "cufwAppConnSummaryEntry"; yang_parent_name = "cufwAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::~Cufwappconnsummaryentry()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_data() const
+{
+    return cufwappconnprotocol.is_set
+	|| cufwappconnnumaborted.is_set
+	|| cufwappconnnumactive.is_set
+	|| cufwappconnnumattempted.is_set
+	|| cufwappconnnumhalfopen.is_set
+	|| cufwappconnnumpolicydeclined.is_set
+	|| cufwappconnnumresdeclined.is_set
+	|| cufwappconnnumsetupsaborted.is_set
+	|| cufwappconnsetuprate1.is_set
+	|| cufwappconnsetuprate5.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwappconnprotocol.yfilter)
+	|| ydk::is_set(cufwappconnnumaborted.yfilter)
+	|| ydk::is_set(cufwappconnnumactive.yfilter)
+	|| ydk::is_set(cufwappconnnumattempted.yfilter)
+	|| ydk::is_set(cufwappconnnumhalfopen.yfilter)
+	|| ydk::is_set(cufwappconnnumpolicydeclined.yfilter)
+	|| ydk::is_set(cufwappconnnumresdeclined.yfilter)
+	|| ydk::is_set(cufwappconnnumsetupsaborted.yfilter)
+	|| ydk::is_set(cufwappconnsetuprate1.yfilter)
+	|| ydk::is_set(cufwappconnsetuprate5.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwAppConnSummaryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwAppConnSummaryEntry" <<"[cufwAppConnProtocol='" <<cufwappconnprotocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwappconnprotocol.is_set || is_set(cufwappconnprotocol.yfilter)) leaf_name_data.push_back(cufwappconnprotocol.get_name_leafdata());
+    if (cufwappconnnumaborted.is_set || is_set(cufwappconnnumaborted.yfilter)) leaf_name_data.push_back(cufwappconnnumaborted.get_name_leafdata());
+    if (cufwappconnnumactive.is_set || is_set(cufwappconnnumactive.yfilter)) leaf_name_data.push_back(cufwappconnnumactive.get_name_leafdata());
+    if (cufwappconnnumattempted.is_set || is_set(cufwappconnnumattempted.yfilter)) leaf_name_data.push_back(cufwappconnnumattempted.get_name_leafdata());
+    if (cufwappconnnumhalfopen.is_set || is_set(cufwappconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwappconnnumhalfopen.get_name_leafdata());
+    if (cufwappconnnumpolicydeclined.is_set || is_set(cufwappconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwappconnnumpolicydeclined.get_name_leafdata());
+    if (cufwappconnnumresdeclined.is_set || is_set(cufwappconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwappconnnumresdeclined.get_name_leafdata());
+    if (cufwappconnnumsetupsaborted.is_set || is_set(cufwappconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwappconnnumsetupsaborted.get_name_leafdata());
+    if (cufwappconnsetuprate1.is_set || is_set(cufwappconnsetuprate1.yfilter)) leaf_name_data.push_back(cufwappconnsetuprate1.get_name_leafdata());
+    if (cufwappconnsetuprate5.is_set || is_set(cufwappconnsetuprate5.yfilter)) leaf_name_data.push_back(cufwappconnsetuprate5.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwAppConnProtocol")
+    {
+        cufwappconnprotocol = value;
+        cufwappconnprotocol.value_namespace = name_space;
+        cufwappconnprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumAborted")
+    {
+        cufwappconnnumaborted = value;
+        cufwappconnnumaborted.value_namespace = name_space;
+        cufwappconnnumaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumActive")
+    {
+        cufwappconnnumactive = value;
+        cufwappconnnumactive.value_namespace = name_space;
+        cufwappconnnumactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumAttempted")
+    {
+        cufwappconnnumattempted = value;
+        cufwappconnnumattempted.value_namespace = name_space;
+        cufwappconnnumattempted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumHalfOpen")
+    {
+        cufwappconnnumhalfopen = value;
+        cufwappconnnumhalfopen.value_namespace = name_space;
+        cufwappconnnumhalfopen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumPolicyDeclined")
+    {
+        cufwappconnnumpolicydeclined = value;
+        cufwappconnnumpolicydeclined.value_namespace = name_space;
+        cufwappconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumResDeclined")
+    {
+        cufwappconnnumresdeclined = value;
+        cufwappconnnumresdeclined.value_namespace = name_space;
+        cufwappconnnumresdeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnNumSetupsAborted")
+    {
+        cufwappconnnumsetupsaborted = value;
+        cufwappconnnumsetupsaborted.value_namespace = name_space;
+        cufwappconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnSetupRate1")
+    {
+        cufwappconnsetuprate1 = value;
+        cufwappconnsetuprate1.value_namespace = name_space;
+        cufwappconnsetuprate1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAppConnSetupRate5")
+    {
+        cufwappconnsetuprate5 = value;
+        cufwappconnsetuprate5.value_namespace = name_space;
+        cufwappconnsetuprate5.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwAppConnProtocol")
+    {
+        cufwappconnprotocol.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumAborted")
+    {
+        cufwappconnnumaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumActive")
+    {
+        cufwappconnnumactive.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumAttempted")
+    {
+        cufwappconnnumattempted.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumHalfOpen")
+    {
+        cufwappconnnumhalfopen.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumPolicyDeclined")
+    {
+        cufwappconnnumpolicydeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumResDeclined")
+    {
+        cufwappconnnumresdeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnNumSetupsAborted")
+    {
+        cufwappconnnumsetupsaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnSetupRate1")
+    {
+        cufwappconnsetuprate1.yfilter = yfilter;
+    }
+    if(value_path == "cufwAppConnSetupRate5")
+    {
+        cufwappconnsetuprate5.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwAppConnProtocol" || name == "cufwAppConnNumAborted" || name == "cufwAppConnNumActive" || name == "cufwAppConnNumAttempted" || name == "cufwAppConnNumHalfOpen" || name == "cufwAppConnNumPolicyDeclined" || name == "cufwAppConnNumResDeclined" || name == "cufwAppConnNumSetupsAborted" || name == "cufwAppConnSetupRate1" || name == "cufwAppConnSetupRate5")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::Cufwapplinspectiongrp()
+    :
+    cufwaialertenabled{YType::boolean, "cufwAIAlertEnabled"},
+    cufwaiaudittrailenabled{YType::boolean, "cufwAIAuditTrailEnabled"}
+{
+
+    yang_name = "cuFwApplInspectionGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::~Cufwapplinspectiongrp()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_data() const
+{
+    return cufwaialertenabled.is_set
+	|| cufwaiaudittrailenabled.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwaialertenabled.yfilter)
+	|| ydk::is_set(cufwaiaudittrailenabled.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cuFwApplInspectionGrp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwaialertenabled.is_set || is_set(cufwaialertenabled.yfilter)) leaf_name_data.push_back(cufwaialertenabled.get_name_leafdata());
+    if (cufwaiaudittrailenabled.is_set || is_set(cufwaiaudittrailenabled.yfilter)) leaf_name_data.push_back(cufwaiaudittrailenabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwAIAlertEnabled")
+    {
+        cufwaialertenabled = value;
+        cufwaialertenabled.value_namespace = name_space;
+        cufwaialertenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwAIAuditTrailEnabled")
+    {
+        cufwaiaudittrailenabled = value;
+        cufwaiaudittrailenabled.value_namespace = name_space;
+        cufwaiaudittrailenabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwAIAlertEnabled")
+    {
+        cufwaialertenabled.yfilter = yfilter;
+    }
+    if(value_path == "cufwAIAuditTrailEnabled")
+    {
+        cufwaiaudittrailenabled.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwAIAlertEnabled" || name == "cufwAIAuditTrailEnabled")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::Cufwconnectionglobals()
     :
     cufwconnglobalconnsetuprate1{YType::uint32, "cufwConnGlobalConnSetupRate1"},
     cufwconnglobalconnsetuprate5{YType::uint32, "cufwConnGlobalConnSetupRate5"},
@@ -427,14 +1085,15 @@ CiscoUnifiedFirewallMib::Cufwconnectionglobals::Cufwconnectionglobals()
     cufwconnglobalnumresdeclined{YType::uint64, "cufwConnGlobalNumResDeclined"},
     cufwconnglobalnumsetupsaborted{YType::uint64, "cufwConnGlobalNumSetupsAborted"}
 {
-    yang_name = "cuFwConnectionGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cuFwConnectionGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionglobals::~Cufwconnectionglobals()
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::~Cufwconnectionglobals()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_data() const
 {
     return cufwconnglobalconnsetuprate1.is_set
 	|| cufwconnglobalconnsetuprate5.is_set
@@ -450,7 +1109,7 @@ bool CiscoUnifiedFirewallMib::Cufwconnectionglobals::has_data() const
 	|| cufwconnglobalnumsetupsaborted.is_set;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnglobalconnsetuprate1.yfilter)
@@ -467,27 +1126,22 @@ bool CiscoUnifiedFirewallMib::Cufwconnectionglobals::has_operation() const
 	|| ydk::is_set(cufwconnglobalnumsetupsaborted.yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwconnectionglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwConnectionGlobals";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwconnectionglobals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cufwconnglobalconnsetuprate1.is_set || is_set(cufwconnglobalconnsetuprate1.yfilter)) leaf_name_data.push_back(cufwconnglobalconnsetuprate1.get_name_leafdata());
@@ -503,24 +1157,22 @@ const EntityPath CiscoUnifiedFirewallMib::Cufwconnectionglobals::get_entity_path
     if (cufwconnglobalnumresdeclined.is_set || is_set(cufwconnglobalnumresdeclined.yfilter)) leaf_name_data.push_back(cufwconnglobalnumresdeclined.get_name_leafdata());
     if (cufwconnglobalnumsetupsaborted.is_set || is_set(cufwconnglobalnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwconnglobalnumsetupsaborted.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwconnectionglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwconnectionglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnGlobalConnSetupRate1")
     {
@@ -596,7 +1248,7 @@ void CiscoUnifiedFirewallMib::Cufwconnectionglobals::set_value(const std::string
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnGlobalConnSetupRate1")
     {
@@ -648,28 +1300,126 @@ void CiscoUnifiedFirewallMib::Cufwconnectionglobals::set_filter(const std::strin
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnGlobalConnSetupRate1" || name == "cufwConnGlobalConnSetupRate5" || name == "cufwConnGlobalNumAborted" || name == "cufwConnGlobalNumActive" || name == "cufwConnGlobalNumAttempted" || name == "cufwConnGlobalNumEmbryonic" || name == "cufwConnGlobalNumExpired" || name == "cufwConnGlobalNumHalfOpen" || name == "cufwConnGlobalNumPolicyDeclined" || name == "cufwConnGlobalNumRemoteAccess" || name == "cufwConnGlobalNumResDeclined" || name == "cufwConnGlobalNumSetupsAborted")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionresources::Cufwconnectionresources()
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::Cufwconnectionreportsettings()
+    :
+    cufwconnreptappstats{YType::boolean, "cufwConnReptAppStats"},
+    cufwconnreptappstatslastchanged{YType::uint32, "cufwConnReptAppStatsLastChanged"}
+{
+
+    yang_name = "cuFwConnectionReportSettings"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::~Cufwconnectionreportsettings()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_data() const
+{
+    return cufwconnreptappstats.is_set
+	|| cufwconnreptappstatslastchanged.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwconnreptappstats.yfilter)
+	|| ydk::is_set(cufwconnreptappstatslastchanged.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cuFwConnectionReportSettings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwconnreptappstats.is_set || is_set(cufwconnreptappstats.yfilter)) leaf_name_data.push_back(cufwconnreptappstats.get_name_leafdata());
+    if (cufwconnreptappstatslastchanged.is_set || is_set(cufwconnreptappstatslastchanged.yfilter)) leaf_name_data.push_back(cufwconnreptappstatslastchanged.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwConnReptAppStats")
+    {
+        cufwconnreptappstats = value;
+        cufwconnreptappstats.value_namespace = name_space;
+        cufwconnreptappstats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnReptAppStatsLastChanged")
+    {
+        cufwconnreptappstatslastchanged = value;
+        cufwconnreptappstatslastchanged.value_namespace = name_space;
+        cufwconnreptappstatslastchanged.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwConnReptAppStats")
+    {
+        cufwconnreptappstats.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnReptAppStatsLastChanged")
+    {
+        cufwconnreptappstatslastchanged.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwConnReptAppStats" || name == "cufwConnReptAppStatsLastChanged")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::Cufwconnectionresources()
     :
     cufwconnresactiveconnmemoryusage{YType::uint32, "cufwConnResActiveConnMemoryUsage"},
     cufwconnresembrconnmemoryusage{YType::uint32, "cufwConnResEmbrConnMemoryUsage"},
     cufwconnreshoconnmemoryusage{YType::uint32, "cufwConnResHOConnMemoryUsage"},
     cufwconnresmemoryusage{YType::uint32, "cufwConnResMemoryUsage"}
 {
-    yang_name = "cuFwConnectionResources"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cuFwConnectionResources"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionresources::~Cufwconnectionresources()
+CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::~Cufwconnectionresources()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionresources::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_data() const
 {
     return cufwconnresactiveconnmemoryusage.is_set
 	|| cufwconnresembrconnmemoryusage.is_set
@@ -677,7 +1427,7 @@ bool CiscoUnifiedFirewallMib::Cufwconnectionresources::has_data() const
 	|| cufwconnresmemoryusage.is_set;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionresources::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnresactiveconnmemoryusage.yfilter)
@@ -686,27 +1436,22 @@ bool CiscoUnifiedFirewallMib::Cufwconnectionresources::has_operation() const
 	|| ydk::is_set(cufwconnresmemoryusage.yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwconnectionresources::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwConnectionResources";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwconnectionresources::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cufwconnresactiveconnmemoryusage.is_set || is_set(cufwconnresactiveconnmemoryusage.yfilter)) leaf_name_data.push_back(cufwconnresactiveconnmemoryusage.get_name_leafdata());
@@ -714,24 +1459,22 @@ const EntityPath CiscoUnifiedFirewallMib::Cufwconnectionresources::get_entity_pa
     if (cufwconnreshoconnmemoryusage.is_set || is_set(cufwconnreshoconnmemoryusage.yfilter)) leaf_name_data.push_back(cufwconnreshoconnmemoryusage.get_name_leafdata());
     if (cufwconnresmemoryusage.is_set || is_set(cufwconnresmemoryusage.yfilter)) leaf_name_data.push_back(cufwconnresmemoryusage.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwconnectionresources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwconnectionresources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionresources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnResActiveConnMemoryUsage")
     {
@@ -759,7 +1502,7 @@ void CiscoUnifiedFirewallMib::Cufwconnectionresources::set_value(const std::stri
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionresources::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnResActiveConnMemoryUsage")
     {
@@ -779,220 +1522,1486 @@ void CiscoUnifiedFirewallMib::Cufwconnectionresources::set_filter(const std::str
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionresources::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnResActiveConnMemoryUsage" || name == "cufwConnResEmbrConnMemoryUsage" || name == "cufwConnResHOConnMemoryUsage" || name == "cufwConnResMemoryUsage")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::Cufwconnectionreportsettings()
-    :
-    cufwconnreptappstats{YType::boolean, "cufwConnReptAppStats"},
-    cufwconnreptappstatslastchanged{YType::uint32, "cufwConnReptAppStatsLastChanged"}
+CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummarytable()
 {
-    yang_name = "cuFwConnectionReportSettings"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cufwConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::~Cufwconnectionreportsettings()
+CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::~Cufwconnsummarytable()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_data() const
 {
-    return cufwconnreptappstats.is_set
-	|| cufwconnreptappstatslastchanged.is_set;
+    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
+    {
+        if(cufwconnsummaryentry[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(cufwconnreptappstats.yfilter)
-	|| ydk::is_set(cufwconnreptappstatslastchanged.yfilter);
+    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
+    {
+        if(cufwconnsummaryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cuFwConnectionReportSettings";
-
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::get_entity_path(Entity* ancestor) const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cufwConnSummaryTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cufwconnreptappstats.is_set || is_set(cufwconnreptappstats.yfilter)) leaf_name_data.push_back(cufwconnreptappstats.get_name_leafdata());
-    if (cufwconnreptappstatslastchanged.is_set || is_set(cufwconnreptappstatslastchanged.yfilter)) leaf_name_data.push_back(cufwconnreptappstatslastchanged.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cufwConnSummaryEntry")
+    {
+        for(auto const & c : cufwconnsummaryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry>();
+        c->parent = this;
+        cufwconnsummaryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cufwconnsummaryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwConnSummaryEntry")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::Cufwconnsummaryentry()
+    :
+    cufwconnprotocol{YType::enumeration, "cufwConnProtocol"},
+    cufwconnnumaborted{YType::uint64, "cufwConnNumAborted"},
+    cufwconnnumactive{YType::uint32, "cufwConnNumActive"},
+    cufwconnnumattempted{YType::uint64, "cufwConnNumAttempted"},
+    cufwconnnumhalfopen{YType::uint32, "cufwConnNumHalfOpen"},
+    cufwconnnumpolicydeclined{YType::uint64, "cufwConnNumPolicyDeclined"},
+    cufwconnnumresdeclined{YType::uint64, "cufwConnNumResDeclined"},
+    cufwconnnumsetupsaborted{YType::uint64, "cufwConnNumSetupsAborted"},
+    cufwconnsetuprate1{YType::uint32, "cufwConnSetupRate1"},
+    cufwconnsetuprate5{YType::uint32, "cufwConnSetupRate5"}
+{
+
+    yang_name = "cufwConnSummaryEntry"; yang_parent_name = "cufwConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::~Cufwconnsummaryentry()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_data() const
+{
+    return cufwconnprotocol.is_set
+	|| cufwconnnumaborted.is_set
+	|| cufwconnnumactive.is_set
+	|| cufwconnnumattempted.is_set
+	|| cufwconnnumhalfopen.is_set
+	|| cufwconnnumpolicydeclined.is_set
+	|| cufwconnnumresdeclined.is_set
+	|| cufwconnnumsetupsaborted.is_set
+	|| cufwconnsetuprate1.is_set
+	|| cufwconnsetuprate5.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwconnprotocol.yfilter)
+	|| ydk::is_set(cufwconnnumaborted.yfilter)
+	|| ydk::is_set(cufwconnnumactive.yfilter)
+	|| ydk::is_set(cufwconnnumattempted.yfilter)
+	|| ydk::is_set(cufwconnnumhalfopen.yfilter)
+	|| ydk::is_set(cufwconnnumpolicydeclined.yfilter)
+	|| ydk::is_set(cufwconnnumresdeclined.yfilter)
+	|| ydk::is_set(cufwconnnumsetupsaborted.yfilter)
+	|| ydk::is_set(cufwconnsetuprate1.yfilter)
+	|| ydk::is_set(cufwconnsetuprate5.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwConnSummaryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwConnSummaryEntry" <<"[cufwConnProtocol='" <<cufwconnprotocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwconnprotocol.is_set || is_set(cufwconnprotocol.yfilter)) leaf_name_data.push_back(cufwconnprotocol.get_name_leafdata());
+    if (cufwconnnumaborted.is_set || is_set(cufwconnnumaborted.yfilter)) leaf_name_data.push_back(cufwconnnumaborted.get_name_leafdata());
+    if (cufwconnnumactive.is_set || is_set(cufwconnnumactive.yfilter)) leaf_name_data.push_back(cufwconnnumactive.get_name_leafdata());
+    if (cufwconnnumattempted.is_set || is_set(cufwconnnumattempted.yfilter)) leaf_name_data.push_back(cufwconnnumattempted.get_name_leafdata());
+    if (cufwconnnumhalfopen.is_set || is_set(cufwconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwconnnumhalfopen.get_name_leafdata());
+    if (cufwconnnumpolicydeclined.is_set || is_set(cufwconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwconnnumpolicydeclined.get_name_leafdata());
+    if (cufwconnnumresdeclined.is_set || is_set(cufwconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwconnnumresdeclined.get_name_leafdata());
+    if (cufwconnnumsetupsaborted.is_set || is_set(cufwconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwconnnumsetupsaborted.get_name_leafdata());
+    if (cufwconnsetuprate1.is_set || is_set(cufwconnsetuprate1.yfilter)) leaf_name_data.push_back(cufwconnsetuprate1.get_name_leafdata());
+    if (cufwconnsetuprate5.is_set || is_set(cufwconnsetuprate5.yfilter)) leaf_name_data.push_back(cufwconnsetuprate5.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cufwConnReptAppStats")
+    if(value_path == "cufwConnProtocol")
     {
-        cufwconnreptappstats = value;
-        cufwconnreptappstats.value_namespace = name_space;
-        cufwconnreptappstats.value_namespace_prefix = name_space_prefix;
+        cufwconnprotocol = value;
+        cufwconnprotocol.value_namespace = name_space;
+        cufwconnprotocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cufwConnReptAppStatsLastChanged")
+    if(value_path == "cufwConnNumAborted")
     {
-        cufwconnreptappstatslastchanged = value;
-        cufwconnreptappstatslastchanged.value_namespace = name_space;
-        cufwconnreptappstatslastchanged.value_namespace_prefix = name_space_prefix;
+        cufwconnnumaborted = value;
+        cufwconnnumaborted.value_namespace = name_space;
+        cufwconnnumaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumActive")
+    {
+        cufwconnnumactive = value;
+        cufwconnnumactive.value_namespace = name_space;
+        cufwconnnumactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumAttempted")
+    {
+        cufwconnnumattempted = value;
+        cufwconnnumattempted.value_namespace = name_space;
+        cufwconnnumattempted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumHalfOpen")
+    {
+        cufwconnnumhalfopen = value;
+        cufwconnnumhalfopen.value_namespace = name_space;
+        cufwconnnumhalfopen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumPolicyDeclined")
+    {
+        cufwconnnumpolicydeclined = value;
+        cufwconnnumpolicydeclined.value_namespace = name_space;
+        cufwconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumResDeclined")
+    {
+        cufwconnnumresdeclined = value;
+        cufwconnnumresdeclined.value_namespace = name_space;
+        cufwconnnumresdeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnNumSetupsAborted")
+    {
+        cufwconnnumsetupsaborted = value;
+        cufwconnnumsetupsaborted.value_namespace = name_space;
+        cufwconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnSetupRate1")
+    {
+        cufwconnsetuprate1 = value;
+        cufwconnsetuprate1.value_namespace = name_space;
+        cufwconnsetuprate1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwConnSetupRate5")
+    {
+        cufwconnsetuprate5 = value;
+        cufwconnsetuprate5.value_namespace = name_space;
+        cufwconnsetuprate5.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cufwConnReptAppStats")
+    if(value_path == "cufwConnProtocol")
     {
-        cufwconnreptappstats.yfilter = yfilter;
+        cufwconnprotocol.yfilter = yfilter;
     }
-    if(value_path == "cufwConnReptAppStatsLastChanged")
+    if(value_path == "cufwConnNumAborted")
     {
-        cufwconnreptappstatslastchanged.yfilter = yfilter;
+        cufwconnnumaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumActive")
+    {
+        cufwconnnumactive.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumAttempted")
+    {
+        cufwconnnumattempted.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumHalfOpen")
+    {
+        cufwconnnumhalfopen.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumPolicyDeclined")
+    {
+        cufwconnnumpolicydeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumResDeclined")
+    {
+        cufwconnnumresdeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnNumSetupsAborted")
+    {
+        cufwconnnumsetupsaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnSetupRate1")
+    {
+        cufwconnsetuprate1.yfilter = yfilter;
+    }
+    if(value_path == "cufwConnSetupRate5")
+    {
+        cufwconnsetuprate5.yfilter = yfilter;
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwconnectionreportsettings::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cufwConnReptAppStats" || name == "cufwConnReptAppStatsLastChanged")
+    if(name == "cufwConnProtocol" || name == "cufwConnNumAborted" || name == "cufwConnNumActive" || name == "cufwConnNumAttempted" || name == "cufwConnNumHalfOpen" || name == "cufwConnNumPolicyDeclined" || name == "cufwConnNumResDeclined" || name == "cufwConnNumSetupsAborted" || name == "cufwConnSetupRate1" || name == "cufwConnSetupRate5")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::Cufwapplinspectiongrp()
-    :
-    cufwaialertenabled{YType::boolean, "cufwAIAlertEnabled"},
-    cufwaiaudittrailenabled{YType::boolean, "cufwAIAuditTrailEnabled"}
+CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectiontable()
 {
-    yang_name = "cuFwApplInspectionGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cufwInspectionTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::~Cufwapplinspectiongrp()
+CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::~Cufwinspectiontable()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_data() const
 {
-    return cufwaialertenabled.is_set
-	|| cufwaiaudittrailenabled.is_set;
+    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
+    {
+        if(cufwinspectionentry[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(cufwaialertenabled.yfilter)
-	|| ydk::is_set(cufwaiaudittrailenabled.yfilter);
+    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
+    {
+        if(cufwinspectionentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cuFwApplInspectionGrp";
-
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::get_entity_path(Entity* ancestor) const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cufwInspectionTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cufwaialertenabled.is_set || is_set(cufwaialertenabled.yfilter)) leaf_name_data.push_back(cufwaialertenabled.get_name_leafdata());
-    if (cufwaiaudittrailenabled.is_set || is_set(cufwaiaudittrailenabled.yfilter)) leaf_name_data.push_back(cufwaiaudittrailenabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cufwInspectionEntry")
+    {
+        for(auto const & c : cufwinspectionentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry>();
+        c->parent = this;
+        cufwinspectionentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cufwinspectionentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwInspectionEntry")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::Cufwinspectionentry()
+    :
+    cufwinspectionpolicyname{YType::str, "cufwInspectionPolicyName"},
+    cufwinspectionprotocol{YType::enumeration, "cufwInspectionProtocol"},
+    cufwinspectionstatus{YType::boolean, "cufwInspectionStatus"}
+{
+
+    yang_name = "cufwInspectionEntry"; yang_parent_name = "cufwInspectionTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::~Cufwinspectionentry()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_data() const
+{
+    return cufwinspectionpolicyname.is_set
+	|| cufwinspectionprotocol.is_set
+	|| cufwinspectionstatus.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwinspectionpolicyname.yfilter)
+	|| ydk::is_set(cufwinspectionprotocol.yfilter)
+	|| ydk::is_set(cufwinspectionstatus.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwInspectionTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwInspectionEntry" <<"[cufwInspectionPolicyName='" <<cufwinspectionpolicyname <<"']" <<"[cufwInspectionProtocol='" <<cufwinspectionprotocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwinspectionpolicyname.is_set || is_set(cufwinspectionpolicyname.yfilter)) leaf_name_data.push_back(cufwinspectionpolicyname.get_name_leafdata());
+    if (cufwinspectionprotocol.is_set || is_set(cufwinspectionprotocol.yfilter)) leaf_name_data.push_back(cufwinspectionprotocol.get_name_leafdata());
+    if (cufwinspectionstatus.is_set || is_set(cufwinspectionstatus.yfilter)) leaf_name_data.push_back(cufwinspectionstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "cufwAIAlertEnabled")
+    if(value_path == "cufwInspectionPolicyName")
     {
-        cufwaialertenabled = value;
-        cufwaialertenabled.value_namespace = name_space;
-        cufwaialertenabled.value_namespace_prefix = name_space_prefix;
+        cufwinspectionpolicyname = value;
+        cufwinspectionpolicyname.value_namespace = name_space;
+        cufwinspectionpolicyname.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cufwAIAuditTrailEnabled")
+    if(value_path == "cufwInspectionProtocol")
     {
-        cufwaiaudittrailenabled = value;
-        cufwaiaudittrailenabled.value_namespace = name_space;
-        cufwaiaudittrailenabled.value_namespace_prefix = name_space_prefix;
+        cufwinspectionprotocol = value;
+        cufwinspectionprotocol.value_namespace = name_space;
+        cufwinspectionprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwInspectionStatus")
+    {
+        cufwinspectionstatus = value;
+        cufwinspectionstatus.value_namespace = name_space;
+        cufwinspectionstatus.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "cufwAIAlertEnabled")
+    if(value_path == "cufwInspectionPolicyName")
     {
-        cufwaialertenabled.yfilter = yfilter;
+        cufwinspectionpolicyname.yfilter = yfilter;
     }
-    if(value_path == "cufwAIAuditTrailEnabled")
+    if(value_path == "cufwInspectionProtocol")
     {
-        cufwaiaudittrailenabled.yfilter = yfilter;
+        cufwinspectionprotocol.yfilter = yfilter;
+    }
+    if(value_path == "cufwInspectionStatus")
+    {
+        cufwinspectionstatus.yfilter = yfilter;
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwapplinspectiongrp::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cufwAIAlertEnabled" || name == "cufwAIAuditTrailEnabled")
+    if(name == "cufwInspectionPolicyName" || name == "cufwInspectionProtocol" || name == "cufwInspectionStatus")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfilterglobals::Cufwurlfilterglobals()
+CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::Cufwl2Fwglobals()
+    :
+    cufwl2globalarpcachesize{YType::int32, "cufwL2GlobalArpCacheSize"},
+    cufwl2globalarpoverflowrate5{YType::uint32, "cufwL2GlobalArpOverflowRate5"},
+    cufwl2globalenablearpinspection{YType::boolean, "cufwL2GlobalEnableArpInspection"},
+    cufwl2globalenablestealthmode{YType::boolean, "cufwL2GlobalEnableStealthMode"},
+    cufwl2globalnumarprequests{YType::uint64, "cufwL2GlobalNumArpRequests"},
+    cufwl2globalnumbadarpresponses{YType::uint64, "cufwL2GlobalNumBadArpResponses"},
+    cufwl2globalnumdrops{YType::uint64, "cufwL2GlobalNumDrops"},
+    cufwl2globalnumfloods{YType::uint64, "cufwL2GlobalNumFloods"},
+    cufwl2globalnumicmprequests{YType::uint64, "cufwL2GlobalNumIcmpRequests"},
+    cufwl2globalnumspoofedarpresps{YType::uint64, "cufwL2GlobalNumSpoofedArpResps"}
+{
+
+    yang_name = "cufwL2FwGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::~Cufwl2Fwglobals()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_data() const
+{
+    return cufwl2globalarpcachesize.is_set
+	|| cufwl2globalarpoverflowrate5.is_set
+	|| cufwl2globalenablearpinspection.is_set
+	|| cufwl2globalenablestealthmode.is_set
+	|| cufwl2globalnumarprequests.is_set
+	|| cufwl2globalnumbadarpresponses.is_set
+	|| cufwl2globalnumdrops.is_set
+	|| cufwl2globalnumfloods.is_set
+	|| cufwl2globalnumicmprequests.is_set
+	|| cufwl2globalnumspoofedarpresps.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwl2globalarpcachesize.yfilter)
+	|| ydk::is_set(cufwl2globalarpoverflowrate5.yfilter)
+	|| ydk::is_set(cufwl2globalenablearpinspection.yfilter)
+	|| ydk::is_set(cufwl2globalenablestealthmode.yfilter)
+	|| ydk::is_set(cufwl2globalnumarprequests.yfilter)
+	|| ydk::is_set(cufwl2globalnumbadarpresponses.yfilter)
+	|| ydk::is_set(cufwl2globalnumdrops.yfilter)
+	|| ydk::is_set(cufwl2globalnumfloods.yfilter)
+	|| ydk::is_set(cufwl2globalnumicmprequests.yfilter)
+	|| ydk::is_set(cufwl2globalnumspoofedarpresps.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwL2FwGlobals";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwl2globalarpcachesize.is_set || is_set(cufwl2globalarpcachesize.yfilter)) leaf_name_data.push_back(cufwl2globalarpcachesize.get_name_leafdata());
+    if (cufwl2globalarpoverflowrate5.is_set || is_set(cufwl2globalarpoverflowrate5.yfilter)) leaf_name_data.push_back(cufwl2globalarpoverflowrate5.get_name_leafdata());
+    if (cufwl2globalenablearpinspection.is_set || is_set(cufwl2globalenablearpinspection.yfilter)) leaf_name_data.push_back(cufwl2globalenablearpinspection.get_name_leafdata());
+    if (cufwl2globalenablestealthmode.is_set || is_set(cufwl2globalenablestealthmode.yfilter)) leaf_name_data.push_back(cufwl2globalenablestealthmode.get_name_leafdata());
+    if (cufwl2globalnumarprequests.is_set || is_set(cufwl2globalnumarprequests.yfilter)) leaf_name_data.push_back(cufwl2globalnumarprequests.get_name_leafdata());
+    if (cufwl2globalnumbadarpresponses.is_set || is_set(cufwl2globalnumbadarpresponses.yfilter)) leaf_name_data.push_back(cufwl2globalnumbadarpresponses.get_name_leafdata());
+    if (cufwl2globalnumdrops.is_set || is_set(cufwl2globalnumdrops.yfilter)) leaf_name_data.push_back(cufwl2globalnumdrops.get_name_leafdata());
+    if (cufwl2globalnumfloods.is_set || is_set(cufwl2globalnumfloods.yfilter)) leaf_name_data.push_back(cufwl2globalnumfloods.get_name_leafdata());
+    if (cufwl2globalnumicmprequests.is_set || is_set(cufwl2globalnumicmprequests.yfilter)) leaf_name_data.push_back(cufwl2globalnumicmprequests.get_name_leafdata());
+    if (cufwl2globalnumspoofedarpresps.is_set || is_set(cufwl2globalnumspoofedarpresps.yfilter)) leaf_name_data.push_back(cufwl2globalnumspoofedarpresps.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwL2GlobalArpCacheSize")
+    {
+        cufwl2globalarpcachesize = value;
+        cufwl2globalarpcachesize.value_namespace = name_space;
+        cufwl2globalarpcachesize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalArpOverflowRate5")
+    {
+        cufwl2globalarpoverflowrate5 = value;
+        cufwl2globalarpoverflowrate5.value_namespace = name_space;
+        cufwl2globalarpoverflowrate5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalEnableArpInspection")
+    {
+        cufwl2globalenablearpinspection = value;
+        cufwl2globalenablearpinspection.value_namespace = name_space;
+        cufwl2globalenablearpinspection.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalEnableStealthMode")
+    {
+        cufwl2globalenablestealthmode = value;
+        cufwl2globalenablestealthmode.value_namespace = name_space;
+        cufwl2globalenablestealthmode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumArpRequests")
+    {
+        cufwl2globalnumarprequests = value;
+        cufwl2globalnumarprequests.value_namespace = name_space;
+        cufwl2globalnumarprequests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumBadArpResponses")
+    {
+        cufwl2globalnumbadarpresponses = value;
+        cufwl2globalnumbadarpresponses.value_namespace = name_space;
+        cufwl2globalnumbadarpresponses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumDrops")
+    {
+        cufwl2globalnumdrops = value;
+        cufwl2globalnumdrops.value_namespace = name_space;
+        cufwl2globalnumdrops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumFloods")
+    {
+        cufwl2globalnumfloods = value;
+        cufwl2globalnumfloods.value_namespace = name_space;
+        cufwl2globalnumfloods.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumIcmpRequests")
+    {
+        cufwl2globalnumicmprequests = value;
+        cufwl2globalnumicmprequests.value_namespace = name_space;
+        cufwl2globalnumicmprequests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwL2GlobalNumSpoofedArpResps")
+    {
+        cufwl2globalnumspoofedarpresps = value;
+        cufwl2globalnumspoofedarpresps.value_namespace = name_space;
+        cufwl2globalnumspoofedarpresps.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwL2GlobalArpCacheSize")
+    {
+        cufwl2globalarpcachesize.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalArpOverflowRate5")
+    {
+        cufwl2globalarpoverflowrate5.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalEnableArpInspection")
+    {
+        cufwl2globalenablearpinspection.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalEnableStealthMode")
+    {
+        cufwl2globalenablestealthmode.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumArpRequests")
+    {
+        cufwl2globalnumarprequests.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumBadArpResponses")
+    {
+        cufwl2globalnumbadarpresponses.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumDrops")
+    {
+        cufwl2globalnumdrops.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumFloods")
+    {
+        cufwl2globalnumfloods.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumIcmpRequests")
+    {
+        cufwl2globalnumicmprequests.yfilter = yfilter;
+    }
+    if(value_path == "cufwL2GlobalNumSpoofedArpResps")
+    {
+        cufwl2globalnumspoofedarpresps.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwL2GlobalArpCacheSize" || name == "cufwL2GlobalArpOverflowRate5" || name == "cufwL2GlobalEnableArpInspection" || name == "cufwL2GlobalEnableStealthMode" || name == "cufwL2GlobalNumArpRequests" || name == "cufwL2GlobalNumBadArpResponses" || name == "cufwL2GlobalNumDrops" || name == "cufwL2GlobalNumFloods" || name == "cufwL2GlobalNumIcmpRequests" || name == "cufwL2GlobalNumSpoofedArpResps")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::Cufwnotifcntlgrp()
+    :
+    cufwcntll2staticmacaddressmoved{YType::boolean, "cufwCntlL2StaticMacAddressMoved"},
+    cufwcntlurlfserverstatuschange{YType::boolean, "cufwCntlUrlfServerStatusChange"}
+{
+
+    yang_name = "cuFwNotifCntlGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::~Cufwnotifcntlgrp()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_data() const
+{
+    return cufwcntll2staticmacaddressmoved.is_set
+	|| cufwcntlurlfserverstatuschange.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwcntll2staticmacaddressmoved.yfilter)
+	|| ydk::is_set(cufwcntlurlfserverstatuschange.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cuFwNotifCntlGrp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwcntll2staticmacaddressmoved.is_set || is_set(cufwcntll2staticmacaddressmoved.yfilter)) leaf_name_data.push_back(cufwcntll2staticmacaddressmoved.get_name_leafdata());
+    if (cufwcntlurlfserverstatuschange.is_set || is_set(cufwcntlurlfserverstatuschange.yfilter)) leaf_name_data.push_back(cufwcntlurlfserverstatuschange.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwCntlL2StaticMacAddressMoved")
+    {
+        cufwcntll2staticmacaddressmoved = value;
+        cufwcntll2staticmacaddressmoved.value_namespace = name_space;
+        cufwcntll2staticmacaddressmoved.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwCntlUrlfServerStatusChange")
+    {
+        cufwcntlurlfserverstatuschange = value;
+        cufwcntlurlfserverstatuschange.value_namespace = name_space;
+        cufwcntlurlfserverstatuschange.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwCntlL2StaticMacAddressMoved")
+    {
+        cufwcntll2staticmacaddressmoved.yfilter = yfilter;
+    }
+    if(value_path == "cufwCntlUrlfServerStatusChange")
+    {
+        cufwcntlurlfserverstatuschange.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwCntlL2StaticMacAddressMoved" || name == "cufwCntlUrlfServerStatusChange")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummarytable()
+{
+
+    yang_name = "cufwPolicyAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::~Cufwpolicyappconnsummarytable()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_data() const
+{
+    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
+    {
+        if(cufwpolicyappconnsummaryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_operation() const
+{
+    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
+    {
+        if(cufwpolicyappconnsummaryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwPolicyAppConnSummaryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cufwPolicyAppConnSummaryEntry")
+    {
+        for(auto const & c : cufwpolicyappconnsummaryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry>();
+        c->parent = this;
+        cufwpolicyappconnsummaryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cufwpolicyappconnsummaryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwPolicyAppConnSummaryEntry")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::Cufwpolicyappconnsummaryentry()
+    :
+    cufwpolappconnpolicy{YType::str, "cufwPolAppConnPolicy"},
+    cufwpolappconnpolicytargettype{YType::enumeration, "cufwPolAppConnPolicyTargetType"},
+    cufwpolappconnpolicytarget{YType::str, "cufwPolAppConnPolicyTarget"},
+    cufwpolappconnprotocol{YType::enumeration, "cufwPolAppConnProtocol"},
+    cufwpolappconnnumaborted{YType::uint64, "cufwPolAppConnNumAborted"},
+    cufwpolappconnnumactive{YType::uint32, "cufwPolAppConnNumActive"},
+    cufwpolappconnnumattempted{YType::uint64, "cufwPolAppConnNumAttempted"},
+    cufwpolappconnnumhalfopen{YType::uint32, "cufwPolAppConnNumHalfOpen"},
+    cufwpolappconnnumpolicydeclined{YType::uint64, "cufwPolAppConnNumPolicyDeclined"},
+    cufwpolappconnnumresdeclined{YType::uint64, "cufwPolAppConnNumResDeclined"},
+    cufwpolappconnnumsetupsaborted{YType::uint64, "cufwPolAppConnNumSetupsAborted"}
+{
+
+    yang_name = "cufwPolicyAppConnSummaryEntry"; yang_parent_name = "cufwPolicyAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::~Cufwpolicyappconnsummaryentry()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_data() const
+{
+    return cufwpolappconnpolicy.is_set
+	|| cufwpolappconnpolicytargettype.is_set
+	|| cufwpolappconnpolicytarget.is_set
+	|| cufwpolappconnprotocol.is_set
+	|| cufwpolappconnnumaborted.is_set
+	|| cufwpolappconnnumactive.is_set
+	|| cufwpolappconnnumattempted.is_set
+	|| cufwpolappconnnumhalfopen.is_set
+	|| cufwpolappconnnumpolicydeclined.is_set
+	|| cufwpolappconnnumresdeclined.is_set
+	|| cufwpolappconnnumsetupsaborted.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwpolappconnpolicy.yfilter)
+	|| ydk::is_set(cufwpolappconnpolicytargettype.yfilter)
+	|| ydk::is_set(cufwpolappconnpolicytarget.yfilter)
+	|| ydk::is_set(cufwpolappconnprotocol.yfilter)
+	|| ydk::is_set(cufwpolappconnnumaborted.yfilter)
+	|| ydk::is_set(cufwpolappconnnumactive.yfilter)
+	|| ydk::is_set(cufwpolappconnnumattempted.yfilter)
+	|| ydk::is_set(cufwpolappconnnumhalfopen.yfilter)
+	|| ydk::is_set(cufwpolappconnnumpolicydeclined.yfilter)
+	|| ydk::is_set(cufwpolappconnnumresdeclined.yfilter)
+	|| ydk::is_set(cufwpolappconnnumsetupsaborted.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyAppConnSummaryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwPolicyAppConnSummaryEntry" <<"[cufwPolAppConnPolicy='" <<cufwpolappconnpolicy <<"']" <<"[cufwPolAppConnPolicyTargetType='" <<cufwpolappconnpolicytargettype <<"']" <<"[cufwPolAppConnPolicyTarget='" <<cufwpolappconnpolicytarget <<"']" <<"[cufwPolAppConnProtocol='" <<cufwpolappconnprotocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwpolappconnpolicy.is_set || is_set(cufwpolappconnpolicy.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicy.get_name_leafdata());
+    if (cufwpolappconnpolicytargettype.is_set || is_set(cufwpolappconnpolicytargettype.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicytargettype.get_name_leafdata());
+    if (cufwpolappconnpolicytarget.is_set || is_set(cufwpolappconnpolicytarget.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicytarget.get_name_leafdata());
+    if (cufwpolappconnprotocol.is_set || is_set(cufwpolappconnprotocol.yfilter)) leaf_name_data.push_back(cufwpolappconnprotocol.get_name_leafdata());
+    if (cufwpolappconnnumaborted.is_set || is_set(cufwpolappconnnumaborted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumaborted.get_name_leafdata());
+    if (cufwpolappconnnumactive.is_set || is_set(cufwpolappconnnumactive.yfilter)) leaf_name_data.push_back(cufwpolappconnnumactive.get_name_leafdata());
+    if (cufwpolappconnnumattempted.is_set || is_set(cufwpolappconnnumattempted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumattempted.get_name_leafdata());
+    if (cufwpolappconnnumhalfopen.is_set || is_set(cufwpolappconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwpolappconnnumhalfopen.get_name_leafdata());
+    if (cufwpolappconnnumpolicydeclined.is_set || is_set(cufwpolappconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwpolappconnnumpolicydeclined.get_name_leafdata());
+    if (cufwpolappconnnumresdeclined.is_set || is_set(cufwpolappconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwpolappconnnumresdeclined.get_name_leafdata());
+    if (cufwpolappconnnumsetupsaborted.is_set || is_set(cufwpolappconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumsetupsaborted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwPolAppConnPolicy")
+    {
+        cufwpolappconnpolicy = value;
+        cufwpolappconnpolicy.value_namespace = name_space;
+        cufwpolappconnpolicy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnPolicyTargetType")
+    {
+        cufwpolappconnpolicytargettype = value;
+        cufwpolappconnpolicytargettype.value_namespace = name_space;
+        cufwpolappconnpolicytargettype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnPolicyTarget")
+    {
+        cufwpolappconnpolicytarget = value;
+        cufwpolappconnpolicytarget.value_namespace = name_space;
+        cufwpolappconnpolicytarget.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnProtocol")
+    {
+        cufwpolappconnprotocol = value;
+        cufwpolappconnprotocol.value_namespace = name_space;
+        cufwpolappconnprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumAborted")
+    {
+        cufwpolappconnnumaborted = value;
+        cufwpolappconnnumaborted.value_namespace = name_space;
+        cufwpolappconnnumaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumActive")
+    {
+        cufwpolappconnnumactive = value;
+        cufwpolappconnnumactive.value_namespace = name_space;
+        cufwpolappconnnumactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumAttempted")
+    {
+        cufwpolappconnnumattempted = value;
+        cufwpolappconnnumattempted.value_namespace = name_space;
+        cufwpolappconnnumattempted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumHalfOpen")
+    {
+        cufwpolappconnnumhalfopen = value;
+        cufwpolappconnnumhalfopen.value_namespace = name_space;
+        cufwpolappconnnumhalfopen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumPolicyDeclined")
+    {
+        cufwpolappconnnumpolicydeclined = value;
+        cufwpolappconnnumpolicydeclined.value_namespace = name_space;
+        cufwpolappconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumResDeclined")
+    {
+        cufwpolappconnnumresdeclined = value;
+        cufwpolappconnnumresdeclined.value_namespace = name_space;
+        cufwpolappconnnumresdeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolAppConnNumSetupsAborted")
+    {
+        cufwpolappconnnumsetupsaborted = value;
+        cufwpolappconnnumsetupsaborted.value_namespace = name_space;
+        cufwpolappconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwPolAppConnPolicy")
+    {
+        cufwpolappconnpolicy.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnPolicyTargetType")
+    {
+        cufwpolappconnpolicytargettype.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnPolicyTarget")
+    {
+        cufwpolappconnpolicytarget.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnProtocol")
+    {
+        cufwpolappconnprotocol.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumAborted")
+    {
+        cufwpolappconnnumaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumActive")
+    {
+        cufwpolappconnnumactive.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumAttempted")
+    {
+        cufwpolappconnnumattempted.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumHalfOpen")
+    {
+        cufwpolappconnnumhalfopen.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumPolicyDeclined")
+    {
+        cufwpolappconnnumpolicydeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumResDeclined")
+    {
+        cufwpolappconnnumresdeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolAppConnNumSetupsAborted")
+    {
+        cufwpolappconnnumsetupsaborted.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwPolAppConnPolicy" || name == "cufwPolAppConnPolicyTargetType" || name == "cufwPolAppConnPolicyTarget" || name == "cufwPolAppConnProtocol" || name == "cufwPolAppConnNumAborted" || name == "cufwPolAppConnNumActive" || name == "cufwPolAppConnNumAttempted" || name == "cufwPolAppConnNumHalfOpen" || name == "cufwPolAppConnNumPolicyDeclined" || name == "cufwPolAppConnNumResDeclined" || name == "cufwPolAppConnNumSetupsAborted")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarytable()
+{
+
+    yang_name = "cufwPolicyConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::~Cufwpolicyconnsummarytable()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_data() const
+{
+    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
+    {
+        if(cufwpolicyconnsummaryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_operation() const
+{
+    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
+    {
+        if(cufwpolicyconnsummaryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwPolicyConnSummaryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cufwPolicyConnSummaryEntry")
+    {
+        for(auto const & c : cufwpolicyconnsummaryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry>();
+        c->parent = this;
+        cufwpolicyconnsummaryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cufwpolicyconnsummaryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwPolicyConnSummaryEntry")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::Cufwpolicyconnsummaryentry()
+    :
+    cufwpolconnpolicy{YType::str, "cufwPolConnPolicy"},
+    cufwpolconnpolicytargettype{YType::enumeration, "cufwPolConnPolicyTargetType"},
+    cufwpolconnpolicytarget{YType::str, "cufwPolConnPolicyTarget"},
+    cufwpolconnprotocol{YType::enumeration, "cufwPolConnProtocol"},
+    cufwpolconnnumaborted{YType::uint64, "cufwPolConnNumAborted"},
+    cufwpolconnnumactive{YType::uint32, "cufwPolConnNumActive"},
+    cufwpolconnnumattempted{YType::uint64, "cufwPolConnNumAttempted"},
+    cufwpolconnnumhalfopen{YType::uint32, "cufwPolConnNumHalfOpen"},
+    cufwpolconnnumpolicydeclined{YType::uint64, "cufwPolConnNumPolicyDeclined"},
+    cufwpolconnnumresdeclined{YType::uint64, "cufwPolConnNumResDeclined"},
+    cufwpolconnnumsetupsaborted{YType::uint64, "cufwPolConnNumSetupsAborted"}
+{
+
+    yang_name = "cufwPolicyConnSummaryEntry"; yang_parent_name = "cufwPolicyConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::~Cufwpolicyconnsummaryentry()
+{
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_data() const
+{
+    return cufwpolconnpolicy.is_set
+	|| cufwpolconnpolicytargettype.is_set
+	|| cufwpolconnpolicytarget.is_set
+	|| cufwpolconnprotocol.is_set
+	|| cufwpolconnnumaborted.is_set
+	|| cufwpolconnnumactive.is_set
+	|| cufwpolconnnumattempted.is_set
+	|| cufwpolconnnumhalfopen.is_set
+	|| cufwpolconnnumpolicydeclined.is_set
+	|| cufwpolconnnumresdeclined.is_set
+	|| cufwpolconnnumsetupsaborted.is_set;
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cufwpolconnpolicy.yfilter)
+	|| ydk::is_set(cufwpolconnpolicytargettype.yfilter)
+	|| ydk::is_set(cufwpolconnpolicytarget.yfilter)
+	|| ydk::is_set(cufwpolconnprotocol.yfilter)
+	|| ydk::is_set(cufwpolconnnumaborted.yfilter)
+	|| ydk::is_set(cufwpolconnnumactive.yfilter)
+	|| ydk::is_set(cufwpolconnnumattempted.yfilter)
+	|| ydk::is_set(cufwpolconnnumhalfopen.yfilter)
+	|| ydk::is_set(cufwpolconnnumpolicydeclined.yfilter)
+	|| ydk::is_set(cufwpolconnnumresdeclined.yfilter)
+	|| ydk::is_set(cufwpolconnnumsetupsaborted.yfilter);
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyConnSummaryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cufwPolicyConnSummaryEntry" <<"[cufwPolConnPolicy='" <<cufwpolconnpolicy <<"']" <<"[cufwPolConnPolicyTargetType='" <<cufwpolconnpolicytargettype <<"']" <<"[cufwPolConnPolicyTarget='" <<cufwpolconnpolicytarget <<"']" <<"[cufwPolConnProtocol='" <<cufwpolconnprotocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cufwpolconnpolicy.is_set || is_set(cufwpolconnpolicy.yfilter)) leaf_name_data.push_back(cufwpolconnpolicy.get_name_leafdata());
+    if (cufwpolconnpolicytargettype.is_set || is_set(cufwpolconnpolicytargettype.yfilter)) leaf_name_data.push_back(cufwpolconnpolicytargettype.get_name_leafdata());
+    if (cufwpolconnpolicytarget.is_set || is_set(cufwpolconnpolicytarget.yfilter)) leaf_name_data.push_back(cufwpolconnpolicytarget.get_name_leafdata());
+    if (cufwpolconnprotocol.is_set || is_set(cufwpolconnprotocol.yfilter)) leaf_name_data.push_back(cufwpolconnprotocol.get_name_leafdata());
+    if (cufwpolconnnumaborted.is_set || is_set(cufwpolconnnumaborted.yfilter)) leaf_name_data.push_back(cufwpolconnnumaborted.get_name_leafdata());
+    if (cufwpolconnnumactive.is_set || is_set(cufwpolconnnumactive.yfilter)) leaf_name_data.push_back(cufwpolconnnumactive.get_name_leafdata());
+    if (cufwpolconnnumattempted.is_set || is_set(cufwpolconnnumattempted.yfilter)) leaf_name_data.push_back(cufwpolconnnumattempted.get_name_leafdata());
+    if (cufwpolconnnumhalfopen.is_set || is_set(cufwpolconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwpolconnnumhalfopen.get_name_leafdata());
+    if (cufwpolconnnumpolicydeclined.is_set || is_set(cufwpolconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwpolconnnumpolicydeclined.get_name_leafdata());
+    if (cufwpolconnnumresdeclined.is_set || is_set(cufwpolconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwpolconnnumresdeclined.get_name_leafdata());
+    if (cufwpolconnnumsetupsaborted.is_set || is_set(cufwpolconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwpolconnnumsetupsaborted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cufwPolConnPolicy")
+    {
+        cufwpolconnpolicy = value;
+        cufwpolconnpolicy.value_namespace = name_space;
+        cufwpolconnpolicy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnPolicyTargetType")
+    {
+        cufwpolconnpolicytargettype = value;
+        cufwpolconnpolicytargettype.value_namespace = name_space;
+        cufwpolconnpolicytargettype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnPolicyTarget")
+    {
+        cufwpolconnpolicytarget = value;
+        cufwpolconnpolicytarget.value_namespace = name_space;
+        cufwpolconnpolicytarget.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnProtocol")
+    {
+        cufwpolconnprotocol = value;
+        cufwpolconnprotocol.value_namespace = name_space;
+        cufwpolconnprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumAborted")
+    {
+        cufwpolconnnumaborted = value;
+        cufwpolconnnumaborted.value_namespace = name_space;
+        cufwpolconnnumaborted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumActive")
+    {
+        cufwpolconnnumactive = value;
+        cufwpolconnnumactive.value_namespace = name_space;
+        cufwpolconnnumactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumAttempted")
+    {
+        cufwpolconnnumattempted = value;
+        cufwpolconnnumattempted.value_namespace = name_space;
+        cufwpolconnnumattempted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumHalfOpen")
+    {
+        cufwpolconnnumhalfopen = value;
+        cufwpolconnnumhalfopen.value_namespace = name_space;
+        cufwpolconnnumhalfopen.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumPolicyDeclined")
+    {
+        cufwpolconnnumpolicydeclined = value;
+        cufwpolconnnumpolicydeclined.value_namespace = name_space;
+        cufwpolconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumResDeclined")
+    {
+        cufwpolconnnumresdeclined = value;
+        cufwpolconnnumresdeclined.value_namespace = name_space;
+        cufwpolconnnumresdeclined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cufwPolConnNumSetupsAborted")
+    {
+        cufwpolconnnumsetupsaborted = value;
+        cufwpolconnnumsetupsaborted.value_namespace = name_space;
+        cufwpolconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cufwPolConnPolicy")
+    {
+        cufwpolconnpolicy.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnPolicyTargetType")
+    {
+        cufwpolconnpolicytargettype.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnPolicyTarget")
+    {
+        cufwpolconnpolicytarget.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnProtocol")
+    {
+        cufwpolconnprotocol.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumAborted")
+    {
+        cufwpolconnnumaborted.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumActive")
+    {
+        cufwpolconnnumactive.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumAttempted")
+    {
+        cufwpolconnnumattempted.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumHalfOpen")
+    {
+        cufwpolconnnumhalfopen.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumPolicyDeclined")
+    {
+        cufwpolconnnumpolicydeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumResDeclined")
+    {
+        cufwpolconnnumresdeclined.yfilter = yfilter;
+    }
+    if(value_path == "cufwPolConnNumSetupsAborted")
+    {
+        cufwpolconnnumsetupsaborted.yfilter = yfilter;
+    }
+}
+
+bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cufwPolConnPolicy" || name == "cufwPolConnPolicyTargetType" || name == "cufwPolConnPolicyTarget" || name == "cufwPolConnProtocol" || name == "cufwPolConnNumAborted" || name == "cufwPolConnNumActive" || name == "cufwPolConnNumAttempted" || name == "cufwPolConnNumHalfOpen" || name == "cufwPolConnNumPolicyDeclined" || name == "cufwPolConnNumResDeclined" || name == "cufwPolConnNumSetupsAborted")
+        return true;
+    return false;
+}
+
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::Cufwurlfilterglobals()
     :
     cufwurlfallowmodereqnumallowed{YType::uint64, "cufwUrlfAllowModeReqNumAllowed"},
     cufwurlfallowmodereqnumdenied{YType::uint64, "cufwUrlfAllowModeReqNumDenied"},
@@ -1014,14 +3023,15 @@ CiscoUnifiedFirewallMib::Cufwurlfilterglobals::Cufwurlfilterglobals()
     cufwurlfresponsesnumlate{YType::uint64, "cufwUrlfResponsesNumLate"},
     cufwurlfurlaccrespsnumresdropped{YType::uint64, "cufwUrlfUrlAccRespsNumResDropped"}
 {
-    yang_name = "cufwUrlFilterGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cufwUrlFilterGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfilterglobals::~Cufwurlfilterglobals()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::~Cufwurlfilterglobals()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_data() const
 {
     return cufwurlfallowmodereqnumallowed.is_set
 	|| cufwurlfallowmodereqnumdenied.is_set
@@ -1044,7 +3054,7 @@ bool CiscoUnifiedFirewallMib::Cufwurlfilterglobals::has_data() const
 	|| cufwurlfurlaccrespsnumresdropped.is_set;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlfallowmodereqnumallowed.yfilter)
@@ -1068,27 +3078,22 @@ bool CiscoUnifiedFirewallMib::Cufwurlfilterglobals::has_operation() const
 	|| ydk::is_set(cufwurlfurlaccrespsnumresdropped.yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwurlfilterglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlFilterGlobals";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwurlfilterglobals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cufwurlfallowmodereqnumallowed.is_set || is_set(cufwurlfallowmodereqnumallowed.yfilter)) leaf_name_data.push_back(cufwurlfallowmodereqnumallowed.get_name_leafdata());
@@ -1111,24 +3116,22 @@ const EntityPath CiscoUnifiedFirewallMib::Cufwurlfilterglobals::get_entity_path(
     if (cufwurlfresponsesnumlate.is_set || is_set(cufwurlfresponsesnumlate.yfilter)) leaf_name_data.push_back(cufwurlfresponsesnumlate.get_name_leafdata());
     if (cufwurlfurlaccrespsnumresdropped.is_set || is_set(cufwurlfurlaccrespsnumresdropped.yfilter)) leaf_name_data.push_back(cufwurlfurlaccrespsnumresdropped.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfilterglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwurlfilterglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfilterglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfAllowModeReqNumAllowed")
     {
@@ -1246,7 +3249,7 @@ void CiscoUnifiedFirewallMib::Cufwurlfilterglobals::set_value(const std::string 
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfilterglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfAllowModeReqNumAllowed")
     {
@@ -1326,82 +3329,76 @@ void CiscoUnifiedFirewallMib::Cufwurlfilterglobals::set_filter(const std::string
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfAllowModeReqNumAllowed" || name == "cufwUrlfAllowModeReqNumDenied" || name == "cufwUrlfFunctionEnabled" || name == "cufwUrlfNumServerRetries" || name == "cufwUrlfNumServerTimeouts" || name == "cufwUrlfRequestsDeniedRate1" || name == "cufwUrlfRequestsDeniedRate5" || name == "cufwUrlfRequestsNumAllowed" || name == "cufwUrlfRequestsNumCacheAllowed" || name == "cufwUrlfRequestsNumCacheDenied" || name == "cufwUrlfRequestsNumDenied" || name == "cufwUrlfRequestsNumProcessed" || name == "cufwUrlfRequestsNumResDropped" || name == "cufwUrlfRequestsProcRate1" || name == "cufwUrlfRequestsProcRate5" || name == "cufwUrlfRequestsResDropRate1" || name == "cufwUrlfRequestsResDropRate5" || name == "cufwUrlfResponsesNumLate" || name == "cufwUrlfUrlAccRespsNumResDropped")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::Cufwurlfilterresourceusage()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::Cufwurlfilterresourceusage()
     :
     cufwurlfrestotalrequestcachesize{YType::uint32, "cufwUrlfResTotalRequestCacheSize"},
     cufwurlfrestotalrespcachesize{YType::uint32, "cufwUrlfResTotalRespCacheSize"}
 {
-    yang_name = "cufwUrlFilterResourceUsage"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+
+    yang_name = "cufwUrlFilterResourceUsage"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::~Cufwurlfilterresourceusage()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::~Cufwurlfilterresourceusage()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_data() const
 {
     return cufwurlfrestotalrequestcachesize.is_set
 	|| cufwurlfrestotalrespcachesize.is_set;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlfrestotalrequestcachesize.yfilter)
 	|| ydk::is_set(cufwurlfrestotalrespcachesize.yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlFilterResourceUsage";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cufwurlfrestotalrequestcachesize.is_set || is_set(cufwurlfrestotalrequestcachesize.yfilter)) leaf_name_data.push_back(cufwurlfrestotalrequestcachesize.get_name_leafdata());
     if (cufwurlfrestotalrespcachesize.is_set || is_set(cufwurlfrestotalrespcachesize.yfilter)) leaf_name_data.push_back(cufwurlfrestotalrespcachesize.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfResTotalRequestCacheSize")
     {
@@ -1417,7 +3414,7 @@ void CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::set_value(const std::s
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfResTotalRequestCacheSize")
     {
@@ -1429,2166 +3426,24 @@ void CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::set_filter(const std::
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfilterresourceusage::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfResTotalRequestCacheSize" || name == "cufwUrlfResTotalRespCacheSize")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwaaicglobals::Cufwaaicglobals()
-    :
-    cufwaaicglobalnumbadpdusize{YType::uint64, "cufwAaicGlobalNumBadPDUSize"},
-    cufwaaicglobalnumbadportrange{YType::uint64, "cufwAaicGlobalNumBadPortRange"},
-    cufwaaicglobalnumbadprotocolops{YType::uint64, "cufwAaicGlobalNumBadProtocolOps"}
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfservertable()
 {
-    yang_name = "cufwAaicGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwaaicglobals::~Cufwaaicglobals()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaicglobals::has_data() const
-{
-    return cufwaaicglobalnumbadpdusize.is_set
-	|| cufwaaicglobalnumbadportrange.is_set
-	|| cufwaaicglobalnumbadprotocolops.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaicglobals::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwaaicglobalnumbadpdusize.yfilter)
-	|| ydk::is_set(cufwaaicglobalnumbadportrange.yfilter)
-	|| ydk::is_set(cufwaaicglobalnumbadprotocolops.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwaaicglobals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwAaicGlobals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwaaicglobals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwaaicglobalnumbadpdusize.is_set || is_set(cufwaaicglobalnumbadpdusize.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadpdusize.get_name_leafdata());
-    if (cufwaaicglobalnumbadportrange.is_set || is_set(cufwaaicglobalnumbadportrange.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadportrange.get_name_leafdata());
-    if (cufwaaicglobalnumbadprotocolops.is_set || is_set(cufwaaicglobalnumbadprotocolops.yfilter)) leaf_name_data.push_back(cufwaaicglobalnumbadprotocolops.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwaaicglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwaaicglobals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwaaicglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwAaicGlobalNumBadPDUSize")
-    {
-        cufwaaicglobalnumbadpdusize = value;
-        cufwaaicglobalnumbadpdusize.value_namespace = name_space;
-        cufwaaicglobalnumbadpdusize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicGlobalNumBadPortRange")
-    {
-        cufwaaicglobalnumbadportrange = value;
-        cufwaaicglobalnumbadportrange.value_namespace = name_space;
-        cufwaaicglobalnumbadportrange.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicGlobalNumBadProtocolOps")
-    {
-        cufwaaicglobalnumbadprotocolops = value;
-        cufwaaicglobalnumbadprotocolops.value_namespace = name_space;
-        cufwaaicglobalnumbadprotocolops.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwaaicglobals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwAaicGlobalNumBadPDUSize")
-    {
-        cufwaaicglobalnumbadpdusize.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicGlobalNumBadPortRange")
-    {
-        cufwaaicglobalnumbadportrange.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicGlobalNumBadProtocolOps")
-    {
-        cufwaaicglobalnumbadprotocolops.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaicglobals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwAaicGlobalNumBadPDUSize" || name == "cufwAaicGlobalNumBadPortRange" || name == "cufwAaicGlobalNumBadProtocolOps")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::Cufwaaichttpprotocolstats()
-    :
-    cufwaaichttpnumbadcontent{YType::uint64, "cufwAaicHttpNumBadContent"},
-    cufwaaichttpnumbadpdusize{YType::uint64, "cufwAaicHttpNumBadPDUSize"},
-    cufwaaichttpnumbadprotocolops{YType::uint64, "cufwAaicHttpNumBadProtocolOps"},
-    cufwaaichttpnumdoubleencodedpkts{YType::uint64, "cufwAaicHttpNumDoubleEncodedPkts"},
-    cufwaaichttpnumlargeuris{YType::uint64, "cufwAaicHttpNumLargeURIs"},
-    cufwaaichttpnummismatchcontent{YType::uint64, "cufwAaicHttpNumMismatchContent"},
-    cufwaaichttpnumtunneledconns{YType::uint64, "cufwAaicHttpNumTunneledConns"}
-{
-    yang_name = "cufwAaicHttpProtocolStats"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::~Cufwaaichttpprotocolstats()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::has_data() const
-{
-    return cufwaaichttpnumbadcontent.is_set
-	|| cufwaaichttpnumbadpdusize.is_set
-	|| cufwaaichttpnumbadprotocolops.is_set
-	|| cufwaaichttpnumdoubleencodedpkts.is_set
-	|| cufwaaichttpnumlargeuris.is_set
-	|| cufwaaichttpnummismatchcontent.is_set
-	|| cufwaaichttpnumtunneledconns.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwaaichttpnumbadcontent.yfilter)
-	|| ydk::is_set(cufwaaichttpnumbadpdusize.yfilter)
-	|| ydk::is_set(cufwaaichttpnumbadprotocolops.yfilter)
-	|| ydk::is_set(cufwaaichttpnumdoubleencodedpkts.yfilter)
-	|| ydk::is_set(cufwaaichttpnumlargeuris.yfilter)
-	|| ydk::is_set(cufwaaichttpnummismatchcontent.yfilter)
-	|| ydk::is_set(cufwaaichttpnumtunneledconns.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwAaicHttpProtocolStats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwaaichttpnumbadcontent.is_set || is_set(cufwaaichttpnumbadcontent.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadcontent.get_name_leafdata());
-    if (cufwaaichttpnumbadpdusize.is_set || is_set(cufwaaichttpnumbadpdusize.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadpdusize.get_name_leafdata());
-    if (cufwaaichttpnumbadprotocolops.is_set || is_set(cufwaaichttpnumbadprotocolops.yfilter)) leaf_name_data.push_back(cufwaaichttpnumbadprotocolops.get_name_leafdata());
-    if (cufwaaichttpnumdoubleencodedpkts.is_set || is_set(cufwaaichttpnumdoubleencodedpkts.yfilter)) leaf_name_data.push_back(cufwaaichttpnumdoubleencodedpkts.get_name_leafdata());
-    if (cufwaaichttpnumlargeuris.is_set || is_set(cufwaaichttpnumlargeuris.yfilter)) leaf_name_data.push_back(cufwaaichttpnumlargeuris.get_name_leafdata());
-    if (cufwaaichttpnummismatchcontent.is_set || is_set(cufwaaichttpnummismatchcontent.yfilter)) leaf_name_data.push_back(cufwaaichttpnummismatchcontent.get_name_leafdata());
-    if (cufwaaichttpnumtunneledconns.is_set || is_set(cufwaaichttpnumtunneledconns.yfilter)) leaf_name_data.push_back(cufwaaichttpnumtunneledconns.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwAaicHttpNumBadContent")
-    {
-        cufwaaichttpnumbadcontent = value;
-        cufwaaichttpnumbadcontent.value_namespace = name_space;
-        cufwaaichttpnumbadcontent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumBadPDUSize")
-    {
-        cufwaaichttpnumbadpdusize = value;
-        cufwaaichttpnumbadpdusize.value_namespace = name_space;
-        cufwaaichttpnumbadpdusize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumBadProtocolOps")
-    {
-        cufwaaichttpnumbadprotocolops = value;
-        cufwaaichttpnumbadprotocolops.value_namespace = name_space;
-        cufwaaichttpnumbadprotocolops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumDoubleEncodedPkts")
-    {
-        cufwaaichttpnumdoubleencodedpkts = value;
-        cufwaaichttpnumdoubleencodedpkts.value_namespace = name_space;
-        cufwaaichttpnumdoubleencodedpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumLargeURIs")
-    {
-        cufwaaichttpnumlargeuris = value;
-        cufwaaichttpnumlargeuris.value_namespace = name_space;
-        cufwaaichttpnumlargeuris.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumMismatchContent")
-    {
-        cufwaaichttpnummismatchcontent = value;
-        cufwaaichttpnummismatchcontent.value_namespace = name_space;
-        cufwaaichttpnummismatchcontent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAaicHttpNumTunneledConns")
-    {
-        cufwaaichttpnumtunneledconns = value;
-        cufwaaichttpnumtunneledconns.value_namespace = name_space;
-        cufwaaichttpnumtunneledconns.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwAaicHttpNumBadContent")
-    {
-        cufwaaichttpnumbadcontent.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumBadPDUSize")
-    {
-        cufwaaichttpnumbadpdusize.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumBadProtocolOps")
-    {
-        cufwaaichttpnumbadprotocolops.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumDoubleEncodedPkts")
-    {
-        cufwaaichttpnumdoubleencodedpkts.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumLargeURIs")
-    {
-        cufwaaichttpnumlargeuris.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumMismatchContent")
-    {
-        cufwaaichttpnummismatchcontent.yfilter = yfilter;
-    }
-    if(value_path == "cufwAaicHttpNumTunneledConns")
-    {
-        cufwaaichttpnumtunneledconns.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwaaichttpprotocolstats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwAaicHttpNumBadContent" || name == "cufwAaicHttpNumBadPDUSize" || name == "cufwAaicHttpNumBadProtocolOps" || name == "cufwAaicHttpNumDoubleEncodedPkts" || name == "cufwAaicHttpNumLargeURIs" || name == "cufwAaicHttpNumMismatchContent" || name == "cufwAaicHttpNumTunneledConns")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwl2Fwglobals::Cufwl2Fwglobals()
-    :
-    cufwl2globalarpcachesize{YType::int32, "cufwL2GlobalArpCacheSize"},
-    cufwl2globalarpoverflowrate5{YType::uint32, "cufwL2GlobalArpOverflowRate5"},
-    cufwl2globalenablearpinspection{YType::boolean, "cufwL2GlobalEnableArpInspection"},
-    cufwl2globalenablestealthmode{YType::boolean, "cufwL2GlobalEnableStealthMode"},
-    cufwl2globalnumarprequests{YType::uint64, "cufwL2GlobalNumArpRequests"},
-    cufwl2globalnumbadarpresponses{YType::uint64, "cufwL2GlobalNumBadArpResponses"},
-    cufwl2globalnumdrops{YType::uint64, "cufwL2GlobalNumDrops"},
-    cufwl2globalnumfloods{YType::uint64, "cufwL2GlobalNumFloods"},
-    cufwl2globalnumicmprequests{YType::uint64, "cufwL2GlobalNumIcmpRequests"},
-    cufwl2globalnumspoofedarpresps{YType::uint64, "cufwL2GlobalNumSpoofedArpResps"}
-{
-    yang_name = "cufwL2FwGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwl2Fwglobals::~Cufwl2Fwglobals()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwl2Fwglobals::has_data() const
-{
-    return cufwl2globalarpcachesize.is_set
-	|| cufwl2globalarpoverflowrate5.is_set
-	|| cufwl2globalenablearpinspection.is_set
-	|| cufwl2globalenablestealthmode.is_set
-	|| cufwl2globalnumarprequests.is_set
-	|| cufwl2globalnumbadarpresponses.is_set
-	|| cufwl2globalnumdrops.is_set
-	|| cufwl2globalnumfloods.is_set
-	|| cufwl2globalnumicmprequests.is_set
-	|| cufwl2globalnumspoofedarpresps.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwl2Fwglobals::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwl2globalarpcachesize.yfilter)
-	|| ydk::is_set(cufwl2globalarpoverflowrate5.yfilter)
-	|| ydk::is_set(cufwl2globalenablearpinspection.yfilter)
-	|| ydk::is_set(cufwl2globalenablestealthmode.yfilter)
-	|| ydk::is_set(cufwl2globalnumarprequests.yfilter)
-	|| ydk::is_set(cufwl2globalnumbadarpresponses.yfilter)
-	|| ydk::is_set(cufwl2globalnumdrops.yfilter)
-	|| ydk::is_set(cufwl2globalnumfloods.yfilter)
-	|| ydk::is_set(cufwl2globalnumicmprequests.yfilter)
-	|| ydk::is_set(cufwl2globalnumspoofedarpresps.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwl2Fwglobals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwL2FwGlobals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwl2Fwglobals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwl2globalarpcachesize.is_set || is_set(cufwl2globalarpcachesize.yfilter)) leaf_name_data.push_back(cufwl2globalarpcachesize.get_name_leafdata());
-    if (cufwl2globalarpoverflowrate5.is_set || is_set(cufwl2globalarpoverflowrate5.yfilter)) leaf_name_data.push_back(cufwl2globalarpoverflowrate5.get_name_leafdata());
-    if (cufwl2globalenablearpinspection.is_set || is_set(cufwl2globalenablearpinspection.yfilter)) leaf_name_data.push_back(cufwl2globalenablearpinspection.get_name_leafdata());
-    if (cufwl2globalenablestealthmode.is_set || is_set(cufwl2globalenablestealthmode.yfilter)) leaf_name_data.push_back(cufwl2globalenablestealthmode.get_name_leafdata());
-    if (cufwl2globalnumarprequests.is_set || is_set(cufwl2globalnumarprequests.yfilter)) leaf_name_data.push_back(cufwl2globalnumarprequests.get_name_leafdata());
-    if (cufwl2globalnumbadarpresponses.is_set || is_set(cufwl2globalnumbadarpresponses.yfilter)) leaf_name_data.push_back(cufwl2globalnumbadarpresponses.get_name_leafdata());
-    if (cufwl2globalnumdrops.is_set || is_set(cufwl2globalnumdrops.yfilter)) leaf_name_data.push_back(cufwl2globalnumdrops.get_name_leafdata());
-    if (cufwl2globalnumfloods.is_set || is_set(cufwl2globalnumfloods.yfilter)) leaf_name_data.push_back(cufwl2globalnumfloods.get_name_leafdata());
-    if (cufwl2globalnumicmprequests.is_set || is_set(cufwl2globalnumicmprequests.yfilter)) leaf_name_data.push_back(cufwl2globalnumicmprequests.get_name_leafdata());
-    if (cufwl2globalnumspoofedarpresps.is_set || is_set(cufwl2globalnumspoofedarpresps.yfilter)) leaf_name_data.push_back(cufwl2globalnumspoofedarpresps.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwl2Fwglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwl2Fwglobals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwl2Fwglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwL2GlobalArpCacheSize")
-    {
-        cufwl2globalarpcachesize = value;
-        cufwl2globalarpcachesize.value_namespace = name_space;
-        cufwl2globalarpcachesize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalArpOverflowRate5")
-    {
-        cufwl2globalarpoverflowrate5 = value;
-        cufwl2globalarpoverflowrate5.value_namespace = name_space;
-        cufwl2globalarpoverflowrate5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalEnableArpInspection")
-    {
-        cufwl2globalenablearpinspection = value;
-        cufwl2globalenablearpinspection.value_namespace = name_space;
-        cufwl2globalenablearpinspection.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalEnableStealthMode")
-    {
-        cufwl2globalenablestealthmode = value;
-        cufwl2globalenablestealthmode.value_namespace = name_space;
-        cufwl2globalenablestealthmode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumArpRequests")
-    {
-        cufwl2globalnumarprequests = value;
-        cufwl2globalnumarprequests.value_namespace = name_space;
-        cufwl2globalnumarprequests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumBadArpResponses")
-    {
-        cufwl2globalnumbadarpresponses = value;
-        cufwl2globalnumbadarpresponses.value_namespace = name_space;
-        cufwl2globalnumbadarpresponses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumDrops")
-    {
-        cufwl2globalnumdrops = value;
-        cufwl2globalnumdrops.value_namespace = name_space;
-        cufwl2globalnumdrops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumFloods")
-    {
-        cufwl2globalnumfloods = value;
-        cufwl2globalnumfloods.value_namespace = name_space;
-        cufwl2globalnumfloods.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumIcmpRequests")
-    {
-        cufwl2globalnumicmprequests = value;
-        cufwl2globalnumicmprequests.value_namespace = name_space;
-        cufwl2globalnumicmprequests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwL2GlobalNumSpoofedArpResps")
-    {
-        cufwl2globalnumspoofedarpresps = value;
-        cufwl2globalnumspoofedarpresps.value_namespace = name_space;
-        cufwl2globalnumspoofedarpresps.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwl2Fwglobals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwL2GlobalArpCacheSize")
-    {
-        cufwl2globalarpcachesize.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalArpOverflowRate5")
-    {
-        cufwl2globalarpoverflowrate5.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalEnableArpInspection")
-    {
-        cufwl2globalenablearpinspection.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalEnableStealthMode")
-    {
-        cufwl2globalenablestealthmode.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumArpRequests")
-    {
-        cufwl2globalnumarprequests.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumBadArpResponses")
-    {
-        cufwl2globalnumbadarpresponses.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumDrops")
-    {
-        cufwl2globalnumdrops.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumFloods")
-    {
-        cufwl2globalnumfloods.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumIcmpRequests")
-    {
-        cufwl2globalnumicmprequests.yfilter = yfilter;
-    }
-    if(value_path == "cufwL2GlobalNumSpoofedArpResps")
-    {
-        cufwl2globalnumspoofedarpresps.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwl2Fwglobals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwL2GlobalArpCacheSize" || name == "cufwL2GlobalArpOverflowRate5" || name == "cufwL2GlobalEnableArpInspection" || name == "cufwL2GlobalEnableStealthMode" || name == "cufwL2GlobalNumArpRequests" || name == "cufwL2GlobalNumBadArpResponses" || name == "cufwL2GlobalNumDrops" || name == "cufwL2GlobalNumFloods" || name == "cufwL2GlobalNumIcmpRequests" || name == "cufwL2GlobalNumSpoofedArpResps")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::Cufwnotifcntlgrp()
-    :
-    cufwcntll2staticmacaddressmoved{YType::boolean, "cufwCntlL2StaticMacAddressMoved"},
-    cufwcntlurlfserverstatuschange{YType::boolean, "cufwCntlUrlfServerStatusChange"}
-{
-    yang_name = "cuFwNotifCntlGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::~Cufwnotifcntlgrp()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::has_data() const
-{
-    return cufwcntll2staticmacaddressmoved.is_set
-	|| cufwcntlurlfserverstatuschange.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwcntll2staticmacaddressmoved.yfilter)
-	|| ydk::is_set(cufwcntlurlfserverstatuschange.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cuFwNotifCntlGrp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwcntll2staticmacaddressmoved.is_set || is_set(cufwcntll2staticmacaddressmoved.yfilter)) leaf_name_data.push_back(cufwcntll2staticmacaddressmoved.get_name_leafdata());
-    if (cufwcntlurlfserverstatuschange.is_set || is_set(cufwcntlurlfserverstatuschange.yfilter)) leaf_name_data.push_back(cufwcntlurlfserverstatuschange.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwCntlL2StaticMacAddressMoved")
-    {
-        cufwcntll2staticmacaddressmoved = value;
-        cufwcntll2staticmacaddressmoved.value_namespace = name_space;
-        cufwcntll2staticmacaddressmoved.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwCntlUrlfServerStatusChange")
-    {
-        cufwcntlurlfserverstatuschange = value;
-        cufwcntlurlfserverstatuschange.value_namespace = name_space;
-        cufwcntlurlfserverstatuschange.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwCntlL2StaticMacAddressMoved")
-    {
-        cufwcntll2staticmacaddressmoved.yfilter = yfilter;
-    }
-    if(value_path == "cufwCntlUrlfServerStatusChange")
-    {
-        cufwcntlurlfserverstatuschange.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwnotifcntlgrp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwCntlL2StaticMacAddressMoved" || name == "cufwCntlUrlfServerStatusChange")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummarytable()
-{
-    yang_name = "cufwConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwconnsummarytable::~Cufwconnsummarytable()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::has_data() const
-{
-    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
-    {
-        if(cufwconnsummaryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::has_operation() const
-{
-    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
-    {
-        if(cufwconnsummaryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwconnsummarytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwConnSummaryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwconnsummarytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cufwConnSummaryEntry")
-    {
-        for(auto const & c : cufwconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry>();
-        c->parent = this;
-        cufwconnsummaryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwconnsummarytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cufwconnsummaryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoUnifiedFirewallMib::Cufwconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwConnSummaryEntry")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::Cufwconnsummaryentry()
-    :
-    cufwconnprotocol{YType::enumeration, "cufwConnProtocol"},
-    cufwconnnumaborted{YType::uint64, "cufwConnNumAborted"},
-    cufwconnnumactive{YType::uint32, "cufwConnNumActive"},
-    cufwconnnumattempted{YType::uint64, "cufwConnNumAttempted"},
-    cufwconnnumhalfopen{YType::uint32, "cufwConnNumHalfOpen"},
-    cufwconnnumpolicydeclined{YType::uint64, "cufwConnNumPolicyDeclined"},
-    cufwconnnumresdeclined{YType::uint64, "cufwConnNumResDeclined"},
-    cufwconnnumsetupsaborted{YType::uint64, "cufwConnNumSetupsAborted"},
-    cufwconnsetuprate1{YType::uint32, "cufwConnSetupRate1"},
-    cufwconnsetuprate5{YType::uint32, "cufwConnSetupRate5"}
-{
-    yang_name = "cufwConnSummaryEntry"; yang_parent_name = "cufwConnSummaryTable";
-}
-
-CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::~Cufwconnsummaryentry()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::has_data() const
-{
-    return cufwconnprotocol.is_set
-	|| cufwconnnumaborted.is_set
-	|| cufwconnnumactive.is_set
-	|| cufwconnnumattempted.is_set
-	|| cufwconnnumhalfopen.is_set
-	|| cufwconnnumpolicydeclined.is_set
-	|| cufwconnnumresdeclined.is_set
-	|| cufwconnnumsetupsaborted.is_set
-	|| cufwconnsetuprate1.is_set
-	|| cufwconnsetuprate5.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwconnprotocol.yfilter)
-	|| ydk::is_set(cufwconnnumaborted.yfilter)
-	|| ydk::is_set(cufwconnnumactive.yfilter)
-	|| ydk::is_set(cufwconnnumattempted.yfilter)
-	|| ydk::is_set(cufwconnnumhalfopen.yfilter)
-	|| ydk::is_set(cufwconnnumpolicydeclined.yfilter)
-	|| ydk::is_set(cufwconnnumresdeclined.yfilter)
-	|| ydk::is_set(cufwconnnumsetupsaborted.yfilter)
-	|| ydk::is_set(cufwconnsetuprate1.yfilter)
-	|| ydk::is_set(cufwconnsetuprate5.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwConnSummaryEntry" <<"[cufwConnProtocol='" <<cufwconnprotocol <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwConnSummaryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwconnprotocol.is_set || is_set(cufwconnprotocol.yfilter)) leaf_name_data.push_back(cufwconnprotocol.get_name_leafdata());
-    if (cufwconnnumaborted.is_set || is_set(cufwconnnumaborted.yfilter)) leaf_name_data.push_back(cufwconnnumaborted.get_name_leafdata());
-    if (cufwconnnumactive.is_set || is_set(cufwconnnumactive.yfilter)) leaf_name_data.push_back(cufwconnnumactive.get_name_leafdata());
-    if (cufwconnnumattempted.is_set || is_set(cufwconnnumattempted.yfilter)) leaf_name_data.push_back(cufwconnnumattempted.get_name_leafdata());
-    if (cufwconnnumhalfopen.is_set || is_set(cufwconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwconnnumhalfopen.get_name_leafdata());
-    if (cufwconnnumpolicydeclined.is_set || is_set(cufwconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwconnnumpolicydeclined.get_name_leafdata());
-    if (cufwconnnumresdeclined.is_set || is_set(cufwconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwconnnumresdeclined.get_name_leafdata());
-    if (cufwconnnumsetupsaborted.is_set || is_set(cufwconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwconnnumsetupsaborted.get_name_leafdata());
-    if (cufwconnsetuprate1.is_set || is_set(cufwconnsetuprate1.yfilter)) leaf_name_data.push_back(cufwconnsetuprate1.get_name_leafdata());
-    if (cufwconnsetuprate5.is_set || is_set(cufwconnsetuprate5.yfilter)) leaf_name_data.push_back(cufwconnsetuprate5.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwConnProtocol")
-    {
-        cufwconnprotocol = value;
-        cufwconnprotocol.value_namespace = name_space;
-        cufwconnprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumAborted")
-    {
-        cufwconnnumaborted = value;
-        cufwconnnumaborted.value_namespace = name_space;
-        cufwconnnumaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumActive")
-    {
-        cufwconnnumactive = value;
-        cufwconnnumactive.value_namespace = name_space;
-        cufwconnnumactive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumAttempted")
-    {
-        cufwconnnumattempted = value;
-        cufwconnnumattempted.value_namespace = name_space;
-        cufwconnnumattempted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumHalfOpen")
-    {
-        cufwconnnumhalfopen = value;
-        cufwconnnumhalfopen.value_namespace = name_space;
-        cufwconnnumhalfopen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumPolicyDeclined")
-    {
-        cufwconnnumpolicydeclined = value;
-        cufwconnnumpolicydeclined.value_namespace = name_space;
-        cufwconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumResDeclined")
-    {
-        cufwconnnumresdeclined = value;
-        cufwconnnumresdeclined.value_namespace = name_space;
-        cufwconnnumresdeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnNumSetupsAborted")
-    {
-        cufwconnnumsetupsaborted = value;
-        cufwconnnumsetupsaborted.value_namespace = name_space;
-        cufwconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnSetupRate1")
-    {
-        cufwconnsetuprate1 = value;
-        cufwconnsetuprate1.value_namespace = name_space;
-        cufwconnsetuprate1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwConnSetupRate5")
-    {
-        cufwconnsetuprate5 = value;
-        cufwconnsetuprate5.value_namespace = name_space;
-        cufwconnsetuprate5.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwConnProtocol")
-    {
-        cufwconnprotocol.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumAborted")
-    {
-        cufwconnnumaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumActive")
-    {
-        cufwconnnumactive.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumAttempted")
-    {
-        cufwconnnumattempted.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumHalfOpen")
-    {
-        cufwconnnumhalfopen.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumPolicyDeclined")
-    {
-        cufwconnnumpolicydeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumResDeclined")
-    {
-        cufwconnnumresdeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnNumSetupsAborted")
-    {
-        cufwconnnumsetupsaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnSetupRate1")
-    {
-        cufwconnsetuprate1.yfilter = yfilter;
-    }
-    if(value_path == "cufwConnSetupRate5")
-    {
-        cufwconnsetuprate5.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwconnsummarytable::Cufwconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwConnProtocol" || name == "cufwConnNumAborted" || name == "cufwConnNumActive" || name == "cufwConnNumAttempted" || name == "cufwConnNumHalfOpen" || name == "cufwConnNumPolicyDeclined" || name == "cufwConnNumResDeclined" || name == "cufwConnNumSetupsAborted" || name == "cufwConnSetupRate1" || name == "cufwConnSetupRate5")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummarytable()
-{
-    yang_name = "cufwAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwappconnsummarytable::~Cufwappconnsummarytable()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::has_data() const
-{
-    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
-    {
-        if(cufwappconnsummaryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::has_operation() const
-{
-    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
-    {
-        if(cufwappconnsummaryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwappconnsummarytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwAppConnSummaryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwappconnsummarytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cufwAppConnSummaryEntry")
-    {
-        for(auto const & c : cufwappconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry>();
-        c->parent = this;
-        cufwappconnsummaryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwappconnsummarytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cufwappconnsummaryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoUnifiedFirewallMib::Cufwappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwAppConnSummaryEntry")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::Cufwappconnsummaryentry()
-    :
-    cufwappconnprotocol{YType::enumeration, "cufwAppConnProtocol"},
-    cufwappconnnumaborted{YType::uint64, "cufwAppConnNumAborted"},
-    cufwappconnnumactive{YType::uint32, "cufwAppConnNumActive"},
-    cufwappconnnumattempted{YType::uint64, "cufwAppConnNumAttempted"},
-    cufwappconnnumhalfopen{YType::uint32, "cufwAppConnNumHalfOpen"},
-    cufwappconnnumpolicydeclined{YType::uint64, "cufwAppConnNumPolicyDeclined"},
-    cufwappconnnumresdeclined{YType::uint64, "cufwAppConnNumResDeclined"},
-    cufwappconnnumsetupsaborted{YType::uint64, "cufwAppConnNumSetupsAborted"},
-    cufwappconnsetuprate1{YType::uint32, "cufwAppConnSetupRate1"},
-    cufwappconnsetuprate5{YType::uint32, "cufwAppConnSetupRate5"}
-{
-    yang_name = "cufwAppConnSummaryEntry"; yang_parent_name = "cufwAppConnSummaryTable";
-}
-
-CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::~Cufwappconnsummaryentry()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_data() const
-{
-    return cufwappconnprotocol.is_set
-	|| cufwappconnnumaborted.is_set
-	|| cufwappconnnumactive.is_set
-	|| cufwappconnnumattempted.is_set
-	|| cufwappconnnumhalfopen.is_set
-	|| cufwappconnnumpolicydeclined.is_set
-	|| cufwappconnnumresdeclined.is_set
-	|| cufwappconnnumsetupsaborted.is_set
-	|| cufwappconnsetuprate1.is_set
-	|| cufwappconnsetuprate5.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwappconnprotocol.yfilter)
-	|| ydk::is_set(cufwappconnnumaborted.yfilter)
-	|| ydk::is_set(cufwappconnnumactive.yfilter)
-	|| ydk::is_set(cufwappconnnumattempted.yfilter)
-	|| ydk::is_set(cufwappconnnumhalfopen.yfilter)
-	|| ydk::is_set(cufwappconnnumpolicydeclined.yfilter)
-	|| ydk::is_set(cufwappconnnumresdeclined.yfilter)
-	|| ydk::is_set(cufwappconnnumsetupsaborted.yfilter)
-	|| ydk::is_set(cufwappconnsetuprate1.yfilter)
-	|| ydk::is_set(cufwappconnsetuprate5.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwAppConnSummaryEntry" <<"[cufwAppConnProtocol='" <<cufwappconnprotocol <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwAppConnSummaryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwappconnprotocol.is_set || is_set(cufwappconnprotocol.yfilter)) leaf_name_data.push_back(cufwappconnprotocol.get_name_leafdata());
-    if (cufwappconnnumaborted.is_set || is_set(cufwappconnnumaborted.yfilter)) leaf_name_data.push_back(cufwappconnnumaborted.get_name_leafdata());
-    if (cufwappconnnumactive.is_set || is_set(cufwappconnnumactive.yfilter)) leaf_name_data.push_back(cufwappconnnumactive.get_name_leafdata());
-    if (cufwappconnnumattempted.is_set || is_set(cufwappconnnumattempted.yfilter)) leaf_name_data.push_back(cufwappconnnumattempted.get_name_leafdata());
-    if (cufwappconnnumhalfopen.is_set || is_set(cufwappconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwappconnnumhalfopen.get_name_leafdata());
-    if (cufwappconnnumpolicydeclined.is_set || is_set(cufwappconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwappconnnumpolicydeclined.get_name_leafdata());
-    if (cufwappconnnumresdeclined.is_set || is_set(cufwappconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwappconnnumresdeclined.get_name_leafdata());
-    if (cufwappconnnumsetupsaborted.is_set || is_set(cufwappconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwappconnnumsetupsaborted.get_name_leafdata());
-    if (cufwappconnsetuprate1.is_set || is_set(cufwappconnsetuprate1.yfilter)) leaf_name_data.push_back(cufwappconnsetuprate1.get_name_leafdata());
-    if (cufwappconnsetuprate5.is_set || is_set(cufwappconnsetuprate5.yfilter)) leaf_name_data.push_back(cufwappconnsetuprate5.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwAppConnProtocol")
-    {
-        cufwappconnprotocol = value;
-        cufwappconnprotocol.value_namespace = name_space;
-        cufwappconnprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumAborted")
-    {
-        cufwappconnnumaborted = value;
-        cufwappconnnumaborted.value_namespace = name_space;
-        cufwappconnnumaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumActive")
-    {
-        cufwappconnnumactive = value;
-        cufwappconnnumactive.value_namespace = name_space;
-        cufwappconnnumactive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumAttempted")
-    {
-        cufwappconnnumattempted = value;
-        cufwappconnnumattempted.value_namespace = name_space;
-        cufwappconnnumattempted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumHalfOpen")
-    {
-        cufwappconnnumhalfopen = value;
-        cufwappconnnumhalfopen.value_namespace = name_space;
-        cufwappconnnumhalfopen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumPolicyDeclined")
-    {
-        cufwappconnnumpolicydeclined = value;
-        cufwappconnnumpolicydeclined.value_namespace = name_space;
-        cufwappconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumResDeclined")
-    {
-        cufwappconnnumresdeclined = value;
-        cufwappconnnumresdeclined.value_namespace = name_space;
-        cufwappconnnumresdeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnNumSetupsAborted")
-    {
-        cufwappconnnumsetupsaborted = value;
-        cufwappconnnumsetupsaborted.value_namespace = name_space;
-        cufwappconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnSetupRate1")
-    {
-        cufwappconnsetuprate1 = value;
-        cufwappconnsetuprate1.value_namespace = name_space;
-        cufwappconnsetuprate1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwAppConnSetupRate5")
-    {
-        cufwappconnsetuprate5 = value;
-        cufwappconnsetuprate5.value_namespace = name_space;
-        cufwappconnsetuprate5.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwAppConnProtocol")
-    {
-        cufwappconnprotocol.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumAborted")
-    {
-        cufwappconnnumaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumActive")
-    {
-        cufwappconnnumactive.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumAttempted")
-    {
-        cufwappconnnumattempted.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumHalfOpen")
-    {
-        cufwappconnnumhalfopen.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumPolicyDeclined")
-    {
-        cufwappconnnumpolicydeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumResDeclined")
-    {
-        cufwappconnnumresdeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnNumSetupsAborted")
-    {
-        cufwappconnnumsetupsaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnSetupRate1")
-    {
-        cufwappconnsetuprate1.yfilter = yfilter;
-    }
-    if(value_path == "cufwAppConnSetupRate5")
-    {
-        cufwappconnsetuprate5.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwAppConnProtocol" || name == "cufwAppConnNumAborted" || name == "cufwAppConnNumActive" || name == "cufwAppConnNumAttempted" || name == "cufwAppConnNumHalfOpen" || name == "cufwAppConnNumPolicyDeclined" || name == "cufwAppConnNumResDeclined" || name == "cufwAppConnNumSetupsAborted" || name == "cufwAppConnSetupRate1" || name == "cufwAppConnSetupRate5")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarytable()
-{
-    yang_name = "cufwPolicyConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::~Cufwpolicyconnsummarytable()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::has_data() const
-{
-    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
-    {
-        if(cufwpolicyconnsummaryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::has_operation() const
-{
-    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
-    {
-        if(cufwpolicyconnsummaryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyConnSummaryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cufwPolicyConnSummaryEntry")
-    {
-        for(auto const & c : cufwpolicyconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry>();
-        c->parent = this;
-        cufwpolicyconnsummaryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cufwpolicyconnsummaryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwPolicyConnSummaryEntry")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::Cufwpolicyconnsummaryentry()
-    :
-    cufwpolconnpolicy{YType::str, "cufwPolConnPolicy"},
-    cufwpolconnpolicytargettype{YType::enumeration, "cufwPolConnPolicyTargetType"},
-    cufwpolconnpolicytarget{YType::str, "cufwPolConnPolicyTarget"},
-    cufwpolconnprotocol{YType::enumeration, "cufwPolConnProtocol"},
-    cufwpolconnnumaborted{YType::uint64, "cufwPolConnNumAborted"},
-    cufwpolconnnumactive{YType::uint32, "cufwPolConnNumActive"},
-    cufwpolconnnumattempted{YType::uint64, "cufwPolConnNumAttempted"},
-    cufwpolconnnumhalfopen{YType::uint32, "cufwPolConnNumHalfOpen"},
-    cufwpolconnnumpolicydeclined{YType::uint64, "cufwPolConnNumPolicyDeclined"},
-    cufwpolconnnumresdeclined{YType::uint64, "cufwPolConnNumResDeclined"},
-    cufwpolconnnumsetupsaborted{YType::uint64, "cufwPolConnNumSetupsAborted"}
-{
-    yang_name = "cufwPolicyConnSummaryEntry"; yang_parent_name = "cufwPolicyConnSummaryTable";
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::~Cufwpolicyconnsummaryentry()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_data() const
-{
-    return cufwpolconnpolicy.is_set
-	|| cufwpolconnpolicytargettype.is_set
-	|| cufwpolconnpolicytarget.is_set
-	|| cufwpolconnprotocol.is_set
-	|| cufwpolconnnumaborted.is_set
-	|| cufwpolconnnumactive.is_set
-	|| cufwpolconnnumattempted.is_set
-	|| cufwpolconnnumhalfopen.is_set
-	|| cufwpolconnnumpolicydeclined.is_set
-	|| cufwpolconnnumresdeclined.is_set
-	|| cufwpolconnnumsetupsaborted.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwpolconnpolicy.yfilter)
-	|| ydk::is_set(cufwpolconnpolicytargettype.yfilter)
-	|| ydk::is_set(cufwpolconnpolicytarget.yfilter)
-	|| ydk::is_set(cufwpolconnprotocol.yfilter)
-	|| ydk::is_set(cufwpolconnnumaborted.yfilter)
-	|| ydk::is_set(cufwpolconnnumactive.yfilter)
-	|| ydk::is_set(cufwpolconnnumattempted.yfilter)
-	|| ydk::is_set(cufwpolconnnumhalfopen.yfilter)
-	|| ydk::is_set(cufwpolconnnumpolicydeclined.yfilter)
-	|| ydk::is_set(cufwpolconnnumresdeclined.yfilter)
-	|| ydk::is_set(cufwpolconnnumsetupsaborted.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyConnSummaryEntry" <<"[cufwPolConnPolicy='" <<cufwpolconnpolicy <<"']" <<"[cufwPolConnPolicyTargetType='" <<cufwpolconnpolicytargettype <<"']" <<"[cufwPolConnPolicyTarget='" <<cufwpolconnpolicytarget <<"']" <<"[cufwPolConnProtocol='" <<cufwpolconnprotocol <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyConnSummaryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwpolconnpolicy.is_set || is_set(cufwpolconnpolicy.yfilter)) leaf_name_data.push_back(cufwpolconnpolicy.get_name_leafdata());
-    if (cufwpolconnpolicytargettype.is_set || is_set(cufwpolconnpolicytargettype.yfilter)) leaf_name_data.push_back(cufwpolconnpolicytargettype.get_name_leafdata());
-    if (cufwpolconnpolicytarget.is_set || is_set(cufwpolconnpolicytarget.yfilter)) leaf_name_data.push_back(cufwpolconnpolicytarget.get_name_leafdata());
-    if (cufwpolconnprotocol.is_set || is_set(cufwpolconnprotocol.yfilter)) leaf_name_data.push_back(cufwpolconnprotocol.get_name_leafdata());
-    if (cufwpolconnnumaborted.is_set || is_set(cufwpolconnnumaborted.yfilter)) leaf_name_data.push_back(cufwpolconnnumaborted.get_name_leafdata());
-    if (cufwpolconnnumactive.is_set || is_set(cufwpolconnnumactive.yfilter)) leaf_name_data.push_back(cufwpolconnnumactive.get_name_leafdata());
-    if (cufwpolconnnumattempted.is_set || is_set(cufwpolconnnumattempted.yfilter)) leaf_name_data.push_back(cufwpolconnnumattempted.get_name_leafdata());
-    if (cufwpolconnnumhalfopen.is_set || is_set(cufwpolconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwpolconnnumhalfopen.get_name_leafdata());
-    if (cufwpolconnnumpolicydeclined.is_set || is_set(cufwpolconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwpolconnnumpolicydeclined.get_name_leafdata());
-    if (cufwpolconnnumresdeclined.is_set || is_set(cufwpolconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwpolconnnumresdeclined.get_name_leafdata());
-    if (cufwpolconnnumsetupsaborted.is_set || is_set(cufwpolconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwpolconnnumsetupsaborted.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwPolConnPolicy")
-    {
-        cufwpolconnpolicy = value;
-        cufwpolconnpolicy.value_namespace = name_space;
-        cufwpolconnpolicy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnPolicyTargetType")
-    {
-        cufwpolconnpolicytargettype = value;
-        cufwpolconnpolicytargettype.value_namespace = name_space;
-        cufwpolconnpolicytargettype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnPolicyTarget")
-    {
-        cufwpolconnpolicytarget = value;
-        cufwpolconnpolicytarget.value_namespace = name_space;
-        cufwpolconnpolicytarget.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnProtocol")
-    {
-        cufwpolconnprotocol = value;
-        cufwpolconnprotocol.value_namespace = name_space;
-        cufwpolconnprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumAborted")
-    {
-        cufwpolconnnumaborted = value;
-        cufwpolconnnumaborted.value_namespace = name_space;
-        cufwpolconnnumaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumActive")
-    {
-        cufwpolconnnumactive = value;
-        cufwpolconnnumactive.value_namespace = name_space;
-        cufwpolconnnumactive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumAttempted")
-    {
-        cufwpolconnnumattempted = value;
-        cufwpolconnnumattempted.value_namespace = name_space;
-        cufwpolconnnumattempted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumHalfOpen")
-    {
-        cufwpolconnnumhalfopen = value;
-        cufwpolconnnumhalfopen.value_namespace = name_space;
-        cufwpolconnnumhalfopen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumPolicyDeclined")
-    {
-        cufwpolconnnumpolicydeclined = value;
-        cufwpolconnnumpolicydeclined.value_namespace = name_space;
-        cufwpolconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumResDeclined")
-    {
-        cufwpolconnnumresdeclined = value;
-        cufwpolconnnumresdeclined.value_namespace = name_space;
-        cufwpolconnnumresdeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolConnNumSetupsAborted")
-    {
-        cufwpolconnnumsetupsaborted = value;
-        cufwpolconnnumsetupsaborted.value_namespace = name_space;
-        cufwpolconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwPolConnPolicy")
-    {
-        cufwpolconnpolicy.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnPolicyTargetType")
-    {
-        cufwpolconnpolicytargettype.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnPolicyTarget")
-    {
-        cufwpolconnpolicytarget.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnProtocol")
-    {
-        cufwpolconnprotocol.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumAborted")
-    {
-        cufwpolconnnumaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumActive")
-    {
-        cufwpolconnnumactive.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumAttempted")
-    {
-        cufwpolconnnumattempted.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumHalfOpen")
-    {
-        cufwpolconnnumhalfopen.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumPolicyDeclined")
-    {
-        cufwpolconnnumpolicydeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumResDeclined")
-    {
-        cufwpolconnnumresdeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolConnNumSetupsAborted")
-    {
-        cufwpolconnnumsetupsaborted.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwPolConnPolicy" || name == "cufwPolConnPolicyTargetType" || name == "cufwPolConnPolicyTarget" || name == "cufwPolConnProtocol" || name == "cufwPolConnNumAborted" || name == "cufwPolConnNumActive" || name == "cufwPolConnNumAttempted" || name == "cufwPolConnNumHalfOpen" || name == "cufwPolConnNumPolicyDeclined" || name == "cufwPolConnNumResDeclined" || name == "cufwPolConnNumSetupsAborted")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummarytable()
-{
-    yang_name = "cufwPolicyAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::~Cufwpolicyappconnsummarytable()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::has_data() const
-{
-    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
-    {
-        if(cufwpolicyappconnsummaryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::has_operation() const
-{
-    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
-    {
-        if(cufwpolicyappconnsummaryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyAppConnSummaryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cufwPolicyAppConnSummaryEntry")
-    {
-        for(auto const & c : cufwpolicyappconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry>();
-        c->parent = this;
-        cufwpolicyappconnsummaryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cufwpolicyappconnsummaryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
 
-void CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwPolicyAppConnSummaryEntry")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::Cufwpolicyappconnsummaryentry()
-    :
-    cufwpolappconnpolicy{YType::str, "cufwPolAppConnPolicy"},
-    cufwpolappconnpolicytargettype{YType::enumeration, "cufwPolAppConnPolicyTargetType"},
-    cufwpolappconnpolicytarget{YType::str, "cufwPolAppConnPolicyTarget"},
-    cufwpolappconnprotocol{YType::enumeration, "cufwPolAppConnProtocol"},
-    cufwpolappconnnumaborted{YType::uint64, "cufwPolAppConnNumAborted"},
-    cufwpolappconnnumactive{YType::uint32, "cufwPolAppConnNumActive"},
-    cufwpolappconnnumattempted{YType::uint64, "cufwPolAppConnNumAttempted"},
-    cufwpolappconnnumhalfopen{YType::uint32, "cufwPolAppConnNumHalfOpen"},
-    cufwpolappconnnumpolicydeclined{YType::uint64, "cufwPolAppConnNumPolicyDeclined"},
-    cufwpolappconnnumresdeclined{YType::uint64, "cufwPolAppConnNumResDeclined"},
-    cufwpolappconnnumsetupsaborted{YType::uint64, "cufwPolAppConnNumSetupsAborted"}
-{
-    yang_name = "cufwPolicyAppConnSummaryEntry"; yang_parent_name = "cufwPolicyAppConnSummaryTable";
-}
-
-CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::~Cufwpolicyappconnsummaryentry()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_data() const
-{
-    return cufwpolappconnpolicy.is_set
-	|| cufwpolappconnpolicytargettype.is_set
-	|| cufwpolappconnpolicytarget.is_set
-	|| cufwpolappconnprotocol.is_set
-	|| cufwpolappconnnumaborted.is_set
-	|| cufwpolappconnnumactive.is_set
-	|| cufwpolappconnnumattempted.is_set
-	|| cufwpolappconnnumhalfopen.is_set
-	|| cufwpolappconnnumpolicydeclined.is_set
-	|| cufwpolappconnnumresdeclined.is_set
-	|| cufwpolappconnnumsetupsaborted.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwpolappconnpolicy.yfilter)
-	|| ydk::is_set(cufwpolappconnpolicytargettype.yfilter)
-	|| ydk::is_set(cufwpolappconnpolicytarget.yfilter)
-	|| ydk::is_set(cufwpolappconnprotocol.yfilter)
-	|| ydk::is_set(cufwpolappconnnumaborted.yfilter)
-	|| ydk::is_set(cufwpolappconnnumactive.yfilter)
-	|| ydk::is_set(cufwpolappconnnumattempted.yfilter)
-	|| ydk::is_set(cufwpolappconnnumhalfopen.yfilter)
-	|| ydk::is_set(cufwpolappconnnumpolicydeclined.yfilter)
-	|| ydk::is_set(cufwpolappconnnumresdeclined.yfilter)
-	|| ydk::is_set(cufwpolappconnnumsetupsaborted.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyAppConnSummaryEntry" <<"[cufwPolAppConnPolicy='" <<cufwpolappconnpolicy <<"']" <<"[cufwPolAppConnPolicyTargetType='" <<cufwpolappconnpolicytargettype <<"']" <<"[cufwPolAppConnPolicyTarget='" <<cufwpolappconnpolicytarget <<"']" <<"[cufwPolAppConnProtocol='" <<cufwpolappconnprotocol <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyAppConnSummaryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwpolappconnpolicy.is_set || is_set(cufwpolappconnpolicy.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicy.get_name_leafdata());
-    if (cufwpolappconnpolicytargettype.is_set || is_set(cufwpolappconnpolicytargettype.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicytargettype.get_name_leafdata());
-    if (cufwpolappconnpolicytarget.is_set || is_set(cufwpolappconnpolicytarget.yfilter)) leaf_name_data.push_back(cufwpolappconnpolicytarget.get_name_leafdata());
-    if (cufwpolappconnprotocol.is_set || is_set(cufwpolappconnprotocol.yfilter)) leaf_name_data.push_back(cufwpolappconnprotocol.get_name_leafdata());
-    if (cufwpolappconnnumaborted.is_set || is_set(cufwpolappconnnumaborted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumaborted.get_name_leafdata());
-    if (cufwpolappconnnumactive.is_set || is_set(cufwpolappconnnumactive.yfilter)) leaf_name_data.push_back(cufwpolappconnnumactive.get_name_leafdata());
-    if (cufwpolappconnnumattempted.is_set || is_set(cufwpolappconnnumattempted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumattempted.get_name_leafdata());
-    if (cufwpolappconnnumhalfopen.is_set || is_set(cufwpolappconnnumhalfopen.yfilter)) leaf_name_data.push_back(cufwpolappconnnumhalfopen.get_name_leafdata());
-    if (cufwpolappconnnumpolicydeclined.is_set || is_set(cufwpolappconnnumpolicydeclined.yfilter)) leaf_name_data.push_back(cufwpolappconnnumpolicydeclined.get_name_leafdata());
-    if (cufwpolappconnnumresdeclined.is_set || is_set(cufwpolappconnnumresdeclined.yfilter)) leaf_name_data.push_back(cufwpolappconnnumresdeclined.get_name_leafdata());
-    if (cufwpolappconnnumsetupsaborted.is_set || is_set(cufwpolappconnnumsetupsaborted.yfilter)) leaf_name_data.push_back(cufwpolappconnnumsetupsaborted.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwPolAppConnPolicy")
-    {
-        cufwpolappconnpolicy = value;
-        cufwpolappconnpolicy.value_namespace = name_space;
-        cufwpolappconnpolicy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnPolicyTargetType")
-    {
-        cufwpolappconnpolicytargettype = value;
-        cufwpolappconnpolicytargettype.value_namespace = name_space;
-        cufwpolappconnpolicytargettype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnPolicyTarget")
-    {
-        cufwpolappconnpolicytarget = value;
-        cufwpolappconnpolicytarget.value_namespace = name_space;
-        cufwpolappconnpolicytarget.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnProtocol")
-    {
-        cufwpolappconnprotocol = value;
-        cufwpolappconnprotocol.value_namespace = name_space;
-        cufwpolappconnprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumAborted")
-    {
-        cufwpolappconnnumaborted = value;
-        cufwpolappconnnumaborted.value_namespace = name_space;
-        cufwpolappconnnumaborted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumActive")
-    {
-        cufwpolappconnnumactive = value;
-        cufwpolappconnnumactive.value_namespace = name_space;
-        cufwpolappconnnumactive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumAttempted")
-    {
-        cufwpolappconnnumattempted = value;
-        cufwpolappconnnumattempted.value_namespace = name_space;
-        cufwpolappconnnumattempted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumHalfOpen")
-    {
-        cufwpolappconnnumhalfopen = value;
-        cufwpolappconnnumhalfopen.value_namespace = name_space;
-        cufwpolappconnnumhalfopen.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumPolicyDeclined")
-    {
-        cufwpolappconnnumpolicydeclined = value;
-        cufwpolappconnnumpolicydeclined.value_namespace = name_space;
-        cufwpolappconnnumpolicydeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumResDeclined")
-    {
-        cufwpolappconnnumresdeclined = value;
-        cufwpolappconnnumresdeclined.value_namespace = name_space;
-        cufwpolappconnnumresdeclined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwPolAppConnNumSetupsAborted")
-    {
-        cufwpolappconnnumsetupsaborted = value;
-        cufwpolappconnnumsetupsaborted.value_namespace = name_space;
-        cufwpolappconnnumsetupsaborted.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwPolAppConnPolicy")
-    {
-        cufwpolappconnpolicy.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnPolicyTargetType")
-    {
-        cufwpolappconnpolicytargettype.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnPolicyTarget")
-    {
-        cufwpolappconnpolicytarget.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnProtocol")
-    {
-        cufwpolappconnprotocol.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumAborted")
-    {
-        cufwpolappconnnumaborted.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumActive")
-    {
-        cufwpolappconnnumactive.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumAttempted")
-    {
-        cufwpolappconnnumattempted.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumHalfOpen")
-    {
-        cufwpolappconnnumhalfopen.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumPolicyDeclined")
-    {
-        cufwpolappconnnumpolicydeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumResDeclined")
-    {
-        cufwpolappconnnumresdeclined.yfilter = yfilter;
-    }
-    if(value_path == "cufwPolAppConnNumSetupsAborted")
-    {
-        cufwpolappconnnumsetupsaborted.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwPolAppConnPolicy" || name == "cufwPolAppConnPolicyTargetType" || name == "cufwPolAppConnPolicyTarget" || name == "cufwPolAppConnProtocol" || name == "cufwPolAppConnNumAborted" || name == "cufwPolAppConnNumActive" || name == "cufwPolAppConnNumAttempted" || name == "cufwPolAppConnNumHalfOpen" || name == "cufwPolAppConnNumPolicyDeclined" || name == "cufwPolAppConnNumResDeclined" || name == "cufwPolAppConnNumSetupsAborted")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectiontable()
-{
-    yang_name = "cufwInspectionTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
-}
-
-CiscoUnifiedFirewallMib::Cufwinspectiontable::~Cufwinspectiontable()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::has_data() const
-{
-    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
-    {
-        if(cufwinspectionentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::has_operation() const
-{
-    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
-    {
-        if(cufwinspectionentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwinspectiontable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwInspectionTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwinspectiontable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwinspectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cufwInspectionEntry")
-    {
-        for(auto const & c : cufwinspectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry>();
-        c->parent = this;
-        cufwinspectionentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwinspectiontable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cufwinspectionentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwinspectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoUnifiedFirewallMib::Cufwinspectiontable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwInspectionEntry")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::Cufwinspectionentry()
-    :
-    cufwinspectionpolicyname{YType::str, "cufwInspectionPolicyName"},
-    cufwinspectionprotocol{YType::enumeration, "cufwInspectionProtocol"},
-    cufwinspectionstatus{YType::boolean, "cufwInspectionStatus"}
-{
-    yang_name = "cufwInspectionEntry"; yang_parent_name = "cufwInspectionTable";
-}
-
-CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::~Cufwinspectionentry()
-{
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::has_data() const
-{
-    return cufwinspectionpolicyname.is_set
-	|| cufwinspectionprotocol.is_set
-	|| cufwinspectionstatus.is_set;
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cufwinspectionpolicyname.yfilter)
-	|| ydk::is_set(cufwinspectionprotocol.yfilter)
-	|| ydk::is_set(cufwinspectionstatus.yfilter);
-}
-
-std::string CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cufwInspectionEntry" <<"[cufwInspectionPolicyName='" <<cufwinspectionpolicyname <<"']" <<"[cufwInspectionProtocol='" <<cufwinspectionprotocol <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwInspectionTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cufwinspectionpolicyname.is_set || is_set(cufwinspectionpolicyname.yfilter)) leaf_name_data.push_back(cufwinspectionpolicyname.get_name_leafdata());
-    if (cufwinspectionprotocol.is_set || is_set(cufwinspectionprotocol.yfilter)) leaf_name_data.push_back(cufwinspectionprotocol.get_name_leafdata());
-    if (cufwinspectionstatus.is_set || is_set(cufwinspectionstatus.yfilter)) leaf_name_data.push_back(cufwinspectionstatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cufwInspectionPolicyName")
-    {
-        cufwinspectionpolicyname = value;
-        cufwinspectionpolicyname.value_namespace = name_space;
-        cufwinspectionpolicyname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwInspectionProtocol")
-    {
-        cufwinspectionprotocol = value;
-        cufwinspectionprotocol.value_namespace = name_space;
-        cufwinspectionprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cufwInspectionStatus")
-    {
-        cufwinspectionstatus = value;
-        cufwinspectionstatus.value_namespace = name_space;
-        cufwinspectionstatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cufwInspectionPolicyName")
-    {
-        cufwinspectionpolicyname.yfilter = yfilter;
-    }
-    if(value_path == "cufwInspectionProtocol")
-    {
-        cufwinspectionprotocol.yfilter = yfilter;
-    }
-    if(value_path == "cufwInspectionStatus")
-    {
-        cufwinspectionstatus.yfilter = yfilter;
-    }
-}
-
-bool CiscoUnifiedFirewallMib::Cufwinspectiontable::Cufwinspectionentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cufwInspectionPolicyName" || name == "cufwInspectionProtocol" || name == "cufwInspectionStatus")
-        return true;
-    return false;
-}
-
-CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfservertable()
-{
-    yang_name = "cufwUrlfServerTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB";
+    yang_name = "cufwUrlfServerTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfservertable::~Cufwurlfservertable()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::~Cufwurlfservertable()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_data() const
 {
     for (std::size_t index=0; index<cufwurlfserverentry.size(); index++)
     {
@@ -3598,7 +3453,7 @@ bool CiscoUnifiedFirewallMib::Cufwurlfservertable::has_data() const
     return false;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_operation() const
 {
     for (std::size_t index=0; index<cufwurlfserverentry.size(); index++)
     {
@@ -3608,37 +3463,30 @@ bool CiscoUnifiedFirewallMib::Cufwurlfservertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwurlfservertable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlfServerTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwurlfservertable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfservertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwUrlfServerEntry")
     {
@@ -3650,7 +3498,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfservertable::get_child_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry>();
         c->parent = this;
         cufwurlfserverentry.push_back(c);
         return c;
@@ -3659,7 +3507,7 @@ std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfservertable::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwurlfservertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cufwurlfserverentry)
@@ -3670,22 +3518,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwurlf
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfservertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfservertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfServerEntry")
         return true;
     return false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::Cufwurlfserverentry()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::Cufwurlfserverentry()
     :
     cufwurlfserveraddrtype{YType::enumeration, "cufwUrlfServerAddrType"},
     cufwurlfserveraddress{YType::str, "cufwUrlfServerAddress"},
@@ -3702,14 +3550,15 @@ CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::Cufwurlfserve
     cufwurlfserverstatus{YType::enumeration, "cufwUrlfServerStatus"},
     cufwurlfservervendor{YType::enumeration, "cufwUrlfServerVendor"}
 {
-    yang_name = "cufwUrlfServerEntry"; yang_parent_name = "cufwUrlfServerTable";
+
+    yang_name = "cufwUrlfServerEntry"; yang_parent_name = "cufwUrlfServerTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::~Cufwurlfserverentry()
+CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::~Cufwurlfserverentry()
 {
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_data() const
 {
     return cufwurlfserveraddrtype.is_set
 	|| cufwurlfserveraddress.is_set
@@ -3727,7 +3576,7 @@ bool CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::has_data
 	|| cufwurlfservervendor.is_set;
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlfserveraddrtype.yfilter)
@@ -3746,27 +3595,22 @@ bool CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::has_oper
 	|| ydk::is_set(cufwurlfservervendor.yfilter);
 }
 
-std::string CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwUrlfServerTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlfServerEntry" <<"[cufwUrlfServerAddrType='" <<cufwurlfserveraddrtype <<"']" <<"[cufwUrlfServerAddress='" <<cufwurlfserveraddress <<"']" <<"[cufwUrlfServerPort='" <<cufwurlfserverport <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwUrlfServerTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cufwurlfserveraddrtype.is_set || is_set(cufwurlfserveraddrtype.yfilter)) leaf_name_data.push_back(cufwurlfserveraddrtype.get_name_leafdata());
@@ -3784,24 +3628,22 @@ const EntityPath CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverent
     if (cufwurlfserverstatus.is_set || is_set(cufwurlfserverstatus.yfilter)) leaf_name_data.push_back(cufwurlfserverstatus.get_name_leafdata());
     if (cufwurlfservervendor.is_set || is_set(cufwurlfservervendor.yfilter)) leaf_name_data.push_back(cufwurlfservervendor.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfServerAddrType")
     {
@@ -3889,7 +3731,7 @@ void CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::set_valu
     }
 }
 
-void CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfServerAddrType")
     {
@@ -3949,7 +3791,7 @@ void CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::set_filt
     }
 }
 
-bool CiscoUnifiedFirewallMib::Cufwurlfservertable::Cufwurlfserverentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfServerAddrType" || name == "cufwUrlfServerAddress" || name == "cufwUrlfServerPort" || name == "cufwUrlfServerAvgRespTime1" || name == "cufwUrlfServerAvgRespTime5" || name == "cufwUrlfServerNumRetries" || name == "cufwUrlfServerNumTimeouts" || name == "cufwUrlfServerReqsNumAllowed" || name == "cufwUrlfServerReqsNumDenied" || name == "cufwUrlfServerReqsNumProcessed" || name == "cufwUrlfServerRespsNumLate" || name == "cufwUrlfServerRespsNumReceived" || name == "cufwUrlfServerStatus" || name == "cufwUrlfServerVendor")
         return true;

@@ -28,7 +28,7 @@
 #include "catch.hpp"
 
 namespace mock {
-class MockServiceProvider : public ydk::path::ServiceProvider
+class MockServiceProvider
 {
 public:
     MockServiceProvider(const std::string & searchdir, const std::vector<ydk::path::Capability> capabilities) : m_searchdir{searchdir}, m_capabilities{capabilities}

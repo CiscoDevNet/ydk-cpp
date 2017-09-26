@@ -26,11 +26,7 @@
 
 namespace ydk
 {
-namespace path
-{
-class Repository;
-class ServiceProvider;
-}
+
 class OpenDaylightServiceProvider
 {
     public:
@@ -44,11 +40,11 @@ class OpenDaylightServiceProvider
 
         ~OpenDaylightServiceProvider();
 
-        path::ServiceProvider & get_node_provider(const std::string & node_id);
+        ydk::ServiceProvider & get_node_provider(const std::string & node_id);
         const std::vector<std::string> & get_node_ids();
 
     private:
-        std::unique_ptr<path::ServiceProvider> create_provider_for_node(const std::string & node_id);
+        std::unique_ptr<ydk::ServiceProvider> create_provider_for_node(const std::string & node_id);
 
     private:
         std::unique_ptr<path::Repository> m_repo_ptr;
@@ -61,9 +57,10 @@ class OpenDaylightServiceProvider
         EncodingFormat encoding;
 
         std::map<std::string, std::unique_ptr<opendaylight::network_topology::NetworkTopology::Topology::Node>> odl_nodes;
-        std::map<std::string, std::unique_ptr<path::ServiceProvider>> providers;
+        std::map<std::string, std::unique_ptr<ydk::ServiceProvider>> providers;
         std::vector<std::string> node_ids;
 };
+
 }
 
 #endif /* _OPENDAYLIGHT_PROVIDER_H_ */

@@ -17,7 +17,7 @@ AddressPoolService::AddressPoolService()
 {
     nodes->parent = this;
 
-    yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-oper";
+    yang_name = "address-pool-service"; yang_parent_name = "Cisco-IOS-XR-ip-daps-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 AddressPoolService::~AddressPoolService()
@@ -39,26 +39,15 @@ std::string AddressPoolService::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-daps-oper:address-pool-service";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool AddressPoolService::has_leaf_or_child_of_name(const std::string & name) con
 
 AddressPoolService::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "address-pool-service";
+
+    yang_name = "nodes"; yang_parent_name = "address-pool-service"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 AddressPoolService::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool AddressPoolService::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string AddressPoolService::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-daps-oper:address-pool-service/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string AddressPoolService::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-daps-oper:address-pool-service/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,12 +225,10 @@ AddressPoolService::Nodes::Node::Node()
 	,vrfs(std::make_shared<AddressPoolService::Nodes::Node::Vrfs>())
 {
     pools->parent = this;
-
     total_utilization->parent = this;
-
     vrfs->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 AddressPoolService::Nodes::Node::~Node()
@@ -271,34 +252,27 @@ bool AddressPoolService::Nodes::Node::has_operation() const
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
+std::string AddressPoolService::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-daps-oper:address-pool-service/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string AddressPoolService::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-daps-oper:address-pool-service/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -382,7 +356,8 @@ bool AddressPoolService::Nodes::Node::has_leaf_or_child_of_name(const std::strin
 
 AddressPoolService::Nodes::Node::Pools::Pools()
 {
-    yang_name = "pools"; yang_parent_name = "node";
+
+    yang_name = "pools"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::~Pools()
@@ -413,29 +388,15 @@ std::string AddressPoolService::Nodes::Node::Pools::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pools";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pools' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -495,12 +456,10 @@ AddressPoolService::Nodes::Node::Pools::Pool::Pool()
 	,configuration(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::Configuration>())
 {
     address_ranges->parent = this;
-
     allocated_addresses->parent = this;
-
     configuration->parent = this;
 
-    yang_name = "pool"; yang_parent_name = "pools";
+    yang_name = "pool"; yang_parent_name = "pools"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::~Pool()
@@ -528,30 +487,16 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "pool" <<"[pool-name='" <<pool_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pool' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -635,7 +580,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::has_leaf_or_child_of_name(con
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRanges()
 {
-    yang_name = "address-ranges"; yang_parent_name = "pool";
+
+    yang_name = "address-ranges"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::~AddressRanges()
@@ -666,29 +612,15 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "address-ranges";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressRanges' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -756,12 +688,10 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Addre
 	,start_address_xr(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr>())
 {
     default_router->parent = this;
-
     end_address->parent = this;
-
     start_address_xr->parent = this;
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges";
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::~AddressRange()
@@ -805,23 +735,11 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 {
     std::ostringstream path_buffer;
     path_buffer << "address-range" <<"[start-address='" <<start_address <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressRange' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
@@ -834,9 +752,7 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Ad
     if (pool_scope.is_set || is_set(pool_scope.yfilter)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -998,435 +914,13 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
     return false;
 }
 
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::StartAddressXr()
-    :
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>())
-{
-    address->parent = this;
-
-    yang_name = "start-address-xr"; yang_parent_name = "address-range";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::~StartAddressXr()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_data() const
-{
-    return (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "start-address-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StartAddressXr' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::Address()
-    :
-    address_family{YType::enumeration, "address-family"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "address"; yang_parent_name = "start-address-xr";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::~Address()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_data() const
-{
-    return address_family.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::EndAddress()
-    :
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>())
-{
-    address->parent = this;
-
-    yang_name = "end-address"; yang_parent_name = "address-range";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::~EndAddress()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_data() const
-{
-    return (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "end-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EndAddress' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::Address()
-    :
-    address_family{YType::enumeration, "address-family"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "address"; yang_parent_name = "end-address";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::~Address()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_data() const
-{
-    return address_family.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::DefaultRouter()
     :
     address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address>())
 {
     address->parent = this;
 
-    yang_name = "default-router"; yang_parent_name = "address-range";
+    yang_name = "default-router"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::~DefaultRouter()
@@ -1448,29 +942,15 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 {
     std::ostringstream path_buffer;
     path_buffer << "default-router";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DefaultRouter' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1520,7 +1000,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Defau
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
-    yang_name = "address"; yang_parent_name = "default-router";
+
+    yang_name = "address"; yang_parent_name = "default-router"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::~Address()
@@ -1546,32 +1027,18 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Address
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
     if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1631,13 +1098,381 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
     return false;
 }
 
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::EndAddress()
+    :
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>())
+{
+    address->parent = this;
+
+    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::~EndAddress()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_data() const
+{
+    return (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::Address()
+    :
+    address_family{YType::enumeration, "address-family"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::~Address()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_data() const
+{
+    return address_family.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::StartAddressXr()
+    :
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>())
+{
+    address->parent = this;
+
+    yang_name = "start-address-xr"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::~StartAddressXr()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_data() const
+{
+    return (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "start-address-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::Address()
+    :
+    address_family{YType::enumeration, "address-family"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "address"; yang_parent_name = "start-address-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::~Address()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_data() const
+{
+    return address_family.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AllocatedAddresses()
     :
     pool_allocations(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations>())
 {
     pool_allocations->parent = this;
 
-    yang_name = "allocated-addresses"; yang_parent_name = "pool";
+    yang_name = "allocated-addresses"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::~AllocatedAddresses()
@@ -1679,29 +1514,15 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "allocated-addresses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AllocatedAddresses' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1787,6 +1608,794 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_leaf_
     return false;
 }
 
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::AddressRange()
+    :
+    excluded{YType::uint32, "excluded"},
+    free{YType::uint32, "free"},
+    used{YType::uint32, "used"}
+    	,
+    end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>())
+	,start_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>())
+{
+    end_address->parent = this;
+    start_address->parent = this;
+
+    yang_name = "address-range"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::~AddressRange()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_data() const
+{
+    return excluded.is_set
+	|| free.is_set
+	|| used.is_set
+	|| (end_address !=  nullptr && end_address->has_data())
+	|| (start_address !=  nullptr && start_address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| (end_address !=  nullptr && end_address->has_operation())
+	|| (start_address !=  nullptr && start_address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "end-address")
+    {
+        if(end_address == nullptr)
+        {
+            end_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>();
+        }
+        return end_address;
+    }
+
+    if(child_yang_name == "start-address")
+    {
+        if(start_address == nullptr)
+        {
+            start_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>();
+        }
+        return start_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(end_address != nullptr)
+    {
+        children["end-address"] = end_address;
+    }
+
+    if(start_address != nullptr)
+    {
+        children["start-address"] = start_address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "excluded")
+    {
+        excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free")
+    {
+        free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "used")
+    {
+        used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-address" || name == "start-address" || name == "excluded" || name == "free" || name == "used")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::EndAddress()
+    :
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>())
+{
+    address->parent = this;
+
+    yang_name = "end-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::~EndAddress()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_data() const
+{
+    return (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::Address()
+    :
+    address_family{YType::enumeration, "address-family"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "address"; yang_parent_name = "end-address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::~Address()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_data() const
+{
+    return address_family.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::StartAddress()
+    :
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>())
+{
+    address->parent = this;
+
+    yang_name = "start-address"; yang_parent_name = "address-range"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::~StartAddress()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_data() const
+{
+    return (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "start-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::Address()
+    :
+    address_family{YType::enumeration, "address-family"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "address"; yang_parent_name = "start-address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::~Address()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_data() const
+{
+    return address_family.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::InUseAddress()
+    :
+    client_type{YType::enumeration, "client-type"}
+    	,
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>())
+{
+    address->parent = this;
+
+    yang_name = "in-use-address"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::~InUseAddress()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_data() const
+{
+    return client_type.is_set
+	|| (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(client_type.yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "in-use-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (client_type.is_set || is_set(client_type.yfilter)) leaf_name_data.push_back(client_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "client-type")
+    {
+        client_type = value;
+        client_type.value_namespace = name_space;
+        client_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-type")
+    {
+        client_type.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "client-type")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address()
+    :
+    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>())
+{
+    address->parent = this;
+
+    yang_name = "address"; yang_parent_name = "in-use-address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::~Address()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_data() const
+{
+    return (address !=  nullptr && address->has_data());
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address !=  nullptr && address->has_operation());
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address")
+    {
+        if(address == nullptr)
+        {
+            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>();
+        }
+        return address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address != nullptr)
+    {
+        children["address"] = address;
+    }
+
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::Address_()
+    :
+    address_family{YType::enumeration, "address-family"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::~Address_()
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_data() const
+{
+    return address_family.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::PoolAllocations()
     :
     excluded{YType::uint32, "excluded"},
@@ -1800,10 +2409,9 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
 	,low_threshold(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold>())
 {
     high_threshold->parent = this;
-
     low_threshold->parent = this;
 
-    yang_name = "pool-allocations"; yang_parent_name = "allocated-addresses";
+    yang_name = "pool-allocations"; yang_parent_name = "allocated-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::~PoolAllocations()
@@ -1839,23 +2447,11 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 {
     std::ostringstream path_buffer;
     path_buffer << "pool-allocations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PoolAllocations' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
@@ -1865,9 +2461,7 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
     if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1991,7 +2585,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
     time_last_crossed{YType::str, "time-last-crossed"},
     triggers{YType::uint32, "triggers"}
 {
-    yang_name = "high-threshold"; yang_parent_name = "pool-allocations";
+
+    yang_name = "high-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::~HighThreshold()
@@ -2017,32 +2612,18 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 {
     std::ostringstream path_buffer;
     path_buffer << "high-threshold";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighThreshold' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
     if (time_last_crossed.is_set || is_set(time_last_crossed.yfilter)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
     if (triggers.is_set || is_set(triggers.yfilter)) leaf_name_data.push_back(triggers.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2108,7 +2689,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocation
     time_last_crossed{YType::str, "time-last-crossed"},
     triggers{YType::uint32, "triggers"}
 {
-    yang_name = "low-threshold"; yang_parent_name = "pool-allocations";
+
+    yang_name = "low-threshold"; yang_parent_name = "pool-allocations"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::~LowThreshold()
@@ -2134,32 +2716,18 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Po
 {
     std::ostringstream path_buffer;
     path_buffer << "low-threshold";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowThreshold' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
     if (time_last_crossed.is_set || is_set(time_last_crossed.yfilter)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
     if (triggers.is_set || is_set(triggers.yfilter)) leaf_name_data.push_back(triggers.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2219,904 +2787,6 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAlloc
     return false;
 }
 
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::AddressRange()
-    :
-    excluded{YType::uint32, "excluded"},
-    free{YType::uint32, "free"},
-    used{YType::uint32, "used"}
-    	,
-    end_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>())
-	,start_address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>())
-{
-    end_address->parent = this;
-
-    start_address->parent = this;
-
-    yang_name = "address-range"; yang_parent_name = "allocated-addresses";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::~AddressRange()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_data() const
-{
-    return excluded.is_set
-	|| free.is_set
-	|| used.is_set
-	|| (end_address !=  nullptr && end_address->has_data())
-	|| (start_address !=  nullptr && start_address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(excluded.yfilter)
-	|| ydk::is_set(free.yfilter)
-	|| ydk::is_set(used.yfilter)
-	|| (end_address !=  nullptr && end_address->has_operation())
-	|| (start_address !=  nullptr && start_address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-range";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressRange' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "end-address")
-    {
-        if(end_address == nullptr)
-        {
-            end_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress>();
-        }
-        return end_address;
-    }
-
-    if(child_yang_name == "start-address")
-    {
-        if(start_address == nullptr)
-        {
-            start_address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress>();
-        }
-        return start_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(end_address != nullptr)
-    {
-        children["end-address"] = end_address;
-    }
-
-    if(start_address != nullptr)
-    {
-        children["start-address"] = start_address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "excluded")
-    {
-        excluded = value;
-        excluded.value_namespace = name_space;
-        excluded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free")
-    {
-        free = value;
-        free.value_namespace = name_space;
-        free.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "used")
-    {
-        used = value;
-        used.value_namespace = name_space;
-        used.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "excluded")
-    {
-        excluded.yfilter = yfilter;
-    }
-    if(value_path == "free")
-    {
-        free.yfilter = yfilter;
-    }
-    if(value_path == "used")
-    {
-        used.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end-address" || name == "start-address" || name == "excluded" || name == "free" || name == "used")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::StartAddress()
-    :
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>())
-{
-    address->parent = this;
-
-    yang_name = "start-address"; yang_parent_name = "address-range";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::~StartAddress()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_data() const
-{
-    return (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "start-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StartAddress' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::Address()
-    :
-    address_family{YType::enumeration, "address-family"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "address"; yang_parent_name = "start-address";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::~Address()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_data() const
-{
-    return address_family.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::EndAddress()
-    :
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>())
-{
-    address->parent = this;
-
-    yang_name = "end-address"; yang_parent_name = "address-range";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::~EndAddress()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_data() const
-{
-    return (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "end-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EndAddress' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::Address()
-    :
-    address_family{YType::enumeration, "address-family"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "address"; yang_parent_name = "end-address";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::~Address()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_data() const
-{
-    return address_family.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::InUseAddress()
-    :
-    client_type{YType::enumeration, "client-type"}
-    	,
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>())
-{
-    address->parent = this;
-
-    yang_name = "in-use-address"; yang_parent_name = "allocated-addresses";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::~InUseAddress()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_data() const
-{
-    return client_type.is_set
-	|| (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(client_type.yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "in-use-address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InUseAddress' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (client_type.is_set || is_set(client_type.yfilter)) leaf_name_data.push_back(client_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "client-type")
-    {
-        client_type = value;
-        client_type.value_namespace = name_space;
-        client_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "client-type")
-    {
-        client_type.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "client-type")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address()
-    :
-    address(std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>())
-{
-    address->parent = this;
-
-    yang_name = "address"; yang_parent_name = "in-use-address";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::~Address()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_data() const
-{
-    return (address !=  nullptr && address->has_data());
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_operation() const
-{
-    return is_set(yfilter)
-	|| (address !=  nullptr && address->has_operation());
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address")
-    {
-        if(address == nullptr)
-        {
-            address = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_>();
-        }
-        return address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address != nullptr)
-    {
-        children["address"] = address;
-    }
-
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address")
-        return true;
-    return false;
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::Address_()
-    :
-    address_family{YType::enumeration, "address-family"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-    yang_name = "address"; yang_parent_name = "address";
-}
-
-AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::~Address_()
-{
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_data() const
-{
-    return address_family.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address_' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
 AddressPoolService::Nodes::Node::Pools::Pool::Configuration::Configuration()
     :
     current_utilization{YType::uint8, "current-utilization"},
@@ -3130,7 +2800,8 @@ AddressPoolService::Nodes::Node::Pools::Pool::Configuration::Configuration()
     utilization_low_count{YType::uint32, "utilization-low-count"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "configuration"; yang_parent_name = "pool";
+
+    yang_name = "configuration"; yang_parent_name = "pool"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::Configuration::~Configuration()
@@ -3170,23 +2841,11 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Configuration' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (current_utilization.is_set || is_set(current_utilization.yfilter)) leaf_name_data.push_back(current_utilization.get_name_leafdata());
@@ -3200,9 +2859,7 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::ge
     if (utilization_low_count.is_set || is_set(utilization_low_count.yfilter)) leaf_name_data.push_back(utilization_low_count.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3338,7 +2995,8 @@ AddressPoolService::Nodes::Node::TotalUtilization::TotalUtilization()
     total_utilization_high_mark{YType::uint8, "total-utilization-high-mark"},
     total_utilization_low_mark{YType::uint8, "total-utilization-low-mark"}
 {
-    yang_name = "total-utilization"; yang_parent_name = "node";
+
+    yang_name = "total-utilization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::TotalUtilization::~TotalUtilization()
@@ -3364,32 +3022,18 @@ std::string AddressPoolService::Nodes::Node::TotalUtilization::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "total-utilization";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::TotalUtilization::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::TotalUtilization::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TotalUtilization' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (current_total_utilization.is_set || is_set(current_total_utilization.yfilter)) leaf_name_data.push_back(current_total_utilization.get_name_leafdata());
     if (total_utilization_high_mark.is_set || is_set(total_utilization_high_mark.yfilter)) leaf_name_data.push_back(total_utilization_high_mark.get_name_leafdata());
     if (total_utilization_low_mark.is_set || is_set(total_utilization_low_mark.yfilter)) leaf_name_data.push_back(total_utilization_low_mark.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3451,7 +3095,8 @@ bool AddressPoolService::Nodes::Node::TotalUtilization::has_leaf_or_child_of_nam
 
 AddressPoolService::Nodes::Node::Vrfs::Vrfs()
 {
-    yang_name = "vrfs"; yang_parent_name = "node";
+
+    yang_name = "vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::~Vrfs()
@@ -3482,29 +3127,15 @@ std::string AddressPoolService::Nodes::Node::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrfs' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3563,10 +3194,9 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Vrf()
 	,ipv6(std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6>())
 {
     ipv4->parent = this;
-
     ipv6->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs";
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::~Vrf()
@@ -3592,30 +3222,16 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrf' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3689,7 +3305,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Ipv4()
 {
     allocation_summary->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "vrf";
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -3721,29 +3337,15 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3818,7 +3420,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::AllocationS
     used{YType::uint32, "used"},
     utilization{YType::uint8, "utilization"}
 {
-    yang_name = "allocation-summary"; yang_parent_name = "ipv4";
+
+    yang_name = "allocation-summary"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::~AllocationSummary()
@@ -3852,23 +3455,11 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary:
 {
     std::ostringstream path_buffer;
     path_buffer << "allocation-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationSummary' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
@@ -3879,9 +3470,7 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSum
     if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
     if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3990,7 +3579,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::Pools()
     used{YType::uint32, "used"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "pools"; yang_parent_name = "ipv4";
+
+    yang_name = "pools"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::~Pools()
@@ -4022,23 +3612,11 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "pools";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pools' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
@@ -4048,9 +3626,7 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_en
     if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4146,7 +3722,7 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Ipv6()
 {
     allocation_summary->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "vrf";
+    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::~Ipv6()
@@ -4178,29 +3754,15 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4275,7 +3837,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::AllocationS
     used{YType::uint32, "used"},
     utilization{YType::uint8, "utilization"}
 {
-    yang_name = "allocation-summary"; yang_parent_name = "ipv6";
+
+    yang_name = "allocation-summary"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::~AllocationSummary()
@@ -4309,23 +3872,11 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary:
 {
     std::ostringstream path_buffer;
     path_buffer << "allocation-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AllocationSummary' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
@@ -4336,9 +3887,7 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSum
     if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
     if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4447,7 +3996,8 @@ AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::Pools()
     used{YType::uint32, "used"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "pools"; yang_parent_name = "ipv6";
+
+    yang_name = "pools"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::~Pools()
@@ -4479,23 +4029,11 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "pools";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pools' in Cisco_IOS_XR_ip_daps_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
@@ -4505,9 +4043,7 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_en
     if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

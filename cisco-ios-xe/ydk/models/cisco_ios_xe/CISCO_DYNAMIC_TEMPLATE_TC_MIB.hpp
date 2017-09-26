@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_TC_MIB {
 
-class Dynamictemplatetype : public ydk::Enum
+class DynamicTemplateType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -22,7 +22,7 @@ class Dynamictemplatetype : public ydk::Enum
 
 };
 
-class Dynamictemplatetargettype : public ydk::Enum
+class DynamicTemplateTargetType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

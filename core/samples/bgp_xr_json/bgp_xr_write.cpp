@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
         auto bgp = codec_service.decode(codec_provider, json, make_unique<Bgp>());
 
         bool reply = crud.create(provider, *bgp);
-        if(reply) cout << "Write operation success" << endl; else cout << "Operation failed" << endl << endl;
+        if(reply) cout << "Write yfilter success" << endl; else cout << "Operation failed" << endl << endl;
     }
     catch(YCPPError & e)
     {

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_acl_oper {
 
 AccessLists::AccessLists()
 {
-    yang_name = "access-lists"; yang_parent_name = "Cisco-IOS-XE-acl-oper";
+
+    yang_name = "access-lists"; yang_parent_name = "Cisco-IOS-XE-acl-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 AccessLists::~AccessLists()
@@ -44,26 +45,15 @@ std::string AccessLists::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-acl-oper:access-lists";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AccessLists::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AccessLists::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,7 +137,7 @@ AccessLists::AccessList::AccessList()
 {
     access_list_entries->parent = this;
 
-    yang_name = "access-list"; yang_parent_name = "access-lists";
+    yang_name = "access-list"; yang_parent_name = "access-lists"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 AccessLists::AccessList::~AccessList()
@@ -167,34 +157,27 @@ bool AccessLists::AccessList::has_operation() const
 	|| (access_list_entries !=  nullptr && access_list_entries->has_operation());
 }
 
+std::string AccessLists::AccessList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-acl-oper:access-lists/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string AccessLists::AccessList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list" <<"[access-control-list-name='" <<access_control_list_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AccessLists::AccessList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AccessLists::AccessList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-acl-oper:access-lists/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (access_control_list_name.is_set || is_set(access_control_list_name.yfilter)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -250,7 +233,8 @@ bool AccessLists::AccessList::has_leaf_or_child_of_name(const std::string & name
 
 AccessLists::AccessList::AccessListEntries::AccessListEntries()
 {
-    yang_name = "access-list-entries"; yang_parent_name = "access-list";
+
+    yang_name = "access-list-entries"; yang_parent_name = "access-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AccessLists::AccessList::AccessListEntries::~AccessListEntries()
@@ -281,29 +265,15 @@ std::string AccessLists::AccessList::AccessListEntries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-entries";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AccessLists::AccessList::AccessListEntries::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AccessLists::AccessList::AccessListEntries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessListEntries' in Cisco_IOS_XE_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -362,7 +332,7 @@ AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntry()
 {
     access_list_entries_oper_data->parent = this;
 
-    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries";
+    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AccessLists::AccessList::AccessListEntries::AccessListEntry::~AccessListEntry()
@@ -386,30 +356,16 @@ std::string AccessLists::AccessList::AccessListEntries::AccessListEntry::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-entry" <<"[rule-name='" <<rule_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AccessLists::AccessList::AccessListEntries::AccessListEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AccessLists::AccessList::AccessListEntries::AccessListEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessListEntry' in Cisco_IOS_XE_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -467,7 +423,8 @@ AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOp
     :
     match_counter{YType::uint64, "match-counter"}
 {
-    yang_name = "access-list-entries-oper-data"; yang_parent_name = "access-list-entry";
+
+    yang_name = "access-list-entries-oper-data"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::~AccessListEntriesOperData()
@@ -489,30 +446,16 @@ std::string AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessL
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-entries-oper-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessListEntriesOperData' in Cisco_IOS_XE_acl_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (match_counter.is_set || is_set(match_counter.yfilter)) leaf_name_data.push_back(match_counter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

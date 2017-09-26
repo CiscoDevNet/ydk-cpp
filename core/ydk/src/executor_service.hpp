@@ -28,11 +28,11 @@
 #ifndef EXECUTOR_SERVICE_HPP
 #define EXECUTOR_SERVICE_HPP
 
-#include <map>
 #include <memory>
-#include <string>
-#include "service.hpp"
-#include "netconf_provider.hpp"
+
+#include "path_api.hpp"
+#include "service_provider.hpp"
+
 
 namespace ydk
 {
@@ -40,18 +40,21 @@ namespace ydk
 namespace core
 {
 class DataNode;
-class ServiceProvider;
+class Session;
 }
 
 class Entity;
 
-class ExecutorService : public Service
+class ExecutorService
 {
     public:
         ExecutorService();
         ~ExecutorService();
-        std::shared_ptr<Entity> execute_rpc(NetconfServiceProvider & provider,
-            Entity & rpc_entity, std::shared_ptr<Entity> top_entity = nullptr);
+        std::shared_ptr<Entity> execute_rpc(
+            ServiceProvider & provider,
+            Entity & rpc_entity,
+            std::shared_ptr<Entity> top_entity = nullptr
+        );
 };
 
 }

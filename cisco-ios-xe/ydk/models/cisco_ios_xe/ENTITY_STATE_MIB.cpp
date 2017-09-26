@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace ENTITY_STATE_MIB {
 
-EntityStateMib::EntityStateMib()
+ENTITYSTATEMIB::ENTITYSTATEMIB()
     :
-    entstatetable(std::make_shared<EntityStateMib::Entstatetable>())
+    entstatetable(std::make_shared<ENTITYSTATEMIB::Entstatetable>())
 {
     entstatetable->parent = this;
 
-    yang_name = "ENTITY-STATE-MIB"; yang_parent_name = "ENTITY-STATE-MIB";
+    yang_name = "ENTITY-STATE-MIB"; yang_parent_name = "ENTITY-STATE-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-EntityStateMib::~EntityStateMib()
+ENTITYSTATEMIB::~ENTITYSTATEMIB()
 {
 }
 
-bool EntityStateMib::has_data() const
+bool ENTITYSTATEMIB::has_data() const
 {
     return (entstatetable !=  nullptr && entstatetable->has_data());
 }
 
-bool EntityStateMib::has_operation() const
+bool ENTITYSTATEMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (entstatetable !=  nullptr && entstatetable->has_operation());
 }
 
-std::string EntityStateMib::get_segment_path() const
+std::string ENTITYSTATEMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ENTITY-STATE-MIB:ENTITY-STATE-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EntityStateMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ENTITYSTATEMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> EntityStateMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ENTITYSTATEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entStateTable")
     {
         if(entstatetable == nullptr)
         {
-            entstatetable = std::make_shared<EntityStateMib::Entstatetable>();
+            entstatetable = std::make_shared<ENTITYSTATEMIB::Entstatetable>();
         }
         return entstatetable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> EntityStateMib::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(entstatetable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::get_children() co
     return children;
 }
 
-void EntityStateMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ENTITYSTATEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EntityStateMib::set_filter(const std::string & value_path, YFilter yfilter)
+void ENTITYSTATEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> EntityStateMib::clone_ptr() const
+std::shared_ptr<Entity> ENTITYSTATEMIB::clone_ptr() const
 {
-    return std::make_shared<EntityStateMib>();
+    return std::make_shared<ENTITYSTATEMIB>();
 }
 
-std::string EntityStateMib::get_bundle_yang_models_location() const
+std::string ENTITYSTATEMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string EntityStateMib::get_bundle_name() const
+std::string ENTITYSTATEMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function EntityStateMib::get_augment_capabilities_function() const
+augment_capabilities_function ENTITYSTATEMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> EntityStateMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> ENTITYSTATEMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool EntityStateMib::has_leaf_or_child_of_name(const std::string & name) const
+bool ENTITYSTATEMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entStateTable")
         return true;
     return false;
 }
 
-EntityStateMib::Entstatetable::Entstatetable()
+ENTITYSTATEMIB::Entstatetable::Entstatetable()
 {
-    yang_name = "entStateTable"; yang_parent_name = "ENTITY-STATE-MIB";
+
+    yang_name = "entStateTable"; yang_parent_name = "ENTITY-STATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-EntityStateMib::Entstatetable::~Entstatetable()
+ENTITYSTATEMIB::Entstatetable::~Entstatetable()
 {
 }
 
-bool EntityStateMib::Entstatetable::has_data() const
+bool ENTITYSTATEMIB::Entstatetable::has_data() const
 {
     for (std::size_t index=0; index<entstateentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool EntityStateMib::Entstatetable::has_data() const
     return false;
 }
 
-bool EntityStateMib::Entstatetable::has_operation() const
+bool ENTITYSTATEMIB::Entstatetable::has_operation() const
 {
     for (std::size_t index=0; index<entstateentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool EntityStateMib::Entstatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EntityStateMib::Entstatetable::get_segment_path() const
+std::string ENTITYSTATEMIB::Entstatetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ENTITY-STATE-MIB:ENTITY-STATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ENTITYSTATEMIB::Entstatetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "entStateTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EntityStateMib::Entstatetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ENTITYSTATEMIB::Entstatetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ENTITY-STATE-MIB:ENTITY-STATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ENTITYSTATEMIB::Entstatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entStateEntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const s
                 return c;
             }
         }
-        auto c = std::make_shared<EntityStateMib::Entstatetable::Entstateentry>();
+        auto c = std::make_shared<ENTITYSTATEMIB::Entstatetable::Entstateentry>();
         c->parent = this;
         entstateentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> EntityStateMib::Entstatetable::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::Entstatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::Entstatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : entstateentry)
@@ -218,22 +201,22 @@ std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::Entstatetable::ge
     return children;
 }
 
-void EntityStateMib::Entstatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ENTITYSTATEMIB::Entstatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EntityStateMib::Entstatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void ENTITYSTATEMIB::Entstatetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EntityStateMib::Entstatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool ENTITYSTATEMIB::Entstatetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entStateEntry")
         return true;
     return false;
 }
 
-EntityStateMib::Entstatetable::Entstateentry::Entstateentry()
+ENTITYSTATEMIB::Entstatetable::Entstateentry::Entstateentry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     entstateadmin{YType::enumeration, "entStateAdmin"},
@@ -243,14 +226,15 @@ EntityStateMib::Entstatetable::Entstateentry::Entstateentry()
     entstatestandby{YType::enumeration, "entStateStandby"},
     entstateusage{YType::enumeration, "entStateUsage"}
 {
-    yang_name = "entStateEntry"; yang_parent_name = "entStateTable";
+
+    yang_name = "entStateEntry"; yang_parent_name = "entStateTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-EntityStateMib::Entstatetable::Entstateentry::~Entstateentry()
+ENTITYSTATEMIB::Entstatetable::Entstateentry::~Entstateentry()
 {
 }
 
-bool EntityStateMib::Entstatetable::Entstateentry::has_data() const
+bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_data() const
 {
     return entphysicalindex.is_set
 	|| entstateadmin.is_set
@@ -261,7 +245,7 @@ bool EntityStateMib::Entstatetable::Entstateentry::has_data() const
 	|| entstateusage.is_set;
 }
 
-bool EntityStateMib::Entstatetable::Entstateentry::has_operation() const
+bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -273,27 +257,22 @@ bool EntityStateMib::Entstatetable::Entstateentry::has_operation() const
 	|| ydk::is_set(entstateusage.yfilter);
 }
 
-std::string EntityStateMib::Entstatetable::Entstateentry::get_segment_path() const
+std::string ENTITYSTATEMIB::Entstatetable::Entstateentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ENTITY-STATE-MIB:ENTITY-STATE-MIB/entStateTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ENTITYSTATEMIB::Entstatetable::Entstateentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "entStateEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EntityStateMib::Entstatetable::Entstateentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ENTITYSTATEMIB::Entstatetable::Entstateentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ENTITY-STATE-MIB:ENTITY-STATE-MIB/entStateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
@@ -304,24 +283,22 @@ const EntityPath EntityStateMib::Entstatetable::Entstateentry::get_entity_path(E
     if (entstatestandby.is_set || is_set(entstatestandby.yfilter)) leaf_name_data.push_back(entstatestandby.get_name_leafdata());
     if (entstateusage.is_set || is_set(entstateusage.yfilter)) leaf_name_data.push_back(entstateusage.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> EntityStateMib::Entstatetable::Entstateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ENTITYSTATEMIB::Entstatetable::Entstateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityStateMib::Entstatetable::Entstateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::Entstatetable::Entstateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityStateMib::Entstatetable::Entstateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ENTITYSTATEMIB::Entstatetable::Entstateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -365,7 +342,7 @@ void EntityStateMib::Entstatetable::Entstateentry::set_value(const std::string &
     }
 }
 
-void EntityStateMib::Entstatetable::Entstateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void ENTITYSTATEMIB::Entstatetable::Entstateentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -397,7 +374,7 @@ void EntityStateMib::Entstatetable::Entstateentry::set_filter(const std::string 
     }
 }
 
-bool EntityStateMib::Entstatetable::Entstateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool ENTITYSTATEMIB::Entstatetable::Entstateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "entStateAdmin" || name == "entStateAlarm" || name == "entStateLastChanged" || name == "entStateOper" || name == "entStateStandby" || name == "entStateUsage")
         return true;

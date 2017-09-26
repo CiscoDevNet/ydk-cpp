@@ -17,7 +17,7 @@ Ppp::Ppp()
 {
     nodes->parent = this;
 
-    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-oper";
+    yang_name = "ppp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ppp::~Ppp()
@@ -39,26 +39,15 @@ std::string Ppp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ppp-ma-oper:ppp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Ppp::has_leaf_or_child_of_name(const std::string & name) const
 
 Ppp::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "ppp";
+
+    yang_name = "nodes"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ppp::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Ppp::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ppp::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ma-oper:ppp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ppp::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ma-oper:ppp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -246,20 +229,14 @@ Ppp::Nodes::Node::Node()
 	,summary(std::make_shared<Ppp::Nodes::Node::Summary>())
 {
     node_interface_statistics->parent = this;
-
     node_interfaces->parent = this;
-
     sso_alerts->parent = this;
-
     sso_groups->parent = this;
-
     sso_summary->parent = this;
-
     statistics->parent = this;
-
     summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ppp::Nodes::Node::~Node()
@@ -291,34 +268,27 @@ bool Ppp::Nodes::Node::has_operation() const
 	|| (summary !=  nullptr && summary->has_operation());
 }
 
+std::string Ppp::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ma-oper:ppp/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ppp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ma-oper:ppp/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -456,34 +426,129 @@ bool Ppp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Ppp::Nodes::Node::Statistics::Statistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistics()
+{
+
+    yang_name = "node-interface-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::NodeInterfaceStatistics::~NodeInterfaceStatistics()
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_data() const
+{
+    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
+    {
+        if(node_interface_statistic[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_operation() const
+{
+    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
+    {
+        if(node_interface_statistic[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ppp::Nodes::Node::NodeInterfaceStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-interface-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaceStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node-interface-statistic")
+    {
+        for(auto const & c : node_interface_statistic)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic>();
+        c->parent = this;
+        node_interface_statistic.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : node_interface_statistic)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-interface-statistic")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NodeInterfaceStatistic()
     :
-    authentication_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>())
-	,lcp_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::LcpStatistics>())
+    interface_name{YType::str, "interface-name"}
+    	,
+    authentication_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>())
+	,lcp_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics>())
 {
     authentication_statistics->parent = this;
-
     lcp_statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node";
+    yang_name = "node-interface-statistic"; yang_parent_name = "node-interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::Statistics::~Statistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::~NodeInterfaceStatistic()
 {
 }
 
-bool Ppp::Nodes::Node::Statistics::has_data() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_data() const
 {
     for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
     {
         if(ncp_statistics_array[index]->has_data())
             return true;
     }
-    return (authentication_statistics !=  nullptr && authentication_statistics->has_data())
+    return interface_name.is_set
+	|| (authentication_statistics !=  nullptr && authentication_statistics->has_data())
 	|| (lcp_statistics !=  nullptr && lcp_statistics->has_data());
 }
 
-bool Ppp::Nodes::Node::Statistics::has_operation() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_operation() const
 {
     for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
     {
@@ -491,47 +556,35 @@ bool Ppp::Nodes::Node::Statistics::has_operation() const
             return true;
     }
     return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (authentication_statistics !=  nullptr && authentication_statistics->has_operation())
 	|| (lcp_statistics !=  nullptr && lcp_statistics->has_operation());
 }
 
-std::string Ppp::Nodes::Node::Statistics::get_segment_path() const
+std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistics";
-
+    path_buffer << "node-interface-statistic" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-statistics")
     {
         if(authentication_statistics == nullptr)
         {
-            authentication_statistics = std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>();
+            authentication_statistics = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>();
         }
         return authentication_statistics;
     }
@@ -540,7 +593,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const st
     {
         if(lcp_statistics == nullptr)
         {
-            lcp_statistics = std::make_shared<Ppp::Nodes::Node::Statistics::LcpStatistics>();
+            lcp_statistics = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics>();
         }
         return lcp_statistics;
     }
@@ -555,7 +608,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<Ppp::Nodes::Node::Statistics::NcpStatisticsArray>();
+        auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray>();
         c->parent = this;
         ncp_statistics_array.push_back(c);
         return c;
@@ -564,7 +617,7 @@ std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(authentication_statistics != nullptr)
@@ -585,60 +638,333 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::get
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Ppp::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
 }
 
-bool Ppp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array")
+    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array" || name == "interface-name")
         return true;
     return false;
 }
 
-Ppp::Nodes::Node::Statistics::LcpStatistics::LcpStatistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::AuthenticationStatistics()
     :
-    code_rej_rcvd{YType::uint64, "code-rej-rcvd"},
-    code_rej_sent{YType::uint64, "code-rej-sent"},
-    conf_ack_rcvd{YType::uint64, "conf-ack-rcvd"},
-    conf_ack_sent{YType::uint64, "conf-ack-sent"},
-    conf_nak_rcvd{YType::uint64, "conf-nak-rcvd"},
-    conf_nak_sent{YType::uint64, "conf-nak-sent"},
-    conf_rej_rcvd{YType::uint64, "conf-rej-rcvd"},
-    conf_rej_sent{YType::uint64, "conf-rej-sent"},
-    conf_req_rcvd{YType::uint64, "conf-req-rcvd"},
-    conf_req_sent{YType::uint64, "conf-req-sent"},
-    disc_req_rcvd{YType::uint64, "disc-req-rcvd"},
-    disc_req_sent{YType::uint64, "disc-req-sent"},
-    echo_rep_rcvd{YType::uint64, "echo-rep-rcvd"},
-    echo_rep_sent{YType::uint64, "echo-rep-sent"},
-    echo_req_rcvd{YType::uint64, "echo-req-rcvd"},
-    echo_req_sent{YType::uint64, "echo-req-sent"},
-    link_error{YType::uint64, "link-error"},
-    link_up{YType::uint64, "link-up"},
-    proto_rej_rcvd{YType::uint64, "proto-rej-rcvd"},
-    proto_rej_sent{YType::uint64, "proto-rej-sent"},
-    term_ack_rcvd{YType::uint64, "term-ack-rcvd"},
-    term_ack_sent{YType::uint64, "term-ack-sent"},
-    term_req_rcvd{YType::uint64, "term-req-rcvd"},
-    term_req_sent{YType::uint64, "term-req-sent"}
+    auth_timeout_count{YType::uint16, "auth-timeout-count"},
+    chap_chall_rcvd{YType::uint16, "chap-chall-rcvd"},
+    chap_chall_sent{YType::uint16, "chap-chall-sent"},
+    chap_rep_fail_rcvd{YType::uint16, "chap-rep-fail-rcvd"},
+    chap_rep_fail_sent{YType::uint16, "chap-rep-fail-sent"},
+    chap_rep_succ_rcvd{YType::uint16, "chap-rep-succ-rcvd"},
+    chap_rep_succ_sent{YType::uint16, "chap-rep-succ-sent"},
+    chap_resp_rcvd{YType::uint16, "chap-resp-rcvd"},
+    chap_resp_sent{YType::uint16, "chap-resp-sent"},
+    pap_ack_rcvd{YType::uint16, "pap-ack-rcvd"},
+    pap_ack_sent{YType::uint16, "pap-ack-sent"},
+    pap_nak_rcvd{YType::uint16, "pap-nak-rcvd"},
+    pap_nak_sent{YType::uint16, "pap-nak-sent"},
+    pap_req_rcvd{YType::uint16, "pap-req-rcvd"},
+    pap_req_sent{YType::uint16, "pap-req-sent"}
 {
-    yang_name = "lcp-statistics"; yang_parent_name = "statistics";
+
+    yang_name = "authentication-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::Statistics::LcpStatistics::~LcpStatistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::~AuthenticationStatistics()
 {
 }
 
-bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_data() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_data() const
 {
-    return code_rej_rcvd.is_set
-	|| code_rej_sent.is_set
-	|| conf_ack_rcvd.is_set
+    return auth_timeout_count.is_set
+	|| chap_chall_rcvd.is_set
+	|| chap_chall_sent.is_set
+	|| chap_rep_fail_rcvd.is_set
+	|| chap_rep_fail_sent.is_set
+	|| chap_rep_succ_rcvd.is_set
+	|| chap_rep_succ_sent.is_set
+	|| chap_resp_rcvd.is_set
+	|| chap_resp_sent.is_set
+	|| pap_ack_rcvd.is_set
+	|| pap_ack_sent.is_set
+	|| pap_nak_rcvd.is_set
+	|| pap_nak_sent.is_set
+	|| pap_req_rcvd.is_set
+	|| pap_req_sent.is_set;
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auth_timeout_count.yfilter)
+	|| ydk::is_set(chap_chall_rcvd.yfilter)
+	|| ydk::is_set(chap_chall_sent.yfilter)
+	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_fail_sent.yfilter)
+	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_succ_sent.yfilter)
+	|| ydk::is_set(chap_resp_rcvd.yfilter)
+	|| ydk::is_set(chap_resp_sent.yfilter)
+	|| ydk::is_set(pap_ack_rcvd.yfilter)
+	|| ydk::is_set(pap_ack_sent.yfilter)
+	|| ydk::is_set(pap_nak_rcvd.yfilter)
+	|| ydk::is_set(pap_nak_sent.yfilter)
+	|| ydk::is_set(pap_req_rcvd.yfilter)
+	|| ydk::is_set(pap_req_sent.yfilter);
+}
+
+std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
+    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
+    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
+    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
+    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
+    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
+    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
+    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
+    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
+    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
+    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
+    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
+    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
+    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
+    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count = value;
+        auth_timeout_count.value_namespace = name_space;
+        auth_timeout_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd = value;
+        chap_chall_rcvd.value_namespace = name_space;
+        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent = value;
+        chap_chall_sent.value_namespace = name_space;
+        chap_chall_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd = value;
+        chap_rep_fail_rcvd.value_namespace = name_space;
+        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent = value;
+        chap_rep_fail_sent.value_namespace = name_space;
+        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd = value;
+        chap_rep_succ_rcvd.value_namespace = name_space;
+        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent = value;
+        chap_rep_succ_sent.value_namespace = name_space;
+        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd = value;
+        chap_resp_rcvd.value_namespace = name_space;
+        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent = value;
+        chap_resp_sent.value_namespace = name_space;
+        chap_resp_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd = value;
+        pap_ack_rcvd.value_namespace = name_space;
+        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent = value;
+        pap_ack_sent.value_namespace = name_space;
+        pap_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd = value;
+        pap_nak_rcvd.value_namespace = name_space;
+        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent = value;
+        pap_nak_sent.value_namespace = name_space;
+        pap_nak_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd = value;
+        pap_req_rcvd.value_namespace = name_space;
+        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent = value;
+        pap_req_sent.value_namespace = name_space;
+        pap_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::LcpStatistics()
+    :
+    conf_ack_rcvd{YType::uint16, "conf-ack-rcvd"},
+    conf_ack_sent{YType::uint16, "conf-ack-sent"},
+    conf_nak_rcvd{YType::uint16, "conf-nak-rcvd"},
+    conf_nak_sent{YType::uint16, "conf-nak-sent"},
+    conf_rej_rcvd{YType::uint16, "conf-rej-rcvd"},
+    conf_rej_sent{YType::uint16, "conf-rej-sent"},
+    conf_req_rcvd{YType::uint16, "conf-req-rcvd"},
+    conf_req_sent{YType::uint16, "conf-req-sent"},
+    disc_req_rcvd{YType::uint16, "disc-req-rcvd"},
+    disc_req_sent{YType::uint16, "disc-req-sent"},
+    echo_rep_rcvd{YType::uint16, "echo-rep-rcvd"},
+    echo_rep_sent{YType::uint16, "echo-rep-sent"},
+    echo_req_rcvd{YType::uint16, "echo-req-rcvd"},
+    echo_req_sent{YType::uint16, "echo-req-sent"},
+    link_error{YType::uint16, "link-error"},
+    link_up{YType::uint16, "link-up"}
+{
+
+    yang_name = "lcp-statistics"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::~LcpStatistics()
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_data() const
+{
+    return conf_ack_rcvd.is_set
 	|| conf_ack_sent.is_set
 	|| conf_nak_rcvd.is_set
 	|| conf_nak_sent.is_set
@@ -653,20 +979,12 @@ bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_data() const
 	|| echo_req_rcvd.is_set
 	|| echo_req_sent.is_set
 	|| link_error.is_set
-	|| link_up.is_set
-	|| proto_rej_rcvd.is_set
-	|| proto_rej_sent.is_set
-	|| term_ack_rcvd.is_set
-	|| term_ack_sent.is_set
-	|| term_req_rcvd.is_set
-	|| term_req_sent.is_set;
+	|| link_up.is_set;
 }
 
-bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_operation() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(code_rej_rcvd.yfilter)
-	|| ydk::is_set(code_rej_sent.yfilter)
 	|| ydk::is_set(conf_ack_rcvd.yfilter)
 	|| ydk::is_set(conf_ack_sent.yfilter)
 	|| ydk::is_set(conf_nak_rcvd.yfilter)
@@ -682,40 +1000,20 @@ bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_operation() const
 	|| ydk::is_set(echo_req_rcvd.yfilter)
 	|| ydk::is_set(echo_req_sent.yfilter)
 	|| ydk::is_set(link_error.yfilter)
-	|| ydk::is_set(link_up.yfilter)
-	|| ydk::is_set(proto_rej_rcvd.yfilter)
-	|| ydk::is_set(proto_rej_sent.yfilter)
-	|| ydk::is_set(term_ack_rcvd.yfilter)
-	|| ydk::is_set(term_ack_sent.yfilter)
-	|| ydk::is_set(term_req_rcvd.yfilter)
-	|| ydk::is_set(term_req_sent.yfilter);
+	|| ydk::is_set(link_up.yfilter);
 }
 
-std::string Ppp::Nodes::Node::Statistics::LcpStatistics::get_segment_path() const
+std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lcp-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Statistics::LcpStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpStatistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (code_rej_rcvd.is_set || is_set(code_rej_rcvd.yfilter)) leaf_name_data.push_back(code_rej_rcvd.get_name_leafdata());
-    if (code_rej_sent.is_set || is_set(code_rej_sent.yfilter)) leaf_name_data.push_back(code_rej_sent.get_name_leafdata());
     if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
     if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
     if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
@@ -732,44 +1030,24 @@ const EntityPath Ppp::Nodes::Node::Statistics::LcpStatistics::get_entity_path(En
     if (echo_req_sent.is_set || is_set(echo_req_sent.yfilter)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
     if (link_error.is_set || is_set(link_error.yfilter)) leaf_name_data.push_back(link_error.get_name_leafdata());
     if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
-    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
-    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
-    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
-    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
-    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
-    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::LcpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::LcpStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "code-rej-rcvd")
-    {
-        code_rej_rcvd = value;
-        code_rej_rcvd.value_namespace = name_space;
-        code_rej_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "code-rej-sent")
-    {
-        code_rej_sent = value;
-        code_rej_sent.value_namespace = name_space;
-        code_rej_sent.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd = value;
@@ -866,54 +1144,10 @@ void Ppp::Nodes::Node::Statistics::LcpStatistics::set_value(const std::string & 
         link_up.value_namespace = name_space;
         link_up.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "proto-rej-rcvd")
-    {
-        proto_rej_rcvd = value;
-        proto_rej_rcvd.value_namespace = name_space;
-        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "proto-rej-sent")
-    {
-        proto_rej_sent = value;
-        proto_rej_sent.value_namespace = name_space;
-        proto_rej_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-ack-rcvd")
-    {
-        term_ack_rcvd = value;
-        term_ack_rcvd.value_namespace = name_space;
-        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-ack-sent")
-    {
-        term_ack_sent = value;
-        term_ack_sent.value_namespace = name_space;
-        term_ack_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-req-rcvd")
-    {
-        term_req_rcvd = value;
-        term_req_rcvd.value_namespace = name_space;
-        term_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-req-sent")
-    {
-        term_req_sent = value;
-        term_req_sent.value_namespace = name_space;
-        term_req_sent.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Ppp::Nodes::Node::Statistics::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "code-rej-rcvd")
-    {
-        code_rej_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "code-rej-sent")
-    {
-        code_rej_sent.yfilter = yfilter;
-    }
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd.yfilter = yfilter;
@@ -978,350 +1212,36 @@ void Ppp::Nodes::Node::Statistics::LcpStatistics::set_filter(const std::string &
     {
         link_up.yfilter = yfilter;
     }
-    if(value_path == "proto-rej-rcvd")
-    {
-        proto_rej_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "proto-rej-sent")
-    {
-        proto_rej_sent.yfilter = yfilter;
-    }
-    if(value_path == "term-ack-rcvd")
-    {
-        term_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "term-ack-sent")
-    {
-        term_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "term-req-rcvd")
-    {
-        term_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "term-req-sent")
-    {
-        term_req_sent.yfilter = yfilter;
-    }
 }
 
-bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "code-rej-rcvd" || name == "code-rej-sent" || name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up")
         return true;
     return false;
 }
 
-Ppp::Nodes::Node::Statistics::AuthenticationStatistics::AuthenticationStatistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::NcpStatisticsArray()
     :
-    auth_timeout_count{YType::uint64, "auth-timeout-count"},
-    chap_chall_rcvd{YType::uint64, "chap-chall-rcvd"},
-    chap_chall_sent{YType::uint64, "chap-chall-sent"},
-    chap_rep_fail_rcvd{YType::uint64, "chap-rep-fail-rcvd"},
-    chap_rep_fail_sent{YType::uint64, "chap-rep-fail-sent"},
-    chap_rep_succ_rcvd{YType::uint64, "chap-rep-succ-rcvd"},
-    chap_rep_succ_sent{YType::uint64, "chap-rep-succ-sent"},
-    chap_resp_rcvd{YType::uint64, "chap-resp-rcvd"},
-    chap_resp_sent{YType::uint64, "chap-resp-sent"},
-    pap_ack_rcvd{YType::uint64, "pap-ack-rcvd"},
-    pap_ack_sent{YType::uint64, "pap-ack-sent"},
-    pap_nak_rcvd{YType::uint64, "pap-nak-rcvd"},
-    pap_nak_sent{YType::uint64, "pap-nak-sent"},
-    pap_req_rcvd{YType::uint64, "pap-req-rcvd"},
-    pap_req_sent{YType::uint64, "pap-req-sent"}
+    conf_ack_rcvd{YType::uint16, "conf-ack-rcvd"},
+    conf_ack_sent{YType::uint16, "conf-ack-sent"},
+    conf_nak_rcvd{YType::uint16, "conf-nak-rcvd"},
+    conf_nak_sent{YType::uint16, "conf-nak-sent"},
+    conf_rej_rcvd{YType::uint16, "conf-rej-rcvd"},
+    conf_rej_sent{YType::uint16, "conf-rej-sent"},
+    conf_req_rcvd{YType::uint16, "conf-req-rcvd"},
+    conf_req_sent{YType::uint16, "conf-req-sent"},
+    ncp_identifier{YType::enumeration, "ncp-identifier"}
 {
-    yang_name = "authentication-statistics"; yang_parent_name = "statistics";
+
+    yang_name = "ncp-statistics-array"; yang_parent_name = "node-interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::Statistics::AuthenticationStatistics::~AuthenticationStatistics()
+Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::~NcpStatisticsArray()
 {
 }
 
-bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_data() const
-{
-    return auth_timeout_count.is_set
-	|| chap_chall_rcvd.is_set
-	|| chap_chall_sent.is_set
-	|| chap_rep_fail_rcvd.is_set
-	|| chap_rep_fail_sent.is_set
-	|| chap_rep_succ_rcvd.is_set
-	|| chap_rep_succ_sent.is_set
-	|| chap_resp_rcvd.is_set
-	|| chap_resp_sent.is_set
-	|| pap_ack_rcvd.is_set
-	|| pap_ack_sent.is_set
-	|| pap_nak_rcvd.is_set
-	|| pap_nak_sent.is_set
-	|| pap_req_rcvd.is_set
-	|| pap_req_sent.is_set;
-}
-
-bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auth_timeout_count.yfilter)
-	|| ydk::is_set(chap_chall_rcvd.yfilter)
-	|| ydk::is_set(chap_chall_sent.yfilter)
-	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
-	|| ydk::is_set(chap_rep_fail_sent.yfilter)
-	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
-	|| ydk::is_set(chap_rep_succ_sent.yfilter)
-	|| ydk::is_set(chap_resp_rcvd.yfilter)
-	|| ydk::is_set(chap_resp_sent.yfilter)
-	|| ydk::is_set(pap_ack_rcvd.yfilter)
-	|| ydk::is_set(pap_ack_sent.yfilter)
-	|| ydk::is_set(pap_nak_rcvd.yfilter)
-	|| ydk::is_set(pap_nak_sent.yfilter)
-	|| ydk::is_set(pap_req_rcvd.yfilter)
-	|| ydk::is_set(pap_req_sent.yfilter);
-}
-
-std::string Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticationStatistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
-    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
-    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
-    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
-    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
-    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
-    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
-    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
-    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
-    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
-    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
-    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
-    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
-    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
-    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auth-timeout-count")
-    {
-        auth_timeout_count = value;
-        auth_timeout_count.value_namespace = name_space;
-        auth_timeout_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-chall-rcvd")
-    {
-        chap_chall_rcvd = value;
-        chap_chall_rcvd.value_namespace = name_space;
-        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-chall-sent")
-    {
-        chap_chall_sent = value;
-        chap_chall_sent.value_namespace = name_space;
-        chap_chall_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-fail-rcvd")
-    {
-        chap_rep_fail_rcvd = value;
-        chap_rep_fail_rcvd.value_namespace = name_space;
-        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-fail-sent")
-    {
-        chap_rep_fail_sent = value;
-        chap_rep_fail_sent.value_namespace = name_space;
-        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-succ-rcvd")
-    {
-        chap_rep_succ_rcvd = value;
-        chap_rep_succ_rcvd.value_namespace = name_space;
-        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-succ-sent")
-    {
-        chap_rep_succ_sent = value;
-        chap_rep_succ_sent.value_namespace = name_space;
-        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-resp-rcvd")
-    {
-        chap_resp_rcvd = value;
-        chap_resp_rcvd.value_namespace = name_space;
-        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-resp-sent")
-    {
-        chap_resp_sent = value;
-        chap_resp_sent.value_namespace = name_space;
-        chap_resp_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-ack-rcvd")
-    {
-        pap_ack_rcvd = value;
-        pap_ack_rcvd.value_namespace = name_space;
-        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-ack-sent")
-    {
-        pap_ack_sent = value;
-        pap_ack_sent.value_namespace = name_space;
-        pap_ack_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-nak-rcvd")
-    {
-        pap_nak_rcvd = value;
-        pap_nak_rcvd.value_namespace = name_space;
-        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-nak-sent")
-    {
-        pap_nak_sent = value;
-        pap_nak_sent.value_namespace = name_space;
-        pap_nak_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-req-rcvd")
-    {
-        pap_req_rcvd = value;
-        pap_req_rcvd.value_namespace = name_space;
-        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-req-sent")
-    {
-        pap_req_sent = value;
-        pap_req_sent.value_namespace = name_space;
-        pap_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auth-timeout-count")
-    {
-        auth_timeout_count.yfilter = yfilter;
-    }
-    if(value_path == "chap-chall-rcvd")
-    {
-        chap_chall_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-chall-sent")
-    {
-        chap_chall_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-fail-rcvd")
-    {
-        chap_rep_fail_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-fail-sent")
-    {
-        chap_rep_fail_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-succ-rcvd")
-    {
-        chap_rep_succ_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-succ-sent")
-    {
-        chap_rep_succ_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-resp-rcvd")
-    {
-        chap_resp_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-resp-sent")
-    {
-        chap_resp_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-ack-rcvd")
-    {
-        pap_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-ack-sent")
-    {
-        pap_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-nak-rcvd")
-    {
-        pap_nak_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-nak-sent")
-    {
-        pap_nak_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-req-rcvd")
-    {
-        pap_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-req-sent")
-    {
-        pap_req_sent.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::Statistics::NcpStatisticsArray::NcpStatisticsArray()
-    :
-    conf_ack_rcvd{YType::uint64, "conf-ack-rcvd"},
-    conf_ack_sent{YType::uint64, "conf-ack-sent"},
-    conf_nak_rcvd{YType::uint64, "conf-nak-rcvd"},
-    conf_nak_sent{YType::uint64, "conf-nak-sent"},
-    conf_rej_rcvd{YType::uint64, "conf-rej-rcvd"},
-    conf_rej_sent{YType::uint64, "conf-rej-sent"},
-    conf_req_rcvd{YType::uint64, "conf-req-rcvd"},
-    conf_req_sent{YType::uint64, "conf-req-sent"},
-    ncp_identifier{YType::enumeration, "ncp-identifier"},
-    proto_rej_rcvd{YType::uint64, "proto-rej-rcvd"},
-    proto_rej_sent{YType::uint64, "proto-rej-sent"},
-    term_ack_rcvd{YType::uint64, "term-ack-rcvd"},
-    term_ack_sent{YType::uint64, "term-ack-sent"},
-    term_req_rcvd{YType::uint64, "term-req-rcvd"},
-    term_req_sent{YType::uint64, "term-req-sent"}
-{
-    yang_name = "ncp-statistics-array"; yang_parent_name = "statistics";
-}
-
-Ppp::Nodes::Node::Statistics::NcpStatisticsArray::~NcpStatisticsArray()
-{
-}
-
-bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_data() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_data() const
 {
     return conf_ack_rcvd.is_set
 	|| conf_ack_sent.is_set
@@ -1331,16 +1251,10 @@ bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_data() const
 	|| conf_rej_sent.is_set
 	|| conf_req_rcvd.is_set
 	|| conf_req_sent.is_set
-	|| ncp_identifier.is_set
-	|| proto_rej_rcvd.is_set
-	|| proto_rej_sent.is_set
-	|| term_ack_rcvd.is_set
-	|| term_ack_sent.is_set
-	|| term_req_rcvd.is_set
-	|| term_req_sent.is_set;
+	|| ncp_identifier.is_set;
 }
 
-bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_operation() const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(conf_ack_rcvd.yfilter)
@@ -1351,36 +1265,18 @@ bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_operation() const
 	|| ydk::is_set(conf_rej_sent.yfilter)
 	|| ydk::is_set(conf_req_rcvd.yfilter)
 	|| ydk::is_set(conf_req_sent.yfilter)
-	|| ydk::is_set(ncp_identifier.yfilter)
-	|| ydk::is_set(proto_rej_rcvd.yfilter)
-	|| ydk::is_set(proto_rej_sent.yfilter)
-	|| ydk::is_set(term_ack_rcvd.yfilter)
-	|| ydk::is_set(term_ack_sent.yfilter)
-	|| ydk::is_set(term_req_rcvd.yfilter)
-	|| ydk::is_set(term_req_sent.yfilter);
+	|| ydk::is_set(ncp_identifier.yfilter);
 }
 
-std::string Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_segment_path() const
+std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-statistics-array";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NcpStatisticsArray' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
@@ -1392,31 +1288,23 @@ const EntityPath Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_entity_pa
     if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
     if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
     if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
-    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
-    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
-    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
-    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
-    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conf-ack-rcvd")
     {
@@ -1472,45 +1360,9 @@ void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_value(const std::stri
         ncp_identifier.value_namespace = name_space;
         ncp_identifier.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "proto-rej-rcvd")
-    {
-        proto_rej_rcvd = value;
-        proto_rej_rcvd.value_namespace = name_space;
-        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "proto-rej-sent")
-    {
-        proto_rej_sent = value;
-        proto_rej_sent.value_namespace = name_space;
-        proto_rej_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-ack-rcvd")
-    {
-        term_ack_rcvd = value;
-        term_ack_rcvd.value_namespace = name_space;
-        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-ack-sent")
-    {
-        term_ack_sent = value;
-        term_ack_sent.value_namespace = name_space;
-        term_ack_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-req-rcvd")
-    {
-        term_req_rcvd = value;
-        term_req_rcvd.value_namespace = name_space;
-        term_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "term-req-sent")
-    {
-        term_req_sent = value;
-        term_req_sent.value_namespace = name_space;
-        term_req_sent.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "conf-ack-rcvd")
     {
@@ -1548,42 +1400,19 @@ void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_filter(const std::str
     {
         ncp_identifier.yfilter = yfilter;
     }
-    if(value_path == "proto-rej-rcvd")
-    {
-        proto_rej_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "proto-rej-sent")
-    {
-        proto_rej_sent.yfilter = yfilter;
-    }
-    if(value_path == "term-ack-rcvd")
-    {
-        term_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "term-ack-sent")
-    {
-        term_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "term-req-rcvd")
-    {
-        term_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "term-req-sent")
-    {
-        term_req_sent.yfilter = yfilter;
-    }
 }
 
-bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier")
         return true;
     return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterfaces()
 {
-    yang_name = "node-interfaces"; yang_parent_name = "node";
+
+    yang_name = "node-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::~NodeInterfaces()
@@ -1614,29 +1443,15 @@ std::string Ppp::Nodes::Node::NodeInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NodeInterfaces' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1723,12 +1538,10 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NodeInterface()
 	,mp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo>())
 {
     auth_info->parent = this;
-
     configured_timeout->parent = this;
-
     mp_info->parent = this;
 
-    yang_name = "node-interface"; yang_parent_name = "node-interfaces";
+    yang_name = "node-interface"; yang_parent_name = "node-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::~NodeInterface()
@@ -1820,23 +1633,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "node-interface" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NodeInterface' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
@@ -1868,9 +1669,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_entity_pat
     if (ssrp_peer_id.is_set || is_set(ssrp_peer_id.yfilter)) leaf_name_data.push_back(ssrp_peer_id.get_name_leafdata());
     if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2243,6 +2042,270 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_leaf_or_child_of_name(
     return false;
 }
 
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::AuthInfo()
+    :
+    is_authenticated{YType::boolean, "is-authenticated"},
+    is_sso_authenticated{YType::boolean, "is-sso-authenticated"},
+    of_peer_auth{YType::uint8, "of-peer-auth"},
+    of_peer_name{YType::str, "of-peer-name"},
+    of_peer_sso_state{YType::enumeration, "of-peer-sso-state"},
+    of_us_auth{YType::uint8, "of-us-auth"},
+    of_us_name{YType::str, "of-us-name"},
+    of_us_sso_state{YType::enumeration, "of-us-sso-state"}
+{
+
+    yang_name = "auth-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::~AuthInfo()
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_data() const
+{
+    return is_authenticated.is_set
+	|| is_sso_authenticated.is_set
+	|| of_peer_auth.is_set
+	|| of_peer_name.is_set
+	|| of_peer_sso_state.is_set
+	|| of_us_auth.is_set
+	|| of_us_name.is_set
+	|| of_us_sso_state.is_set;
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_authenticated.yfilter)
+	|| ydk::is_set(is_sso_authenticated.yfilter)
+	|| ydk::is_set(of_peer_auth.yfilter)
+	|| ydk::is_set(of_peer_name.yfilter)
+	|| ydk::is_set(of_peer_sso_state.yfilter)
+	|| ydk::is_set(of_us_auth.yfilter)
+	|| ydk::is_set(of_us_name.yfilter)
+	|| ydk::is_set(of_us_sso_state.yfilter);
+}
+
+std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auth-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_authenticated.is_set || is_set(is_authenticated.yfilter)) leaf_name_data.push_back(is_authenticated.get_name_leafdata());
+    if (is_sso_authenticated.is_set || is_set(is_sso_authenticated.yfilter)) leaf_name_data.push_back(is_sso_authenticated.get_name_leafdata());
+    if (of_peer_auth.is_set || is_set(of_peer_auth.yfilter)) leaf_name_data.push_back(of_peer_auth.get_name_leafdata());
+    if (of_peer_name.is_set || is_set(of_peer_name.yfilter)) leaf_name_data.push_back(of_peer_name.get_name_leafdata());
+    if (of_peer_sso_state.is_set || is_set(of_peer_sso_state.yfilter)) leaf_name_data.push_back(of_peer_sso_state.get_name_leafdata());
+    if (of_us_auth.is_set || is_set(of_us_auth.yfilter)) leaf_name_data.push_back(of_us_auth.get_name_leafdata());
+    if (of_us_name.is_set || is_set(of_us_name.yfilter)) leaf_name_data.push_back(of_us_name.get_name_leafdata());
+    if (of_us_sso_state.is_set || is_set(of_us_sso_state.yfilter)) leaf_name_data.push_back(of_us_sso_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-authenticated")
+    {
+        is_authenticated = value;
+        is_authenticated.value_namespace = name_space;
+        is_authenticated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-sso-authenticated")
+    {
+        is_sso_authenticated = value;
+        is_sso_authenticated.value_namespace = name_space;
+        is_sso_authenticated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-peer-auth")
+    {
+        of_peer_auth = value;
+        of_peer_auth.value_namespace = name_space;
+        of_peer_auth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-peer-name")
+    {
+        of_peer_name = value;
+        of_peer_name.value_namespace = name_space;
+        of_peer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-peer-sso-state")
+    {
+        of_peer_sso_state = value;
+        of_peer_sso_state.value_namespace = name_space;
+        of_peer_sso_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-us-auth")
+    {
+        of_us_auth = value;
+        of_us_auth.value_namespace = name_space;
+        of_us_auth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-us-name")
+    {
+        of_us_name = value;
+        of_us_name.value_namespace = name_space;
+        of_us_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "of-us-sso-state")
+    {
+        of_us_sso_state = value;
+        of_us_sso_state.value_namespace = name_space;
+        of_us_sso_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-authenticated")
+    {
+        is_authenticated.yfilter = yfilter;
+    }
+    if(value_path == "is-sso-authenticated")
+    {
+        is_sso_authenticated.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-auth")
+    {
+        of_peer_auth.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-name")
+    {
+        of_peer_name.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-sso-state")
+    {
+        of_peer_sso_state.yfilter = yfilter;
+    }
+    if(value_path == "of-us-auth")
+    {
+        of_us_auth.yfilter = yfilter;
+    }
+    if(value_path == "of-us-name")
+    {
+        of_us_name.yfilter = yfilter;
+    }
+    if(value_path == "of-us-sso-state")
+    {
+        of_us_sso_state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-authenticated" || name == "is-sso-authenticated" || name == "of-peer-auth" || name == "of-peer-name" || name == "of-peer-sso-state" || name == "of-us-auth" || name == "of-us-name" || name == "of-us-sso-state")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::ConfiguredTimeout()
+    :
+    minutes{YType::uint32, "minutes"},
+    seconds{YType::uint8, "seconds"}
+{
+
+    yang_name = "configured-timeout"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::~ConfiguredTimeout()
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_data() const
+{
+    return minutes.is_set
+	|| seconds.is_set;
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "configured-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minutes")
+    {
+        minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minutes" || name == "seconds")
+        return true;
+    return false;
+}
+
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpInfo()
     :
     active_links{YType::uint16, "active-links"},
@@ -2254,7 +2317,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpInfo()
     mp_group{YType::uint32, "mp-group"},
     mp_state{YType::enumeration, "mp-state"}
 {
-    yang_name = "mp-info"; yang_parent_name = "node-interface";
+
+    yang_name = "mp-info"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::~MpInfo()
@@ -2300,23 +2364,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "mp-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MpInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active_links.is_set || is_set(active_links.yfilter)) leaf_name_data.push_back(active_links.get_name_leafdata());
@@ -2328,9 +2380,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_en
     if (mp_group.is_set || is_set(mp_group.yfilter)) leaf_name_data.push_back(mp_group.get_name_leafdata());
     if (mp_state.is_set || is_set(mp_state.yfilter)) leaf_name_data.push_back(mp_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2466,7 +2516,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::MpMe
     interface{YType::str, "interface"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "mp-member-info-array"; yang_parent_name = "mp-info";
+
+    yang_name = "mp-member-info-array"; yang_parent_name = "mp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::~MpMemberInfoArray()
@@ -2490,31 +2541,17 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInf
 {
     std::ostringstream path_buffer;
     path_buffer << "mp-member-info-array";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MpMemberInfoArray' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2564,296 +2601,6 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray:
     return false;
 }
 
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::ConfiguredTimeout()
-    :
-    minutes{YType::uint32, "minutes"},
-    seconds{YType::uint8, "seconds"}
-{
-    yang_name = "configured-timeout"; yang_parent_name = "node-interface";
-}
-
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::~ConfiguredTimeout()
-{
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_data() const
-{
-    return minutes.is_set
-	|| seconds.is_set;
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minutes.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "configured-timeout";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ConfiguredTimeout' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minutes")
-    {
-        minutes = value;
-        minutes.value_namespace = name_space;
-        minutes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minutes")
-    {
-        minutes.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minutes" || name == "seconds")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::AuthInfo()
-    :
-    is_authenticated{YType::boolean, "is-authenticated"},
-    is_sso_authenticated{YType::boolean, "is-sso-authenticated"},
-    of_peer_auth{YType::uint8, "of-peer-auth"},
-    of_peer_name{YType::str, "of-peer-name"},
-    of_peer_sso_state{YType::enumeration, "of-peer-sso-state"},
-    of_us_auth{YType::uint8, "of-us-auth"},
-    of_us_name{YType::str, "of-us-name"},
-    of_us_sso_state{YType::enumeration, "of-us-sso-state"}
-{
-    yang_name = "auth-info"; yang_parent_name = "node-interface";
-}
-
-Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::~AuthInfo()
-{
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_data() const
-{
-    return is_authenticated.is_set
-	|| is_sso_authenticated.is_set
-	|| of_peer_auth.is_set
-	|| of_peer_name.is_set
-	|| of_peer_sso_state.is_set
-	|| of_us_auth.is_set
-	|| of_us_name.is_set
-	|| of_us_sso_state.is_set;
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_authenticated.yfilter)
-	|| ydk::is_set(is_sso_authenticated.yfilter)
-	|| ydk::is_set(of_peer_auth.yfilter)
-	|| ydk::is_set(of_peer_name.yfilter)
-	|| ydk::is_set(of_peer_sso_state.yfilter)
-	|| ydk::is_set(of_us_auth.yfilter)
-	|| ydk::is_set(of_us_name.yfilter)
-	|| ydk::is_set(of_us_sso_state.yfilter);
-}
-
-std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auth-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_authenticated.is_set || is_set(is_authenticated.yfilter)) leaf_name_data.push_back(is_authenticated.get_name_leafdata());
-    if (is_sso_authenticated.is_set || is_set(is_sso_authenticated.yfilter)) leaf_name_data.push_back(is_sso_authenticated.get_name_leafdata());
-    if (of_peer_auth.is_set || is_set(of_peer_auth.yfilter)) leaf_name_data.push_back(of_peer_auth.get_name_leafdata());
-    if (of_peer_name.is_set || is_set(of_peer_name.yfilter)) leaf_name_data.push_back(of_peer_name.get_name_leafdata());
-    if (of_peer_sso_state.is_set || is_set(of_peer_sso_state.yfilter)) leaf_name_data.push_back(of_peer_sso_state.get_name_leafdata());
-    if (of_us_auth.is_set || is_set(of_us_auth.yfilter)) leaf_name_data.push_back(of_us_auth.get_name_leafdata());
-    if (of_us_name.is_set || is_set(of_us_name.yfilter)) leaf_name_data.push_back(of_us_name.get_name_leafdata());
-    if (of_us_sso_state.is_set || is_set(of_us_sso_state.yfilter)) leaf_name_data.push_back(of_us_sso_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-authenticated")
-    {
-        is_authenticated = value;
-        is_authenticated.value_namespace = name_space;
-        is_authenticated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-sso-authenticated")
-    {
-        is_sso_authenticated = value;
-        is_sso_authenticated.value_namespace = name_space;
-        is_sso_authenticated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-peer-auth")
-    {
-        of_peer_auth = value;
-        of_peer_auth.value_namespace = name_space;
-        of_peer_auth.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-peer-name")
-    {
-        of_peer_name = value;
-        of_peer_name.value_namespace = name_space;
-        of_peer_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-peer-sso-state")
-    {
-        of_peer_sso_state = value;
-        of_peer_sso_state.value_namespace = name_space;
-        of_peer_sso_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-us-auth")
-    {
-        of_us_auth = value;
-        of_us_auth.value_namespace = name_space;
-        of_us_auth.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-us-name")
-    {
-        of_us_name = value;
-        of_us_name.value_namespace = name_space;
-        of_us_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "of-us-sso-state")
-    {
-        of_us_sso_state = value;
-        of_us_sso_state.value_namespace = name_space;
-        of_us_sso_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-authenticated")
-    {
-        is_authenticated.yfilter = yfilter;
-    }
-    if(value_path == "is-sso-authenticated")
-    {
-        is_sso_authenticated.yfilter = yfilter;
-    }
-    if(value_path == "of-peer-auth")
-    {
-        of_peer_auth.yfilter = yfilter;
-    }
-    if(value_path == "of-peer-name")
-    {
-        of_peer_name.yfilter = yfilter;
-    }
-    if(value_path == "of-peer-sso-state")
-    {
-        of_peer_sso_state.yfilter = yfilter;
-    }
-    if(value_path == "of-us-auth")
-    {
-        of_us_auth.yfilter = yfilter;
-    }
-    if(value_path == "of-us-name")
-    {
-        of_us_name.yfilter = yfilter;
-    }
-    if(value_path == "of-us-sso-state")
-    {
-        of_us_sso_state.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-authenticated" || name == "is-sso-authenticated" || name == "of-peer-auth" || name == "of-peer-name" || name == "of-peer-sso-state" || name == "of-us-auth" || name == "of-us-name" || name == "of-us-sso-state")
-        return true;
-    return false;
-}
-
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfoArray()
     :
     is_passive{YType::boolean, "is-passive"},
@@ -2865,7 +2612,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfoArray()
 {
     ncp_info->parent = this;
 
-    yang_name = "ncp-info-array"; yang_parent_name = "node-interface";
+    yang_name = "ncp-info-array"; yang_parent_name = "node-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::~NcpInfoArray()
@@ -2895,23 +2642,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-info-array";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NcpInfoArray' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_passive.is_set || is_set(is_passive.yfilter)) leaf_name_data.push_back(is_passive.get_name_leafdata());
@@ -2919,9 +2654,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
     if (ncp_state.is_set || is_set(ncp_state.yfilter)) leaf_name_data.push_back(ncp_state.get_name_leafdata());
     if (ncpsso_state.is_set || is_set(ncpsso_state.yfilter)) leaf_name_data.push_back(ncpsso_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3014,12 +2747,10 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::NcpInfo(
 	,ipv6cp_info(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo>())
 {
     ipcp_info->parent = this;
-
     ipcpiw_info->parent = this;
-
     ipv6cp_info->parent = this;
 
-    yang_name = "ncp-info"; yang_parent_name = "ncp-info-array";
+    yang_name = "ncp-info"; yang_parent_name = "ncp-info-array"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::~NcpInfo()
@@ -3047,30 +2778,16 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NcpInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3167,10 +2884,9 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
 	,peer_iphc_options(std::make_shared<Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions>())
 {
     local_iphc_options->parent = this;
-
     peer_iphc_options->parent = this;
 
-    yang_name = "ipcp-info"; yang_parent_name = "ncp-info";
+    yang_name = "ipcp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::~IpcpInfo()
@@ -3210,23 +2926,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "ipcp-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpcpInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dns_primary.is_set || is_set(dns_primary.yfilter)) leaf_name_data.push_back(dns_primary.get_name_leafdata());
@@ -3238,9 +2942,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
     if (wins_primary.is_set || is_set(wins_primary.yfilter)) leaf_name_data.push_back(wins_primary.get_name_leafdata());
     if (wins_secondary.is_set || is_set(wins_secondary.yfilter)) leaf_name_data.push_back(wins_secondary.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3389,7 +3091,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
     rtp_compression{YType::boolean, "rtp-compression"},
     tcp_space{YType::uint16, "tcp-space"}
 {
-    yang_name = "local-iphc-options"; yang_parent_name = "ipcp-info";
+
+    yang_name = "local-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::~LocalIphcOptions()
@@ -3425,23 +3128,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "local-iphc-options";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LocalIphcOptions' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (compression_type.is_set || is_set(compression_type.yfilter)) leaf_name_data.push_back(compression_type.get_name_leafdata());
@@ -3453,9 +3144,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
     if (rtp_compression.is_set || is_set(rtp_compression.yfilter)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
     if (tcp_space.is_set || is_set(tcp_space.yfilter)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3576,7 +3265,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
     rtp_compression{YType::boolean, "rtp-compression"},
     tcp_space{YType::uint16, "tcp-space"}
 {
-    yang_name = "peer-iphc-options"; yang_parent_name = "ipcp-info";
+
+    yang_name = "peer-iphc-options"; yang_parent_name = "ipcp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::~PeerIphcOptions()
@@ -3612,23 +3302,11 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-iphc-options";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerIphcOptions' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (compression_type.is_set || is_set(compression_type.yfilter)) leaf_name_data.push_back(compression_type.get_name_leafdata());
@@ -3640,9 +3318,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
     if (rtp_compression.is_set || is_set(rtp_compression.yfilter)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
     if (tcp_space.is_set || is_set(tcp_space.yfilter)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3757,7 +3433,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwIn
     local_address{YType::str, "local-address"},
     peer_address{YType::str, "peer-address"}
 {
-    yang_name = "ipcpiw-info"; yang_parent_name = "ncp-info";
+
+    yang_name = "ipcpiw-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::~IpcpiwInfo()
@@ -3781,31 +3458,17 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "ipcpiw-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpcpiwInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
     if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3860,7 +3523,8 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpIn
     local_address{YType::str, "local-address"},
     peer_address{YType::str, "peer-address"}
 {
-    yang_name = "ipv6cp-info"; yang_parent_name = "ncp-info";
+
+    yang_name = "ipv6cp-info"; yang_parent_name = "ncp-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::~Ipv6CpInfo()
@@ -3884,31 +3548,17 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpIn
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6cp-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6CpInfo' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
     if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3960,7 +3610,8 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlerts()
 {
-    yang_name = "sso-alerts"; yang_parent_name = "node";
+
+    yang_name = "sso-alerts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoAlerts::~SsoAlerts()
@@ -3991,29 +3642,15 @@ std::string Ppp::Nodes::Node::SsoAlerts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-alerts";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoAlerts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoAlerts' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4074,14 +3711,11 @@ Ppp::Nodes::Node::SsoAlerts::SsoAlert::SsoAlert()
 	,of_us_auth_error(std::make_shared<Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError>())
 {
     ipcp_error->parent = this;
-
     lcp_error->parent = this;
-
     of_peer_auth_error->parent = this;
-
     of_us_auth_error->parent = this;
 
-    yang_name = "sso-alert"; yang_parent_name = "sso-alerts";
+    yang_name = "sso-alert"; yang_parent_name = "sso-alerts"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::~SsoAlert()
@@ -4111,30 +3745,16 @@ std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-alert" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::SsoAlert::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoAlert' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4230,364 +3850,14 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::LcpError()
-    :
-    context{YType::uint32, "context"},
-    error{YType::uint32, "error"},
-    is_error{YType::boolean, "is-error"}
-{
-    yang_name = "lcp-error"; yang_parent_name = "sso-alert";
-}
-
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::~LcpError()
-{
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_data() const
-{
-    return context.is_set
-	|| error.is_set
-	|| is_error.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(context.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(is_error.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lcp-error";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpError' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context")
-    {
-        context = value;
-        context.value_namespace = name_space;
-        context.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-error")
-    {
-        is_error = value;
-        is_error.value_namespace = name_space;
-        is_error.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context")
-    {
-        context.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "is-error")
-    {
-        is_error.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context" || name == "error" || name == "is-error")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::OfUsAuthError()
-    :
-    context{YType::uint32, "context"},
-    error{YType::uint32, "error"},
-    is_error{YType::boolean, "is-error"}
-{
-    yang_name = "of-us-auth-error"; yang_parent_name = "sso-alert";
-}
-
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::~OfUsAuthError()
-{
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_data() const
-{
-    return context.is_set
-	|| error.is_set
-	|| is_error.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(context.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(is_error.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-us-auth-error";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfUsAuthError' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context")
-    {
-        context = value;
-        context.value_namespace = name_space;
-        context.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-error")
-    {
-        is_error = value;
-        is_error.value_namespace = name_space;
-        is_error.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context")
-    {
-        context.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "is-error")
-    {
-        is_error.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context" || name == "error" || name == "is-error")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::OfPeerAuthError()
-    :
-    context{YType::uint32, "context"},
-    error{YType::uint32, "error"},
-    is_error{YType::boolean, "is-error"}
-{
-    yang_name = "of-peer-auth-error"; yang_parent_name = "sso-alert";
-}
-
-Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::~OfPeerAuthError()
-{
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_data() const
-{
-    return context.is_set
-	|| error.is_set
-	|| is_error.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(context.yfilter)
-	|| ydk::is_set(error.yfilter)
-	|| ydk::is_set(is_error.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-peer-auth-error";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfPeerAuthError' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "context")
-    {
-        context = value;
-        context.value_namespace = name_space;
-        context.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error")
-    {
-        error = value;
-        error.value_namespace = name_space;
-        error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-error")
-    {
-        is_error = value;
-        is_error.value_namespace = name_space;
-        is_error.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "context")
-    {
-        context.yfilter = yfilter;
-    }
-    if(value_path == "error")
-    {
-        error.yfilter = yfilter;
-    }
-    if(value_path == "is-error")
-    {
-        is_error.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "context" || name == "error" || name == "is-error")
-        return true;
-    return false;
-}
-
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::IpcpError()
     :
     context{YType::uint32, "context"},
     error{YType::uint32, "error"},
     is_error{YType::boolean, "is-error"}
 {
-    yang_name = "ipcp-error"; yang_parent_name = "sso-alert";
+
+    yang_name = "ipcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::~IpcpError()
@@ -4613,32 +3883,18 @@ std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "ipcp-error";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpcpError' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
     if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4698,1654 +3954,322 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_leaf_or_child_of_name
     return false;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistics()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::LcpError()
+    :
+    context{YType::uint32, "context"},
+    error{YType::uint32, "error"},
+    is_error{YType::boolean, "is-error"}
 {
-    yang_name = "node-interface-statistics"; yang_parent_name = "node";
+
+    yang_name = "lcp-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::~NodeInterfaceStatistics()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::~LcpError()
 {
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_data() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_data() const
 {
-    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
-    {
-        if(node_interface_statistic[index]->has_data())
-            return true;
-    }
-    return false;
+    return context.is_set
+	|| error.is_set
+	|| is_error.is_set;
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_operation() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_operation() const
 {
-    for (std::size_t index=0; index<node_interface_statistic.size(); index++)
-    {
-        if(node_interface_statistic[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
-std::string Ppp::Nodes::Node::NodeInterfaceStatistics::get_segment_path() const
+std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-interface-statistics";
-
+    path_buffer << "lcp-error";
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NodeInterfaceStatistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "node-interface-statistic")
-    {
-        for(auto const & c : node_interface_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic>();
-        c->parent = this;
-        node_interface_statistic.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : node_interface_statistic)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "context")
+    {
+        context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-error")
+    {
+        is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
+    }
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node-interface-statistic")
+    if(name == "context" || name == "error" || name == "is-error")
         return true;
     return false;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NodeInterfaceStatistic()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::OfPeerAuthError()
     :
-    interface_name{YType::str, "interface-name"}
-    	,
-    authentication_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>())
-	,lcp_statistics(std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics>())
+    context{YType::uint32, "context"},
+    error{YType::uint32, "error"},
+    is_error{YType::boolean, "is-error"}
 {
-    authentication_statistics->parent = this;
 
-    lcp_statistics->parent = this;
-
-    yang_name = "node-interface-statistic"; yang_parent_name = "node-interface-statistics";
+    yang_name = "of-peer-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::~NodeInterfaceStatistic()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::~OfPeerAuthError()
 {
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_data() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_data() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
-    {
-        if(ncp_statistics_array[index]->has_data())
-            return true;
-    }
-    return interface_name.is_set
-	|| (authentication_statistics !=  nullptr && authentication_statistics->has_data())
-	|| (lcp_statistics !=  nullptr && lcp_statistics->has_data());
+    return context.is_set
+	|| error.is_set
+	|| is_error.is_set;
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_operation() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_operation() const
 {
-    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
-    {
-        if(ncp_statistics_array[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| (authentication_statistics !=  nullptr && authentication_statistics->has_operation())
-	|| (lcp_statistics !=  nullptr && lcp_statistics->has_operation());
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
-std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_segment_path() const
+std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-interface-statistic" <<"[interface-name='" <<interface_name <<"']";
-
+    path_buffer << "of-peer-auth-error";
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NodeInterfaceStatistic' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "authentication-statistics")
-    {
-        if(authentication_statistics == nullptr)
-        {
-            authentication_statistics = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics>();
-        }
-        return authentication_statistics;
-    }
-
-    if(child_yang_name == "lcp-statistics")
-    {
-        if(lcp_statistics == nullptr)
-        {
-            lcp_statistics = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics>();
-        }
-        return lcp_statistics;
-    }
-
-    if(child_yang_name == "ncp-statistics-array")
-    {
-        for(auto const & c : ncp_statistics_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray>();
-        c->parent = this;
-        ncp_statistics_array.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(authentication_statistics != nullptr)
-    {
-        children["authentication-statistics"] = authentication_statistics;
-    }
-
-    if(lcp_statistics != nullptr)
-    {
-        children["lcp-statistics"] = lcp_statistics;
-    }
-
-    for (auto const & c : ncp_statistics_array)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface-name")
+    if(value_path == "context")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
+        context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-error")
+    {
+        is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface-name")
+    if(value_path == "context")
     {
-        interface_name.yfilter = yfilter;
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
     }
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array" || name == "interface-name")
+    if(name == "context" || name == "error" || name == "is-error")
         return true;
     return false;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::LcpStatistics()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::OfUsAuthError()
     :
-    conf_ack_rcvd{YType::uint16, "conf-ack-rcvd"},
-    conf_ack_sent{YType::uint16, "conf-ack-sent"},
-    conf_nak_rcvd{YType::uint16, "conf-nak-rcvd"},
-    conf_nak_sent{YType::uint16, "conf-nak-sent"},
-    conf_rej_rcvd{YType::uint16, "conf-rej-rcvd"},
-    conf_rej_sent{YType::uint16, "conf-rej-sent"},
-    conf_req_rcvd{YType::uint16, "conf-req-rcvd"},
-    conf_req_sent{YType::uint16, "conf-req-sent"},
-    disc_req_rcvd{YType::uint16, "disc-req-rcvd"},
-    disc_req_sent{YType::uint16, "disc-req-sent"},
-    echo_rep_rcvd{YType::uint16, "echo-rep-rcvd"},
-    echo_rep_sent{YType::uint16, "echo-rep-sent"},
-    echo_req_rcvd{YType::uint16, "echo-req-rcvd"},
-    echo_req_sent{YType::uint16, "echo-req-sent"},
-    link_error{YType::uint16, "link-error"},
-    link_up{YType::uint16, "link-up"}
+    context{YType::uint32, "context"},
+    error{YType::uint32, "error"},
+    is_error{YType::boolean, "is-error"}
 {
-    yang_name = "lcp-statistics"; yang_parent_name = "node-interface-statistic";
+
+    yang_name = "of-us-auth-error"; yang_parent_name = "sso-alert"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::~LcpStatistics()
+Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::~OfUsAuthError()
 {
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_data() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_data() const
 {
-    return conf_ack_rcvd.is_set
-	|| conf_ack_sent.is_set
-	|| conf_nak_rcvd.is_set
-	|| conf_nak_sent.is_set
-	|| conf_rej_rcvd.is_set
-	|| conf_rej_sent.is_set
-	|| conf_req_rcvd.is_set
-	|| conf_req_sent.is_set
-	|| disc_req_rcvd.is_set
-	|| disc_req_sent.is_set
-	|| echo_rep_rcvd.is_set
-	|| echo_rep_sent.is_set
-	|| echo_req_rcvd.is_set
-	|| echo_req_sent.is_set
-	|| link_error.is_set
-	|| link_up.is_set;
+    return context.is_set
+	|| error.is_set
+	|| is_error.is_set;
 }
 
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_operation() const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(conf_ack_rcvd.yfilter)
-	|| ydk::is_set(conf_ack_sent.yfilter)
-	|| ydk::is_set(conf_nak_rcvd.yfilter)
-	|| ydk::is_set(conf_nak_sent.yfilter)
-	|| ydk::is_set(conf_rej_rcvd.yfilter)
-	|| ydk::is_set(conf_rej_sent.yfilter)
-	|| ydk::is_set(conf_req_rcvd.yfilter)
-	|| ydk::is_set(conf_req_sent.yfilter)
-	|| ydk::is_set(disc_req_rcvd.yfilter)
-	|| ydk::is_set(disc_req_sent.yfilter)
-	|| ydk::is_set(echo_rep_rcvd.yfilter)
-	|| ydk::is_set(echo_rep_sent.yfilter)
-	|| ydk::is_set(echo_req_rcvd.yfilter)
-	|| ydk::is_set(echo_req_sent.yfilter)
-	|| ydk::is_set(link_error.yfilter)
-	|| ydk::is_set(link_up.yfilter);
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
-std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_segment_path() const
+std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lcp-statistics";
-
+    path_buffer << "of-us-auth-error";
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpStatistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.yfilter)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
-    if (disc_req_sent.is_set || is_set(disc_req_sent.yfilter)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
-    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.yfilter)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
-    if (echo_rep_sent.is_set || is_set(echo_rep_sent.yfilter)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
-    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.yfilter)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
-    if (echo_req_sent.is_set || is_set(echo_req_sent.yfilter)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
-    if (link_error.is_set || is_set(link_error.yfilter)) leaf_name_data.push_back(link_error.get_name_leafdata());
-    if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "conf-ack-rcvd")
+    if(value_path == "context")
     {
-        conf_ack_rcvd = value;
-        conf_ack_rcvd.value_namespace = name_space;
-        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
+        context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "conf-ack-sent")
+    if(value_path == "error")
     {
-        conf_ack_sent = value;
-        conf_ack_sent.value_namespace = name_space;
-        conf_ack_sent.value_namespace_prefix = name_space_prefix;
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "conf-nak-rcvd")
+    if(value_path == "is-error")
     {
-        conf_nak_rcvd = value;
-        conf_nak_rcvd.value_namespace = name_space;
-        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
+        is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "conf-nak-sent")
-    {
-        conf_nak_sent = value;
-        conf_nak_sent.value_namespace = name_space;
-        conf_nak_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-rej-rcvd")
-    {
-        conf_rej_rcvd = value;
-        conf_rej_rcvd.value_namespace = name_space;
-        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-rej-sent")
-    {
-        conf_rej_sent = value;
-        conf_rej_sent.value_namespace = name_space;
-        conf_rej_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-req-rcvd")
-    {
-        conf_req_rcvd = value;
-        conf_req_rcvd.value_namespace = name_space;
-        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-req-sent")
-    {
-        conf_req_sent = value;
-        conf_req_sent.value_namespace = name_space;
-        conf_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disc-req-rcvd")
-    {
-        disc_req_rcvd = value;
-        disc_req_rcvd.value_namespace = name_space;
-        disc_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disc-req-sent")
-    {
-        disc_req_sent = value;
-        disc_req_sent.value_namespace = name_space;
-        disc_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "echo-rep-rcvd")
-    {
-        echo_rep_rcvd = value;
-        echo_rep_rcvd.value_namespace = name_space;
-        echo_rep_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "echo-rep-sent")
-    {
-        echo_rep_sent = value;
-        echo_rep_sent.value_namespace = name_space;
-        echo_rep_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "echo-req-rcvd")
-    {
-        echo_req_rcvd = value;
-        echo_req_rcvd.value_namespace = name_space;
-        echo_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "echo-req-sent")
-    {
-        echo_req_sent = value;
-        echo_req_sent.value_namespace = name_space;
-        echo_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-error")
-    {
-        link_error = value;
-        link_error.value_namespace = name_space;
-        link_error.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-up")
-    {
-        link_up = value;
-        link_up.value_namespace = name_space;
-        link_up.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "conf-ack-rcvd")
-    {
-        conf_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-ack-sent")
-    {
-        conf_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-nak-rcvd")
-    {
-        conf_nak_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-nak-sent")
-    {
-        conf_nak_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-rej-rcvd")
-    {
-        conf_rej_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-rej-sent")
-    {
-        conf_rej_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-req-rcvd")
-    {
-        conf_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-req-sent")
-    {
-        conf_req_sent.yfilter = yfilter;
-    }
-    if(value_path == "disc-req-rcvd")
-    {
-        disc_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "disc-req-sent")
-    {
-        disc_req_sent.yfilter = yfilter;
-    }
-    if(value_path == "echo-rep-rcvd")
-    {
-        echo_rep_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "echo-rep-sent")
-    {
-        echo_rep_sent.yfilter = yfilter;
-    }
-    if(value_path == "echo-req-rcvd")
-    {
-        echo_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "echo-req-sent")
-    {
-        echo_req_sent.yfilter = yfilter;
-    }
-    if(value_path == "link-error")
-    {
-        link_error.yfilter = yfilter;
-    }
-    if(value_path == "link-up")
-    {
-        link_up.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::AuthenticationStatistics()
-    :
-    auth_timeout_count{YType::uint16, "auth-timeout-count"},
-    chap_chall_rcvd{YType::uint16, "chap-chall-rcvd"},
-    chap_chall_sent{YType::uint16, "chap-chall-sent"},
-    chap_rep_fail_rcvd{YType::uint16, "chap-rep-fail-rcvd"},
-    chap_rep_fail_sent{YType::uint16, "chap-rep-fail-sent"},
-    chap_rep_succ_rcvd{YType::uint16, "chap-rep-succ-rcvd"},
-    chap_rep_succ_sent{YType::uint16, "chap-rep-succ-sent"},
-    chap_resp_rcvd{YType::uint16, "chap-resp-rcvd"},
-    chap_resp_sent{YType::uint16, "chap-resp-sent"},
-    pap_ack_rcvd{YType::uint16, "pap-ack-rcvd"},
-    pap_ack_sent{YType::uint16, "pap-ack-sent"},
-    pap_nak_rcvd{YType::uint16, "pap-nak-rcvd"},
-    pap_nak_sent{YType::uint16, "pap-nak-sent"},
-    pap_req_rcvd{YType::uint16, "pap-req-rcvd"},
-    pap_req_sent{YType::uint16, "pap-req-sent"}
-{
-    yang_name = "authentication-statistics"; yang_parent_name = "node-interface-statistic";
-}
-
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::~AuthenticationStatistics()
-{
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_data() const
-{
-    return auth_timeout_count.is_set
-	|| chap_chall_rcvd.is_set
-	|| chap_chall_sent.is_set
-	|| chap_rep_fail_rcvd.is_set
-	|| chap_rep_fail_sent.is_set
-	|| chap_rep_succ_rcvd.is_set
-	|| chap_rep_succ_sent.is_set
-	|| chap_resp_rcvd.is_set
-	|| chap_resp_sent.is_set
-	|| pap_ack_rcvd.is_set
-	|| pap_ack_sent.is_set
-	|| pap_nak_rcvd.is_set
-	|| pap_nak_sent.is_set
-	|| pap_req_rcvd.is_set
-	|| pap_req_sent.is_set;
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auth_timeout_count.yfilter)
-	|| ydk::is_set(chap_chall_rcvd.yfilter)
-	|| ydk::is_set(chap_chall_sent.yfilter)
-	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
-	|| ydk::is_set(chap_rep_fail_sent.yfilter)
-	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
-	|| ydk::is_set(chap_rep_succ_sent.yfilter)
-	|| ydk::is_set(chap_resp_rcvd.yfilter)
-	|| ydk::is_set(chap_resp_sent.yfilter)
-	|| ydk::is_set(pap_ack_rcvd.yfilter)
-	|| ydk::is_set(pap_ack_sent.yfilter)
-	|| ydk::is_set(pap_nak_rcvd.yfilter)
-	|| ydk::is_set(pap_nak_sent.yfilter)
-	|| ydk::is_set(pap_req_rcvd.yfilter)
-	|| ydk::is_set(pap_req_sent.yfilter);
-}
-
-std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AuthenticationStatistics' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
-    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
-    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
-    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
-    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
-    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
-    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
-    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
-    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
-    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
-    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
-    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
-    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
-    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
-    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auth-timeout-count")
-    {
-        auth_timeout_count = value;
-        auth_timeout_count.value_namespace = name_space;
-        auth_timeout_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-chall-rcvd")
-    {
-        chap_chall_rcvd = value;
-        chap_chall_rcvd.value_namespace = name_space;
-        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-chall-sent")
-    {
-        chap_chall_sent = value;
-        chap_chall_sent.value_namespace = name_space;
-        chap_chall_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-fail-rcvd")
-    {
-        chap_rep_fail_rcvd = value;
-        chap_rep_fail_rcvd.value_namespace = name_space;
-        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-fail-sent")
-    {
-        chap_rep_fail_sent = value;
-        chap_rep_fail_sent.value_namespace = name_space;
-        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-succ-rcvd")
-    {
-        chap_rep_succ_rcvd = value;
-        chap_rep_succ_rcvd.value_namespace = name_space;
-        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-rep-succ-sent")
-    {
-        chap_rep_succ_sent = value;
-        chap_rep_succ_sent.value_namespace = name_space;
-        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-resp-rcvd")
-    {
-        chap_resp_rcvd = value;
-        chap_resp_rcvd.value_namespace = name_space;
-        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chap-resp-sent")
-    {
-        chap_resp_sent = value;
-        chap_resp_sent.value_namespace = name_space;
-        chap_resp_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-ack-rcvd")
-    {
-        pap_ack_rcvd = value;
-        pap_ack_rcvd.value_namespace = name_space;
-        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-ack-sent")
-    {
-        pap_ack_sent = value;
-        pap_ack_sent.value_namespace = name_space;
-        pap_ack_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-nak-rcvd")
-    {
-        pap_nak_rcvd = value;
-        pap_nak_rcvd.value_namespace = name_space;
-        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-nak-sent")
-    {
-        pap_nak_sent = value;
-        pap_nak_sent.value_namespace = name_space;
-        pap_nak_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-req-rcvd")
-    {
-        pap_req_rcvd = value;
-        pap_req_rcvd.value_namespace = name_space;
-        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pap-req-sent")
-    {
-        pap_req_sent = value;
-        pap_req_sent.value_namespace = name_space;
-        pap_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auth-timeout-count")
-    {
-        auth_timeout_count.yfilter = yfilter;
-    }
-    if(value_path == "chap-chall-rcvd")
-    {
-        chap_chall_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-chall-sent")
-    {
-        chap_chall_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-fail-rcvd")
-    {
-        chap_rep_fail_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-fail-sent")
-    {
-        chap_rep_fail_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-succ-rcvd")
-    {
-        chap_rep_succ_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-rep-succ-sent")
-    {
-        chap_rep_succ_sent.yfilter = yfilter;
-    }
-    if(value_path == "chap-resp-rcvd")
-    {
-        chap_resp_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "chap-resp-sent")
-    {
-        chap_resp_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-ack-rcvd")
-    {
-        pap_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-ack-sent")
-    {
-        pap_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-nak-rcvd")
-    {
-        pap_nak_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-nak-sent")
-    {
-        pap_nak_sent.yfilter = yfilter;
-    }
-    if(value_path == "pap-req-rcvd")
-    {
-        pap_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "pap-req-sent")
-    {
-        pap_req_sent.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::NcpStatisticsArray()
-    :
-    conf_ack_rcvd{YType::uint16, "conf-ack-rcvd"},
-    conf_ack_sent{YType::uint16, "conf-ack-sent"},
-    conf_nak_rcvd{YType::uint16, "conf-nak-rcvd"},
-    conf_nak_sent{YType::uint16, "conf-nak-sent"},
-    conf_rej_rcvd{YType::uint16, "conf-rej-rcvd"},
-    conf_rej_sent{YType::uint16, "conf-rej-sent"},
-    conf_req_rcvd{YType::uint16, "conf-req-rcvd"},
-    conf_req_sent{YType::uint16, "conf-req-sent"},
-    ncp_identifier{YType::enumeration, "ncp-identifier"}
-{
-    yang_name = "ncp-statistics-array"; yang_parent_name = "node-interface-statistic";
-}
-
-Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::~NcpStatisticsArray()
-{
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_data() const
-{
-    return conf_ack_rcvd.is_set
-	|| conf_ack_sent.is_set
-	|| conf_nak_rcvd.is_set
-	|| conf_nak_sent.is_set
-	|| conf_rej_rcvd.is_set
-	|| conf_rej_sent.is_set
-	|| conf_req_rcvd.is_set
-	|| conf_req_sent.is_set
-	|| ncp_identifier.is_set;
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(conf_ack_rcvd.yfilter)
-	|| ydk::is_set(conf_ack_sent.yfilter)
-	|| ydk::is_set(conf_nak_rcvd.yfilter)
-	|| ydk::is_set(conf_nak_sent.yfilter)
-	|| ydk::is_set(conf_rej_rcvd.yfilter)
-	|| ydk::is_set(conf_rej_sent.yfilter)
-	|| ydk::is_set(conf_req_rcvd.yfilter)
-	|| ydk::is_set(conf_req_sent.yfilter)
-	|| ydk::is_set(ncp_identifier.yfilter);
-}
-
-std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ncp-statistics-array";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NcpStatisticsArray' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "conf-ack-rcvd")
-    {
-        conf_ack_rcvd = value;
-        conf_ack_rcvd.value_namespace = name_space;
-        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-ack-sent")
-    {
-        conf_ack_sent = value;
-        conf_ack_sent.value_namespace = name_space;
-        conf_ack_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-nak-rcvd")
-    {
-        conf_nak_rcvd = value;
-        conf_nak_rcvd.value_namespace = name_space;
-        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-nak-sent")
-    {
-        conf_nak_sent = value;
-        conf_nak_sent.value_namespace = name_space;
-        conf_nak_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-rej-rcvd")
-    {
-        conf_rej_rcvd = value;
-        conf_rej_rcvd.value_namespace = name_space;
-        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-rej-sent")
-    {
-        conf_rej_sent = value;
-        conf_rej_sent.value_namespace = name_space;
-        conf_rej_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-req-rcvd")
-    {
-        conf_req_rcvd = value;
-        conf_req_rcvd.value_namespace = name_space;
-        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conf-req-sent")
-    {
-        conf_req_sent = value;
-        conf_req_sent.value_namespace = name_space;
-        conf_req_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ncp-identifier")
-    {
-        ncp_identifier = value;
-        ncp_identifier.value_namespace = name_space;
-        ncp_identifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "conf-ack-rcvd")
-    {
-        conf_ack_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-ack-sent")
-    {
-        conf_ack_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-nak-rcvd")
-    {
-        conf_nak_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-nak-sent")
-    {
-        conf_nak_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-rej-rcvd")
-    {
-        conf_rej_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-rej-sent")
-    {
-        conf_rej_sent.yfilter = yfilter;
-    }
-    if(value_path == "conf-req-rcvd")
-    {
-        conf_req_rcvd.yfilter = yfilter;
-    }
-    if(value_path == "conf-req-sent")
-    {
-        conf_req_sent.yfilter = yfilter;
-    }
-    if(value_path == "ncp-identifier")
-    {
-        ncp_identifier.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoSummary::SsoSummary()
-    :
-    ipcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>())
-	,lcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::LcpStates>())
-	,of_peer_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>())
-	,of_us_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>())
-{
-    ipcp_states->parent = this;
-
-    lcp_states->parent = this;
-
-    of_peer_auth_states->parent = this;
-
-    of_us_auth_states->parent = this;
-
-    yang_name = "sso-summary"; yang_parent_name = "node";
-}
-
-Ppp::Nodes::Node::SsoSummary::~SsoSummary()
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::has_data() const
-{
-    return (ipcp_states !=  nullptr && ipcp_states->has_data())
-	|| (lcp_states !=  nullptr && lcp_states->has_data())
-	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_data())
-	|| (of_us_auth_states !=  nullptr && of_us_auth_states->has_data());
-}
-
-bool Ppp::Nodes::Node::SsoSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ipcp_states !=  nullptr && ipcp_states->has_operation())
-	|| (lcp_states !=  nullptr && lcp_states->has_operation())
-	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_operation())
-	|| (of_us_auth_states !=  nullptr && of_us_auth_states->has_operation());
-}
-
-std::string Ppp::Nodes::Node::SsoSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sso-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoSummary' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipcp-states")
-    {
-        if(ipcp_states == nullptr)
-        {
-            ipcp_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>();
-        }
-        return ipcp_states;
-    }
-
-    if(child_yang_name == "lcp-states")
-    {
-        if(lcp_states == nullptr)
-        {
-            lcp_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::LcpStates>();
-        }
-        return lcp_states;
-    }
-
-    if(child_yang_name == "of-peer-auth-states")
-    {
-        if(of_peer_auth_states == nullptr)
-        {
-            of_peer_auth_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>();
-        }
-        return of_peer_auth_states;
-    }
-
-    if(child_yang_name == "of-us-auth-states")
-    {
-        if(of_us_auth_states == nullptr)
-        {
-            of_us_auth_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>();
-        }
-        return of_us_auth_states;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipcp_states != nullptr)
-    {
-        children["ipcp-states"] = ipcp_states;
-    }
-
-    if(lcp_states != nullptr)
-    {
-        children["lcp-states"] = lcp_states;
-    }
-
-    if(of_peer_auth_states != nullptr)
-    {
-        children["of-peer-auth-states"] = of_peer_auth_states;
-    }
-
-    if(of_us_auth_states != nullptr)
-    {
-        children["of-us-auth-states"] = of_us_auth_states;
-    }
-
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ppp::Nodes::Node::SsoSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipcp-states" || name == "lcp-states" || name == "of-peer-auth-states" || name == "of-us-auth-states")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoSummary::LcpStates::LcpStates()
-    :
-    count{YType::uint16, "count"},
-    total{YType::uint16, "total"}
-{
-    yang_name = "lcp-states"; yang_parent_name = "sso-summary";
-}
-
-Ppp::Nodes::Node::SsoSummary::LcpStates::~LcpStates()
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return total.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_operation() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoSummary::LcpStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lcp-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoSummary::LcpStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::LcpStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::LcpStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoSummary::LcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoSummary::LcpStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "count" || name == "total")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::OfUsAuthStates()
-    :
-    count{YType::uint16, "count"},
-    total{YType::uint16, "total"}
-{
-    yang_name = "of-us-auth-states"; yang_parent_name = "sso-summary";
-}
-
-Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::~OfUsAuthStates()
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return total.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_operation() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-us-auth-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfUsAuthStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "count" || name == "total")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::OfPeerAuthStates()
-    :
-    count{YType::uint16, "count"},
-    total{YType::uint16, "total"}
-{
-    yang_name = "of-peer-auth-states"; yang_parent_name = "sso-summary";
-}
-
-Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::~OfPeerAuthStates()
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return total.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_operation() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-peer-auth-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfPeerAuthStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "count" || name == "total")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoSummary::IpcpStates::IpcpStates()
-    :
-    count{YType::uint16, "count"},
-    total{YType::uint16, "total"}
-{
-    yang_name = "ipcp-states"; yang_parent_name = "sso-summary";
-}
-
-Ppp::Nodes::Node::SsoSummary::IpcpStates::~IpcpStates()
-{
-}
-
-bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return total.is_set;
 }
 
-bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_operation() const
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    for (auto const & leaf : count.getYLeafs())
+    if(value_path == "context")
     {
-        if(is_set(leaf.yfilter))
-            return true;
+        context.yfilter = yfilter;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoSummary::IpcpStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipcp-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoSummary::IpcpStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpcpStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::IpcpStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::IpcpStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
+    if(value_path == "error")
     {
-        count.yfilter = yfilter;
+        error.yfilter = yfilter;
     }
-    if(value_path == "total")
+    if(value_path == "is-error")
     {
-        total.yfilter = yfilter;
+        is_error.yfilter = yfilter;
     }
 }
 
-bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_leaf_or_child_of_name(const std::string & name) const
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "count" || name == "total")
+    if(name == "context" || name == "error" || name == "is-error")
         return true;
     return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroups()
 {
-    yang_name = "sso-groups"; yang_parent_name = "node";
+
+    yang_name = "sso-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoGroups::~SsoGroups()
@@ -6376,29 +4300,15 @@ std::string Ppp::Nodes::Node::SsoGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoGroups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoGroups' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6457,7 +4367,7 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoGroup()
 {
     sso_states->parent = this;
 
-    yang_name = "sso-group"; yang_parent_name = "sso-groups";
+    yang_name = "sso-group"; yang_parent_name = "sso-groups"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::~SsoGroup()
@@ -6481,30 +4391,16 @@ std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-group" <<"[group-id='" <<group_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoGroup' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6560,7 +4456,8 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_leaf_or_child_of_name(const std:
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoStates()
 {
-    yang_name = "sso-states"; yang_parent_name = "sso-group";
+
+    yang_name = "sso-states"; yang_parent_name = "sso-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::~SsoStates()
@@ -6591,29 +4488,15 @@ std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-states";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6676,14 +4559,11 @@ Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::SsoState()
 	,of_us_auth_state(std::make_shared<Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState>())
 {
     ipcp_state->parent = this;
-
     lcp_state->parent = this;
-
     of_peer_auth_state->parent = this;
-
     of_us_auth_state->parent = this;
 
-    yang_name = "sso-state"; yang_parent_name = "sso-states";
+    yang_name = "sso-state"; yang_parent_name = "sso-states"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::~SsoState()
@@ -6717,32 +4597,18 @@ std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "sso-state" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SsoState' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (session_id_xr.is_set || is_set(session_id_xr.yfilter)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6858,321 +4724,13 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_leaf_or_chi
     return false;
 }
 
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::LcpState()
-    :
-    is_running{YType::boolean, "is-running"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "lcp-state"; yang_parent_name = "sso-state";
-}
-
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::~LcpState()
-{
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_data() const
-{
-    return is_running.is_set
-	|| state.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_running.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lcp-state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpState' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-running")
-    {
-        is_running = value;
-        is_running.value_namespace = name_space;
-        is_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-running")
-    {
-        is_running.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-running" || name == "state")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::OfUsAuthState()
-    :
-    is_running{YType::boolean, "is-running"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "of-us-auth-state"; yang_parent_name = "sso-state";
-}
-
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::~OfUsAuthState()
-{
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_data() const
-{
-    return is_running.is_set
-	|| state.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_running.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-us-auth-state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfUsAuthState' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-running")
-    {
-        is_running = value;
-        is_running.value_namespace = name_space;
-        is_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-running")
-    {
-        is_running.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-running" || name == "state")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::OfPeerAuthState()
-    :
-    is_running{YType::boolean, "is-running"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "of-peer-auth-state"; yang_parent_name = "sso-state";
-}
-
-Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::~OfPeerAuthState()
-{
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_data() const
-{
-    return is_running.is_set
-	|| state.is_set;
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_running.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-peer-auth-state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OfPeerAuthState' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-running")
-    {
-        is_running = value;
-        is_running.value_namespace = name_space;
-        is_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-running")
-    {
-        is_running.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-running" || name == "state")
-        return true;
-    return false;
-}
-
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::IpcpState()
     :
     is_running{YType::boolean, "is-running"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "ipcp-state"; yang_parent_name = "sso-state";
+
+    yang_name = "ipcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::~IpcpState()
@@ -7196,31 +4754,17 @@ std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpStat
 {
     std::ostringstream path_buffer;
     path_buffer << "ipcp-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpcpState' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7270,6 +4814,1873 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_
     return false;
 }
 
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::LcpState()
+    :
+    is_running{YType::boolean, "is-running"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "lcp-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::~LcpState()
+{
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_data() const
+{
+    return is_running.is_set
+	|| state.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lcp-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-running")
+    {
+        is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::OfPeerAuthState()
+    :
+    is_running{YType::boolean, "is-running"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "of-peer-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::~OfPeerAuthState()
+{
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_data() const
+{
+    return is_running.is_set
+	|| state.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "of-peer-auth-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-running")
+    {
+        is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::OfUsAuthState()
+    :
+    is_running{YType::boolean, "is-running"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "of-us-auth-state"; yang_parent_name = "sso-state"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::~OfUsAuthState()
+{
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_data() const
+{
+    return is_running.is_set
+	|| state.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "of-us-auth-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-running")
+    {
+        is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoSummary::SsoSummary()
+    :
+    ipcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>())
+	,lcp_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::LcpStates>())
+	,of_peer_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>())
+	,of_us_auth_states(std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>())
+{
+    ipcp_states->parent = this;
+    lcp_states->parent = this;
+    of_peer_auth_states->parent = this;
+    of_us_auth_states->parent = this;
+
+    yang_name = "sso-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoSummary::~SsoSummary()
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::has_data() const
+{
+    return (ipcp_states !=  nullptr && ipcp_states->has_data())
+	|| (lcp_states !=  nullptr && lcp_states->has_data())
+	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_data())
+	|| (of_us_auth_states !=  nullptr && of_us_auth_states->has_data());
+}
+
+bool Ppp::Nodes::Node::SsoSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipcp_states !=  nullptr && ipcp_states->has_operation())
+	|| (lcp_states !=  nullptr && lcp_states->has_operation())
+	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_operation())
+	|| (of_us_auth_states !=  nullptr && of_us_auth_states->has_operation());
+}
+
+std::string Ppp::Nodes::Node::SsoSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sso-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipcp-states")
+    {
+        if(ipcp_states == nullptr)
+        {
+            ipcp_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::IpcpStates>();
+        }
+        return ipcp_states;
+    }
+
+    if(child_yang_name == "lcp-states")
+    {
+        if(lcp_states == nullptr)
+        {
+            lcp_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::LcpStates>();
+        }
+        return lcp_states;
+    }
+
+    if(child_yang_name == "of-peer-auth-states")
+    {
+        if(of_peer_auth_states == nullptr)
+        {
+            of_peer_auth_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates>();
+        }
+        return of_peer_auth_states;
+    }
+
+    if(child_yang_name == "of-us-auth-states")
+    {
+        if(of_us_auth_states == nullptr)
+        {
+            of_us_auth_states = std::make_shared<Ppp::Nodes::Node::SsoSummary::OfUsAuthStates>();
+        }
+        return of_us_auth_states;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipcp_states != nullptr)
+    {
+        children["ipcp-states"] = ipcp_states;
+    }
+
+    if(lcp_states != nullptr)
+    {
+        children["lcp-states"] = lcp_states;
+    }
+
+    if(of_peer_auth_states != nullptr)
+    {
+        children["of-peer-auth-states"] = of_peer_auth_states;
+    }
+
+    if(of_us_auth_states != nullptr)
+    {
+        children["of-us-auth-states"] = of_us_auth_states;
+    }
+
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::Nodes::Node::SsoSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipcp-states" || name == "lcp-states" || name == "of-peer-auth-states" || name == "of-us-auth-states")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoSummary::IpcpStates::IpcpStates()
+    :
+    count{YType::uint16, "count"},
+    total{YType::uint16, "total"}
+{
+
+    yang_name = "ipcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoSummary::IpcpStates::~IpcpStates()
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return total.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoSummary::IpcpStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipcp-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoSummary::IpcpStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::IpcpStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::IpcpStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoSummary::LcpStates::LcpStates()
+    :
+    count{YType::uint16, "count"},
+    total{YType::uint16, "total"}
+{
+
+    yang_name = "lcp-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoSummary::LcpStates::~LcpStates()
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return total.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoSummary::LcpStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lcp-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoSummary::LcpStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::LcpStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::LcpStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoSummary::LcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoSummary::LcpStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::OfPeerAuthStates()
+    :
+    count{YType::uint16, "count"},
+    total{YType::uint16, "total"}
+{
+
+    yang_name = "of-peer-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::~OfPeerAuthStates()
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return total.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "of-peer-auth-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::OfUsAuthStates()
+    :
+    count{YType::uint16, "count"},
+    total{YType::uint16, "total"}
+{
+
+    yang_name = "of-us-auth-states"; yang_parent_name = "sso-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::~OfUsAuthStates()
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return total.is_set;
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "of-us-auth-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Statistics::Statistics()
+    :
+    authentication_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>())
+	,lcp_statistics(std::make_shared<Ppp::Nodes::Node::Statistics::LcpStatistics>())
+{
+    authentication_statistics->parent = this;
+    lcp_statistics->parent = this;
+
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Statistics::~Statistics()
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::has_data() const
+{
+    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    {
+        if(ncp_statistics_array[index]->has_data())
+            return true;
+    }
+    return (authentication_statistics !=  nullptr && authentication_statistics->has_data())
+	|| (lcp_statistics !=  nullptr && lcp_statistics->has_data());
+}
+
+bool Ppp::Nodes::Node::Statistics::has_operation() const
+{
+    for (std::size_t index=0; index<ncp_statistics_array.size(); index++)
+    {
+        if(ncp_statistics_array[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (authentication_statistics !=  nullptr && authentication_statistics->has_operation())
+	|| (lcp_statistics !=  nullptr && lcp_statistics->has_operation());
+}
+
+std::string Ppp::Nodes::Node::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Statistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "authentication-statistics")
+    {
+        if(authentication_statistics == nullptr)
+        {
+            authentication_statistics = std::make_shared<Ppp::Nodes::Node::Statistics::AuthenticationStatistics>();
+        }
+        return authentication_statistics;
+    }
+
+    if(child_yang_name == "lcp-statistics")
+    {
+        if(lcp_statistics == nullptr)
+        {
+            lcp_statistics = std::make_shared<Ppp::Nodes::Node::Statistics::LcpStatistics>();
+        }
+        return lcp_statistics;
+    }
+
+    if(child_yang_name == "ncp-statistics-array")
+    {
+        for(auto const & c : ncp_statistics_array)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ppp::Nodes::Node::Statistics::NcpStatisticsArray>();
+        c->parent = this;
+        ncp_statistics_array.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication_statistics != nullptr)
+    {
+        children["authentication-statistics"] = authentication_statistics;
+    }
+
+    if(lcp_statistics != nullptr)
+    {
+        children["lcp-statistics"] = lcp_statistics;
+    }
+
+    for (auto const & c : ncp_statistics_array)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ppp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Statistics::AuthenticationStatistics::AuthenticationStatistics()
+    :
+    auth_timeout_count{YType::uint64, "auth-timeout-count"},
+    chap_chall_rcvd{YType::uint64, "chap-chall-rcvd"},
+    chap_chall_sent{YType::uint64, "chap-chall-sent"},
+    chap_rep_fail_rcvd{YType::uint64, "chap-rep-fail-rcvd"},
+    chap_rep_fail_sent{YType::uint64, "chap-rep-fail-sent"},
+    chap_rep_succ_rcvd{YType::uint64, "chap-rep-succ-rcvd"},
+    chap_rep_succ_sent{YType::uint64, "chap-rep-succ-sent"},
+    chap_resp_rcvd{YType::uint64, "chap-resp-rcvd"},
+    chap_resp_sent{YType::uint64, "chap-resp-sent"},
+    pap_ack_rcvd{YType::uint64, "pap-ack-rcvd"},
+    pap_ack_sent{YType::uint64, "pap-ack-sent"},
+    pap_nak_rcvd{YType::uint64, "pap-nak-rcvd"},
+    pap_nak_sent{YType::uint64, "pap-nak-sent"},
+    pap_req_rcvd{YType::uint64, "pap-req-rcvd"},
+    pap_req_sent{YType::uint64, "pap-req-sent"}
+{
+
+    yang_name = "authentication-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Statistics::AuthenticationStatistics::~AuthenticationStatistics()
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_data() const
+{
+    return auth_timeout_count.is_set
+	|| chap_chall_rcvd.is_set
+	|| chap_chall_sent.is_set
+	|| chap_rep_fail_rcvd.is_set
+	|| chap_rep_fail_sent.is_set
+	|| chap_rep_succ_rcvd.is_set
+	|| chap_rep_succ_sent.is_set
+	|| chap_resp_rcvd.is_set
+	|| chap_resp_sent.is_set
+	|| pap_ack_rcvd.is_set
+	|| pap_ack_sent.is_set
+	|| pap_nak_rcvd.is_set
+	|| pap_nak_sent.is_set
+	|| pap_req_rcvd.is_set
+	|| pap_req_sent.is_set;
+}
+
+bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auth_timeout_count.yfilter)
+	|| ydk::is_set(chap_chall_rcvd.yfilter)
+	|| ydk::is_set(chap_chall_sent.yfilter)
+	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_fail_sent.yfilter)
+	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_succ_sent.yfilter)
+	|| ydk::is_set(chap_resp_rcvd.yfilter)
+	|| ydk::is_set(chap_resp_sent.yfilter)
+	|| ydk::is_set(pap_ack_rcvd.yfilter)
+	|| ydk::is_set(pap_ack_sent.yfilter)
+	|| ydk::is_set(pap_nak_rcvd.yfilter)
+	|| ydk::is_set(pap_nak_sent.yfilter)
+	|| ydk::is_set(pap_req_rcvd.yfilter)
+	|| ydk::is_set(pap_req_sent.yfilter);
+}
+
+std::string Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
+    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
+    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
+    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
+    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
+    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
+    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
+    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
+    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
+    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
+    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
+    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
+    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
+    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
+    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count = value;
+        auth_timeout_count.value_namespace = name_space;
+        auth_timeout_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd = value;
+        chap_chall_rcvd.value_namespace = name_space;
+        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent = value;
+        chap_chall_sent.value_namespace = name_space;
+        chap_chall_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd = value;
+        chap_rep_fail_rcvd.value_namespace = name_space;
+        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent = value;
+        chap_rep_fail_sent.value_namespace = name_space;
+        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd = value;
+        chap_rep_succ_rcvd.value_namespace = name_space;
+        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent = value;
+        chap_rep_succ_sent.value_namespace = name_space;
+        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd = value;
+        chap_resp_rcvd.value_namespace = name_space;
+        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent = value;
+        chap_resp_sent.value_namespace = name_space;
+        chap_resp_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd = value;
+        pap_ack_rcvd.value_namespace = name_space;
+        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent = value;
+        pap_ack_sent.value_namespace = name_space;
+        pap_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd = value;
+        pap_nak_rcvd.value_namespace = name_space;
+        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent = value;
+        pap_nak_sent.value_namespace = name_space;
+        pap_nak_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd = value;
+        pap_req_rcvd.value_namespace = name_space;
+        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent = value;
+        pap_req_sent.value_namespace = name_space;
+        pap_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Statistics::LcpStatistics::LcpStatistics()
+    :
+    code_rej_rcvd{YType::uint64, "code-rej-rcvd"},
+    code_rej_sent{YType::uint64, "code-rej-sent"},
+    conf_ack_rcvd{YType::uint64, "conf-ack-rcvd"},
+    conf_ack_sent{YType::uint64, "conf-ack-sent"},
+    conf_nak_rcvd{YType::uint64, "conf-nak-rcvd"},
+    conf_nak_sent{YType::uint64, "conf-nak-sent"},
+    conf_rej_rcvd{YType::uint64, "conf-rej-rcvd"},
+    conf_rej_sent{YType::uint64, "conf-rej-sent"},
+    conf_req_rcvd{YType::uint64, "conf-req-rcvd"},
+    conf_req_sent{YType::uint64, "conf-req-sent"},
+    disc_req_rcvd{YType::uint64, "disc-req-rcvd"},
+    disc_req_sent{YType::uint64, "disc-req-sent"},
+    echo_rep_rcvd{YType::uint64, "echo-rep-rcvd"},
+    echo_rep_sent{YType::uint64, "echo-rep-sent"},
+    echo_req_rcvd{YType::uint64, "echo-req-rcvd"},
+    echo_req_sent{YType::uint64, "echo-req-sent"},
+    link_error{YType::uint64, "link-error"},
+    link_up{YType::uint64, "link-up"},
+    proto_rej_rcvd{YType::uint64, "proto-rej-rcvd"},
+    proto_rej_sent{YType::uint64, "proto-rej-sent"},
+    term_ack_rcvd{YType::uint64, "term-ack-rcvd"},
+    term_ack_sent{YType::uint64, "term-ack-sent"},
+    term_req_rcvd{YType::uint64, "term-req-rcvd"},
+    term_req_sent{YType::uint64, "term-req-sent"}
+{
+
+    yang_name = "lcp-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Statistics::LcpStatistics::~LcpStatistics()
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_data() const
+{
+    return code_rej_rcvd.is_set
+	|| code_rej_sent.is_set
+	|| conf_ack_rcvd.is_set
+	|| conf_ack_sent.is_set
+	|| conf_nak_rcvd.is_set
+	|| conf_nak_sent.is_set
+	|| conf_rej_rcvd.is_set
+	|| conf_rej_sent.is_set
+	|| conf_req_rcvd.is_set
+	|| conf_req_sent.is_set
+	|| disc_req_rcvd.is_set
+	|| disc_req_sent.is_set
+	|| echo_rep_rcvd.is_set
+	|| echo_rep_sent.is_set
+	|| echo_req_rcvd.is_set
+	|| echo_req_sent.is_set
+	|| link_error.is_set
+	|| link_up.is_set
+	|| proto_rej_rcvd.is_set
+	|| proto_rej_sent.is_set
+	|| term_ack_rcvd.is_set
+	|| term_ack_sent.is_set
+	|| term_req_rcvd.is_set
+	|| term_req_sent.is_set;
+}
+
+bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(code_rej_rcvd.yfilter)
+	|| ydk::is_set(code_rej_sent.yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(disc_req_rcvd.yfilter)
+	|| ydk::is_set(disc_req_sent.yfilter)
+	|| ydk::is_set(echo_rep_rcvd.yfilter)
+	|| ydk::is_set(echo_rep_sent.yfilter)
+	|| ydk::is_set(echo_req_rcvd.yfilter)
+	|| ydk::is_set(echo_req_sent.yfilter)
+	|| ydk::is_set(link_error.yfilter)
+	|| ydk::is_set(link_up.yfilter)
+	|| ydk::is_set(proto_rej_rcvd.yfilter)
+	|| ydk::is_set(proto_rej_sent.yfilter)
+	|| ydk::is_set(term_ack_rcvd.yfilter)
+	|| ydk::is_set(term_ack_sent.yfilter)
+	|| ydk::is_set(term_req_rcvd.yfilter)
+	|| ydk::is_set(term_req_sent.yfilter);
+}
+
+std::string Ppp::Nodes::Node::Statistics::LcpStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lcp-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Statistics::LcpStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (code_rej_rcvd.is_set || is_set(code_rej_rcvd.yfilter)) leaf_name_data.push_back(code_rej_rcvd.get_name_leafdata());
+    if (code_rej_sent.is_set || is_set(code_rej_sent.yfilter)) leaf_name_data.push_back(code_rej_sent.get_name_leafdata());
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.yfilter)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
+    if (disc_req_sent.is_set || is_set(disc_req_sent.yfilter)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
+    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.yfilter)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
+    if (echo_rep_sent.is_set || is_set(echo_rep_sent.yfilter)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
+    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.yfilter)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
+    if (echo_req_sent.is_set || is_set(echo_req_sent.yfilter)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
+    if (link_error.is_set || is_set(link_error.yfilter)) leaf_name_data.push_back(link_error.get_name_leafdata());
+    if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
+    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
+    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
+    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
+    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
+    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
+    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::LcpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::LcpStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::Statistics::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "code-rej-rcvd")
+    {
+        code_rej_rcvd = value;
+        code_rej_rcvd.value_namespace = name_space;
+        code_rej_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "code-rej-sent")
+    {
+        code_rej_sent = value;
+        code_rej_sent.value_namespace = name_space;
+        code_rej_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-req-rcvd")
+    {
+        disc_req_rcvd = value;
+        disc_req_rcvd.value_namespace = name_space;
+        disc_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-req-sent")
+    {
+        disc_req_sent = value;
+        disc_req_sent.value_namespace = name_space;
+        disc_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "echo-rep-rcvd")
+    {
+        echo_rep_rcvd = value;
+        echo_rep_rcvd.value_namespace = name_space;
+        echo_rep_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "echo-rep-sent")
+    {
+        echo_rep_sent = value;
+        echo_rep_sent.value_namespace = name_space;
+        echo_rep_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "echo-req-rcvd")
+    {
+        echo_req_rcvd = value;
+        echo_req_rcvd.value_namespace = name_space;
+        echo_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "echo-req-sent")
+    {
+        echo_req_sent = value;
+        echo_req_sent.value_namespace = name_space;
+        echo_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-error")
+    {
+        link_error = value;
+        link_error.value_namespace = name_space;
+        link_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-up")
+    {
+        link_up = value;
+        link_up.value_namespace = name_space;
+        link_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd = value;
+        proto_rej_rcvd.value_namespace = name_space;
+        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent = value;
+        proto_rej_sent.value_namespace = name_space;
+        proto_rej_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd = value;
+        term_ack_rcvd.value_namespace = name_space;
+        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent = value;
+        term_ack_sent.value_namespace = name_space;
+        term_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd = value;
+        term_req_rcvd.value_namespace = name_space;
+        term_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent = value;
+        term_req_sent.value_namespace = name_space;
+        term_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::Statistics::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "code-rej-rcvd")
+    {
+        code_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "code-rej-sent")
+    {
+        code_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-rcvd")
+    {
+        disc_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-sent")
+    {
+        disc_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-rcvd")
+    {
+        echo_rep_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-sent")
+    {
+        echo_rep_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-rcvd")
+    {
+        echo_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-sent")
+    {
+        echo_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "link-error")
+    {
+        link_error.yfilter = yfilter;
+    }
+    if(value_path == "link-up")
+    {
+        link_up.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "code-rej-rcvd" || name == "code-rej-sent" || name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Statistics::NcpStatisticsArray::NcpStatisticsArray()
+    :
+    conf_ack_rcvd{YType::uint64, "conf-ack-rcvd"},
+    conf_ack_sent{YType::uint64, "conf-ack-sent"},
+    conf_nak_rcvd{YType::uint64, "conf-nak-rcvd"},
+    conf_nak_sent{YType::uint64, "conf-nak-sent"},
+    conf_rej_rcvd{YType::uint64, "conf-rej-rcvd"},
+    conf_rej_sent{YType::uint64, "conf-rej-sent"},
+    conf_req_rcvd{YType::uint64, "conf-req-rcvd"},
+    conf_req_sent{YType::uint64, "conf-req-sent"},
+    ncp_identifier{YType::enumeration, "ncp-identifier"},
+    proto_rej_rcvd{YType::uint64, "proto-rej-rcvd"},
+    proto_rej_sent{YType::uint64, "proto-rej-sent"},
+    term_ack_rcvd{YType::uint64, "term-ack-rcvd"},
+    term_ack_sent{YType::uint64, "term-ack-sent"},
+    term_req_rcvd{YType::uint64, "term-req-rcvd"},
+    term_req_sent{YType::uint64, "term-req-sent"}
+{
+
+    yang_name = "ncp-statistics-array"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Statistics::NcpStatisticsArray::~NcpStatisticsArray()
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_data() const
+{
+    return conf_ack_rcvd.is_set
+	|| conf_ack_sent.is_set
+	|| conf_nak_rcvd.is_set
+	|| conf_nak_sent.is_set
+	|| conf_rej_rcvd.is_set
+	|| conf_rej_sent.is_set
+	|| conf_req_rcvd.is_set
+	|| conf_req_sent.is_set
+	|| ncp_identifier.is_set
+	|| proto_rej_rcvd.is_set
+	|| proto_rej_sent.is_set
+	|| term_ack_rcvd.is_set
+	|| term_ack_sent.is_set
+	|| term_req_rcvd.is_set
+	|| term_req_sent.is_set;
+}
+
+bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter)
+	|| ydk::is_set(proto_rej_rcvd.yfilter)
+	|| ydk::is_set(proto_rej_sent.yfilter)
+	|| ydk::is_set(term_ack_rcvd.yfilter)
+	|| ydk::is_set(term_ack_sent.yfilter)
+	|| ydk::is_set(term_req_rcvd.yfilter)
+	|| ydk::is_set(term_req_sent.yfilter);
+}
+
+std::string Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ncp-statistics-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
+    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
+    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
+    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
+    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
+    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd = value;
+        proto_rej_rcvd.value_namespace = name_space;
+        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent = value;
+        proto_rej_sent.value_namespace = name_space;
+        proto_rej_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd = value;
+        term_ack_rcvd.value_namespace = name_space;
+        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent = value;
+        term_ack_sent.value_namespace = name_space;
+        term_ack_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd = value;
+        term_req_rcvd.value_namespace = name_space;
+        term_req_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent = value;
+        term_req_sent.value_namespace = name_space;
+        term_req_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+        return true;
+    return false;
+}
+
 Ppp::Nodes::Node::Summary::Summary()
     :
     fsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates>())
@@ -7277,12 +6688,10 @@ Ppp::Nodes::Node::Summary::Summary()
 	,lcp_auth_phases(std::make_shared<Ppp::Nodes::Node::Summary::LcpAuthPhases>())
 {
     fsm_states->parent = this;
-
     intfs->parent = this;
-
     lcp_auth_phases->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "node";
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::Summary::~Summary()
@@ -7308,29 +6717,15 @@ std::string Ppp::Nodes::Node::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7402,6 +6797,327 @@ bool Ppp::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
+Ppp::Nodes::Node::Summary::FsmStates::FsmStates()
+    :
+    lcpfsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates>())
+{
+    lcpfsm_states->parent = this;
+
+    yang_name = "fsm-states"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Summary::FsmStates::~FsmStates()
+{
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::has_data() const
+{
+    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
+    {
+        if(ncpfsm_states_array[index]->has_data())
+            return true;
+    }
+    return (lcpfsm_states !=  nullptr && lcpfsm_states->has_data());
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::has_operation() const
+{
+    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
+    {
+        if(ncpfsm_states_array[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (lcpfsm_states !=  nullptr && lcpfsm_states->has_operation());
+}
+
+std::string Ppp::Nodes::Node::Summary::FsmStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fsm-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::FsmStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lcpfsm-states")
+    {
+        if(lcpfsm_states == nullptr)
+        {
+            lcpfsm_states = std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates>();
+        }
+        return lcpfsm_states;
+    }
+
+    if(child_yang_name == "ncpfsm-states-array")
+    {
+        for(auto const & c : ncpfsm_states_array)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray>();
+        c->parent = this;
+        ncpfsm_states_array.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(lcpfsm_states != nullptr)
+    {
+        children["lcpfsm-states"] = lcpfsm_states;
+    }
+
+    for (auto const & c : ncpfsm_states_array)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lcpfsm-states" || name == "ncpfsm-states-array")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::LcpfsmStates()
+    :
+    count{YType::uint32, "count"},
+    total{YType::uint32, "total"}
+{
+
+    yang_name = "lcpfsm-states"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::~LcpfsmStates()
+{
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return total.is_set;
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lcpfsm-states";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
+}
+
+Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::NcpfsmStatesArray()
+    :
+    count{YType::uint32, "count"},
+    ncp_identifier{YType::enumeration, "ncp-identifier"},
+    total{YType::uint32, "total"}
+{
+
+    yang_name = "ncpfsm-states-array"; yang_parent_name = "fsm-states"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::~NcpfsmStatesArray()
+{
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_data() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return ncp_identifier.is_set
+	|| total.is_set;
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_operation() const
+{
+    for (auto const & leaf : count.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter)
+	|| ydk::is_set(total.yfilter);
+}
+
+std::string Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ncpfsm-states-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+
+    auto count_name_datas = count.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "count")
+    {
+        count.append(value);
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total")
+    {
+        total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "ncp-identifier" || name == "total")
+        return true;
+    return false;
+}
+
 Ppp::Nodes::Node::Summary::Intfs::Intfs()
     :
     gcc0_count{YType::uint32, "gcc0-count"},
@@ -7412,7 +7128,8 @@ Ppp::Nodes::Node::Summary::Intfs::Intfs()
     serial_count{YType::uint32, "serial-count"},
     total{YType::uint32, "total"}
 {
-    yang_name = "intfs"; yang_parent_name = "summary";
+
+    yang_name = "intfs"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::Summary::Intfs::~Intfs()
@@ -7446,23 +7163,11 @@ std::string Ppp::Nodes::Node::Summary::Intfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Summary::Intfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::Intfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Intfs' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (gcc0_count.is_set || is_set(gcc0_count.yfilter)) leaf_name_data.push_back(gcc0_count.get_name_leafdata());
@@ -7473,9 +7178,7 @@ const EntityPath Ppp::Nodes::Node::Summary::Intfs::get_entity_path(Entity* ances
     if (serial_count.is_set || is_set(serial_count.yfilter)) leaf_name_data.push_back(serial_count.get_name_leafdata());
     if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7575,367 +7278,6 @@ bool Ppp::Nodes::Node::Summary::Intfs::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-Ppp::Nodes::Node::Summary::FsmStates::FsmStates()
-    :
-    lcpfsm_states(std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates>())
-{
-    lcpfsm_states->parent = this;
-
-    yang_name = "fsm-states"; yang_parent_name = "summary";
-}
-
-Ppp::Nodes::Node::Summary::FsmStates::~FsmStates()
-{
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::has_data() const
-{
-    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
-    {
-        if(ncpfsm_states_array[index]->has_data())
-            return true;
-    }
-    return (lcpfsm_states !=  nullptr && lcpfsm_states->has_data());
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::has_operation() const
-{
-    for (std::size_t index=0; index<ncpfsm_states_array.size(); index++)
-    {
-        if(ncpfsm_states_array[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (lcpfsm_states !=  nullptr && lcpfsm_states->has_operation());
-}
-
-std::string Ppp::Nodes::Node::Summary::FsmStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fsm-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::Summary::FsmStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FsmStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lcpfsm-states")
-    {
-        if(lcpfsm_states == nullptr)
-        {
-            lcpfsm_states = std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates>();
-        }
-        return lcpfsm_states;
-    }
-
-    if(child_yang_name == "ncpfsm-states-array")
-    {
-        for(auto const & c : ncpfsm_states_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray>();
-        c->parent = this;
-        ncpfsm_states_array.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(lcpfsm_states != nullptr)
-    {
-        children["lcpfsm-states"] = lcpfsm_states;
-    }
-
-    for (auto const & c : ncpfsm_states_array)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lcpfsm-states" || name == "ncpfsm-states-array")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::LcpfsmStates()
-    :
-    count{YType::uint32, "count"},
-    total{YType::uint32, "total"}
-{
-    yang_name = "lcpfsm-states"; yang_parent_name = "fsm-states";
-}
-
-Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::~LcpfsmStates()
-{
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return total.is_set;
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_operation() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lcpfsm-states";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpfsmStates' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "count" || name == "total")
-        return true;
-    return false;
-}
-
-Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::NcpfsmStatesArray()
-    :
-    count{YType::uint32, "count"},
-    ncp_identifier{YType::enumeration, "ncp-identifier"},
-    total{YType::uint32, "total"}
-{
-    yang_name = "ncpfsm-states-array"; yang_parent_name = "fsm-states";
-}
-
-Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::~NcpfsmStatesArray()
-{
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_data() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return ncp_identifier.is_set
-	|| total.is_set;
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_operation() const
-{
-    for (auto const & leaf : count.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(count.yfilter)
-	|| ydk::is_set(ncp_identifier.yfilter)
-	|| ydk::is_set(total.yfilter);
-}
-
-std::string Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ncpfsm-states-array";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NcpfsmStatesArray' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
-
-    auto count_name_datas = count.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "count")
-    {
-        count.append(value);
-    }
-    if(value_path == "ncp-identifier")
-    {
-        ncp_identifier = value;
-        ncp_identifier.value_namespace = name_space;
-        ncp_identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total")
-    {
-        total = value;
-        total.value_namespace = name_space;
-        total.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "count")
-    {
-        count.yfilter = yfilter;
-    }
-    if(value_path == "ncp-identifier")
-    {
-        ncp_identifier.yfilter = yfilter;
-    }
-    if(value_path == "total")
-    {
-        total.yfilter = yfilter;
-    }
-}
-
-bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "count" || name == "ncp-identifier" || name == "total")
-        return true;
-    return false;
-}
-
 Ppp::Nodes::Node::Summary::LcpAuthPhases::LcpAuthPhases()
     :
     authenticating{YType::uint32, "authenticating"},
@@ -7945,7 +7287,8 @@ Ppp::Nodes::Node::Summary::LcpAuthPhases::LcpAuthPhases()
     up_local_term{YType::uint32, "up-local-term"},
     up_tunneled{YType::uint32, "up-tunneled"}
 {
-    yang_name = "lcp-auth-phases"; yang_parent_name = "summary";
+
+    yang_name = "lcp-auth-phases"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ppp::Nodes::Node::Summary::LcpAuthPhases::~LcpAuthPhases()
@@ -7977,23 +7320,11 @@ std::string Ppp::Nodes::Node::Summary::LcpAuthPhases::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lcp-auth-phases";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ppp::Nodes::Node::Summary::LcpAuthPhases::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ppp::Nodes::Node::Summary::LcpAuthPhases::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LcpAuthPhases' in Cisco_IOS_XR_ppp_ma_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (authenticating.is_set || is_set(authenticating.yfilter)) leaf_name_data.push_back(authenticating.get_name_leafdata());
@@ -8003,9 +7334,7 @@ const EntityPath Ppp::Nodes::Node::Summary::LcpAuthPhases::get_entity_path(Entit
     if (up_local_term.is_set || is_set(up_local_term.yfilter)) leaf_name_data.push_back(up_local_term.get_name_leafdata());
     if (up_tunneled.is_set || is_set(up_tunneled.yfilter)) leaf_name_data.push_back(up_tunneled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8095,12 +7424,6 @@ bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_leaf_or_child_of_name(const s
     return false;
 }
 
-const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
-const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
-const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
-const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
-const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
-
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
@@ -8109,6 +7432,30 @@ const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-sta
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
 const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+
+const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
+const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
+const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
+const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
+const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
+const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
+
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
 
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_detached {0, "ppp-lcp-mp-mbr-state-detached"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_lcp_not_negotiated {1, "ppp-lcp-mp-mbr-state-lcp-not-negotiated"};
@@ -8124,24 +7471,6 @@ const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_local_mismatch {10
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_peer_mismatch {11, "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_standby_up {12, "ppp-lcp-mp-mbr-state-standby-up"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_active {13, "ppp-lcp-mp-mbr-state-active"};
-
-const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
-const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
-const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
-const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
-const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
-const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
-
-const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
 
 
 }

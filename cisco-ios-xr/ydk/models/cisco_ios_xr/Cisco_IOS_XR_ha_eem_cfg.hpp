@@ -18,7 +18,7 @@ class EventManager : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -39,11 +39,58 @@ class EventManager : public ydk::Entity
         class SchedulerScript; //type: EventManager::SchedulerScript
         class Environments; //type: EventManager::Environments
 
-        std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::Environments> environments;
-        std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::Policies> policies;
-        std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript> scheduler_script;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::Environments> environments;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::Policies> policies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript> scheduler_script;
         
 }; // EventManager
+
+
+class EventManager::Environments : public ydk::Entity
+{
+    public:
+        Environments();
+        ~Environments();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Environment; //type: EventManager::Environments::Environment
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::Environments::Environment> > environment;
+        
+}; // EventManager::Environments
+
+
+class EventManager::Environments::Environment : public ydk::Entity
+{
+    public:
+        Environment();
+        ~Environment();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf environment_name; //type: string
+        ydk::YLeaf environment_value; //type: string
+
+}; // EventManager::Environments::Environment
 
 
 class EventManager::Policies : public ydk::Entity
@@ -54,17 +101,18 @@ class EventManager::Policies : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Policy; //type: EventManager::Policies::Policy
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::Policies::Policy> > policy;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::Policies::Policy> > policy;
         
 }; // EventManager::Policies
 
@@ -77,13 +125,14 @@ class EventManager::Policies::Policy : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf policy_name; //type: string
         ydk::YLeaf username; //type: string
@@ -105,17 +154,18 @@ class EventManager::SchedulerScript : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class ThreadClasses; //type: EventManager::SchedulerScript::ThreadClasses
 
-        std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript::ThreadClasses> thread_classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript::ThreadClasses> thread_classes;
         
 }; // EventManager::SchedulerScript
 
@@ -128,17 +178,18 @@ class EventManager::SchedulerScript::ThreadClasses : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class ThreadClass; //type: EventManager::SchedulerScript::ThreadClasses::ThreadClass
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript::ThreadClasses::ThreadClass> > thread_class;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_cfg::EventManager::SchedulerScript::ThreadClasses::ThreadClass> > thread_class;
         
 }; // EventManager::SchedulerScript::ThreadClasses
 
@@ -151,79 +202,19 @@ class EventManager::SchedulerScript::ThreadClasses::ThreadClass : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf thread_class_name; //type: string
         ydk::YLeaf num_threads; //type: uint32
 
 }; // EventManager::SchedulerScript::ThreadClasses::ThreadClass
-
-
-class EventManager::Environments : public ydk::Entity
-{
-    public:
-        Environments();
-        ~Environments();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Environment; //type: EventManager::Environments::Environment
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ha_eem_cfg::EventManager::Environments::Environment> > environment;
-        
-}; // EventManager::Environments
-
-
-class EventManager::Environments::Environment : public ydk::Entity
-{
-    public:
-        Environment();
-        ~Environment();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf environment_name; //type: string
-        ydk::YLeaf environment_value; //type: string
-
-}; // EventManager::Environments::Environment
-
-class EventManagerPolicyMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cisco;
-        static const ydk::Enum::YLeaf trust;
-
-};
-
-class EventManagerPolicySec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsa_2048;
-        static const ydk::Enum::YLeaf trust;
-
-};
 
 class EventManagerPolicy : public ydk::Enum
 {
@@ -238,6 +229,22 @@ class EventManagerChecksum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf sha_1;
         static const ydk::Enum::YLeaf md5;
+
+};
+
+class EventManagerPolicySec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsa_2048;
+        static const ydk::Enum::YLeaf trust;
+
+};
+
+class EventManagerPolicyMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cisco;
+        static const ydk::Enum::YLeaf trust;
 
 };
 

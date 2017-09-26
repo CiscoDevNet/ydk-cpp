@@ -17,7 +17,7 @@ BfdState::BfdState()
 {
     sessions->parent = this;
 
-    yang_name = "bfd-state"; yang_parent_name = "Cisco-IOS-XE-bfd-oper";
+    yang_name = "bfd-state"; yang_parent_name = "Cisco-IOS-XE-bfd-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 BfdState::~BfdState()
@@ -39,26 +39,15 @@ std::string BfdState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-bfd-oper:bfd-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool BfdState::has_leaf_or_child_of_name(const std::string & name) const
 
 BfdState::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "bfd-state";
+
+    yang_name = "sessions"; yang_parent_name = "bfd-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BfdState::Sessions::~Sessions()
@@ -156,33 +146,26 @@ bool BfdState::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string BfdState::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-bfd-oper:bfd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BfdState::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-bfd-oper:bfd-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -244,16 +227,12 @@ BfdState::Sessions::Session::Session()
 	,bfd_tunnel_paths(std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths>())
 {
     bfd_circuits->parent = this;
-
     bfd_mhop_nbrs->parent = this;
-
     bfd_mhop_vrf_nbrs->parent = this;
-
     bfd_nbrs->parent = this;
-
     bfd_tunnel_paths->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions";
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 BfdState::Sessions::Session::~Session()
@@ -281,34 +260,27 @@ bool BfdState::Sessions::Session::has_operation() const
 	|| (bfd_tunnel_paths !=  nullptr && bfd_tunnel_paths->has_operation());
 }
 
+std::string BfdState::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-bfd-oper:bfd-state/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string BfdState::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[type='" <<type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-bfd-oper:bfd-state/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -418,274 +390,10 @@ bool BfdState::Sessions::Session::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPaths()
-{
-    yang_name = "bfd-tunnel-paths"; yang_parent_name = "session";
-}
-
-BfdState::Sessions::Session::BfdTunnelPaths::~BfdTunnelPaths()
-{
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::has_data() const
-{
-    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
-    {
-        if(bfd_tunnel_path[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::has_operation() const
-{
-    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
-    {
-        if(bfd_tunnel_path[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BfdState::Sessions::Session::BfdTunnelPaths::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tunnel-paths";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BfdState::Sessions::Session::BfdTunnelPaths::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdTunnelPaths' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-tunnel-path")
-    {
-        for(auto const & c : bfd_tunnel_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
-        c->parent = this;
-        bfd_tunnel_path.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_tunnel_path)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BfdState::Sessions::Session::BfdTunnelPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BfdState::Sessions::Session::BfdTunnelPaths::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-tunnel-path")
-        return true;
-    return false;
-}
-
-BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::BfdTunnelPath()
-    :
-    interface{YType::str, "interface"},
-    lsp_type{YType::enumeration, "lsp-type"},
-    ld{YType::uint32, "ld"},
-    rd{YType::uint32, "rd"},
-    remote_state{YType::enumeration, "remote-state"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "bfd-tunnel-path"; yang_parent_name = "bfd-tunnel-paths";
-}
-
-BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::~BfdTunnelPath()
-{
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_data() const
-{
-    return interface.is_set
-	|| lsp_type.is_set
-	|| ld.is_set
-	|| rd.is_set
-	|| remote_state.is_set
-	|| state.is_set;
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(lsp_type.yfilter)
-	|| ydk::is_set(ld.yfilter)
-	|| ydk::is_set(rd.yfilter)
-	|| ydk::is_set(remote_state.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-tunnel-path" <<"[interface='" <<interface <<"']" <<"[lsp-type='" <<lsp_type <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdTunnelPath' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (lsp_type.is_set || is_set(lsp_type.yfilter)) leaf_name_data.push_back(lsp_type.get_name_leafdata());
-    if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
-    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
-    if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lsp-type")
-    {
-        lsp_type = value;
-        lsp_type.value_namespace = name_space;
-        lsp_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ld")
-    {
-        ld = value;
-        ld.value_namespace = name_space;
-        ld.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-        rd.value_namespace = name_space;
-        rd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-state")
-    {
-        remote_state = value;
-        remote_state.value_namespace = name_space;
-        remote_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "lsp-type")
-    {
-        lsp_type.yfilter = yfilter;
-    }
-    if(value_path == "ld")
-    {
-        ld.yfilter = yfilter;
-    }
-    if(value_path == "rd")
-    {
-        rd.yfilter = yfilter;
-    }
-    if(value_path == "remote-state")
-    {
-        remote_state.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface" || name == "lsp-type" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
-        return true;
-    return false;
-}
-
 BfdState::Sessions::Session::BfdCircuits::BfdCircuits()
 {
-    yang_name = "bfd-circuits"; yang_parent_name = "session";
+
+    yang_name = "bfd-circuits"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdCircuits::~BfdCircuits()
@@ -716,29 +424,15 @@ std::string BfdState::Sessions::Session::BfdCircuits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-circuits";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdCircuits::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdCircuits::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdCircuits' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -798,7 +492,8 @@ BfdState::Sessions::Session::BfdCircuits::BfdCircuit::BfdCircuit()
     remote_state{YType::enumeration, "remote-state"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "bfd-circuit"; yang_parent_name = "bfd-circuits";
+
+    yang_name = "bfd-circuit"; yang_parent_name = "bfd-circuits"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdCircuits::BfdCircuit::~BfdCircuit()
@@ -830,23 +525,11 @@ std::string BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-circuit" <<"[interface='" <<interface <<"']" <<"[vcid='" <<vcid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdCircuit' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
@@ -856,9 +539,7 @@ const EntityPath BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_entit
     if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -948,274 +629,10 @@ bool BfdState::Sessions::Session::BfdCircuits::BfdCircuit::has_leaf_or_child_of_
     return false;
 }
 
-BfdState::Sessions::Session::BfdNbrs::BfdNbrs()
-{
-    yang_name = "bfd-nbrs"; yang_parent_name = "session";
-}
-
-BfdState::Sessions::Session::BfdNbrs::~BfdNbrs()
-{
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::has_data() const
-{
-    for (std::size_t index=0; index<bfd_nbr.size(); index++)
-    {
-        if(bfd_nbr[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::has_operation() const
-{
-    for (std::size_t index=0; index<bfd_nbr.size(); index++)
-    {
-        if(bfd_nbr[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string BfdState::Sessions::Session::BfdNbrs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-nbrs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BfdState::Sessions::Session::BfdNbrs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNbrs' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-nbr")
-    {
-        for(auto const & c : bfd_nbr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
-        c->parent = this;
-        bfd_nbr.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bfd_nbr)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void BfdState::Sessions::Session::BfdNbrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void BfdState::Sessions::Session::BfdNbrs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-nbr")
-        return true;
-    return false;
-}
-
-BfdState::Sessions::Session::BfdNbrs::BfdNbr::BfdNbr()
-    :
-    ip{YType::str, "ip"},
-    interface{YType::str, "interface"},
-    ld{YType::uint32, "ld"},
-    rd{YType::uint32, "rd"},
-    remote_state{YType::enumeration, "remote-state"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "bfd-nbr"; yang_parent_name = "bfd-nbrs";
-}
-
-BfdState::Sessions::Session::BfdNbrs::BfdNbr::~BfdNbr()
-{
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_data() const
-{
-    return ip.is_set
-	|| interface.is_set
-	|| ld.is_set
-	|| rd.is_set
-	|| remote_state.is_set
-	|| state.is_set;
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(ld.yfilter)
-	|| ydk::is_set(rd.yfilter)
-	|| ydk::is_set(remote_state.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-nbr" <<"[ip='" <<ip <<"']" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNbr' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
-    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
-    if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void BfdState::Sessions::Session::BfdNbrs::BfdNbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ld")
-    {
-        ld = value;
-        ld.value_namespace = name_space;
-        ld.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rd")
-    {
-        rd = value;
-        rd.value_namespace = name_space;
-        rd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-state")
-    {
-        remote_state = value;
-        remote_state.value_namespace = name_space;
-        remote_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BfdState::Sessions::Session::BfdNbrs::BfdNbr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "ld")
-    {
-        ld.yfilter = yfilter;
-    }
-    if(value_path == "rd")
-    {
-        rd.yfilter = yfilter;
-    }
-    if(value_path == "remote-state")
-    {
-        remote_state.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip" || name == "interface" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
-        return true;
-    return false;
-}
-
 BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbrs()
 {
-    yang_name = "bfd-mhop-nbrs"; yang_parent_name = "session";
+
+    yang_name = "bfd-mhop-nbrs"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdMhopNbrs::~BfdMhopNbrs()
@@ -1246,29 +663,15 @@ std::string BfdState::Sessions::Session::BfdMhopNbrs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-mhop-nbrs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdMhopNbrs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdMhopNbrs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdMhopNbrs' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1327,7 +730,8 @@ BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::BfdMhopNbr()
     remote_state{YType::enumeration, "remote-state"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "bfd-mhop-nbr"; yang_parent_name = "bfd-mhop-nbrs";
+
+    yang_name = "bfd-mhop-nbr"; yang_parent_name = "bfd-mhop-nbrs"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::~BfdMhopNbr()
@@ -1357,23 +761,11 @@ std::string BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-mhop-nbr" <<"[ip='" <<ip <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdMhopNbr' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
@@ -1382,9 +774,7 @@ const EntityPath BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_entit
     if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1466,7 +856,8 @@ bool BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::has_leaf_or_child_of_
 
 BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbrs()
 {
-    yang_name = "bfd-mhop-vrf-nbrs"; yang_parent_name = "session";
+
+    yang_name = "bfd-mhop-vrf-nbrs"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdMhopVrfNbrs::~BfdMhopVrfNbrs()
@@ -1497,29 +888,15 @@ std::string BfdState::Sessions::Session::BfdMhopVrfNbrs::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-mhop-vrf-nbrs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdMhopVrfNbrs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdMhopVrfNbrs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdMhopVrfNbrs' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1579,7 +956,8 @@ BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::BfdMhopVrfNbr()
     remote_state{YType::enumeration, "remote-state"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "bfd-mhop-vrf-nbr"; yang_parent_name = "bfd-mhop-vrf-nbrs";
+
+    yang_name = "bfd-mhop-vrf-nbr"; yang_parent_name = "bfd-mhop-vrf-nbrs"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::~BfdMhopVrfNbr()
@@ -1611,23 +989,11 @@ std::string BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-mhop-vrf-nbr" <<"[ip='" <<ip <<"']" <<"[vrf='" <<vrf <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdMhopVrfNbr' in Cisco_IOS_XE_bfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
@@ -1637,9 +1003,7 @@ const EntityPath BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get
     if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1729,18 +1093,483 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_leaf_or_chi
     return false;
 }
 
-const Enum::YLeaf BfdRemoteStateType::up {0, "up"};
-const Enum::YLeaf BfdRemoteStateType::down {1, "down"};
-const Enum::YLeaf BfdRemoteStateType::init {2, "init"};
-const Enum::YLeaf BfdRemoteStateType::admindown {3, "admindown"};
-const Enum::YLeaf BfdRemoteStateType::invalid {4, "invalid"};
+BfdState::Sessions::Session::BfdNbrs::BfdNbrs()
+{
 
-const Enum::YLeaf BfdOperSessionType::ipv4 {0, "ipv4"};
-const Enum::YLeaf BfdOperSessionType::ipv6 {1, "ipv6"};
-const Enum::YLeaf BfdOperSessionType::vccv {2, "vccv"};
-const Enum::YLeaf BfdOperSessionType::mpls_tp {3, "mpls-tp"};
-const Enum::YLeaf BfdOperSessionType::ipv4_multihop {4, "ipv4-multihop"};
-const Enum::YLeaf BfdOperSessionType::ipv6_multihop {5, "ipv6-multihop"};
+    yang_name = "bfd-nbrs"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BfdState::Sessions::Session::BfdNbrs::~BfdNbrs()
+{
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::has_data() const
+{
+    for (std::size_t index=0; index<bfd_nbr.size(); index++)
+    {
+        if(bfd_nbr[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::has_operation() const
+{
+    for (std::size_t index=0; index<bfd_nbr.size(); index++)
+    {
+        if(bfd_nbr[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BfdState::Sessions::Session::BfdNbrs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-nbrs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdNbrs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-nbr")
+    {
+        for(auto const & c : bfd_nbr)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
+        c->parent = this;
+        bfd_nbr.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bfd_nbr)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BfdState::Sessions::Session::BfdNbrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BfdState::Sessions::Session::BfdNbrs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-nbr")
+        return true;
+    return false;
+}
+
+BfdState::Sessions::Session::BfdNbrs::BfdNbr::BfdNbr()
+    :
+    ip{YType::str, "ip"},
+    interface{YType::str, "interface"},
+    ld{YType::uint32, "ld"},
+    rd{YType::uint32, "rd"},
+    remote_state{YType::enumeration, "remote-state"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "bfd-nbr"; yang_parent_name = "bfd-nbrs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BfdState::Sessions::Session::BfdNbrs::BfdNbr::~BfdNbr()
+{
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_data() const
+{
+    return ip.is_set
+	|| interface.is_set
+	|| ld.is_set
+	|| rd.is_set
+	|| remote_state.is_set
+	|| state.is_set;
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(ld.yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| ydk::is_set(remote_state.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-nbr" <<"[ip='" <<ip <<"']" <<"[interface='" <<interface <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+    if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BfdState::Sessions::Session::BfdNbrs::BfdNbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ld")
+    {
+        ld = value;
+        ld.value_namespace = name_space;
+        ld.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-state")
+    {
+        remote_state = value;
+        remote_state.value_namespace = name_space;
+        remote_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BfdState::Sessions::Session::BfdNbrs::BfdNbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "ld")
+    {
+        ld.yfilter = yfilter;
+    }
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+    if(value_path == "remote-state")
+    {
+        remote_state.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool BfdState::Sessions::Session::BfdNbrs::BfdNbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "interface" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
+        return true;
+    return false;
+}
+
+BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPaths()
+{
+
+    yang_name = "bfd-tunnel-paths"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BfdState::Sessions::Session::BfdTunnelPaths::~BfdTunnelPaths()
+{
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::has_data() const
+{
+    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
+    {
+        if(bfd_tunnel_path[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::has_operation() const
+{
+    for (std::size_t index=0; index<bfd_tunnel_path.size(); index++)
+    {
+        if(bfd_tunnel_path[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string BfdState::Sessions::Session::BfdTunnelPaths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tunnel-paths";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdTunnelPaths::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-tunnel-path")
+    {
+        for(auto const & c : bfd_tunnel_path)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
+        c->parent = this;
+        bfd_tunnel_path.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : bfd_tunnel_path)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void BfdState::Sessions::Session::BfdTunnelPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BfdState::Sessions::Session::BfdTunnelPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-tunnel-path")
+        return true;
+    return false;
+}
+
+BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::BfdTunnelPath()
+    :
+    interface{YType::str, "interface"},
+    lsp_type{YType::enumeration, "lsp-type"},
+    ld{YType::uint32, "ld"},
+    rd{YType::uint32, "rd"},
+    remote_state{YType::enumeration, "remote-state"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "bfd-tunnel-path"; yang_parent_name = "bfd-tunnel-paths"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::~BfdTunnelPath()
+{
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_data() const
+{
+    return interface.is_set
+	|| lsp_type.is_set
+	|| ld.is_set
+	|| rd.is_set
+	|| remote_state.is_set
+	|| state.is_set;
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(lsp_type.yfilter)
+	|| ydk::is_set(ld.yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| ydk::is_set(remote_state.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-tunnel-path" <<"[interface='" <<interface <<"']" <<"[lsp-type='" <<lsp_type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (lsp_type.is_set || is_set(lsp_type.yfilter)) leaf_name_data.push_back(lsp_type.get_name_leafdata());
+    if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+    if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-type")
+    {
+        lsp_type = value;
+        lsp_type.value_namespace = name_space;
+        lsp_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ld")
+    {
+        ld = value;
+        ld.value_namespace = name_space;
+        ld.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-state")
+    {
+        remote_state = value;
+        remote_state.value_namespace = name_space;
+        remote_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "lsp-type")
+    {
+        lsp_type.yfilter = yfilter;
+    }
+    if(value_path == "ld")
+    {
+        ld.yfilter = yfilter;
+    }
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+    if(value_path == "remote-state")
+    {
+        remote_state.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "lsp-type" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
+        return true;
+    return false;
+}
 
 const Enum::YLeaf BfdStateType::admindown {0, "admindown"};
 const Enum::YLeaf BfdStateType::down {1, "down"};
@@ -1749,9 +1578,22 @@ const Enum::YLeaf BfdStateType::init {3, "init"};
 const Enum::YLeaf BfdStateType::up {4, "up"};
 const Enum::YLeaf BfdStateType::invalid {5, "invalid"};
 
+const Enum::YLeaf BfdOperSessionType::ipv4 {0, "ipv4"};
+const Enum::YLeaf BfdOperSessionType::ipv6 {1, "ipv6"};
+const Enum::YLeaf BfdOperSessionType::vccv {2, "vccv"};
+const Enum::YLeaf BfdOperSessionType::mpls_tp {3, "mpls-tp"};
+const Enum::YLeaf BfdOperSessionType::ipv4_multihop {4, "ipv4-multihop"};
+const Enum::YLeaf BfdOperSessionType::ipv6_multihop {5, "ipv6-multihop"};
+
 const Enum::YLeaf BfdLspType::working {0, "working"};
 const Enum::YLeaf BfdLspType::protect {1, "protect"};
 const Enum::YLeaf BfdLspType::unknown {2, "unknown"};
+
+const Enum::YLeaf BfdRemoteStateType::up {0, "up"};
+const Enum::YLeaf BfdRemoteStateType::down {1, "down"};
+const Enum::YLeaf BfdRemoteStateType::init {2, "init"};
+const Enum::YLeaf BfdRemoteStateType::admindown {3, "admindown"};
+const Enum::YLeaf BfdRemoteStateType::invalid {4, "invalid"};
 
 
 }

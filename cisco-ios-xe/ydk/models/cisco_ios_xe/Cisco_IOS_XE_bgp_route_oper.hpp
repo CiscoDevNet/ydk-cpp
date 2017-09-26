@@ -10,22 +10,6 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_bgp_route_oper {
 
-class BgpRouteFilters : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_rf_all;
-        static const ydk::Enum::YLeaf bgp_rf_cidr_only;
-        static const ydk::Enum::YLeaf bgp_rf_label;
-        static const ydk::Enum::YLeaf bgp_rf_rib_failure;
-        static const ydk::Enum::YLeaf bgp_rf_injected;
-        static const ydk::Enum::YLeaf bgp_rf_inconsistent;
-        static const ydk::Enum::YLeaf bgp_rf_community;
-        static const ydk::Enum::YLeaf bgp_rf_extcommunity;
-        static const ydk::Enum::YLeaf bgp_rf_oer_controlled;
-        static const ydk::Enum::YLeaf bgp_rf_pending;
-
-};
-
 class BgpRpkiStatus : public ydk::Enum
 {
     public:
@@ -43,6 +27,22 @@ class BgpOriginCode : public ydk::Enum
         static const ydk::Enum::YLeaf origin_igp;
         static const ydk::Enum::YLeaf origin_egp;
         static const ydk::Enum::YLeaf origin_incomplete;
+
+};
+
+class BgpRouteFilters : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_rf_all;
+        static const ydk::Enum::YLeaf bgp_rf_cidr_only;
+        static const ydk::Enum::YLeaf bgp_rf_label;
+        static const ydk::Enum::YLeaf bgp_rf_rib_failure;
+        static const ydk::Enum::YLeaf bgp_rf_injected;
+        static const ydk::Enum::YLeaf bgp_rf_inconsistent;
+        static const ydk::Enum::YLeaf bgp_rf_community;
+        static const ydk::Enum::YLeaf bgp_rf_extcommunity;
+        static const ydk::Enum::YLeaf bgp_rf_oer_controlled;
+        static const ydk::Enum::YLeaf bgp_rf_pending;
 
 };
 

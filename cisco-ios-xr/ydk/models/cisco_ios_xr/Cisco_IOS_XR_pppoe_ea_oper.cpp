@@ -17,7 +17,7 @@ PppoeEa::PppoeEa()
 {
     nodes->parent = this;
 
-    yang_name = "pppoe-ea"; yang_parent_name = "Cisco-IOS-XR-pppoe-ea-oper";
+    yang_name = "pppoe-ea"; yang_parent_name = "Cisco-IOS-XR-pppoe-ea-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PppoeEa::~PppoeEa()
@@ -39,26 +39,15 @@ std::string PppoeEa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-pppoe-ea-oper:pppoe-ea";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool PppoeEa::has_leaf_or_child_of_name(const std::string & name) const
 
 PppoeEa::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "pppoe-ea";
+
+    yang_name = "nodes"; yang_parent_name = "pppoe-ea"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PppoeEa::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool PppoeEa::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string PppoeEa::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pppoe-ea-oper:pppoe-ea/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PppoeEa::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pppoe-ea-oper:pppoe-ea/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,10 +224,9 @@ PppoeEa::Nodes::Node::Node()
 	,parent_interface_ids(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds>())
 {
     interface_ids->parent = this;
-
     parent_interface_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 PppoeEa::Nodes::Node::~Node()
@@ -266,34 +248,27 @@ bool PppoeEa::Nodes::Node::has_operation() const
 	|| (parent_interface_ids !=  nullptr && parent_interface_ids->has_operation());
 }
 
+std::string PppoeEa::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pppoe-ea-oper:pppoe-ea/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string PppoeEa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-pppoe-ea-oper:pppoe-ea/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -361,341 +336,10 @@ bool PppoeEa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceIds()
-{
-    yang_name = "parent-interface-ids"; yang_parent_name = "node";
-}
-
-PppoeEa::Nodes::Node::ParentInterfaceIds::~ParentInterfaceIds()
-{
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_data() const
-{
-    for (std::size_t index=0; index<parent_interface_id.size(); index++)
-    {
-        if(parent_interface_id[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_operation() const
-{
-    for (std::size_t index=0; index<parent_interface_id.size(); index++)
-    {
-        if(parent_interface_id[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PppoeEa::Nodes::Node::ParentInterfaceIds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-interface-ids";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ParentInterfaceIds' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parent-interface-id")
-    {
-        for(auto const & c : parent_interface_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
-        c->parent = this;
-        parent_interface_id.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : parent_interface_id)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parent-interface-id")
-        return true;
-    return false;
-}
-
-PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::ParentInterfaceId()
-    :
-    parent_interface_name{YType::str, "parent-interface-name"},
-    interface{YType::str, "interface"},
-    is_in_sync{YType::boolean, "is-in-sync"}
-    	,
-    srgv_mac(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>())
-{
-    srgv_mac->parent = this;
-
-    yang_name = "parent-interface-id"; yang_parent_name = "parent-interface-ids";
-}
-
-PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::~ParentInterfaceId()
-{
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_data() const
-{
-    return parent_interface_name.is_set
-	|| interface.is_set
-	|| is_in_sync.is_set
-	|| (srgv_mac !=  nullptr && srgv_mac->has_data());
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(parent_interface_name.yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(is_in_sync.yfilter)
-	|| (srgv_mac !=  nullptr && srgv_mac->has_operation());
-}
-
-std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parent-interface-id" <<"[parent-interface-name='" <<parent_interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ParentInterfaceId' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (parent_interface_name.is_set || is_set(parent_interface_name.yfilter)) leaf_name_data.push_back(parent_interface_name.get_name_leafdata());
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (is_in_sync.is_set || is_set(is_in_sync.yfilter)) leaf_name_data.push_back(is_in_sync.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "srgv-mac")
-    {
-        if(srgv_mac == nullptr)
-        {
-            srgv_mac = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>();
-        }
-        return srgv_mac;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(srgv_mac != nullptr)
-    {
-        children["srgv-mac"] = srgv_mac;
-    }
-
-    return children;
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "parent-interface-name")
-    {
-        parent_interface_name = value;
-        parent_interface_name.value_namespace = name_space;
-        parent_interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-in-sync")
-    {
-        is_in_sync = value;
-        is_in_sync.value_namespace = name_space;
-        is_in_sync.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "parent-interface-name")
-    {
-        parent_interface_name.yfilter = yfilter;
-    }
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "is-in-sync")
-    {
-        is_in_sync.yfilter = yfilter;
-    }
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "srgv-mac" || name == "parent-interface-name" || name == "interface" || name == "is-in-sync")
-        return true;
-    return false;
-}
-
-PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::SrgvMac()
-    :
-    macaddr{YType::str, "macaddr"}
-{
-    yang_name = "srgv-mac"; yang_parent_name = "parent-interface-id";
-}
-
-PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::~SrgvMac()
-{
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_data() const
-{
-    return macaddr.is_set;
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(macaddr.yfilter);
-}
-
-std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srgv-mac";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SrgvMac' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "macaddr")
-    {
-        macaddr = value;
-        macaddr.value_namespace = name_space;
-        macaddr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "macaddr")
-    {
-        macaddr.yfilter = yfilter;
-    }
-}
-
-bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "macaddr")
-        return true;
-    return false;
-}
-
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceIds()
 {
-    yang_name = "interface-ids"; yang_parent_name = "node";
+
+    yang_name = "interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::~InterfaceIds()
@@ -726,29 +370,15 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ids";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::Node::InterfaceIds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceIds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceIds' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -816,12 +446,10 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::InterfaceId()
 	,srgv_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac>())
 {
     local_mac->parent = this;
-
     peer_mac->parent = this;
-
     srgv_mac->parent = this;
 
-    yang_name = "interface-id"; yang_parent_name = "interface-ids";
+    yang_name = "interface-id"; yang_parent_name = "interface-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::~InterfaceId()
@@ -874,23 +502,11 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-id" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceId' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -904,9 +520,7 @@ const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_entity_pat
 
     auto vlanid_name_datas = vlanid.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), vlanid_name_datas.begin(), vlanid_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1066,100 +680,12 @@ bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::has_leaf_or_child_of_name(
     return false;
 }
 
-PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::PeerMac()
-    :
-    macaddr{YType::str, "macaddr"}
-{
-    yang_name = "peer-mac"; yang_parent_name = "interface-id";
-}
-
-PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::~PeerMac()
-{
-}
-
-bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_data() const
-{
-    return macaddr.is_set;
-}
-
-bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(macaddr.yfilter);
-}
-
-std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer-mac";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerMac' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "macaddr")
-    {
-        macaddr = value;
-        macaddr.value_namespace = name_space;
-        macaddr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "macaddr")
-    {
-        macaddr.yfilter = yfilter;
-    }
-}
-
-bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "macaddr")
-        return true;
-    return false;
-}
-
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::LocalMac()
     :
     macaddr{YType::str, "macaddr"}
 {
-    yang_name = "local-mac"; yang_parent_name = "interface-id";
+
+    yang_name = "local-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::~LocalMac()
@@ -1181,30 +707,16 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "local-mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LocalMac' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1244,11 +756,88 @@ bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::has_leaf_or_chil
     return false;
 }
 
+PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::PeerMac()
+    :
+    macaddr{YType::str, "macaddr"}
+{
+
+    yang_name = "peer-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::~PeerMac()
+{
+}
+
+bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_data() const
+{
+    return macaddr.is_set;
+}
+
+bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
+}
+
+std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer-mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
+}
+
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::SrgvMac()
     :
     macaddr{YType::str, "macaddr"}
 {
-    yang_name = "srgv-mac"; yang_parent_name = "interface-id";
+
+    yang_name = "srgv-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::~SrgvMac()
@@ -1270,30 +859,16 @@ std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "srgv-mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SrgvMac' in Cisco_IOS_XR_pppoe_ea_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1327,6 +902,298 @@ void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::set_filter(const 
 }
 
 bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceIds()
+{
+
+    yang_name = "parent-interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::~ParentInterfaceIds()
+{
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_data() const
+{
+    for (std::size_t index=0; index<parent_interface_id.size(); index++)
+    {
+        if(parent_interface_id[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_operation() const
+{
+    for (std::size_t index=0; index<parent_interface_id.size(); index++)
+    {
+        if(parent_interface_id[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PppoeEa::Nodes::Node::ParentInterfaceIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-interface-ids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInterfaceIds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parent-interface-id")
+    {
+        for(auto const & c : parent_interface_id)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
+        c->parent = this;
+        parent_interface_id.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : parent_interface_id)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-interface-id")
+        return true;
+    return false;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::ParentInterfaceId()
+    :
+    parent_interface_name{YType::str, "parent-interface-name"},
+    interface{YType::str, "interface"},
+    is_in_sync{YType::boolean, "is-in-sync"}
+    	,
+    srgv_mac(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>())
+{
+    srgv_mac->parent = this;
+
+    yang_name = "parent-interface-id"; yang_parent_name = "parent-interface-ids"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::~ParentInterfaceId()
+{
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_data() const
+{
+    return parent_interface_name.is_set
+	|| interface.is_set
+	|| is_in_sync.is_set
+	|| (srgv_mac !=  nullptr && srgv_mac->has_data());
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(parent_interface_name.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(is_in_sync.yfilter)
+	|| (srgv_mac !=  nullptr && srgv_mac->has_operation());
+}
+
+std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parent-interface-id" <<"[parent-interface-name='" <<parent_interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (parent_interface_name.is_set || is_set(parent_interface_name.yfilter)) leaf_name_data.push_back(parent_interface_name.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (is_in_sync.is_set || is_set(is_in_sync.yfilter)) leaf_name_data.push_back(is_in_sync.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srgv-mac")
+    {
+        if(srgv_mac == nullptr)
+        {
+            srgv_mac = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>();
+        }
+        return srgv_mac;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(srgv_mac != nullptr)
+    {
+        children["srgv-mac"] = srgv_mac;
+    }
+
+    return children;
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "parent-interface-name")
+    {
+        parent_interface_name = value;
+        parent_interface_name.value_namespace = name_space;
+        parent_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-in-sync")
+    {
+        is_in_sync = value;
+        is_in_sync.value_namespace = name_space;
+        is_in_sync.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "parent-interface-name")
+    {
+        parent_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "is-in-sync")
+    {
+        is_in_sync.yfilter = yfilter;
+    }
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srgv-mac" || name == "parent-interface-name" || name == "interface" || name == "is-in-sync")
+        return true;
+    return false;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::SrgvMac()
+    :
+    macaddr{YType::str, "macaddr"}
+{
+
+    yang_name = "srgv-mac"; yang_parent_name = "parent-interface-id"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::~SrgvMac()
+{
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_data() const
+{
+    return macaddr.is_set;
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
+}
+
+std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srgv-mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macaddr")
         return true;

@@ -17,10 +17,9 @@ ExplicitPaths::ExplicitPaths()
 	,names(std::make_shared<ExplicitPaths::Names>())
 {
     identifiers->parent = this;
-
     names->parent = this;
 
-    yang_name = "explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-oper";
+    yang_name = "explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ExplicitPaths::~ExplicitPaths()
@@ -44,26 +43,15 @@ std::string ExplicitPaths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +136,8 @@ bool ExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
 
 ExplicitPaths::Identifiers::Identifiers()
 {
-    yang_name = "identifiers"; yang_parent_name = "explicit-paths";
+
+    yang_name = "identifiers"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ExplicitPaths::Identifiers::~Identifiers()
@@ -175,33 +164,26 @@ bool ExplicitPaths::Identifiers::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ExplicitPaths::Identifiers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ExplicitPaths::Identifiers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "identifiers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Identifiers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -257,7 +239,8 @@ ExplicitPaths::Identifiers::Identifier::Identifier()
     identifier_id{YType::int32, "identifier-id"},
     status{YType::enumeration, "status"}
 {
-    yang_name = "identifier"; yang_parent_name = "identifiers";
+
+    yang_name = "identifier"; yang_parent_name = "identifiers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ExplicitPaths::Identifiers::Identifier::~Identifier()
@@ -287,35 +270,28 @@ bool ExplicitPaths::Identifiers::Identifier::has_operation() const
 	|| ydk::is_set(status.yfilter);
 }
 
+std::string ExplicitPaths::Identifiers::Identifier::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/identifiers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ExplicitPaths::Identifiers::Identifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "identifier" <<"[identifier-id='" <<identifier_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Identifiers::Identifier::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::Identifier::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/identifiers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (identifier_id.is_set || is_set(identifier_id.yfilter)) leaf_name_data.push_back(identifier_id.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -395,7 +371,8 @@ ExplicitPaths::Identifiers::Identifier::Address::Address()
     index_{YType::uint32, "index"},
     mpls_label{YType::uint32, "mpls-label"}
 {
-    yang_name = "address"; yang_parent_name = "identifier";
+
+    yang_name = "address"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ExplicitPaths::Identifiers::Identifier::Address::~Address()
@@ -427,23 +404,11 @@ std::string ExplicitPaths::Identifiers::Identifier::Address::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Identifiers::Identifier::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::Identifier::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_iep_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -453,9 +418,7 @@ const EntityPath ExplicitPaths::Identifiers::Identifier::Address::get_entity_pat
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
     if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -547,7 +510,8 @@ bool ExplicitPaths::Identifiers::Identifier::Address::has_leaf_or_child_of_name(
 
 ExplicitPaths::Names::Names()
 {
-    yang_name = "names"; yang_parent_name = "explicit-paths";
+
+    yang_name = "names"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ExplicitPaths::Names::~Names()
@@ -574,33 +538,26 @@ bool ExplicitPaths::Names::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ExplicitPaths::Names::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ExplicitPaths::Names::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Names::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -656,7 +613,8 @@ ExplicitPaths::Names::Name::Name()
     path_name{YType::str, "path-name"},
     status{YType::enumeration, "status"}
 {
-    yang_name = "name"; yang_parent_name = "names";
+
+    yang_name = "name"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ExplicitPaths::Names::Name::~Name()
@@ -686,35 +644,28 @@ bool ExplicitPaths::Names::Name::has_operation() const
 	|| ydk::is_set(status.yfilter);
 }
 
+std::string ExplicitPaths::Names::Name::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/names/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ExplicitPaths::Names::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "name" <<"[path-name='" <<path_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Names::Name::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::Name::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-iep-oper:explicit-paths/names/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (path_name.is_set || is_set(path_name.yfilter)) leaf_name_data.push_back(path_name.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -794,7 +745,8 @@ ExplicitPaths::Names::Name::Address::Address()
     index_{YType::uint32, "index"},
     mpls_label{YType::uint32, "mpls-label"}
 {
-    yang_name = "address"; yang_parent_name = "name";
+
+    yang_name = "address"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ExplicitPaths::Names::Name::Address::~Address()
@@ -826,23 +778,11 @@ std::string ExplicitPaths::Names::Name::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExplicitPaths::Names::Name::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::Name::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ip_iep_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -852,9 +792,7 @@ const EntityPath ExplicitPaths::Names::Name::Address::get_entity_path(Entity* an
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
     if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -944,11 +882,11 @@ bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-const Enum::YLeaf IepStatus::enabled {0, "enabled"};
-const Enum::YLeaf IepStatus::disabled {1, "disabled"};
-
 const Enum::YLeaf IepHop::strict {0, "strict"};
 const Enum::YLeaf IepHop::loose {1, "loose"};
+
+const Enum::YLeaf IepStatus::enabled {0, "enabled"};
+const Enum::YLeaf IepStatus::disabled {1, "disabled"};
 
 const Enum::YLeaf IepAddress::next {0, "next"};
 const Enum::YLeaf IepAddress::exclude {1, "exclude"};

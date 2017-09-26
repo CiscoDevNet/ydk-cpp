@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace IGMP_STD_MIB {
 
-IgmpStdMib::IgmpStdMib()
+IGMPSTDMIB::IGMPSTDMIB()
     :
-    igmpcachetable(std::make_shared<IgmpStdMib::Igmpcachetable>())
-	,igmpinterfacetable(std::make_shared<IgmpStdMib::Igmpinterfacetable>())
+    igmpcachetable(std::make_shared<IGMPSTDMIB::Igmpcachetable>())
+	,igmpinterfacetable(std::make_shared<IGMPSTDMIB::Igmpinterfacetable>())
 {
     igmpcachetable->parent = this;
-
     igmpinterfacetable->parent = this;
 
-    yang_name = "IGMP-STD-MIB"; yang_parent_name = "IGMP-STD-MIB";
+    yang_name = "IGMP-STD-MIB"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-IgmpStdMib::~IgmpStdMib()
+IGMPSTDMIB::~IGMPSTDMIB()
 {
 }
 
-bool IgmpStdMib::has_data() const
+bool IGMPSTDMIB::has_data() const
 {
     return (igmpcachetable !=  nullptr && igmpcachetable->has_data())
 	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_data());
 }
 
-bool IgmpStdMib::has_operation() const
+bool IGMPSTDMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (igmpcachetable !=  nullptr && igmpcachetable->has_operation())
 	|| (igmpinterfacetable !=  nullptr && igmpinterfacetable->has_operation());
 }
 
-std::string IgmpStdMib::get_segment_path() const
+std::string IGMPSTDMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IgmpStdMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IgmpStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IGMPSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igmpCacheTable")
     {
         if(igmpcachetable == nullptr)
         {
-            igmpcachetable = std::make_shared<IgmpStdMib::Igmpcachetable>();
+            igmpcachetable = std::make_shared<IGMPSTDMIB::Igmpcachetable>();
         }
         return igmpcachetable;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> IgmpStdMib::get_child_by_name(const std::string & child_
     {
         if(igmpinterfacetable == nullptr)
         {
-            igmpinterfacetable = std::make_shared<IgmpStdMib::Igmpinterfacetable>();
+            igmpinterfacetable = std::make_shared<IGMPSTDMIB::Igmpinterfacetable>();
         }
         return igmpinterfacetable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> IgmpStdMib::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(igmpcachetable != nullptr)
@@ -106,56 +94,338 @@ std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::get_children() const
     return children;
 }
 
-void IgmpStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IGMPSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IgmpStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+void IGMPSTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IgmpStdMib::clone_ptr() const
+std::shared_ptr<Entity> IGMPSTDMIB::clone_ptr() const
 {
-    return std::make_shared<IgmpStdMib>();
+    return std::make_shared<IGMPSTDMIB>();
 }
 
-std::string IgmpStdMib::get_bundle_yang_models_location() const
+std::string IGMPSTDMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string IgmpStdMib::get_bundle_name() const
+std::string IGMPSTDMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function IgmpStdMib::get_augment_capabilities_function() const
+augment_capabilities_function IGMPSTDMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> IgmpStdMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> IGMPSTDMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool IgmpStdMib::has_leaf_or_child_of_name(const std::string & name) const
+bool IGMPSTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "igmpCacheTable" || name == "igmpInterfaceTable")
         return true;
     return false;
 }
 
-IgmpStdMib::Igmpinterfacetable::Igmpinterfacetable()
+IGMPSTDMIB::Igmpcachetable::Igmpcachetable()
 {
-    yang_name = "igmpInterfaceTable"; yang_parent_name = "IGMP-STD-MIB";
+
+    yang_name = "igmpCacheTable"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-IgmpStdMib::Igmpinterfacetable::~Igmpinterfacetable()
+IGMPSTDMIB::Igmpcachetable::~Igmpcachetable()
 {
 }
 
-bool IgmpStdMib::Igmpinterfacetable::has_data() const
+bool IGMPSTDMIB::Igmpcachetable::has_data() const
+{
+    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
+    {
+        if(igmpcacheentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IGMPSTDMIB::Igmpcachetable::has_operation() const
+{
+    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
+    {
+        if(igmpcacheentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IGMPSTDMIB::Igmpcachetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpcachetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmpCacheTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpcachetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpcachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "igmpCacheEntry")
+    {
+        for(auto const & c : igmpcacheentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IGMPSTDMIB::Igmpcachetable::Igmpcacheentry>();
+        c->parent = this;
+        igmpcacheentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpcachetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : igmpcacheentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IGMPSTDMIB::Igmpcachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IGMPSTDMIB::Igmpcachetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IGMPSTDMIB::Igmpcachetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igmpCacheEntry")
+        return true;
+    return false;
+}
+
+IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::Igmpcacheentry()
+    :
+    igmpcacheaddress{YType::str, "igmpCacheAddress"},
+    igmpcacheifindex{YType::int32, "igmpCacheIfIndex"},
+    igmpcacheexpirytime{YType::uint32, "igmpCacheExpiryTime"},
+    igmpcachelastreporter{YType::str, "igmpCacheLastReporter"},
+    igmpcacheself{YType::boolean, "igmpCacheSelf"},
+    igmpcachestatus{YType::enumeration, "igmpCacheStatus"},
+    igmpcacheuptime{YType::uint32, "igmpCacheUpTime"},
+    igmpcacheversion1hosttimer{YType::uint32, "igmpCacheVersion1HostTimer"}
+{
+
+    yang_name = "igmpCacheEntry"; yang_parent_name = "igmpCacheTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::~Igmpcacheentry()
+{
+}
+
+bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_data() const
+{
+    return igmpcacheaddress.is_set
+	|| igmpcacheifindex.is_set
+	|| igmpcacheexpirytime.is_set
+	|| igmpcachelastreporter.is_set
+	|| igmpcacheself.is_set
+	|| igmpcachestatus.is_set
+	|| igmpcacheuptime.is_set
+	|| igmpcacheversion1hosttimer.is_set;
+}
+
+bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(igmpcacheaddress.yfilter)
+	|| ydk::is_set(igmpcacheifindex.yfilter)
+	|| ydk::is_set(igmpcacheexpirytime.yfilter)
+	|| ydk::is_set(igmpcachelastreporter.yfilter)
+	|| ydk::is_set(igmpcacheself.yfilter)
+	|| ydk::is_set(igmpcachestatus.yfilter)
+	|| ydk::is_set(igmpcacheuptime.yfilter)
+	|| ydk::is_set(igmpcacheversion1hosttimer.yfilter);
+}
+
+std::string IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpCacheTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "igmpCacheEntry" <<"[igmpCacheAddress='" <<igmpcacheaddress <<"']" <<"[igmpCacheIfIndex='" <<igmpcacheifindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (igmpcacheaddress.is_set || is_set(igmpcacheaddress.yfilter)) leaf_name_data.push_back(igmpcacheaddress.get_name_leafdata());
+    if (igmpcacheifindex.is_set || is_set(igmpcacheifindex.yfilter)) leaf_name_data.push_back(igmpcacheifindex.get_name_leafdata());
+    if (igmpcacheexpirytime.is_set || is_set(igmpcacheexpirytime.yfilter)) leaf_name_data.push_back(igmpcacheexpirytime.get_name_leafdata());
+    if (igmpcachelastreporter.is_set || is_set(igmpcachelastreporter.yfilter)) leaf_name_data.push_back(igmpcachelastreporter.get_name_leafdata());
+    if (igmpcacheself.is_set || is_set(igmpcacheself.yfilter)) leaf_name_data.push_back(igmpcacheself.get_name_leafdata());
+    if (igmpcachestatus.is_set || is_set(igmpcachestatus.yfilter)) leaf_name_data.push_back(igmpcachestatus.get_name_leafdata());
+    if (igmpcacheuptime.is_set || is_set(igmpcacheuptime.yfilter)) leaf_name_data.push_back(igmpcacheuptime.get_name_leafdata());
+    if (igmpcacheversion1hosttimer.is_set || is_set(igmpcacheversion1hosttimer.yfilter)) leaf_name_data.push_back(igmpcacheversion1hosttimer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "igmpCacheAddress")
+    {
+        igmpcacheaddress = value;
+        igmpcacheaddress.value_namespace = name_space;
+        igmpcacheaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheIfIndex")
+    {
+        igmpcacheifindex = value;
+        igmpcacheifindex.value_namespace = name_space;
+        igmpcacheifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheExpiryTime")
+    {
+        igmpcacheexpirytime = value;
+        igmpcacheexpirytime.value_namespace = name_space;
+        igmpcacheexpirytime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheLastReporter")
+    {
+        igmpcachelastreporter = value;
+        igmpcachelastreporter.value_namespace = name_space;
+        igmpcachelastreporter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheSelf")
+    {
+        igmpcacheself = value;
+        igmpcacheself.value_namespace = name_space;
+        igmpcacheself.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheStatus")
+    {
+        igmpcachestatus = value;
+        igmpcachestatus.value_namespace = name_space;
+        igmpcachestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheUpTime")
+    {
+        igmpcacheuptime = value;
+        igmpcacheuptime.value_namespace = name_space;
+        igmpcacheuptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igmpCacheVersion1HostTimer")
+    {
+        igmpcacheversion1hosttimer = value;
+        igmpcacheversion1hosttimer.value_namespace = name_space;
+        igmpcacheversion1hosttimer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igmpCacheAddress")
+    {
+        igmpcacheaddress.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheIfIndex")
+    {
+        igmpcacheifindex.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheExpiryTime")
+    {
+        igmpcacheexpirytime.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheLastReporter")
+    {
+        igmpcachelastreporter.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheSelf")
+    {
+        igmpcacheself.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheStatus")
+    {
+        igmpcachestatus.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheUpTime")
+    {
+        igmpcacheuptime.yfilter = yfilter;
+    }
+    if(value_path == "igmpCacheVersion1HostTimer")
+    {
+        igmpcacheversion1hosttimer.yfilter = yfilter;
+    }
+}
+
+bool IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igmpCacheAddress" || name == "igmpCacheIfIndex" || name == "igmpCacheExpiryTime" || name == "igmpCacheLastReporter" || name == "igmpCacheSelf" || name == "igmpCacheStatus" || name == "igmpCacheUpTime" || name == "igmpCacheVersion1HostTimer")
+        return true;
+    return false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfacetable()
+{
+
+    yang_name = "igmpInterfaceTable"; yang_parent_name = "IGMP-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IGMPSTDMIB::Igmpinterfacetable::~Igmpinterfacetable()
+{
+}
+
+bool IGMPSTDMIB::Igmpinterfacetable::has_data() const
 {
     for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
     {
@@ -165,7 +435,7 @@ bool IgmpStdMib::Igmpinterfacetable::has_data() const
     return false;
 }
 
-bool IgmpStdMib::Igmpinterfacetable::has_operation() const
+bool IGMPSTDMIB::Igmpinterfacetable::has_operation() const
 {
     for (std::size_t index=0; index<igmpinterfaceentry.size(); index++)
     {
@@ -175,37 +445,30 @@ bool IgmpStdMib::Igmpinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IgmpStdMib::Igmpinterfacetable::get_segment_path() const
+std::string IGMPSTDMIB::Igmpinterfacetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmpInterfaceTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IgmpStdMib::Igmpinterfacetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igmpInterfaceEntry")
     {
@@ -217,7 +480,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const 
                 return c;
             }
         }
-        auto c = std::make_shared<IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry>();
+        auto c = std::make_shared<IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry>();
         c->parent = this;
         igmpinterfaceentry.push_back(c);
         return c;
@@ -226,7 +489,7 @@ std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : igmpinterfaceentry)
@@ -237,22 +500,22 @@ std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpinterfacetable::g
     return children;
 }
 
-void IgmpStdMib::Igmpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IGMPSTDMIB::Igmpinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IgmpStdMib::Igmpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IGMPSTDMIB::Igmpinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IgmpStdMib::Igmpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IGMPSTDMIB::Igmpinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "igmpInterfaceEntry")
         return true;
     return false;
 }
 
-IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::Igmpinterfaceentry()
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::Igmpinterfaceentry()
     :
     igmpinterfaceifindex{YType::int32, "igmpInterfaceIfIndex"},
     igmpinterfacegroups{YType::uint32, "igmpInterfaceGroups"},
@@ -270,14 +533,15 @@ IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::Igmpinterfaceentry()
     igmpinterfaceversion1queriertimer{YType::uint32, "igmpInterfaceVersion1QuerierTimer"},
     igmpinterfacewrongversionqueries{YType::uint32, "igmpInterfaceWrongVersionQueries"}
 {
-    yang_name = "igmpInterfaceEntry"; yang_parent_name = "igmpInterfaceTable";
+
+    yang_name = "igmpInterfaceEntry"; yang_parent_name = "igmpInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::~Igmpinterfaceentry()
+IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::~Igmpinterfaceentry()
 {
 }
 
-bool IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::has_data() const
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_data() const
 {
     return igmpinterfaceifindex.is_set
 	|| igmpinterfacegroups.is_set
@@ -296,7 +560,7 @@ bool IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::has_data() const
 	|| igmpinterfacewrongversionqueries.is_set;
 }
 
-bool IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::has_operation() const
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(igmpinterfaceifindex.yfilter)
@@ -316,27 +580,22 @@ bool IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::has_operation() const
 	|| ydk::is_set(igmpinterfacewrongversionqueries.yfilter);
 }
 
-std::string IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::get_segment_path() const
+std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpInterfaceTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmpInterfaceEntry" <<"[igmpInterfaceIfIndex='" <<igmpinterfaceifindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpInterfaceTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (igmpinterfaceifindex.is_set || is_set(igmpinterfaceifindex.yfilter)) leaf_name_data.push_back(igmpinterfaceifindex.get_name_leafdata());
@@ -355,24 +614,22 @@ const EntityPath IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::get_entity_
     if (igmpinterfaceversion1queriertimer.is_set || is_set(igmpinterfaceversion1queriertimer.yfilter)) leaf_name_data.push_back(igmpinterfaceversion1queriertimer.get_name_leafdata());
     if (igmpinterfacewrongversionqueries.is_set || is_set(igmpinterfacewrongversionqueries.yfilter)) leaf_name_data.push_back(igmpinterfacewrongversionqueries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igmpInterfaceIfIndex")
     {
@@ -466,7 +723,7 @@ void IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::set_value(const std::st
     }
 }
 
-void IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "igmpInterfaceIfIndex")
     {
@@ -530,302 +787,9 @@ void IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::set_filter(const std::s
     }
 }
 
-bool IgmpStdMib::Igmpinterfacetable::Igmpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "igmpInterfaceIfIndex" || name == "igmpInterfaceGroups" || name == "igmpInterfaceJoins" || name == "igmpInterfaceLastMembQueryIntvl" || name == "igmpInterfaceProxyIfIndex" || name == "igmpInterfaceQuerier" || name == "igmpInterfaceQuerierExpiryTime" || name == "igmpInterfaceQuerierUpTime" || name == "igmpInterfaceQueryInterval" || name == "igmpInterfaceQueryMaxResponseTime" || name == "igmpInterfaceRobustness" || name == "igmpInterfaceStatus" || name == "igmpInterfaceVersion" || name == "igmpInterfaceVersion1QuerierTimer" || name == "igmpInterfaceWrongVersionQueries")
-        return true;
-    return false;
-}
-
-IgmpStdMib::Igmpcachetable::Igmpcachetable()
-{
-    yang_name = "igmpCacheTable"; yang_parent_name = "IGMP-STD-MIB";
-}
-
-IgmpStdMib::Igmpcachetable::~Igmpcachetable()
-{
-}
-
-bool IgmpStdMib::Igmpcachetable::has_data() const
-{
-    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
-    {
-        if(igmpcacheentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IgmpStdMib::Igmpcachetable::has_operation() const
-{
-    for (std::size_t index=0; index<igmpcacheentry.size(); index++)
-    {
-        if(igmpcacheentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IgmpStdMib::Igmpcachetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmpCacheTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IgmpStdMib::Igmpcachetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IgmpStdMib::Igmpcachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "igmpCacheEntry")
-    {
-        for(auto const & c : igmpcacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IgmpStdMib::Igmpcachetable::Igmpcacheentry>();
-        c->parent = this;
-        igmpcacheentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpcachetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : igmpcacheentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IgmpStdMib::Igmpcachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IgmpStdMib::Igmpcachetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IgmpStdMib::Igmpcachetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "igmpCacheEntry")
-        return true;
-    return false;
-}
-
-IgmpStdMib::Igmpcachetable::Igmpcacheentry::Igmpcacheentry()
-    :
-    igmpcacheaddress{YType::str, "igmpCacheAddress"},
-    igmpcacheifindex{YType::int32, "igmpCacheIfIndex"},
-    igmpcacheexpirytime{YType::uint32, "igmpCacheExpiryTime"},
-    igmpcachelastreporter{YType::str, "igmpCacheLastReporter"},
-    igmpcacheself{YType::boolean, "igmpCacheSelf"},
-    igmpcachestatus{YType::enumeration, "igmpCacheStatus"},
-    igmpcacheuptime{YType::uint32, "igmpCacheUpTime"},
-    igmpcacheversion1hosttimer{YType::uint32, "igmpCacheVersion1HostTimer"}
-{
-    yang_name = "igmpCacheEntry"; yang_parent_name = "igmpCacheTable";
-}
-
-IgmpStdMib::Igmpcachetable::Igmpcacheentry::~Igmpcacheentry()
-{
-}
-
-bool IgmpStdMib::Igmpcachetable::Igmpcacheentry::has_data() const
-{
-    return igmpcacheaddress.is_set
-	|| igmpcacheifindex.is_set
-	|| igmpcacheexpirytime.is_set
-	|| igmpcachelastreporter.is_set
-	|| igmpcacheself.is_set
-	|| igmpcachestatus.is_set
-	|| igmpcacheuptime.is_set
-	|| igmpcacheversion1hosttimer.is_set;
-}
-
-bool IgmpStdMib::Igmpcachetable::Igmpcacheentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(igmpcacheaddress.yfilter)
-	|| ydk::is_set(igmpcacheifindex.yfilter)
-	|| ydk::is_set(igmpcacheexpirytime.yfilter)
-	|| ydk::is_set(igmpcachelastreporter.yfilter)
-	|| ydk::is_set(igmpcacheself.yfilter)
-	|| ydk::is_set(igmpcachestatus.yfilter)
-	|| ydk::is_set(igmpcacheuptime.yfilter)
-	|| ydk::is_set(igmpcacheversion1hosttimer.yfilter);
-}
-
-std::string IgmpStdMib::Igmpcachetable::Igmpcacheentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igmpCacheEntry" <<"[igmpCacheAddress='" <<igmpcacheaddress <<"']" <<"[igmpCacheIfIndex='" <<igmpcacheifindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IgmpStdMib::Igmpcachetable::Igmpcacheentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IGMP-STD-MIB:IGMP-STD-MIB/igmpCacheTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (igmpcacheaddress.is_set || is_set(igmpcacheaddress.yfilter)) leaf_name_data.push_back(igmpcacheaddress.get_name_leafdata());
-    if (igmpcacheifindex.is_set || is_set(igmpcacheifindex.yfilter)) leaf_name_data.push_back(igmpcacheifindex.get_name_leafdata());
-    if (igmpcacheexpirytime.is_set || is_set(igmpcacheexpirytime.yfilter)) leaf_name_data.push_back(igmpcacheexpirytime.get_name_leafdata());
-    if (igmpcachelastreporter.is_set || is_set(igmpcachelastreporter.yfilter)) leaf_name_data.push_back(igmpcachelastreporter.get_name_leafdata());
-    if (igmpcacheself.is_set || is_set(igmpcacheself.yfilter)) leaf_name_data.push_back(igmpcacheself.get_name_leafdata());
-    if (igmpcachestatus.is_set || is_set(igmpcachestatus.yfilter)) leaf_name_data.push_back(igmpcachestatus.get_name_leafdata());
-    if (igmpcacheuptime.is_set || is_set(igmpcacheuptime.yfilter)) leaf_name_data.push_back(igmpcacheuptime.get_name_leafdata());
-    if (igmpcacheversion1hosttimer.is_set || is_set(igmpcacheversion1hosttimer.yfilter)) leaf_name_data.push_back(igmpcacheversion1hosttimer.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IgmpStdMib::Igmpcachetable::Igmpcacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IgmpStdMib::Igmpcachetable::Igmpcacheentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IgmpStdMib::Igmpcachetable::Igmpcacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "igmpCacheAddress")
-    {
-        igmpcacheaddress = value;
-        igmpcacheaddress.value_namespace = name_space;
-        igmpcacheaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheIfIndex")
-    {
-        igmpcacheifindex = value;
-        igmpcacheifindex.value_namespace = name_space;
-        igmpcacheifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheExpiryTime")
-    {
-        igmpcacheexpirytime = value;
-        igmpcacheexpirytime.value_namespace = name_space;
-        igmpcacheexpirytime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheLastReporter")
-    {
-        igmpcachelastreporter = value;
-        igmpcachelastreporter.value_namespace = name_space;
-        igmpcachelastreporter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheSelf")
-    {
-        igmpcacheself = value;
-        igmpcacheself.value_namespace = name_space;
-        igmpcacheself.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheStatus")
-    {
-        igmpcachestatus = value;
-        igmpcachestatus.value_namespace = name_space;
-        igmpcachestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheUpTime")
-    {
-        igmpcacheuptime = value;
-        igmpcacheuptime.value_namespace = name_space;
-        igmpcacheuptime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igmpCacheVersion1HostTimer")
-    {
-        igmpcacheversion1hosttimer = value;
-        igmpcacheversion1hosttimer.value_namespace = name_space;
-        igmpcacheversion1hosttimer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IgmpStdMib::Igmpcachetable::Igmpcacheentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "igmpCacheAddress")
-    {
-        igmpcacheaddress.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheIfIndex")
-    {
-        igmpcacheifindex.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheExpiryTime")
-    {
-        igmpcacheexpirytime.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheLastReporter")
-    {
-        igmpcachelastreporter.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheSelf")
-    {
-        igmpcacheself.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheStatus")
-    {
-        igmpcachestatus.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheUpTime")
-    {
-        igmpcacheuptime.yfilter = yfilter;
-    }
-    if(value_path == "igmpCacheVersion1HostTimer")
-    {
-        igmpcacheversion1hosttimer.yfilter = yfilter;
-    }
-}
-
-bool IgmpStdMib::Igmpcachetable::Igmpcacheentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "igmpCacheAddress" || name == "igmpCacheIfIndex" || name == "igmpCacheExpiryTime" || name == "igmpCacheLastReporter" || name == "igmpCacheSelf" || name == "igmpCacheStatus" || name == "igmpCacheUpTime" || name == "igmpCacheVersion1HostTimer")
         return true;
     return false;
 }

@@ -19,10 +19,9 @@ RedundancyGroupManager::RedundancyGroupManager()
 	,iccp(std::make_shared<RedundancyGroupManager::Iccp>())
 {
     aps->parent = this;
-
     iccp->parent = this;
 
-    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-cfg";
+    yang_name = "redundancy-group-manager"; yang_parent_name = "Cisco-IOS-XR-rgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::~RedundancyGroupManager()
@@ -48,27 +47,16 @@ std::string RedundancyGroupManager::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -167,10 +155,9 @@ RedundancyGroupManager::Aps::Aps()
 	,groups(std::make_shared<RedundancyGroupManager::Aps::Groups>())
 {
     default_redundancy_group->parent = this;
-
     groups->parent = this;
 
-    yang_name = "aps"; yang_parent_name = "redundancy-group-manager";
+    yang_name = "aps"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Aps::~Aps()
@@ -190,33 +177,26 @@ bool RedundancyGroupManager::Aps::has_operation() const
 	|| (groups !=  nullptr && groups->has_operation());
 }
 
+std::string RedundancyGroupManager::Aps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Aps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aps";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -279,7 +259,8 @@ RedundancyGroupManager::Aps::DefaultRedundancyGroup::DefaultRedundancyGroup()
     backup_interface_name{YType::str, "backup-interface-name"},
     next_hop_address{YType::str, "next-hop-address"}
 {
-    yang_name = "default-redundancy-group"; yang_parent_name = "aps";
+
+    yang_name = "default-redundancy-group"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Aps::DefaultRedundancyGroup::~DefaultRedundancyGroup()
@@ -299,35 +280,28 @@ bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_operation() const
 	|| ydk::is_set(next_hop_address.yfilter);
 }
 
+std::string RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default-redundancy-group";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -379,7 +353,8 @@ bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_leaf_or_child_of_n
 
 RedundancyGroupManager::Aps::Groups::Groups()
 {
-    yang_name = "groups"; yang_parent_name = "aps";
+
+    yang_name = "groups"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Aps::Groups::~Groups()
@@ -406,33 +381,26 @@ bool RedundancyGroupManager::Aps::Groups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string RedundancyGroupManager::Aps::Groups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Aps::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::Groups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::Groups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -491,7 +459,7 @@ RedundancyGroupManager::Aps::Groups::Group::Group()
 {
     controllers->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups";
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::~Group()
@@ -511,34 +479,27 @@ bool RedundancyGroupManager::Aps::Groups::Group::has_operation() const
 	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
+std::string RedundancyGroupManager::Aps::Groups::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Aps::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group" <<"[group-id='" <<group_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::Groups::Group::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::Groups::Group::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/aps/groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -594,7 +555,8 @@ bool RedundancyGroupManager::Aps::Groups::Group::has_leaf_or_child_of_name(const
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controllers()
 {
-    yang_name = "controllers"; yang_parent_name = "group";
+
+    yang_name = "controllers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::~Controllers()
@@ -625,29 +587,15 @@ std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "controllers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::Groups::Group::Controllers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Controllers' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -704,7 +652,8 @@ RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::Controller(
     backup_interface_name{YType::str, "backup-interface-name"},
     next_hop_address{YType::str, "next-hop-address"}
 {
-    yang_name = "controller"; yang_parent_name = "controllers";
+
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::~Controller()
@@ -730,32 +679,18 @@ std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller:
 {
     std::ostringstream path_buffer;
     path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Controller' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (controller_name.is_set || is_set(controller_name.yfilter)) leaf_name_data.push_back(controller_name.get_name_leafdata());
     if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
     if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -821,7 +756,7 @@ RedundancyGroupManager::Iccp::Iccp()
 {
     iccp_groups->parent = this;
 
-    yang_name = "iccp"; yang_parent_name = "redundancy-group-manager";
+    yang_name = "iccp"; yang_parent_name = "redundancy-group-manager"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Iccp::~Iccp()
@@ -839,33 +774,26 @@ bool RedundancyGroupManager::Iccp::has_operation() const
 	|| (iccp_groups !=  nullptr && iccp_groups->has_operation());
 }
 
+std::string RedundancyGroupManager::Iccp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Iccp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -911,7 +839,8 @@ bool RedundancyGroupManager::Iccp::has_leaf_or_child_of_name(const std::string &
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroups()
 {
-    yang_name = "iccp-groups"; yang_parent_name = "iccp";
+
+    yang_name = "iccp-groups"; yang_parent_name = "iccp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::~IccpGroups()
@@ -938,33 +867,26 @@ bool RedundancyGroupManager::Iccp::IccpGroups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string RedundancyGroupManager::Iccp::IccpGroups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/iccp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Iccp::IccpGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp-groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/iccp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1027,14 +949,11 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::IccpGroup()
 	,nv_satellite(std::make_shared<RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite>())
 {
     backbones->parent = this;
-
     members->parent = this;
-
     mlacp->parent = this;
-
     nv_satellite->parent = this;
 
-    yang_name = "iccp-group"; yang_parent_name = "iccp-groups";
+    yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::~IccpGroup()
@@ -1064,36 +983,29 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
 	|| (nv_satellite !=  nullptr && nv_satellite->has_operation());
 }
 
+std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/iccp/iccp-groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp-group" <<"[group-number='" <<group_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-rgmgr-cfg:redundancy-group-manager/iccp/iccp-groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
     if (isolation_recovery_delay.is_set || is_set(isolation_recovery_delay.yfilter)) leaf_name_data.push_back(isolation_recovery_delay.get_name_leafdata());
     if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1211,7 +1123,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_leaf_or_child_of_n
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbones()
 {
-    yang_name = "backbones"; yang_parent_name = "iccp-group";
+
+    yang_name = "backbones"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::~Backbones()
@@ -1242,29 +1155,15 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "backbones";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Backbones' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1319,7 +1218,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::Backbo
     :
     backbone_name{YType::str, "backbone-name"}
 {
-    yang_name = "backbone"; yang_parent_name = "backbones";
+
+    yang_name = "backbone"; yang_parent_name = "backbones"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::~Backbone()
@@ -1341,30 +1241,16 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Back
 {
     std::ostringstream path_buffer;
     path_buffer << "backbone" <<"[backbone-name='" <<backbone_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Backbone' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (backbone_name.is_set || is_set(backbone_name.yfilter)) leaf_name_data.push_back(backbone_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1406,7 +1292,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::h
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Members()
 {
-    yang_name = "members"; yang_parent_name = "iccp-group";
+
+    yang_name = "members"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::~Members()
@@ -1437,29 +1324,15 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "members";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Members' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1514,7 +1387,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::Member()
     :
     neighbor_address{YType::str, "neighbor-address"}
 {
-    yang_name = "member"; yang_parent_name = "members";
+
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::~Member()
@@ -1536,30 +1410,16 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member
 {
     std::ostringstream path_buffer;
     path_buffer << "member" <<"[neighbor-address='" <<neighbor_address <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Member' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1606,7 +1466,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::Mlacp()
     system_mac{YType::str, "system-mac"},
     system_priority{YType::uint32, "system-priority"}
 {
-    yang_name = "mlacp"; yang_parent_name = "iccp-group";
+
+    yang_name = "mlacp"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::~Mlacp()
@@ -1634,23 +1495,11 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-bundlemgr-cfg:mlacp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mlacp' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (connect_timeout.is_set || is_set(connect_timeout.yfilter)) leaf_name_data.push_back(connect_timeout.get_name_leafdata());
@@ -1658,9 +1507,7 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get
     if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
     if (system_priority.is_set || is_set(system_priority.yfilter)) leaf_name_data.push_back(system_priority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1734,7 +1581,8 @@ RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
     :
     system_mac{YType::str, "system-mac"}
 {
-    yang_name = "nv-satellite"; yang_parent_name = "iccp-group";
+
+    yang_name = "nv-satellite"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::~NvSatellite()
@@ -1756,30 +1604,16 @@ std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NvSatellite' in Cisco_IOS_XR_rgmgr_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

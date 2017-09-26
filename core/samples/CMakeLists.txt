@@ -37,7 +37,6 @@ find_library(pcre_location pcre)
 find_library(xslt_location xslt)
 find_library(pthread_location pthread)
 find_library(dl_location dl)
-find_package(PythonLibs REQUIRED)
 
 include_directories(SYSTEM)
 
@@ -50,9 +49,9 @@ foreach(sample IN LISTS samples)
     add_executable(${sample} ${sample}.cpp args_parser.cpp)
 
     target_link_libraries(${sample}
+            ${ydk_location} 
             ${ydk_openconfig_location}
             ${ydk_cisco_ios_xr_location} 
-            ${ydk_location} 
             ${xml2_location}
             ${curl_location}
             ${ssh_location}
@@ -61,7 +60,6 @@ foreach(sample IN LISTS samples)
             ${xslt_location}
             ${pthread_location}
             ${dl_location}
-            ${PYTHON_LIBRARIES}
             -rdynamic
             )
 

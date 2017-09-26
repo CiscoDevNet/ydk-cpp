@@ -18,20 +18,20 @@ class FecSel : public ydk::Enum
 
 };
 
-class DiffSel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
 class SpeedSel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_100g;
         static const ydk::Enum::YLeaf Y_150g;
         static const ydk::Enum::YLeaf Y_200g;
+
+};
+
+class DiffSel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 

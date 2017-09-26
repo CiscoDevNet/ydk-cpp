@@ -17,7 +17,7 @@ EnvironmentalMonitoring::EnvironmentalMonitoring()
 {
     racks->parent = this;
 
-    yang_name = "environmental-monitoring"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper";
+    yang_name = "environmental-monitoring"; yang_parent_name = "Cisco-IOS-XR-asr9k-sc-envmon-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 EnvironmentalMonitoring::~EnvironmentalMonitoring()
@@ -39,26 +39,15 @@ std::string EnvironmentalMonitoring::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-asr9k-sc-envmon-oper:environmental-monitoring";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool EnvironmentalMonitoring::has_leaf_or_child_of_name(const std::string & name
 
 EnvironmentalMonitoring::Racks::Racks()
 {
-    yang_name = "racks"; yang_parent_name = "environmental-monitoring";
+
+    yang_name = "racks"; yang_parent_name = "environmental-monitoring"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EnvironmentalMonitoring::Racks::~Racks()
@@ -156,33 +146,26 @@ bool EnvironmentalMonitoring::Racks::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EnvironmentalMonitoring::Racks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-sc-envmon-oper:environmental-monitoring/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EnvironmentalMonitoring::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-sc-envmon-oper:environmental-monitoring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ EnvironmentalMonitoring::Racks::Rack::Rack()
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks";
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::~Rack()
@@ -261,34 +244,27 @@ bool EnvironmentalMonitoring::Racks::Rack::has_operation() const
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
+std::string EnvironmentalMonitoring::Racks::Rack::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-sc-envmon-oper:environmental-monitoring/racks/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EnvironmentalMonitoring::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rack" <<"[rack='" <<rack <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-sc-envmon-oper:environmental-monitoring/racks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool EnvironmentalMonitoring::Racks::Rack::has_leaf_or_child_of_name(const std::
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slots()
 {
-    yang_name = "slots"; yang_parent_name = "rack";
+
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::~Slots()
@@ -375,29 +352,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slots' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -456,7 +419,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Slot()
 {
     modules->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots";
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::~Slot()
@@ -480,30 +443,16 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot='" <<slot <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -559,7 +508,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_leaf_or_child_of_nam
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Modules()
 {
-    yang_name = "modules"; yang_parent_name = "slot";
+
+    yang_name = "modules"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::~Modules()
@@ -590,29 +540,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "modules";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Modules' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -671,10 +607,9 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Module()
 	,sensor_types(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes>())
 {
     power->parent = this;
-
     sensor_types->parent = this;
 
-    yang_name = "module"; yang_parent_name = "modules";
+    yang_name = "module"; yang_parent_name = "modules"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::~Module()
@@ -700,30 +635,16 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "module" <<"[module='" <<module <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Module' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (module.is_set || is_set(module.yfilter)) leaf_name_data.push_back(module.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -797,7 +718,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
 {
     power_bag->parent = this;
 
-    yang_name = "power"; yang_parent_name = "module";
+    yang_name = "power"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::~Power()
@@ -819,29 +740,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "power";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Power' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -898,7 +805,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power
     power_unit_multiplier{YType::uint32, "power-unit-multiplier"},
     power_value{YType::int32, "power-value"}
 {
-    yang_name = "power-bag"; yang_parent_name = "power";
+
+    yang_name = "power-bag"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::~PowerBag()
@@ -938,23 +846,11 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "power-bag";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PowerBag' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (power_accuracy.is_set || is_set(power_accuracy.yfilter)) leaf_name_data.push_back(power_accuracy.get_name_leafdata());
@@ -968,9 +864,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
     if (power_unit_multiplier.is_set || is_set(power_unit_multiplier.yfilter)) leaf_name_data.push_back(power_unit_multiplier.get_name_leafdata());
     if (power_value.is_set || is_set(power_value.yfilter)) leaf_name_data.push_back(power_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1102,7 +996,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorTypes()
 {
-    yang_name = "sensor-types"; yang_parent_name = "module";
+
+    yang_name = "sensor-types"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::~SensorTypes()
@@ -1133,29 +1028,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-types";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SensorTypes' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1214,7 +1095,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 {
     sensor_names->parent = this;
 
-    yang_name = "sensor-type"; yang_parent_name = "sensor-types";
+    yang_name = "sensor-type"; yang_parent_name = "sensor-types"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::~SensorType()
@@ -1238,30 +1119,16 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-type" <<"[type='" <<type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SensorType' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1317,7 +1184,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorNames()
 {
-    yang_name = "sensor-names"; yang_parent_name = "sensor-type";
+
+    yang_name = "sensor-names"; yang_parent_name = "sensor-type"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::~SensorNames()
@@ -1348,29 +1216,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SensorNames' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1430,10 +1284,9 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 	,value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>())
 {
     thresholds->parent = this;
-
     value_detailed->parent = this;
 
-    yang_name = "sensor-name"; yang_parent_name = "sensor-names";
+    yang_name = "sensor-name"; yang_parent_name = "sensor-names"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::~SensorName()
@@ -1461,31 +1314,17 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-name" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SensorName' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (value_brief.is_set || is_set(value_brief.yfilter)) leaf_name_data.push_back(value_brief.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1565,7 +1404,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Thresholds()
 {
-    yang_name = "thresholds"; yang_parent_name = "sensor-name";
+
+    yang_name = "thresholds"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::~Thresholds()
@@ -1596,29 +1436,15 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "thresholds";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Thresholds' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1679,7 +1505,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
 {
     value_detailed->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "thresholds";
+    yang_name = "threshold"; yang_parent_name = "thresholds"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::~Threshold()
@@ -1707,32 +1533,18 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold" <<"[type='" <<type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Threshold' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (trap.is_set || is_set(trap.yfilter)) leaf_name_data.push_back(trap.get_name_leafdata());
     if (value_brief.is_set || is_set(value_brief.yfilter)) leaf_name_data.push_back(value_brief.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1814,7 +1626,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_value{YType::uint32, "threshold-value"}
 {
-    yang_name = "value-detailed"; yang_parent_name = "threshold";
+
+    yang_name = "value-detailed"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::~ValueDetailed()
@@ -1844,23 +1657,11 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "value-detailed";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ValueDetailed' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (threshold_evaluation.is_set || is_set(threshold_evaluation.yfilter)) leaf_name_data.push_back(threshold_evaluation.get_name_leafdata());
@@ -1869,9 +1670,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
     if (threshold_severity.is_set || is_set(threshold_severity.yfilter)) leaf_name_data.push_back(threshold_severity.get_name_leafdata());
     if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1966,7 +1765,8 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     update_rate{YType::uint32, "update-rate"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "value-detailed"; yang_parent_name = "sensor-name";
+
+    yang_name = "value-detailed"; yang_parent_name = "sensor-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::~ValueDetailed()
@@ -2010,23 +1810,11 @@ std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::
 {
     std::ostringstream path_buffer;
     path_buffer << "value-detailed";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ValueDetailed' in Cisco_IOS_XR_asr9k_sc_envmon_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (age_time_stamp.is_set || is_set(age_time_stamp.yfilter)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
@@ -2042,9 +1830,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
     if (update_rate.is_set || is_set(update_rate.yfilter)) leaf_name_data.push_back(update_rate.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

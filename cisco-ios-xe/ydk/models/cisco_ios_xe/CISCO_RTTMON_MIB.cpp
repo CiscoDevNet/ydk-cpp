@@ -11,89 +11,66 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_RTTMON_MIB {
 
-CiscoRttmonMib::CiscoRttmonMib()
+CISCORTTMONMIB::CISCORTTMONMIB()
     :
-    rttmonappl(std::make_shared<CiscoRttmonMib::Rttmonappl>())
-	,rttmonapplauthtable(std::make_shared<CiscoRttmonMib::Rttmonapplauthtable>())
-	,rttmonapplpreconfigedtable(std::make_shared<CiscoRttmonMib::Rttmonapplpreconfigedtable>())
-	,rttmonapplsupportedprotocolstable(std::make_shared<CiscoRttmonMib::Rttmonapplsupportedprotocolstable>())
-	,rttmonapplsupportedrtttypestable(std::make_shared<CiscoRttmonMib::Rttmonapplsupportedrtttypestable>())
-	,rttmonctrladmintable(std::make_shared<CiscoRttmonMib::Rttmonctrladmintable>())
-	,rttmonechoadmintable(std::make_shared<CiscoRttmonMib::Rttmonechoadmintable>())
-	,rttmonechopathadmintable(std::make_shared<CiscoRttmonMib::Rttmonechopathadmintable>())
-	,rttmonfileioadmintable(std::make_shared<CiscoRttmonMib::Rttmonfileioadmintable>())
-	,rttmongeneratedopertable(std::make_shared<CiscoRttmonMib::Rttmongeneratedopertable>())
-	,rttmongrpscheduleadmintable(std::make_shared<CiscoRttmonMib::Rttmongrpscheduleadmintable>())
-	,rttmonhistorycollectiontable(std::make_shared<CiscoRttmonMib::Rttmonhistorycollectiontable>())
-	,rttmonhttpstatstable(std::make_shared<CiscoRttmonMib::Rttmonhttpstatstable>())
-	,rttmonjitterstatstable(std::make_shared<CiscoRttmonMib::Rttmonjitterstatstable>())
-	,rttmonlatesthttpopertable(std::make_shared<CiscoRttmonMib::Rttmonlatesthttpopertable>())
-	,rttmonlatestjitteropertable(std::make_shared<CiscoRttmonMib::Rttmonlatestjitteropertable>())
-	,rttmonlpdgrpstatstable(std::make_shared<CiscoRttmonMib::Rttmonlpdgrpstatstable>())
-	,rttmonreacttable(std::make_shared<CiscoRttmonMib::Rttmonreacttable>())
-	,rttmonreacttriggeradmintable(std::make_shared<CiscoRttmonMib::Rttmonreacttriggeradmintable>())
-	,rttmonscriptadmintable(std::make_shared<CiscoRttmonMib::Rttmonscriptadmintable>())
-	,rttmonstatscapturetable(std::make_shared<CiscoRttmonMib::Rttmonstatscapturetable>())
-	,rttmonstatscollecttable(std::make_shared<CiscoRttmonMib::Rttmonstatscollecttable>())
-	,rttmonstatstotalstable(std::make_shared<CiscoRttmonMib::Rttmonstatstotalstable>())
-	,rttmplsvpnmonctrltable(std::make_shared<CiscoRttmonMib::Rttmplsvpnmonctrltable>())
+    rttmonappl(std::make_shared<CISCORTTMONMIB::Rttmonappl>())
+	,rttmonapplauthtable(std::make_shared<CISCORTTMONMIB::Rttmonapplauthtable>())
+	,rttmonapplpreconfigedtable(std::make_shared<CISCORTTMONMIB::Rttmonapplpreconfigedtable>())
+	,rttmonapplsupportedprotocolstable(std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedprotocolstable>())
+	,rttmonapplsupportedrtttypestable(std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedrtttypestable>())
+	,rttmonctrladmintable(std::make_shared<CISCORTTMONMIB::Rttmonctrladmintable>())
+	,rttmonechoadmintable(std::make_shared<CISCORTTMONMIB::Rttmonechoadmintable>())
+	,rttmonechopathadmintable(std::make_shared<CISCORTTMONMIB::Rttmonechopathadmintable>())
+	,rttmonfileioadmintable(std::make_shared<CISCORTTMONMIB::Rttmonfileioadmintable>())
+	,rttmongeneratedopertable(std::make_shared<CISCORTTMONMIB::Rttmongeneratedopertable>())
+	,rttmongrpscheduleadmintable(std::make_shared<CISCORTTMONMIB::Rttmongrpscheduleadmintable>())
+	,rttmonhistorycollectiontable(std::make_shared<CISCORTTMONMIB::Rttmonhistorycollectiontable>())
+	,rttmonhttpstatstable(std::make_shared<CISCORTTMONMIB::Rttmonhttpstatstable>())
+	,rttmonjitterstatstable(std::make_shared<CISCORTTMONMIB::Rttmonjitterstatstable>())
+	,rttmonlatesthttpopertable(std::make_shared<CISCORTTMONMIB::Rttmonlatesthttpopertable>())
+	,rttmonlatestjitteropertable(std::make_shared<CISCORTTMONMIB::Rttmonlatestjitteropertable>())
+	,rttmonlpdgrpstatstable(std::make_shared<CISCORTTMONMIB::Rttmonlpdgrpstatstable>())
+	,rttmonreacttable(std::make_shared<CISCORTTMONMIB::Rttmonreacttable>())
+	,rttmonreacttriggeradmintable(std::make_shared<CISCORTTMONMIB::Rttmonreacttriggeradmintable>())
+	,rttmonscriptadmintable(std::make_shared<CISCORTTMONMIB::Rttmonscriptadmintable>())
+	,rttmonstatscapturetable(std::make_shared<CISCORTTMONMIB::Rttmonstatscapturetable>())
+	,rttmonstatscollecttable(std::make_shared<CISCORTTMONMIB::Rttmonstatscollecttable>())
+	,rttmonstatstotalstable(std::make_shared<CISCORTTMONMIB::Rttmonstatstotalstable>())
+	,rttmplsvpnmonctrltable(std::make_shared<CISCORTTMONMIB::Rttmplsvpnmonctrltable>())
 {
     rttmonappl->parent = this;
-
     rttmonapplauthtable->parent = this;
-
     rttmonapplpreconfigedtable->parent = this;
-
     rttmonapplsupportedprotocolstable->parent = this;
-
     rttmonapplsupportedrtttypestable->parent = this;
-
     rttmonctrladmintable->parent = this;
-
     rttmonechoadmintable->parent = this;
-
     rttmonechopathadmintable->parent = this;
-
     rttmonfileioadmintable->parent = this;
-
     rttmongeneratedopertable->parent = this;
-
     rttmongrpscheduleadmintable->parent = this;
-
     rttmonhistorycollectiontable->parent = this;
-
     rttmonhttpstatstable->parent = this;
-
     rttmonjitterstatstable->parent = this;
-
     rttmonlatesthttpopertable->parent = this;
-
     rttmonlatestjitteropertable->parent = this;
-
     rttmonlpdgrpstatstable->parent = this;
-
     rttmonreacttable->parent = this;
-
     rttmonreacttriggeradmintable->parent = this;
-
     rttmonscriptadmintable->parent = this;
-
     rttmonstatscapturetable->parent = this;
-
     rttmonstatscollecttable->parent = this;
-
     rttmonstatstotalstable->parent = this;
-
     rttmplsvpnmonctrltable->parent = this;
 
-    yang_name = "CISCO-RTTMON-MIB"; yang_parent_name = "CISCO-RTTMON-MIB";
+    yang_name = "CISCO-RTTMON-MIB"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::~CiscoRttmonMib()
+CISCORTTMONMIB::~CISCORTTMONMIB()
 {
 }
 
-bool CiscoRttmonMib::has_data() const
+bool CISCORTTMONMIB::has_data() const
 {
     return (rttmonappl !=  nullptr && rttmonappl->has_data())
 	|| (rttmonapplauthtable !=  nullptr && rttmonapplauthtable->has_data())
@@ -121,7 +98,7 @@ bool CiscoRttmonMib::has_data() const
 	|| (rttmplsvpnmonctrltable !=  nullptr && rttmplsvpnmonctrltable->has_data());
 }
 
-bool CiscoRttmonMib::has_operation() const
+bool CISCORTTMONMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (rttmonappl !=  nullptr && rttmonappl->has_operation())
@@ -150,40 +127,29 @@ bool CiscoRttmonMib::has_operation() const
 	|| (rttmplsvpnmonctrltable !=  nullptr && rttmplsvpnmonctrltable->has_operation());
 }
 
-std::string CiscoRttmonMib::get_segment_path() const
+std::string CISCORTTMONMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonAppl")
     {
         if(rttmonappl == nullptr)
         {
-            rttmonappl = std::make_shared<CiscoRttmonMib::Rttmonappl>();
+            rttmonappl = std::make_shared<CISCORTTMONMIB::Rttmonappl>();
         }
         return rttmonappl;
     }
@@ -192,7 +158,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonapplauthtable == nullptr)
         {
-            rttmonapplauthtable = std::make_shared<CiscoRttmonMib::Rttmonapplauthtable>();
+            rttmonapplauthtable = std::make_shared<CISCORTTMONMIB::Rttmonapplauthtable>();
         }
         return rttmonapplauthtable;
     }
@@ -201,7 +167,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonapplpreconfigedtable == nullptr)
         {
-            rttmonapplpreconfigedtable = std::make_shared<CiscoRttmonMib::Rttmonapplpreconfigedtable>();
+            rttmonapplpreconfigedtable = std::make_shared<CISCORTTMONMIB::Rttmonapplpreconfigedtable>();
         }
         return rttmonapplpreconfigedtable;
     }
@@ -210,7 +176,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonapplsupportedprotocolstable == nullptr)
         {
-            rttmonapplsupportedprotocolstable = std::make_shared<CiscoRttmonMib::Rttmonapplsupportedprotocolstable>();
+            rttmonapplsupportedprotocolstable = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedprotocolstable>();
         }
         return rttmonapplsupportedprotocolstable;
     }
@@ -219,7 +185,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonapplsupportedrtttypestable == nullptr)
         {
-            rttmonapplsupportedrtttypestable = std::make_shared<CiscoRttmonMib::Rttmonapplsupportedrtttypestable>();
+            rttmonapplsupportedrtttypestable = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedrtttypestable>();
         }
         return rttmonapplsupportedrtttypestable;
     }
@@ -228,7 +194,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonctrladmintable == nullptr)
         {
-            rttmonctrladmintable = std::make_shared<CiscoRttmonMib::Rttmonctrladmintable>();
+            rttmonctrladmintable = std::make_shared<CISCORTTMONMIB::Rttmonctrladmintable>();
         }
         return rttmonctrladmintable;
     }
@@ -237,7 +203,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonechoadmintable == nullptr)
         {
-            rttmonechoadmintable = std::make_shared<CiscoRttmonMib::Rttmonechoadmintable>();
+            rttmonechoadmintable = std::make_shared<CISCORTTMONMIB::Rttmonechoadmintable>();
         }
         return rttmonechoadmintable;
     }
@@ -246,7 +212,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonechopathadmintable == nullptr)
         {
-            rttmonechopathadmintable = std::make_shared<CiscoRttmonMib::Rttmonechopathadmintable>();
+            rttmonechopathadmintable = std::make_shared<CISCORTTMONMIB::Rttmonechopathadmintable>();
         }
         return rttmonechopathadmintable;
     }
@@ -255,7 +221,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonfileioadmintable == nullptr)
         {
-            rttmonfileioadmintable = std::make_shared<CiscoRttmonMib::Rttmonfileioadmintable>();
+            rttmonfileioadmintable = std::make_shared<CISCORTTMONMIB::Rttmonfileioadmintable>();
         }
         return rttmonfileioadmintable;
     }
@@ -264,7 +230,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmongeneratedopertable == nullptr)
         {
-            rttmongeneratedopertable = std::make_shared<CiscoRttmonMib::Rttmongeneratedopertable>();
+            rttmongeneratedopertable = std::make_shared<CISCORTTMONMIB::Rttmongeneratedopertable>();
         }
         return rttmongeneratedopertable;
     }
@@ -273,7 +239,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmongrpscheduleadmintable == nullptr)
         {
-            rttmongrpscheduleadmintable = std::make_shared<CiscoRttmonMib::Rttmongrpscheduleadmintable>();
+            rttmongrpscheduleadmintable = std::make_shared<CISCORTTMONMIB::Rttmongrpscheduleadmintable>();
         }
         return rttmongrpscheduleadmintable;
     }
@@ -282,7 +248,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonhistorycollectiontable == nullptr)
         {
-            rttmonhistorycollectiontable = std::make_shared<CiscoRttmonMib::Rttmonhistorycollectiontable>();
+            rttmonhistorycollectiontable = std::make_shared<CISCORTTMONMIB::Rttmonhistorycollectiontable>();
         }
         return rttmonhistorycollectiontable;
     }
@@ -291,7 +257,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonhttpstatstable == nullptr)
         {
-            rttmonhttpstatstable = std::make_shared<CiscoRttmonMib::Rttmonhttpstatstable>();
+            rttmonhttpstatstable = std::make_shared<CISCORTTMONMIB::Rttmonhttpstatstable>();
         }
         return rttmonhttpstatstable;
     }
@@ -300,7 +266,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonjitterstatstable == nullptr)
         {
-            rttmonjitterstatstable = std::make_shared<CiscoRttmonMib::Rttmonjitterstatstable>();
+            rttmonjitterstatstable = std::make_shared<CISCORTTMONMIB::Rttmonjitterstatstable>();
         }
         return rttmonjitterstatstable;
     }
@@ -309,7 +275,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonlatesthttpopertable == nullptr)
         {
-            rttmonlatesthttpopertable = std::make_shared<CiscoRttmonMib::Rttmonlatesthttpopertable>();
+            rttmonlatesthttpopertable = std::make_shared<CISCORTTMONMIB::Rttmonlatesthttpopertable>();
         }
         return rttmonlatesthttpopertable;
     }
@@ -318,7 +284,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonlatestjitteropertable == nullptr)
         {
-            rttmonlatestjitteropertable = std::make_shared<CiscoRttmonMib::Rttmonlatestjitteropertable>();
+            rttmonlatestjitteropertable = std::make_shared<CISCORTTMONMIB::Rttmonlatestjitteropertable>();
         }
         return rttmonlatestjitteropertable;
     }
@@ -327,7 +293,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonlpdgrpstatstable == nullptr)
         {
-            rttmonlpdgrpstatstable = std::make_shared<CiscoRttmonMib::Rttmonlpdgrpstatstable>();
+            rttmonlpdgrpstatstable = std::make_shared<CISCORTTMONMIB::Rttmonlpdgrpstatstable>();
         }
         return rttmonlpdgrpstatstable;
     }
@@ -336,7 +302,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonreacttable == nullptr)
         {
-            rttmonreacttable = std::make_shared<CiscoRttmonMib::Rttmonreacttable>();
+            rttmonreacttable = std::make_shared<CISCORTTMONMIB::Rttmonreacttable>();
         }
         return rttmonreacttable;
     }
@@ -345,7 +311,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonreacttriggeradmintable == nullptr)
         {
-            rttmonreacttriggeradmintable = std::make_shared<CiscoRttmonMib::Rttmonreacttriggeradmintable>();
+            rttmonreacttriggeradmintable = std::make_shared<CISCORTTMONMIB::Rttmonreacttriggeradmintable>();
         }
         return rttmonreacttriggeradmintable;
     }
@@ -354,7 +320,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonscriptadmintable == nullptr)
         {
-            rttmonscriptadmintable = std::make_shared<CiscoRttmonMib::Rttmonscriptadmintable>();
+            rttmonscriptadmintable = std::make_shared<CISCORTTMONMIB::Rttmonscriptadmintable>();
         }
         return rttmonscriptadmintable;
     }
@@ -363,7 +329,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonstatscapturetable == nullptr)
         {
-            rttmonstatscapturetable = std::make_shared<CiscoRttmonMib::Rttmonstatscapturetable>();
+            rttmonstatscapturetable = std::make_shared<CISCORTTMONMIB::Rttmonstatscapturetable>();
         }
         return rttmonstatscapturetable;
     }
@@ -372,7 +338,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonstatscollecttable == nullptr)
         {
-            rttmonstatscollecttable = std::make_shared<CiscoRttmonMib::Rttmonstatscollecttable>();
+            rttmonstatscollecttable = std::make_shared<CISCORTTMONMIB::Rttmonstatscollecttable>();
         }
         return rttmonstatscollecttable;
     }
@@ -381,7 +347,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmonstatstotalstable == nullptr)
         {
-            rttmonstatstotalstable = std::make_shared<CiscoRttmonMib::Rttmonstatstotalstable>();
+            rttmonstatstotalstable = std::make_shared<CISCORTTMONMIB::Rttmonstatstotalstable>();
         }
         return rttmonstatstotalstable;
     }
@@ -390,7 +356,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     {
         if(rttmplsvpnmonctrltable == nullptr)
         {
-            rttmplsvpnmonctrltable = std::make_shared<CiscoRttmonMib::Rttmplsvpnmonctrltable>();
+            rttmplsvpnmonctrltable = std::make_shared<CISCORTTMONMIB::Rttmplsvpnmonctrltable>();
         }
         return rttmplsvpnmonctrltable;
     }
@@ -398,7 +364,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(rttmonappl != nullptr)
@@ -524,47 +490,47 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::get_children() co
     return children;
 }
 
-void CiscoRttmonMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::clone_ptr() const
+std::shared_ptr<Entity> CISCORTTMONMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoRttmonMib>();
+    return std::make_shared<CISCORTTMONMIB>();
 }
 
-std::string CiscoRttmonMib::get_bundle_yang_models_location() const
+std::string CISCORTTMONMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoRttmonMib::get_bundle_name() const
+std::string CISCORTTMONMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoRttmonMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCORTTMONMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoRttmonMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCORTTMONMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoRttmonMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonAppl" || name == "rttMonApplAuthTable" || name == "rttMonApplPreConfigedTable" || name == "rttMonApplSupportedProtocolsTable" || name == "rttMonApplSupportedRttTypesTable" || name == "rttMonCtrlAdminTable" || name == "rttMonEchoAdminTable" || name == "rttMonEchoPathAdminTable" || name == "rttMonFileIOAdminTable" || name == "rttMonGeneratedOperTable" || name == "rttMonGrpScheduleAdminTable" || name == "rttMonHistoryCollectionTable" || name == "rttMonHTTPStatsTable" || name == "rttMonJitterStatsTable" || name == "rttMonLatestHTTPOperTable" || name == "rttMonLatestJitterOperTable" || name == "rttMonLpdGrpStatsTable" || name == "rttMonReactTable" || name == "rttMonReactTriggerAdminTable" || name == "rttMonScriptAdminTable" || name == "rttMonStatsCaptureTable" || name == "rttMonStatsCollectTable" || name == "rttMonStatsTotalsTable" || name == "rttMplsVpnMonCtrlTable")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonappl::Rttmonappl()
+CISCORTTMONMIB::Rttmonappl::Rttmonappl()
     :
     rttmonapplfreememlowwatermark{YType::int32, "rttMonApplFreeMemLowWaterMark"},
     rttmonappllatestseterror{YType::str, "rttMonApplLatestSetError"},
@@ -578,14 +544,15 @@ CiscoRttmonMib::Rttmonappl::Rttmonappl()
     rttmonappltimeoflastset{YType::uint32, "rttMonApplTimeOfLastSet"},
     rttmonapplversion{YType::str, "rttMonApplVersion"}
 {
-    yang_name = "rttMonAppl"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonAppl"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonappl::~Rttmonappl()
+CISCORTTMONMIB::Rttmonappl::~Rttmonappl()
 {
 }
 
-bool CiscoRttmonMib::Rttmonappl::has_data() const
+bool CISCORTTMONMIB::Rttmonappl::has_data() const
 {
     return rttmonapplfreememlowwatermark.is_set
 	|| rttmonappllatestseterror.is_set
@@ -600,7 +567,7 @@ bool CiscoRttmonMib::Rttmonappl::has_data() const
 	|| rttmonapplversion.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonappl::has_operation() const
+bool CISCORTTMONMIB::Rttmonappl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonapplfreememlowwatermark.yfilter)
@@ -616,27 +583,22 @@ bool CiscoRttmonMib::Rttmonappl::has_operation() const
 	|| ydk::is_set(rttmonapplversion.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonappl::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonappl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonappl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonAppl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonappl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonappl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonapplfreememlowwatermark.is_set || is_set(rttmonapplfreememlowwatermark.yfilter)) leaf_name_data.push_back(rttmonapplfreememlowwatermark.get_name_leafdata());
@@ -651,24 +613,22 @@ const EntityPath CiscoRttmonMib::Rttmonappl::get_entity_path(Entity* ancestor) c
     if (rttmonappltimeoflastset.is_set || is_set(rttmonappltimeoflastset.yfilter)) leaf_name_data.push_back(rttmonappltimeoflastset.get_name_leafdata());
     if (rttmonapplversion.is_set || is_set(rttmonapplversion.yfilter)) leaf_name_data.push_back(rttmonapplversion.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonappl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonappl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonappl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonappl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonappl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonappl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonApplFreeMemLowWaterMark")
     {
@@ -738,7 +698,7 @@ void CiscoRttmonMib::Rttmonappl::set_value(const std::string & value_path, const
     }
 }
 
-void CiscoRttmonMib::Rttmonappl::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonappl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonApplFreeMemLowWaterMark")
     {
@@ -786,664 +746,24 @@ void CiscoRttmonMib::Rttmonappl::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool CiscoRttmonMib::Rttmonappl::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonappl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonApplFreeMemLowWaterMark" || name == "rttMonApplLatestSetError" || name == "rttMonApplLpdGrpStatsReset" || name == "rttMonApplMaxPacketDataSize" || name == "rttMonApplNumCtrlAdminEntry" || name == "rttMonApplPreConfigedReset" || name == "rttMonApplProbeCapacity" || name == "rttMonApplReset" || name == "rttMonApplResponder" || name == "rttMonApplTimeOfLastSet" || name == "rttMonApplVersion")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypestable()
+CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthtable()
 {
-    yang_name = "rttMonApplSupportedRttTypesTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonapplsupportedrtttypestable::~Rttmonapplsupportedrtttypestable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonapplsupportedrtttypesentry.size(); index++)
-    {
-        if(rttmonapplsupportedrtttypesentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonapplsupportedrtttypesentry.size(); index++)
-    {
-        if(rttmonapplsupportedrtttypesentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplsupportedrtttypestable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplSupportedRttTypesTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplsupportedrtttypestable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplsupportedrtttypestable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonApplSupportedRttTypesEntry")
-    {
-        for(auto const & c : rttmonapplsupportedrtttypesentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry>();
-        c->parent = this;
-        rttmonapplsupportedrtttypesentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplsupportedrtttypestable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonapplsupportedrtttypesentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedrtttypestable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedrtttypestable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplSupportedRttTypesEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::Rttmonapplsupportedrtttypesentry()
-    :
-    rttmonapplsupportedrtttypes{YType::enumeration, "rttMonApplSupportedRttTypes"},
-    rttmonapplsupportedrtttypesvalid{YType::boolean, "rttMonApplSupportedRttTypesValid"}
-{
-    yang_name = "rttMonApplSupportedRttTypesEntry"; yang_parent_name = "rttMonApplSupportedRttTypesTable";
-}
-
-CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::~Rttmonapplsupportedrtttypesentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_data() const
-{
-    return rttmonapplsupportedrtttypes.is_set
-	|| rttmonapplsupportedrtttypesvalid.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonapplsupportedrtttypes.yfilter)
-	|| ydk::is_set(rttmonapplsupportedrtttypesvalid.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplSupportedRttTypesEntry" <<"[rttMonApplSupportedRttTypes='" <<rttmonapplsupportedrtttypes <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplSupportedRttTypesTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonapplsupportedrtttypes.is_set || is_set(rttmonapplsupportedrtttypes.yfilter)) leaf_name_data.push_back(rttmonapplsupportedrtttypes.get_name_leafdata());
-    if (rttmonapplsupportedrtttypesvalid.is_set || is_set(rttmonapplsupportedrtttypesvalid.yfilter)) leaf_name_data.push_back(rttmonapplsupportedrtttypesvalid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonApplSupportedRttTypes")
-    {
-        rttmonapplsupportedrtttypes = value;
-        rttmonapplsupportedrtttypes.value_namespace = name_space;
-        rttmonapplsupportedrtttypes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonApplSupportedRttTypesValid")
-    {
-        rttmonapplsupportedrtttypesvalid = value;
-        rttmonapplsupportedrtttypesvalid.value_namespace = name_space;
-        rttmonapplsupportedrtttypesvalid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonApplSupportedRttTypes")
-    {
-        rttmonapplsupportedrtttypes.yfilter = yfilter;
-    }
-    if(value_path == "rttMonApplSupportedRttTypesValid")
-    {
-        rttmonapplsupportedrtttypesvalid.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplSupportedRttTypes" || name == "rttMonApplSupportedRttTypesValid")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolstable()
-{
-    yang_name = "rttMonApplSupportedProtocolsTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonapplsupportedprotocolstable::~Rttmonapplsupportedprotocolstable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonapplsupportedprotocolsentry.size(); index++)
-    {
-        if(rttmonapplsupportedprotocolsentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonapplsupportedprotocolsentry.size(); index++)
-    {
-        if(rttmonapplsupportedprotocolsentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplsupportedprotocolstable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplSupportedProtocolsTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplsupportedprotocolstable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplsupportedprotocolstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonApplSupportedProtocolsEntry")
-    {
-        for(auto const & c : rttmonapplsupportedprotocolsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry>();
-        c->parent = this;
-        rttmonapplsupportedprotocolsentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplsupportedprotocolstable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonapplsupportedprotocolsentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedprotocolstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedprotocolstable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplSupportedProtocolsEntry")
-        return true;
-    return false;
-}
 
-CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::Rttmonapplsupportedprotocolsentry()
-    :
-    rttmonapplsupportedprotocols{YType::enumeration, "rttMonApplSupportedProtocols"},
-    rttmonapplsupportedprotocolsvalid{YType::boolean, "rttMonApplSupportedProtocolsValid"}
-{
-    yang_name = "rttMonApplSupportedProtocolsEntry"; yang_parent_name = "rttMonApplSupportedProtocolsTable";
-}
-
-CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::~Rttmonapplsupportedprotocolsentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_data() const
-{
-    return rttmonapplsupportedprotocols.is_set
-	|| rttmonapplsupportedprotocolsvalid.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonapplsupportedprotocols.yfilter)
-	|| ydk::is_set(rttmonapplsupportedprotocolsvalid.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplSupportedProtocolsEntry" <<"[rttMonApplSupportedProtocols='" <<rttmonapplsupportedprotocols <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplSupportedProtocolsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonapplsupportedprotocols.is_set || is_set(rttmonapplsupportedprotocols.yfilter)) leaf_name_data.push_back(rttmonapplsupportedprotocols.get_name_leafdata());
-    if (rttmonapplsupportedprotocolsvalid.is_set || is_set(rttmonapplsupportedprotocolsvalid.yfilter)) leaf_name_data.push_back(rttmonapplsupportedprotocolsvalid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonApplSupportedProtocols")
-    {
-        rttmonapplsupportedprotocols = value;
-        rttmonapplsupportedprotocols.value_namespace = name_space;
-        rttmonapplsupportedprotocols.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonApplSupportedProtocolsValid")
-    {
-        rttmonapplsupportedprotocolsvalid = value;
-        rttmonapplsupportedprotocolsvalid.value_namespace = name_space;
-        rttmonapplsupportedprotocolsvalid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonApplSupportedProtocols")
-    {
-        rttmonapplsupportedprotocols.yfilter = yfilter;
-    }
-    if(value_path == "rttMonApplSupportedProtocolsValid")
-    {
-        rttmonapplsupportedprotocolsvalid.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplSupportedProtocols" || name == "rttMonApplSupportedProtocolsValid")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedtable()
-{
-    yang_name = "rttMonApplPreConfigedTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonapplpreconfigedtable::~Rttmonapplpreconfigedtable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonapplpreconfigedentry.size(); index++)
-    {
-        if(rttmonapplpreconfigedentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonapplpreconfigedentry.size(); index++)
-    {
-        if(rttmonapplpreconfigedentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplpreconfigedtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplPreConfigedTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplpreconfigedtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplpreconfigedtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonApplPreConfigedEntry")
-    {
-        for(auto const & c : rttmonapplpreconfigedentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry>();
-        c->parent = this;
-        rttmonapplpreconfigedentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplpreconfigedtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonapplpreconfigedentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplpreconfigedtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonapplpreconfigedtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplPreConfigedEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedentry()
-    :
-    rttmonapplpreconfigedtype{YType::enumeration, "rttMonApplPreConfigedType"},
-    rttmonapplpreconfigedname{YType::str, "rttMonApplPreConfigedName"},
-    rttmonapplpreconfigedvalid{YType::boolean, "rttMonApplPreConfigedValid"}
-{
-    yang_name = "rttMonApplPreConfigedEntry"; yang_parent_name = "rttMonApplPreConfigedTable";
-}
-
-CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::~Rttmonapplpreconfigedentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_data() const
-{
-    return rttmonapplpreconfigedtype.is_set
-	|| rttmonapplpreconfigedname.is_set
-	|| rttmonapplpreconfigedvalid.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonapplpreconfigedtype.yfilter)
-	|| ydk::is_set(rttmonapplpreconfigedname.yfilter)
-	|| ydk::is_set(rttmonapplpreconfigedvalid.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonApplPreConfigedEntry" <<"[rttMonApplPreConfigedType='" <<rttmonapplpreconfigedtype <<"']" <<"[rttMonApplPreConfigedName='" <<rttmonapplpreconfigedname <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplPreConfigedTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonapplpreconfigedtype.is_set || is_set(rttmonapplpreconfigedtype.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedtype.get_name_leafdata());
-    if (rttmonapplpreconfigedname.is_set || is_set(rttmonapplpreconfigedname.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedname.get_name_leafdata());
-    if (rttmonapplpreconfigedvalid.is_set || is_set(rttmonapplpreconfigedvalid.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedvalid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonApplPreConfigedType")
-    {
-        rttmonapplpreconfigedtype = value;
-        rttmonapplpreconfigedtype.value_namespace = name_space;
-        rttmonapplpreconfigedtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonApplPreConfigedName")
-    {
-        rttmonapplpreconfigedname = value;
-        rttmonapplpreconfigedname.value_namespace = name_space;
-        rttmonapplpreconfigedname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonApplPreConfigedValid")
-    {
-        rttmonapplpreconfigedvalid = value;
-        rttmonapplpreconfigedvalid.value_namespace = name_space;
-        rttmonapplpreconfigedvalid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonApplPreConfigedType")
-    {
-        rttmonapplpreconfigedtype.yfilter = yfilter;
-    }
-    if(value_path == "rttMonApplPreConfigedName")
-    {
-        rttmonapplpreconfigedname.yfilter = yfilter;
-    }
-    if(value_path == "rttMonApplPreConfigedValid")
-    {
-        rttmonapplpreconfigedvalid.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonApplPreConfigedType" || name == "rttMonApplPreConfigedName" || name == "rttMonApplPreConfigedValid")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthtable()
-{
-    yang_name = "rttMonApplAuthTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+    yang_name = "rttMonApplAuthTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonapplauthtable::~Rttmonapplauthtable()
+CISCORTTMONMIB::Rttmonapplauthtable::~Rttmonapplauthtable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::has_data() const
+bool CISCORTTMONMIB::Rttmonapplauthtable::has_data() const
 {
     for (std::size_t index=0; index<rttmonapplauthentry.size(); index++)
     {
@@ -1453,7 +773,7 @@ bool CiscoRttmonMib::Rttmonapplauthtable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::has_operation() const
+bool CISCORTTMONMIB::Rttmonapplauthtable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonapplauthentry.size(); index++)
     {
@@ -1463,37 +783,30 @@ bool CiscoRttmonMib::Rttmonapplauthtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonapplauthtable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonapplauthtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplauthtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonApplAuthTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonapplauthtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplauthtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplauthtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplauthtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonApplAuthEntry")
     {
@@ -1505,7 +818,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplauthtable::get_child_by_name(c
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry>();
         c->parent = this;
         rttmonapplauthentry.push_back(c);
         return c;
@@ -1514,7 +827,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplauthtable::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplauthtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplauthtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonapplauthentry)
@@ -1525,22 +838,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplauthtab
     return children;
 }
 
-void CiscoRttmonMib::Rttmonapplauthtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonapplauthtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonapplauthtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonapplauthtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonapplauthtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonApplAuthEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::Rttmonapplauthentry()
+CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::Rttmonapplauthentry()
     :
     rttmonapplauthindex{YType::int32, "rttMonApplAuthIndex"},
     rttmonapplauthkeychain{YType::str, "rttMonApplAuthKeyChain"},
@@ -1551,14 +864,15 @@ CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::Rttmonapplauthentry()
     rttmonapplauthkeystring5{YType::str, "rttMonApplAuthKeyString5"},
     rttmonapplauthstatus{YType::enumeration, "rttMonApplAuthStatus"}
 {
-    yang_name = "rttMonApplAuthEntry"; yang_parent_name = "rttMonApplAuthTable";
+
+    yang_name = "rttMonApplAuthEntry"; yang_parent_name = "rttMonApplAuthTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::~Rttmonapplauthentry()
+CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::~Rttmonapplauthentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::has_data() const
+bool CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::has_data() const
 {
     return rttmonapplauthindex.is_set
 	|| rttmonapplauthkeychain.is_set
@@ -1570,7 +884,7 @@ bool CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::has_data() const
 	|| rttmonapplauthstatus.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonapplauthindex.yfilter)
@@ -1583,27 +897,22 @@ bool CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::has_operation() c
 	|| ydk::is_set(rttmonapplauthstatus.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplAuthTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonApplAuthEntry" <<"[rttMonApplAuthIndex='" <<rttmonapplauthindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplAuthTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonapplauthindex.is_set || is_set(rttmonapplauthindex.yfilter)) leaf_name_data.push_back(rttmonapplauthindex.get_name_leafdata());
@@ -1615,24 +924,22 @@ const EntityPath CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::get_e
     if (rttmonapplauthkeystring5.is_set || is_set(rttmonapplauthkeystring5.yfilter)) leaf_name_data.push_back(rttmonapplauthkeystring5.get_name_leafdata());
     if (rttmonapplauthstatus.is_set || is_set(rttmonapplauthstatus.yfilter)) leaf_name_data.push_back(rttmonapplauthstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonApplAuthIndex")
     {
@@ -1684,7 +991,7 @@ void CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::set_value(const s
     }
 }
 
-void CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonApplAuthIndex")
     {
@@ -1720,23 +1027,629 @@ void CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::set_filter(const 
     }
 }
 
-bool CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonApplAuthIndex" || name == "rttMonApplAuthKeyChain" || name == "rttMonApplAuthKeyString1" || name == "rttMonApplAuthKeyString2" || name == "rttMonApplAuthKeyString3" || name == "rttMonApplAuthKeyString4" || name == "rttMonApplAuthKeyString5" || name == "rttMonApplAuthStatus")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladmintable()
+CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedtable()
 {
-    yang_name = "rttMonCtrlAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonApplPreConfigedTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonctrladmintable::~Rttmonctrladmintable()
+CISCORTTMONMIB::Rttmonapplpreconfigedtable::~Rttmonapplpreconfigedtable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::has_data() const
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonapplpreconfigedentry.size(); index++)
+    {
+        if(rttmonapplpreconfigedentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonapplpreconfigedentry.size(); index++)
+    {
+        if(rttmonapplpreconfigedentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplPreConfigedTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonApplPreConfigedEntry")
+    {
+        for(auto const & c : rttmonapplpreconfigedentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry>();
+        c->parent = this;
+        rttmonapplpreconfigedentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonapplpreconfigedentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplpreconfigedtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonapplpreconfigedtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplPreConfigedEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedentry()
+    :
+    rttmonapplpreconfigedtype{YType::enumeration, "rttMonApplPreConfigedType"},
+    rttmonapplpreconfigedname{YType::str, "rttMonApplPreConfigedName"},
+    rttmonapplpreconfigedvalid{YType::boolean, "rttMonApplPreConfigedValid"}
+{
+
+    yang_name = "rttMonApplPreConfigedEntry"; yang_parent_name = "rttMonApplPreConfigedTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::~Rttmonapplpreconfigedentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_data() const
+{
+    return rttmonapplpreconfigedtype.is_set
+	|| rttmonapplpreconfigedname.is_set
+	|| rttmonapplpreconfigedvalid.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonapplpreconfigedtype.yfilter)
+	|| ydk::is_set(rttmonapplpreconfigedname.yfilter)
+	|| ydk::is_set(rttmonapplpreconfigedvalid.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplPreConfigedTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplPreConfigedEntry" <<"[rttMonApplPreConfigedType='" <<rttmonapplpreconfigedtype <<"']" <<"[rttMonApplPreConfigedName='" <<rttmonapplpreconfigedname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonapplpreconfigedtype.is_set || is_set(rttmonapplpreconfigedtype.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedtype.get_name_leafdata());
+    if (rttmonapplpreconfigedname.is_set || is_set(rttmonapplpreconfigedname.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedname.get_name_leafdata());
+    if (rttmonapplpreconfigedvalid.is_set || is_set(rttmonapplpreconfigedvalid.yfilter)) leaf_name_data.push_back(rttmonapplpreconfigedvalid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonApplPreConfigedType")
+    {
+        rttmonapplpreconfigedtype = value;
+        rttmonapplpreconfigedtype.value_namespace = name_space;
+        rttmonapplpreconfigedtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonApplPreConfigedName")
+    {
+        rttmonapplpreconfigedname = value;
+        rttmonapplpreconfigedname.value_namespace = name_space;
+        rttmonapplpreconfigedname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonApplPreConfigedValid")
+    {
+        rttmonapplpreconfigedvalid = value;
+        rttmonapplpreconfigedvalid.value_namespace = name_space;
+        rttmonapplpreconfigedvalid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonApplPreConfigedType")
+    {
+        rttmonapplpreconfigedtype.yfilter = yfilter;
+    }
+    if(value_path == "rttMonApplPreConfigedName")
+    {
+        rttmonapplpreconfigedname.yfilter = yfilter;
+    }
+    if(value_path == "rttMonApplPreConfigedValid")
+    {
+        rttmonapplpreconfigedvalid.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplPreConfigedType" || name == "rttMonApplPreConfigedName" || name == "rttMonApplPreConfigedValid")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolstable()
+{
+
+    yang_name = "rttMonApplSupportedProtocolsTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::~Rttmonapplsupportedprotocolstable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonapplsupportedprotocolsentry.size(); index++)
+    {
+        if(rttmonapplsupportedprotocolsentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonapplsupportedprotocolsentry.size(); index++)
+    {
+        if(rttmonapplsupportedprotocolsentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplSupportedProtocolsTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonApplSupportedProtocolsEntry")
+    {
+        for(auto const & c : rttmonapplsupportedprotocolsentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry>();
+        c->parent = this;
+        rttmonapplsupportedprotocolsentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonapplsupportedprotocolsentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplSupportedProtocolsEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::Rttmonapplsupportedprotocolsentry()
+    :
+    rttmonapplsupportedprotocols{YType::enumeration, "rttMonApplSupportedProtocols"},
+    rttmonapplsupportedprotocolsvalid{YType::boolean, "rttMonApplSupportedProtocolsValid"}
+{
+
+    yang_name = "rttMonApplSupportedProtocolsEntry"; yang_parent_name = "rttMonApplSupportedProtocolsTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::~Rttmonapplsupportedprotocolsentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_data() const
+{
+    return rttmonapplsupportedprotocols.is_set
+	|| rttmonapplsupportedprotocolsvalid.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonapplsupportedprotocols.yfilter)
+	|| ydk::is_set(rttmonapplsupportedprotocolsvalid.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplSupportedProtocolsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplSupportedProtocolsEntry" <<"[rttMonApplSupportedProtocols='" <<rttmonapplsupportedprotocols <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonapplsupportedprotocols.is_set || is_set(rttmonapplsupportedprotocols.yfilter)) leaf_name_data.push_back(rttmonapplsupportedprotocols.get_name_leafdata());
+    if (rttmonapplsupportedprotocolsvalid.is_set || is_set(rttmonapplsupportedprotocolsvalid.yfilter)) leaf_name_data.push_back(rttmonapplsupportedprotocolsvalid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonApplSupportedProtocols")
+    {
+        rttmonapplsupportedprotocols = value;
+        rttmonapplsupportedprotocols.value_namespace = name_space;
+        rttmonapplsupportedprotocols.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonApplSupportedProtocolsValid")
+    {
+        rttmonapplsupportedprotocolsvalid = value;
+        rttmonapplsupportedprotocolsvalid.value_namespace = name_space;
+        rttmonapplsupportedprotocolsvalid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonApplSupportedProtocols")
+    {
+        rttmonapplsupportedprotocols.yfilter = yfilter;
+    }
+    if(value_path == "rttMonApplSupportedProtocolsValid")
+    {
+        rttmonapplsupportedprotocolsvalid.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplSupportedProtocols" || name == "rttMonApplSupportedProtocolsValid")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypestable()
+{
+
+    yang_name = "rttMonApplSupportedRttTypesTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::~Rttmonapplsupportedrtttypestable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonapplsupportedrtttypesentry.size(); index++)
+    {
+        if(rttmonapplsupportedrtttypesentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonapplsupportedrtttypesentry.size(); index++)
+    {
+        if(rttmonapplsupportedrtttypesentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplSupportedRttTypesTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonApplSupportedRttTypesEntry")
+    {
+        for(auto const & c : rttmonapplsupportedrtttypesentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry>();
+        c->parent = this;
+        rttmonapplsupportedrtttypesentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonapplsupportedrtttypesentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplSupportedRttTypesEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::Rttmonapplsupportedrtttypesentry()
+    :
+    rttmonapplsupportedrtttypes{YType::enumeration, "rttMonApplSupportedRttTypes"},
+    rttmonapplsupportedrtttypesvalid{YType::boolean, "rttMonApplSupportedRttTypesValid"}
+{
+
+    yang_name = "rttMonApplSupportedRttTypesEntry"; yang_parent_name = "rttMonApplSupportedRttTypesTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::~Rttmonapplsupportedrtttypesentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_data() const
+{
+    return rttmonapplsupportedrtttypes.is_set
+	|| rttmonapplsupportedrtttypesvalid.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonapplsupportedrtttypes.yfilter)
+	|| ydk::is_set(rttmonapplsupportedrtttypesvalid.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonApplSupportedRttTypesTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonApplSupportedRttTypesEntry" <<"[rttMonApplSupportedRttTypes='" <<rttmonapplsupportedrtttypes <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonapplsupportedrtttypes.is_set || is_set(rttmonapplsupportedrtttypes.yfilter)) leaf_name_data.push_back(rttmonapplsupportedrtttypes.get_name_leafdata());
+    if (rttmonapplsupportedrtttypesvalid.is_set || is_set(rttmonapplsupportedrtttypesvalid.yfilter)) leaf_name_data.push_back(rttmonapplsupportedrtttypesvalid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonApplSupportedRttTypes")
+    {
+        rttmonapplsupportedrtttypes = value;
+        rttmonapplsupportedrtttypes.value_namespace = name_space;
+        rttmonapplsupportedrtttypes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonApplSupportedRttTypesValid")
+    {
+        rttmonapplsupportedrtttypesvalid = value;
+        rttmonapplsupportedrtttypesvalid.value_namespace = name_space;
+        rttmonapplsupportedrtttypesvalid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonApplSupportedRttTypes")
+    {
+        rttmonapplsupportedrtttypes.yfilter = yfilter;
+    }
+    if(value_path == "rttMonApplSupportedRttTypesValid")
+    {
+        rttmonapplsupportedrtttypesvalid.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonApplSupportedRttTypes" || name == "rttMonApplSupportedRttTypesValid")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladmintable()
+{
+
+    yang_name = "rttMonCtrlAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonctrladmintable::~Rttmonctrladmintable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonctrladmintable::has_data() const
 {
     for (std::size_t index=0; index<rttmonctrladminentry.size(); index++)
     {
@@ -1746,7 +1659,7 @@ bool CiscoRttmonMib::Rttmonctrladmintable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::has_operation() const
+bool CISCORTTMONMIB::Rttmonctrladmintable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonctrladminentry.size(); index++)
     {
@@ -1756,37 +1669,30 @@ bool CiscoRttmonMib::Rttmonctrladmintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonctrladmintable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonctrladmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonctrladmintable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonCtrlAdminTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonctrladmintable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonctrladmintable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonctrladmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonctrladmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonCtrlAdminEntry")
     {
@@ -1798,7 +1704,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonctrladmintable::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry>();
         c->parent = this;
         rttmonctrladminentry.push_back(c);
         return c;
@@ -1807,7 +1713,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonctrladmintable::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonctrladmintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonctrladmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonctrladminentry)
@@ -1818,22 +1724,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonctrladminta
     return children;
 }
 
-void CiscoRttmonMib::Rttmonctrladmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonctrladmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonctrladmintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonctrladmintable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonctrladmintable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrladminentry()
+CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrladminentry()
     :
     rttmonctrladminindex{YType::int32, "rttMonCtrlAdminIndex"},
     rttmonctrladminfrequency{YType::int32, "rttMonCtrlAdminFrequency"},
@@ -1886,14 +1792,15 @@ CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrladminentry
     rttmonstatisticsadminnumhourgroups{YType::int32, "rttMonStatisticsAdminNumHourGroups"},
     rttmonstatisticsadminnumpaths{YType::int32, "rttMonStatisticsAdminNumPaths"}
 {
-    yang_name = "rttMonCtrlAdminEntry"; yang_parent_name = "rttMonCtrlAdminTable";
+
+    yang_name = "rttMonCtrlAdminEntry"; yang_parent_name = "rttMonCtrlAdminTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::~Rttmonctrladminentry()
+CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::~Rttmonctrladminentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::has_data() const
+bool CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonctrladminfrequency.is_set
@@ -1947,7 +1854,7 @@ bool CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::has_data() cons
 	|| rttmonstatisticsadminnumpaths.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -2002,27 +1909,22 @@ bool CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::has_operation()
 	|| ydk::is_set(rttmonstatisticsadminnumpaths.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonCtrlAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonCtrlAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonCtrlAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -2076,24 +1978,22 @@ const EntityPath CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::get
     if (rttmonstatisticsadminnumhourgroups.is_set || is_set(rttmonstatisticsadminnumhourgroups.yfilter)) leaf_name_data.push_back(rttmonstatisticsadminnumhourgroups.get_name_leafdata());
     if (rttmonstatisticsadminnumpaths.is_set || is_set(rttmonstatisticsadminnumpaths.yfilter)) leaf_name_data.push_back(rttmonstatisticsadminnumpaths.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -2397,7 +2297,7 @@ void CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::set_value(const
     }
 }
 
-void CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -2601,23 +2501,24 @@ void CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::set_filter(cons
     }
 }
 
-bool CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonCtrlAdminFrequency" || name == "rttMonCtrlAdminGroupName" || name == "rttMonCtrlAdminNvgen" || name == "rttMonCtrlAdminOwner" || name == "rttMonCtrlAdminRttType" || name == "rttMonCtrlAdminStatus" || name == "rttMonCtrlAdminTag" || name == "rttMonCtrlAdminThreshold" || name == "rttMonCtrlAdminTimeout" || name == "rttMonCtrlAdminVerifyData" || name == "rttMonCtrlOperConnectionLostOccurred" || name == "rttMonCtrlOperDiagText" || name == "rttMonCtrlOperModificationTime" || name == "rttMonCtrlOperNumRtts" || name == "rttMonCtrlOperOctetsInUse" || name == "rttMonCtrlOperOverThresholdOccurred" || name == "rttMonCtrlOperResetTime" || name == "rttMonCtrlOperRttLife" || name == "rttMonCtrlOperState" || name == "rttMonCtrlOperTimeoutOccurred" || name == "rttMonCtrlOperVerifyErrorOccurred" || name == "rttMonHistoryAdminFilter" || name == "rttMonHistoryAdminNumBuckets" || name == "rttMonHistoryAdminNumLives" || name == "rttMonHistoryAdminNumSamples" || name == "rttMonLatestRttOperAddress" || name == "rttMonLatestRttOperApplSpecificSense" || name == "rttMonLatestRttOperCompletionTime" || name == "rttMonLatestRttOperSense" || name == "rttMonLatestRttOperSenseDescription" || name == "rttMonLatestRttOperTime" || name == "rttMonReactAdminActionType" || name == "rttMonReactAdminConnectionEnable" || name == "rttMonReactAdminThresholdCount" || name == "rttMonReactAdminThresholdCount2" || name == "rttMonReactAdminThresholdFalling" || name == "rttMonReactAdminThresholdType" || name == "rttMonReactAdminTimeoutEnable" || name == "rttMonReactAdminVerifyErrorEnable" || name == "rttMonScheduleAdminConceptRowAgeout" || name == "rttMonScheduleAdminConceptRowAgeoutV2" || name == "rttMonScheduleAdminRttLife" || name == "rttMonScheduleAdminRttRecurring" || name == "rttMonScheduleAdminRttStartTime" || name == "rttMonStatisticsAdminDistInterval" || name == "rttMonStatisticsAdminNumDistBuckets" || name == "rttMonStatisticsAdminNumHops" || name == "rttMonStatisticsAdminNumHourGroups" || name == "rttMonStatisticsAdminNumPaths")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadmintable()
+CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadmintable()
 {
-    yang_name = "rttMonEchoAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonEchoAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonechoadmintable::~Rttmonechoadmintable()
+CISCORTTMONMIB::Rttmonechoadmintable::~Rttmonechoadmintable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::has_data() const
+bool CISCORTTMONMIB::Rttmonechoadmintable::has_data() const
 {
     for (std::size_t index=0; index<rttmonechoadminentry.size(); index++)
     {
@@ -2627,7 +2528,7 @@ bool CiscoRttmonMib::Rttmonechoadmintable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::has_operation() const
+bool CISCORTTMONMIB::Rttmonechoadmintable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonechoadminentry.size(); index++)
     {
@@ -2637,37 +2538,30 @@ bool CiscoRttmonMib::Rttmonechoadmintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonechoadmintable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonechoadmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonechoadmintable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonEchoAdminTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonechoadmintable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonechoadmintable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechoadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechoadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonEchoAdminEntry")
     {
@@ -2679,7 +2573,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechoadmintable::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry>();
         c->parent = this;
         rttmonechoadminentry.push_back(c);
         return c;
@@ -2688,7 +2582,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechoadmintable::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonechoadmintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechoadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonechoadminentry)
@@ -2699,22 +2593,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonechoadminta
     return children;
 }
 
-void CiscoRttmonMib::Rttmonechoadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonechoadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonechoadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonechoadmintable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonechoadmintable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonEchoAdminEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminentry()
+CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonechoadminaggburstcycles{YType::int32, "rttMonEchoAdminAggBurstCycles"},
@@ -2794,14 +2688,15 @@ CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminentry
     rttmonechoadminvideotrafficprofile{YType::str, "rttMonEchoAdminVideoTrafficProfile"},
     rttmonechoadminvrfname{YType::str, "rttMonEchoAdminVrfName"}
 {
-    yang_name = "rttMonEchoAdminEntry"; yang_parent_name = "rttMonEchoAdminTable";
+
+    yang_name = "rttMonEchoAdminEntry"; yang_parent_name = "rttMonEchoAdminTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::~Rttmonechoadminentry()
+CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::~Rttmonechoadminentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::has_data() const
+bool CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonechoadminaggburstcycles.is_set
@@ -2882,7 +2777,7 @@ bool CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::has_data() cons
 	|| rttmonechoadminvrfname.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -2964,27 +2859,22 @@ bool CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::has_operation()
 	|| ydk::is_set(rttmonechoadminvrfname.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonEchoAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonEchoAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonEchoAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -3065,24 +2955,22 @@ const EntityPath CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::get
     if (rttmonechoadminvideotrafficprofile.is_set || is_set(rttmonechoadminvideotrafficprofile.yfilter)) leaf_name_data.push_back(rttmonechoadminvideotrafficprofile.get_name_leafdata());
     if (rttmonechoadminvrfname.is_set || is_set(rttmonechoadminvrfname.yfilter)) leaf_name_data.push_back(rttmonechoadminvrfname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -3548,7 +3436,7 @@ void CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::set_value(const
     }
 }
 
-void CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -3860,23 +3748,235 @@ void CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::set_filter(cons
     }
 }
 
-bool CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonEchoAdminAggBurstCycles" || name == "rttMonEchoAdminAvailNumFrames" || name == "rttMonEchoAdminCache" || name == "rttMonEchoAdminCallDuration" || name == "rttMonEchoAdminCalledNumber" || name == "rttMonEchoAdminCodecInterval" || name == "rttMonEchoAdminCodecNumPackets" || name == "rttMonEchoAdminCodecPayload" || name == "rttMonEchoAdminCodecType" || name == "rttMonEchoAdminControlEnable" || name == "rttMonEchoAdminControlRetry" || name == "rttMonEchoAdminControlTimeout" || name == "rttMonEchoAdminDetectPoint" || name == "rttMonEchoAdminDscp" || name == "rttMonEchoAdminEmulateSourceAddress" || name == "rttMonEchoAdminEmulateSourcePort" || name == "rttMonEchoAdminEmulateTargetAddress" || name == "rttMonEchoAdminEmulateTargetPort" || name == "rttMonEchoAdminEnableBurst" || name == "rttMonEchoAdminEndPointListName" || name == "rttMonEchoAdminEthernetCOS" || name == "rttMonEchoAdminGKRegistration" || name == "rttMonEchoAdminHTTPVersion" || name == "rttMonEchoAdminICPIFAdvFactor" || name == "rttMonEchoAdminIgmpTreeInit" || name == "rttMonEchoAdminInputInterface" || name == "rttMonEchoAdminInterval" || name == "rttMonEchoAdminLossRatioNumFrames" || name == "rttMonEchoAdminLSPExp" || name == "rttMonEchoAdminLSPFECType" || name == "rttMonEchoAdminLSPNullShim" || name == "rttMonEchoAdminLSPReplyDscp" || name == "rttMonEchoAdminLSPReplyMode" || name == "rttMonEchoAdminLSPSelector" || name == "rttMonEchoAdminLSPTTL" || name == "rttMonEchoAdminLSPVccvID" || name == "rttMonEchoAdminLSREnable" || name == "rttMonEchoAdminMode" || name == "rttMonEchoAdminNameServer" || name == "rttMonEchoAdminNumPackets" || name == "rttMonEchoAdminOperation" || name == "rttMonEchoAdminOWNTPSyncTolAbs" || name == "rttMonEchoAdminOWNTPSyncTolPct" || name == "rttMonEchoAdminOWNTPSyncTolType" || name == "rttMonEchoAdminPktDataRequestSize" || name == "rttMonEchoAdminPktDataResponseSize" || name == "rttMonEchoAdminPrecision" || name == "rttMonEchoAdminProbePakPriority" || name == "rttMonEchoAdminProtocol" || name == "rttMonEchoAdminProxy" || name == "rttMonEchoAdminReserveDsp" || name == "rttMonEchoAdminSourceAddress" || name == "rttMonEchoAdminSourceMacAddress" || name == "rttMonEchoAdminSourceMPID" || name == "rttMonEchoAdminSourcePort" || name == "rttMonEchoAdminSourceVoicePort" || name == "rttMonEchoAdminSSM" || name == "rttMonEchoAdminString1" || name == "rttMonEchoAdminString2" || name == "rttMonEchoAdminString3" || name == "rttMonEchoAdminString4" || name == "rttMonEchoAdminString5" || name == "rttMonEchoAdminTargetAddress" || name == "rttMonEchoAdminTargetAddressString" || name == "rttMonEchoAdminTargetDomainName" || name == "rttMonEchoAdminTargetEVC" || name == "rttMonEchoAdminTargetMacAddress" || name == "rttMonEchoAdminTargetMEPPort" || name == "rttMonEchoAdminTargetMPID" || name == "rttMonEchoAdminTargetPort" || name == "rttMonEchoAdminTargetVLAN" || name == "rttMonEchoAdminTOS" || name == "rttMonEchoAdminTstampOptimization" || name == "rttMonEchoAdminURL" || name == "rttMonEchoAdminVideoTrafficProfile" || name == "rttMonEchoAdminVrfName")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadmintable()
+CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadmintable()
 {
-    yang_name = "rttMonFileIOAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonEchoPathAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonfileioadmintable::~Rttmonfileioadmintable()
+CISCORTTMONMIB::Rttmonechopathadmintable::~Rttmonechopathadmintable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::has_data() const
+bool CISCORTTMONMIB::Rttmonechopathadmintable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonechopathadminentry.size(); index++)
+    {
+        if(rttmonechopathadminentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonechopathadmintable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonechopathadminentry.size(); index++)
+    {
+        if(rttmonechopathadminentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonechopathadmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonechopathadmintable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonEchoPathAdminTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonechopathadmintable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechopathadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonEchoPathAdminEntry")
+    {
+        for(auto const & c : rttmonechopathadminentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry>();
+        c->parent = this;
+        rttmonechopathadminentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechopathadmintable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonechopathadminentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonechopathadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonechopathadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonechopathadmintable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonEchoPathAdminEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::Rttmonechopathadminentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonechopathadminhopindex{YType::int32, "rttMonEchoPathAdminHopIndex"},
+    rttmonechopathadminhopaddress{YType::str, "rttMonEchoPathAdminHopAddress"}
+{
+
+    yang_name = "rttMonEchoPathAdminEntry"; yang_parent_name = "rttMonEchoPathAdminTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::~Rttmonechopathadminentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonechopathadminhopindex.is_set
+	|| rttmonechopathadminhopaddress.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonechopathadminhopindex.yfilter)
+	|| ydk::is_set(rttmonechopathadminhopaddress.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonEchoPathAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonEchoPathAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonEchoPathAdminHopIndex='" <<rttmonechopathadminhopindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonechopathadminhopindex.is_set || is_set(rttmonechopathadminhopindex.yfilter)) leaf_name_data.push_back(rttmonechopathadminhopindex.get_name_leafdata());
+    if (rttmonechopathadminhopaddress.is_set || is_set(rttmonechopathadminhopaddress.yfilter)) leaf_name_data.push_back(rttmonechopathadminhopaddress.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonEchoPathAdminHopIndex")
+    {
+        rttmonechopathadminhopindex = value;
+        rttmonechopathadminhopindex.value_namespace = name_space;
+        rttmonechopathadminhopindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonEchoPathAdminHopAddress")
+    {
+        rttmonechopathadminhopaddress = value;
+        rttmonechopathadminhopaddress.value_namespace = name_space;
+        rttmonechopathadminhopaddress.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonEchoPathAdminHopIndex")
+    {
+        rttmonechopathadminhopindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonEchoPathAdminHopAddress")
+    {
+        rttmonechopathadminhopaddress.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonEchoPathAdminHopIndex" || name == "rttMonEchoPathAdminHopAddress")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadmintable()
+{
+
+    yang_name = "rttMonFileIOAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonfileioadmintable::~Rttmonfileioadmintable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonfileioadmintable::has_data() const
 {
     for (std::size_t index=0; index<rttmonfileioadminentry.size(); index++)
     {
@@ -3886,7 +3986,7 @@ bool CiscoRttmonMib::Rttmonfileioadmintable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::has_operation() const
+bool CISCORTTMONMIB::Rttmonfileioadmintable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonfileioadminentry.size(); index++)
     {
@@ -3896,37 +3996,30 @@ bool CiscoRttmonMib::Rttmonfileioadmintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonfileioadmintable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonfileioadmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonfileioadmintable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonFileIOAdminTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonfileioadmintable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonfileioadmintable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonfileioadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonfileioadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonFileIOAdminEntry")
     {
@@ -3938,7 +4031,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonfileioadmintable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry>();
         c->parent = this;
         rttmonfileioadminentry.push_back(c);
         return c;
@@ -3947,7 +4040,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonfileioadmintable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonfileioadmintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonfileioadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonfileioadminentry)
@@ -3958,36 +4051,37 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonfileioadmin
     return children;
 }
 
-void CiscoRttmonMib::Rttmonfileioadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonfileioadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonfileioadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonfileioadmintable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonfileioadmintable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonFileIOAdminEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminentry()
+CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonfileioadminaction{YType::enumeration, "rttMonFileIOAdminAction"},
     rttmonfileioadminfilepath{YType::str, "rttMonFileIOAdminFilePath"},
     rttmonfileioadminsize{YType::enumeration, "rttMonFileIOAdminSize"}
 {
-    yang_name = "rttMonFileIOAdminEntry"; yang_parent_name = "rttMonFileIOAdminTable";
+
+    yang_name = "rttMonFileIOAdminEntry"; yang_parent_name = "rttMonFileIOAdminTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::~Rttmonfileioadminentry()
+CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::~Rttmonfileioadminentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::has_data() const
+bool CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonfileioadminaction.is_set
@@ -3995,7 +4089,7 @@ bool CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::has_data() 
 	|| rttmonfileioadminsize.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -4004,27 +4098,22 @@ bool CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::has_operati
 	|| ydk::is_set(rttmonfileioadminsize.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonFileIOAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonFileIOAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonFileIOAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -4032,24 +4121,22 @@ const EntityPath CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry:
     if (rttmonfileioadminfilepath.is_set || is_set(rttmonfileioadminfilepath.yfilter)) leaf_name_data.push_back(rttmonfileioadminfilepath.get_name_leafdata());
     if (rttmonfileioadminsize.is_set || is_set(rttmonfileioadminsize.yfilter)) leaf_name_data.push_back(rttmonfileioadminsize.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -4077,7 +4164,7 @@ void CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::set_value(c
     }
 }
 
-void CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -4097,77 +4184,71 @@ void CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::set_filter(
     }
 }
 
-bool CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonFileIOAdminAction" || name == "rttMonFileIOAdminFilePath" || name == "rttMonFileIOAdminSize")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadmintable()
+CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedopertable()
 {
-    yang_name = "rttMonScriptAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonGeneratedOperTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonscriptadmintable::~Rttmonscriptadmintable()
+CISCORTTMONMIB::Rttmongeneratedopertable::~Rttmongeneratedopertable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::has_data() const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::has_data() const
 {
-    for (std::size_t index=0; index<rttmonscriptadminentry.size(); index++)
+    for (std::size_t index=0; index<rttmongeneratedoperentry.size(); index++)
     {
-        if(rttmonscriptadminentry[index]->has_data())
+        if(rttmongeneratedoperentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::has_operation() const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::has_operation() const
 {
-    for (std::size_t index=0; index<rttmonscriptadminentry.size(); index++)
+    for (std::size_t index=0; index<rttmongeneratedoperentry.size(); index++)
     {
-        if(rttmonscriptadminentry[index]->has_operation())
+        if(rttmongeneratedoperentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonscriptadmintable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmongeneratedopertable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rttMonScriptAdminTable";
-
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonscriptadmintable::get_entity_path(Entity* ancestor) const
+std::string CISCORTTMONMIB::Rttmongeneratedopertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "rttMonGeneratedOperTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmongeneratedopertable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonscriptadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongeneratedopertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rttMonScriptAdminEntry")
+    if(child_yang_name == "rttMonGeneratedOperEntry")
     {
-        for(auto const & c : rttmonscriptadminentry)
+        for(auto const & c : rttmongeneratedoperentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4175,19 +4256,19 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonscriptadmintable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry>();
         c->parent = this;
-        rttmonscriptadminentry.push_back(c);
+        rttmongeneratedoperentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonscriptadmintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongeneratedopertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonscriptadminentry)
+    for (auto const & c : rttmongeneratedoperentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4195,94 +4276,92 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonscriptadmin
     return children;
 }
 
-void CiscoRttmonMib::Rttmonscriptadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmongeneratedopertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonscriptadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmongeneratedopertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rttMonScriptAdminEntry")
+    if(name == "rttMonGeneratedOperEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::Rttmonscriptadminentry()
+CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::Rttmongeneratedoperentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonscriptadmincmdlineparams{YType::str, "rttMonScriptAdminCmdLineParams"},
-    rttmonscriptadminname{YType::str, "rttMonScriptAdminName"}
+    rttmongeneratedoperrespipaddrtype{YType::enumeration, "rttMonGeneratedOperRespIpAddrType"},
+    rttmongeneratedoperrespipaddr{YType::str, "rttMonGeneratedOperRespIpAddr"},
+    rttmongeneratedoperctrladminindex{YType::uint32, "rttMonGeneratedOperCtrlAdminIndex"}
 {
-    yang_name = "rttMonScriptAdminEntry"; yang_parent_name = "rttMonScriptAdminTable";
+
+    yang_name = "rttMonGeneratedOperEntry"; yang_parent_name = "rttMonGeneratedOperTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::~Rttmonscriptadminentry()
+CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::~Rttmongeneratedoperentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::has_data() const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_data() const
 {
     return rttmonctrladminindex.is_set
-	|| rttmonscriptadmincmdlineparams.is_set
-	|| rttmonscriptadminname.is_set;
+	|| rttmongeneratedoperrespipaddrtype.is_set
+	|| rttmongeneratedoperrespipaddr.is_set
+	|| rttmongeneratedoperctrladminindex.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::has_operation() const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonscriptadmincmdlineparams.yfilter)
-	|| ydk::is_set(rttmonscriptadminname.yfilter);
+	|| ydk::is_set(rttmongeneratedoperrespipaddrtype.yfilter)
+	|| ydk::is_set(rttmongeneratedoperrespipaddr.yfilter)
+	|| ydk::is_set(rttmongeneratedoperctrladminindex.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rttMonScriptAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonGeneratedOperTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::get_entity_path(Entity* ancestor) const
+std::string CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonScriptAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "rttMonGeneratedOperEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonGeneratedOperRespIpAddrType='" <<rttmongeneratedoperrespipaddrtype <<"']" <<"[rttMonGeneratedOperRespIpAddr='" <<rttmongeneratedoperrespipaddr <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonscriptadmincmdlineparams.is_set || is_set(rttmonscriptadmincmdlineparams.yfilter)) leaf_name_data.push_back(rttmonscriptadmincmdlineparams.get_name_leafdata());
-    if (rttmonscriptadminname.is_set || is_set(rttmonscriptadminname.yfilter)) leaf_name_data.push_back(rttmonscriptadminname.get_name_leafdata());
+    if (rttmongeneratedoperrespipaddrtype.is_set || is_set(rttmongeneratedoperrespipaddrtype.yfilter)) leaf_name_data.push_back(rttmongeneratedoperrespipaddrtype.get_name_leafdata());
+    if (rttmongeneratedoperrespipaddr.is_set || is_set(rttmongeneratedoperrespipaddr.yfilter)) leaf_name_data.push_back(rttmongeneratedoperrespipaddr.get_name_leafdata());
+    if (rttmongeneratedoperctrladminindex.is_set || is_set(rttmongeneratedoperctrladminindex.yfilter)) leaf_name_data.push_back(rttmongeneratedoperctrladminindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -4290,513 +4369,64 @@ void CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::set_value(c
         rttmonctrladminindex.value_namespace = name_space;
         rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonScriptAdminCmdLineParams")
+    if(value_path == "rttMonGeneratedOperRespIpAddrType")
     {
-        rttmonscriptadmincmdlineparams = value;
-        rttmonscriptadmincmdlineparams.value_namespace = name_space;
-        rttmonscriptadmincmdlineparams.value_namespace_prefix = name_space_prefix;
+        rttmongeneratedoperrespipaddrtype = value;
+        rttmongeneratedoperrespipaddrtype.value_namespace = name_space;
+        rttmongeneratedoperrespipaddrtype.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonScriptAdminName")
+    if(value_path == "rttMonGeneratedOperRespIpAddr")
     {
-        rttmonscriptadminname = value;
-        rttmonscriptadminname.value_namespace = name_space;
-        rttmonscriptadminname.value_namespace_prefix = name_space_prefix;
+        rttmongeneratedoperrespipaddr = value;
+        rttmongeneratedoperrespipaddr.value_namespace = name_space;
+        rttmongeneratedoperrespipaddr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonGeneratedOperCtrlAdminIndex")
+    {
+        rttmongeneratedoperctrladminindex = value;
+        rttmongeneratedoperctrladminindex.value_namespace = name_space;
+        rttmongeneratedoperctrladminindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
         rttmonctrladminindex.yfilter = yfilter;
     }
-    if(value_path == "rttMonScriptAdminCmdLineParams")
+    if(value_path == "rttMonGeneratedOperRespIpAddrType")
     {
-        rttmonscriptadmincmdlineparams.yfilter = yfilter;
+        rttmongeneratedoperrespipaddrtype.yfilter = yfilter;
     }
-    if(value_path == "rttMonScriptAdminName")
+    if(value_path == "rttMonGeneratedOperRespIpAddr")
     {
-        rttmonscriptadminname.yfilter = yfilter;
+        rttmongeneratedoperrespipaddr.yfilter = yfilter;
+    }
+    if(value_path == "rttMonGeneratedOperCtrlAdminIndex")
+    {
+        rttmongeneratedoperctrladminindex.yfilter = yfilter;
     }
 }
 
-bool CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonScriptAdminCmdLineParams" || name == "rttMonScriptAdminName")
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonGeneratedOperRespIpAddrType" || name == "rttMonGeneratedOperRespIpAddr" || name == "rttMonGeneratedOperCtrlAdminIndex")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradmintable()
+CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadmintable()
 {
-    yang_name = "rttMonReactTriggerAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonGrpScheduleAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonreacttriggeradmintable::~Rttmonreacttriggeradmintable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonreacttriggeradminentry.size(); index++)
-    {
-        if(rttmonreacttriggeradminentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonreacttriggeradminentry.size(); index++)
-    {
-        if(rttmonreacttriggeradminentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonreacttriggeradmintable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonReactTriggerAdminTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonreacttriggeradmintable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonreacttriggeradmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonReactTriggerAdminEntry")
-    {
-        for(auto const & c : rttmonreacttriggeradminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry>();
-        c->parent = this;
-        rttmonreacttriggeradminentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonreacttriggeradmintable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonreacttriggeradminentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonreacttriggeradmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCORTTMONMIB::Rttmongrpscheduleadmintable::~Rttmongrpscheduleadmintable()
 {
 }
 
-void CiscoRttmonMib::Rttmonreacttriggeradmintable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonReactTriggerAdminEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeradminentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonreacttriggeradminrttmonctrladminindex{YType::int32, "rttMonReactTriggerAdminRttMonCtrlAdminIndex"},
-    rttmonreacttriggeradminstatus{YType::enumeration, "rttMonReactTriggerAdminStatus"},
-    rttmonreacttriggeroperstate{YType::enumeration, "rttMonReactTriggerOperState"}
-{
-    yang_name = "rttMonReactTriggerAdminEntry"; yang_parent_name = "rttMonReactTriggerAdminTable";
-}
-
-CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::~Rttmonreacttriggeradminentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonreacttriggeradminrttmonctrladminindex.is_set
-	|| rttmonreacttriggeradminstatus.is_set
-	|| rttmonreacttriggeroperstate.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonreacttriggeradminrttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonreacttriggeradminstatus.yfilter)
-	|| ydk::is_set(rttmonreacttriggeroperstate.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonReactTriggerAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonReactTriggerAdminRttMonCtrlAdminIndex='" <<rttmonreacttriggeradminrttmonctrladminindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonReactTriggerAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonreacttriggeradminrttmonctrladminindex.is_set || is_set(rttmonreacttriggeradminrttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonreacttriggeradminrttmonctrladminindex.get_name_leafdata());
-    if (rttmonreacttriggeradminstatus.is_set || is_set(rttmonreacttriggeradminstatus.yfilter)) leaf_name_data.push_back(rttmonreacttriggeradminstatus.get_name_leafdata());
-    if (rttmonreacttriggeroperstate.is_set || is_set(rttmonreacttriggeroperstate.yfilter)) leaf_name_data.push_back(rttmonreacttriggeroperstate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonReactTriggerAdminRttMonCtrlAdminIndex")
-    {
-        rttmonreacttriggeradminrttmonctrladminindex = value;
-        rttmonreacttriggeradminrttmonctrladminindex.value_namespace = name_space;
-        rttmonreacttriggeradminrttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonReactTriggerAdminStatus")
-    {
-        rttmonreacttriggeradminstatus = value;
-        rttmonreacttriggeradminstatus.value_namespace = name_space;
-        rttmonreacttriggeradminstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonReactTriggerOperState")
-    {
-        rttmonreacttriggeroperstate = value;
-        rttmonreacttriggeroperstate.value_namespace = name_space;
-        rttmonreacttriggeroperstate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonReactTriggerAdminRttMonCtrlAdminIndex")
-    {
-        rttmonreacttriggeradminrttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonReactTriggerAdminStatus")
-    {
-        rttmonreacttriggeradminstatus.yfilter = yfilter;
-    }
-    if(value_path == "rttMonReactTriggerOperState")
-    {
-        rttmonreacttriggeroperstate.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonReactTriggerAdminRttMonCtrlAdminIndex" || name == "rttMonReactTriggerAdminStatus" || name == "rttMonReactTriggerOperState")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadmintable()
-{
-    yang_name = "rttMonEchoPathAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonechopathadmintable::~Rttmonechopathadmintable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonechopathadminentry.size(); index++)
-    {
-        if(rttmonechopathadminentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonechopathadminentry.size(); index++)
-    {
-        if(rttmonechopathadminentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonechopathadmintable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonEchoPathAdminTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonechopathadmintable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechopathadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonEchoPathAdminEntry")
-    {
-        for(auto const & c : rttmonechopathadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry>();
-        c->parent = this;
-        rttmonechopathadminentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonechopathadmintable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonechopathadminentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonechopathadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonechopathadmintable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonEchoPathAdminEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::Rttmonechopathadminentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonechopathadminhopindex{YType::int32, "rttMonEchoPathAdminHopIndex"},
-    rttmonechopathadminhopaddress{YType::str, "rttMonEchoPathAdminHopAddress"}
-{
-    yang_name = "rttMonEchoPathAdminEntry"; yang_parent_name = "rttMonEchoPathAdminTable";
-}
-
-CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::~Rttmonechopathadminentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonechopathadminhopindex.is_set
-	|| rttmonechopathadminhopaddress.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonechopathadminhopindex.yfilter)
-	|| ydk::is_set(rttmonechopathadminhopaddress.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonEchoPathAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonEchoPathAdminHopIndex='" <<rttmonechopathadminhopindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonEchoPathAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonechopathadminhopindex.is_set || is_set(rttmonechopathadminhopindex.yfilter)) leaf_name_data.push_back(rttmonechopathadminhopindex.get_name_leafdata());
-    if (rttmonechopathadminhopaddress.is_set || is_set(rttmonechopathadminhopaddress.yfilter)) leaf_name_data.push_back(rttmonechopathadminhopaddress.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonEchoPathAdminHopIndex")
-    {
-        rttmonechopathadminhopindex = value;
-        rttmonechopathadminhopindex.value_namespace = name_space;
-        rttmonechopathadminhopindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonEchoPathAdminHopAddress")
-    {
-        rttmonechopathadminhopaddress = value;
-        rttmonechopathadminhopaddress.value_namespace = name_space;
-        rttmonechopathadminhopaddress.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonEchoPathAdminHopIndex")
-    {
-        rttmonechopathadminhopindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonEchoPathAdminHopAddress")
-    {
-        rttmonechopathadminhopaddress.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonEchoPathAdminHopIndex" || name == "rttMonEchoPathAdminHopAddress")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadmintable()
-{
-    yang_name = "rttMonGrpScheduleAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmongrpscheduleadmintable::~Rttmongrpscheduleadmintable()
-{
-}
-
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::has_data() const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::has_data() const
 {
     for (std::size_t index=0; index<rttmongrpscheduleadminentry.size(); index++)
     {
@@ -4806,7 +4436,7 @@ bool CiscoRttmonMib::Rttmongrpscheduleadmintable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::has_operation() const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::has_operation() const
 {
     for (std::size_t index=0; index<rttmongrpscheduleadminentry.size(); index++)
     {
@@ -4816,37 +4446,30 @@ bool CiscoRttmonMib::Rttmongrpscheduleadmintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmongrpscheduleadmintable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonGrpScheduleAdminTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmongrpscheduleadmintable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmongrpscheduleadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonGrpScheduleAdminEntry")
     {
@@ -4858,7 +4481,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmongrpscheduleadmintable::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry>();
         c->parent = this;
         rttmongrpscheduleadminentry.push_back(c);
         return c;
@@ -4867,7 +4490,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmongrpscheduleadmintable::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmongrpscheduleadmintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmongrpscheduleadminentry)
@@ -4878,22 +4501,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmongrpschedule
     return children;
 }
 
-void CiscoRttmonMib::Rttmongrpscheduleadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmongrpscheduleadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmongrpscheduleadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmongrpscheduleadmintable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonGrpScheduleAdminEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::Rttmongrpscheduleadminentry()
+CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::Rttmongrpscheduleadminentry()
     :
     rttmongrpscheduleadminindex{YType::int32, "rttMonGrpScheduleAdminIndex"},
     rttmongrpscheduleadminadd{YType::boolean, "rttMonGrpScheduleAdminAdd"},
@@ -4909,14 +4532,15 @@ CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::Rttmon
     rttmongrpscheduleadminstarttime{YType::int32, "rttMonGrpScheduleAdminStartTime"},
     rttmongrpscheduleadminstatus{YType::enumeration, "rttMonGrpScheduleAdminStatus"}
 {
-    yang_name = "rttMonGrpScheduleAdminEntry"; yang_parent_name = "rttMonGrpScheduleAdminTable";
+
+    yang_name = "rttMonGrpScheduleAdminEntry"; yang_parent_name = "rttMonGrpScheduleAdminTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::~Rttmongrpscheduleadminentry()
+CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::~Rttmongrpscheduleadminentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_data() const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_data() const
 {
     return rttmongrpscheduleadminindex.is_set
 	|| rttmongrpscheduleadminadd.is_set
@@ -4933,7 +4557,7 @@ bool CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::h
 	|| rttmongrpscheduleadminstatus.is_set;
 }
 
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_operation() const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmongrpscheduleadminindex.yfilter)
@@ -4951,27 +4575,22 @@ bool CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::h
 	|| ydk::is_set(rttmongrpscheduleadminstatus.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonGrpScheduleAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonGrpScheduleAdminEntry" <<"[rttMonGrpScheduleAdminIndex='" <<rttmongrpscheduleadminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonGrpScheduleAdminTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmongrpscheduleadminindex.is_set || is_set(rttmongrpscheduleadminindex.yfilter)) leaf_name_data.push_back(rttmongrpscheduleadminindex.get_name_leafdata());
@@ -4988,24 +4607,22 @@ const EntityPath CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpschedulea
     if (rttmongrpscheduleadminstarttime.is_set || is_set(rttmongrpscheduleadminstarttime.yfilter)) leaf_name_data.push_back(rttmongrpscheduleadminstarttime.get_name_leafdata());
     if (rttmongrpscheduleadminstatus.is_set || is_set(rttmongrpscheduleadminstatus.yfilter)) leaf_name_data.push_back(rttmongrpscheduleadminstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonGrpScheduleAdminIndex")
     {
@@ -5087,7 +4704,7 @@ void CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::s
     }
 }
 
-void CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonGrpScheduleAdminIndex")
     {
@@ -5143,77 +4760,71 @@ void CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::s
     }
 }
 
-bool CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonGrpScheduleAdminIndex" || name == "rttMonGrpScheduleAdminAdd" || name == "rttMonGrpScheduleAdminAgeout" || name == "rttMonGrpScheduleAdminDelete" || name == "rttMonGrpScheduleAdminFreqMax" || name == "rttMonGrpScheduleAdminFreqMin" || name == "rttMonGrpScheduleAdminFrequency" || name == "rttMonGrpScheduleAdminLife" || name == "rttMonGrpScheduleAdminPeriod" || name == "rttMonGrpScheduleAdminProbes" || name == "rttMonGrpScheduleAdminReset" || name == "rttMonGrpScheduleAdminStartTime" || name == "rttMonGrpScheduleAdminStatus")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrltable()
+CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectiontable()
 {
-    yang_name = "rttMplsVpnMonCtrlTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonHistoryCollectionTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmplsvpnmonctrltable::~Rttmplsvpnmonctrltable()
+CISCORTTMONMIB::Rttmonhistorycollectiontable::~Rttmonhistorycollectiontable()
 {
 }
 
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::has_data() const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::has_data() const
 {
-    for (std::size_t index=0; index<rttmplsvpnmonctrlentry.size(); index++)
+    for (std::size_t index=0; index<rttmonhistorycollectionentry.size(); index++)
     {
-        if(rttmplsvpnmonctrlentry[index]->has_data())
+        if(rttmonhistorycollectionentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::has_operation() const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::has_operation() const
 {
-    for (std::size_t index=0; index<rttmplsvpnmonctrlentry.size(); index++)
+    for (std::size_t index=0; index<rttmonhistorycollectionentry.size(); index++)
     {
-        if(rttmplsvpnmonctrlentry[index]->has_operation())
+        if(rttmonhistorycollectionentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmplsvpnmonctrltable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonhistorycollectiontable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rttMplsVpnMonCtrlTable";
-
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmplsvpnmonctrltable::get_entity_path(Entity* ancestor) const
+std::string CISCORTTMONMIB::Rttmonhistorycollectiontable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "rttMonHistoryCollectionTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonhistorycollectiontable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmplsvpnmonctrltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhistorycollectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "rttMplsVpnMonCtrlEntry")
+    if(child_yang_name == "rttMonHistoryCollectionEntry")
     {
-        for(auto const & c : rttmplsvpnmonctrlentry)
+        for(auto const & c : rttmonhistorycollectionentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5221,19 +4832,19 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmplsvpnmonctrltable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry>();
         c->parent = this;
-        rttmplsvpnmonctrlentry.push_back(c);
+        rttmonhistorycollectionentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmplsvpnmonctrltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhistorycollectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmplsvpnmonctrlentry)
+    for (auto const & c : rttmonhistorycollectionentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5241,913 +4852,116 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmplsvpnmonctrl
     return children;
 }
 
-void CiscoRttmonMib::Rttmplsvpnmonctrltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonhistorycollectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmplsvpnmonctrltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonhistorycollectiontable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rttMplsVpnMonCtrlEntry")
+    if(name == "rttMonHistoryCollectionEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonctrlentry()
-    :
-    rttmplsvpnmonctrlindex{YType::int32, "rttMplsVpnMonCtrlIndex"},
-    rttmplsvpnmonctrldelscanfactor{YType::int32, "rttMplsVpnMonCtrlDelScanFactor"},
-    rttmplsvpnmonctrlexp{YType::int32, "rttMplsVpnMonCtrlEXP"},
-    rttmplsvpnmonctrllpd{YType::boolean, "rttMplsVpnMonCtrlLpd"},
-    rttmplsvpnmonctrllpdcomptime{YType::int32, "rttMplsVpnMonCtrlLpdCompTime"},
-    rttmplsvpnmonctrllpdgrplist{YType::str, "rttMplsVpnMonCtrlLpdGrpList"},
-    rttmplsvpnmonctrlprobelist{YType::str, "rttMplsVpnMonCtrlProbeList"},
-    rttmplsvpnmonctrlrequestsize{YType::int32, "rttMplsVpnMonCtrlRequestSize"},
-    rttmplsvpnmonctrlrtttype{YType::enumeration, "rttMplsVpnMonCtrlRttType"},
-    rttmplsvpnmonctrlscaninterval{YType::int32, "rttMplsVpnMonCtrlScanInterval"},
-    rttmplsvpnmonctrlstatus{YType::enumeration, "rttMplsVpnMonCtrlStatus"},
-    rttmplsvpnmonctrlstoragetype{YType::enumeration, "rttMplsVpnMonCtrlStorageType"},
-    rttmplsvpnmonctrltag{YType::str, "rttMplsVpnMonCtrlTag"},
-    rttmplsvpnmonctrlthreshold{YType::int32, "rttMplsVpnMonCtrlThreshold"},
-    rttmplsvpnmonctrltimeout{YType::int32, "rttMplsVpnMonCtrlTimeout"},
-    rttmplsvpnmonctrlverifydata{YType::boolean, "rttMplsVpnMonCtrlVerifyData"},
-    rttmplsvpnmonctrlvrfname{YType::str, "rttMplsVpnMonCtrlVrfName"},
-    rttmplsvpnmonreactactiontype{YType::enumeration, "rttMplsVpnMonReactActionType"},
-    rttmplsvpnmonreactconnectionenable{YType::boolean, "rttMplsVpnMonReactConnectionEnable"},
-    rttmplsvpnmonreactlpdnotifytype{YType::enumeration, "rttMplsVpnMonReactLpdNotifyType"},
-    rttmplsvpnmonreactlpdretrycount{YType::int32, "rttMplsVpnMonReactLpdRetryCount"},
-    rttmplsvpnmonreactthresholdcount{YType::int32, "rttMplsVpnMonReactThresholdCount"},
-    rttmplsvpnmonreactthresholdtype{YType::enumeration, "rttMplsVpnMonReactThresholdType"},
-    rttmplsvpnmonreacttimeoutenable{YType::boolean, "rttMplsVpnMonReactTimeoutEnable"},
-    rttmplsvpnmonschedulefrequency{YType::int32, "rttMplsVpnMonScheduleFrequency"},
-    rttmplsvpnmonscheduleperiod{YType::int32, "rttMplsVpnMonSchedulePeriod"},
-    rttmplsvpnmonschedulerttstarttime{YType::uint32, "rttMplsVpnMonScheduleRttStartTime"},
-    rttmplsvpnmontypedestport{YType::int32, "rttMplsVpnMonTypeDestPort"},
-    rttmplsvpnmontypeinterval{YType::int32, "rttMplsVpnMonTypeInterval"},
-    rttmplsvpnmontypelpdechointerval{YType::int32, "rttMplsVpnMonTypeLpdEchoInterval"},
-    rttmplsvpnmontypelpdechonullshim{YType::boolean, "rttMplsVpnMonTypeLpdEchoNullShim"},
-    rttmplsvpnmontypelpdechotimeout{YType::int32, "rttMplsVpnMonTypeLpdEchoTimeout"},
-    rttmplsvpnmontypelpdmaxsessions{YType::int32, "rttMplsVpnMonTypeLpdMaxSessions"},
-    rttmplsvpnmontypelpdscanperiod{YType::int32, "rttMplsVpnMonTypeLpdScanPeriod"},
-    rttmplsvpnmontypelpdsesstimeout{YType::int32, "rttMplsVpnMonTypeLpdSessTimeout"},
-    rttmplsvpnmontypelpdstathours{YType::int32, "rttMplsVpnMonTypeLpdStatHours"},
-    rttmplsvpnmontypelspreplydscp{YType::int32, "rttMplsVpnMonTypeLSPReplyDscp"},
-    rttmplsvpnmontypelspreplymode{YType::enumeration, "rttMplsVpnMonTypeLSPReplyMode"},
-    rttmplsvpnmontypelspselector{YType::str, "rttMplsVpnMonTypeLspSelector"},
-    rttmplsvpnmontypelspttl{YType::int32, "rttMplsVpnMonTypeLSPTTL"},
-    rttmplsvpnmontypenumpackets{YType::int32, "rttMplsVpnMonTypeNumPackets"},
-    rttmplsvpnmontypesecfreqtype{YType::enumeration, "rttMplsVpnMonTypeSecFreqType"},
-    rttmplsvpnmontypesecfreqvalue{YType::int32, "rttMplsVpnMonTypeSecFreqValue"}
-{
-    yang_name = "rttMplsVpnMonCtrlEntry"; yang_parent_name = "rttMplsVpnMonCtrlTable";
-}
-
-CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::~Rttmplsvpnmonctrlentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_data() const
-{
-    return rttmplsvpnmonctrlindex.is_set
-	|| rttmplsvpnmonctrldelscanfactor.is_set
-	|| rttmplsvpnmonctrlexp.is_set
-	|| rttmplsvpnmonctrllpd.is_set
-	|| rttmplsvpnmonctrllpdcomptime.is_set
-	|| rttmplsvpnmonctrllpdgrplist.is_set
-	|| rttmplsvpnmonctrlprobelist.is_set
-	|| rttmplsvpnmonctrlrequestsize.is_set
-	|| rttmplsvpnmonctrlrtttype.is_set
-	|| rttmplsvpnmonctrlscaninterval.is_set
-	|| rttmplsvpnmonctrlstatus.is_set
-	|| rttmplsvpnmonctrlstoragetype.is_set
-	|| rttmplsvpnmonctrltag.is_set
-	|| rttmplsvpnmonctrlthreshold.is_set
-	|| rttmplsvpnmonctrltimeout.is_set
-	|| rttmplsvpnmonctrlverifydata.is_set
-	|| rttmplsvpnmonctrlvrfname.is_set
-	|| rttmplsvpnmonreactactiontype.is_set
-	|| rttmplsvpnmonreactconnectionenable.is_set
-	|| rttmplsvpnmonreactlpdnotifytype.is_set
-	|| rttmplsvpnmonreactlpdretrycount.is_set
-	|| rttmplsvpnmonreactthresholdcount.is_set
-	|| rttmplsvpnmonreactthresholdtype.is_set
-	|| rttmplsvpnmonreacttimeoutenable.is_set
-	|| rttmplsvpnmonschedulefrequency.is_set
-	|| rttmplsvpnmonscheduleperiod.is_set
-	|| rttmplsvpnmonschedulerttstarttime.is_set
-	|| rttmplsvpnmontypedestport.is_set
-	|| rttmplsvpnmontypeinterval.is_set
-	|| rttmplsvpnmontypelpdechointerval.is_set
-	|| rttmplsvpnmontypelpdechonullshim.is_set
-	|| rttmplsvpnmontypelpdechotimeout.is_set
-	|| rttmplsvpnmontypelpdmaxsessions.is_set
-	|| rttmplsvpnmontypelpdscanperiod.is_set
-	|| rttmplsvpnmontypelpdsesstimeout.is_set
-	|| rttmplsvpnmontypelpdstathours.is_set
-	|| rttmplsvpnmontypelspreplydscp.is_set
-	|| rttmplsvpnmontypelspreplymode.is_set
-	|| rttmplsvpnmontypelspselector.is_set
-	|| rttmplsvpnmontypelspttl.is_set
-	|| rttmplsvpnmontypenumpackets.is_set
-	|| rttmplsvpnmontypesecfreqtype.is_set
-	|| rttmplsvpnmontypesecfreqvalue.is_set;
-}
-
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlindex.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrldelscanfactor.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlexp.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrllpd.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrllpdcomptime.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrllpdgrplist.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlprobelist.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlrequestsize.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlrtttype.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlscaninterval.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlstatus.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlstoragetype.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrltag.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlthreshold.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrltimeout.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlverifydata.yfilter)
-	|| ydk::is_set(rttmplsvpnmonctrlvrfname.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactactiontype.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactconnectionenable.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactlpdnotifytype.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactlpdretrycount.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactthresholdcount.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreactthresholdtype.yfilter)
-	|| ydk::is_set(rttmplsvpnmonreacttimeoutenable.yfilter)
-	|| ydk::is_set(rttmplsvpnmonschedulefrequency.yfilter)
-	|| ydk::is_set(rttmplsvpnmonscheduleperiod.yfilter)
-	|| ydk::is_set(rttmplsvpnmonschedulerttstarttime.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypedestport.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypeinterval.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdechointerval.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdechonullshim.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdechotimeout.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdmaxsessions.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdscanperiod.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdsesstimeout.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelpdstathours.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelspreplydscp.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelspreplymode.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelspselector.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypelspttl.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypenumpackets.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypesecfreqtype.yfilter)
-	|| ydk::is_set(rttmplsvpnmontypesecfreqvalue.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMplsVpnMonCtrlEntry" <<"[rttMplsVpnMonCtrlIndex='" <<rttmplsvpnmonctrlindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMplsVpnMonCtrlTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmplsvpnmonctrlindex.is_set || is_set(rttmplsvpnmonctrlindex.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlindex.get_name_leafdata());
-    if (rttmplsvpnmonctrldelscanfactor.is_set || is_set(rttmplsvpnmonctrldelscanfactor.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrldelscanfactor.get_name_leafdata());
-    if (rttmplsvpnmonctrlexp.is_set || is_set(rttmplsvpnmonctrlexp.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlexp.get_name_leafdata());
-    if (rttmplsvpnmonctrllpd.is_set || is_set(rttmplsvpnmonctrllpd.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpd.get_name_leafdata());
-    if (rttmplsvpnmonctrllpdcomptime.is_set || is_set(rttmplsvpnmonctrllpdcomptime.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpdcomptime.get_name_leafdata());
-    if (rttmplsvpnmonctrllpdgrplist.is_set || is_set(rttmplsvpnmonctrllpdgrplist.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpdgrplist.get_name_leafdata());
-    if (rttmplsvpnmonctrlprobelist.is_set || is_set(rttmplsvpnmonctrlprobelist.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlprobelist.get_name_leafdata());
-    if (rttmplsvpnmonctrlrequestsize.is_set || is_set(rttmplsvpnmonctrlrequestsize.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlrequestsize.get_name_leafdata());
-    if (rttmplsvpnmonctrlrtttype.is_set || is_set(rttmplsvpnmonctrlrtttype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlrtttype.get_name_leafdata());
-    if (rttmplsvpnmonctrlscaninterval.is_set || is_set(rttmplsvpnmonctrlscaninterval.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlscaninterval.get_name_leafdata());
-    if (rttmplsvpnmonctrlstatus.is_set || is_set(rttmplsvpnmonctrlstatus.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlstatus.get_name_leafdata());
-    if (rttmplsvpnmonctrlstoragetype.is_set || is_set(rttmplsvpnmonctrlstoragetype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlstoragetype.get_name_leafdata());
-    if (rttmplsvpnmonctrltag.is_set || is_set(rttmplsvpnmonctrltag.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrltag.get_name_leafdata());
-    if (rttmplsvpnmonctrlthreshold.is_set || is_set(rttmplsvpnmonctrlthreshold.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlthreshold.get_name_leafdata());
-    if (rttmplsvpnmonctrltimeout.is_set || is_set(rttmplsvpnmonctrltimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrltimeout.get_name_leafdata());
-    if (rttmplsvpnmonctrlverifydata.is_set || is_set(rttmplsvpnmonctrlverifydata.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlverifydata.get_name_leafdata());
-    if (rttmplsvpnmonctrlvrfname.is_set || is_set(rttmplsvpnmonctrlvrfname.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlvrfname.get_name_leafdata());
-    if (rttmplsvpnmonreactactiontype.is_set || is_set(rttmplsvpnmonreactactiontype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactactiontype.get_name_leafdata());
-    if (rttmplsvpnmonreactconnectionenable.is_set || is_set(rttmplsvpnmonreactconnectionenable.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactconnectionenable.get_name_leafdata());
-    if (rttmplsvpnmonreactlpdnotifytype.is_set || is_set(rttmplsvpnmonreactlpdnotifytype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactlpdnotifytype.get_name_leafdata());
-    if (rttmplsvpnmonreactlpdretrycount.is_set || is_set(rttmplsvpnmonreactlpdretrycount.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactlpdretrycount.get_name_leafdata());
-    if (rttmplsvpnmonreactthresholdcount.is_set || is_set(rttmplsvpnmonreactthresholdcount.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactthresholdcount.get_name_leafdata());
-    if (rttmplsvpnmonreactthresholdtype.is_set || is_set(rttmplsvpnmonreactthresholdtype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactthresholdtype.get_name_leafdata());
-    if (rttmplsvpnmonreacttimeoutenable.is_set || is_set(rttmplsvpnmonreacttimeoutenable.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreacttimeoutenable.get_name_leafdata());
-    if (rttmplsvpnmonschedulefrequency.is_set || is_set(rttmplsvpnmonschedulefrequency.yfilter)) leaf_name_data.push_back(rttmplsvpnmonschedulefrequency.get_name_leafdata());
-    if (rttmplsvpnmonscheduleperiod.is_set || is_set(rttmplsvpnmonscheduleperiod.yfilter)) leaf_name_data.push_back(rttmplsvpnmonscheduleperiod.get_name_leafdata());
-    if (rttmplsvpnmonschedulerttstarttime.is_set || is_set(rttmplsvpnmonschedulerttstarttime.yfilter)) leaf_name_data.push_back(rttmplsvpnmonschedulerttstarttime.get_name_leafdata());
-    if (rttmplsvpnmontypedestport.is_set || is_set(rttmplsvpnmontypedestport.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypedestport.get_name_leafdata());
-    if (rttmplsvpnmontypeinterval.is_set || is_set(rttmplsvpnmontypeinterval.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypeinterval.get_name_leafdata());
-    if (rttmplsvpnmontypelpdechointerval.is_set || is_set(rttmplsvpnmontypelpdechointerval.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechointerval.get_name_leafdata());
-    if (rttmplsvpnmontypelpdechonullshim.is_set || is_set(rttmplsvpnmontypelpdechonullshim.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechonullshim.get_name_leafdata());
-    if (rttmplsvpnmontypelpdechotimeout.is_set || is_set(rttmplsvpnmontypelpdechotimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechotimeout.get_name_leafdata());
-    if (rttmplsvpnmontypelpdmaxsessions.is_set || is_set(rttmplsvpnmontypelpdmaxsessions.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdmaxsessions.get_name_leafdata());
-    if (rttmplsvpnmontypelpdscanperiod.is_set || is_set(rttmplsvpnmontypelpdscanperiod.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdscanperiod.get_name_leafdata());
-    if (rttmplsvpnmontypelpdsesstimeout.is_set || is_set(rttmplsvpnmontypelpdsesstimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdsesstimeout.get_name_leafdata());
-    if (rttmplsvpnmontypelpdstathours.is_set || is_set(rttmplsvpnmontypelpdstathours.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdstathours.get_name_leafdata());
-    if (rttmplsvpnmontypelspreplydscp.is_set || is_set(rttmplsvpnmontypelspreplydscp.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspreplydscp.get_name_leafdata());
-    if (rttmplsvpnmontypelspreplymode.is_set || is_set(rttmplsvpnmontypelspreplymode.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspreplymode.get_name_leafdata());
-    if (rttmplsvpnmontypelspselector.is_set || is_set(rttmplsvpnmontypelspselector.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspselector.get_name_leafdata());
-    if (rttmplsvpnmontypelspttl.is_set || is_set(rttmplsvpnmontypelspttl.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspttl.get_name_leafdata());
-    if (rttmplsvpnmontypenumpackets.is_set || is_set(rttmplsvpnmontypenumpackets.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypenumpackets.get_name_leafdata());
-    if (rttmplsvpnmontypesecfreqtype.is_set || is_set(rttmplsvpnmontypesecfreqtype.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypesecfreqtype.get_name_leafdata());
-    if (rttmplsvpnmontypesecfreqvalue.is_set || is_set(rttmplsvpnmontypesecfreqvalue.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypesecfreqvalue.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMplsVpnMonCtrlIndex")
-    {
-        rttmplsvpnmonctrlindex = value;
-        rttmplsvpnmonctrlindex.value_namespace = name_space;
-        rttmplsvpnmonctrlindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlDelScanFactor")
-    {
-        rttmplsvpnmonctrldelscanfactor = value;
-        rttmplsvpnmonctrldelscanfactor.value_namespace = name_space;
-        rttmplsvpnmonctrldelscanfactor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlEXP")
-    {
-        rttmplsvpnmonctrlexp = value;
-        rttmplsvpnmonctrlexp.value_namespace = name_space;
-        rttmplsvpnmonctrlexp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpd")
-    {
-        rttmplsvpnmonctrllpd = value;
-        rttmplsvpnmonctrllpd.value_namespace = name_space;
-        rttmplsvpnmonctrllpd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpdCompTime")
-    {
-        rttmplsvpnmonctrllpdcomptime = value;
-        rttmplsvpnmonctrllpdcomptime.value_namespace = name_space;
-        rttmplsvpnmonctrllpdcomptime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpdGrpList")
-    {
-        rttmplsvpnmonctrllpdgrplist = value;
-        rttmplsvpnmonctrllpdgrplist.value_namespace = name_space;
-        rttmplsvpnmonctrllpdgrplist.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlProbeList")
-    {
-        rttmplsvpnmonctrlprobelist = value;
-        rttmplsvpnmonctrlprobelist.value_namespace = name_space;
-        rttmplsvpnmonctrlprobelist.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlRequestSize")
-    {
-        rttmplsvpnmonctrlrequestsize = value;
-        rttmplsvpnmonctrlrequestsize.value_namespace = name_space;
-        rttmplsvpnmonctrlrequestsize.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlRttType")
-    {
-        rttmplsvpnmonctrlrtttype = value;
-        rttmplsvpnmonctrlrtttype.value_namespace = name_space;
-        rttmplsvpnmonctrlrtttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlScanInterval")
-    {
-        rttmplsvpnmonctrlscaninterval = value;
-        rttmplsvpnmonctrlscaninterval.value_namespace = name_space;
-        rttmplsvpnmonctrlscaninterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlStatus")
-    {
-        rttmplsvpnmonctrlstatus = value;
-        rttmplsvpnmonctrlstatus.value_namespace = name_space;
-        rttmplsvpnmonctrlstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlStorageType")
-    {
-        rttmplsvpnmonctrlstoragetype = value;
-        rttmplsvpnmonctrlstoragetype.value_namespace = name_space;
-        rttmplsvpnmonctrlstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlTag")
-    {
-        rttmplsvpnmonctrltag = value;
-        rttmplsvpnmonctrltag.value_namespace = name_space;
-        rttmplsvpnmonctrltag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlThreshold")
-    {
-        rttmplsvpnmonctrlthreshold = value;
-        rttmplsvpnmonctrlthreshold.value_namespace = name_space;
-        rttmplsvpnmonctrlthreshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlTimeout")
-    {
-        rttmplsvpnmonctrltimeout = value;
-        rttmplsvpnmonctrltimeout.value_namespace = name_space;
-        rttmplsvpnmonctrltimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlVerifyData")
-    {
-        rttmplsvpnmonctrlverifydata = value;
-        rttmplsvpnmonctrlverifydata.value_namespace = name_space;
-        rttmplsvpnmonctrlverifydata.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonCtrlVrfName")
-    {
-        rttmplsvpnmonctrlvrfname = value;
-        rttmplsvpnmonctrlvrfname.value_namespace = name_space;
-        rttmplsvpnmonctrlvrfname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactActionType")
-    {
-        rttmplsvpnmonreactactiontype = value;
-        rttmplsvpnmonreactactiontype.value_namespace = name_space;
-        rttmplsvpnmonreactactiontype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactConnectionEnable")
-    {
-        rttmplsvpnmonreactconnectionenable = value;
-        rttmplsvpnmonreactconnectionenable.value_namespace = name_space;
-        rttmplsvpnmonreactconnectionenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactLpdNotifyType")
-    {
-        rttmplsvpnmonreactlpdnotifytype = value;
-        rttmplsvpnmonreactlpdnotifytype.value_namespace = name_space;
-        rttmplsvpnmonreactlpdnotifytype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactLpdRetryCount")
-    {
-        rttmplsvpnmonreactlpdretrycount = value;
-        rttmplsvpnmonreactlpdretrycount.value_namespace = name_space;
-        rttmplsvpnmonreactlpdretrycount.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactThresholdCount")
-    {
-        rttmplsvpnmonreactthresholdcount = value;
-        rttmplsvpnmonreactthresholdcount.value_namespace = name_space;
-        rttmplsvpnmonreactthresholdcount.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactThresholdType")
-    {
-        rttmplsvpnmonreactthresholdtype = value;
-        rttmplsvpnmonreactthresholdtype.value_namespace = name_space;
-        rttmplsvpnmonreactthresholdtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonReactTimeoutEnable")
-    {
-        rttmplsvpnmonreacttimeoutenable = value;
-        rttmplsvpnmonreacttimeoutenable.value_namespace = name_space;
-        rttmplsvpnmonreacttimeoutenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonScheduleFrequency")
-    {
-        rttmplsvpnmonschedulefrequency = value;
-        rttmplsvpnmonschedulefrequency.value_namespace = name_space;
-        rttmplsvpnmonschedulefrequency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonSchedulePeriod")
-    {
-        rttmplsvpnmonscheduleperiod = value;
-        rttmplsvpnmonscheduleperiod.value_namespace = name_space;
-        rttmplsvpnmonscheduleperiod.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonScheduleRttStartTime")
-    {
-        rttmplsvpnmonschedulerttstarttime = value;
-        rttmplsvpnmonschedulerttstarttime.value_namespace = name_space;
-        rttmplsvpnmonschedulerttstarttime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeDestPort")
-    {
-        rttmplsvpnmontypedestport = value;
-        rttmplsvpnmontypedestport.value_namespace = name_space;
-        rttmplsvpnmontypedestport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeInterval")
-    {
-        rttmplsvpnmontypeinterval = value;
-        rttmplsvpnmontypeinterval.value_namespace = name_space;
-        rttmplsvpnmontypeinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoInterval")
-    {
-        rttmplsvpnmontypelpdechointerval = value;
-        rttmplsvpnmontypelpdechointerval.value_namespace = name_space;
-        rttmplsvpnmontypelpdechointerval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoNullShim")
-    {
-        rttmplsvpnmontypelpdechonullshim = value;
-        rttmplsvpnmontypelpdechonullshim.value_namespace = name_space;
-        rttmplsvpnmontypelpdechonullshim.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoTimeout")
-    {
-        rttmplsvpnmontypelpdechotimeout = value;
-        rttmplsvpnmontypelpdechotimeout.value_namespace = name_space;
-        rttmplsvpnmontypelpdechotimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdMaxSessions")
-    {
-        rttmplsvpnmontypelpdmaxsessions = value;
-        rttmplsvpnmontypelpdmaxsessions.value_namespace = name_space;
-        rttmplsvpnmontypelpdmaxsessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdScanPeriod")
-    {
-        rttmplsvpnmontypelpdscanperiod = value;
-        rttmplsvpnmontypelpdscanperiod.value_namespace = name_space;
-        rttmplsvpnmontypelpdscanperiod.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdSessTimeout")
-    {
-        rttmplsvpnmontypelpdsesstimeout = value;
-        rttmplsvpnmontypelpdsesstimeout.value_namespace = name_space;
-        rttmplsvpnmontypelpdsesstimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdStatHours")
-    {
-        rttmplsvpnmontypelpdstathours = value;
-        rttmplsvpnmontypelpdstathours.value_namespace = name_space;
-        rttmplsvpnmontypelpdstathours.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPReplyDscp")
-    {
-        rttmplsvpnmontypelspreplydscp = value;
-        rttmplsvpnmontypelspreplydscp.value_namespace = name_space;
-        rttmplsvpnmontypelspreplydscp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPReplyMode")
-    {
-        rttmplsvpnmontypelspreplymode = value;
-        rttmplsvpnmontypelspreplymode.value_namespace = name_space;
-        rttmplsvpnmontypelspreplymode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLspSelector")
-    {
-        rttmplsvpnmontypelspselector = value;
-        rttmplsvpnmontypelspselector.value_namespace = name_space;
-        rttmplsvpnmontypelspselector.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPTTL")
-    {
-        rttmplsvpnmontypelspttl = value;
-        rttmplsvpnmontypelspttl.value_namespace = name_space;
-        rttmplsvpnmontypelspttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeNumPackets")
-    {
-        rttmplsvpnmontypenumpackets = value;
-        rttmplsvpnmontypenumpackets.value_namespace = name_space;
-        rttmplsvpnmontypenumpackets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeSecFreqType")
-    {
-        rttmplsvpnmontypesecfreqtype = value;
-        rttmplsvpnmontypesecfreqtype.value_namespace = name_space;
-        rttmplsvpnmontypesecfreqtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMplsVpnMonTypeSecFreqValue")
-    {
-        rttmplsvpnmontypesecfreqvalue = value;
-        rttmplsvpnmontypesecfreqvalue.value_namespace = name_space;
-        rttmplsvpnmontypesecfreqvalue.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMplsVpnMonCtrlIndex")
-    {
-        rttmplsvpnmonctrlindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlDelScanFactor")
-    {
-        rttmplsvpnmonctrldelscanfactor.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlEXP")
-    {
-        rttmplsvpnmonctrlexp.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpd")
-    {
-        rttmplsvpnmonctrllpd.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpdCompTime")
-    {
-        rttmplsvpnmonctrllpdcomptime.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlLpdGrpList")
-    {
-        rttmplsvpnmonctrllpdgrplist.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlProbeList")
-    {
-        rttmplsvpnmonctrlprobelist.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlRequestSize")
-    {
-        rttmplsvpnmonctrlrequestsize.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlRttType")
-    {
-        rttmplsvpnmonctrlrtttype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlScanInterval")
-    {
-        rttmplsvpnmonctrlscaninterval.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlStatus")
-    {
-        rttmplsvpnmonctrlstatus.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlStorageType")
-    {
-        rttmplsvpnmonctrlstoragetype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlTag")
-    {
-        rttmplsvpnmonctrltag.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlThreshold")
-    {
-        rttmplsvpnmonctrlthreshold.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlTimeout")
-    {
-        rttmplsvpnmonctrltimeout.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlVerifyData")
-    {
-        rttmplsvpnmonctrlverifydata.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonCtrlVrfName")
-    {
-        rttmplsvpnmonctrlvrfname.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactActionType")
-    {
-        rttmplsvpnmonreactactiontype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactConnectionEnable")
-    {
-        rttmplsvpnmonreactconnectionenable.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactLpdNotifyType")
-    {
-        rttmplsvpnmonreactlpdnotifytype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactLpdRetryCount")
-    {
-        rttmplsvpnmonreactlpdretrycount.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactThresholdCount")
-    {
-        rttmplsvpnmonreactthresholdcount.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactThresholdType")
-    {
-        rttmplsvpnmonreactthresholdtype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonReactTimeoutEnable")
-    {
-        rttmplsvpnmonreacttimeoutenable.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonScheduleFrequency")
-    {
-        rttmplsvpnmonschedulefrequency.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonSchedulePeriod")
-    {
-        rttmplsvpnmonscheduleperiod.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonScheduleRttStartTime")
-    {
-        rttmplsvpnmonschedulerttstarttime.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeDestPort")
-    {
-        rttmplsvpnmontypedestport.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeInterval")
-    {
-        rttmplsvpnmontypeinterval.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoInterval")
-    {
-        rttmplsvpnmontypelpdechointerval.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoNullShim")
-    {
-        rttmplsvpnmontypelpdechonullshim.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdEchoTimeout")
-    {
-        rttmplsvpnmontypelpdechotimeout.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdMaxSessions")
-    {
-        rttmplsvpnmontypelpdmaxsessions.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdScanPeriod")
-    {
-        rttmplsvpnmontypelpdscanperiod.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdSessTimeout")
-    {
-        rttmplsvpnmontypelpdsesstimeout.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLpdStatHours")
-    {
-        rttmplsvpnmontypelpdstathours.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPReplyDscp")
-    {
-        rttmplsvpnmontypelspreplydscp.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPReplyMode")
-    {
-        rttmplsvpnmontypelspreplymode.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLspSelector")
-    {
-        rttmplsvpnmontypelspselector.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeLSPTTL")
-    {
-        rttmplsvpnmontypelspttl.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeNumPackets")
-    {
-        rttmplsvpnmontypenumpackets.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeSecFreqType")
-    {
-        rttmplsvpnmontypesecfreqtype.yfilter = yfilter;
-    }
-    if(value_path == "rttMplsVpnMonTypeSecFreqValue")
-    {
-        rttmplsvpnmontypesecfreqvalue.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMplsVpnMonCtrlIndex" || name == "rttMplsVpnMonCtrlDelScanFactor" || name == "rttMplsVpnMonCtrlEXP" || name == "rttMplsVpnMonCtrlLpd" || name == "rttMplsVpnMonCtrlLpdCompTime" || name == "rttMplsVpnMonCtrlLpdGrpList" || name == "rttMplsVpnMonCtrlProbeList" || name == "rttMplsVpnMonCtrlRequestSize" || name == "rttMplsVpnMonCtrlRttType" || name == "rttMplsVpnMonCtrlScanInterval" || name == "rttMplsVpnMonCtrlStatus" || name == "rttMplsVpnMonCtrlStorageType" || name == "rttMplsVpnMonCtrlTag" || name == "rttMplsVpnMonCtrlThreshold" || name == "rttMplsVpnMonCtrlTimeout" || name == "rttMplsVpnMonCtrlVerifyData" || name == "rttMplsVpnMonCtrlVrfName" || name == "rttMplsVpnMonReactActionType" || name == "rttMplsVpnMonReactConnectionEnable" || name == "rttMplsVpnMonReactLpdNotifyType" || name == "rttMplsVpnMonReactLpdRetryCount" || name == "rttMplsVpnMonReactThresholdCount" || name == "rttMplsVpnMonReactThresholdType" || name == "rttMplsVpnMonReactTimeoutEnable" || name == "rttMplsVpnMonScheduleFrequency" || name == "rttMplsVpnMonSchedulePeriod" || name == "rttMplsVpnMonScheduleRttStartTime" || name == "rttMplsVpnMonTypeDestPort" || name == "rttMplsVpnMonTypeInterval" || name == "rttMplsVpnMonTypeLpdEchoInterval" || name == "rttMplsVpnMonTypeLpdEchoNullShim" || name == "rttMplsVpnMonTypeLpdEchoTimeout" || name == "rttMplsVpnMonTypeLpdMaxSessions" || name == "rttMplsVpnMonTypeLpdScanPeriod" || name == "rttMplsVpnMonTypeLpdSessTimeout" || name == "rttMplsVpnMonTypeLpdStatHours" || name == "rttMplsVpnMonTypeLSPReplyDscp" || name == "rttMplsVpnMonTypeLSPReplyMode" || name == "rttMplsVpnMonTypeLspSelector" || name == "rttMplsVpnMonTypeLSPTTL" || name == "rttMplsVpnMonTypeNumPackets" || name == "rttMplsVpnMonTypeSecFreqType" || name == "rttMplsVpnMonTypeSecFreqValue")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonreacttable::Rttmonreacttable()
-{
-    yang_name = "rttMonReactTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonreacttable::~Rttmonreacttable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonreacttable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonreactentry.size(); index++)
-    {
-        if(rttmonreactentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonreacttable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonreactentry.size(); index++)
-    {
-        if(rttmonreactentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonreacttable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonReactTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonreacttable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonreacttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonReactEntry")
-    {
-        for(auto const & c : rttmonreactentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry>();
-        c->parent = this;
-        rttmonreactentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonreacttable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonreactentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonreacttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonreacttable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonreacttable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonReactEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactentry()
+CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::Rttmonhistorycollectionentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonreactconfigindex{YType::int32, "rttMonReactConfigIndex"},
-    rttmonreactactiontype{YType::enumeration, "rttMonReactActionType"},
-    rttmonreactoccurred{YType::boolean, "rttMonReactOccurred"},
-    rttmonreactstatus{YType::enumeration, "rttMonReactStatus"},
-    rttmonreactthresholdcountx{YType::int32, "rttMonReactThresholdCountX"},
-    rttmonreactthresholdcounty{YType::int32, "rttMonReactThresholdCountY"},
-    rttmonreactthresholdfalling{YType::int32, "rttMonReactThresholdFalling"},
-    rttmonreactthresholdrising{YType::int32, "rttMonReactThresholdRising"},
-    rttmonreactthresholdtype{YType::enumeration, "rttMonReactThresholdType"},
-    rttmonreactvalue{YType::int32, "rttMonReactValue"},
-    rttmonreactvar{YType::enumeration, "rttMonReactVar"}
+    rttmonhistorycollectionlifeindex{YType::int32, "rttMonHistoryCollectionLifeIndex"},
+    rttmonhistorycollectionbucketindex{YType::int32, "rttMonHistoryCollectionBucketIndex"},
+    rttmonhistorycollectionsampleindex{YType::int32, "rttMonHistoryCollectionSampleIndex"},
+    rttmonhistorycollectionaddress{YType::str, "rttMonHistoryCollectionAddress"},
+    rttmonhistorycollectionapplspecificsense{YType::int32, "rttMonHistoryCollectionApplSpecificSense"},
+    rttmonhistorycollectioncompletiontime{YType::uint32, "rttMonHistoryCollectionCompletionTime"},
+    rttmonhistorycollectionsampletime{YType::uint32, "rttMonHistoryCollectionSampleTime"},
+    rttmonhistorycollectionsense{YType::enumeration, "rttMonHistoryCollectionSense"},
+    rttmonhistorycollectionsensedescription{YType::str, "rttMonHistoryCollectionSenseDescription"}
 {
-    yang_name = "rttMonReactEntry"; yang_parent_name = "rttMonReactTable";
+
+    yang_name = "rttMonHistoryCollectionEntry"; yang_parent_name = "rttMonHistoryCollectionTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::~Rttmonreactentry()
+CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::~Rttmonhistorycollectionentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::has_data() const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_data() const
 {
     return rttmonctrladminindex.is_set
-	|| rttmonreactconfigindex.is_set
-	|| rttmonreactactiontype.is_set
-	|| rttmonreactoccurred.is_set
-	|| rttmonreactstatus.is_set
-	|| rttmonreactthresholdcountx.is_set
-	|| rttmonreactthresholdcounty.is_set
-	|| rttmonreactthresholdfalling.is_set
-	|| rttmonreactthresholdrising.is_set
-	|| rttmonreactthresholdtype.is_set
-	|| rttmonreactvalue.is_set
-	|| rttmonreactvar.is_set;
+	|| rttmonhistorycollectionlifeindex.is_set
+	|| rttmonhistorycollectionbucketindex.is_set
+	|| rttmonhistorycollectionsampleindex.is_set
+	|| rttmonhistorycollectionaddress.is_set
+	|| rttmonhistorycollectionapplspecificsense.is_set
+	|| rttmonhistorycollectioncompletiontime.is_set
+	|| rttmonhistorycollectionsampletime.is_set
+	|| rttmonhistorycollectionsense.is_set
+	|| rttmonhistorycollectionsensedescription.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonreactconfigindex.yfilter)
-	|| ydk::is_set(rttmonreactactiontype.yfilter)
-	|| ydk::is_set(rttmonreactoccurred.yfilter)
-	|| ydk::is_set(rttmonreactstatus.yfilter)
-	|| ydk::is_set(rttmonreactthresholdcountx.yfilter)
-	|| ydk::is_set(rttmonreactthresholdcounty.yfilter)
-	|| ydk::is_set(rttmonreactthresholdfalling.yfilter)
-	|| ydk::is_set(rttmonreactthresholdrising.yfilter)
-	|| ydk::is_set(rttmonreactthresholdtype.yfilter)
-	|| ydk::is_set(rttmonreactvalue.yfilter)
-	|| ydk::is_set(rttmonreactvar.yfilter);
+	|| ydk::is_set(rttmonhistorycollectionlifeindex.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionbucketindex.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionsampleindex.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionaddress.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionapplspecificsense.yfilter)
+	|| ydk::is_set(rttmonhistorycollectioncompletiontime.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionsampletime.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionsense.yfilter)
+	|| ydk::is_set(rttmonhistorycollectionsensedescription.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rttMonReactEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonReactConfigIndex='" <<rttmonreactconfigindex <<"']";
-
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonHistoryCollectionTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::get_entity_path(Entity* ancestor) const
+std::string CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonReactTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "rttMonHistoryCollectionEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonHistoryCollectionLifeIndex='" <<rttmonhistorycollectionlifeindex <<"']" <<"[rttMonHistoryCollectionBucketIndex='" <<rttmonhistorycollectionbucketindex <<"']" <<"[rttMonHistoryCollectionSampleIndex='" <<rttmonhistorycollectionsampleindex <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonreactconfigindex.is_set || is_set(rttmonreactconfigindex.yfilter)) leaf_name_data.push_back(rttmonreactconfigindex.get_name_leafdata());
-    if (rttmonreactactiontype.is_set || is_set(rttmonreactactiontype.yfilter)) leaf_name_data.push_back(rttmonreactactiontype.get_name_leafdata());
-    if (rttmonreactoccurred.is_set || is_set(rttmonreactoccurred.yfilter)) leaf_name_data.push_back(rttmonreactoccurred.get_name_leafdata());
-    if (rttmonreactstatus.is_set || is_set(rttmonreactstatus.yfilter)) leaf_name_data.push_back(rttmonreactstatus.get_name_leafdata());
-    if (rttmonreactthresholdcountx.is_set || is_set(rttmonreactthresholdcountx.yfilter)) leaf_name_data.push_back(rttmonreactthresholdcountx.get_name_leafdata());
-    if (rttmonreactthresholdcounty.is_set || is_set(rttmonreactthresholdcounty.yfilter)) leaf_name_data.push_back(rttmonreactthresholdcounty.get_name_leafdata());
-    if (rttmonreactthresholdfalling.is_set || is_set(rttmonreactthresholdfalling.yfilter)) leaf_name_data.push_back(rttmonreactthresholdfalling.get_name_leafdata());
-    if (rttmonreactthresholdrising.is_set || is_set(rttmonreactthresholdrising.yfilter)) leaf_name_data.push_back(rttmonreactthresholdrising.get_name_leafdata());
-    if (rttmonreactthresholdtype.is_set || is_set(rttmonreactthresholdtype.yfilter)) leaf_name_data.push_back(rttmonreactthresholdtype.get_name_leafdata());
-    if (rttmonreactvalue.is_set || is_set(rttmonreactvalue.yfilter)) leaf_name_data.push_back(rttmonreactvalue.get_name_leafdata());
-    if (rttmonreactvar.is_set || is_set(rttmonreactvar.yfilter)) leaf_name_data.push_back(rttmonreactvar.get_name_leafdata());
+    if (rttmonhistorycollectionlifeindex.is_set || is_set(rttmonhistorycollectionlifeindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionlifeindex.get_name_leafdata());
+    if (rttmonhistorycollectionbucketindex.is_set || is_set(rttmonhistorycollectionbucketindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionbucketindex.get_name_leafdata());
+    if (rttmonhistorycollectionsampleindex.is_set || is_set(rttmonhistorycollectionsampleindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsampleindex.get_name_leafdata());
+    if (rttmonhistorycollectionaddress.is_set || is_set(rttmonhistorycollectionaddress.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionaddress.get_name_leafdata());
+    if (rttmonhistorycollectionapplspecificsense.is_set || is_set(rttmonhistorycollectionapplspecificsense.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionapplspecificsense.get_name_leafdata());
+    if (rttmonhistorycollectioncompletiontime.is_set || is_set(rttmonhistorycollectioncompletiontime.yfilter)) leaf_name_data.push_back(rttmonhistorycollectioncompletiontime.get_name_leafdata());
+    if (rttmonhistorycollectionsampletime.is_set || is_set(rttmonhistorycollectionsampletime.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsampletime.get_name_leafdata());
+    if (rttmonhistorycollectionsense.is_set || is_set(rttmonhistorycollectionsense.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsense.get_name_leafdata());
+    if (rttmonhistorycollectionsensedescription.is_set || is_set(rttmonhistorycollectionsensedescription.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsensedescription.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -6155,1371 +4969,124 @@ void CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::set_value(const std::st
         rttmonctrladminindex.value_namespace = name_space;
         rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactConfigIndex")
+    if(value_path == "rttMonHistoryCollectionLifeIndex")
     {
-        rttmonreactconfigindex = value;
-        rttmonreactconfigindex.value_namespace = name_space;
-        rttmonreactconfigindex.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionlifeindex = value;
+        rttmonhistorycollectionlifeindex.value_namespace = name_space;
+        rttmonhistorycollectionlifeindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactActionType")
+    if(value_path == "rttMonHistoryCollectionBucketIndex")
     {
-        rttmonreactactiontype = value;
-        rttmonreactactiontype.value_namespace = name_space;
-        rttmonreactactiontype.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionbucketindex = value;
+        rttmonhistorycollectionbucketindex.value_namespace = name_space;
+        rttmonhistorycollectionbucketindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactOccurred")
+    if(value_path == "rttMonHistoryCollectionSampleIndex")
     {
-        rttmonreactoccurred = value;
-        rttmonreactoccurred.value_namespace = name_space;
-        rttmonreactoccurred.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionsampleindex = value;
+        rttmonhistorycollectionsampleindex.value_namespace = name_space;
+        rttmonhistorycollectionsampleindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactStatus")
+    if(value_path == "rttMonHistoryCollectionAddress")
     {
-        rttmonreactstatus = value;
-        rttmonreactstatus.value_namespace = name_space;
-        rttmonreactstatus.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionaddress = value;
+        rttmonhistorycollectionaddress.value_namespace = name_space;
+        rttmonhistorycollectionaddress.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactThresholdCountX")
+    if(value_path == "rttMonHistoryCollectionApplSpecificSense")
     {
-        rttmonreactthresholdcountx = value;
-        rttmonreactthresholdcountx.value_namespace = name_space;
-        rttmonreactthresholdcountx.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionapplspecificsense = value;
+        rttmonhistorycollectionapplspecificsense.value_namespace = name_space;
+        rttmonhistorycollectionapplspecificsense.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactThresholdCountY")
+    if(value_path == "rttMonHistoryCollectionCompletionTime")
     {
-        rttmonreactthresholdcounty = value;
-        rttmonreactthresholdcounty.value_namespace = name_space;
-        rttmonreactthresholdcounty.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectioncompletiontime = value;
+        rttmonhistorycollectioncompletiontime.value_namespace = name_space;
+        rttmonhistorycollectioncompletiontime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactThresholdFalling")
+    if(value_path == "rttMonHistoryCollectionSampleTime")
     {
-        rttmonreactthresholdfalling = value;
-        rttmonreactthresholdfalling.value_namespace = name_space;
-        rttmonreactthresholdfalling.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionsampletime = value;
+        rttmonhistorycollectionsampletime.value_namespace = name_space;
+        rttmonhistorycollectionsampletime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactThresholdRising")
+    if(value_path == "rttMonHistoryCollectionSense")
     {
-        rttmonreactthresholdrising = value;
-        rttmonreactthresholdrising.value_namespace = name_space;
-        rttmonreactthresholdrising.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionsense = value;
+        rttmonhistorycollectionsense.value_namespace = name_space;
+        rttmonhistorycollectionsense.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rttMonReactThresholdType")
+    if(value_path == "rttMonHistoryCollectionSenseDescription")
     {
-        rttmonreactthresholdtype = value;
-        rttmonreactthresholdtype.value_namespace = name_space;
-        rttmonreactthresholdtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonReactValue")
-    {
-        rttmonreactvalue = value;
-        rttmonreactvalue.value_namespace = name_space;
-        rttmonreactvalue.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonReactVar")
-    {
-        rttmonreactvar = value;
-        rttmonreactvar.value_namespace = name_space;
-        rttmonreactvar.value_namespace_prefix = name_space_prefix;
+        rttmonhistorycollectionsensedescription = value;
+        rttmonhistorycollectionsensedescription.value_namespace = name_space;
+        rttmonhistorycollectionsensedescription.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
         rttmonctrladminindex.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactConfigIndex")
+    if(value_path == "rttMonHistoryCollectionLifeIndex")
     {
-        rttmonreactconfigindex.yfilter = yfilter;
+        rttmonhistorycollectionlifeindex.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactActionType")
+    if(value_path == "rttMonHistoryCollectionBucketIndex")
     {
-        rttmonreactactiontype.yfilter = yfilter;
+        rttmonhistorycollectionbucketindex.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactOccurred")
+    if(value_path == "rttMonHistoryCollectionSampleIndex")
     {
-        rttmonreactoccurred.yfilter = yfilter;
+        rttmonhistorycollectionsampleindex.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactStatus")
+    if(value_path == "rttMonHistoryCollectionAddress")
     {
-        rttmonreactstatus.yfilter = yfilter;
+        rttmonhistorycollectionaddress.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactThresholdCountX")
+    if(value_path == "rttMonHistoryCollectionApplSpecificSense")
     {
-        rttmonreactthresholdcountx.yfilter = yfilter;
+        rttmonhistorycollectionapplspecificsense.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactThresholdCountY")
+    if(value_path == "rttMonHistoryCollectionCompletionTime")
     {
-        rttmonreactthresholdcounty.yfilter = yfilter;
+        rttmonhistorycollectioncompletiontime.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactThresholdFalling")
+    if(value_path == "rttMonHistoryCollectionSampleTime")
     {
-        rttmonreactthresholdfalling.yfilter = yfilter;
+        rttmonhistorycollectionsampletime.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactThresholdRising")
+    if(value_path == "rttMonHistoryCollectionSense")
     {
-        rttmonreactthresholdrising.yfilter = yfilter;
+        rttmonhistorycollectionsense.yfilter = yfilter;
     }
-    if(value_path == "rttMonReactThresholdType")
+    if(value_path == "rttMonHistoryCollectionSenseDescription")
     {
-        rttmonreactthresholdtype.yfilter = yfilter;
-    }
-    if(value_path == "rttMonReactValue")
-    {
-        rttmonreactvalue.yfilter = yfilter;
-    }
-    if(value_path == "rttMonReactVar")
-    {
-        rttmonreactvar.yfilter = yfilter;
+        rttmonhistorycollectionsensedescription.yfilter = yfilter;
     }
 }
 
-bool CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonReactConfigIndex" || name == "rttMonReactActionType" || name == "rttMonReactOccurred" || name == "rttMonReactStatus" || name == "rttMonReactThresholdCountX" || name == "rttMonReactThresholdCountY" || name == "rttMonReactThresholdFalling" || name == "rttMonReactThresholdRising" || name == "rttMonReactThresholdType" || name == "rttMonReactValue" || name == "rttMonReactVar")
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonHistoryCollectionLifeIndex" || name == "rttMonHistoryCollectionBucketIndex" || name == "rttMonHistoryCollectionSampleIndex" || name == "rttMonHistoryCollectionAddress" || name == "rttMonHistoryCollectionApplSpecificSense" || name == "rttMonHistoryCollectionCompletionTime" || name == "rttMonHistoryCollectionSampleTime" || name == "rttMonHistoryCollectionSense" || name == "rttMonHistoryCollectionSenseDescription")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedopertable()
+CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatstable()
 {
-    yang_name = "rttMonGeneratedOperTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmongeneratedopertable::~Rttmongeneratedopertable()
-{
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::has_data() const
-{
-    for (std::size_t index=0; index<rttmongeneratedoperentry.size(); index++)
-    {
-        if(rttmongeneratedoperentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmongeneratedoperentry.size(); index++)
-    {
-        if(rttmongeneratedoperentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmongeneratedopertable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonGeneratedOperTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmongeneratedopertable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmongeneratedopertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonGeneratedOperEntry")
-    {
-        for(auto const & c : rttmongeneratedoperentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry>();
-        c->parent = this;
-        rttmongeneratedoperentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmongeneratedopertable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmongeneratedoperentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmongeneratedopertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmongeneratedopertable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonGeneratedOperEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::Rttmongeneratedoperentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmongeneratedoperrespipaddrtype{YType::enumeration, "rttMonGeneratedOperRespIpAddrType"},
-    rttmongeneratedoperrespipaddr{YType::str, "rttMonGeneratedOperRespIpAddr"},
-    rttmongeneratedoperctrladminindex{YType::uint32, "rttMonGeneratedOperCtrlAdminIndex"}
-{
-    yang_name = "rttMonGeneratedOperEntry"; yang_parent_name = "rttMonGeneratedOperTable";
-}
-
-CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::~Rttmongeneratedoperentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmongeneratedoperrespipaddrtype.is_set
-	|| rttmongeneratedoperrespipaddr.is_set
-	|| rttmongeneratedoperctrladminindex.is_set;
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmongeneratedoperrespipaddrtype.yfilter)
-	|| ydk::is_set(rttmongeneratedoperrespipaddr.yfilter)
-	|| ydk::is_set(rttmongeneratedoperctrladminindex.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonGeneratedOperEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonGeneratedOperRespIpAddrType='" <<rttmongeneratedoperrespipaddrtype <<"']" <<"[rttMonGeneratedOperRespIpAddr='" <<rttmongeneratedoperrespipaddr <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonGeneratedOperTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmongeneratedoperrespipaddrtype.is_set || is_set(rttmongeneratedoperrespipaddrtype.yfilter)) leaf_name_data.push_back(rttmongeneratedoperrespipaddrtype.get_name_leafdata());
-    if (rttmongeneratedoperrespipaddr.is_set || is_set(rttmongeneratedoperrespipaddr.yfilter)) leaf_name_data.push_back(rttmongeneratedoperrespipaddr.get_name_leafdata());
-    if (rttmongeneratedoperctrladminindex.is_set || is_set(rttmongeneratedoperctrladminindex.yfilter)) leaf_name_data.push_back(rttmongeneratedoperctrladminindex.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonGeneratedOperRespIpAddrType")
-    {
-        rttmongeneratedoperrespipaddrtype = value;
-        rttmongeneratedoperrespipaddrtype.value_namespace = name_space;
-        rttmongeneratedoperrespipaddrtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonGeneratedOperRespIpAddr")
-    {
-        rttmongeneratedoperrespipaddr = value;
-        rttmongeneratedoperrespipaddr.value_namespace = name_space;
-        rttmongeneratedoperrespipaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonGeneratedOperCtrlAdminIndex")
-    {
-        rttmongeneratedoperctrladminindex = value;
-        rttmongeneratedoperctrladminindex.value_namespace = name_space;
-        rttmongeneratedoperctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonGeneratedOperRespIpAddrType")
-    {
-        rttmongeneratedoperrespipaddrtype.yfilter = yfilter;
-    }
-    if(value_path == "rttMonGeneratedOperRespIpAddr")
-    {
-        rttmongeneratedoperrespipaddr.yfilter = yfilter;
-    }
-    if(value_path == "rttMonGeneratedOperCtrlAdminIndex")
-    {
-        rttmongeneratedoperctrladminindex.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonGeneratedOperRespIpAddrType" || name == "rttMonGeneratedOperRespIpAddr" || name == "rttMonGeneratedOperCtrlAdminIndex")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscapturetable()
-{
-    yang_name = "rttMonStatsCaptureTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonstatscapturetable::~Rttmonstatscapturetable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonstatscaptureentry.size(); index++)
-    {
-        if(rttmonstatscaptureentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonstatscaptureentry.size(); index++)
-    {
-        if(rttmonstatscaptureentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatscapturetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsCaptureTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatscapturetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatscapturetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonStatsCaptureEntry")
-    {
-        for(auto const & c : rttmonstatscaptureentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry>();
-        c->parent = this;
-        rttmonstatscaptureentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatscapturetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonstatscaptureentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatscapturetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonstatscapturetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonStatsCaptureEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::Rttmonstatscaptureentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonstatscapturestarttimeindex{YType::uint32, "rttMonStatsCaptureStartTimeIndex"},
-    rttmonstatscapturepathindex{YType::int32, "rttMonStatsCapturePathIndex"},
-    rttmonstatscapturehopindex{YType::int32, "rttMonStatsCaptureHopIndex"},
-    rttmonstatscapturedistindex{YType::int32, "rttMonStatsCaptureDistIndex"},
-    rttmonstatscapturecompletions{YType::int32, "rttMonStatsCaptureCompletions"},
-    rttmonstatscapturecompletiontimemax{YType::uint32, "rttMonStatsCaptureCompletionTimeMax"},
-    rttmonstatscapturecompletiontimemin{YType::uint32, "rttMonStatsCaptureCompletionTimeMin"},
-    rttmonstatscaptureoverthresholds{YType::int32, "rttMonStatsCaptureOverThresholds"},
-    rttmonstatscapturesumcompletiontime{YType::uint32, "rttMonStatsCaptureSumCompletionTime"},
-    rttmonstatscapturesumcompletiontime2high{YType::uint32, "rttMonStatsCaptureSumCompletionTime2High"},
-    rttmonstatscapturesumcompletiontime2low{YType::uint32, "rttMonStatsCaptureSumCompletionTime2Low"}
-{
-    yang_name = "rttMonStatsCaptureEntry"; yang_parent_name = "rttMonStatsCaptureTable";
-}
-
-CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::~Rttmonstatscaptureentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonstatscapturestarttimeindex.is_set
-	|| rttmonstatscapturepathindex.is_set
-	|| rttmonstatscapturehopindex.is_set
-	|| rttmonstatscapturedistindex.is_set
-	|| rttmonstatscapturecompletions.is_set
-	|| rttmonstatscapturecompletiontimemax.is_set
-	|| rttmonstatscapturecompletiontimemin.is_set
-	|| rttmonstatscaptureoverthresholds.is_set
-	|| rttmonstatscapturesumcompletiontime.is_set
-	|| rttmonstatscapturesumcompletiontime2high.is_set
-	|| rttmonstatscapturesumcompletiontime2low.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturepathindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturehopindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturedistindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturecompletions.yfilter)
-	|| ydk::is_set(rttmonstatscapturecompletiontimemax.yfilter)
-	|| ydk::is_set(rttmonstatscapturecompletiontimemin.yfilter)
-	|| ydk::is_set(rttmonstatscaptureoverthresholds.yfilter)
-	|| ydk::is_set(rttmonstatscapturesumcompletiontime.yfilter)
-	|| ydk::is_set(rttmonstatscapturesumcompletiontime2high.yfilter)
-	|| ydk::is_set(rttmonstatscapturesumcompletiontime2low.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsCaptureEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']" <<"[rttMonStatsCapturePathIndex='" <<rttmonstatscapturepathindex <<"']" <<"[rttMonStatsCaptureHopIndex='" <<rttmonstatscapturehopindex <<"']" <<"[rttMonStatsCaptureDistIndex='" <<rttmonstatscapturedistindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsCaptureTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
-    if (rttmonstatscapturepathindex.is_set || is_set(rttmonstatscapturepathindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturepathindex.get_name_leafdata());
-    if (rttmonstatscapturehopindex.is_set || is_set(rttmonstatscapturehopindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturehopindex.get_name_leafdata());
-    if (rttmonstatscapturedistindex.is_set || is_set(rttmonstatscapturedistindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturedistindex.get_name_leafdata());
-    if (rttmonstatscapturecompletions.is_set || is_set(rttmonstatscapturecompletions.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletions.get_name_leafdata());
-    if (rttmonstatscapturecompletiontimemax.is_set || is_set(rttmonstatscapturecompletiontimemax.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletiontimemax.get_name_leafdata());
-    if (rttmonstatscapturecompletiontimemin.is_set || is_set(rttmonstatscapturecompletiontimemin.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletiontimemin.get_name_leafdata());
-    if (rttmonstatscaptureoverthresholds.is_set || is_set(rttmonstatscaptureoverthresholds.yfilter)) leaf_name_data.push_back(rttmonstatscaptureoverthresholds.get_name_leafdata());
-    if (rttmonstatscapturesumcompletiontime.is_set || is_set(rttmonstatscapturesumcompletiontime.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime.get_name_leafdata());
-    if (rttmonstatscapturesumcompletiontime2high.is_set || is_set(rttmonstatscapturesumcompletiontime2high.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime2high.get_name_leafdata());
-    if (rttmonstatscapturesumcompletiontime2low.is_set || is_set(rttmonstatscapturesumcompletiontime2low.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime2low.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex = value;
-        rttmonstatscapturestarttimeindex.value_namespace = name_space;
-        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCapturePathIndex")
-    {
-        rttmonstatscapturepathindex = value;
-        rttmonstatscapturepathindex.value_namespace = name_space;
-        rttmonstatscapturepathindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureHopIndex")
-    {
-        rttmonstatscapturehopindex = value;
-        rttmonstatscapturehopindex.value_namespace = name_space;
-        rttmonstatscapturehopindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureDistIndex")
-    {
-        rttmonstatscapturedistindex = value;
-        rttmonstatscapturedistindex.value_namespace = name_space;
-        rttmonstatscapturedistindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureCompletions")
-    {
-        rttmonstatscapturecompletions = value;
-        rttmonstatscapturecompletions.value_namespace = name_space;
-        rttmonstatscapturecompletions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureCompletionTimeMax")
-    {
-        rttmonstatscapturecompletiontimemax = value;
-        rttmonstatscapturecompletiontimemax.value_namespace = name_space;
-        rttmonstatscapturecompletiontimemax.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureCompletionTimeMin")
-    {
-        rttmonstatscapturecompletiontimemin = value;
-        rttmonstatscapturecompletiontimemin.value_namespace = name_space;
-        rttmonstatscapturecompletiontimemin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureOverThresholds")
-    {
-        rttmonstatscaptureoverthresholds = value;
-        rttmonstatscaptureoverthresholds.value_namespace = name_space;
-        rttmonstatscaptureoverthresholds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime")
-    {
-        rttmonstatscapturesumcompletiontime = value;
-        rttmonstatscapturesumcompletiontime.value_namespace = name_space;
-        rttmonstatscapturesumcompletiontime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime2High")
-    {
-        rttmonstatscapturesumcompletiontime2high = value;
-        rttmonstatscapturesumcompletiontime2high.value_namespace = name_space;
-        rttmonstatscapturesumcompletiontime2high.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime2Low")
-    {
-        rttmonstatscapturesumcompletiontime2low = value;
-        rttmonstatscapturesumcompletiontime2low.value_namespace = name_space;
-        rttmonstatscapturesumcompletiontime2low.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCapturePathIndex")
-    {
-        rttmonstatscapturepathindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureHopIndex")
-    {
-        rttmonstatscapturehopindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureDistIndex")
-    {
-        rttmonstatscapturedistindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureCompletions")
-    {
-        rttmonstatscapturecompletions.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureCompletionTimeMax")
-    {
-        rttmonstatscapturecompletiontimemax.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureCompletionTimeMin")
-    {
-        rttmonstatscapturecompletiontimemin.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureOverThresholds")
-    {
-        rttmonstatscaptureoverthresholds.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime")
-    {
-        rttmonstatscapturesumcompletiontime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime2High")
-    {
-        rttmonstatscapturesumcompletiontime2high.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureSumCompletionTime2Low")
-    {
-        rttmonstatscapturesumcompletiontime2low.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsCapturePathIndex" || name == "rttMonStatsCaptureHopIndex" || name == "rttMonStatsCaptureDistIndex" || name == "rttMonStatsCaptureCompletions" || name == "rttMonStatsCaptureCompletionTimeMax" || name == "rttMonStatsCaptureCompletionTimeMin" || name == "rttMonStatsCaptureOverThresholds" || name == "rttMonStatsCaptureSumCompletionTime" || name == "rttMonStatsCaptureSumCompletionTime2High" || name == "rttMonStatsCaptureSumCompletionTime2Low")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollecttable()
-{
-    yang_name = "rttMonStatsCollectTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonstatscollecttable::~Rttmonstatscollecttable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonstatscollectentry.size(); index++)
-    {
-        if(rttmonstatscollectentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonstatscollectentry.size(); index++)
-    {
-        if(rttmonstatscollectentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatscollecttable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsCollectTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatscollecttable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatscollecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonStatsCollectEntry")
-    {
-        for(auto const & c : rttmonstatscollectentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry>();
-        c->parent = this;
-        rttmonstatscollectentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatscollecttable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonstatscollectentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatscollecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonstatscollecttable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonStatsCollectEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::Rttmonstatscollectentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonstatscapturestarttimeindex{YType::str, "rttMonStatsCaptureStartTimeIndex"},
-    rttmonstatscapturepathindex{YType::str, "rttMonStatsCapturePathIndex"},
-    rttmonstatscapturehopindex{YType::str, "rttMonStatsCaptureHopIndex"},
-    rttmoncontrolenableerrors{YType::int32, "rttMonControlEnableErrors"},
-    rttmonstatscollectaddress{YType::str, "rttMonStatsCollectAddress"},
-    rttmonstatscollectbusies{YType::int32, "rttMonStatsCollectBusies"},
-    rttmonstatscollectctrlenerrors{YType::int32, "rttMonStatsCollectCtrlEnErrors"},
-    rttmonstatscollectdrops{YType::int32, "rttMonStatsCollectDrops"},
-    rttmonstatscollectnoconnections{YType::int32, "rttMonStatsCollectNoConnections"},
-    rttmonstatscollectnumdisconnects{YType::int32, "rttMonStatsCollectNumDisconnects"},
-    rttmonstatscollectretrieveerrors{YType::int32, "rttMonStatsCollectRetrieveErrors"},
-    rttmonstatscollectsequenceerrors{YType::int32, "rttMonStatsCollectSequenceErrors"},
-    rttmonstatscollecttimeouts{YType::int32, "rttMonStatsCollectTimeouts"},
-    rttmonstatscollectverifyerrors{YType::int32, "rttMonStatsCollectVerifyErrors"},
-    rttmonstatsretrieveerrors{YType::int32, "rttMonStatsRetrieveErrors"}
-{
-    yang_name = "rttMonStatsCollectEntry"; yang_parent_name = "rttMonStatsCollectTable";
-}
-
-CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::~Rttmonstatscollectentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonstatscapturestarttimeindex.is_set
-	|| rttmonstatscapturepathindex.is_set
-	|| rttmonstatscapturehopindex.is_set
-	|| rttmoncontrolenableerrors.is_set
-	|| rttmonstatscollectaddress.is_set
-	|| rttmonstatscollectbusies.is_set
-	|| rttmonstatscollectctrlenerrors.is_set
-	|| rttmonstatscollectdrops.is_set
-	|| rttmonstatscollectnoconnections.is_set
-	|| rttmonstatscollectnumdisconnects.is_set
-	|| rttmonstatscollectretrieveerrors.is_set
-	|| rttmonstatscollectsequenceerrors.is_set
-	|| rttmonstatscollecttimeouts.is_set
-	|| rttmonstatscollectverifyerrors.is_set
-	|| rttmonstatsretrieveerrors.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturepathindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturehopindex.yfilter)
-	|| ydk::is_set(rttmoncontrolenableerrors.yfilter)
-	|| ydk::is_set(rttmonstatscollectaddress.yfilter)
-	|| ydk::is_set(rttmonstatscollectbusies.yfilter)
-	|| ydk::is_set(rttmonstatscollectctrlenerrors.yfilter)
-	|| ydk::is_set(rttmonstatscollectdrops.yfilter)
-	|| ydk::is_set(rttmonstatscollectnoconnections.yfilter)
-	|| ydk::is_set(rttmonstatscollectnumdisconnects.yfilter)
-	|| ydk::is_set(rttmonstatscollectretrieveerrors.yfilter)
-	|| ydk::is_set(rttmonstatscollectsequenceerrors.yfilter)
-	|| ydk::is_set(rttmonstatscollecttimeouts.yfilter)
-	|| ydk::is_set(rttmonstatscollectverifyerrors.yfilter)
-	|| ydk::is_set(rttmonstatsretrieveerrors.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsCollectEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']" <<"[rttMonStatsCapturePathIndex='" <<rttmonstatscapturepathindex <<"']" <<"[rttMonStatsCaptureHopIndex='" <<rttmonstatscapturehopindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsCollectTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
-    if (rttmonstatscapturepathindex.is_set || is_set(rttmonstatscapturepathindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturepathindex.get_name_leafdata());
-    if (rttmonstatscapturehopindex.is_set || is_set(rttmonstatscapturehopindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturehopindex.get_name_leafdata());
-    if (rttmoncontrolenableerrors.is_set || is_set(rttmoncontrolenableerrors.yfilter)) leaf_name_data.push_back(rttmoncontrolenableerrors.get_name_leafdata());
-    if (rttmonstatscollectaddress.is_set || is_set(rttmonstatscollectaddress.yfilter)) leaf_name_data.push_back(rttmonstatscollectaddress.get_name_leafdata());
-    if (rttmonstatscollectbusies.is_set || is_set(rttmonstatscollectbusies.yfilter)) leaf_name_data.push_back(rttmonstatscollectbusies.get_name_leafdata());
-    if (rttmonstatscollectctrlenerrors.is_set || is_set(rttmonstatscollectctrlenerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectctrlenerrors.get_name_leafdata());
-    if (rttmonstatscollectdrops.is_set || is_set(rttmonstatscollectdrops.yfilter)) leaf_name_data.push_back(rttmonstatscollectdrops.get_name_leafdata());
-    if (rttmonstatscollectnoconnections.is_set || is_set(rttmonstatscollectnoconnections.yfilter)) leaf_name_data.push_back(rttmonstatscollectnoconnections.get_name_leafdata());
-    if (rttmonstatscollectnumdisconnects.is_set || is_set(rttmonstatscollectnumdisconnects.yfilter)) leaf_name_data.push_back(rttmonstatscollectnumdisconnects.get_name_leafdata());
-    if (rttmonstatscollectretrieveerrors.is_set || is_set(rttmonstatscollectretrieveerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectretrieveerrors.get_name_leafdata());
-    if (rttmonstatscollectsequenceerrors.is_set || is_set(rttmonstatscollectsequenceerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectsequenceerrors.get_name_leafdata());
-    if (rttmonstatscollecttimeouts.is_set || is_set(rttmonstatscollecttimeouts.yfilter)) leaf_name_data.push_back(rttmonstatscollecttimeouts.get_name_leafdata());
-    if (rttmonstatscollectverifyerrors.is_set || is_set(rttmonstatscollectverifyerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectverifyerrors.get_name_leafdata());
-    if (rttmonstatsretrieveerrors.is_set || is_set(rttmonstatsretrieveerrors.yfilter)) leaf_name_data.push_back(rttmonstatsretrieveerrors.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex = value;
-        rttmonstatscapturestarttimeindex.value_namespace = name_space;
-        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCapturePathIndex")
-    {
-        rttmonstatscapturepathindex = value;
-        rttmonstatscapturepathindex.value_namespace = name_space;
-        rttmonstatscapturepathindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureHopIndex")
-    {
-        rttmonstatscapturehopindex = value;
-        rttmonstatscapturehopindex.value_namespace = name_space;
-        rttmonstatscapturehopindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonControlEnableErrors")
-    {
-        rttmoncontrolenableerrors = value;
-        rttmoncontrolenableerrors.value_namespace = name_space;
-        rttmoncontrolenableerrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectAddress")
-    {
-        rttmonstatscollectaddress = value;
-        rttmonstatscollectaddress.value_namespace = name_space;
-        rttmonstatscollectaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectBusies")
-    {
-        rttmonstatscollectbusies = value;
-        rttmonstatscollectbusies.value_namespace = name_space;
-        rttmonstatscollectbusies.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectCtrlEnErrors")
-    {
-        rttmonstatscollectctrlenerrors = value;
-        rttmonstatscollectctrlenerrors.value_namespace = name_space;
-        rttmonstatscollectctrlenerrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectDrops")
-    {
-        rttmonstatscollectdrops = value;
-        rttmonstatscollectdrops.value_namespace = name_space;
-        rttmonstatscollectdrops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectNoConnections")
-    {
-        rttmonstatscollectnoconnections = value;
-        rttmonstatscollectnoconnections.value_namespace = name_space;
-        rttmonstatscollectnoconnections.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectNumDisconnects")
-    {
-        rttmonstatscollectnumdisconnects = value;
-        rttmonstatscollectnumdisconnects.value_namespace = name_space;
-        rttmonstatscollectnumdisconnects.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectRetrieveErrors")
-    {
-        rttmonstatscollectretrieveerrors = value;
-        rttmonstatscollectretrieveerrors.value_namespace = name_space;
-        rttmonstatscollectretrieveerrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectSequenceErrors")
-    {
-        rttmonstatscollectsequenceerrors = value;
-        rttmonstatscollectsequenceerrors.value_namespace = name_space;
-        rttmonstatscollectsequenceerrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectTimeouts")
-    {
-        rttmonstatscollecttimeouts = value;
-        rttmonstatscollecttimeouts.value_namespace = name_space;
-        rttmonstatscollecttimeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCollectVerifyErrors")
-    {
-        rttmonstatscollectverifyerrors = value;
-        rttmonstatscollectverifyerrors.value_namespace = name_space;
-        rttmonstatscollectverifyerrors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsRetrieveErrors")
-    {
-        rttmonstatsretrieveerrors = value;
-        rttmonstatsretrieveerrors.value_namespace = name_space;
-        rttmonstatsretrieveerrors.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCapturePathIndex")
-    {
-        rttmonstatscapturepathindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureHopIndex")
-    {
-        rttmonstatscapturehopindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonControlEnableErrors")
-    {
-        rttmoncontrolenableerrors.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectAddress")
-    {
-        rttmonstatscollectaddress.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectBusies")
-    {
-        rttmonstatscollectbusies.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectCtrlEnErrors")
-    {
-        rttmonstatscollectctrlenerrors.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectDrops")
-    {
-        rttmonstatscollectdrops.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectNoConnections")
-    {
-        rttmonstatscollectnoconnections.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectNumDisconnects")
-    {
-        rttmonstatscollectnumdisconnects.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectRetrieveErrors")
-    {
-        rttmonstatscollectretrieveerrors.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectSequenceErrors")
-    {
-        rttmonstatscollectsequenceerrors.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectTimeouts")
-    {
-        rttmonstatscollecttimeouts.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCollectVerifyErrors")
-    {
-        rttmonstatscollectverifyerrors.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsRetrieveErrors")
-    {
-        rttmonstatsretrieveerrors.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsCapturePathIndex" || name == "rttMonStatsCaptureHopIndex" || name == "rttMonControlEnableErrors" || name == "rttMonStatsCollectAddress" || name == "rttMonStatsCollectBusies" || name == "rttMonStatsCollectCtrlEnErrors" || name == "rttMonStatsCollectDrops" || name == "rttMonStatsCollectNoConnections" || name == "rttMonStatsCollectNumDisconnects" || name == "rttMonStatsCollectRetrieveErrors" || name == "rttMonStatsCollectSequenceErrors" || name == "rttMonStatsCollectTimeouts" || name == "rttMonStatsCollectVerifyErrors" || name == "rttMonStatsRetrieveErrors")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalstable()
-{
-    yang_name = "rttMonStatsTotalsTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonstatstotalstable::~Rttmonstatstotalstable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonstatstotalsentry.size(); index++)
-    {
-        if(rttmonstatstotalsentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonstatstotalsentry.size(); index++)
-    {
-        if(rttmonstatstotalsentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatstotalstable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsTotalsTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatstotalstable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatstotalstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonStatsTotalsEntry")
-    {
-        for(auto const & c : rttmonstatstotalsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry>();
-        c->parent = this;
-        rttmonstatstotalsentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatstotalstable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonstatstotalsentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatstotalstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonstatstotalstable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonStatsTotalsEntry")
-        return true;
-    return false;
-}
 
-CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::Rttmonstatstotalsentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonstatscapturestarttimeindex{YType::str, "rttMonStatsCaptureStartTimeIndex"},
-    rttmonstatstotalselapsedtime{YType::int32, "rttMonStatsTotalsElapsedTime"},
-    rttmonstatstotalsinitiations{YType::int32, "rttMonStatsTotalsInitiations"}
-{
-    yang_name = "rttMonStatsTotalsEntry"; yang_parent_name = "rttMonStatsTotalsTable";
-}
-
-CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::~Rttmonstatstotalsentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonstatscapturestarttimeindex.is_set
-	|| rttmonstatstotalselapsedtime.is_set
-	|| rttmonstatstotalsinitiations.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
-	|| ydk::is_set(rttmonstatstotalselapsedtime.yfilter)
-	|| ydk::is_set(rttmonstatstotalsinitiations.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonStatsTotalsEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsTotalsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
-    if (rttmonstatstotalselapsedtime.is_set || is_set(rttmonstatstotalselapsedtime.yfilter)) leaf_name_data.push_back(rttmonstatstotalselapsedtime.get_name_leafdata());
-    if (rttmonstatstotalsinitiations.is_set || is_set(rttmonstatstotalsinitiations.yfilter)) leaf_name_data.push_back(rttmonstatstotalsinitiations.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex = value;
-        rttmonstatscapturestarttimeindex.value_namespace = name_space;
-        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsTotalsElapsedTime")
-    {
-        rttmonstatstotalselapsedtime = value;
-        rttmonstatstotalselapsedtime.value_namespace = name_space;
-        rttmonstatstotalselapsedtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonStatsTotalsInitiations")
-    {
-        rttmonstatstotalsinitiations = value;
-        rttmonstatstotalsinitiations.value_namespace = name_space;
-        rttmonstatstotalsinitiations.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsCaptureStartTimeIndex")
-    {
-        rttmonstatscapturestarttimeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsTotalsElapsedTime")
-    {
-        rttmonstatstotalselapsedtime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonStatsTotalsInitiations")
-    {
-        rttmonstatstotalsinitiations.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsTotalsElapsedTime" || name == "rttMonStatsTotalsInitiations")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatstable()
-{
-    yang_name = "rttMonHTTPStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+    yang_name = "rttMonHTTPStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonhttpstatstable::~Rttmonhttpstatstable()
+CISCORTTMONMIB::Rttmonhttpstatstable::~Rttmonhttpstatstable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::has_data() const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::has_data() const
 {
     for (std::size_t index=0; index<rttmonhttpstatsentry.size(); index++)
     {
@@ -7529,7 +5096,7 @@ bool CiscoRttmonMib::Rttmonhttpstatstable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::has_operation() const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonhttpstatsentry.size(); index++)
     {
@@ -7539,37 +5106,30 @@ bool CiscoRttmonMib::Rttmonhttpstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonhttpstatstable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonhttpstatstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonhttpstatstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonHTTPStatsTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonhttpstatstable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonhttpstatstable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhttpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhttpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonHTTPStatsEntry")
     {
@@ -7581,7 +5141,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhttpstatstable::get_child_by_name(
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry>();
         c->parent = this;
         rttmonhttpstatsentry.push_back(c);
         return c;
@@ -7590,7 +5150,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhttpstatstable::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonhttpstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhttpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonhttpstatsentry)
@@ -7601,22 +5161,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonhttpstatsta
     return children;
 }
 
-void CiscoRttmonMib::Rttmonhttpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonhttpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonhttpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonhttpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonHTTPStatsEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::Rttmonhttpstatsentry()
+CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::Rttmonhttpstatsentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonhttpstatsstarttimeindex{YType::uint32, "rttMonHTTPStatsStartTimeIndex"},
@@ -7639,14 +5199,15 @@ CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::Rttmonhttpstatsentry
     rttmonhttpstatstransactionrttsum{YType::uint32, "rttMonHTTPStatsTransactionRTTSum"},
     rttmonhttpstatstransactiontimeout{YType::uint32, "rttMonHTTPStatsTransactionTimeout"}
 {
-    yang_name = "rttMonHTTPStatsEntry"; yang_parent_name = "rttMonHTTPStatsTable";
+
+    yang_name = "rttMonHTTPStatsEntry"; yang_parent_name = "rttMonHTTPStatsTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::~Rttmonhttpstatsentry()
+CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::~Rttmonhttpstatsentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_data() const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonhttpstatsstarttimeindex.is_set
@@ -7670,7 +5231,7 @@ bool CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_data() cons
 	|| rttmonhttpstatstransactiontimeout.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -7695,27 +5256,22 @@ bool CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_operation()
 	|| ydk::is_set(rttmonhttpstatstransactiontimeout.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonHTTPStatsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonHTTPStatsEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonHTTPStatsStartTimeIndex='" <<rttmonhttpstatsstarttimeindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonHTTPStatsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -7739,24 +5295,22 @@ const EntityPath CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::get
     if (rttmonhttpstatstransactionrttsum.is_set || is_set(rttmonhttpstatstransactionrttsum.yfilter)) leaf_name_data.push_back(rttmonhttpstatstransactionrttsum.get_name_leafdata());
     if (rttmonhttpstatstransactiontimeout.is_set || is_set(rttmonhttpstatstransactiontimeout.yfilter)) leaf_name_data.push_back(rttmonhttpstatstransactiontimeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -7880,7 +5434,7 @@ void CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_value(const
     }
 }
 
-void CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -7964,23 +5518,24 @@ void CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::set_filter(cons
     }
 }
 
-bool CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonHTTPStatsStartTimeIndex" || name == "rttMonHTTPStatsBusies" || name == "rttMonHTTPStatsCompletions" || name == "rttMonHTTPStatsDNSQueryError" || name == "rttMonHTTPStatsDNSRTTSum" || name == "rttMonHTTPStatsDNSServerTimeout" || name == "rttMonHTTPStatsError" || name == "rttMonHTTPStatsHTTPError" || name == "rttMonHTTPStatsMessageBodyOctetsSum" || name == "rttMonHTTPStatsOverThresholds" || name == "rttMonHTTPStatsRTTMax" || name == "rttMonHTTPStatsRTTMin" || name == "rttMonHTTPStatsRTTSum" || name == "rttMonHTTPStatsRTTSum2High" || name == "rttMonHTTPStatsRTTSum2Low" || name == "rttMonHTTPStatsTCPConnectRTTSum" || name == "rttMonHTTPStatsTCPConnectTimeout" || name == "rttMonHTTPStatsTransactionRTTSum" || name == "rttMonHTTPStatsTransactionTimeout")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatstable()
+CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatstable()
 {
-    yang_name = "rttMonJitterStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonJitterStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonjitterstatstable::~Rttmonjitterstatstable()
+CISCORTTMONMIB::Rttmonjitterstatstable::~Rttmonjitterstatstable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::has_data() const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::has_data() const
 {
     for (std::size_t index=0; index<rttmonjitterstatsentry.size(); index++)
     {
@@ -7990,7 +5545,7 @@ bool CiscoRttmonMib::Rttmonjitterstatstable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::has_operation() const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonjitterstatsentry.size(); index++)
     {
@@ -8000,37 +5555,30 @@ bool CiscoRttmonMib::Rttmonjitterstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonjitterstatstable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonjitterstatstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonjitterstatstable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonJitterStatsTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonjitterstatstable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonjitterstatstable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonjitterstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonjitterstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonJitterStatsEntry")
     {
@@ -8042,7 +5590,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonjitterstatstable::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry>();
         c->parent = this;
         rttmonjitterstatsentry.push_back(c);
         return c;
@@ -8051,7 +5599,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonjitterstatstable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonjitterstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonjitterstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonjitterstatsentry)
@@ -8062,22 +5610,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonjitterstats
     return children;
 }
 
-void CiscoRttmonMib::Rttmonjitterstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonjitterstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonjitterstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonjitterstatstable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonJitterStatsEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::Rttmonjitterstatsentry()
+CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::Rttmonjitterstatsentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonjitterstatsstarttimeindex{YType::uint32, "rttMonJitterStatsStartTimeIndex"},
@@ -8149,14 +5697,15 @@ CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::Rttmonjitterstat
     rttmonjitterstatssumofpositivessd{YType::uint32, "rttMonJitterStatsSumOfPositivesSD"},
     rttmonjitterstatsunsyncrts{YType::uint32, "rttMonJitterStatsUnSyncRTs"}
 {
-    yang_name = "rttMonJitterStatsEntry"; yang_parent_name = "rttMonJitterStatsTable";
+
+    yang_name = "rttMonJitterStatsEntry"; yang_parent_name = "rttMonJitterStatsTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::~Rttmonjitterstatsentry()
+CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::~Rttmonjitterstatsentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_data() const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonjitterstatsstarttimeindex.is_set
@@ -8229,7 +5778,7 @@ bool CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_data() 
 	|| rttmonjitterstatsunsyncrts.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -8303,27 +5852,22 @@ bool CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_operati
 	|| ydk::is_set(rttmonjitterstatsunsyncrts.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonJitterStatsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonJitterStatsEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonJitterStatsStartTimeIndex='" <<rttmonjitterstatsstarttimeindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonJitterStatsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -8396,24 +5940,22 @@ const EntityPath CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry:
     if (rttmonjitterstatssumofpositivessd.is_set || is_set(rttmonjitterstatssumofpositivessd.yfilter)) leaf_name_data.push_back(rttmonjitterstatssumofpositivessd.get_name_leafdata());
     if (rttmonjitterstatsunsyncrts.is_set || is_set(rttmonjitterstatsunsyncrts.yfilter)) leaf_name_data.push_back(rttmonjitterstatsunsyncrts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -8831,7 +6373,7 @@ void CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_value(c
     }
 }
 
-void CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -9111,805 +6653,24 @@ void CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::set_filter(
     }
 }
 
-bool CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonJitterStatsStartTimeIndex" || name == "rttMonJitterStatsAvgJitter" || name == "rttMonJitterStatsAvgJitterDS" || name == "rttMonJitterStatsAvgJitterSD" || name == "rttMonJitterStatsBusies" || name == "rttMonJitterStatsCompletions" || name == "rttMonJitterStatsError" || name == "rttMonJitterStatsIAJIn" || name == "rttMonJitterStatsIAJOut" || name == "rttMonJitterStatsMaxOfICPIF" || name == "rttMonJitterStatsMaxOfMOS" || name == "rttMonJitterStatsMaxOfNegativesDS" || name == "rttMonJitterStatsMaxOfNegativesSD" || name == "rttMonJitterStatsMaxOfPositivesDS" || name == "rttMonJitterStatsMaxOfPositivesSD" || name == "rttMonJitterStatsMinOfICPIF" || name == "rttMonJitterStatsMinOfMOS" || name == "rttMonJitterStatsMinOfNegativesDS" || name == "rttMonJitterStatsMinOfNegativesSD" || name == "rttMonJitterStatsMinOfPositivesDS" || name == "rttMonJitterStatsMinOfPositivesSD" || name == "rttMonJitterStatsNumOfNegativesDS" || name == "rttMonJitterStatsNumOfNegativesSD" || name == "rttMonJitterStatsNumOfOW" || name == "rttMonJitterStatsNumOfPositivesDS" || name == "rttMonJitterStatsNumOfPositivesSD" || name == "rttMonJitterStatsNumOfRTT" || name == "rttMonJitterStatsOverThresholds" || name == "rttMonJitterStatsOWMaxDS" || name == "rttMonJitterStatsOWMaxDSNew" || name == "rttMonJitterStatsOWMaxSD" || name == "rttMonJitterStatsOWMaxSDNew" || name == "rttMonJitterStatsOWMinDS" || name == "rttMonJitterStatsOWMinDSNew" || name == "rttMonJitterStatsOWMinSD" || name == "rttMonJitterStatsOWMinSDNew" || name == "rttMonJitterStatsOWSum2DSHigh" || name == "rttMonJitterStatsOWSum2DSLow" || name == "rttMonJitterStatsOWSum2SDHigh" || name == "rttMonJitterStatsOWSum2SDLow" || name == "rttMonJitterStatsOWSumDS" || name == "rttMonJitterStatsOWSumDSHigh" || name == "rttMonJitterStatsOWSumSD" || name == "rttMonJitterStatsOWSumSDHigh" || name == "rttMonJitterStatsPacketLateArrival" || name == "rttMonJitterStatsPacketLossDS" || name == "rttMonJitterStatsPacketLossSD" || name == "rttMonJitterStatsPacketMIA" || name == "rttMonJitterStatsPacketOutOfSequence" || name == "rttMonJitterStatsRTTMax" || name == "rttMonJitterStatsRTTMin" || name == "rttMonJitterStatsRTTSum" || name == "rttMonJitterStatsRTTSum2High" || name == "rttMonJitterStatsRTTSum2Low" || name == "rttMonJitterStatsRTTSumHigh" || name == "rttMonJitterStatsSum2NegativesDSHigh" || name == "rttMonJitterStatsSum2NegativesDSLow" || name == "rttMonJitterStatsSum2NegativesSDHigh" || name == "rttMonJitterStatsSum2NegativesSDLow" || name == "rttMonJitterStatsSum2PositivesDSHigh" || name == "rttMonJitterStatsSum2PositivesDSLow" || name == "rttMonJitterStatsSum2PositivesSDHigh" || name == "rttMonJitterStatsSum2PositivesSDLow" || name == "rttMonJitterStatsSumOfNegativesDS" || name == "rttMonJitterStatsSumOfNegativesSD" || name == "rttMonJitterStatsSumOfPositivesDS" || name == "rttMonJitterStatsSumOfPositivesSD" || name == "rttMonJitterStatsUnSyncRTs")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatstable()
+CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpopertable()
 {
-    yang_name = "rttMonLpdGrpStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonLatestHTTPOperTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonlpdgrpstatstable::~Rttmonlpdgrpstatstable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonlpdgrpstatsentry.size(); index++)
-    {
-        if(rttmonlpdgrpstatsentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonlpdgrpstatsentry.size(); index++)
-    {
-        if(rttmonlpdgrpstatsentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonlpdgrpstatstable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonLpdGrpStatsTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonlpdgrpstatstable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlpdgrpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonLpdGrpStatsEntry")
-    {
-        for(auto const & c : rttmonlpdgrpstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry>();
-        c->parent = this;
-        rttmonlpdgrpstatsentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlpdgrpstatstable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonlpdgrpstatsentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonlpdgrpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCORTTMONMIB::Rttmonlatesthttpopertable::~Rttmonlatesthttpopertable()
 {
 }
 
-void CiscoRttmonMib::Rttmonlpdgrpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonLpdGrpStatsEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::Rttmonlpdgrpstatsentry()
-    :
-    rttmonlpdgrpstatsgroupindex{YType::int32, "rttMonLpdGrpStatsGroupIndex"},
-    rttmonlpdgrpstatsstarttimeindex{YType::uint32, "rttMonLpdGrpStatsStartTimeIndex"},
-    rttmonlpdgrpstatsavgrtt{YType::int32, "rttMonLpdGrpStatsAvgRTT"},
-    rttmonlpdgrpstatsgroupprobeindex{YType::int32, "rttMonLpdGrpStatsGroupProbeIndex"},
-    rttmonlpdgrpstatsgroupstatus{YType::enumeration, "rttMonLpdGrpStatsGroupStatus"},
-    rttmonlpdgrpstatslpdcomptime{YType::int32, "rttMonLpdGrpStatsLPDCompTime"},
-    rttmonlpdgrpstatslpdfailcause{YType::enumeration, "rttMonLpdGrpStatsLPDFailCause"},
-    rttmonlpdgrpstatslpdfailoccurred{YType::boolean, "rttMonLpdGrpStatsLPDFailOccurred"},
-    rttmonlpdgrpstatslpdstarttime{YType::uint32, "rttMonLpdGrpStatsLPDStartTime"},
-    rttmonlpdgrpstatsmaxnumpaths{YType::int32, "rttMonLpdGrpStatsMaxNumPaths"},
-    rttmonlpdgrpstatsmaxrtt{YType::int32, "rttMonLpdGrpStatsMaxRTT"},
-    rttmonlpdgrpstatsminnumpaths{YType::int32, "rttMonLpdGrpStatsMinNumPaths"},
-    rttmonlpdgrpstatsminrtt{YType::int32, "rttMonLpdGrpStatsMinRTT"},
-    rttmonlpdgrpstatsnumoffail{YType::int32, "rttMonLpdGrpStatsNumOfFail"},
-    rttmonlpdgrpstatsnumofpass{YType::int32, "rttMonLpdGrpStatsNumOfPass"},
-    rttmonlpdgrpstatsnumoftimeout{YType::int32, "rttMonLpdGrpStatsNumOfTimeout"},
-    rttmonlpdgrpstatspathids{YType::str, "rttMonLpdGrpStatsPathIds"},
-    rttmonlpdgrpstatsprobestatus{YType::str, "rttMonLpdGrpStatsProbeStatus"},
-    rttmonlpdgrpstatsresettime{YType::uint32, "rttMonLpdGrpStatsResetTime"},
-    rttmonlpdgrpstatstargetpe{YType::str, "rttMonLpdGrpStatsTargetPE"}
-{
-    yang_name = "rttMonLpdGrpStatsEntry"; yang_parent_name = "rttMonLpdGrpStatsTable";
-}
-
-CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::~Rttmonlpdgrpstatsentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_data() const
-{
-    return rttmonlpdgrpstatsgroupindex.is_set
-	|| rttmonlpdgrpstatsstarttimeindex.is_set
-	|| rttmonlpdgrpstatsavgrtt.is_set
-	|| rttmonlpdgrpstatsgroupprobeindex.is_set
-	|| rttmonlpdgrpstatsgroupstatus.is_set
-	|| rttmonlpdgrpstatslpdcomptime.is_set
-	|| rttmonlpdgrpstatslpdfailcause.is_set
-	|| rttmonlpdgrpstatslpdfailoccurred.is_set
-	|| rttmonlpdgrpstatslpdstarttime.is_set
-	|| rttmonlpdgrpstatsmaxnumpaths.is_set
-	|| rttmonlpdgrpstatsmaxrtt.is_set
-	|| rttmonlpdgrpstatsminnumpaths.is_set
-	|| rttmonlpdgrpstatsminrtt.is_set
-	|| rttmonlpdgrpstatsnumoffail.is_set
-	|| rttmonlpdgrpstatsnumofpass.is_set
-	|| rttmonlpdgrpstatsnumoftimeout.is_set
-	|| rttmonlpdgrpstatspathids.is_set
-	|| rttmonlpdgrpstatsprobestatus.is_set
-	|| rttmonlpdgrpstatsresettime.is_set
-	|| rttmonlpdgrpstatstargetpe.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsgroupindex.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsstarttimeindex.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsavgrtt.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsgroupprobeindex.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsgroupstatus.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatslpdcomptime.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatslpdfailcause.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatslpdfailoccurred.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatslpdstarttime.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsmaxnumpaths.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsmaxrtt.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsminnumpaths.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsminrtt.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsnumoffail.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsnumofpass.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsnumoftimeout.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatspathids.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsprobestatus.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatsresettime.yfilter)
-	|| ydk::is_set(rttmonlpdgrpstatstargetpe.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonLpdGrpStatsEntry" <<"[rttMonLpdGrpStatsGroupIndex='" <<rttmonlpdgrpstatsgroupindex <<"']" <<"[rttMonLpdGrpStatsStartTimeIndex='" <<rttmonlpdgrpstatsstarttimeindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLpdGrpStatsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonlpdgrpstatsgroupindex.is_set || is_set(rttmonlpdgrpstatsgroupindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupindex.get_name_leafdata());
-    if (rttmonlpdgrpstatsstarttimeindex.is_set || is_set(rttmonlpdgrpstatsstarttimeindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsstarttimeindex.get_name_leafdata());
-    if (rttmonlpdgrpstatsavgrtt.is_set || is_set(rttmonlpdgrpstatsavgrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsavgrtt.get_name_leafdata());
-    if (rttmonlpdgrpstatsgroupprobeindex.is_set || is_set(rttmonlpdgrpstatsgroupprobeindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupprobeindex.get_name_leafdata());
-    if (rttmonlpdgrpstatsgroupstatus.is_set || is_set(rttmonlpdgrpstatsgroupstatus.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupstatus.get_name_leafdata());
-    if (rttmonlpdgrpstatslpdcomptime.is_set || is_set(rttmonlpdgrpstatslpdcomptime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdcomptime.get_name_leafdata());
-    if (rttmonlpdgrpstatslpdfailcause.is_set || is_set(rttmonlpdgrpstatslpdfailcause.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdfailcause.get_name_leafdata());
-    if (rttmonlpdgrpstatslpdfailoccurred.is_set || is_set(rttmonlpdgrpstatslpdfailoccurred.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdfailoccurred.get_name_leafdata());
-    if (rttmonlpdgrpstatslpdstarttime.is_set || is_set(rttmonlpdgrpstatslpdstarttime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdstarttime.get_name_leafdata());
-    if (rttmonlpdgrpstatsmaxnumpaths.is_set || is_set(rttmonlpdgrpstatsmaxnumpaths.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsmaxnumpaths.get_name_leafdata());
-    if (rttmonlpdgrpstatsmaxrtt.is_set || is_set(rttmonlpdgrpstatsmaxrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsmaxrtt.get_name_leafdata());
-    if (rttmonlpdgrpstatsminnumpaths.is_set || is_set(rttmonlpdgrpstatsminnumpaths.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsminnumpaths.get_name_leafdata());
-    if (rttmonlpdgrpstatsminrtt.is_set || is_set(rttmonlpdgrpstatsminrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsminrtt.get_name_leafdata());
-    if (rttmonlpdgrpstatsnumoffail.is_set || is_set(rttmonlpdgrpstatsnumoffail.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumoffail.get_name_leafdata());
-    if (rttmonlpdgrpstatsnumofpass.is_set || is_set(rttmonlpdgrpstatsnumofpass.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumofpass.get_name_leafdata());
-    if (rttmonlpdgrpstatsnumoftimeout.is_set || is_set(rttmonlpdgrpstatsnumoftimeout.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumoftimeout.get_name_leafdata());
-    if (rttmonlpdgrpstatspathids.is_set || is_set(rttmonlpdgrpstatspathids.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatspathids.get_name_leafdata());
-    if (rttmonlpdgrpstatsprobestatus.is_set || is_set(rttmonlpdgrpstatsprobestatus.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsprobestatus.get_name_leafdata());
-    if (rttmonlpdgrpstatsresettime.is_set || is_set(rttmonlpdgrpstatsresettime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsresettime.get_name_leafdata());
-    if (rttmonlpdgrpstatstargetpe.is_set || is_set(rttmonlpdgrpstatstargetpe.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatstargetpe.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonLpdGrpStatsGroupIndex")
-    {
-        rttmonlpdgrpstatsgroupindex = value;
-        rttmonlpdgrpstatsgroupindex.value_namespace = name_space;
-        rttmonlpdgrpstatsgroupindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsStartTimeIndex")
-    {
-        rttmonlpdgrpstatsstarttimeindex = value;
-        rttmonlpdgrpstatsstarttimeindex.value_namespace = name_space;
-        rttmonlpdgrpstatsstarttimeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsAvgRTT")
-    {
-        rttmonlpdgrpstatsavgrtt = value;
-        rttmonlpdgrpstatsavgrtt.value_namespace = name_space;
-        rttmonlpdgrpstatsavgrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsGroupProbeIndex")
-    {
-        rttmonlpdgrpstatsgroupprobeindex = value;
-        rttmonlpdgrpstatsgroupprobeindex.value_namespace = name_space;
-        rttmonlpdgrpstatsgroupprobeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsGroupStatus")
-    {
-        rttmonlpdgrpstatsgroupstatus = value;
-        rttmonlpdgrpstatsgroupstatus.value_namespace = name_space;
-        rttmonlpdgrpstatsgroupstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDCompTime")
-    {
-        rttmonlpdgrpstatslpdcomptime = value;
-        rttmonlpdgrpstatslpdcomptime.value_namespace = name_space;
-        rttmonlpdgrpstatslpdcomptime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDFailCause")
-    {
-        rttmonlpdgrpstatslpdfailcause = value;
-        rttmonlpdgrpstatslpdfailcause.value_namespace = name_space;
-        rttmonlpdgrpstatslpdfailcause.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDFailOccurred")
-    {
-        rttmonlpdgrpstatslpdfailoccurred = value;
-        rttmonlpdgrpstatslpdfailoccurred.value_namespace = name_space;
-        rttmonlpdgrpstatslpdfailoccurred.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDStartTime")
-    {
-        rttmonlpdgrpstatslpdstarttime = value;
-        rttmonlpdgrpstatslpdstarttime.value_namespace = name_space;
-        rttmonlpdgrpstatslpdstarttime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsMaxNumPaths")
-    {
-        rttmonlpdgrpstatsmaxnumpaths = value;
-        rttmonlpdgrpstatsmaxnumpaths.value_namespace = name_space;
-        rttmonlpdgrpstatsmaxnumpaths.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsMaxRTT")
-    {
-        rttmonlpdgrpstatsmaxrtt = value;
-        rttmonlpdgrpstatsmaxrtt.value_namespace = name_space;
-        rttmonlpdgrpstatsmaxrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsMinNumPaths")
-    {
-        rttmonlpdgrpstatsminnumpaths = value;
-        rttmonlpdgrpstatsminnumpaths.value_namespace = name_space;
-        rttmonlpdgrpstatsminnumpaths.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsMinRTT")
-    {
-        rttmonlpdgrpstatsminrtt = value;
-        rttmonlpdgrpstatsminrtt.value_namespace = name_space;
-        rttmonlpdgrpstatsminrtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfFail")
-    {
-        rttmonlpdgrpstatsnumoffail = value;
-        rttmonlpdgrpstatsnumoffail.value_namespace = name_space;
-        rttmonlpdgrpstatsnumoffail.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfPass")
-    {
-        rttmonlpdgrpstatsnumofpass = value;
-        rttmonlpdgrpstatsnumofpass.value_namespace = name_space;
-        rttmonlpdgrpstatsnumofpass.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfTimeout")
-    {
-        rttmonlpdgrpstatsnumoftimeout = value;
-        rttmonlpdgrpstatsnumoftimeout.value_namespace = name_space;
-        rttmonlpdgrpstatsnumoftimeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsPathIds")
-    {
-        rttmonlpdgrpstatspathids = value;
-        rttmonlpdgrpstatspathids.value_namespace = name_space;
-        rttmonlpdgrpstatspathids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsProbeStatus")
-    {
-        rttmonlpdgrpstatsprobestatus = value;
-        rttmonlpdgrpstatsprobestatus.value_namespace = name_space;
-        rttmonlpdgrpstatsprobestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsResetTime")
-    {
-        rttmonlpdgrpstatsresettime = value;
-        rttmonlpdgrpstatsresettime.value_namespace = name_space;
-        rttmonlpdgrpstatsresettime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonLpdGrpStatsTargetPE")
-    {
-        rttmonlpdgrpstatstargetpe = value;
-        rttmonlpdgrpstatstargetpe.value_namespace = name_space;
-        rttmonlpdgrpstatstargetpe.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonLpdGrpStatsGroupIndex")
-    {
-        rttmonlpdgrpstatsgroupindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsStartTimeIndex")
-    {
-        rttmonlpdgrpstatsstarttimeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsAvgRTT")
-    {
-        rttmonlpdgrpstatsavgrtt.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsGroupProbeIndex")
-    {
-        rttmonlpdgrpstatsgroupprobeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsGroupStatus")
-    {
-        rttmonlpdgrpstatsgroupstatus.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDCompTime")
-    {
-        rttmonlpdgrpstatslpdcomptime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDFailCause")
-    {
-        rttmonlpdgrpstatslpdfailcause.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDFailOccurred")
-    {
-        rttmonlpdgrpstatslpdfailoccurred.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsLPDStartTime")
-    {
-        rttmonlpdgrpstatslpdstarttime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsMaxNumPaths")
-    {
-        rttmonlpdgrpstatsmaxnumpaths.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsMaxRTT")
-    {
-        rttmonlpdgrpstatsmaxrtt.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsMinNumPaths")
-    {
-        rttmonlpdgrpstatsminnumpaths.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsMinRTT")
-    {
-        rttmonlpdgrpstatsminrtt.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfFail")
-    {
-        rttmonlpdgrpstatsnumoffail.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfPass")
-    {
-        rttmonlpdgrpstatsnumofpass.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsNumOfTimeout")
-    {
-        rttmonlpdgrpstatsnumoftimeout.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsPathIds")
-    {
-        rttmonlpdgrpstatspathids.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsProbeStatus")
-    {
-        rttmonlpdgrpstatsprobestatus.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsResetTime")
-    {
-        rttmonlpdgrpstatsresettime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonLpdGrpStatsTargetPE")
-    {
-        rttmonlpdgrpstatstargetpe.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonLpdGrpStatsGroupIndex" || name == "rttMonLpdGrpStatsStartTimeIndex" || name == "rttMonLpdGrpStatsAvgRTT" || name == "rttMonLpdGrpStatsGroupProbeIndex" || name == "rttMonLpdGrpStatsGroupStatus" || name == "rttMonLpdGrpStatsLPDCompTime" || name == "rttMonLpdGrpStatsLPDFailCause" || name == "rttMonLpdGrpStatsLPDFailOccurred" || name == "rttMonLpdGrpStatsLPDStartTime" || name == "rttMonLpdGrpStatsMaxNumPaths" || name == "rttMonLpdGrpStatsMaxRTT" || name == "rttMonLpdGrpStatsMinNumPaths" || name == "rttMonLpdGrpStatsMinRTT" || name == "rttMonLpdGrpStatsNumOfFail" || name == "rttMonLpdGrpStatsNumOfPass" || name == "rttMonLpdGrpStatsNumOfTimeout" || name == "rttMonLpdGrpStatsPathIds" || name == "rttMonLpdGrpStatsProbeStatus" || name == "rttMonLpdGrpStatsResetTime" || name == "rttMonLpdGrpStatsTargetPE")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectiontable()
-{
-    yang_name = "rttMonHistoryCollectionTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonhistorycollectiontable::~Rttmonhistorycollectiontable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::has_data() const
-{
-    for (std::size_t index=0; index<rttmonhistorycollectionentry.size(); index++)
-    {
-        if(rttmonhistorycollectionentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::has_operation() const
-{
-    for (std::size_t index=0; index<rttmonhistorycollectionentry.size(); index++)
-    {
-        if(rttmonhistorycollectionentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonhistorycollectiontable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonHistoryCollectionTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonhistorycollectiontable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhistorycollectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rttMonHistoryCollectionEntry")
-    {
-        for(auto const & c : rttmonhistorycollectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry>();
-        c->parent = this;
-        rttmonhistorycollectionentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonhistorycollectiontable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rttmonhistorycollectionentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonhistorycollectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoRttmonMib::Rttmonhistorycollectiontable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonHistoryCollectionEntry")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::Rttmonhistorycollectionentry()
-    :
-    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
-    rttmonhistorycollectionlifeindex{YType::int32, "rttMonHistoryCollectionLifeIndex"},
-    rttmonhistorycollectionbucketindex{YType::int32, "rttMonHistoryCollectionBucketIndex"},
-    rttmonhistorycollectionsampleindex{YType::int32, "rttMonHistoryCollectionSampleIndex"},
-    rttmonhistorycollectionaddress{YType::str, "rttMonHistoryCollectionAddress"},
-    rttmonhistorycollectionapplspecificsense{YType::int32, "rttMonHistoryCollectionApplSpecificSense"},
-    rttmonhistorycollectioncompletiontime{YType::uint32, "rttMonHistoryCollectionCompletionTime"},
-    rttmonhistorycollectionsampletime{YType::uint32, "rttMonHistoryCollectionSampleTime"},
-    rttmonhistorycollectionsense{YType::enumeration, "rttMonHistoryCollectionSense"},
-    rttmonhistorycollectionsensedescription{YType::str, "rttMonHistoryCollectionSenseDescription"}
-{
-    yang_name = "rttMonHistoryCollectionEntry"; yang_parent_name = "rttMonHistoryCollectionTable";
-}
-
-CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::~Rttmonhistorycollectionentry()
-{
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_data() const
-{
-    return rttmonctrladminindex.is_set
-	|| rttmonhistorycollectionlifeindex.is_set
-	|| rttmonhistorycollectionbucketindex.is_set
-	|| rttmonhistorycollectionsampleindex.is_set
-	|| rttmonhistorycollectionaddress.is_set
-	|| rttmonhistorycollectionapplspecificsense.is_set
-	|| rttmonhistorycollectioncompletiontime.is_set
-	|| rttmonhistorycollectionsampletime.is_set
-	|| rttmonhistorycollectionsense.is_set
-	|| rttmonhistorycollectionsensedescription.is_set;
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rttmonctrladminindex.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionlifeindex.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionbucketindex.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionsampleindex.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionaddress.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionapplspecificsense.yfilter)
-	|| ydk::is_set(rttmonhistorycollectioncompletiontime.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionsampletime.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionsense.yfilter)
-	|| ydk::is_set(rttmonhistorycollectionsensedescription.yfilter);
-}
-
-std::string CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rttMonHistoryCollectionEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonHistoryCollectionLifeIndex='" <<rttmonhistorycollectionlifeindex <<"']" <<"[rttMonHistoryCollectionBucketIndex='" <<rttmonhistorycollectionbucketindex <<"']" <<"[rttMonHistoryCollectionSampleIndex='" <<rttmonhistorycollectionsampleindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonHistoryCollectionTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
-    if (rttmonhistorycollectionlifeindex.is_set || is_set(rttmonhistorycollectionlifeindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionlifeindex.get_name_leafdata());
-    if (rttmonhistorycollectionbucketindex.is_set || is_set(rttmonhistorycollectionbucketindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionbucketindex.get_name_leafdata());
-    if (rttmonhistorycollectionsampleindex.is_set || is_set(rttmonhistorycollectionsampleindex.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsampleindex.get_name_leafdata());
-    if (rttmonhistorycollectionaddress.is_set || is_set(rttmonhistorycollectionaddress.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionaddress.get_name_leafdata());
-    if (rttmonhistorycollectionapplspecificsense.is_set || is_set(rttmonhistorycollectionapplspecificsense.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionapplspecificsense.get_name_leafdata());
-    if (rttmonhistorycollectioncompletiontime.is_set || is_set(rttmonhistorycollectioncompletiontime.yfilter)) leaf_name_data.push_back(rttmonhistorycollectioncompletiontime.get_name_leafdata());
-    if (rttmonhistorycollectionsampletime.is_set || is_set(rttmonhistorycollectionsampletime.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsampletime.get_name_leafdata());
-    if (rttmonhistorycollectionsense.is_set || is_set(rttmonhistorycollectionsense.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsense.get_name_leafdata());
-    if (rttmonhistorycollectionsensedescription.is_set || is_set(rttmonhistorycollectionsensedescription.yfilter)) leaf_name_data.push_back(rttmonhistorycollectionsensedescription.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex = value;
-        rttmonctrladminindex.value_namespace = name_space;
-        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionLifeIndex")
-    {
-        rttmonhistorycollectionlifeindex = value;
-        rttmonhistorycollectionlifeindex.value_namespace = name_space;
-        rttmonhistorycollectionlifeindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionBucketIndex")
-    {
-        rttmonhistorycollectionbucketindex = value;
-        rttmonhistorycollectionbucketindex.value_namespace = name_space;
-        rttmonhistorycollectionbucketindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionSampleIndex")
-    {
-        rttmonhistorycollectionsampleindex = value;
-        rttmonhistorycollectionsampleindex.value_namespace = name_space;
-        rttmonhistorycollectionsampleindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionAddress")
-    {
-        rttmonhistorycollectionaddress = value;
-        rttmonhistorycollectionaddress.value_namespace = name_space;
-        rttmonhistorycollectionaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionApplSpecificSense")
-    {
-        rttmonhistorycollectionapplspecificsense = value;
-        rttmonhistorycollectionapplspecificsense.value_namespace = name_space;
-        rttmonhistorycollectionapplspecificsense.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionCompletionTime")
-    {
-        rttmonhistorycollectioncompletiontime = value;
-        rttmonhistorycollectioncompletiontime.value_namespace = name_space;
-        rttmonhistorycollectioncompletiontime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionSampleTime")
-    {
-        rttmonhistorycollectionsampletime = value;
-        rttmonhistorycollectionsampletime.value_namespace = name_space;
-        rttmonhistorycollectionsampletime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionSense")
-    {
-        rttmonhistorycollectionsense = value;
-        rttmonhistorycollectionsense.value_namespace = name_space;
-        rttmonhistorycollectionsense.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rttMonHistoryCollectionSenseDescription")
-    {
-        rttmonhistorycollectionsensedescription = value;
-        rttmonhistorycollectionsensedescription.value_namespace = name_space;
-        rttmonhistorycollectionsensedescription.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rttMonCtrlAdminIndex")
-    {
-        rttmonctrladminindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionLifeIndex")
-    {
-        rttmonhistorycollectionlifeindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionBucketIndex")
-    {
-        rttmonhistorycollectionbucketindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionSampleIndex")
-    {
-        rttmonhistorycollectionsampleindex.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionAddress")
-    {
-        rttmonhistorycollectionaddress.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionApplSpecificSense")
-    {
-        rttmonhistorycollectionapplspecificsense.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionCompletionTime")
-    {
-        rttmonhistorycollectioncompletiontime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionSampleTime")
-    {
-        rttmonhistorycollectionsampletime.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionSense")
-    {
-        rttmonhistorycollectionsense.yfilter = yfilter;
-    }
-    if(value_path == "rttMonHistoryCollectionSenseDescription")
-    {
-        rttmonhistorycollectionsensedescription.yfilter = yfilter;
-    }
-}
-
-bool CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rttMonCtrlAdminIndex" || name == "rttMonHistoryCollectionLifeIndex" || name == "rttMonHistoryCollectionBucketIndex" || name == "rttMonHistoryCollectionSampleIndex" || name == "rttMonHistoryCollectionAddress" || name == "rttMonHistoryCollectionApplSpecificSense" || name == "rttMonHistoryCollectionCompletionTime" || name == "rttMonHistoryCollectionSampleTime" || name == "rttMonHistoryCollectionSense" || name == "rttMonHistoryCollectionSenseDescription")
-        return true;
-    return false;
-}
-
-CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpopertable()
-{
-    yang_name = "rttMonLatestHTTPOperTable"; yang_parent_name = "CISCO-RTTMON-MIB";
-}
-
-CiscoRttmonMib::Rttmonlatesthttpopertable::~Rttmonlatesthttpopertable()
-{
-}
-
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::has_data() const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::has_data() const
 {
     for (std::size_t index=0; index<rttmonlatesthttpoperentry.size(); index++)
     {
@@ -9919,7 +6680,7 @@ bool CiscoRttmonMib::Rttmonlatesthttpopertable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::has_operation() const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonlatesthttpoperentry.size(); index++)
     {
@@ -9929,37 +6690,30 @@ bool CiscoRttmonMib::Rttmonlatesthttpopertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonlatesthttpopertable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonlatesthttpopertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonlatesthttpopertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonLatestHTTPOperTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonlatesthttpopertable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlatesthttpopertable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatesthttpopertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatesthttpopertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonLatestHTTPOperEntry")
     {
@@ -9971,7 +6725,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatesthttpopertable::get_child_by_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry>();
         c->parent = this;
         rttmonlatesthttpoperentry.push_back(c);
         return c;
@@ -9980,7 +6734,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatesthttpopertable::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatesthttpopertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatesthttpopertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonlatesthttpoperentry)
@@ -9991,22 +6745,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatesthttpo
     return children;
 }
 
-void CiscoRttmonMib::Rttmonlatesthttpopertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonlatesthttpopertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonlatesthttpopertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonlatesthttpopertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonLatestHTTPOperEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::Rttmonlatesthttpoperentry()
+CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::Rttmonlatesthttpoperentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonlatesthttperrorsensedescription{YType::str, "rttMonLatestHTTPErrorSenseDescription"},
@@ -10017,14 +6771,15 @@ CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::Rttmonlate
     rttmonlatesthttpopertcpconnectrtt{YType::uint32, "rttMonLatestHTTPOperTCPConnectRTT"},
     rttmonlatesthttpopertransactionrtt{YType::uint32, "rttMonLatestHTTPOperTransactionRTT"}
 {
-    yang_name = "rttMonLatestHTTPOperEntry"; yang_parent_name = "rttMonLatestHTTPOperTable";
+
+    yang_name = "rttMonLatestHTTPOperEntry"; yang_parent_name = "rttMonLatestHTTPOperTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::~Rttmonlatesthttpoperentry()
+CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::~Rttmonlatesthttpoperentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_data() const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonlatesthttperrorsensedescription.is_set
@@ -10036,7 +6791,7 @@ bool CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_d
 	|| rttmonlatesthttpopertransactionrtt.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -10049,27 +6804,22 @@ bool CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_o
 	|| ydk::is_set(rttmonlatesthttpopertransactionrtt.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLatestHTTPOperTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonLatestHTTPOperEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLatestHTTPOperTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -10081,24 +6831,22 @@ const EntityPath CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoper
     if (rttmonlatesthttpopertcpconnectrtt.is_set || is_set(rttmonlatesthttpopertcpconnectrtt.yfilter)) leaf_name_data.push_back(rttmonlatesthttpopertcpconnectrtt.get_name_leafdata());
     if (rttmonlatesthttpopertransactionrtt.is_set || is_set(rttmonlatesthttpopertransactionrtt.yfilter)) leaf_name_data.push_back(rttmonlatesthttpopertransactionrtt.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -10150,7 +6898,7 @@ void CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_v
     }
 }
 
-void CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -10186,23 +6934,24 @@ void CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::set_f
     }
 }
 
-bool CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonLatestHTTPErrorSenseDescription" || name == "rttMonLatestHTTPOperDNSRTT" || name == "rttMonLatestHTTPOperMessageBodyOctets" || name == "rttMonLatestHTTPOperRTT" || name == "rttMonLatestHTTPOperSense" || name == "rttMonLatestHTTPOperTCPConnectRTT" || name == "rttMonLatestHTTPOperTransactionRTT")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteropertable()
+CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteropertable()
 {
-    yang_name = "rttMonLatestJitterOperTable"; yang_parent_name = "CISCO-RTTMON-MIB";
+
+    yang_name = "rttMonLatestJitterOperTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonlatestjitteropertable::~Rttmonlatestjitteropertable()
+CISCORTTMONMIB::Rttmonlatestjitteropertable::~Rttmonlatestjitteropertable()
 {
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::has_data() const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::has_data() const
 {
     for (std::size_t index=0; index<rttmonlatestjitteroperentry.size(); index++)
     {
@@ -10212,7 +6961,7 @@ bool CiscoRttmonMib::Rttmonlatestjitteropertable::has_data() const
     return false;
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::has_operation() const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::has_operation() const
 {
     for (std::size_t index=0; index<rttmonlatestjitteroperentry.size(); index++)
     {
@@ -10222,37 +6971,30 @@ bool CiscoRttmonMib::Rttmonlatestjitteropertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonlatestjitteropertable::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonlatestjitteropertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonlatestjitteropertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonLatestJitterOperTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonlatestjitteropertable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlatestjitteropertable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatestjitteropertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatestjitteropertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonLatestJitterOperEntry")
     {
@@ -10264,7 +7006,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatestjitteropertable::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry>();
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry>();
         c->parent = this;
         rttmonlatestjitteroperentry.push_back(c);
         return c;
@@ -10273,7 +7015,7 @@ std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatestjitteropertable::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatestjitteropertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatestjitteropertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : rttmonlatestjitteroperentry)
@@ -10284,22 +7026,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatestjitte
     return children;
 }
 
-void CiscoRttmonMib::Rttmonlatestjitteropertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonlatestjitteropertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRttmonMib::Rttmonlatestjitteropertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonlatestjitteropertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonLatestJitterOperEntry")
         return true;
     return false;
 }
 
-CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperentry()
+CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperentry()
     :
     rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
     rttmonlatestjittererrorsensedescription{YType::str, "rttMonLatestJitterErrorSenseDescription"},
@@ -10361,14 +7103,15 @@ CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmon
     rttmonlatestjitteropersumofpositivessd{YType::uint32, "rttMonLatestJitterOperSumOfPositivesSD"},
     rttmonlatestjitteroperunsyncrts{YType::uint32, "rttMonLatestJitterOperUnSyncRTs"}
 {
-    yang_name = "rttMonLatestJitterOperEntry"; yang_parent_name = "rttMonLatestJitterOperTable";
+
+    yang_name = "rttMonLatestJitterOperEntry"; yang_parent_name = "rttMonLatestJitterOperTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::~Rttmonlatestjitteroperentry()
+CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::~Rttmonlatestjitteroperentry()
 {
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_data() const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_data() const
 {
     return rttmonctrladminindex.is_set
 	|| rttmonlatestjittererrorsensedescription.is_set
@@ -10431,7 +7174,7 @@ bool CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::h
 	|| rttmonlatestjitteroperunsyncrts.is_set;
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_operation() const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rttmonctrladminindex.yfilter)
@@ -10495,27 +7238,22 @@ bool CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::h
 	|| ydk::is_set(rttmonlatestjitteroperunsyncrts.yfilter);
 }
 
-std::string CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_segment_path() const
+std::string CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLatestJitterOperTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rttMonLatestJitterOperEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLatestJitterOperTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
@@ -10578,24 +7316,22 @@ const EntityPath CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitter
     if (rttmonlatestjitteropersumofpositivessd.is_set || is_set(rttmonlatestjitteropersumofpositivessd.yfilter)) leaf_name_data.push_back(rttmonlatestjitteropersumofpositivessd.get_name_leafdata());
     if (rttmonlatestjitteroperunsyncrts.is_set || is_set(rttmonlatestjitteroperunsyncrts.yfilter)) leaf_name_data.push_back(rttmonlatestjitteroperunsyncrts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -10953,7 +7689,7 @@ void CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::s
     }
 }
 
-void CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rttMonCtrlAdminIndex")
     {
@@ -11193,102 +7929,3050 @@ void CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::s
     }
 }
 
-bool CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rttMonCtrlAdminIndex" || name == "rttMonLatestJitterErrorSenseDescription" || name == "rttMonLatestJitterOperAvgDSJ" || name == "rttMonLatestJitterOperAvgJitter" || name == "rttMonLatestJitterOperAvgSDJ" || name == "rttMonLatestJitterOperIAJIn" || name == "rttMonLatestJitterOperIAJOut" || name == "rttMonLatestJitterOperICPIF" || name == "rttMonLatestJitterOperMaxOfNegativesDS" || name == "rttMonLatestJitterOperMaxOfNegativesSD" || name == "rttMonLatestJitterOperMaxOfPositivesDS" || name == "rttMonLatestJitterOperMaxOfPositivesSD" || name == "rttMonLatestJitterOperMinOfNegativesDS" || name == "rttMonLatestJitterOperMinOfNegativesSD" || name == "rttMonLatestJitterOperMinOfPositivesDS" || name == "rttMonLatestJitterOperMinOfPositivesSD" || name == "rttMonLatestJitterOperMOS" || name == "rttMonLatestJitterOperNTPState" || name == "rttMonLatestJitterOperNumOfNegativesDS" || name == "rttMonLatestJitterOperNumOfNegativesSD" || name == "rttMonLatestJitterOperNumOfOW" || name == "rttMonLatestJitterOperNumOfPositivesDS" || name == "rttMonLatestJitterOperNumOfPositivesSD" || name == "rttMonLatestJitterOperNumOfRTT" || name == "rttMonLatestJitterOperOWAvgDS" || name == "rttMonLatestJitterOperOWAvgSD" || name == "rttMonLatestJitterOperOWMaxDS" || name == "rttMonLatestJitterOperOWMaxSD" || name == "rttMonLatestJitterOperOWMinDS" || name == "rttMonLatestJitterOperOWMinSD" || name == "rttMonLatestJitterOperOWSum2DS" || name == "rttMonLatestJitterOperOWSum2DSHigh" || name == "rttMonLatestJitterOperOWSum2SD" || name == "rttMonLatestJitterOperOWSum2SDHigh" || name == "rttMonLatestJitterOperOWSumDS" || name == "rttMonLatestJitterOperOWSumDSHigh" || name == "rttMonLatestJitterOperOWSumSD" || name == "rttMonLatestJitterOperOWSumSDHigh" || name == "rttMonLatestJitterOperPacketLateArrival" || name == "rttMonLatestJitterOperPacketLossDS" || name == "rttMonLatestJitterOperPacketLossSD" || name == "rttMonLatestJitterOperPacketMIA" || name == "rttMonLatestJitterOperPacketOutOfSequence" || name == "rttMonLatestJitterOperRTTMax" || name == "rttMonLatestJitterOperRTTMin" || name == "rttMonLatestJitterOperRTTSum" || name == "rttMonLatestJitterOperRTTSum2" || name == "rttMonLatestJitterOperRTTSum2High" || name == "rttMonLatestJitterOperRTTSumHigh" || name == "rttMonLatestJitterOperSense" || name == "rttMonLatestJitterOperSum2NegativesDS" || name == "rttMonLatestJitterOperSum2NegativesSD" || name == "rttMonLatestJitterOperSum2PositivesDS" || name == "rttMonLatestJitterOperSum2PositivesSD" || name == "rttMonLatestJitterOperSumOfNegativesDS" || name == "rttMonLatestJitterOperSumOfNegativesSD" || name == "rttMonLatestJitterOperSumOfPositivesDS" || name == "rttMonLatestJitterOperSumOfPositivesSD" || name == "rttMonLatestJitterOperUnSyncRTs")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype::filePath {1, "filePath"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype::scriptName {2, "scriptName"};
+CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatstable()
+{
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::never {1, "never"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::immediate {2, "immediate"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::consecutive {3, "consecutive"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::xOfy {4, "xOfy"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::average {5, "average"};
+    yang_name = "rttMonLpdGrpStatsTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapOnly {2, "trapOnly"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::nmvtOnly {3, "nmvtOnly"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::triggerOnly {4, "triggerOnly"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapAndNmvt {5, "trapAndNmvt"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapAndTrigger {6, "trapAndTrigger"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::nmvtAndTrigger {7, "nmvtAndTrigger"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapNmvtAndTrigger {8, "trapNmvtAndTrigger"};
+CISCORTTMONMIB::Rttmonlpdgrpstatstable::~Rttmonlpdgrpstatstable()
+{
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::all {2, "all"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::overThreshold {3, "overThreshold"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::failures {4, "failures"};
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonlpdgrpstatsentry.size(); index++)
+    {
+        if(rttmonlpdgrpstatsentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::reset {1, "reset"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::orderlyStop {2, "orderlyStop"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::immediateStop {3, "immediateStop"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::pending {4, "pending"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::inactive {5, "inactive"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::active {6, "active"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::restart {7, "restart"};
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonlpdgrpstatsentry.size(); index++)
+    {
+        if(rttmonlpdgrpstatsentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminlspfectype::ldpIpv4Prefix {1, "ldpIpv4Prefix"};
+std::string CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision::milliseconds {1, "milliseconds"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision::microseconds {2, "microseconds"};
+std::string CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonLpdGrpStatsTable";
+    return path_buffer.str();
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority::normal {1, "normal"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority::high {2, "high"};
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype::percent {1, "percent"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype::absolute {2, "absolute"};
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::be {1, "be"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::gs {2, "gs"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::na {3, "na"};
+    return leaf_name_data;
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n256 {1, "n256"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n1k {2, "n1k"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n64k {3, "n64k"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n128k {4, "n128k"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n256k {5, "n256k"};
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::write {1, "write"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::read {2, "read"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::writeRead {3, "writeRead"};
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonLpdGrpStatsEntry")
+    {
+        for(auto const & c : rttmonlpdgrpstatsentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry>();
+        c->parent = this;
+        rttmonlpdgrpstatsentry.push_back(c);
+        return c;
+    }
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate::active {1, "active"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate::pending {2, "pending"};
+    return nullptr;
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::timeout {2, "timeout"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::connectionLoss {3, "connectionLoss"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::both {4, "both"};
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonlpdgrpstatsentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
 
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::never {1, "never"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::immediate {2, "immediate"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::consecutive {3, "consecutive"};
+    return children;
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype::trapOnly {2, "trapOnly"};
+void CISCORTTMONMIB::Rttmonlpdgrpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdPathDiscovery {2, "lpdPathDiscovery"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdGroupStatus {3, "lpdGroupStatus"};
-const Enum::YLeaf CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdAll {4, "lpdAll"};
+void CISCORTTMONMIB::Rttmonlpdgrpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::never {1, "never"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::immediate {2, "immediate"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::consecutive {3, "consecutive"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::xOfy {4, "xOfy"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::average {5, "average"};
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonLpdGrpStatsEntry")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::none {1, "none"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::trapOnly {2, "trapOnly"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::triggerOnly {3, "triggerOnly"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::trapAndTrigger {4, "trapAndTrigger"};
+CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::Rttmonlpdgrpstatsentry()
+    :
+    rttmonlpdgrpstatsgroupindex{YType::int32, "rttMonLpdGrpStatsGroupIndex"},
+    rttmonlpdgrpstatsstarttimeindex{YType::uint32, "rttMonLpdGrpStatsStartTimeIndex"},
+    rttmonlpdgrpstatsavgrtt{YType::int32, "rttMonLpdGrpStatsAvgRTT"},
+    rttmonlpdgrpstatsgroupprobeindex{YType::int32, "rttMonLpdGrpStatsGroupProbeIndex"},
+    rttmonlpdgrpstatsgroupstatus{YType::enumeration, "rttMonLpdGrpStatsGroupStatus"},
+    rttmonlpdgrpstatslpdcomptime{YType::int32, "rttMonLpdGrpStatsLPDCompTime"},
+    rttmonlpdgrpstatslpdfailcause{YType::enumeration, "rttMonLpdGrpStatsLPDFailCause"},
+    rttmonlpdgrpstatslpdfailoccurred{YType::boolean, "rttMonLpdGrpStatsLPDFailOccurred"},
+    rttmonlpdgrpstatslpdstarttime{YType::uint32, "rttMonLpdGrpStatsLPDStartTime"},
+    rttmonlpdgrpstatsmaxnumpaths{YType::int32, "rttMonLpdGrpStatsMaxNumPaths"},
+    rttmonlpdgrpstatsmaxrtt{YType::int32, "rttMonLpdGrpStatsMaxRTT"},
+    rttmonlpdgrpstatsminnumpaths{YType::int32, "rttMonLpdGrpStatsMinNumPaths"},
+    rttmonlpdgrpstatsminrtt{YType::int32, "rttMonLpdGrpStatsMinRTT"},
+    rttmonlpdgrpstatsnumoffail{YType::int32, "rttMonLpdGrpStatsNumOfFail"},
+    rttmonlpdgrpstatsnumofpass{YType::int32, "rttMonLpdGrpStatsNumOfPass"},
+    rttmonlpdgrpstatsnumoftimeout{YType::int32, "rttMonLpdGrpStatsNumOfTimeout"},
+    rttmonlpdgrpstatspathids{YType::str, "rttMonLpdGrpStatsPathIds"},
+    rttmonlpdgrpstatsprobestatus{YType::str, "rttMonLpdGrpStatsProbeStatus"},
+    rttmonlpdgrpstatsresettime{YType::uint32, "rttMonLpdGrpStatsResetTime"},
+    rttmonlpdgrpstatstargetpe{YType::str, "rttMonLpdGrpStatsTargetPE"}
+{
 
-const Enum::YLeaf CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate::sync {1, "sync"};
-const Enum::YLeaf CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate::outOfSync {2, "outOfSync"};
+    yang_name = "rttMonLpdGrpStatsEntry"; yang_parent_name = "rttMonLpdGrpStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::~Rttmonlpdgrpstatsentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_data() const
+{
+    return rttmonlpdgrpstatsgroupindex.is_set
+	|| rttmonlpdgrpstatsstarttimeindex.is_set
+	|| rttmonlpdgrpstatsavgrtt.is_set
+	|| rttmonlpdgrpstatsgroupprobeindex.is_set
+	|| rttmonlpdgrpstatsgroupstatus.is_set
+	|| rttmonlpdgrpstatslpdcomptime.is_set
+	|| rttmonlpdgrpstatslpdfailcause.is_set
+	|| rttmonlpdgrpstatslpdfailoccurred.is_set
+	|| rttmonlpdgrpstatslpdstarttime.is_set
+	|| rttmonlpdgrpstatsmaxnumpaths.is_set
+	|| rttmonlpdgrpstatsmaxrtt.is_set
+	|| rttmonlpdgrpstatsminnumpaths.is_set
+	|| rttmonlpdgrpstatsminrtt.is_set
+	|| rttmonlpdgrpstatsnumoffail.is_set
+	|| rttmonlpdgrpstatsnumofpass.is_set
+	|| rttmonlpdgrpstatsnumoftimeout.is_set
+	|| rttmonlpdgrpstatspathids.is_set
+	|| rttmonlpdgrpstatsprobestatus.is_set
+	|| rttmonlpdgrpstatsresettime.is_set
+	|| rttmonlpdgrpstatstargetpe.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsgroupindex.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsstarttimeindex.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsavgrtt.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsgroupprobeindex.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsgroupstatus.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatslpdcomptime.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatslpdfailcause.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatslpdfailoccurred.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatslpdstarttime.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsmaxnumpaths.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsmaxrtt.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsminnumpaths.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsminrtt.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsnumoffail.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsnumofpass.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsnumoftimeout.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatspathids.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsprobestatus.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatsresettime.yfilter)
+	|| ydk::is_set(rttmonlpdgrpstatstargetpe.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonLpdGrpStatsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonLpdGrpStatsEntry" <<"[rttMonLpdGrpStatsGroupIndex='" <<rttmonlpdgrpstatsgroupindex <<"']" <<"[rttMonLpdGrpStatsStartTimeIndex='" <<rttmonlpdgrpstatsstarttimeindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonlpdgrpstatsgroupindex.is_set || is_set(rttmonlpdgrpstatsgroupindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupindex.get_name_leafdata());
+    if (rttmonlpdgrpstatsstarttimeindex.is_set || is_set(rttmonlpdgrpstatsstarttimeindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsstarttimeindex.get_name_leafdata());
+    if (rttmonlpdgrpstatsavgrtt.is_set || is_set(rttmonlpdgrpstatsavgrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsavgrtt.get_name_leafdata());
+    if (rttmonlpdgrpstatsgroupprobeindex.is_set || is_set(rttmonlpdgrpstatsgroupprobeindex.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupprobeindex.get_name_leafdata());
+    if (rttmonlpdgrpstatsgroupstatus.is_set || is_set(rttmonlpdgrpstatsgroupstatus.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsgroupstatus.get_name_leafdata());
+    if (rttmonlpdgrpstatslpdcomptime.is_set || is_set(rttmonlpdgrpstatslpdcomptime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdcomptime.get_name_leafdata());
+    if (rttmonlpdgrpstatslpdfailcause.is_set || is_set(rttmonlpdgrpstatslpdfailcause.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdfailcause.get_name_leafdata());
+    if (rttmonlpdgrpstatslpdfailoccurred.is_set || is_set(rttmonlpdgrpstatslpdfailoccurred.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdfailoccurred.get_name_leafdata());
+    if (rttmonlpdgrpstatslpdstarttime.is_set || is_set(rttmonlpdgrpstatslpdstarttime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatslpdstarttime.get_name_leafdata());
+    if (rttmonlpdgrpstatsmaxnumpaths.is_set || is_set(rttmonlpdgrpstatsmaxnumpaths.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsmaxnumpaths.get_name_leafdata());
+    if (rttmonlpdgrpstatsmaxrtt.is_set || is_set(rttmonlpdgrpstatsmaxrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsmaxrtt.get_name_leafdata());
+    if (rttmonlpdgrpstatsminnumpaths.is_set || is_set(rttmonlpdgrpstatsminnumpaths.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsminnumpaths.get_name_leafdata());
+    if (rttmonlpdgrpstatsminrtt.is_set || is_set(rttmonlpdgrpstatsminrtt.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsminrtt.get_name_leafdata());
+    if (rttmonlpdgrpstatsnumoffail.is_set || is_set(rttmonlpdgrpstatsnumoffail.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumoffail.get_name_leafdata());
+    if (rttmonlpdgrpstatsnumofpass.is_set || is_set(rttmonlpdgrpstatsnumofpass.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumofpass.get_name_leafdata());
+    if (rttmonlpdgrpstatsnumoftimeout.is_set || is_set(rttmonlpdgrpstatsnumoftimeout.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsnumoftimeout.get_name_leafdata());
+    if (rttmonlpdgrpstatspathids.is_set || is_set(rttmonlpdgrpstatspathids.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatspathids.get_name_leafdata());
+    if (rttmonlpdgrpstatsprobestatus.is_set || is_set(rttmonlpdgrpstatsprobestatus.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsprobestatus.get_name_leafdata());
+    if (rttmonlpdgrpstatsresettime.is_set || is_set(rttmonlpdgrpstatsresettime.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatsresettime.get_name_leafdata());
+    if (rttmonlpdgrpstatstargetpe.is_set || is_set(rttmonlpdgrpstatstargetpe.yfilter)) leaf_name_data.push_back(rttmonlpdgrpstatstargetpe.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonLpdGrpStatsGroupIndex")
+    {
+        rttmonlpdgrpstatsgroupindex = value;
+        rttmonlpdgrpstatsgroupindex.value_namespace = name_space;
+        rttmonlpdgrpstatsgroupindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsStartTimeIndex")
+    {
+        rttmonlpdgrpstatsstarttimeindex = value;
+        rttmonlpdgrpstatsstarttimeindex.value_namespace = name_space;
+        rttmonlpdgrpstatsstarttimeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsAvgRTT")
+    {
+        rttmonlpdgrpstatsavgrtt = value;
+        rttmonlpdgrpstatsavgrtt.value_namespace = name_space;
+        rttmonlpdgrpstatsavgrtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsGroupProbeIndex")
+    {
+        rttmonlpdgrpstatsgroupprobeindex = value;
+        rttmonlpdgrpstatsgroupprobeindex.value_namespace = name_space;
+        rttmonlpdgrpstatsgroupprobeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsGroupStatus")
+    {
+        rttmonlpdgrpstatsgroupstatus = value;
+        rttmonlpdgrpstatsgroupstatus.value_namespace = name_space;
+        rttmonlpdgrpstatsgroupstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDCompTime")
+    {
+        rttmonlpdgrpstatslpdcomptime = value;
+        rttmonlpdgrpstatslpdcomptime.value_namespace = name_space;
+        rttmonlpdgrpstatslpdcomptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDFailCause")
+    {
+        rttmonlpdgrpstatslpdfailcause = value;
+        rttmonlpdgrpstatslpdfailcause.value_namespace = name_space;
+        rttmonlpdgrpstatslpdfailcause.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDFailOccurred")
+    {
+        rttmonlpdgrpstatslpdfailoccurred = value;
+        rttmonlpdgrpstatslpdfailoccurred.value_namespace = name_space;
+        rttmonlpdgrpstatslpdfailoccurred.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDStartTime")
+    {
+        rttmonlpdgrpstatslpdstarttime = value;
+        rttmonlpdgrpstatslpdstarttime.value_namespace = name_space;
+        rttmonlpdgrpstatslpdstarttime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsMaxNumPaths")
+    {
+        rttmonlpdgrpstatsmaxnumpaths = value;
+        rttmonlpdgrpstatsmaxnumpaths.value_namespace = name_space;
+        rttmonlpdgrpstatsmaxnumpaths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsMaxRTT")
+    {
+        rttmonlpdgrpstatsmaxrtt = value;
+        rttmonlpdgrpstatsmaxrtt.value_namespace = name_space;
+        rttmonlpdgrpstatsmaxrtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsMinNumPaths")
+    {
+        rttmonlpdgrpstatsminnumpaths = value;
+        rttmonlpdgrpstatsminnumpaths.value_namespace = name_space;
+        rttmonlpdgrpstatsminnumpaths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsMinRTT")
+    {
+        rttmonlpdgrpstatsminrtt = value;
+        rttmonlpdgrpstatsminrtt.value_namespace = name_space;
+        rttmonlpdgrpstatsminrtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfFail")
+    {
+        rttmonlpdgrpstatsnumoffail = value;
+        rttmonlpdgrpstatsnumoffail.value_namespace = name_space;
+        rttmonlpdgrpstatsnumoffail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfPass")
+    {
+        rttmonlpdgrpstatsnumofpass = value;
+        rttmonlpdgrpstatsnumofpass.value_namespace = name_space;
+        rttmonlpdgrpstatsnumofpass.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfTimeout")
+    {
+        rttmonlpdgrpstatsnumoftimeout = value;
+        rttmonlpdgrpstatsnumoftimeout.value_namespace = name_space;
+        rttmonlpdgrpstatsnumoftimeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsPathIds")
+    {
+        rttmonlpdgrpstatspathids = value;
+        rttmonlpdgrpstatspathids.value_namespace = name_space;
+        rttmonlpdgrpstatspathids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsProbeStatus")
+    {
+        rttmonlpdgrpstatsprobestatus = value;
+        rttmonlpdgrpstatsprobestatus.value_namespace = name_space;
+        rttmonlpdgrpstatsprobestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsResetTime")
+    {
+        rttmonlpdgrpstatsresettime = value;
+        rttmonlpdgrpstatsresettime.value_namespace = name_space;
+        rttmonlpdgrpstatsresettime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonLpdGrpStatsTargetPE")
+    {
+        rttmonlpdgrpstatstargetpe = value;
+        rttmonlpdgrpstatstargetpe.value_namespace = name_space;
+        rttmonlpdgrpstatstargetpe.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonLpdGrpStatsGroupIndex")
+    {
+        rttmonlpdgrpstatsgroupindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsStartTimeIndex")
+    {
+        rttmonlpdgrpstatsstarttimeindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsAvgRTT")
+    {
+        rttmonlpdgrpstatsavgrtt.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsGroupProbeIndex")
+    {
+        rttmonlpdgrpstatsgroupprobeindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsGroupStatus")
+    {
+        rttmonlpdgrpstatsgroupstatus.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDCompTime")
+    {
+        rttmonlpdgrpstatslpdcomptime.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDFailCause")
+    {
+        rttmonlpdgrpstatslpdfailcause.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDFailOccurred")
+    {
+        rttmonlpdgrpstatslpdfailoccurred.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsLPDStartTime")
+    {
+        rttmonlpdgrpstatslpdstarttime.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsMaxNumPaths")
+    {
+        rttmonlpdgrpstatsmaxnumpaths.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsMaxRTT")
+    {
+        rttmonlpdgrpstatsmaxrtt.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsMinNumPaths")
+    {
+        rttmonlpdgrpstatsminnumpaths.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsMinRTT")
+    {
+        rttmonlpdgrpstatsminrtt.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfFail")
+    {
+        rttmonlpdgrpstatsnumoffail.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfPass")
+    {
+        rttmonlpdgrpstatsnumofpass.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsNumOfTimeout")
+    {
+        rttmonlpdgrpstatsnumoftimeout.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsPathIds")
+    {
+        rttmonlpdgrpstatspathids.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsProbeStatus")
+    {
+        rttmonlpdgrpstatsprobestatus.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsResetTime")
+    {
+        rttmonlpdgrpstatsresettime.yfilter = yfilter;
+    }
+    if(value_path == "rttMonLpdGrpStatsTargetPE")
+    {
+        rttmonlpdgrpstatstargetpe.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonLpdGrpStatsGroupIndex" || name == "rttMonLpdGrpStatsStartTimeIndex" || name == "rttMonLpdGrpStatsAvgRTT" || name == "rttMonLpdGrpStatsGroupProbeIndex" || name == "rttMonLpdGrpStatsGroupStatus" || name == "rttMonLpdGrpStatsLPDCompTime" || name == "rttMonLpdGrpStatsLPDFailCause" || name == "rttMonLpdGrpStatsLPDFailOccurred" || name == "rttMonLpdGrpStatsLPDStartTime" || name == "rttMonLpdGrpStatsMaxNumPaths" || name == "rttMonLpdGrpStatsMaxRTT" || name == "rttMonLpdGrpStatsMinNumPaths" || name == "rttMonLpdGrpStatsMinRTT" || name == "rttMonLpdGrpStatsNumOfFail" || name == "rttMonLpdGrpStatsNumOfPass" || name == "rttMonLpdGrpStatsNumOfTimeout" || name == "rttMonLpdGrpStatsPathIds" || name == "rttMonLpdGrpStatsProbeStatus" || name == "rttMonLpdGrpStatsResetTime" || name == "rttMonLpdGrpStatsTargetPE")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonreacttable::Rttmonreacttable()
+{
+
+    yang_name = "rttMonReactTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonreacttable::~Rttmonreacttable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonreactentry.size(); index++)
+    {
+        if(rttmonreactentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonreactentry.size(); index++)
+    {
+        if(rttmonreactentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonReactTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonreacttable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonReactEntry")
+    {
+        for(auto const & c : rttmonreactentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry>();
+        c->parent = this;
+        rttmonreactentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonreactentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonreacttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonreacttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonReactEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonreactconfigindex{YType::int32, "rttMonReactConfigIndex"},
+    rttmonreactactiontype{YType::enumeration, "rttMonReactActionType"},
+    rttmonreactoccurred{YType::boolean, "rttMonReactOccurred"},
+    rttmonreactstatus{YType::enumeration, "rttMonReactStatus"},
+    rttmonreactthresholdcountx{YType::int32, "rttMonReactThresholdCountX"},
+    rttmonreactthresholdcounty{YType::int32, "rttMonReactThresholdCountY"},
+    rttmonreactthresholdfalling{YType::int32, "rttMonReactThresholdFalling"},
+    rttmonreactthresholdrising{YType::int32, "rttMonReactThresholdRising"},
+    rttmonreactthresholdtype{YType::enumeration, "rttMonReactThresholdType"},
+    rttmonreactvalue{YType::int32, "rttMonReactValue"},
+    rttmonreactvar{YType::enumeration, "rttMonReactVar"}
+{
+
+    yang_name = "rttMonReactEntry"; yang_parent_name = "rttMonReactTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::~Rttmonreactentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonreactconfigindex.is_set
+	|| rttmonreactactiontype.is_set
+	|| rttmonreactoccurred.is_set
+	|| rttmonreactstatus.is_set
+	|| rttmonreactthresholdcountx.is_set
+	|| rttmonreactthresholdcounty.is_set
+	|| rttmonreactthresholdfalling.is_set
+	|| rttmonreactthresholdrising.is_set
+	|| rttmonreactthresholdtype.is_set
+	|| rttmonreactvalue.is_set
+	|| rttmonreactvar.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonreactconfigindex.yfilter)
+	|| ydk::is_set(rttmonreactactiontype.yfilter)
+	|| ydk::is_set(rttmonreactoccurred.yfilter)
+	|| ydk::is_set(rttmonreactstatus.yfilter)
+	|| ydk::is_set(rttmonreactthresholdcountx.yfilter)
+	|| ydk::is_set(rttmonreactthresholdcounty.yfilter)
+	|| ydk::is_set(rttmonreactthresholdfalling.yfilter)
+	|| ydk::is_set(rttmonreactthresholdrising.yfilter)
+	|| ydk::is_set(rttmonreactthresholdtype.yfilter)
+	|| ydk::is_set(rttmonreactvalue.yfilter)
+	|| ydk::is_set(rttmonreactvar.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonReactTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonReactEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonReactConfigIndex='" <<rttmonreactconfigindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonreactconfigindex.is_set || is_set(rttmonreactconfigindex.yfilter)) leaf_name_data.push_back(rttmonreactconfigindex.get_name_leafdata());
+    if (rttmonreactactiontype.is_set || is_set(rttmonreactactiontype.yfilter)) leaf_name_data.push_back(rttmonreactactiontype.get_name_leafdata());
+    if (rttmonreactoccurred.is_set || is_set(rttmonreactoccurred.yfilter)) leaf_name_data.push_back(rttmonreactoccurred.get_name_leafdata());
+    if (rttmonreactstatus.is_set || is_set(rttmonreactstatus.yfilter)) leaf_name_data.push_back(rttmonreactstatus.get_name_leafdata());
+    if (rttmonreactthresholdcountx.is_set || is_set(rttmonreactthresholdcountx.yfilter)) leaf_name_data.push_back(rttmonreactthresholdcountx.get_name_leafdata());
+    if (rttmonreactthresholdcounty.is_set || is_set(rttmonreactthresholdcounty.yfilter)) leaf_name_data.push_back(rttmonreactthresholdcounty.get_name_leafdata());
+    if (rttmonreactthresholdfalling.is_set || is_set(rttmonreactthresholdfalling.yfilter)) leaf_name_data.push_back(rttmonreactthresholdfalling.get_name_leafdata());
+    if (rttmonreactthresholdrising.is_set || is_set(rttmonreactthresholdrising.yfilter)) leaf_name_data.push_back(rttmonreactthresholdrising.get_name_leafdata());
+    if (rttmonreactthresholdtype.is_set || is_set(rttmonreactthresholdtype.yfilter)) leaf_name_data.push_back(rttmonreactthresholdtype.get_name_leafdata());
+    if (rttmonreactvalue.is_set || is_set(rttmonreactvalue.yfilter)) leaf_name_data.push_back(rttmonreactvalue.get_name_leafdata());
+    if (rttmonreactvar.is_set || is_set(rttmonreactvar.yfilter)) leaf_name_data.push_back(rttmonreactvar.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactConfigIndex")
+    {
+        rttmonreactconfigindex = value;
+        rttmonreactconfigindex.value_namespace = name_space;
+        rttmonreactconfigindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactActionType")
+    {
+        rttmonreactactiontype = value;
+        rttmonreactactiontype.value_namespace = name_space;
+        rttmonreactactiontype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactOccurred")
+    {
+        rttmonreactoccurred = value;
+        rttmonreactoccurred.value_namespace = name_space;
+        rttmonreactoccurred.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactStatus")
+    {
+        rttmonreactstatus = value;
+        rttmonreactstatus.value_namespace = name_space;
+        rttmonreactstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactThresholdCountX")
+    {
+        rttmonreactthresholdcountx = value;
+        rttmonreactthresholdcountx.value_namespace = name_space;
+        rttmonreactthresholdcountx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactThresholdCountY")
+    {
+        rttmonreactthresholdcounty = value;
+        rttmonreactthresholdcounty.value_namespace = name_space;
+        rttmonreactthresholdcounty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactThresholdFalling")
+    {
+        rttmonreactthresholdfalling = value;
+        rttmonreactthresholdfalling.value_namespace = name_space;
+        rttmonreactthresholdfalling.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactThresholdRising")
+    {
+        rttmonreactthresholdrising = value;
+        rttmonreactthresholdrising.value_namespace = name_space;
+        rttmonreactthresholdrising.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactThresholdType")
+    {
+        rttmonreactthresholdtype = value;
+        rttmonreactthresholdtype.value_namespace = name_space;
+        rttmonreactthresholdtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactValue")
+    {
+        rttmonreactvalue = value;
+        rttmonreactvalue.value_namespace = name_space;
+        rttmonreactvalue.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactVar")
+    {
+        rttmonreactvar = value;
+        rttmonreactvar.value_namespace = name_space;
+        rttmonreactvar.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactConfigIndex")
+    {
+        rttmonreactconfigindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactActionType")
+    {
+        rttmonreactactiontype.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactOccurred")
+    {
+        rttmonreactoccurred.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactStatus")
+    {
+        rttmonreactstatus.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactThresholdCountX")
+    {
+        rttmonreactthresholdcountx.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactThresholdCountY")
+    {
+        rttmonreactthresholdcounty.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactThresholdFalling")
+    {
+        rttmonreactthresholdfalling.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactThresholdRising")
+    {
+        rttmonreactthresholdrising.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactThresholdType")
+    {
+        rttmonreactthresholdtype.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactValue")
+    {
+        rttmonreactvalue.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactVar")
+    {
+        rttmonreactvar.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonReactConfigIndex" || name == "rttMonReactActionType" || name == "rttMonReactOccurred" || name == "rttMonReactStatus" || name == "rttMonReactThresholdCountX" || name == "rttMonReactThresholdCountY" || name == "rttMonReactThresholdFalling" || name == "rttMonReactThresholdRising" || name == "rttMonReactThresholdType" || name == "rttMonReactValue" || name == "rttMonReactVar")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradmintable()
+{
+
+    yang_name = "rttMonReactTriggerAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonreacttriggeradmintable::~Rttmonreacttriggeradmintable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonreacttriggeradminentry.size(); index++)
+    {
+        if(rttmonreacttriggeradminentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonreacttriggeradminentry.size(); index++)
+    {
+        if(rttmonreacttriggeradminentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonReactTriggerAdminTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonReactTriggerAdminEntry")
+    {
+        for(auto const & c : rttmonreacttriggeradminentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry>();
+        c->parent = this;
+        rttmonreacttriggeradminentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonreacttriggeradminentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonreacttriggeradmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonreacttriggeradmintable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonReactTriggerAdminEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeradminentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonreacttriggeradminrttmonctrladminindex{YType::int32, "rttMonReactTriggerAdminRttMonCtrlAdminIndex"},
+    rttmonreacttriggeradminstatus{YType::enumeration, "rttMonReactTriggerAdminStatus"},
+    rttmonreacttriggeroperstate{YType::enumeration, "rttMonReactTriggerOperState"}
+{
+
+    yang_name = "rttMonReactTriggerAdminEntry"; yang_parent_name = "rttMonReactTriggerAdminTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::~Rttmonreacttriggeradminentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonreacttriggeradminrttmonctrladminindex.is_set
+	|| rttmonreacttriggeradminstatus.is_set
+	|| rttmonreacttriggeroperstate.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonreacttriggeradminrttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonreacttriggeradminstatus.yfilter)
+	|| ydk::is_set(rttmonreacttriggeroperstate.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonReactTriggerAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonReactTriggerAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonReactTriggerAdminRttMonCtrlAdminIndex='" <<rttmonreacttriggeradminrttmonctrladminindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonreacttriggeradminrttmonctrladminindex.is_set || is_set(rttmonreacttriggeradminrttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonreacttriggeradminrttmonctrladminindex.get_name_leafdata());
+    if (rttmonreacttriggeradminstatus.is_set || is_set(rttmonreacttriggeradminstatus.yfilter)) leaf_name_data.push_back(rttmonreacttriggeradminstatus.get_name_leafdata());
+    if (rttmonreacttriggeroperstate.is_set || is_set(rttmonreacttriggeroperstate.yfilter)) leaf_name_data.push_back(rttmonreacttriggeroperstate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactTriggerAdminRttMonCtrlAdminIndex")
+    {
+        rttmonreacttriggeradminrttmonctrladminindex = value;
+        rttmonreacttriggeradminrttmonctrladminindex.value_namespace = name_space;
+        rttmonreacttriggeradminrttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactTriggerAdminStatus")
+    {
+        rttmonreacttriggeradminstatus = value;
+        rttmonreacttriggeradminstatus.value_namespace = name_space;
+        rttmonreacttriggeradminstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonReactTriggerOperState")
+    {
+        rttmonreacttriggeroperstate = value;
+        rttmonreacttriggeroperstate.value_namespace = name_space;
+        rttmonreacttriggeroperstate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactTriggerAdminRttMonCtrlAdminIndex")
+    {
+        rttmonreacttriggeradminrttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactTriggerAdminStatus")
+    {
+        rttmonreacttriggeradminstatus.yfilter = yfilter;
+    }
+    if(value_path == "rttMonReactTriggerOperState")
+    {
+        rttmonreacttriggeroperstate.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonReactTriggerAdminRttMonCtrlAdminIndex" || name == "rttMonReactTriggerAdminStatus" || name == "rttMonReactTriggerOperState")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadmintable()
+{
+
+    yang_name = "rttMonScriptAdminTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonscriptadmintable::~Rttmonscriptadmintable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonscriptadminentry.size(); index++)
+    {
+        if(rttmonscriptadminentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonscriptadminentry.size(); index++)
+    {
+        if(rttmonscriptadminentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonscriptadmintable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonscriptadmintable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonScriptAdminTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonscriptadmintable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonscriptadmintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonScriptAdminEntry")
+    {
+        for(auto const & c : rttmonscriptadminentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry>();
+        c->parent = this;
+        rttmonscriptadminentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonscriptadmintable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonscriptadminentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonscriptadmintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonscriptadmintable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonScriptAdminEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::Rttmonscriptadminentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonscriptadmincmdlineparams{YType::str, "rttMonScriptAdminCmdLineParams"},
+    rttmonscriptadminname{YType::str, "rttMonScriptAdminName"}
+{
+
+    yang_name = "rttMonScriptAdminEntry"; yang_parent_name = "rttMonScriptAdminTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::~Rttmonscriptadminentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonscriptadmincmdlineparams.is_set
+	|| rttmonscriptadminname.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonscriptadmincmdlineparams.yfilter)
+	|| ydk::is_set(rttmonscriptadminname.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonScriptAdminTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonScriptAdminEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonscriptadmincmdlineparams.is_set || is_set(rttmonscriptadmincmdlineparams.yfilter)) leaf_name_data.push_back(rttmonscriptadmincmdlineparams.get_name_leafdata());
+    if (rttmonscriptadminname.is_set || is_set(rttmonscriptadminname.yfilter)) leaf_name_data.push_back(rttmonscriptadminname.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonScriptAdminCmdLineParams")
+    {
+        rttmonscriptadmincmdlineparams = value;
+        rttmonscriptadmincmdlineparams.value_namespace = name_space;
+        rttmonscriptadmincmdlineparams.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonScriptAdminName")
+    {
+        rttmonscriptadminname = value;
+        rttmonscriptadminname.value_namespace = name_space;
+        rttmonscriptadminname.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonScriptAdminCmdLineParams")
+    {
+        rttmonscriptadmincmdlineparams.yfilter = yfilter;
+    }
+    if(value_path == "rttMonScriptAdminName")
+    {
+        rttmonscriptadminname.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonScriptAdminCmdLineParams" || name == "rttMonScriptAdminName")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscapturetable()
+{
+
+    yang_name = "rttMonStatsCaptureTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatscapturetable::~Rttmonstatscapturetable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonstatscaptureentry.size(); index++)
+    {
+        if(rttmonstatscaptureentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonstatscaptureentry.size(); index++)
+    {
+        if(rttmonstatscaptureentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscapturetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscapturetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsCaptureTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatscapturetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscapturetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonStatsCaptureEntry")
+    {
+        for(auto const & c : rttmonstatscaptureentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry>();
+        c->parent = this;
+        rttmonstatscaptureentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscapturetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonstatscaptureentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatscapturetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonstatscapturetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonStatsCaptureEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::Rttmonstatscaptureentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonstatscapturestarttimeindex{YType::uint32, "rttMonStatsCaptureStartTimeIndex"},
+    rttmonstatscapturepathindex{YType::int32, "rttMonStatsCapturePathIndex"},
+    rttmonstatscapturehopindex{YType::int32, "rttMonStatsCaptureHopIndex"},
+    rttmonstatscapturedistindex{YType::int32, "rttMonStatsCaptureDistIndex"},
+    rttmonstatscapturecompletions{YType::int32, "rttMonStatsCaptureCompletions"},
+    rttmonstatscapturecompletiontimemax{YType::uint32, "rttMonStatsCaptureCompletionTimeMax"},
+    rttmonstatscapturecompletiontimemin{YType::uint32, "rttMonStatsCaptureCompletionTimeMin"},
+    rttmonstatscaptureoverthresholds{YType::int32, "rttMonStatsCaptureOverThresholds"},
+    rttmonstatscapturesumcompletiontime{YType::uint32, "rttMonStatsCaptureSumCompletionTime"},
+    rttmonstatscapturesumcompletiontime2high{YType::uint32, "rttMonStatsCaptureSumCompletionTime2High"},
+    rttmonstatscapturesumcompletiontime2low{YType::uint32, "rttMonStatsCaptureSumCompletionTime2Low"}
+{
+
+    yang_name = "rttMonStatsCaptureEntry"; yang_parent_name = "rttMonStatsCaptureTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::~Rttmonstatscaptureentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonstatscapturestarttimeindex.is_set
+	|| rttmonstatscapturepathindex.is_set
+	|| rttmonstatscapturehopindex.is_set
+	|| rttmonstatscapturedistindex.is_set
+	|| rttmonstatscapturecompletions.is_set
+	|| rttmonstatscapturecompletiontimemax.is_set
+	|| rttmonstatscapturecompletiontimemin.is_set
+	|| rttmonstatscaptureoverthresholds.is_set
+	|| rttmonstatscapturesumcompletiontime.is_set
+	|| rttmonstatscapturesumcompletiontime2high.is_set
+	|| rttmonstatscapturesumcompletiontime2low.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturepathindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturehopindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturedistindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturecompletions.yfilter)
+	|| ydk::is_set(rttmonstatscapturecompletiontimemax.yfilter)
+	|| ydk::is_set(rttmonstatscapturecompletiontimemin.yfilter)
+	|| ydk::is_set(rttmonstatscaptureoverthresholds.yfilter)
+	|| ydk::is_set(rttmonstatscapturesumcompletiontime.yfilter)
+	|| ydk::is_set(rttmonstatscapturesumcompletiontime2high.yfilter)
+	|| ydk::is_set(rttmonstatscapturesumcompletiontime2low.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsCaptureTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsCaptureEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']" <<"[rttMonStatsCapturePathIndex='" <<rttmonstatscapturepathindex <<"']" <<"[rttMonStatsCaptureHopIndex='" <<rttmonstatscapturehopindex <<"']" <<"[rttMonStatsCaptureDistIndex='" <<rttmonstatscapturedistindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
+    if (rttmonstatscapturepathindex.is_set || is_set(rttmonstatscapturepathindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturepathindex.get_name_leafdata());
+    if (rttmonstatscapturehopindex.is_set || is_set(rttmonstatscapturehopindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturehopindex.get_name_leafdata());
+    if (rttmonstatscapturedistindex.is_set || is_set(rttmonstatscapturedistindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturedistindex.get_name_leafdata());
+    if (rttmonstatscapturecompletions.is_set || is_set(rttmonstatscapturecompletions.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletions.get_name_leafdata());
+    if (rttmonstatscapturecompletiontimemax.is_set || is_set(rttmonstatscapturecompletiontimemax.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletiontimemax.get_name_leafdata());
+    if (rttmonstatscapturecompletiontimemin.is_set || is_set(rttmonstatscapturecompletiontimemin.yfilter)) leaf_name_data.push_back(rttmonstatscapturecompletiontimemin.get_name_leafdata());
+    if (rttmonstatscaptureoverthresholds.is_set || is_set(rttmonstatscaptureoverthresholds.yfilter)) leaf_name_data.push_back(rttmonstatscaptureoverthresholds.get_name_leafdata());
+    if (rttmonstatscapturesumcompletiontime.is_set || is_set(rttmonstatscapturesumcompletiontime.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime.get_name_leafdata());
+    if (rttmonstatscapturesumcompletiontime2high.is_set || is_set(rttmonstatscapturesumcompletiontime2high.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime2high.get_name_leafdata());
+    if (rttmonstatscapturesumcompletiontime2low.is_set || is_set(rttmonstatscapturesumcompletiontime2low.yfilter)) leaf_name_data.push_back(rttmonstatscapturesumcompletiontime2low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex = value;
+        rttmonstatscapturestarttimeindex.value_namespace = name_space;
+        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCapturePathIndex")
+    {
+        rttmonstatscapturepathindex = value;
+        rttmonstatscapturepathindex.value_namespace = name_space;
+        rttmonstatscapturepathindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureHopIndex")
+    {
+        rttmonstatscapturehopindex = value;
+        rttmonstatscapturehopindex.value_namespace = name_space;
+        rttmonstatscapturehopindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureDistIndex")
+    {
+        rttmonstatscapturedistindex = value;
+        rttmonstatscapturedistindex.value_namespace = name_space;
+        rttmonstatscapturedistindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureCompletions")
+    {
+        rttmonstatscapturecompletions = value;
+        rttmonstatscapturecompletions.value_namespace = name_space;
+        rttmonstatscapturecompletions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureCompletionTimeMax")
+    {
+        rttmonstatscapturecompletiontimemax = value;
+        rttmonstatscapturecompletiontimemax.value_namespace = name_space;
+        rttmonstatscapturecompletiontimemax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureCompletionTimeMin")
+    {
+        rttmonstatscapturecompletiontimemin = value;
+        rttmonstatscapturecompletiontimemin.value_namespace = name_space;
+        rttmonstatscapturecompletiontimemin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureOverThresholds")
+    {
+        rttmonstatscaptureoverthresholds = value;
+        rttmonstatscaptureoverthresholds.value_namespace = name_space;
+        rttmonstatscaptureoverthresholds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime")
+    {
+        rttmonstatscapturesumcompletiontime = value;
+        rttmonstatscapturesumcompletiontime.value_namespace = name_space;
+        rttmonstatscapturesumcompletiontime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime2High")
+    {
+        rttmonstatscapturesumcompletiontime2high = value;
+        rttmonstatscapturesumcompletiontime2high.value_namespace = name_space;
+        rttmonstatscapturesumcompletiontime2high.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime2Low")
+    {
+        rttmonstatscapturesumcompletiontime2low = value;
+        rttmonstatscapturesumcompletiontime2low.value_namespace = name_space;
+        rttmonstatscapturesumcompletiontime2low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCapturePathIndex")
+    {
+        rttmonstatscapturepathindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureHopIndex")
+    {
+        rttmonstatscapturehopindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureDistIndex")
+    {
+        rttmonstatscapturedistindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureCompletions")
+    {
+        rttmonstatscapturecompletions.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureCompletionTimeMax")
+    {
+        rttmonstatscapturecompletiontimemax.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureCompletionTimeMin")
+    {
+        rttmonstatscapturecompletiontimemin.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureOverThresholds")
+    {
+        rttmonstatscaptureoverthresholds.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime")
+    {
+        rttmonstatscapturesumcompletiontime.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime2High")
+    {
+        rttmonstatscapturesumcompletiontime2high.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureSumCompletionTime2Low")
+    {
+        rttmonstatscapturesumcompletiontime2low.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsCapturePathIndex" || name == "rttMonStatsCaptureHopIndex" || name == "rttMonStatsCaptureDistIndex" || name == "rttMonStatsCaptureCompletions" || name == "rttMonStatsCaptureCompletionTimeMax" || name == "rttMonStatsCaptureCompletionTimeMin" || name == "rttMonStatsCaptureOverThresholds" || name == "rttMonStatsCaptureSumCompletionTime" || name == "rttMonStatsCaptureSumCompletionTime2High" || name == "rttMonStatsCaptureSumCompletionTime2Low")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollecttable()
+{
+
+    yang_name = "rttMonStatsCollectTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatscollecttable::~Rttmonstatscollecttable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonstatscollectentry.size(); index++)
+    {
+        if(rttmonstatscollectentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonstatscollectentry.size(); index++)
+    {
+        if(rttmonstatscollectentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscollecttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscollecttable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsCollectTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatscollecttable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscollecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonStatsCollectEntry")
+    {
+        for(auto const & c : rttmonstatscollectentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry>();
+        c->parent = this;
+        rttmonstatscollectentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscollecttable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonstatscollectentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatscollecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonstatscollecttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonStatsCollectEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::Rttmonstatscollectentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonstatscapturestarttimeindex{YType::str, "rttMonStatsCaptureStartTimeIndex"},
+    rttmonstatscapturepathindex{YType::str, "rttMonStatsCapturePathIndex"},
+    rttmonstatscapturehopindex{YType::str, "rttMonStatsCaptureHopIndex"},
+    rttmoncontrolenableerrors{YType::int32, "rttMonControlEnableErrors"},
+    rttmonstatscollectaddress{YType::str, "rttMonStatsCollectAddress"},
+    rttmonstatscollectbusies{YType::int32, "rttMonStatsCollectBusies"},
+    rttmonstatscollectctrlenerrors{YType::int32, "rttMonStatsCollectCtrlEnErrors"},
+    rttmonstatscollectdrops{YType::int32, "rttMonStatsCollectDrops"},
+    rttmonstatscollectnoconnections{YType::int32, "rttMonStatsCollectNoConnections"},
+    rttmonstatscollectnumdisconnects{YType::int32, "rttMonStatsCollectNumDisconnects"},
+    rttmonstatscollectretrieveerrors{YType::int32, "rttMonStatsCollectRetrieveErrors"},
+    rttmonstatscollectsequenceerrors{YType::int32, "rttMonStatsCollectSequenceErrors"},
+    rttmonstatscollecttimeouts{YType::int32, "rttMonStatsCollectTimeouts"},
+    rttmonstatscollectverifyerrors{YType::int32, "rttMonStatsCollectVerifyErrors"},
+    rttmonstatsretrieveerrors{YType::int32, "rttMonStatsRetrieveErrors"}
+{
+
+    yang_name = "rttMonStatsCollectEntry"; yang_parent_name = "rttMonStatsCollectTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::~Rttmonstatscollectentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonstatscapturestarttimeindex.is_set
+	|| rttmonstatscapturepathindex.is_set
+	|| rttmonstatscapturehopindex.is_set
+	|| rttmoncontrolenableerrors.is_set
+	|| rttmonstatscollectaddress.is_set
+	|| rttmonstatscollectbusies.is_set
+	|| rttmonstatscollectctrlenerrors.is_set
+	|| rttmonstatscollectdrops.is_set
+	|| rttmonstatscollectnoconnections.is_set
+	|| rttmonstatscollectnumdisconnects.is_set
+	|| rttmonstatscollectretrieveerrors.is_set
+	|| rttmonstatscollectsequenceerrors.is_set
+	|| rttmonstatscollecttimeouts.is_set
+	|| rttmonstatscollectverifyerrors.is_set
+	|| rttmonstatsretrieveerrors.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturepathindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturehopindex.yfilter)
+	|| ydk::is_set(rttmoncontrolenableerrors.yfilter)
+	|| ydk::is_set(rttmonstatscollectaddress.yfilter)
+	|| ydk::is_set(rttmonstatscollectbusies.yfilter)
+	|| ydk::is_set(rttmonstatscollectctrlenerrors.yfilter)
+	|| ydk::is_set(rttmonstatscollectdrops.yfilter)
+	|| ydk::is_set(rttmonstatscollectnoconnections.yfilter)
+	|| ydk::is_set(rttmonstatscollectnumdisconnects.yfilter)
+	|| ydk::is_set(rttmonstatscollectretrieveerrors.yfilter)
+	|| ydk::is_set(rttmonstatscollectsequenceerrors.yfilter)
+	|| ydk::is_set(rttmonstatscollecttimeouts.yfilter)
+	|| ydk::is_set(rttmonstatscollectverifyerrors.yfilter)
+	|| ydk::is_set(rttmonstatsretrieveerrors.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsCollectTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsCollectEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']" <<"[rttMonStatsCapturePathIndex='" <<rttmonstatscapturepathindex <<"']" <<"[rttMonStatsCaptureHopIndex='" <<rttmonstatscapturehopindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
+    if (rttmonstatscapturepathindex.is_set || is_set(rttmonstatscapturepathindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturepathindex.get_name_leafdata());
+    if (rttmonstatscapturehopindex.is_set || is_set(rttmonstatscapturehopindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturehopindex.get_name_leafdata());
+    if (rttmoncontrolenableerrors.is_set || is_set(rttmoncontrolenableerrors.yfilter)) leaf_name_data.push_back(rttmoncontrolenableerrors.get_name_leafdata());
+    if (rttmonstatscollectaddress.is_set || is_set(rttmonstatscollectaddress.yfilter)) leaf_name_data.push_back(rttmonstatscollectaddress.get_name_leafdata());
+    if (rttmonstatscollectbusies.is_set || is_set(rttmonstatscollectbusies.yfilter)) leaf_name_data.push_back(rttmonstatscollectbusies.get_name_leafdata());
+    if (rttmonstatscollectctrlenerrors.is_set || is_set(rttmonstatscollectctrlenerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectctrlenerrors.get_name_leafdata());
+    if (rttmonstatscollectdrops.is_set || is_set(rttmonstatscollectdrops.yfilter)) leaf_name_data.push_back(rttmonstatscollectdrops.get_name_leafdata());
+    if (rttmonstatscollectnoconnections.is_set || is_set(rttmonstatscollectnoconnections.yfilter)) leaf_name_data.push_back(rttmonstatscollectnoconnections.get_name_leafdata());
+    if (rttmonstatscollectnumdisconnects.is_set || is_set(rttmonstatscollectnumdisconnects.yfilter)) leaf_name_data.push_back(rttmonstatscollectnumdisconnects.get_name_leafdata());
+    if (rttmonstatscollectretrieveerrors.is_set || is_set(rttmonstatscollectretrieveerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectretrieveerrors.get_name_leafdata());
+    if (rttmonstatscollectsequenceerrors.is_set || is_set(rttmonstatscollectsequenceerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectsequenceerrors.get_name_leafdata());
+    if (rttmonstatscollecttimeouts.is_set || is_set(rttmonstatscollecttimeouts.yfilter)) leaf_name_data.push_back(rttmonstatscollecttimeouts.get_name_leafdata());
+    if (rttmonstatscollectverifyerrors.is_set || is_set(rttmonstatscollectverifyerrors.yfilter)) leaf_name_data.push_back(rttmonstatscollectverifyerrors.get_name_leafdata());
+    if (rttmonstatsretrieveerrors.is_set || is_set(rttmonstatsretrieveerrors.yfilter)) leaf_name_data.push_back(rttmonstatsretrieveerrors.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex = value;
+        rttmonstatscapturestarttimeindex.value_namespace = name_space;
+        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCapturePathIndex")
+    {
+        rttmonstatscapturepathindex = value;
+        rttmonstatscapturepathindex.value_namespace = name_space;
+        rttmonstatscapturepathindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureHopIndex")
+    {
+        rttmonstatscapturehopindex = value;
+        rttmonstatscapturehopindex.value_namespace = name_space;
+        rttmonstatscapturehopindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonControlEnableErrors")
+    {
+        rttmoncontrolenableerrors = value;
+        rttmoncontrolenableerrors.value_namespace = name_space;
+        rttmoncontrolenableerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectAddress")
+    {
+        rttmonstatscollectaddress = value;
+        rttmonstatscollectaddress.value_namespace = name_space;
+        rttmonstatscollectaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectBusies")
+    {
+        rttmonstatscollectbusies = value;
+        rttmonstatscollectbusies.value_namespace = name_space;
+        rttmonstatscollectbusies.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectCtrlEnErrors")
+    {
+        rttmonstatscollectctrlenerrors = value;
+        rttmonstatscollectctrlenerrors.value_namespace = name_space;
+        rttmonstatscollectctrlenerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectDrops")
+    {
+        rttmonstatscollectdrops = value;
+        rttmonstatscollectdrops.value_namespace = name_space;
+        rttmonstatscollectdrops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectNoConnections")
+    {
+        rttmonstatscollectnoconnections = value;
+        rttmonstatscollectnoconnections.value_namespace = name_space;
+        rttmonstatscollectnoconnections.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectNumDisconnects")
+    {
+        rttmonstatscollectnumdisconnects = value;
+        rttmonstatscollectnumdisconnects.value_namespace = name_space;
+        rttmonstatscollectnumdisconnects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectRetrieveErrors")
+    {
+        rttmonstatscollectretrieveerrors = value;
+        rttmonstatscollectretrieveerrors.value_namespace = name_space;
+        rttmonstatscollectretrieveerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectSequenceErrors")
+    {
+        rttmonstatscollectsequenceerrors = value;
+        rttmonstatscollectsequenceerrors.value_namespace = name_space;
+        rttmonstatscollectsequenceerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectTimeouts")
+    {
+        rttmonstatscollecttimeouts = value;
+        rttmonstatscollecttimeouts.value_namespace = name_space;
+        rttmonstatscollecttimeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCollectVerifyErrors")
+    {
+        rttmonstatscollectverifyerrors = value;
+        rttmonstatscollectverifyerrors.value_namespace = name_space;
+        rttmonstatscollectverifyerrors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsRetrieveErrors")
+    {
+        rttmonstatsretrieveerrors = value;
+        rttmonstatsretrieveerrors.value_namespace = name_space;
+        rttmonstatsretrieveerrors.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCapturePathIndex")
+    {
+        rttmonstatscapturepathindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureHopIndex")
+    {
+        rttmonstatscapturehopindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonControlEnableErrors")
+    {
+        rttmoncontrolenableerrors.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectAddress")
+    {
+        rttmonstatscollectaddress.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectBusies")
+    {
+        rttmonstatscollectbusies.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectCtrlEnErrors")
+    {
+        rttmonstatscollectctrlenerrors.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectDrops")
+    {
+        rttmonstatscollectdrops.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectNoConnections")
+    {
+        rttmonstatscollectnoconnections.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectNumDisconnects")
+    {
+        rttmonstatscollectnumdisconnects.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectRetrieveErrors")
+    {
+        rttmonstatscollectretrieveerrors.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectSequenceErrors")
+    {
+        rttmonstatscollectsequenceerrors.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectTimeouts")
+    {
+        rttmonstatscollecttimeouts.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCollectVerifyErrors")
+    {
+        rttmonstatscollectverifyerrors.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsRetrieveErrors")
+    {
+        rttmonstatsretrieveerrors.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsCapturePathIndex" || name == "rttMonStatsCaptureHopIndex" || name == "rttMonControlEnableErrors" || name == "rttMonStatsCollectAddress" || name == "rttMonStatsCollectBusies" || name == "rttMonStatsCollectCtrlEnErrors" || name == "rttMonStatsCollectDrops" || name == "rttMonStatsCollectNoConnections" || name == "rttMonStatsCollectNumDisconnects" || name == "rttMonStatsCollectRetrieveErrors" || name == "rttMonStatsCollectSequenceErrors" || name == "rttMonStatsCollectTimeouts" || name == "rttMonStatsCollectVerifyErrors" || name == "rttMonStatsRetrieveErrors")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalstable()
+{
+
+    yang_name = "rttMonStatsTotalsTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatstotalstable::~Rttmonstatstotalstable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::has_data() const
+{
+    for (std::size_t index=0; index<rttmonstatstotalsentry.size(); index++)
+    {
+        if(rttmonstatstotalsentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmonstatstotalsentry.size(); index++)
+    {
+        if(rttmonstatstotalsentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatstotalstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatstotalstable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsTotalsTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatstotalstable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatstotalstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMonStatsTotalsEntry")
+    {
+        for(auto const & c : rttmonstatstotalsentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry>();
+        c->parent = this;
+        rttmonstatstotalsentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatstotalstable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmonstatstotalsentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatstotalstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmonstatstotalstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonStatsTotalsEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::Rttmonstatstotalsentry()
+    :
+    rttmonctrladminindex{YType::str, "rttMonCtrlAdminIndex"},
+    rttmonstatscapturestarttimeindex{YType::str, "rttMonStatsCaptureStartTimeIndex"},
+    rttmonstatstotalselapsedtime{YType::int32, "rttMonStatsTotalsElapsedTime"},
+    rttmonstatstotalsinitiations{YType::int32, "rttMonStatsTotalsInitiations"}
+{
+
+    yang_name = "rttMonStatsTotalsEntry"; yang_parent_name = "rttMonStatsTotalsTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::~Rttmonstatstotalsentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_data() const
+{
+    return rttmonctrladminindex.is_set
+	|| rttmonstatscapturestarttimeindex.is_set
+	|| rttmonstatstotalselapsedtime.is_set
+	|| rttmonstatstotalsinitiations.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmonctrladminindex.yfilter)
+	|| ydk::is_set(rttmonstatscapturestarttimeindex.yfilter)
+	|| ydk::is_set(rttmonstatstotalselapsedtime.yfilter)
+	|| ydk::is_set(rttmonstatstotalsinitiations.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMonStatsTotalsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMonStatsTotalsEntry" <<"[rttMonCtrlAdminIndex='" <<rttmonctrladminindex <<"']" <<"[rttMonStatsCaptureStartTimeIndex='" <<rttmonstatscapturestarttimeindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmonctrladminindex.is_set || is_set(rttmonctrladminindex.yfilter)) leaf_name_data.push_back(rttmonctrladminindex.get_name_leafdata());
+    if (rttmonstatscapturestarttimeindex.is_set || is_set(rttmonstatscapturestarttimeindex.yfilter)) leaf_name_data.push_back(rttmonstatscapturestarttimeindex.get_name_leafdata());
+    if (rttmonstatstotalselapsedtime.is_set || is_set(rttmonstatstotalselapsedtime.yfilter)) leaf_name_data.push_back(rttmonstatstotalselapsedtime.get_name_leafdata());
+    if (rttmonstatstotalsinitiations.is_set || is_set(rttmonstatstotalsinitiations.yfilter)) leaf_name_data.push_back(rttmonstatstotalsinitiations.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex = value;
+        rttmonctrladminindex.value_namespace = name_space;
+        rttmonctrladminindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex = value;
+        rttmonstatscapturestarttimeindex.value_namespace = name_space;
+        rttmonstatscapturestarttimeindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsTotalsElapsedTime")
+    {
+        rttmonstatstotalselapsedtime = value;
+        rttmonstatstotalselapsedtime.value_namespace = name_space;
+        rttmonstatstotalselapsedtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMonStatsTotalsInitiations")
+    {
+        rttmonstatstotalsinitiations = value;
+        rttmonstatstotalsinitiations.value_namespace = name_space;
+        rttmonstatstotalsinitiations.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMonCtrlAdminIndex")
+    {
+        rttmonctrladminindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsCaptureStartTimeIndex")
+    {
+        rttmonstatscapturestarttimeindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsTotalsElapsedTime")
+    {
+        rttmonstatstotalselapsedtime.yfilter = yfilter;
+    }
+    if(value_path == "rttMonStatsTotalsInitiations")
+    {
+        rttmonstatstotalsinitiations.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMonCtrlAdminIndex" || name == "rttMonStatsCaptureStartTimeIndex" || name == "rttMonStatsTotalsElapsedTime" || name == "rttMonStatsTotalsInitiations")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrltable()
+{
+
+    yang_name = "rttMplsVpnMonCtrlTable"; yang_parent_name = "CISCO-RTTMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmplsvpnmonctrltable::~Rttmplsvpnmonctrltable()
+{
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::has_data() const
+{
+    for (std::size_t index=0; index<rttmplsvpnmonctrlentry.size(); index++)
+    {
+        if(rttmplsvpnmonctrlentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::has_operation() const
+{
+    for (std::size_t index=0; index<rttmplsvpnmonctrlentry.size(); index++)
+    {
+        if(rttmplsvpnmonctrlentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMplsVpnMonCtrlTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rttMplsVpnMonCtrlEntry")
+    {
+        for(auto const & c : rttmplsvpnmonctrlentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry>();
+        c->parent = this;
+        rttmplsvpnmonctrlentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rttmplsvpnmonctrlentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmplsvpnmonctrltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORTTMONMIB::Rttmplsvpnmonctrltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMplsVpnMonCtrlEntry")
+        return true;
+    return false;
+}
+
+CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonctrlentry()
+    :
+    rttmplsvpnmonctrlindex{YType::int32, "rttMplsVpnMonCtrlIndex"},
+    rttmplsvpnmonctrldelscanfactor{YType::int32, "rttMplsVpnMonCtrlDelScanFactor"},
+    rttmplsvpnmonctrlexp{YType::int32, "rttMplsVpnMonCtrlEXP"},
+    rttmplsvpnmonctrllpd{YType::boolean, "rttMplsVpnMonCtrlLpd"},
+    rttmplsvpnmonctrllpdcomptime{YType::int32, "rttMplsVpnMonCtrlLpdCompTime"},
+    rttmplsvpnmonctrllpdgrplist{YType::str, "rttMplsVpnMonCtrlLpdGrpList"},
+    rttmplsvpnmonctrlprobelist{YType::str, "rttMplsVpnMonCtrlProbeList"},
+    rttmplsvpnmonctrlrequestsize{YType::int32, "rttMplsVpnMonCtrlRequestSize"},
+    rttmplsvpnmonctrlrtttype{YType::enumeration, "rttMplsVpnMonCtrlRttType"},
+    rttmplsvpnmonctrlscaninterval{YType::int32, "rttMplsVpnMonCtrlScanInterval"},
+    rttmplsvpnmonctrlstatus{YType::enumeration, "rttMplsVpnMonCtrlStatus"},
+    rttmplsvpnmonctrlstoragetype{YType::enumeration, "rttMplsVpnMonCtrlStorageType"},
+    rttmplsvpnmonctrltag{YType::str, "rttMplsVpnMonCtrlTag"},
+    rttmplsvpnmonctrlthreshold{YType::int32, "rttMplsVpnMonCtrlThreshold"},
+    rttmplsvpnmonctrltimeout{YType::int32, "rttMplsVpnMonCtrlTimeout"},
+    rttmplsvpnmonctrlverifydata{YType::boolean, "rttMplsVpnMonCtrlVerifyData"},
+    rttmplsvpnmonctrlvrfname{YType::str, "rttMplsVpnMonCtrlVrfName"},
+    rttmplsvpnmonreactactiontype{YType::enumeration, "rttMplsVpnMonReactActionType"},
+    rttmplsvpnmonreactconnectionenable{YType::boolean, "rttMplsVpnMonReactConnectionEnable"},
+    rttmplsvpnmonreactlpdnotifytype{YType::enumeration, "rttMplsVpnMonReactLpdNotifyType"},
+    rttmplsvpnmonreactlpdretrycount{YType::int32, "rttMplsVpnMonReactLpdRetryCount"},
+    rttmplsvpnmonreactthresholdcount{YType::int32, "rttMplsVpnMonReactThresholdCount"},
+    rttmplsvpnmonreactthresholdtype{YType::enumeration, "rttMplsVpnMonReactThresholdType"},
+    rttmplsvpnmonreacttimeoutenable{YType::boolean, "rttMplsVpnMonReactTimeoutEnable"},
+    rttmplsvpnmonschedulefrequency{YType::int32, "rttMplsVpnMonScheduleFrequency"},
+    rttmplsvpnmonscheduleperiod{YType::int32, "rttMplsVpnMonSchedulePeriod"},
+    rttmplsvpnmonschedulerttstarttime{YType::uint32, "rttMplsVpnMonScheduleRttStartTime"},
+    rttmplsvpnmontypedestport{YType::int32, "rttMplsVpnMonTypeDestPort"},
+    rttmplsvpnmontypeinterval{YType::int32, "rttMplsVpnMonTypeInterval"},
+    rttmplsvpnmontypelpdechointerval{YType::int32, "rttMplsVpnMonTypeLpdEchoInterval"},
+    rttmplsvpnmontypelpdechonullshim{YType::boolean, "rttMplsVpnMonTypeLpdEchoNullShim"},
+    rttmplsvpnmontypelpdechotimeout{YType::int32, "rttMplsVpnMonTypeLpdEchoTimeout"},
+    rttmplsvpnmontypelpdmaxsessions{YType::int32, "rttMplsVpnMonTypeLpdMaxSessions"},
+    rttmplsvpnmontypelpdscanperiod{YType::int32, "rttMplsVpnMonTypeLpdScanPeriod"},
+    rttmplsvpnmontypelpdsesstimeout{YType::int32, "rttMplsVpnMonTypeLpdSessTimeout"},
+    rttmplsvpnmontypelpdstathours{YType::int32, "rttMplsVpnMonTypeLpdStatHours"},
+    rttmplsvpnmontypelspreplydscp{YType::int32, "rttMplsVpnMonTypeLSPReplyDscp"},
+    rttmplsvpnmontypelspreplymode{YType::enumeration, "rttMplsVpnMonTypeLSPReplyMode"},
+    rttmplsvpnmontypelspselector{YType::str, "rttMplsVpnMonTypeLspSelector"},
+    rttmplsvpnmontypelspttl{YType::int32, "rttMplsVpnMonTypeLSPTTL"},
+    rttmplsvpnmontypenumpackets{YType::int32, "rttMplsVpnMonTypeNumPackets"},
+    rttmplsvpnmontypesecfreqtype{YType::enumeration, "rttMplsVpnMonTypeSecFreqType"},
+    rttmplsvpnmontypesecfreqvalue{YType::int32, "rttMplsVpnMonTypeSecFreqValue"}
+{
+
+    yang_name = "rttMplsVpnMonCtrlEntry"; yang_parent_name = "rttMplsVpnMonCtrlTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::~Rttmplsvpnmonctrlentry()
+{
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_data() const
+{
+    return rttmplsvpnmonctrlindex.is_set
+	|| rttmplsvpnmonctrldelscanfactor.is_set
+	|| rttmplsvpnmonctrlexp.is_set
+	|| rttmplsvpnmonctrllpd.is_set
+	|| rttmplsvpnmonctrllpdcomptime.is_set
+	|| rttmplsvpnmonctrllpdgrplist.is_set
+	|| rttmplsvpnmonctrlprobelist.is_set
+	|| rttmplsvpnmonctrlrequestsize.is_set
+	|| rttmplsvpnmonctrlrtttype.is_set
+	|| rttmplsvpnmonctrlscaninterval.is_set
+	|| rttmplsvpnmonctrlstatus.is_set
+	|| rttmplsvpnmonctrlstoragetype.is_set
+	|| rttmplsvpnmonctrltag.is_set
+	|| rttmplsvpnmonctrlthreshold.is_set
+	|| rttmplsvpnmonctrltimeout.is_set
+	|| rttmplsvpnmonctrlverifydata.is_set
+	|| rttmplsvpnmonctrlvrfname.is_set
+	|| rttmplsvpnmonreactactiontype.is_set
+	|| rttmplsvpnmonreactconnectionenable.is_set
+	|| rttmplsvpnmonreactlpdnotifytype.is_set
+	|| rttmplsvpnmonreactlpdretrycount.is_set
+	|| rttmplsvpnmonreactthresholdcount.is_set
+	|| rttmplsvpnmonreactthresholdtype.is_set
+	|| rttmplsvpnmonreacttimeoutenable.is_set
+	|| rttmplsvpnmonschedulefrequency.is_set
+	|| rttmplsvpnmonscheduleperiod.is_set
+	|| rttmplsvpnmonschedulerttstarttime.is_set
+	|| rttmplsvpnmontypedestport.is_set
+	|| rttmplsvpnmontypeinterval.is_set
+	|| rttmplsvpnmontypelpdechointerval.is_set
+	|| rttmplsvpnmontypelpdechonullshim.is_set
+	|| rttmplsvpnmontypelpdechotimeout.is_set
+	|| rttmplsvpnmontypelpdmaxsessions.is_set
+	|| rttmplsvpnmontypelpdscanperiod.is_set
+	|| rttmplsvpnmontypelpdsesstimeout.is_set
+	|| rttmplsvpnmontypelpdstathours.is_set
+	|| rttmplsvpnmontypelspreplydscp.is_set
+	|| rttmplsvpnmontypelspreplymode.is_set
+	|| rttmplsvpnmontypelspselector.is_set
+	|| rttmplsvpnmontypelspttl.is_set
+	|| rttmplsvpnmontypenumpackets.is_set
+	|| rttmplsvpnmontypesecfreqtype.is_set
+	|| rttmplsvpnmontypesecfreqvalue.is_set;
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlindex.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrldelscanfactor.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlexp.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrllpd.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrllpdcomptime.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrllpdgrplist.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlprobelist.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlrequestsize.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlrtttype.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlscaninterval.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlstatus.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlstoragetype.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrltag.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlthreshold.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrltimeout.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlverifydata.yfilter)
+	|| ydk::is_set(rttmplsvpnmonctrlvrfname.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactactiontype.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactconnectionenable.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactlpdnotifytype.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactlpdretrycount.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactthresholdcount.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreactthresholdtype.yfilter)
+	|| ydk::is_set(rttmplsvpnmonreacttimeoutenable.yfilter)
+	|| ydk::is_set(rttmplsvpnmonschedulefrequency.yfilter)
+	|| ydk::is_set(rttmplsvpnmonscheduleperiod.yfilter)
+	|| ydk::is_set(rttmplsvpnmonschedulerttstarttime.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypedestport.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypeinterval.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdechointerval.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdechonullshim.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdechotimeout.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdmaxsessions.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdscanperiod.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdsesstimeout.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelpdstathours.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelspreplydscp.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelspreplymode.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelspselector.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypelspttl.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypenumpackets.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypesecfreqtype.yfilter)
+	|| ydk::is_set(rttmplsvpnmontypesecfreqvalue.yfilter);
+}
+
+std::string CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RTTMON-MIB:CISCO-RTTMON-MIB/rttMplsVpnMonCtrlTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rttMplsVpnMonCtrlEntry" <<"[rttMplsVpnMonCtrlIndex='" <<rttmplsvpnmonctrlindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rttmplsvpnmonctrlindex.is_set || is_set(rttmplsvpnmonctrlindex.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlindex.get_name_leafdata());
+    if (rttmplsvpnmonctrldelscanfactor.is_set || is_set(rttmplsvpnmonctrldelscanfactor.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrldelscanfactor.get_name_leafdata());
+    if (rttmplsvpnmonctrlexp.is_set || is_set(rttmplsvpnmonctrlexp.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlexp.get_name_leafdata());
+    if (rttmplsvpnmonctrllpd.is_set || is_set(rttmplsvpnmonctrllpd.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpd.get_name_leafdata());
+    if (rttmplsvpnmonctrllpdcomptime.is_set || is_set(rttmplsvpnmonctrllpdcomptime.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpdcomptime.get_name_leafdata());
+    if (rttmplsvpnmonctrllpdgrplist.is_set || is_set(rttmplsvpnmonctrllpdgrplist.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrllpdgrplist.get_name_leafdata());
+    if (rttmplsvpnmonctrlprobelist.is_set || is_set(rttmplsvpnmonctrlprobelist.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlprobelist.get_name_leafdata());
+    if (rttmplsvpnmonctrlrequestsize.is_set || is_set(rttmplsvpnmonctrlrequestsize.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlrequestsize.get_name_leafdata());
+    if (rttmplsvpnmonctrlrtttype.is_set || is_set(rttmplsvpnmonctrlrtttype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlrtttype.get_name_leafdata());
+    if (rttmplsvpnmonctrlscaninterval.is_set || is_set(rttmplsvpnmonctrlscaninterval.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlscaninterval.get_name_leafdata());
+    if (rttmplsvpnmonctrlstatus.is_set || is_set(rttmplsvpnmonctrlstatus.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlstatus.get_name_leafdata());
+    if (rttmplsvpnmonctrlstoragetype.is_set || is_set(rttmplsvpnmonctrlstoragetype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlstoragetype.get_name_leafdata());
+    if (rttmplsvpnmonctrltag.is_set || is_set(rttmplsvpnmonctrltag.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrltag.get_name_leafdata());
+    if (rttmplsvpnmonctrlthreshold.is_set || is_set(rttmplsvpnmonctrlthreshold.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlthreshold.get_name_leafdata());
+    if (rttmplsvpnmonctrltimeout.is_set || is_set(rttmplsvpnmonctrltimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrltimeout.get_name_leafdata());
+    if (rttmplsvpnmonctrlverifydata.is_set || is_set(rttmplsvpnmonctrlverifydata.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlverifydata.get_name_leafdata());
+    if (rttmplsvpnmonctrlvrfname.is_set || is_set(rttmplsvpnmonctrlvrfname.yfilter)) leaf_name_data.push_back(rttmplsvpnmonctrlvrfname.get_name_leafdata());
+    if (rttmplsvpnmonreactactiontype.is_set || is_set(rttmplsvpnmonreactactiontype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactactiontype.get_name_leafdata());
+    if (rttmplsvpnmonreactconnectionenable.is_set || is_set(rttmplsvpnmonreactconnectionenable.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactconnectionenable.get_name_leafdata());
+    if (rttmplsvpnmonreactlpdnotifytype.is_set || is_set(rttmplsvpnmonreactlpdnotifytype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactlpdnotifytype.get_name_leafdata());
+    if (rttmplsvpnmonreactlpdretrycount.is_set || is_set(rttmplsvpnmonreactlpdretrycount.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactlpdretrycount.get_name_leafdata());
+    if (rttmplsvpnmonreactthresholdcount.is_set || is_set(rttmplsvpnmonreactthresholdcount.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactthresholdcount.get_name_leafdata());
+    if (rttmplsvpnmonreactthresholdtype.is_set || is_set(rttmplsvpnmonreactthresholdtype.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreactthresholdtype.get_name_leafdata());
+    if (rttmplsvpnmonreacttimeoutenable.is_set || is_set(rttmplsvpnmonreacttimeoutenable.yfilter)) leaf_name_data.push_back(rttmplsvpnmonreacttimeoutenable.get_name_leafdata());
+    if (rttmplsvpnmonschedulefrequency.is_set || is_set(rttmplsvpnmonschedulefrequency.yfilter)) leaf_name_data.push_back(rttmplsvpnmonschedulefrequency.get_name_leafdata());
+    if (rttmplsvpnmonscheduleperiod.is_set || is_set(rttmplsvpnmonscheduleperiod.yfilter)) leaf_name_data.push_back(rttmplsvpnmonscheduleperiod.get_name_leafdata());
+    if (rttmplsvpnmonschedulerttstarttime.is_set || is_set(rttmplsvpnmonschedulerttstarttime.yfilter)) leaf_name_data.push_back(rttmplsvpnmonschedulerttstarttime.get_name_leafdata());
+    if (rttmplsvpnmontypedestport.is_set || is_set(rttmplsvpnmontypedestport.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypedestport.get_name_leafdata());
+    if (rttmplsvpnmontypeinterval.is_set || is_set(rttmplsvpnmontypeinterval.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypeinterval.get_name_leafdata());
+    if (rttmplsvpnmontypelpdechointerval.is_set || is_set(rttmplsvpnmontypelpdechointerval.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechointerval.get_name_leafdata());
+    if (rttmplsvpnmontypelpdechonullshim.is_set || is_set(rttmplsvpnmontypelpdechonullshim.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechonullshim.get_name_leafdata());
+    if (rttmplsvpnmontypelpdechotimeout.is_set || is_set(rttmplsvpnmontypelpdechotimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdechotimeout.get_name_leafdata());
+    if (rttmplsvpnmontypelpdmaxsessions.is_set || is_set(rttmplsvpnmontypelpdmaxsessions.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdmaxsessions.get_name_leafdata());
+    if (rttmplsvpnmontypelpdscanperiod.is_set || is_set(rttmplsvpnmontypelpdscanperiod.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdscanperiod.get_name_leafdata());
+    if (rttmplsvpnmontypelpdsesstimeout.is_set || is_set(rttmplsvpnmontypelpdsesstimeout.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdsesstimeout.get_name_leafdata());
+    if (rttmplsvpnmontypelpdstathours.is_set || is_set(rttmplsvpnmontypelpdstathours.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelpdstathours.get_name_leafdata());
+    if (rttmplsvpnmontypelspreplydscp.is_set || is_set(rttmplsvpnmontypelspreplydscp.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspreplydscp.get_name_leafdata());
+    if (rttmplsvpnmontypelspreplymode.is_set || is_set(rttmplsvpnmontypelspreplymode.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspreplymode.get_name_leafdata());
+    if (rttmplsvpnmontypelspselector.is_set || is_set(rttmplsvpnmontypelspselector.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspselector.get_name_leafdata());
+    if (rttmplsvpnmontypelspttl.is_set || is_set(rttmplsvpnmontypelspttl.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypelspttl.get_name_leafdata());
+    if (rttmplsvpnmontypenumpackets.is_set || is_set(rttmplsvpnmontypenumpackets.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypenumpackets.get_name_leafdata());
+    if (rttmplsvpnmontypesecfreqtype.is_set || is_set(rttmplsvpnmontypesecfreqtype.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypesecfreqtype.get_name_leafdata());
+    if (rttmplsvpnmontypesecfreqvalue.is_set || is_set(rttmplsvpnmontypesecfreqvalue.yfilter)) leaf_name_data.push_back(rttmplsvpnmontypesecfreqvalue.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rttMplsVpnMonCtrlIndex")
+    {
+        rttmplsvpnmonctrlindex = value;
+        rttmplsvpnmonctrlindex.value_namespace = name_space;
+        rttmplsvpnmonctrlindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlDelScanFactor")
+    {
+        rttmplsvpnmonctrldelscanfactor = value;
+        rttmplsvpnmonctrldelscanfactor.value_namespace = name_space;
+        rttmplsvpnmonctrldelscanfactor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlEXP")
+    {
+        rttmplsvpnmonctrlexp = value;
+        rttmplsvpnmonctrlexp.value_namespace = name_space;
+        rttmplsvpnmonctrlexp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpd")
+    {
+        rttmplsvpnmonctrllpd = value;
+        rttmplsvpnmonctrllpd.value_namespace = name_space;
+        rttmplsvpnmonctrllpd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpdCompTime")
+    {
+        rttmplsvpnmonctrllpdcomptime = value;
+        rttmplsvpnmonctrllpdcomptime.value_namespace = name_space;
+        rttmplsvpnmonctrllpdcomptime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpdGrpList")
+    {
+        rttmplsvpnmonctrllpdgrplist = value;
+        rttmplsvpnmonctrllpdgrplist.value_namespace = name_space;
+        rttmplsvpnmonctrllpdgrplist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlProbeList")
+    {
+        rttmplsvpnmonctrlprobelist = value;
+        rttmplsvpnmonctrlprobelist.value_namespace = name_space;
+        rttmplsvpnmonctrlprobelist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlRequestSize")
+    {
+        rttmplsvpnmonctrlrequestsize = value;
+        rttmplsvpnmonctrlrequestsize.value_namespace = name_space;
+        rttmplsvpnmonctrlrequestsize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlRttType")
+    {
+        rttmplsvpnmonctrlrtttype = value;
+        rttmplsvpnmonctrlrtttype.value_namespace = name_space;
+        rttmplsvpnmonctrlrtttype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlScanInterval")
+    {
+        rttmplsvpnmonctrlscaninterval = value;
+        rttmplsvpnmonctrlscaninterval.value_namespace = name_space;
+        rttmplsvpnmonctrlscaninterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlStatus")
+    {
+        rttmplsvpnmonctrlstatus = value;
+        rttmplsvpnmonctrlstatus.value_namespace = name_space;
+        rttmplsvpnmonctrlstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlStorageType")
+    {
+        rttmplsvpnmonctrlstoragetype = value;
+        rttmplsvpnmonctrlstoragetype.value_namespace = name_space;
+        rttmplsvpnmonctrlstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlTag")
+    {
+        rttmplsvpnmonctrltag = value;
+        rttmplsvpnmonctrltag.value_namespace = name_space;
+        rttmplsvpnmonctrltag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlThreshold")
+    {
+        rttmplsvpnmonctrlthreshold = value;
+        rttmplsvpnmonctrlthreshold.value_namespace = name_space;
+        rttmplsvpnmonctrlthreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlTimeout")
+    {
+        rttmplsvpnmonctrltimeout = value;
+        rttmplsvpnmonctrltimeout.value_namespace = name_space;
+        rttmplsvpnmonctrltimeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlVerifyData")
+    {
+        rttmplsvpnmonctrlverifydata = value;
+        rttmplsvpnmonctrlverifydata.value_namespace = name_space;
+        rttmplsvpnmonctrlverifydata.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonCtrlVrfName")
+    {
+        rttmplsvpnmonctrlvrfname = value;
+        rttmplsvpnmonctrlvrfname.value_namespace = name_space;
+        rttmplsvpnmonctrlvrfname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactActionType")
+    {
+        rttmplsvpnmonreactactiontype = value;
+        rttmplsvpnmonreactactiontype.value_namespace = name_space;
+        rttmplsvpnmonreactactiontype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactConnectionEnable")
+    {
+        rttmplsvpnmonreactconnectionenable = value;
+        rttmplsvpnmonreactconnectionenable.value_namespace = name_space;
+        rttmplsvpnmonreactconnectionenable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactLpdNotifyType")
+    {
+        rttmplsvpnmonreactlpdnotifytype = value;
+        rttmplsvpnmonreactlpdnotifytype.value_namespace = name_space;
+        rttmplsvpnmonreactlpdnotifytype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactLpdRetryCount")
+    {
+        rttmplsvpnmonreactlpdretrycount = value;
+        rttmplsvpnmonreactlpdretrycount.value_namespace = name_space;
+        rttmplsvpnmonreactlpdretrycount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactThresholdCount")
+    {
+        rttmplsvpnmonreactthresholdcount = value;
+        rttmplsvpnmonreactthresholdcount.value_namespace = name_space;
+        rttmplsvpnmonreactthresholdcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactThresholdType")
+    {
+        rttmplsvpnmonreactthresholdtype = value;
+        rttmplsvpnmonreactthresholdtype.value_namespace = name_space;
+        rttmplsvpnmonreactthresholdtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonReactTimeoutEnable")
+    {
+        rttmplsvpnmonreacttimeoutenable = value;
+        rttmplsvpnmonreacttimeoutenable.value_namespace = name_space;
+        rttmplsvpnmonreacttimeoutenable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonScheduleFrequency")
+    {
+        rttmplsvpnmonschedulefrequency = value;
+        rttmplsvpnmonschedulefrequency.value_namespace = name_space;
+        rttmplsvpnmonschedulefrequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonSchedulePeriod")
+    {
+        rttmplsvpnmonscheduleperiod = value;
+        rttmplsvpnmonscheduleperiod.value_namespace = name_space;
+        rttmplsvpnmonscheduleperiod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonScheduleRttStartTime")
+    {
+        rttmplsvpnmonschedulerttstarttime = value;
+        rttmplsvpnmonschedulerttstarttime.value_namespace = name_space;
+        rttmplsvpnmonschedulerttstarttime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeDestPort")
+    {
+        rttmplsvpnmontypedestport = value;
+        rttmplsvpnmontypedestport.value_namespace = name_space;
+        rttmplsvpnmontypedestport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeInterval")
+    {
+        rttmplsvpnmontypeinterval = value;
+        rttmplsvpnmontypeinterval.value_namespace = name_space;
+        rttmplsvpnmontypeinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoInterval")
+    {
+        rttmplsvpnmontypelpdechointerval = value;
+        rttmplsvpnmontypelpdechointerval.value_namespace = name_space;
+        rttmplsvpnmontypelpdechointerval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoNullShim")
+    {
+        rttmplsvpnmontypelpdechonullshim = value;
+        rttmplsvpnmontypelpdechonullshim.value_namespace = name_space;
+        rttmplsvpnmontypelpdechonullshim.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoTimeout")
+    {
+        rttmplsvpnmontypelpdechotimeout = value;
+        rttmplsvpnmontypelpdechotimeout.value_namespace = name_space;
+        rttmplsvpnmontypelpdechotimeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdMaxSessions")
+    {
+        rttmplsvpnmontypelpdmaxsessions = value;
+        rttmplsvpnmontypelpdmaxsessions.value_namespace = name_space;
+        rttmplsvpnmontypelpdmaxsessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdScanPeriod")
+    {
+        rttmplsvpnmontypelpdscanperiod = value;
+        rttmplsvpnmontypelpdscanperiod.value_namespace = name_space;
+        rttmplsvpnmontypelpdscanperiod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdSessTimeout")
+    {
+        rttmplsvpnmontypelpdsesstimeout = value;
+        rttmplsvpnmontypelpdsesstimeout.value_namespace = name_space;
+        rttmplsvpnmontypelpdsesstimeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdStatHours")
+    {
+        rttmplsvpnmontypelpdstathours = value;
+        rttmplsvpnmontypelpdstathours.value_namespace = name_space;
+        rttmplsvpnmontypelpdstathours.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPReplyDscp")
+    {
+        rttmplsvpnmontypelspreplydscp = value;
+        rttmplsvpnmontypelspreplydscp.value_namespace = name_space;
+        rttmplsvpnmontypelspreplydscp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPReplyMode")
+    {
+        rttmplsvpnmontypelspreplymode = value;
+        rttmplsvpnmontypelspreplymode.value_namespace = name_space;
+        rttmplsvpnmontypelspreplymode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLspSelector")
+    {
+        rttmplsvpnmontypelspselector = value;
+        rttmplsvpnmontypelspselector.value_namespace = name_space;
+        rttmplsvpnmontypelspselector.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPTTL")
+    {
+        rttmplsvpnmontypelspttl = value;
+        rttmplsvpnmontypelspttl.value_namespace = name_space;
+        rttmplsvpnmontypelspttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeNumPackets")
+    {
+        rttmplsvpnmontypenumpackets = value;
+        rttmplsvpnmontypenumpackets.value_namespace = name_space;
+        rttmplsvpnmontypenumpackets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeSecFreqType")
+    {
+        rttmplsvpnmontypesecfreqtype = value;
+        rttmplsvpnmontypesecfreqtype.value_namespace = name_space;
+        rttmplsvpnmontypesecfreqtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rttMplsVpnMonTypeSecFreqValue")
+    {
+        rttmplsvpnmontypesecfreqvalue = value;
+        rttmplsvpnmontypesecfreqvalue.value_namespace = name_space;
+        rttmplsvpnmontypesecfreqvalue.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rttMplsVpnMonCtrlIndex")
+    {
+        rttmplsvpnmonctrlindex.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlDelScanFactor")
+    {
+        rttmplsvpnmonctrldelscanfactor.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlEXP")
+    {
+        rttmplsvpnmonctrlexp.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpd")
+    {
+        rttmplsvpnmonctrllpd.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpdCompTime")
+    {
+        rttmplsvpnmonctrllpdcomptime.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlLpdGrpList")
+    {
+        rttmplsvpnmonctrllpdgrplist.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlProbeList")
+    {
+        rttmplsvpnmonctrlprobelist.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlRequestSize")
+    {
+        rttmplsvpnmonctrlrequestsize.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlRttType")
+    {
+        rttmplsvpnmonctrlrtttype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlScanInterval")
+    {
+        rttmplsvpnmonctrlscaninterval.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlStatus")
+    {
+        rttmplsvpnmonctrlstatus.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlStorageType")
+    {
+        rttmplsvpnmonctrlstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlTag")
+    {
+        rttmplsvpnmonctrltag.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlThreshold")
+    {
+        rttmplsvpnmonctrlthreshold.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlTimeout")
+    {
+        rttmplsvpnmonctrltimeout.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlVerifyData")
+    {
+        rttmplsvpnmonctrlverifydata.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonCtrlVrfName")
+    {
+        rttmplsvpnmonctrlvrfname.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactActionType")
+    {
+        rttmplsvpnmonreactactiontype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactConnectionEnable")
+    {
+        rttmplsvpnmonreactconnectionenable.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactLpdNotifyType")
+    {
+        rttmplsvpnmonreactlpdnotifytype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactLpdRetryCount")
+    {
+        rttmplsvpnmonreactlpdretrycount.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactThresholdCount")
+    {
+        rttmplsvpnmonreactthresholdcount.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactThresholdType")
+    {
+        rttmplsvpnmonreactthresholdtype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonReactTimeoutEnable")
+    {
+        rttmplsvpnmonreacttimeoutenable.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonScheduleFrequency")
+    {
+        rttmplsvpnmonschedulefrequency.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonSchedulePeriod")
+    {
+        rttmplsvpnmonscheduleperiod.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonScheduleRttStartTime")
+    {
+        rttmplsvpnmonschedulerttstarttime.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeDestPort")
+    {
+        rttmplsvpnmontypedestport.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeInterval")
+    {
+        rttmplsvpnmontypeinterval.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoInterval")
+    {
+        rttmplsvpnmontypelpdechointerval.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoNullShim")
+    {
+        rttmplsvpnmontypelpdechonullshim.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdEchoTimeout")
+    {
+        rttmplsvpnmontypelpdechotimeout.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdMaxSessions")
+    {
+        rttmplsvpnmontypelpdmaxsessions.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdScanPeriod")
+    {
+        rttmplsvpnmontypelpdscanperiod.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdSessTimeout")
+    {
+        rttmplsvpnmontypelpdsesstimeout.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLpdStatHours")
+    {
+        rttmplsvpnmontypelpdstathours.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPReplyDscp")
+    {
+        rttmplsvpnmontypelspreplydscp.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPReplyMode")
+    {
+        rttmplsvpnmontypelspreplymode.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLspSelector")
+    {
+        rttmplsvpnmontypelspselector.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeLSPTTL")
+    {
+        rttmplsvpnmontypelspttl.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeNumPackets")
+    {
+        rttmplsvpnmontypenumpackets.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeSecFreqType")
+    {
+        rttmplsvpnmontypesecfreqtype.yfilter = yfilter;
+    }
+    if(value_path == "rttMplsVpnMonTypeSecFreqValue")
+    {
+        rttmplsvpnmontypesecfreqvalue.yfilter = yfilter;
+    }
+}
+
+bool CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rttMplsVpnMonCtrlIndex" || name == "rttMplsVpnMonCtrlDelScanFactor" || name == "rttMplsVpnMonCtrlEXP" || name == "rttMplsVpnMonCtrlLpd" || name == "rttMplsVpnMonCtrlLpdCompTime" || name == "rttMplsVpnMonCtrlLpdGrpList" || name == "rttMplsVpnMonCtrlProbeList" || name == "rttMplsVpnMonCtrlRequestSize" || name == "rttMplsVpnMonCtrlRttType" || name == "rttMplsVpnMonCtrlScanInterval" || name == "rttMplsVpnMonCtrlStatus" || name == "rttMplsVpnMonCtrlStorageType" || name == "rttMplsVpnMonCtrlTag" || name == "rttMplsVpnMonCtrlThreshold" || name == "rttMplsVpnMonCtrlTimeout" || name == "rttMplsVpnMonCtrlVerifyData" || name == "rttMplsVpnMonCtrlVrfName" || name == "rttMplsVpnMonReactActionType" || name == "rttMplsVpnMonReactConnectionEnable" || name == "rttMplsVpnMonReactLpdNotifyType" || name == "rttMplsVpnMonReactLpdRetryCount" || name == "rttMplsVpnMonReactThresholdCount" || name == "rttMplsVpnMonReactThresholdType" || name == "rttMplsVpnMonReactTimeoutEnable" || name == "rttMplsVpnMonScheduleFrequency" || name == "rttMplsVpnMonSchedulePeriod" || name == "rttMplsVpnMonScheduleRttStartTime" || name == "rttMplsVpnMonTypeDestPort" || name == "rttMplsVpnMonTypeInterval" || name == "rttMplsVpnMonTypeLpdEchoInterval" || name == "rttMplsVpnMonTypeLpdEchoNullShim" || name == "rttMplsVpnMonTypeLpdEchoTimeout" || name == "rttMplsVpnMonTypeLpdMaxSessions" || name == "rttMplsVpnMonTypeLpdScanPeriod" || name == "rttMplsVpnMonTypeLpdSessTimeout" || name == "rttMplsVpnMonTypeLpdStatHours" || name == "rttMplsVpnMonTypeLSPReplyDscp" || name == "rttMplsVpnMonTypeLSPReplyMode" || name == "rttMplsVpnMonTypeLspSelector" || name == "rttMplsVpnMonTypeLSPTTL" || name == "rttMplsVpnMonTypeNumPackets" || name == "rttMplsVpnMonTypeSecFreqType" || name == "rttMplsVpnMonTypeSecFreqValue")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype::filePath {1, "filePath"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype::scriptName {2, "scriptName"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::never {1, "never"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::immediate {2, "immediate"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::consecutive {3, "consecutive"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::xOfy {4, "xOfy"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype::average {5, "average"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapOnly {2, "trapOnly"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::nmvtOnly {3, "nmvtOnly"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::triggerOnly {4, "triggerOnly"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapAndNmvt {5, "trapAndNmvt"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapAndTrigger {6, "trapAndTrigger"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::nmvtAndTrigger {7, "nmvtAndTrigger"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype::trapNmvtAndTrigger {8, "trapNmvtAndTrigger"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::all {2, "all"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::overThreshold {3, "overThreshold"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter::failures {4, "failures"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::reset {1, "reset"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::orderlyStop {2, "orderlyStop"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::immediateStop {3, "immediateStop"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::pending {4, "pending"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::inactive {5, "inactive"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::active {6, "active"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate::restart {7, "restart"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminlspfectype::ldpIpv4Prefix {1, "ldpIpv4Prefix"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision::milliseconds {1, "milliseconds"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision::microseconds {2, "microseconds"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority::normal {1, "normal"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority::high {2, "high"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype::percent {1, "percent"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype::absolute {2, "absolute"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::be {1, "be"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::gs {2, "gs"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp::na {3, "na"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n256 {1, "n256"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n1k {2, "n1k"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n64k {3, "n64k"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n128k {4, "n128k"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize::n256k {5, "n256k"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::write {1, "write"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::read {2, "read"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction::writeRead {3, "writeRead"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate::sync {1, "sync"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate::outOfSync {2, "outOfSync"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::never {1, "never"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::immediate {2, "immediate"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::consecutive {3, "consecutive"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::xOfy {4, "xOfy"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype::average {5, "average"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::trapOnly {2, "trapOnly"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::triggerOnly {3, "triggerOnly"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype::trapAndTrigger {4, "trapAndTrigger"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate::active {1, "active"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate::pending {2, "pending"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::timeout {2, "timeout"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::connectionLoss {3, "connectionLoss"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype::both {4, "both"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::never {1, "never"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::immediate {2, "immediate"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype::consecutive {3, "consecutive"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype::trapOnly {2, "trapOnly"};
+
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::none {1, "none"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdPathDiscovery {2, "lpdPathDiscovery"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdGroupStatus {3, "lpdGroupStatus"};
+const Enum::YLeaf CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype::lpdAll {4, "lpdAll"};
 
 
 }

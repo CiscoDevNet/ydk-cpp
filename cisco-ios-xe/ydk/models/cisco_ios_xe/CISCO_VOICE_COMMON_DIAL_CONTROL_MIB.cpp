@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_VOICE_COMMON_DIAL_CONTROL_MIB {
 
-CiscoVoiceCommonDialControlMib::CiscoVoiceCommonDialControlMib()
+CISCOVOICECOMMONDIALCONTROLMIB::CISCOVOICECOMMONDIALCONTROLMIB()
     :
-    cvcommondccallactivetable(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>())
-	,cvcommondccallhistorytable(std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>())
+    cvcommondccallactivetable(std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable>())
+	,cvcommondccallhistorytable(std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable>())
 {
     cvcommondccallactivetable->parent = this;
-
     cvcommondccallhistorytable->parent = this;
 
-    yang_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB";
+    yang_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoVoiceCommonDialControlMib::~CiscoVoiceCommonDialControlMib()
+CISCOVOICECOMMONDIALCONTROLMIB::~CISCOVOICECOMMONDIALCONTROLMIB()
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::has_data() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::has_data() const
 {
     return (cvcommondccallactivetable !=  nullptr && cvcommondccallactivetable->has_data())
 	|| (cvcommondccallhistorytable !=  nullptr && cvcommondccallhistorytable->has_data());
 }
 
-bool CiscoVoiceCommonDialControlMib::has_operation() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cvcommondccallactivetable !=  nullptr && cvcommondccallactivetable->has_operation())
 	|| (cvcommondccallhistorytable !=  nullptr && cvcommondccallhistorytable->has_operation());
 }
 
-std::string CiscoVoiceCommonDialControlMib::get_segment_path() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVoiceCommonDialControlMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallActiveTable")
     {
         if(cvcommondccallactivetable == nullptr)
         {
-            cvcommondccallactivetable = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable>();
+            cvcommondccallactivetable = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable>();
         }
         return cvcommondccallactivetable;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::get_child_by_name(const 
     {
         if(cvcommondccallhistorytable == nullptr)
         {
-            cvcommondccallhistorytable = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable>();
+            cvcommondccallhistorytable = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable>();
         }
         return cvcommondccallhistorytable;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cvcommondccallactivetable != nullptr)
@@ -106,56 +94,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::g
     return children;
 }
 
-void CiscoVoiceCommonDialControlMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICECOMMONDIALCONTROLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoVoiceCommonDialControlMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICECOMMONDIALCONTROLMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoVoiceCommonDialControlMib>();
+    return std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB>();
 }
 
-std::string CiscoVoiceCommonDialControlMib::get_bundle_yang_models_location() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoVoiceCommonDialControlMib::get_bundle_name() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoVoiceCommonDialControlMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOVOICECOMMONDIALCONTROLMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoVoiceCommonDialControlMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOVOICECOMMONDIALCONTROLMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoVoiceCommonDialControlMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICECOMMONDIALCONTROLMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCommonDcCallActiveTable" || name == "cvCommonDcCallHistoryTable")
         return true;
     return false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactivetable()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactivetable()
 {
-    yang_name = "cvCommonDcCallActiveTable"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB";
+
+    yang_name = "cvCommonDcCallActiveTable"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::~Cvcommondccallactivetable()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::~Cvcommondccallactivetable()
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_data() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::has_data() const
 {
     for (std::size_t index=0; index<cvcommondccallactiveentry.size(); index++)
     {
@@ -165,7 +154,7 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_data() const
     return false;
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_operation() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::has_operation() const
 {
     for (std::size_t index=0; index<cvcommondccallactiveentry.size(); index++)
     {
@@ -175,37 +164,30 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_operation() 
     return is_set(yfilter);
 }
 
-std::string CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::get_segment_path() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCommonDcCallActiveTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallActiveEntry")
     {
@@ -217,7 +199,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetabl
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry>();
+        auto c = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry>();
         c->parent = this;
         cvcommondccallactiveentry.push_back(c);
         return c;
@@ -226,7 +208,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetabl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cvcommondccallactiveentry)
@@ -237,22 +219,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::C
     return children;
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCommonDcCallActiveEntry")
         return true;
     return false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::Cvcommondccallactiveentry()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::Cvcommondccallactiveentry()
     :
     callactivesetuptime{YType::str, "callActiveSetupTime"},
     callactiveindex{YType::str, "callActiveIndex"},
@@ -264,14 +246,15 @@ CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactivee
     cvcommondccallactiveinbandsignaling{YType::enumeration, "cvCommonDcCallActiveInBandSignaling"},
     cvcommondccallactivevadenable{YType::boolean, "cvCommonDcCallActiveVADEnable"}
 {
-    yang_name = "cvCommonDcCallActiveEntry"; yang_parent_name = "cvCommonDcCallActiveTable";
+
+    yang_name = "cvCommonDcCallActiveEntry"; yang_parent_name = "cvCommonDcCallActiveTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::~Cvcommondccallactiveentry()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::~Cvcommondccallactiveentry()
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_data() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_data() const
 {
     return callactivesetuptime.is_set
 	|| callactiveindex.is_set
@@ -284,7 +267,7 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallac
 	|| cvcommondccallactivevadenable.is_set;
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_operation() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callactivesetuptime.yfilter)
@@ -298,27 +281,22 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallac
 	|| ydk::is_set(cvcommondccallactivevadenable.yfilter);
 }
 
-std::string CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_segment_path() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/cvCommonDcCallActiveTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCommonDcCallActiveEntry" <<"[callActiveSetupTime='" <<callactivesetuptime <<"']" <<"[callActiveIndex='" <<callactiveindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/cvCommonDcCallActiveTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (callactivesetuptime.is_set || is_set(callactivesetuptime.yfilter)) leaf_name_data.push_back(callactivesetuptime.get_name_leafdata());
@@ -331,24 +309,22 @@ const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvco
     if (cvcommondccallactiveinbandsignaling.is_set || is_set(cvcommondccallactiveinbandsignaling.yfilter)) leaf_name_data.push_back(cvcommondccallactiveinbandsignaling.get_name_leafdata());
     if (cvcommondccallactivevadenable.is_set || is_set(cvcommondccallactivevadenable.yfilter)) leaf_name_data.push_back(cvcommondccallactivevadenable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -406,7 +382,7 @@ void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallac
     }
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -446,23 +422,24 @@ void CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallac
     }
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallactivetable::Cvcommondccallactiveentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "cvCommonDcCallActiveCallerIDBlock" || name == "cvCommonDcCallActiveCallingName" || name == "cvCommonDcCallActiveCodecBytes" || name == "cvCommonDcCallActiveCoderTypeRate" || name == "cvCommonDcCallActiveConnectionId" || name == "cvCommonDcCallActiveInBandSignaling" || name == "cvCommonDcCallActiveVADEnable")
         return true;
     return false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistorytable()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistorytable()
 {
-    yang_name = "cvCommonDcCallHistoryTable"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB";
+
+    yang_name = "cvCommonDcCallHistoryTable"; yang_parent_name = "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::~Cvcommondccallhistorytable()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::~Cvcommondccallhistorytable()
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_data() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::has_data() const
 {
     for (std::size_t index=0; index<cvcommondccallhistoryentry.size(); index++)
     {
@@ -472,7 +449,7 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_data() cons
     return false;
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_operation() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::has_operation() const
 {
     for (std::size_t index=0; index<cvcommondccallhistoryentry.size(); index++)
     {
@@ -482,37 +459,30 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_operation()
     return is_set(yfilter);
 }
 
-std::string CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::get_segment_path() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCommonDcCallHistoryTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallHistoryEntry")
     {
@@ -524,7 +494,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytab
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry>();
+        auto c = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry>();
         c->parent = this;
         cvcommondccallhistoryentry.push_back(c);
         return c;
@@ -533,7 +503,7 @@ std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytab
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cvcommondccallhistoryentry)
@@ -544,22 +514,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::C
     return children;
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCommonDcCallHistoryEntry")
         return true;
     return false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::Cvcommondccallhistoryentry()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::Cvcommondccallhistoryentry()
     :
     ccallhistoryindex{YType::str, "cCallHistoryIndex"},
     cvcommondccallhistorycalleridblock{YType::boolean, "cvCommonDcCallHistoryCallerIDBlock"},
@@ -570,14 +540,15 @@ CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistor
     cvcommondccallhistoryinbandsignaling{YType::enumeration, "cvCommonDcCallHistoryInBandSignaling"},
     cvcommondccallhistoryvadenable{YType::boolean, "cvCommonDcCallHistoryVADEnable"}
 {
-    yang_name = "cvCommonDcCallHistoryEntry"; yang_parent_name = "cvCommonDcCallHistoryTable";
+
+    yang_name = "cvCommonDcCallHistoryEntry"; yang_parent_name = "cvCommonDcCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::~Cvcommondccallhistoryentry()
+CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::~Cvcommondccallhistoryentry()
 {
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_data() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_data() const
 {
     return ccallhistoryindex.is_set
 	|| cvcommondccallhistorycalleridblock.is_set
@@ -589,7 +560,7 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallh
 	|| cvcommondccallhistoryvadenable.is_set;
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_operation() const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccallhistoryindex.yfilter)
@@ -602,27 +573,22 @@ bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallh
 	|| ydk::is_set(cvcommondccallhistoryvadenable.yfilter);
 }
 
-std::string CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_segment_path() const
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/cvCommonDcCallHistoryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCommonDcCallHistoryEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-VOICE-COMMON-DIAL-CONTROL-MIB:CISCO-VOICE-COMMON-DIAL-CONTROL-MIB/cvCommonDcCallHistoryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ccallhistoryindex.is_set || is_set(ccallhistoryindex.yfilter)) leaf_name_data.push_back(ccallhistoryindex.get_name_leafdata());
@@ -634,24 +600,22 @@ const EntityPath CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvc
     if (cvcommondccallhistoryinbandsignaling.is_set || is_set(cvcommondccallhistoryinbandsignaling.yfilter)) leaf_name_data.push_back(cvcommondccallhistoryinbandsignaling.get_name_leafdata());
     if (cvcommondccallhistoryvadenable.is_set || is_set(cvcommondccallhistoryvadenable.yfilter)) leaf_name_data.push_back(cvcommondccallhistoryvadenable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -703,7 +667,7 @@ void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallh
     }
 }
 
-void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -739,107 +703,107 @@ void CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallh
     }
 }
 
-bool CiscoVoiceCommonDialControlMib::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICECOMMONDIALCONTROLMIB::Cvcommondccallhistorytable::Cvcommondccallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryIndex" || name == "cvCommonDcCallHistoryCallerIDBlock" || name == "cvCommonDcCallHistoryCallingName" || name == "cvCommonDcCallHistoryCodecBytes" || name == "cvCommonDcCallHistoryCoderTypeRate" || name == "cvCommonDcCallHistoryConnectionId" || name == "cvCommonDcCallHistoryInBandSignaling" || name == "cvCommonDcCallHistoryVADEnable")
         return true;
     return false;
 }
 
-const Enum::YLeaf Cvcspeechcoderrate::g729r8000 {1, "g729r8000"};
-const Enum::YLeaf Cvcspeechcoderrate::g729Ar8000 {2, "g729Ar8000"};
-const Enum::YLeaf Cvcspeechcoderrate::g726r16000 {3, "g726r16000"};
-const Enum::YLeaf Cvcspeechcoderrate::g726r24000 {4, "g726r24000"};
-const Enum::YLeaf Cvcspeechcoderrate::g726r32000 {5, "g726r32000"};
-const Enum::YLeaf Cvcspeechcoderrate::g711ulawr64000 {6, "g711ulawr64000"};
-const Enum::YLeaf Cvcspeechcoderrate::g711Alawr64000 {7, "g711Alawr64000"};
-const Enum::YLeaf Cvcspeechcoderrate::g728r16000 {8, "g728r16000"};
-const Enum::YLeaf Cvcspeechcoderrate::g723r6300 {9, "g723r6300"};
-const Enum::YLeaf Cvcspeechcoderrate::g723r5300 {10, "g723r5300"};
-const Enum::YLeaf Cvcspeechcoderrate::gsmr13200 {11, "gsmr13200"};
-const Enum::YLeaf Cvcspeechcoderrate::g729Br8000 {12, "g729Br8000"};
-const Enum::YLeaf Cvcspeechcoderrate::g729ABr8000 {13, "g729ABr8000"};
-const Enum::YLeaf Cvcspeechcoderrate::g723Ar6300 {14, "g723Ar6300"};
-const Enum::YLeaf Cvcspeechcoderrate::g723Ar5300 {15, "g723Ar5300"};
-const Enum::YLeaf Cvcspeechcoderrate::g729IETFr8000 {16, "g729IETFr8000"};
-const Enum::YLeaf Cvcspeechcoderrate::gsmeEr12200 {17, "gsmeEr12200"};
-const Enum::YLeaf Cvcspeechcoderrate::clearChannel {18, "clearChannel"};
-const Enum::YLeaf Cvcspeechcoderrate::g726r40000 {19, "g726r40000"};
-const Enum::YLeaf Cvcspeechcoderrate::llcc {20, "llcc"};
-const Enum::YLeaf Cvcspeechcoderrate::gsmAmrNb {21, "gsmAmrNb"};
-const Enum::YLeaf Cvcspeechcoderrate::iLBC {22, "iLBC"};
-const Enum::YLeaf Cvcspeechcoderrate::iLBCr15200 {23, "iLBCr15200"};
-const Enum::YLeaf Cvcspeechcoderrate::iLBCr13330 {24, "iLBCr13330"};
-const Enum::YLeaf Cvcspeechcoderrate::g722r4800 {25, "g722r4800"};
-const Enum::YLeaf Cvcspeechcoderrate::g722r5600 {26, "g722r5600"};
-const Enum::YLeaf Cvcspeechcoderrate::g722r6400 {27, "g722r6400"};
-const Enum::YLeaf Cvcspeechcoderrate::iSAC {28, "iSAC"};
-const Enum::YLeaf Cvcspeechcoderrate::aaclc {29, "aaclc"};
-const Enum::YLeaf Cvcspeechcoderrate::aacld {30, "aacld"};
+const Enum::YLeaf CvcFaxTransmitRate::none {1, "none"};
+const Enum::YLeaf CvcFaxTransmitRate::voiceRate {2, "voiceRate"};
+const Enum::YLeaf CvcFaxTransmitRate::fax2400 {3, "fax2400"};
+const Enum::YLeaf CvcFaxTransmitRate::fax4800 {4, "fax4800"};
+const Enum::YLeaf CvcFaxTransmitRate::fax7200 {5, "fax7200"};
+const Enum::YLeaf CvcFaxTransmitRate::fax9600 {6, "fax9600"};
+const Enum::YLeaf CvcFaxTransmitRate::fax14400 {7, "fax14400"};
+const Enum::YLeaf CvcFaxTransmitRate::fax12000 {8, "fax12000"};
 
-const Enum::YLeaf Cvch320Calltype::none {0, "none"};
-const Enum::YLeaf Cvch320Calltype::primary {1, "primary"};
-const Enum::YLeaf Cvch320Calltype::secondary {2, "secondary"};
+const Enum::YLeaf CvcSpeechCoderRate::g729r8000 {1, "g729r8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g729Ar8000 {2, "g729Ar8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r16000 {3, "g726r16000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r24000 {4, "g726r24000"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r32000 {5, "g726r32000"};
+const Enum::YLeaf CvcSpeechCoderRate::g711ulawr64000 {6, "g711ulawr64000"};
+const Enum::YLeaf CvcSpeechCoderRate::g711Alawr64000 {7, "g711Alawr64000"};
+const Enum::YLeaf CvcSpeechCoderRate::g728r16000 {8, "g728r16000"};
+const Enum::YLeaf CvcSpeechCoderRate::g723r6300 {9, "g723r6300"};
+const Enum::YLeaf CvcSpeechCoderRate::g723r5300 {10, "g723r5300"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmr13200 {11, "gsmr13200"};
+const Enum::YLeaf CvcSpeechCoderRate::g729Br8000 {12, "g729Br8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g729ABr8000 {13, "g729ABr8000"};
+const Enum::YLeaf CvcSpeechCoderRate::g723Ar6300 {14, "g723Ar6300"};
+const Enum::YLeaf CvcSpeechCoderRate::g723Ar5300 {15, "g723Ar5300"};
+const Enum::YLeaf CvcSpeechCoderRate::g729IETFr8000 {16, "g729IETFr8000"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmeEr12200 {17, "gsmeEr12200"};
+const Enum::YLeaf CvcSpeechCoderRate::clearChannel {18, "clearChannel"};
+const Enum::YLeaf CvcSpeechCoderRate::g726r40000 {19, "g726r40000"};
+const Enum::YLeaf CvcSpeechCoderRate::llcc {20, "llcc"};
+const Enum::YLeaf CvcSpeechCoderRate::gsmAmrNb {21, "gsmAmrNb"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBC {22, "iLBC"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBCr15200 {23, "iLBCr15200"};
+const Enum::YLeaf CvcSpeechCoderRate::iLBCr13330 {24, "iLBCr13330"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r4800 {25, "g722r4800"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r5600 {26, "g722r5600"};
+const Enum::YLeaf CvcSpeechCoderRate::g722r6400 {27, "g722r6400"};
+const Enum::YLeaf CvcSpeechCoderRate::iSAC {28, "iSAC"};
+const Enum::YLeaf CvcSpeechCoderRate::aaclc {29, "aaclc"};
+const Enum::YLeaf CvcSpeechCoderRate::aacld {30, "aacld"};
 
-const Enum::YLeaf Cvccodertyperate::other {1, "other"};
-const Enum::YLeaf Cvccodertyperate::fax2400 {2, "fax2400"};
-const Enum::YLeaf Cvccodertyperate::fax4800 {3, "fax4800"};
-const Enum::YLeaf Cvccodertyperate::fax7200 {4, "fax7200"};
-const Enum::YLeaf Cvccodertyperate::fax9600 {5, "fax9600"};
-const Enum::YLeaf Cvccodertyperate::fax14400 {6, "fax14400"};
-const Enum::YLeaf Cvccodertyperate::fax12000 {7, "fax12000"};
-const Enum::YLeaf Cvccodertyperate::g729r8000 {10, "g729r8000"};
-const Enum::YLeaf Cvccodertyperate::g729Ar8000 {11, "g729Ar8000"};
-const Enum::YLeaf Cvccodertyperate::g726r16000 {12, "g726r16000"};
-const Enum::YLeaf Cvccodertyperate::g726r24000 {13, "g726r24000"};
-const Enum::YLeaf Cvccodertyperate::g726r32000 {14, "g726r32000"};
-const Enum::YLeaf Cvccodertyperate::g711ulawr64000 {15, "g711ulawr64000"};
-const Enum::YLeaf Cvccodertyperate::g711Alawr64000 {16, "g711Alawr64000"};
-const Enum::YLeaf Cvccodertyperate::g728r16000 {17, "g728r16000"};
-const Enum::YLeaf Cvccodertyperate::g723r6300 {18, "g723r6300"};
-const Enum::YLeaf Cvccodertyperate::g723r5300 {19, "g723r5300"};
-const Enum::YLeaf Cvccodertyperate::gsmr13200 {20, "gsmr13200"};
-const Enum::YLeaf Cvccodertyperate::g729Br8000 {21, "g729Br8000"};
-const Enum::YLeaf Cvccodertyperate::g729ABr8000 {22, "g729ABr8000"};
-const Enum::YLeaf Cvccodertyperate::g723Ar6300 {23, "g723Ar6300"};
-const Enum::YLeaf Cvccodertyperate::g723Ar5300 {24, "g723Ar5300"};
-const Enum::YLeaf Cvccodertyperate::ietfg729r8000 {25, "ietfg729r8000"};
-const Enum::YLeaf Cvccodertyperate::gsmeEr12200 {26, "gsmeEr12200"};
-const Enum::YLeaf Cvccodertyperate::clearChannel {27, "clearChannel"};
-const Enum::YLeaf Cvccodertyperate::g726r40000 {28, "g726r40000"};
-const Enum::YLeaf Cvccodertyperate::llcc {29, "llcc"};
-const Enum::YLeaf Cvccodertyperate::gsmAmrNb {30, "gsmAmrNb"};
-const Enum::YLeaf Cvccodertyperate::g722 {31, "g722"};
-const Enum::YLeaf Cvccodertyperate::iLBC {32, "iLBC"};
-const Enum::YLeaf Cvccodertyperate::iLBCr15200 {33, "iLBCr15200"};
-const Enum::YLeaf Cvccodertyperate::iLBCr13330 {34, "iLBCr13330"};
-const Enum::YLeaf Cvccodertyperate::g722r4800 {35, "g722r4800"};
-const Enum::YLeaf Cvccodertyperate::g722r5600 {36, "g722r5600"};
-const Enum::YLeaf Cvccodertyperate::g722r6400 {37, "g722r6400"};
-const Enum::YLeaf Cvccodertyperate::iSAC {38, "iSAC"};
-const Enum::YLeaf Cvccodertyperate::aaclc {39, "aaclc"};
-const Enum::YLeaf Cvccodertyperate::aacld {40, "aacld"};
+const Enum::YLeaf CvcVideoCoderRate::none {0, "none"};
+const Enum::YLeaf CvcVideoCoderRate::h261 {1, "h261"};
+const Enum::YLeaf CvcVideoCoderRate::h263 {2, "h263"};
+const Enum::YLeaf CvcVideoCoderRate::h263plus {3, "h263plus"};
+const Enum::YLeaf CvcVideoCoderRate::h264 {4, "h264"};
 
-const Enum::YLeaf Cvcvideocoderrate::none {0, "none"};
-const Enum::YLeaf Cvcvideocoderrate::h261 {1, "h261"};
-const Enum::YLeaf Cvcvideocoderrate::h263 {2, "h263"};
-const Enum::YLeaf Cvcvideocoderrate::h263plus {3, "h263plus"};
-const Enum::YLeaf Cvcvideocoderrate::h264 {4, "h264"};
+const Enum::YLeaf CvcH320CallType::none {0, "none"};
+const Enum::YLeaf CvcH320CallType::primary {1, "primary"};
+const Enum::YLeaf CvcH320CallType::secondary {2, "secondary"};
 
-const Enum::YLeaf Cvcfaxtransmitrate::none {1, "none"};
-const Enum::YLeaf Cvcfaxtransmitrate::voiceRate {2, "voiceRate"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax2400 {3, "fax2400"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax4800 {4, "fax4800"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax7200 {5, "fax7200"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax9600 {6, "fax9600"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax14400 {7, "fax14400"};
-const Enum::YLeaf Cvcfaxtransmitrate::fax12000 {8, "fax12000"};
+const Enum::YLeaf CvcCoderTypeRate::other {1, "other"};
+const Enum::YLeaf CvcCoderTypeRate::fax2400 {2, "fax2400"};
+const Enum::YLeaf CvcCoderTypeRate::fax4800 {3, "fax4800"};
+const Enum::YLeaf CvcCoderTypeRate::fax7200 {4, "fax7200"};
+const Enum::YLeaf CvcCoderTypeRate::fax9600 {5, "fax9600"};
+const Enum::YLeaf CvcCoderTypeRate::fax14400 {6, "fax14400"};
+const Enum::YLeaf CvcCoderTypeRate::fax12000 {7, "fax12000"};
+const Enum::YLeaf CvcCoderTypeRate::g729r8000 {10, "g729r8000"};
+const Enum::YLeaf CvcCoderTypeRate::g729Ar8000 {11, "g729Ar8000"};
+const Enum::YLeaf CvcCoderTypeRate::g726r16000 {12, "g726r16000"};
+const Enum::YLeaf CvcCoderTypeRate::g726r24000 {13, "g726r24000"};
+const Enum::YLeaf CvcCoderTypeRate::g726r32000 {14, "g726r32000"};
+const Enum::YLeaf CvcCoderTypeRate::g711ulawr64000 {15, "g711ulawr64000"};
+const Enum::YLeaf CvcCoderTypeRate::g711Alawr64000 {16, "g711Alawr64000"};
+const Enum::YLeaf CvcCoderTypeRate::g728r16000 {17, "g728r16000"};
+const Enum::YLeaf CvcCoderTypeRate::g723r6300 {18, "g723r6300"};
+const Enum::YLeaf CvcCoderTypeRate::g723r5300 {19, "g723r5300"};
+const Enum::YLeaf CvcCoderTypeRate::gsmr13200 {20, "gsmr13200"};
+const Enum::YLeaf CvcCoderTypeRate::g729Br8000 {21, "g729Br8000"};
+const Enum::YLeaf CvcCoderTypeRate::g729ABr8000 {22, "g729ABr8000"};
+const Enum::YLeaf CvcCoderTypeRate::g723Ar6300 {23, "g723Ar6300"};
+const Enum::YLeaf CvcCoderTypeRate::g723Ar5300 {24, "g723Ar5300"};
+const Enum::YLeaf CvcCoderTypeRate::ietfg729r8000 {25, "ietfg729r8000"};
+const Enum::YLeaf CvcCoderTypeRate::gsmeEr12200 {26, "gsmeEr12200"};
+const Enum::YLeaf CvcCoderTypeRate::clearChannel {27, "clearChannel"};
+const Enum::YLeaf CvcCoderTypeRate::g726r40000 {28, "g726r40000"};
+const Enum::YLeaf CvcCoderTypeRate::llcc {29, "llcc"};
+const Enum::YLeaf CvcCoderTypeRate::gsmAmrNb {30, "gsmAmrNb"};
+const Enum::YLeaf CvcCoderTypeRate::g722 {31, "g722"};
+const Enum::YLeaf CvcCoderTypeRate::iLBC {32, "iLBC"};
+const Enum::YLeaf CvcCoderTypeRate::iLBCr15200 {33, "iLBCr15200"};
+const Enum::YLeaf CvcCoderTypeRate::iLBCr13330 {34, "iLBCr13330"};
+const Enum::YLeaf CvcCoderTypeRate::g722r4800 {35, "g722r4800"};
+const Enum::YLeaf CvcCoderTypeRate::g722r5600 {36, "g722r5600"};
+const Enum::YLeaf CvcCoderTypeRate::g722r6400 {37, "g722r6400"};
+const Enum::YLeaf CvcCoderTypeRate::iSAC {38, "iSAC"};
+const Enum::YLeaf CvcCoderTypeRate::aaclc {39, "aaclc"};
+const Enum::YLeaf CvcCoderTypeRate::aacld {40, "aacld"};
 
-const Enum::YLeaf Cvcinbandsignaling::cas {1, "cas"};
-const Enum::YLeaf Cvcinbandsignaling::none {2, "none"};
-const Enum::YLeaf Cvcinbandsignaling::cept {3, "cept"};
-const Enum::YLeaf Cvcinbandsignaling::transparent {4, "transparent"};
-const Enum::YLeaf Cvcinbandsignaling::gr303 {5, "gr303"};
+const Enum::YLeaf CvcInBandSignaling::cas {1, "cas"};
+const Enum::YLeaf CvcInBandSignaling::none {2, "none"};
+const Enum::YLeaf CvcInBandSignaling::cept {3, "cept"};
+const Enum::YLeaf CvcInBandSignaling::transparent {4, "transparent"};
+const Enum::YLeaf CvcInBandSignaling::gr303 {5, "gr303"};
 
 
 }

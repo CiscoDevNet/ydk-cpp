@@ -10,6 +10,143 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_acl_datatypes {
 
+class Ipv4AclProtocolNumber : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf ip_in_ip;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf igrp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf esp;
+        static const ydk::Enum::YLeaf ahp;
+        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf nos;
+        static const ydk::Enum::YLeaf pim;
+        static const ydk::Enum::YLeaf pcp;
+        static const ydk::Enum::YLeaf sctp;
+
+};
+
+class Ipv4AclLoggingEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
+
+};
+
+class Ipv4AclPrecedenceNumber : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf routine;
+
+};
+
+class Ipv4AclStatusEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+
+};
+
+class Ipv4AclIgmpNumber : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf host_query;
+        static const ydk::Enum::YLeaf host_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pim;
+        static const ydk::Enum::YLeaf trace;
+        static const ydk::Enum::YLeaf v2_report;
+        static const ydk::Enum::YLeaf v2_leave;
+        static const ydk::Enum::YLeaf mtrace_response;
+        static const ydk::Enum::YLeaf mtrace;
+        static const ydk::Enum::YLeaf v3_report;
+
+};
+
+class Ipv4AclFragFlags : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dont_fragment;
+        static const ydk::Enum::YLeaf is_fragment;
+        static const ydk::Enum::YLeaf first_fragment;
+        static const ydk::Enum::YLeaf last_fragment;
+
+};
+
+class Ipv4AclOperatorEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf equal;
+        static const ydk::Enum::YLeaf greater_than;
+        static const ydk::Enum::YLeaf less_than;
+        static const ydk::Enum::YLeaf not_equal;
+        static const ydk::Enum::YLeaf range;
+
+};
+
+class Ipv4AclDscpNumber : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf af11;
+        static const ydk::Enum::YLeaf af12;
+        static const ydk::Enum::YLeaf af13;
+        static const ydk::Enum::YLeaf af21;
+        static const ydk::Enum::YLeaf af22;
+        static const ydk::Enum::YLeaf af23;
+        static const ydk::Enum::YLeaf af31;
+        static const ydk::Enum::YLeaf af32;
+        static const ydk::Enum::YLeaf af33;
+        static const ydk::Enum::YLeaf af41;
+        static const ydk::Enum::YLeaf af42;
+        static const ydk::Enum::YLeaf af43;
+        static const ydk::Enum::YLeaf cs1;
+        static const ydk::Enum::YLeaf cs2;
+        static const ydk::Enum::YLeaf cs3;
+        static const ydk::Enum::YLeaf cs4;
+        static const ydk::Enum::YLeaf cs5;
+        static const ydk::Enum::YLeaf cs6;
+        static const ydk::Enum::YLeaf cs7;
+        static const ydk::Enum::YLeaf ef;
+
+};
+
+class Ipv4AclTcpBitsNumber : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf ack;
+        static const ydk::Enum::YLeaf rst;
+        static const ydk::Enum::YLeaf fin;
+        static const ydk::Enum::YLeaf psh;
+        static const ydk::Enum::YLeaf syn;
+        static const ydk::Enum::YLeaf urg;
+
+};
+
+class Ipv4AclGrantEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deny;
+        static const ydk::Enum::YLeaf permit;
+
+};
+
 class Ipv4AclIcmpTypeCodeEnum : public ydk::Enum
 {
     public:
@@ -119,133 +256,6 @@ class Ipv4AclTcpMatchOperatorEnum : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf match_all;
         static const ydk::Enum::YLeaf match_any;
-
-};
-
-class Ipv4AclProtocolNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf igmp;
-        static const ydk::Enum::YLeaf ip_in_ip;
-        static const ydk::Enum::YLeaf tcp;
-        static const ydk::Enum::YLeaf igrp;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf esp;
-        static const ydk::Enum::YLeaf ahp;
-        static const ydk::Enum::YLeaf eigrp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf nos;
-        static const ydk::Enum::YLeaf pim;
-        static const ydk::Enum::YLeaf pcp;
-        static const ydk::Enum::YLeaf sctp;
-
-};
-
-class Ipv4AclTcpBitsNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf ack;
-        static const ydk::Enum::YLeaf rst;
-        static const ydk::Enum::YLeaf fin;
-        static const ydk::Enum::YLeaf psh;
-        static const ydk::Enum::YLeaf syn;
-        static const ydk::Enum::YLeaf urg;
-
-};
-
-class Ipv4AclLoggingEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
-
-};
-
-class Ipv4AclDscpNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf af11;
-        static const ydk::Enum::YLeaf af12;
-        static const ydk::Enum::YLeaf af13;
-        static const ydk::Enum::YLeaf af21;
-        static const ydk::Enum::YLeaf af22;
-        static const ydk::Enum::YLeaf af23;
-        static const ydk::Enum::YLeaf af31;
-        static const ydk::Enum::YLeaf af32;
-        static const ydk::Enum::YLeaf af33;
-        static const ydk::Enum::YLeaf af41;
-        static const ydk::Enum::YLeaf af42;
-        static const ydk::Enum::YLeaf af43;
-        static const ydk::Enum::YLeaf cs1;
-        static const ydk::Enum::YLeaf cs2;
-        static const ydk::Enum::YLeaf cs3;
-        static const ydk::Enum::YLeaf cs4;
-        static const ydk::Enum::YLeaf cs5;
-        static const ydk::Enum::YLeaf cs6;
-        static const ydk::Enum::YLeaf cs7;
-        static const ydk::Enum::YLeaf ef;
-
-};
-
-class Ipv4AclPrecedenceNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf routine;
-
-};
-
-class Ipv4AclGrantEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf deny;
-        static const ydk::Enum::YLeaf permit;
-
-};
-
-class Ipv4AclIgmpNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf host_query;
-        static const ydk::Enum::YLeaf host_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pim;
-        static const ydk::Enum::YLeaf trace;
-        static const ydk::Enum::YLeaf v2_report;
-        static const ydk::Enum::YLeaf v2_leave;
-        static const ydk::Enum::YLeaf mtrace_response;
-        static const ydk::Enum::YLeaf mtrace;
-        static const ydk::Enum::YLeaf v3_report;
-
-};
-
-class Ipv4AclOperatorEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf equal;
-        static const ydk::Enum::YLeaf greater_than;
-        static const ydk::Enum::YLeaf less_than;
-        static const ydk::Enum::YLeaf not_equal;
-        static const ydk::Enum::YLeaf range;
-
-};
-
-class Ipv4AclStatusEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
 
 };
 

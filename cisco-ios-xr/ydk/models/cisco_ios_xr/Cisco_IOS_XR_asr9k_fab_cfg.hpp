@@ -18,7 +18,7 @@ class FabVqiConfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,57 +31,41 @@ class FabVqiConfig : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Operates; //type: FabVqiConfig::Operates
+        class Mode; //type: FabVqiConfig::Mode
 
-        std::shared_ptr<Cisco_IOS_XR_asr9k_fab_cfg::FabVqiConfig::Operates> operates;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fab_cfg::FabVqiConfig::Mode> mode;
         
 }; // FabVqiConfig
 
 
-class FabVqiConfig::Operates : public ydk::Entity
+class FabVqiConfig::Mode : public ydk::Entity
 {
     public:
-        Operates();
-        ~Operates();
+        Mode();
+        ~Mode();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Operate; //type: FabVqiConfig::Operates::Operate
+        ydk::YLeaf fab_mode_type_xr; //type: Asr9kFabMode
+        ydk::YLeaf fab_mode_type; //type: Asr9kFabMode
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_fab_cfg::FabVqiConfig::Operates::Operate> > operate;
-        
-}; // FabVqiConfig::Operates
+}; // FabVqiConfig::Mode
 
-
-class FabVqiConfig::Operates::Operate : public ydk::Entity
+class Asr9kFabMode : public ydk::Enum
 {
     public:
-        Operate();
-        ~Operate();
+        static const ydk::Enum::YLeaf a99_highbandwidth;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id1; //type: string
-        ydk::YLeaf id1_xr; //type: int32
-        ydk::YLeaf id2; //type: int32
-
-}; // FabVqiConfig::Operates::Operate
+};
 
 
 }

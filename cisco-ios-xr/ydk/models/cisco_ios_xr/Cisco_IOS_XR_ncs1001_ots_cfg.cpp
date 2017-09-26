@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_ncs1001_ots_cfg {
 
 HardwareModule::HardwareModule()
 {
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-ncs1001-ots-cfg";
+
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-ncs1001-ots-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HardwareModule::~HardwareModule()
@@ -44,26 +45,15 @@ std::string HardwareModule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs1001-ots-cfg:hardware-module";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ HardwareModule::Node::Node()
     :
     location{YType::str, "location"}
 {
-    yang_name = "node"; yang_parent_name = "hardware-module";
+
+    yang_name = "node"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModule::Node::~Node()
@@ -171,34 +162,27 @@ bool HardwareModule::Node::has_operation() const
 	|| ydk::is_set(location.yfilter);
 }
 
+std::string HardwareModule::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1001-ots-cfg:hardware-module/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModule::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[location='" <<location <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1001-ots-cfg:hardware-module/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -261,16 +245,15 @@ bool HardwareModule::Node::has_leaf_or_child_of_name(const std::string & name) c
 
 HardwareModule::Node::Slot::Slot()
     :
-    slot_id{YType::str, "slot-id"}
+    slot_id{YType::uint32, "slot-id"}
     	,
     amplifier(std::make_shared<HardwareModule::Node::Slot::Amplifier>())
 	,psm(std::make_shared<HardwareModule::Node::Slot::Psm>())
 {
     amplifier->parent = this;
-
     psm->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "node";
+    yang_name = "slot"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Node::Slot::~Slot()
@@ -296,30 +279,16 @@ std::string HardwareModule::Node::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slot" <<"[slot-id='" <<slot_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::Slot::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Slot' in Cisco_IOS_XR_ncs1001_ots_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slot_id.is_set || is_set(slot_id.yfilter)) leaf_name_data.push_back(slot_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -393,7 +362,8 @@ HardwareModule::Node::Slot::Amplifier::Amplifier()
     node_type{YType::enumeration, "node-type"},
     udc_vlan{YType::uint32, "udc-vlan"}
 {
-    yang_name = "amplifier"; yang_parent_name = "slot";
+
+    yang_name = "amplifier"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Node::Slot::Amplifier::~Amplifier()
@@ -419,32 +389,18 @@ std::string HardwareModule::Node::Slot::Amplifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "amplifier";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::Slot::Amplifier::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Amplifier::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Amplifier' in Cisco_IOS_XR_ncs1001_ots_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (grid_mode.is_set || is_set(grid_mode.yfilter)) leaf_name_data.push_back(grid_mode.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
     if (udc_vlan.is_set || is_set(udc_vlan.yfilter)) leaf_name_data.push_back(udc_vlan.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -506,11 +462,15 @@ bool HardwareModule::Node::Slot::Amplifier::has_leaf_or_child_of_name(const std:
 
 HardwareModule::Node::Slot::Psm::Psm()
     :
+    auto_threshold{YType::boolean, "auto-threshold"},
     lockout_from{YType::enumeration, "lockout-from"},
     manual_switch_to{YType::enumeration, "manual-switch-to"},
+    mono_dir{YType::boolean, "mono-dir"},
+    path_protection{YType::boolean, "path-protection"},
     section_protection{YType::boolean, "section-protection"}
 {
-    yang_name = "psm"; yang_parent_name = "slot";
+
+    yang_name = "psm"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModule::Node::Slot::Psm::~Psm()
@@ -519,16 +479,22 @@ HardwareModule::Node::Slot::Psm::~Psm()
 
 bool HardwareModule::Node::Slot::Psm::has_data() const
 {
-    return lockout_from.is_set
+    return auto_threshold.is_set
+	|| lockout_from.is_set
 	|| manual_switch_to.is_set
+	|| mono_dir.is_set
+	|| path_protection.is_set
 	|| section_protection.is_set;
 }
 
 bool HardwareModule::Node::Slot::Psm::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(auto_threshold.yfilter)
 	|| ydk::is_set(lockout_from.yfilter)
 	|| ydk::is_set(manual_switch_to.yfilter)
+	|| ydk::is_set(mono_dir.yfilter)
+	|| ydk::is_set(path_protection.yfilter)
 	|| ydk::is_set(section_protection.yfilter);
 }
 
@@ -536,32 +502,21 @@ std::string HardwareModule::Node::Slot::Psm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "psm";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModule::Node::Slot::Psm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Psm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Psm' in Cisco_IOS_XR_ncs1001_ots_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (auto_threshold.is_set || is_set(auto_threshold.yfilter)) leaf_name_data.push_back(auto_threshold.get_name_leafdata());
     if (lockout_from.is_set || is_set(lockout_from.yfilter)) leaf_name_data.push_back(lockout_from.get_name_leafdata());
     if (manual_switch_to.is_set || is_set(manual_switch_to.yfilter)) leaf_name_data.push_back(manual_switch_to.get_name_leafdata());
+    if (mono_dir.is_set || is_set(mono_dir.yfilter)) leaf_name_data.push_back(mono_dir.get_name_leafdata());
+    if (path_protection.is_set || is_set(path_protection.yfilter)) leaf_name_data.push_back(path_protection.get_name_leafdata());
     if (section_protection.is_set || is_set(section_protection.yfilter)) leaf_name_data.push_back(section_protection.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -578,6 +533,12 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Psm::
 
 void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "auto-threshold")
+    {
+        auto_threshold = value;
+        auto_threshold.value_namespace = name_space;
+        auto_threshold.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "lockout-from")
     {
         lockout_from = value;
@@ -590,6 +551,18 @@ void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, 
         manual_switch_to.value_namespace = name_space;
         manual_switch_to.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "mono-dir")
+    {
+        mono_dir = value;
+        mono_dir.value_namespace = name_space;
+        mono_dir.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-protection")
+    {
+        path_protection = value;
+        path_protection.value_namespace = name_space;
+        path_protection.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "section-protection")
     {
         section_protection = value;
@@ -600,6 +573,10 @@ void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, 
 
 void HardwareModule::Node::Slot::Psm::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "auto-threshold")
+    {
+        auto_threshold.yfilter = yfilter;
+    }
     if(value_path == "lockout-from")
     {
         lockout_from.yfilter = yfilter;
@@ -607,6 +584,14 @@ void HardwareModule::Node::Slot::Psm::set_filter(const std::string & value_path,
     if(value_path == "manual-switch-to")
     {
         manual_switch_to.yfilter = yfilter;
+    }
+    if(value_path == "mono-dir")
+    {
+        mono_dir.yfilter = yfilter;
+    }
+    if(value_path == "path-protection")
+    {
+        path_protection.yfilter = yfilter;
     }
     if(value_path == "section-protection")
     {
@@ -616,17 +601,10 @@ void HardwareModule::Node::Slot::Psm::set_filter(const std::string & value_path,
 
 bool HardwareModule::Node::Slot::Psm::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lockout-from" || name == "manual-switch-to" || name == "section-protection")
+    if(name == "auto-threshold" || name == "lockout-from" || name == "manual-switch-to" || name == "mono-dir" || name == "path-protection" || name == "section-protection")
         return true;
     return false;
 }
-
-const Enum::YLeaf OtsAmplifierGridMode::Y_100g_hz {0, "100g-hz"};
-const Enum::YLeaf OtsAmplifierGridMode::Y_50g_hz {1, "50g-hz"};
-const Enum::YLeaf OtsAmplifierGridMode::gr_idle_ss {2, "gr-idle-ss"};
-
-const Enum::YLeaf OtsPsmManualSwitch::working {1, "working"};
-const Enum::YLeaf OtsPsmManualSwitch::protected_ {2, "protected"};
 
 const Enum::YLeaf OtsPsmLockoutFrom::working {1, "working"};
 const Enum::YLeaf OtsPsmLockoutFrom::protected_ {2, "protected"};
@@ -634,6 +612,13 @@ const Enum::YLeaf OtsPsmLockoutFrom::protected_ {2, "protected"};
 const Enum::YLeaf OtsAmplifierNode::term {0, "term"};
 const Enum::YLeaf OtsAmplifierNode::ila {1, "ila"};
 const Enum::YLeaf OtsAmplifierNode::roadm {2, "roadm"};
+
+const Enum::YLeaf OtsAmplifierGridMode::Y_100g_hz {0, "100g-hz"};
+const Enum::YLeaf OtsAmplifierGridMode::Y_50g_hz {1, "50g-hz"};
+const Enum::YLeaf OtsAmplifierGridMode::gr_idle_ss {2, "gr-idle-ss"};
+
+const Enum::YLeaf OtsPsmManualSwitch::working {1, "working"};
+const Enum::YLeaf OtsPsmManualSwitch::protected_ {2, "protected"};
 
 
 }

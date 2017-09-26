@@ -11,30 +11,53 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_types {
 
-Address_Family::Address_Family()
+ADDRESSFAMILY::ADDRESSFAMILY()
      : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:ADDRESS_FAMILY")
 {
+
 }
 
-Address_Family::~Address_Family()
+ADDRESSFAMILY::~ADDRESSFAMILY()
 {
 }
 
-Ipv4::Ipv4()
+IPV4::IPV4()
      : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV4")
 {
+
 }
 
-Ipv4::~Ipv4()
+IPV4::~IPV4()
 {
 }
 
-Ipv6::Ipv6()
+IPV6::IPV6()
      : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV6")
 {
+
 }
 
-Ipv6::~Ipv6()
+IPV6::~IPV6()
+{
+}
+
+L2ETHERNET::L2ETHERNET()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:L2_ETHERNET")
+{
+
+}
+
+L2ETHERNET::~L2ETHERNET()
+{
+}
+
+MPLS::MPLS()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:MPLS")
+{
+
+}
+
+MPLS::~MPLS()
 {
 }
 

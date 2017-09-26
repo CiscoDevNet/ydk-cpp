@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_mdt_cfg {
 
 MdtSubscriptions::MdtSubscriptions()
 {
-    yang_name = "mdt-subscriptions"; yang_parent_name = "Cisco-IOS-XE-mdt-cfg";
+
+    yang_name = "mdt-subscriptions"; yang_parent_name = "Cisco-IOS-XE-mdt-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MdtSubscriptions::~MdtSubscriptions()
@@ -44,26 +45,15 @@ std::string MdtSubscriptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-mdt-cfg:mdt-subscriptions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtSubscriptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtSubscriptions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -147,7 +137,7 @@ MdtSubscriptions::MdtSubscription::MdtSubscription()
 {
     base->parent = this;
 
-    yang_name = "mdt-subscription"; yang_parent_name = "mdt-subscriptions";
+    yang_name = "mdt-subscription"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MdtSubscriptions::MdtSubscription::~MdtSubscription()
@@ -177,34 +167,27 @@ bool MdtSubscriptions::MdtSubscription::has_operation() const
 	|| (base !=  nullptr && base->has_operation());
 }
 
+std::string MdtSubscriptions::MdtSubscription::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mdt-cfg:mdt-subscriptions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MdtSubscriptions::MdtSubscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mdt-subscription" <<"[subscription-id='" <<subscription_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtSubscriptions::MdtSubscription::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtSubscriptions::MdtSubscription::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-mdt-cfg:mdt-subscriptions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (subscription_id.is_set || is_set(subscription_id.yfilter)) leaf_name_data.push_back(subscription_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -289,7 +272,8 @@ MdtSubscriptions::MdtSubscription::Base::Base()
     stream{YType::str, "stream"},
     xpath{YType::str, "xpath"}
 {
-    yang_name = "base"; yang_parent_name = "mdt-subscription";
+
+    yang_name = "base"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MdtSubscriptions::MdtSubscription::Base::~Base()
@@ -323,23 +307,11 @@ std::string MdtSubscriptions::MdtSubscription::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtSubscriptions::MdtSubscription::Base::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtSubscriptions::MdtSubscription::Base::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Base' in Cisco_IOS_XE_mdt_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
@@ -350,9 +322,7 @@ const EntityPath MdtSubscriptions::MdtSubscription::Base::get_entity_path(Entity
     if (stream.is_set || is_set(stream.yfilter)) leaf_name_data.push_back(stream.get_name_leafdata());
     if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -458,7 +428,8 @@ MdtSubscriptions::MdtSubscription::MdtReceivers::MdtReceivers()
     port{YType::uint16, "port"},
     protocol{YType::str, "protocol"}
 {
-    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscription";
+
+    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscription"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MdtSubscriptions::MdtSubscription::MdtReceivers::~MdtReceivers()
@@ -484,32 +455,18 @@ std::string MdtSubscriptions::MdtSubscription::MdtReceivers::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "mdt-receivers" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtSubscriptions::MdtSubscription::MdtReceivers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtSubscriptions::MdtSubscription::MdtReceivers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MdtReceivers' in Cisco_IOS_XE_mdt_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
     if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

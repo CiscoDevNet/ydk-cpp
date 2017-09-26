@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_memory_oper {
 
 MemoryStatistics::MemoryStatistics()
 {
-    yang_name = "memory-statistics"; yang_parent_name = "Cisco-IOS-XE-memory-oper";
+
+    yang_name = "memory-statistics"; yang_parent_name = "Cisco-IOS-XE-memory-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MemoryStatistics::~MemoryStatistics()
@@ -44,26 +45,15 @@ std::string MemoryStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-memory-oper:memory-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemoryStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemoryStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +138,8 @@ MemoryStatistics::MemoryStatistic::MemoryStatistic()
     total_memory{YType::uint64, "total-memory"},
     used_memory{YType::uint64, "used-memory"}
 {
-    yang_name = "memory-statistic"; yang_parent_name = "memory-statistics";
+
+    yang_name = "memory-statistic"; yang_parent_name = "memory-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MemoryStatistics::MemoryStatistic::~MemoryStatistic()
@@ -176,27 +167,22 @@ bool MemoryStatistics::MemoryStatistic::has_operation() const
 	|| ydk::is_set(used_memory.yfilter);
 }
 
+std::string MemoryStatistics::MemoryStatistic::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-memory-oper:memory-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MemoryStatistics::MemoryStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "memory-statistic" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemoryStatistics::MemoryStatistic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemoryStatistics::MemoryStatistic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-memory-oper:memory-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -206,9 +192,7 @@ const EntityPath MemoryStatistics::MemoryStatistic::get_entity_path(Entity* ance
     if (total_memory.is_set || is_set(total_memory.yfilter)) leaf_name_data.push_back(total_memory.get_name_leafdata());
     if (used_memory.is_set || is_set(used_memory.yfilter)) leaf_name_data.push_back(used_memory.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

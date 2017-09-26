@@ -43,22 +43,22 @@ void write_json_config(string json)
 
 int main(int argc, char* argv[])
 {
-	vector<string> args = parse_args(argc, argv);
-	if(args.empty()) return 1;
+    vector<string> args = parse_args(argc, argv);
+    if(args.empty()) return 1;
 
-	string host, username, password;
-	int port;
+    string host, username, password;
+    int port;
 
-	username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
+    username = args[0]; password = args[1]; host = args[2]; port = stoi(args[3]);
 
-	bool verbose=(args[4]=="--verbose");
-	if(verbose)
+    bool verbose=(args[4]=="--verbose");
+    if(verbose)
     {
         auto logger = spdlog::stdout_color_mt("ydk");
         logger->set_level(spdlog::level::info);
     }
 
-	try
+    try
     {
         NetconfServiceProvider provider{host, username, password, port};
         CrudService crud{};
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
             cout << "=================================================="<<endl;
             return 0;
         }
-        cout << "Read operation success" << endl;
+        cout << "Read yfilter success" << endl;
 
         CodecService codec_service{};
         CodecServiceProvider codec_provider{EncodingFormat::JSON};

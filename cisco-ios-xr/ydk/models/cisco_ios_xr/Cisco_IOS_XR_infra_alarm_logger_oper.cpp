@@ -17,10 +17,9 @@ AlarmLogger::AlarmLogger()
 	,buffer_status(std::make_shared<AlarmLogger::BufferStatus>())
 {
     alarms->parent = this;
-
     buffer_status->parent = this;
 
-    yang_name = "alarm-logger"; yang_parent_name = "Cisco-IOS-XR-infra-alarm-logger-oper";
+    yang_name = "alarm-logger"; yang_parent_name = "Cisco-IOS-XR-infra-alarm-logger-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 AlarmLogger::~AlarmLogger()
@@ -44,26 +43,15 @@ std::string AlarmLogger::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AlarmLogger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AlarmLogger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -146,154 +134,10 @@ bool AlarmLogger::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-AlarmLogger::BufferStatus::BufferStatus()
-    :
-    capacity_threshold{YType::uint32, "capacity-threshold"},
-    log_buffer_size{YType::uint32, "log-buffer-size"},
-    max_log_buffer_size{YType::uint32, "max-log-buffer-size"},
-    record_count{YType::uint32, "record-count"},
-    severity_filter{YType::enumeration, "severity-filter"}
-{
-    yang_name = "buffer-status"; yang_parent_name = "alarm-logger";
-}
-
-AlarmLogger::BufferStatus::~BufferStatus()
-{
-}
-
-bool AlarmLogger::BufferStatus::has_data() const
-{
-    return capacity_threshold.is_set
-	|| log_buffer_size.is_set
-	|| max_log_buffer_size.is_set
-	|| record_count.is_set
-	|| severity_filter.is_set;
-}
-
-bool AlarmLogger::BufferStatus::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(capacity_threshold.yfilter)
-	|| ydk::is_set(log_buffer_size.yfilter)
-	|| ydk::is_set(max_log_buffer_size.yfilter)
-	|| ydk::is_set(record_count.yfilter)
-	|| ydk::is_set(severity_filter.yfilter);
-}
-
-std::string AlarmLogger::BufferStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "buffer-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AlarmLogger::BufferStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (capacity_threshold.is_set || is_set(capacity_threshold.yfilter)) leaf_name_data.push_back(capacity_threshold.get_name_leafdata());
-    if (log_buffer_size.is_set || is_set(log_buffer_size.yfilter)) leaf_name_data.push_back(log_buffer_size.get_name_leafdata());
-    if (max_log_buffer_size.is_set || is_set(max_log_buffer_size.yfilter)) leaf_name_data.push_back(max_log_buffer_size.get_name_leafdata());
-    if (record_count.is_set || is_set(record_count.yfilter)) leaf_name_data.push_back(record_count.get_name_leafdata());
-    if (severity_filter.is_set || is_set(severity_filter.yfilter)) leaf_name_data.push_back(severity_filter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AlarmLogger::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::BufferStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AlarmLogger::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "capacity-threshold")
-    {
-        capacity_threshold = value;
-        capacity_threshold.value_namespace = name_space;
-        capacity_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "log-buffer-size")
-    {
-        log_buffer_size = value;
-        log_buffer_size.value_namespace = name_space;
-        log_buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-log-buffer-size")
-    {
-        max_log_buffer_size = value;
-        max_log_buffer_size.value_namespace = name_space;
-        max_log_buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "record-count")
-    {
-        record_count = value;
-        record_count.value_namespace = name_space;
-        record_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity-filter")
-    {
-        severity_filter = value;
-        severity_filter.value_namespace = name_space;
-        severity_filter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void AlarmLogger::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "capacity-threshold")
-    {
-        capacity_threshold.yfilter = yfilter;
-    }
-    if(value_path == "log-buffer-size")
-    {
-        log_buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "max-log-buffer-size")
-    {
-        max_log_buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "record-count")
-    {
-        record_count.yfilter = yfilter;
-    }
-    if(value_path == "severity-filter")
-    {
-        severity_filter.yfilter = yfilter;
-    }
-}
-
-bool AlarmLogger::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "capacity-threshold" || name == "log-buffer-size" || name == "max-log-buffer-size" || name == "record-count" || name == "severity-filter")
-        return true;
-    return false;
-}
-
 AlarmLogger::Alarms::Alarms()
 {
-    yang_name = "alarms"; yang_parent_name = "alarm-logger";
+
+    yang_name = "alarms"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 AlarmLogger::Alarms::~Alarms()
@@ -320,33 +164,26 @@ bool AlarmLogger::Alarms::has_operation() const
     return is_set(yfilter);
 }
 
+std::string AlarmLogger::Alarms::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string AlarmLogger::Alarms::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alarms";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AlarmLogger::Alarms::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AlarmLogger::Alarms::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -411,7 +248,8 @@ AlarmLogger::Alarms::Alarm::Alarm()
     state{YType::enumeration, "state"},
     timestamp{YType::uint64, "timestamp"}
 {
-    yang_name = "alarm"; yang_parent_name = "alarms";
+
+    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 AlarmLogger::Alarms::Alarm::~Alarm()
@@ -449,27 +287,22 @@ bool AlarmLogger::Alarms::Alarm::has_operation() const
 	|| ydk::is_set(timestamp.yfilter);
 }
 
+std::string AlarmLogger::Alarms::Alarm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/alarms/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string AlarmLogger::Alarms::Alarm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm" <<"[event-id='" <<event_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AlarmLogger::Alarms::Alarm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/alarms/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (event_id.is_set || is_set(event_id.yfilter)) leaf_name_data.push_back(event_id.get_name_leafdata());
@@ -484,9 +317,7 @@ const EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) c
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -622,6 +453,145 @@ void AlarmLogger::Alarms::Alarm::set_filter(const std::string & value_path, YFil
 bool AlarmLogger::Alarms::Alarm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "event-id" || name == "additional-text" || name == "category" || name == "code" || name == "correlation-id" || name == "group" || name == "is-admin" || name == "severity" || name == "source-id" || name == "state" || name == "timestamp")
+        return true;
+    return false;
+}
+
+AlarmLogger::BufferStatus::BufferStatus()
+    :
+    capacity_threshold{YType::uint32, "capacity-threshold"},
+    log_buffer_size{YType::uint32, "log-buffer-size"},
+    max_log_buffer_size{YType::uint32, "max-log-buffer-size"},
+    record_count{YType::uint32, "record-count"},
+    severity_filter{YType::enumeration, "severity-filter"}
+{
+
+    yang_name = "buffer-status"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+AlarmLogger::BufferStatus::~BufferStatus()
+{
+}
+
+bool AlarmLogger::BufferStatus::has_data() const
+{
+    return capacity_threshold.is_set
+	|| log_buffer_size.is_set
+	|| max_log_buffer_size.is_set
+	|| record_count.is_set
+	|| severity_filter.is_set;
+}
+
+bool AlarmLogger::BufferStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(capacity_threshold.yfilter)
+	|| ydk::is_set(log_buffer_size.yfilter)
+	|| ydk::is_set(max_log_buffer_size.yfilter)
+	|| ydk::is_set(record_count.yfilter)
+	|| ydk::is_set(severity_filter.yfilter);
+}
+
+std::string AlarmLogger::BufferStatus::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-alarm-logger-oper:alarm-logger/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AlarmLogger::BufferStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "buffer-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AlarmLogger::BufferStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (capacity_threshold.is_set || is_set(capacity_threshold.yfilter)) leaf_name_data.push_back(capacity_threshold.get_name_leafdata());
+    if (log_buffer_size.is_set || is_set(log_buffer_size.yfilter)) leaf_name_data.push_back(log_buffer_size.get_name_leafdata());
+    if (max_log_buffer_size.is_set || is_set(max_log_buffer_size.yfilter)) leaf_name_data.push_back(max_log_buffer_size.get_name_leafdata());
+    if (record_count.is_set || is_set(record_count.yfilter)) leaf_name_data.push_back(record_count.get_name_leafdata());
+    if (severity_filter.is_set || is_set(severity_filter.yfilter)) leaf_name_data.push_back(severity_filter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AlarmLogger::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::BufferStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AlarmLogger::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "capacity-threshold")
+    {
+        capacity_threshold = value;
+        capacity_threshold.value_namespace = name_space;
+        capacity_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log-buffer-size")
+    {
+        log_buffer_size = value;
+        log_buffer_size.value_namespace = name_space;
+        log_buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-log-buffer-size")
+    {
+        max_log_buffer_size = value;
+        max_log_buffer_size.value_namespace = name_space;
+        max_log_buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "record-count")
+    {
+        record_count = value;
+        record_count.value_namespace = name_space;
+        record_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-filter")
+    {
+        severity_filter = value;
+        severity_filter.value_namespace = name_space;
+        severity_filter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AlarmLogger::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capacity-threshold")
+    {
+        capacity_threshold.yfilter = yfilter;
+    }
+    if(value_path == "log-buffer-size")
+    {
+        log_buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "max-log-buffer-size")
+    {
+        max_log_buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "record-count")
+    {
+        record_count.yfilter = yfilter;
+    }
+    if(value_path == "severity-filter")
+    {
+        severity_filter.yfilter = yfilter;
+    }
+}
+
+bool AlarmLogger::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capacity-threshold" || name == "log-buffer-size" || name == "max-log-buffer-size" || name == "record-count" || name == "severity-filter")
         return true;
     return false;
 }

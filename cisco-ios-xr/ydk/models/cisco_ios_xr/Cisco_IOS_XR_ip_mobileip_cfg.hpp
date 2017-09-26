@@ -18,7 +18,7 @@ class MobileIp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class MobileIp : public ydk::Entity
         class Domains; //type: MobileIp::Domains
         class Lmas; //type: MobileIp::Lmas
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains> domains;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas> lmas;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains> domains;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas> lmas;
         
 }; // MobileIp
 
@@ -48,17 +48,18 @@ class MobileIp::Domains : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Domain; //type: MobileIp::Domains::Domain
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain> > domain;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain> > domain;
         
 }; // MobileIp::Domains
 
@@ -71,13 +72,14 @@ class MobileIp::Domains::Domain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf enable; //type: empty
@@ -86,105 +88,12 @@ class MobileIp::Domains::Domain : public ydk::Entity
         class AuthenticateOption; //type: MobileIp::Domains::Domain::AuthenticateOption
         class Lmas; //type: MobileIp::Domains::Domain::Lmas
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::AuthenticateOption> authenticate_option;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Lmas> lmas;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Mags> mags;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Nais> nais;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::AuthenticateOption> authenticate_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Lmas> lmas;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Mags> mags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Nais> nais;
         
 }; // MobileIp::Domains::Domain
-
-
-class MobileIp::Domains::Domain::Mags : public ydk::Entity
-{
-    public:
-        Mags();
-        ~Mags();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mag; //type: MobileIp::Domains::Domain::Mags::Mag
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Mags::Mag> > mag;
-        
-}; // MobileIp::Domains::Domain::Mags
-
-
-class MobileIp::Domains::Domain::Mags::Mag : public ydk::Entity
-{
-    public:
-        Mag();
-        ~Mag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mag_name; //type: string
-
-}; // MobileIp::Domains::Domain::Mags::Mag
-
-
-class MobileIp::Domains::Domain::Nais : public ydk::Entity
-{
-    public:
-        Nais();
-        ~Nais();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Nai; //type: MobileIp::Domains::Domain::Nais::Nai
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Nais::Nai> > nai;
-        
-}; // MobileIp::Domains::Domain::Nais
-
-
-class MobileIp::Domains::Domain::Nais::Nai : public ydk::Entity
-{
-    public:
-        Nai();
-        ~Nai();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nai_name; //type: string
-        ydk::YLeaf lma; //type: string
-        ydk::YLeaf apn; //type: string
-        ydk::YLeaf customer; //type: string
-        ydk::YLeaf service; //type: ServiceType
-        ydk::YLeaf network; //type: string
-
-}; // MobileIp::Domains::Domain::Nais::Nai
 
 
 class MobileIp::Domains::Domain::AuthenticateOption : public ydk::Entity
@@ -195,7 +104,7 @@ class MobileIp::Domains::Domain::AuthenticateOption : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -217,7 +126,7 @@ class MobileIp::Domains::Domain::Lmas : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -227,7 +136,7 @@ class MobileIp::Domains::Domain::Lmas : public ydk::Entity
 
         class Lma; //type: MobileIp::Domains::Domain::Lmas::Lma
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Lmas::Lma> > lma;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Lmas::Lma> > lma;
         
 }; // MobileIp::Domains::Domain::Lmas
 
@@ -240,7 +149,7 @@ class MobileIp::Domains::Domain::Lmas::Lma : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -253,6 +162,99 @@ class MobileIp::Domains::Domain::Lmas::Lma : public ydk::Entity
 }; // MobileIp::Domains::Domain::Lmas::Lma
 
 
+class MobileIp::Domains::Domain::Mags : public ydk::Entity
+{
+    public:
+        Mags();
+        ~Mags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mag; //type: MobileIp::Domains::Domain::Mags::Mag
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Mags::Mag> > mag;
+        
+}; // MobileIp::Domains::Domain::Mags
+
+
+class MobileIp::Domains::Domain::Mags::Mag : public ydk::Entity
+{
+    public:
+        Mag();
+        ~Mag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mag_name; //type: string
+
+}; // MobileIp::Domains::Domain::Mags::Mag
+
+
+class MobileIp::Domains::Domain::Nais : public ydk::Entity
+{
+    public:
+        Nais();
+        ~Nais();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Nai; //type: MobileIp::Domains::Domain::Nais::Nai
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Nais::Nai> > nai;
+        
+}; // MobileIp::Domains::Domain::Nais
+
+
+class MobileIp::Domains::Domain::Nais::Nai : public ydk::Entity
+{
+    public:
+        Nai();
+        ~Nai();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nai_name; //type: string
+        ydk::YLeaf lma; //type: string
+        ydk::YLeaf apn; //type: string
+        ydk::YLeaf customer; //type: string
+        ydk::YLeaf service; //type: ServiceType
+        ydk::YLeaf network; //type: string
+
+}; // MobileIp::Domains::Domain::Nais::Nai
+
+
 class MobileIp::Lmas : public ydk::Entity
 {
     public:
@@ -261,17 +263,18 @@ class MobileIp::Lmas : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Lma; //type: MobileIp::Lmas::Lma
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma> > lma;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma> > lma;
         
 }; // MobileIp::Lmas
 
@@ -284,13 +287,14 @@ class MobileIp::Lmas::Lma : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf lma_name; //type: string
         ydk::YLeaf domain_name; //type: string
@@ -321,202 +325,24 @@ class MobileIp::Lmas::Lma : public ydk::Entity
         class Networks; //type: MobileIp::Lmas::Lma::Networks
         class ReplayProtection; //type: MobileIp::Lmas::Lma::ReplayProtection
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Aaa> aaa;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingAttributes> binding_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingRevocationAttributes> binding_revocation_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Dscp> dscp;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::HeartBeatAttributes> heart_beat_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Hnp> hnp;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv4Addresses> lmaipv4_addresses;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv6Addresses> lmaipv6_addresses;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags> mags;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks> networks;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::RatAttributes> rat_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Redistribute> redistribute;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::ReplayProtection> replay_protection;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Roles> roles;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services> services;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::TunnelAttributes> tunnel_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Aaa> aaa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingAttributes> binding_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingRevocationAttributes> binding_revocation_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Dscp> dscp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::HeartBeatAttributes> heart_beat_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Hnp> hnp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv4Addresses> lmaipv4_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv6Addresses> lmaipv6_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags> mags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks> networks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::RatAttributes> rat_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Redistribute> redistribute;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::ReplayProtection> replay_protection;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Roles> roles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services> services;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::TunnelAttributes> tunnel_attributes;
         
 }; // MobileIp::Lmas::Lma
-
-
-class MobileIp::Lmas::Lma::BindingRevocationAttributes : public ydk::Entity
-{
-    public:
-        BindingRevocationAttributes();
-        ~BindingRevocationAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf retry; //type: uint32
-        class Delay; //type: MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay> delay;
-        
-}; // MobileIp::Lmas::Lma::BindingRevocationAttributes
-
-
-class MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay : public ydk::Entity
-{
-    public:
-        Delay();
-        ~Delay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf br_min; //type: uint32
-        ydk::YLeaf br_max; //type: uint32
-
-}; // MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay
-
-
-class MobileIp::Lmas::Lma::RatAttributes : public ydk::Entity
-{
-    public:
-        RatAttributes();
-        ~RatAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lma_rat; //type: LmaRat
-        ydk::YLeaf priority_value; //type: uint32
-
-}; // MobileIp::Lmas::Lma::RatAttributes
-
-
-class MobileIp::Lmas::Lma::HeartBeatAttributes : public ydk::Entity
-{
-    public:
-        HeartBeatAttributes();
-        ~HeartBeatAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interval; //type: uint32
-        ydk::YLeaf retries; //type: uint32
-        ydk::YLeaf timeout; //type: uint32
-
-}; // MobileIp::Lmas::Lma::HeartBeatAttributes
-
-
-class MobileIp::Lmas::Lma::Lmaipv6Addresses : public ydk::Entity
-{
-    public:
-        Lmaipv6Addresses();
-        ~Lmaipv6Addresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Lmaipv6Address; //type: MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address> > lmaipv6_address;
-        
-}; // MobileIp::Lmas::Lma::Lmaipv6Addresses
-
-
-class MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address : public ydk::Entity
-{
-    public:
-        Lmaipv6Address();
-        ~Lmaipv6Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address; //type: string
-
-}; // MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address
-
-
-class MobileIp::Lmas::Lma::Hnp : public ydk::Entity
-{
-    public:
-        Hnp();
-        ~Hnp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf maximum; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Hnp
-
-
-class MobileIp::Lmas::Lma::Redistribute : public ydk::Entity
-{
-    public:
-        Redistribute();
-        ~Redistribute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf redist_type; //type: RedistType
-        ydk::YLeaf redist_sub_type; //type: RedistSubType
-
-}; // MobileIp::Lmas::Lma::Redistribute
 
 
 class MobileIp::Lmas::Lma::Aaa : public ydk::Entity
@@ -527,7 +353,7 @@ class MobileIp::Lmas::Lma::Aaa : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -537,7 +363,7 @@ class MobileIp::Lmas::Lma::Aaa : public ydk::Entity
 
         class Accounting; //type: MobileIp::Lmas::Lma::Aaa::Accounting
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Aaa::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Aaa::Accounting> accounting;
         
 }; // MobileIp::Lmas::Lma::Aaa
 
@@ -550,7 +376,7 @@ class MobileIp::Lmas::Lma::Aaa::Accounting : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -564,116 +390,6 @@ class MobileIp::Lmas::Lma::Aaa::Accounting : public ydk::Entity
 }; // MobileIp::Lmas::Lma::Aaa::Accounting
 
 
-class MobileIp::Lmas::Lma::Dscp : public ydk::Entity
-{
-    public:
-        Dscp();
-        ~Dscp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf value_; //type: uint32
-        ydk::YLeaf force; //type: empty
-
-}; // MobileIp::Lmas::Lma::Dscp
-
-
-class MobileIp::Lmas::Lma::Lmaipv4Addresses : public ydk::Entity
-{
-    public:
-        Lmaipv4Addresses();
-        ~Lmaipv4Addresses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Lmaipv4Address; //type: MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address> > lmaipv4_address;
-        
-}; // MobileIp::Lmas::Lma::Lmaipv4Addresses
-
-
-class MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address : public ydk::Entity
-{
-    public:
-        Lmaipv4Address();
-        ~Lmaipv4Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address; //type: string
-
-}; // MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address
-
-
-class MobileIp::Lmas::Lma::Roles : public ydk::Entity
-{
-    public:
-        Roles();
-        ~Roles();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Role; //type: MobileIp::Lmas::Lma::Roles::Role
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Roles::Role> > role;
-        
-}; // MobileIp::Lmas::Lma::Roles
-
-
-class MobileIp::Lmas::Lma::Roles::Role : public ydk::Entity
-{
-    public:
-        Role();
-        ~Role();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lma_role; //type: LmaRole
-
-}; // MobileIp::Lmas::Lma::Roles::Role
-
-
 class MobileIp::Lmas::Lma::BindingAttributes : public ydk::Entity
 {
     public:
@@ -682,7 +398,7 @@ class MobileIp::Lmas::Lma::BindingAttributes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -699,6 +415,206 @@ class MobileIp::Lmas::Lma::BindingAttributes : public ydk::Entity
 }; // MobileIp::Lmas::Lma::BindingAttributes
 
 
+class MobileIp::Lmas::Lma::BindingRevocationAttributes : public ydk::Entity
+{
+    public:
+        BindingRevocationAttributes();
+        ~BindingRevocationAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf retry; //type: uint32
+        class Delay; //type: MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay> delay;
+        
+}; // MobileIp::Lmas::Lma::BindingRevocationAttributes
+
+
+class MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay : public ydk::Entity
+{
+    public:
+        Delay();
+        ~Delay();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf br_min; //type: uint32
+        ydk::YLeaf br_max; //type: uint32
+
+}; // MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay
+
+
+class MobileIp::Lmas::Lma::Dscp : public ydk::Entity
+{
+    public:
+        Dscp();
+        ~Dscp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf force; //type: empty
+
+}; // MobileIp::Lmas::Lma::Dscp
+
+
+class MobileIp::Lmas::Lma::HeartBeatAttributes : public ydk::Entity
+{
+    public:
+        HeartBeatAttributes();
+        ~HeartBeatAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf retries; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
+
+}; // MobileIp::Lmas::Lma::HeartBeatAttributes
+
+
+class MobileIp::Lmas::Lma::Hnp : public ydk::Entity
+{
+    public:
+        Hnp();
+        ~Hnp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf maximum; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Hnp
+
+
+class MobileIp::Lmas::Lma::Lmaipv4Addresses : public ydk::Entity
+{
+    public:
+        Lmaipv4Addresses();
+        ~Lmaipv4Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Lmaipv4Address; //type: MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address> > lmaipv4_address;
+        
+}; // MobileIp::Lmas::Lma::Lmaipv4Addresses
+
+
+class MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address : public ydk::Entity
+{
+    public:
+        Lmaipv4Address();
+        ~Lmaipv4Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+
+}; // MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address
+
+
+class MobileIp::Lmas::Lma::Lmaipv6Addresses : public ydk::Entity
+{
+    public:
+        Lmaipv6Addresses();
+        ~Lmaipv6Addresses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Lmaipv6Address; //type: MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address> > lmaipv6_address;
+        
+}; // MobileIp::Lmas::Lma::Lmaipv6Addresses
+
+
+class MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address : public ydk::Entity
+{
+    public:
+        Lmaipv6Address();
+        ~Lmaipv6Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+
+}; // MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address
+
+
 class MobileIp::Lmas::Lma::Mags : public ydk::Entity
 {
     public:
@@ -707,7 +623,7 @@ class MobileIp::Lmas::Lma::Mags : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -717,7 +633,7 @@ class MobileIp::Lmas::Lma::Mags : public ydk::Entity
 
         class Mag; //type: MobileIp::Lmas::Lma::Mags::Mag
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag> > mag;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag> > mag;
         
 }; // MobileIp::Lmas::Lma::Mags
 
@@ -730,7 +646,7 @@ class MobileIp::Lmas::Lma::Mags::Mag : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -747,8 +663,8 @@ class MobileIp::Lmas::Lma::Mags::Mag : public ydk::Entity
         class AuthenticateOption; //type: MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption
         class Dscp; //type: MobileIp::Lmas::Lma::Mags::Mag::Dscp
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption> authenticate_option;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::Dscp> dscp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption> authenticate_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::Dscp> dscp;
         
 }; // MobileIp::Lmas::Lma::Mags::Mag
 
@@ -761,7 +677,7 @@ class MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -783,7 +699,7 @@ class MobileIp::Lmas::Lma::Mags::Mag::Dscp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -797,564 +713,6 @@ class MobileIp::Lmas::Lma::Mags::Mag::Dscp : public ydk::Entity
 }; // MobileIp::Lmas::Lma::Mags::Mag::Dscp
 
 
-class MobileIp::Lmas::Lma::TunnelAttributes : public ydk::Entity
-{
-    public:
-        TunnelAttributes();
-        ~TunnelAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mtu; //type: uint32
-        ydk::YLeaf acl; //type: string
-
-}; // MobileIp::Lmas::Lma::TunnelAttributes
-
-
-class MobileIp::Lmas::Lma::Services : public ydk::Entity
-{
-    public:
-        Services();
-        ~Services();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Service; //type: MobileIp::Lmas::Lma::Services::Service
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service> > service;
-        
-}; // MobileIp::Lmas::Lma::Services
-
-
-class MobileIp::Lmas::Lma::Services::Service : public ydk::Entity
-{
-    public:
-        Service();
-        ~Service();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lma_service; //type: LmaService
-        ydk::YLeaf mnp_customer; //type: uint32
-        ydk::YLeaf mnp_ipv4_lmn; //type: uint32
-        ydk::YLeaf mnp_ipv6_lmn; //type: uint32
-        ydk::YLeaf mnp_lmn; //type: uint32
-        ydk::YLeaf ignore_home_address; //type: empty
-        ydk::YLeaf mnp_ipv4_customer; //type: uint32
-        ydk::YLeaf mnp_ipv6_customer; //type: uint32
-        class Customers; //type: MobileIp::Lmas::Lma::Services::Service::Customers
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers> customers;
-        
-}; // MobileIp::Lmas::Lma::Services::Service
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers : public ydk::Entity
-{
-    public:
-        Customers();
-        ~Customers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Customer; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer> > customer;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer : public ydk::Entity
-{
-    public:
-        Customer();
-        ~Customer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf customer_name; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf mnp_customer; //type: uint32
-        ydk::YLeaf mnp_ipv4_lmn; //type: uint32
-        ydk::YLeaf mnp_ipv6_lmn; //type: uint32
-        ydk::YLeaf mnp_lmn; //type: uint32
-        ydk::YLeaf mnp_ipv4_customer; //type: uint32
-        ydk::YLeaf mnp_ipv6_customer; //type: uint32
-        ydk::YLeaf mobile_route_ad; //type: uint32
-        ydk::YLeaf bandwidth_aggregate; //type: int32
-        class AuthenticateOption; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption
-        class HeartBeatAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
-        class Transports; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports
-        class NetworkAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes
-        class GreKey; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey
-        class BindingAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption> authenticate_option;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes> binding_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey> gre_key;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes> heart_beat_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes> network_attributes;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports> transports;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption : public ydk::Entity
-{
-    public:
-        AuthenticateOption();
-        ~AuthenticateOption();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf spi; //type: string
-        ydk::YLeaf key; //type: string
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes : public ydk::Entity
-{
-    public:
-        HeartBeatAttributes();
-        ~HeartBeatAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interval; //type: uint32
-        ydk::YLeaf retries; //type: uint32
-        ydk::YLeaf timeout; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports : public ydk::Entity
-{
-    public:
-        Transports();
-        ~Transports();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Transport; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport> > transport;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport : public ydk::Entity
-{
-    public:
-        Transport();
-        ~Transport();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes : public ydk::Entity
-{
-    public:
-        NetworkAttributes();
-        ~NetworkAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf unauthorize; //type: empty
-        class Authorizes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes> authorizes;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes : public ydk::Entity
-{
-    public:
-        Authorizes();
-        ~Authorizes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Authorize; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize> > authorize;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize : public ydk::Entity
-{
-    public:
-        Authorize();
-        ~Authorize();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        class PoolAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes> pool_attributes;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes : public ydk::Entity
-{
-    public:
-        PoolAttributes();
-        ~PoolAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class MobileNode; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode
-        class MobileNetwork; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork> mobile_network;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode> mobile_node;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode : public ydk::Entity
-{
-    public:
-        MobileNode();
-        ~MobileNode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ipv4Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool
-        class Ipv6Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool> ipv4_pool;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool> ipv6_pool;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool : public ydk::Entity
-{
-    public:
-        Ipv4Pool();
-        ~Ipv4Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool : public ydk::Entity
-{
-    public:
-        Ipv6Pool();
-        ~Ipv6Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork : public ydk::Entity
-{
-    public:
-        MobileNetwork();
-        ~MobileNetwork();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mripv6Pools; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools
-        class Mripv4Pools; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools
-
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools> mripv4_pools;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools> mripv6_pools;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools : public ydk::Entity
-{
-    public:
-        Mripv6Pools();
-        ~Mripv6Pools();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mripv6Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool : public ydk::Entity
-{
-    public:
-        Mripv6Pool();
-        ~Mripv6Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-        ydk::YLeaf network_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools : public ydk::Entity
-{
-    public:
-        Mripv4Pools();
-        ~Mripv4Pools();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mripv4Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
-        
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool : public ydk::Entity
-{
-    public:
-        Mripv4Pool();
-        ~Mripv4Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-        ydk::YLeaf network_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey : public ydk::Entity
-{
-    public:
-        GreKey();
-        ~GreKey();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf gre_key_type; //type: GreKeyType
-        ydk::YLeaf gre_key_value; //type: int32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey
-
-
-class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes : public ydk::Entity
-{
-    public:
-        BindingAttributes();
-        ~BindingAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_life_time; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes
-
-
 class MobileIp::Lmas::Lma::Networks : public ydk::Entity
 {
     public:
@@ -1363,7 +721,7 @@ class MobileIp::Lmas::Lma::Networks : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1373,7 +731,7 @@ class MobileIp::Lmas::Lma::Networks : public ydk::Entity
 
         class Network; //type: MobileIp::Lmas::Lma::Networks::Network
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network> > network;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network> > network;
         
 }; // MobileIp::Lmas::Lma::Networks
 
@@ -1386,7 +744,7 @@ class MobileIp::Lmas::Lma::Networks::Network : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1397,7 +755,7 @@ class MobileIp::Lmas::Lma::Networks::Network : public ydk::Entity
         ydk::YLeaf lma_network; //type: string
         class PoolAttributes; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes> pool_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes> pool_attributes;
         
 }; // MobileIp::Lmas::Lma::Networks::Network
 
@@ -1410,7 +768,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1421,10 +779,127 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes : public ydk::Entit
         class MobileNode; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode
         class MobileNetwork; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork> mobile_network;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode> mobile_node;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork> mobile_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode> mobile_node;
         
 }; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes
+
+
+class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork : public ydk::Entity
+{
+    public:
+        MobileNetwork();
+        ~MobileNetwork();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv6Pools; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools
+        class Mripv4Pools; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools> mripv4_pools;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools> mripv6_pools;
+        
+}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
+
+
+class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools : public ydk::Entity
+{
+    public:
+        Mripv4Pools();
+        ~Mripv4Pools();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv4Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
+        
+}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools
+
+
+class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool : public ydk::Entity
+{
+    public:
+        Mripv4Pool();
+        ~Mripv4Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+        ydk::YLeaf network_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
+
+
+class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools : public ydk::Entity
+{
+    public:
+        Mripv6Pools();
+        ~Mripv6Pools();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv6Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
+        
+}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools
+
+
+class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool : public ydk::Entity
+{
+    public:
+        Mripv6Pool();
+        ~Mripv6Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+        ydk::YLeaf network_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
 
 
 class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode : public ydk::Entity
@@ -1435,7 +910,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1446,8 +921,8 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode : publi
         class Ipv4Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool
         class Ipv6Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool> ipv4_pool;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool> ipv6_pool;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool> ipv4_pool;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool> ipv6_pool;
         
 }; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode
 
@@ -1460,7 +935,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Po
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1482,7 +957,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Po
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1496,15 +971,15 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Po
 }; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool
 
 
-class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork : public ydk::Entity
+class MobileIp::Lmas::Lma::RatAttributes : public ydk::Entity
 {
     public:
-        MobileNetwork();
-        ~MobileNetwork();
+        RatAttributes();
+        ~RatAttributes();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1512,24 +987,21 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mripv6Pools; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools
-        class Mripv4Pools; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools
+        ydk::YLeaf lma_rat; //type: LmaRat
+        ydk::YLeaf priority_value; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools> mripv4_pools;
-        std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools> mripv6_pools;
-        
-}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
+}; // MobileIp::Lmas::Lma::RatAttributes
 
 
-class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools : public ydk::Entity
+class MobileIp::Lmas::Lma::Redistribute : public ydk::Entity
 {
     public:
-        Mripv6Pools();
-        ~Mripv6Pools();
+        Redistribute();
+        ~Redistribute();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1537,80 +1009,10 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mripv6Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
+        ydk::YLeaf redist_type; //type: RedistType
+        ydk::YLeaf redist_sub_type; //type: RedistSubType
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
-        
-}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools
-
-
-class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool : public ydk::Entity
-{
-    public:
-        Mripv6Pool();
-        ~Mripv6Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-        ydk::YLeaf network_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
-
-
-class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools : public ydk::Entity
-{
-    public:
-        Mripv4Pools();
-        ~Mripv4Pools();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Mripv4Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
-        
-}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools
-
-
-class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool : public ydk::Entity
-{
-    public:
-        Mripv4Pool();
-        ~Mripv4Pool();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start_address; //type: string
-        ydk::YLeaf pool_prefix; //type: uint32
-        ydk::YLeaf network_prefix; //type: uint32
-
-}; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
+}; // MobileIp::Lmas::Lma::Redistribute
 
 
 class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
@@ -1621,7 +1023,7 @@ class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1633,6 +1035,608 @@ class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
 
 }; // MobileIp::Lmas::Lma::ReplayProtection
 
+
+class MobileIp::Lmas::Lma::Roles : public ydk::Entity
+{
+    public:
+        Roles();
+        ~Roles();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Role; //type: MobileIp::Lmas::Lma::Roles::Role
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Roles::Role> > role;
+        
+}; // MobileIp::Lmas::Lma::Roles
+
+
+class MobileIp::Lmas::Lma::Roles::Role : public ydk::Entity
+{
+    public:
+        Role();
+        ~Role();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf lma_role; //type: LmaRole
+
+}; // MobileIp::Lmas::Lma::Roles::Role
+
+
+class MobileIp::Lmas::Lma::Services : public ydk::Entity
+{
+    public:
+        Services();
+        ~Services();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Service; //type: MobileIp::Lmas::Lma::Services::Service
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service> > service;
+        
+}; // MobileIp::Lmas::Lma::Services
+
+
+class MobileIp::Lmas::Lma::Services::Service : public ydk::Entity
+{
+    public:
+        Service();
+        ~Service();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf lma_service; //type: LmaService
+        ydk::YLeaf mnp_customer; //type: uint32
+        ydk::YLeaf mnp_ipv4_lmn; //type: uint32
+        ydk::YLeaf mnp_ipv6_lmn; //type: uint32
+        ydk::YLeaf mnp_lmn; //type: uint32
+        ydk::YLeaf ignore_home_address; //type: empty
+        ydk::YLeaf mnp_ipv4_customer; //type: uint32
+        ydk::YLeaf mnp_ipv6_customer; //type: uint32
+        class Customers; //type: MobileIp::Lmas::Lma::Services::Service::Customers
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers> customers;
+        
+}; // MobileIp::Lmas::Lma::Services::Service
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers : public ydk::Entity
+{
+    public:
+        Customers();
+        ~Customers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Customer; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer> > customer;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer : public ydk::Entity
+{
+    public:
+        Customer();
+        ~Customer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf customer_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf mnp_customer; //type: uint32
+        ydk::YLeaf mnp_ipv4_lmn; //type: uint32
+        ydk::YLeaf mnp_ipv6_lmn; //type: uint32
+        ydk::YLeaf mnp_lmn; //type: uint32
+        ydk::YLeaf mnp_ipv4_customer; //type: uint32
+        ydk::YLeaf mnp_ipv6_customer; //type: uint32
+        ydk::YLeaf mobile_route_ad; //type: uint32
+        ydk::YLeaf bandwidth_aggregate; //type: uint32
+        class AuthenticateOption; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption
+        class HeartBeatAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
+        class Transports; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports
+        class NetworkAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes
+        class GreKey; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey
+        class BindingAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption> authenticate_option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes> binding_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey> gre_key;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes> heart_beat_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes> network_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports> transports;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption : public ydk::Entity
+{
+    public:
+        AuthenticateOption();
+        ~AuthenticateOption();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf spi; //type: string
+        ydk::YLeaf key; //type: string
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes : public ydk::Entity
+{
+    public:
+        BindingAttributes();
+        ~BindingAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_life_time; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey : public ydk::Entity
+{
+    public:
+        GreKey();
+        ~GreKey();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf gre_key_type; //type: GreKeyType
+        ydk::YLeaf gre_key_value; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes : public ydk::Entity
+{
+    public:
+        HeartBeatAttributes();
+        ~HeartBeatAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf retries; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes : public ydk::Entity
+{
+    public:
+        NetworkAttributes();
+        ~NetworkAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf unauthorize; //type: empty
+        class Authorizes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes> authorizes;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes : public ydk::Entity
+{
+    public:
+        Authorizes();
+        ~Authorizes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Authorize; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize> > authorize;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize : public ydk::Entity
+{
+    public:
+        Authorize();
+        ~Authorize();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class PoolAttributes; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes> pool_attributes;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes : public ydk::Entity
+{
+    public:
+        PoolAttributes();
+        ~PoolAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MobileNode; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode
+        class MobileNetwork; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork> mobile_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode> mobile_node;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork : public ydk::Entity
+{
+    public:
+        MobileNetwork();
+        ~MobileNetwork();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv6Pools; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools
+        class Mripv4Pools; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools> mripv4_pools;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools> mripv6_pools;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools : public ydk::Entity
+{
+    public:
+        Mripv4Pools();
+        ~Mripv4Pools();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv4Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool : public ydk::Entity
+{
+    public:
+        Mripv4Pool();
+        ~Mripv4Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+        ydk::YLeaf network_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools : public ydk::Entity
+{
+    public:
+        Mripv6Pools();
+        ~Mripv6Pools();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mripv6Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool : public ydk::Entity
+{
+    public:
+        Mripv6Pool();
+        ~Mripv6Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+        ydk::YLeaf network_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode : public ydk::Entity
+{
+    public:
+        MobileNode();
+        ~MobileNode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool
+        class Ipv6Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool> ipv4_pool;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool> ipv6_pool;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool : public ydk::Entity
+{
+    public:
+        Ipv4Pool();
+        ~Ipv4Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool : public ydk::Entity
+{
+    public:
+        Ipv6Pool();
+        ~Ipv6Pool();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf pool_prefix; //type: uint32
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports : public ydk::Entity
+{
+    public:
+        Transports();
+        ~Transports();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Transport; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport> > transport;
+        
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports
+
+
+class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport : public ydk::Entity
+{
+    public:
+        Transport();
+        ~Transport();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+
+}; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport
+
+
+class MobileIp::Lmas::Lma::TunnelAttributes : public ydk::Entity
+{
+    public:
+        TunnelAttributes();
+        ~TunnelAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf acl; //type: string
+
+}; // MobileIp::Lmas::Lma::TunnelAttributes
+
 class RedistSubType : public ydk::Enum
 {
     public:
@@ -1641,10 +1645,20 @@ class RedistSubType : public ydk::Enum
 
 };
 
-class RedistType : public ydk::Enum
+class EncapOpt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf home_address;
+        static const ydk::Enum::YLeaf greipv4;
+        static const ydk::Enum::YLeaf greipv6;
+        static const ydk::Enum::YLeaf mgreipv4;
+        static const ydk::Enum::YLeaf mgreipv6;
+
+};
+
+class LmaService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf service_mll;
 
 };
 
@@ -1666,23 +1680,6 @@ class LmaRat : public ydk::Enum
 
 };
 
-class LmaService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf service_mll;
-
-};
-
-class EncapOpt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf greipv4;
-        static const ydk::Enum::YLeaf greipv6;
-        static const ydk::Enum::YLeaf mgreipv4;
-        static const ydk::Enum::YLeaf mgreipv6;
-
-};
-
 class GreKeyType : public ydk::Enum
 {
     public:
@@ -1696,6 +1693,13 @@ class ServiceType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf dual;
+
+};
+
+class RedistType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf home_address;
 
 };
 

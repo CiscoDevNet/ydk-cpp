@@ -19,7 +19,7 @@ class Sla : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,7 +34,7 @@ class Sla : public ydk::Entity
 
         class Protocols; //type: Sla::Protocols
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols> protocols;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols> protocols;
         
 }; // Sla
 
@@ -47,17 +47,18 @@ class Sla::Protocols : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Ethernet; //type: Sla::Protocols::Ethernet
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet> ethernet;
         
 }; // Sla::Protocols
 
@@ -70,17 +71,18 @@ class Sla::Protocols::Ethernet : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Profiles; //type: Sla::Protocols::Ethernet::Profiles
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles> profiles;
         
 }; // Sla::Protocols::Ethernet
 
@@ -93,17 +95,18 @@ class Sla::Protocols::Ethernet::Profiles : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Profile; //type: Sla::Protocols::Ethernet::Profiles::Profile
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile> > profile;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile> > profile;
         
 }; // Sla::Protocols::Ethernet::Profiles
 
@@ -116,13 +119,14 @@ class Sla::Protocols::Ethernet::Profiles::Profile : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf profile_name; //type: string
         ydk::YLeaf packet_type; //type: string
@@ -130,22 +134,22 @@ class Sla::Protocols::Ethernet::Profiles::Profile : public ydk::Entity
         class Schedule; //type: Sla::Protocols::Ethernet::Profiles::Profile::Schedule
         class Probe; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe> probe;
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Schedule> schedule; // presence node
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe> probe;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Schedule> schedule; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics> statistics;
         
 }; // Sla::Protocols::Ethernet::Profiles::Profile
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public ydk::Entity
 {
     public:
-        Statistics();
-        ~Statistics();
+        Probe();
+        ~Probe();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -153,22 +157,26 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Statistic; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf synthetic_loss_calculation_packets; //type: uint32
+        class Send; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
+        class PacketSizeAndPadding; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic> > statistic;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding> packet_size_and_padding; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send> send; // presence node
         
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding : public ydk::Entity
 {
     public:
-        Statistic();
-        ~Statistic();
+        PacketSizeAndPadding();
+        ~PacketSizeAndPadding();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -176,27 +184,22 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf statistic_name; //type: SlaStatisticTypeEnum
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf buckets_archive; //type: uint32
-        class BucketsSize; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
-        class Aggregation; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf padding_type; //type: SlaPaddingPattern
+        ydk::YLeaf padding_value; //type: string
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation> aggregation; // presence node
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize> buckets_size; // presence node
-        
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public ydk::Entity
 {
     public:
-        BucketsSize();
-        ~BucketsSize();
+        Send();
+        ~Send();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -204,33 +207,14 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Bucket
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf buckets_size; //type: uint32
-        ydk::YLeaf buckets_size_unit; //type: SlaBucketsSizeUnitsEnum
+        ydk::YLeaf burst_interval; //type: uint32
+        ydk::YLeaf burst_interval_unit; //type: SlaBurstIntervalUnitsEnum
+        ydk::YLeaf packet_interval; //type: uint32
+        ydk::YLeaf packet_interval_unit; //type: SlaPacketIntervalUnitsEnum
+        ydk::YLeaf packet_count; //type: uint32
+        ydk::YLeaf send_type; //type: SlaSend
 
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
-
-
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation : public ydk::Entity
-{
-    public:
-        Aggregation();
-        ~Aggregation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf bins_count; //type: uint32
-        ydk::YLeaf bins_width; //type: uint32
-        ydk::YLeaf bins_width_tenths; //type: uint32
-
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
 
 
 class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public ydk::Entity
@@ -241,7 +225,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -261,15 +245,15 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public ydk::Entity
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Schedule
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public ydk::Entity
 {
     public:
-        Probe();
-        ~Probe();
+        Statistics();
+        ~Statistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -277,26 +261,22 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf synthetic_loss_calculation_packets; //type: uint32
-        class Send; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
-        class PacketSizeAndPadding; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
+        class Statistic; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
 
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding> packet_size_and_padding; // presence node
-        std::shared_ptr<Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send> send; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic> > statistic;
         
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : public ydk::Entity
 {
     public:
-        Send();
-        ~Send();
+        Statistic();
+        ~Statistic();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -304,25 +284,27 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf burst_interval; //type: uint32
-        ydk::YLeaf burst_interval_unit; //type: SlaBurstIntervalUnitsEnum
-        ydk::YLeaf packet_interval; //type: uint32
-        ydk::YLeaf packet_interval_unit; //type: SlaPacketIntervalUnitsEnum
-        ydk::YLeaf packet_count; //type: uint32
-        ydk::YLeaf send_type; //type: SlaSend
+        ydk::YLeaf statistic_name; //type: SlaStatisticTypeEnum
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf buckets_archive; //type: uint32
+        class BucketsSize; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
+        class Aggregation; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
 
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation> aggregation; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize> buckets_size; // presence node
+        
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding : public ydk::Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation : public ydk::Entity
 {
     public:
-        PacketSizeAndPadding();
-        ~PacketSizeAndPadding();
+        Aggregation();
+        ~Aggregation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -330,11 +312,33 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf padding_type; //type: SlaPaddingPattern
-        ydk::YLeaf padding_value; //type: string
+        ydk::YLeaf bins_count; //type: uint32
+        ydk::YLeaf bins_width; //type: uint32
+        ydk::YLeaf bins_width_tenths; //type: uint32
 
-}; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
+
+
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize : public ydk::Entity
+{
+    public:
+        BucketsSize();
+        ~BucketsSize();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf buckets_size; //type: uint32
+        ydk::YLeaf buckets_size_unit; //type: SlaBucketsSizeUnitsEnum
+
+}; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
 
 
 }

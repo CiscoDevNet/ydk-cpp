@@ -17,7 +17,7 @@ Cdp::Cdp()
 {
     nodes->parent = this;
 
-    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-oper";
+    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Cdp::~Cdp()
@@ -39,26 +39,15 @@ std::string Cdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cdp-oper:cdp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Cdp::has_leaf_or_child_of_name(const std::string & name) const
 
 Cdp::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "cdp";
+
+    yang_name = "nodes"; yang_parent_name = "cdp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Cdp::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Cdp::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Cdp::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-cdp-oper:cdp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Cdp::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-cdp-oper:cdp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,12 +225,10 @@ Cdp::Nodes::Node::Node()
 	,statistics(std::make_shared<Cdp::Nodes::Node::Statistics>())
 {
     interfaces->parent = this;
-
     neighbors->parent = this;
-
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Cdp::Nodes::Node::~Node()
@@ -271,34 +252,27 @@ bool Cdp::Nodes::Node::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Cdp::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-cdp-oper:cdp/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Cdp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-cdp-oper:cdp/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -380,6 +354,231 @@ bool Cdp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Cdp::Nodes::Node::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Cdp::Nodes::Node::Interfaces::~Interfaces()
+{
+}
+
+bool Cdp::Nodes::Node::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Cdp::Nodes::Node::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Cdp::Nodes::Node::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        for(auto const & c : interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Cdp::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Cdp::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Cdp::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Cdp::Nodes::Node::Interfaces::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"},
+    basecaps_state{YType::uint32, "basecaps-state"},
+    cdp_protocol_state{YType::uint32, "cdp-protocol-state"},
+    interface_encaps{YType::str, "interface-encaps"},
+    interface_handle{YType::str, "interface-handle"}
+{
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Cdp::Nodes::Node::Interfaces::Interface::~Interface()
+{
+}
+
+bool Cdp::Nodes::Node::Interfaces::Interface::has_data() const
+{
+    return interface_name.is_set
+	|| basecaps_state.is_set
+	|| cdp_protocol_state.is_set
+	|| interface_encaps.is_set
+	|| interface_handle.is_set;
+}
+
+bool Cdp::Nodes::Node::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(basecaps_state.yfilter)
+	|| ydk::is_set(cdp_protocol_state.yfilter)
+	|| ydk::is_set(interface_encaps.yfilter)
+	|| ydk::is_set(interface_handle.yfilter);
+}
+
+std::string Cdp::Nodes::Node::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (basecaps_state.is_set || is_set(basecaps_state.yfilter)) leaf_name_data.push_back(basecaps_state.get_name_leafdata());
+    if (cdp_protocol_state.is_set || is_set(cdp_protocol_state.yfilter)) leaf_name_data.push_back(cdp_protocol_state.get_name_leafdata());
+    if (interface_encaps.is_set || is_set(interface_encaps.yfilter)) leaf_name_data.push_back(interface_encaps.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Cdp::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "basecaps-state")
+    {
+        basecaps_state = value;
+        basecaps_state.value_namespace = name_space;
+        basecaps_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdp-protocol-state")
+    {
+        cdp_protocol_state = value;
+        cdp_protocol_state.value_namespace = name_space;
+        cdp_protocol_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-encaps")
+    {
+        interface_encaps = value;
+        interface_encaps.value_namespace = name_space;
+        interface_encaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cdp::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "basecaps-state")
+    {
+        basecaps_state.yfilter = yfilter;
+    }
+    if(value_path == "cdp-protocol-state")
+    {
+        cdp_protocol_state.yfilter = yfilter;
+    }
+    if(value_path == "interface-encaps")
+    {
+        interface_encaps.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+}
+
+bool Cdp::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "basecaps-state" || name == "cdp-protocol-state" || name == "interface-encaps" || name == "interface-handle")
+        return true;
+    return false;
+}
+
 Cdp::Nodes::Node::Neighbors::Neighbors()
     :
     details(std::make_shared<Cdp::Nodes::Node::Neighbors::Details>())
@@ -387,12 +586,10 @@ Cdp::Nodes::Node::Neighbors::Neighbors()
 	,summaries(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries>())
 {
     details->parent = this;
-
     devices->parent = this;
-
     summaries->parent = this;
 
-    yang_name = "neighbors"; yang_parent_name = "node";
+    yang_name = "neighbors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::~Neighbors()
@@ -418,29 +615,15 @@ std::string Cdp::Nodes::Node::Neighbors::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbors";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Neighbors' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -514,7 +697,8 @@ bool Cdp::Nodes::Node::Neighbors::has_leaf_or_child_of_name(const std::string & 
 
 Cdp::Nodes::Node::Neighbors::Details::Details()
 {
-    yang_name = "details"; yang_parent_name = "neighbors";
+
+    yang_name = "details"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::~Details()
@@ -545,29 +729,15 @@ std::string Cdp::Nodes::Node::Neighbors::Details::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Details' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -623,7 +793,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::Detail()
     device_id{YType::str, "device-id"},
     interface_name{YType::str, "interface-name"}
 {
-    yang_name = "detail"; yang_parent_name = "details";
+
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::~Detail()
@@ -657,31 +828,17 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -766,7 +923,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::CdpNeighbor()
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "detail";
+    yang_name = "cdp-neighbor"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::~CdpNeighbor()
@@ -802,23 +959,11 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpNeighbor' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capabilities.is_set || is_set(capabilities.yfilter)) leaf_name_data.push_back(capabilities.get_name_leafdata());
@@ -829,9 +974,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_
     if (port_id.is_set || is_set(port_id.yfilter)) leaf_name_data.push_back(port_id.get_name_leafdata());
     if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -957,10 +1100,9 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Detail_()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor";
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::~Detail_()
@@ -994,23 +1136,11 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail_' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
@@ -1019,9 +1149,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Deta
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (vtp_domain.is_set || is_set(vtp_domain.yfilter)) leaf_name_data.push_back(vtp_domain.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1131,7 +1259,8 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::has_lea
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::NetworkAddresses()
 {
-    yang_name = "network-addresses"; yang_parent_name = "detail";
+
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::~NetworkAddresses()
@@ -1162,29 +1291,15 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "network-addresses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkAddresses' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1241,7 +1356,7 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -1263,29 +1378,15 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpAddrEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1335,7 +1436,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddre
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry";
+
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -1361,32 +1463,18 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
     if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1448,7 +1536,8 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Network
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::ProtocolHelloList()
 {
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail";
+
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::~ProtocolHelloList()
@@ -1479,29 +1568,15 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-hello-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtocolHelloList' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1556,7 +1631,8 @@ Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHell
     :
     hello_message{YType::str, "hello-message"}
 {
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list";
+
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -1578,30 +1654,16 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpProtHelloEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hello_message.is_set || is_set(hello_message.yfilter)) leaf_name_data.push_back(hello_message.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1643,7 +1705,8 @@ bool Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::Protoco
 
 Cdp::Nodes::Node::Neighbors::Devices::Devices()
 {
-    yang_name = "devices"; yang_parent_name = "neighbors";
+
+    yang_name = "devices"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::~Devices()
@@ -1674,29 +1737,15 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Devices' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1751,7 +1800,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::Device()
     :
     device_id{YType::str, "device-id"}
 {
-    yang_name = "device"; yang_parent_name = "devices";
+
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::~Device()
@@ -1783,30 +1833,16 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "device" <<"[device-id='" <<device_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Device' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1881,7 +1917,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::CdpNeighbor()
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "device";
+    yang_name = "cdp-neighbor"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::~CdpNeighbor()
@@ -1917,23 +1953,11 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpNeighbor' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capabilities.is_set || is_set(capabilities.yfilter)) leaf_name_data.push_back(capabilities.get_name_leafdata());
@@ -1944,9 +1968,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_
     if (port_id.is_set || is_set(port_id.yfilter)) leaf_name_data.push_back(port_id.get_name_leafdata());
     if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2072,10 +2094,9 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Detail()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor";
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::~Detail()
@@ -2109,23 +2130,11 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::g
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
@@ -2134,9 +2143,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Deta
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (vtp_domain.is_set || is_set(vtp_domain.yfilter)) leaf_name_data.push_back(vtp_domain.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2246,7 +2253,8 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::has_leaf
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
 {
-    yang_name = "network-addresses"; yang_parent_name = "detail";
+
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -2277,29 +2285,15 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 {
     std::ostringstream path_buffer;
     path_buffer << "network-addresses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkAddresses' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2356,7 +2350,7 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -2378,29 +2372,15 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpAddrEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2450,7 +2430,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddres
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry";
+
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -2476,32 +2457,18 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
     if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2563,7 +2530,8 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkA
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::ProtocolHelloList()
 {
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail";
+
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::~ProtocolHelloList()
@@ -2594,29 +2562,15 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::P
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-hello-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtocolHelloList' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2671,7 +2625,8 @@ Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHello
     :
     hello_message{YType::str, "hello-message"}
 {
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list";
+
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -2693,30 +2648,16 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::P
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpProtHelloEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hello_message.is_set || is_set(hello_message.yfilter)) leaf_name_data.push_back(hello_message.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2758,7 +2699,8 @@ bool Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::Protocol
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summaries()
 {
-    yang_name = "summaries"; yang_parent_name = "neighbors";
+
+    yang_name = "summaries"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::~Summaries()
@@ -2789,29 +2731,15 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summaries";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summaries' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2867,7 +2795,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::Summary()
     device_id{YType::str, "device-id"},
     interface_name{YType::str, "interface-name"}
 {
-    yang_name = "summary"; yang_parent_name = "summaries";
+
+    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::~Summary()
@@ -2901,31 +2830,17 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3010,7 +2925,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::CdpNeighbor()
 {
     detail->parent = this;
 
-    yang_name = "cdp-neighbor"; yang_parent_name = "summary";
+    yang_name = "cdp-neighbor"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::~CdpNeighbor()
@@ -3046,23 +2961,11 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpNeighbor' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capabilities.is_set || is_set(capabilities.yfilter)) leaf_name_data.push_back(capabilities.get_name_leafdata());
@@ -3073,9 +2976,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::g
     if (port_id.is_set || is_set(port_id.yfilter)) leaf_name_data.push_back(port_id.get_name_leafdata());
     if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3201,10 +3102,9 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Detail()
 	,protocol_hello_list(std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList>())
 {
     network_addresses->parent = this;
-
     protocol_hello_list->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "cdp-neighbor";
+    yang_name = "detail"; yang_parent_name = "cdp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::~Detail()
@@ -3238,23 +3138,11 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
@@ -3263,9 +3151,7 @@ const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::D
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (vtp_domain.is_set || is_set(vtp_domain.yfilter)) leaf_name_data.push_back(vtp_domain.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3375,7 +3261,8 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::has_l
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
 {
-    yang_name = "network-addresses"; yang_parent_name = "detail";
+
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -3406,29 +3293,15 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "network-addresses";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkAddresses' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3485,7 +3358,7 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
 {
     address->parent = this;
 
-    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses";
+    yang_name = "cdp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::~CdpAddrEntry()
@@ -3507,29 +3380,15 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpAddrEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3579,7 +3438,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAdd
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
-    yang_name = "address"; yang_parent_name = "cdp-addr-entry";
+
+    yang_name = "address"; yang_parent_name = "cdp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::~Address()
@@ -3605,32 +3465,18 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
     if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3692,7 +3538,8 @@ bool Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::Netwo
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::ProtocolHelloList()
 {
-    yang_name = "protocol-hello-list"; yang_parent_name = "detail";
+
+    yang_name = "protocol-hello-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::~ProtocolHelloList()
@@ -3723,29 +3570,15 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-hello-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtocolHelloList' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3800,7 +3633,8 @@ Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHe
     :
     hello_message{YType::str, "hello-message"}
 {
-    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list";
+
+    yang_name = "cdp-prot-hello-entry"; yang_parent_name = "protocol-hello-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::~CdpProtHelloEntry()
@@ -3822,30 +3656,16 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdpProtHelloEntry' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hello_message.is_set || is_set(hello_message.yfilter)) leaf_name_data.push_back(hello_message.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3902,7 +3722,8 @@ Cdp::Nodes::Node::Statistics::Statistics()
     transmitted_packets_v2{YType::uint32, "transmitted-packets-v2"},
     truncated_packet_errors{YType::uint32, "truncated-packet-errors"}
 {
-    yang_name = "statistics"; yang_parent_name = "node";
+
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Cdp::Nodes::Node::Statistics::~Statistics()
@@ -3950,23 +3771,11 @@ std::string Cdp::Nodes::Node::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bad_packet_errors.is_set || is_set(bad_packet_errors.yfilter)) leaf_name_data.push_back(bad_packet_errors.get_name_leafdata());
@@ -3984,9 +3793,7 @@ const EntityPath Cdp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor)
     if (transmitted_packets_v2.is_set || is_set(transmitted_packets_v2.yfilter)) leaf_name_data.push_back(transmitted_packets_v2.get_name_leafdata());
     if (truncated_packet_errors.is_set || is_set(truncated_packet_errors.yfilter)) leaf_name_data.push_back(truncated_packet_errors.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4156,263 +3963,12 @@ bool Cdp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-Cdp::Nodes::Node::Interfaces::Interfaces()
-{
-    yang_name = "interfaces"; yang_parent_name = "node";
-}
-
-Cdp::Nodes::Node::Interfaces::~Interfaces()
-{
-}
-
-bool Cdp::Nodes::Node::Interfaces::has_data() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Cdp::Nodes::Node::Interfaces::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Cdp::Nodes::Node::Interfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Cdp::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface")
-    {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Cdp::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Cdp::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Cdp::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface")
-        return true;
-    return false;
-}
-
-Cdp::Nodes::Node::Interfaces::Interface::Interface()
-    :
-    interface_name{YType::str, "interface-name"},
-    basecaps_state{YType::uint32, "basecaps-state"},
-    cdp_protocol_state{YType::uint32, "cdp-protocol-state"},
-    interface_encaps{YType::str, "interface-encaps"},
-    interface_handle{YType::str, "interface-handle"}
-{
-    yang_name = "interface"; yang_parent_name = "interfaces";
-}
-
-Cdp::Nodes::Node::Interfaces::Interface::~Interface()
-{
-}
-
-bool Cdp::Nodes::Node::Interfaces::Interface::has_data() const
-{
-    return interface_name.is_set
-	|| basecaps_state.is_set
-	|| cdp_protocol_state.is_set
-	|| interface_encaps.is_set
-	|| interface_handle.is_set;
-}
-
-bool Cdp::Nodes::Node::Interfaces::Interface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(basecaps_state.yfilter)
-	|| ydk::is_set(cdp_protocol_state.yfilter)
-	|| ydk::is_set(interface_encaps.yfilter)
-	|| ydk::is_set(interface_handle.yfilter);
-}
-
-std::string Cdp::Nodes::Node::Interfaces::Interface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Cdp::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_cdp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (basecaps_state.is_set || is_set(basecaps_state.yfilter)) leaf_name_data.push_back(basecaps_state.get_name_leafdata());
-    if (cdp_protocol_state.is_set || is_set(cdp_protocol_state.yfilter)) leaf_name_data.push_back(cdp_protocol_state.get_name_leafdata());
-    if (interface_encaps.is_set || is_set(interface_encaps.yfilter)) leaf_name_data.push_back(interface_encaps.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Cdp::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "basecaps-state")
-    {
-        basecaps_state = value;
-        basecaps_state.value_namespace = name_space;
-        basecaps_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdp-protocol-state")
-    {
-        cdp_protocol_state = value;
-        cdp_protocol_state.value_namespace = name_space;
-        cdp_protocol_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-encaps")
-    {
-        interface_encaps = value;
-        interface_encaps.value_namespace = name_space;
-        interface_encaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle = value;
-        interface_handle.value_namespace = name_space;
-        interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Cdp::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "basecaps-state")
-    {
-        basecaps_state.yfilter = yfilter;
-    }
-    if(value_path == "cdp-protocol-state")
-    {
-        cdp_protocol_state.yfilter = yfilter;
-    }
-    if(value_path == "interface-encaps")
-    {
-        interface_encaps.yfilter = yfilter;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle.yfilter = yfilter;
-    }
-}
-
-bool Cdp::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "basecaps-state" || name == "cdp-protocol-state" || name == "interface-encaps" || name == "interface-handle")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf CdpL3AddrProtocol::ipv4 {0, "ipv4"};
-const Enum::YLeaf CdpL3AddrProtocol::ipv6 {1, "ipv6"};
-
 const Enum::YLeaf CdpDuplex::cdp_dplx_none {0, "cdp-dplx-none"};
 const Enum::YLeaf CdpDuplex::cdp_dplx_half {1, "cdp-dplx-half"};
 const Enum::YLeaf CdpDuplex::cdp_dplx_full {2, "cdp-dplx-full"};
+
+const Enum::YLeaf CdpL3AddrProtocol::ipv4 {0, "ipv4"};
+const Enum::YLeaf CdpL3AddrProtocol::ipv6 {1, "ipv6"};
 
 
 }

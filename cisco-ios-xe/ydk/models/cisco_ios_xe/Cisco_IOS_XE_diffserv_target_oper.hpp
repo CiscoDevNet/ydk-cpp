@@ -10,15 +10,6 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_diffserv_target_oper {
 
-class Direction : public virtual ydk::Identity
-{
-    public:
-        Direction();
-        ~Direction();
-
-
-}; // Direction
-
 class DiffservInterfacesState : public ydk::Entity
 {
     public:
@@ -27,7 +18,7 @@ class DiffservInterfacesState : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -42,7 +33,7 @@ class DiffservInterfacesState : public ydk::Entity
 
         class DiffservInterface; //type: DiffservInterfacesState::DiffservInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface> > diffserv_interface;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface> > diffserv_interface;
         
 }; // DiffservInterfacesState
 
@@ -55,18 +46,19 @@ class DiffservInterfacesState::DiffservInterface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         class DiffservTargetEntry; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry> > diffserv_target_entry;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry> > diffserv_target_entry;
         
 }; // DiffservInterfacesState::DiffservInterface
 
@@ -79,7 +71,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry : public y
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -91,7 +83,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry : public y
         ydk::YLeaf policy_name; //type: string
         class DiffservTargetClassifierStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
@@ -104,7 +96,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -118,9 +110,9 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         class MeterStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics
         class QueuingStatistics; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics;
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
@@ -133,7 +125,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -156,7 +148,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -181,7 +173,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -197,7 +189,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
         ydk::YLeaf drop_bytes; //type: uint64
         class WredStats; //type: DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats
 
-        std::shared_ptr<Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats> wred_stats;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats> wred_stats;
         
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 
@@ -210,7 +202,7 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -223,7 +215,16 @@ class DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservT
 
 }; // DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats
 
-class Inbound : public Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk::Identity
+class Direction : public virtual ydk::Identity
+{
+    public:
+        Direction();
+        ~Direction();
+
+
+}; // Direction
+
+class Inbound : public cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk::Identity
 {
     public:
         Inbound();
@@ -232,7 +233,7 @@ class Inbound : public Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk
 
 }; // Inbound
 
-class Outbound : public Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk::Identity
+class Outbound : public cisco_ios_xe::Cisco_IOS_XE_diffserv_target_oper::Direction, virtual ydk::Identity
 {
     public:
         Outbound();

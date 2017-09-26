@@ -18,7 +18,7 @@ class EsAcl : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class EsAcl : public ydk::Entity
 
         class Accesses; //type: EsAcl::Accesses
 
-        std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses> accesses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses> accesses;
         
 }; // EsAcl
 
@@ -46,17 +46,18 @@ class EsAcl::Accesses : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Access; //type: EsAcl::Accesses::Access
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access> > access;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access> > access;
         
 }; // EsAcl::Accesses
 
@@ -69,18 +70,19 @@ class EsAcl::Accesses::Access : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         class AccessListEntries; //type: EsAcl::Accesses::Access::AccessListEntries
 
-        std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries> access_list_entries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries> access_list_entries;
         
 }; // EsAcl::Accesses::Access
 
@@ -93,7 +95,7 @@ class EsAcl::Accesses::Access::AccessListEntries : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -103,7 +105,7 @@ class EsAcl::Accesses::Access::AccessListEntries : public ydk::Entity
 
         class AccessListEntry; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
         
 }; // EsAcl::Accesses::Access::AccessListEntries
 
@@ -116,7 +118,7 @@ class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry : public ydk::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -142,32 +144,10 @@ class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry : public ydk::
         class SourceNetwork; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
         class DestinationNetwork; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork
 
-        std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork> destination_network;
-        std::shared_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork> source_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork> destination_network;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork> source_network;
         
 }; // EsAcl::Accesses::Access::AccessListEntries::AccessListEntry
-
-
-class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork : public ydk::Entity
-{
-    public:
-        SourceNetwork();
-        ~SourceNetwork();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_wild_card_bits; //type: string
-
-}; // EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
 
 
 class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork : public ydk::Entity
@@ -178,7 +158,7 @@ class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -190,6 +170,28 @@ class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNe
         ydk::YLeaf destination_wild_card_bits; //type: string
 
 }; // EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork
+
+
+class EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork : public ydk::Entity
+{
+    public:
+        SourceNetwork();
+        ~SourceNetwork();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_wild_card_bits; //type: string
+
+}; // EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork
 
 class EsAclGrantEnum : public ydk::Enum
 {

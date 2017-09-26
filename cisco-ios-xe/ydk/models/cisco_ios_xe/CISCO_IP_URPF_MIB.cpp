@@ -11,32 +11,28 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IP_URPF_MIB {
 
-CiscoIpUrpfMib::CiscoIpUrpfMib()
+CISCOIPURPFMIB::CISCOIPURPFMIB()
     :
-    cipurpfifmontable(std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>())
-	,cipurpfscalar(std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>())
-	,cipurpftable(std::make_shared<CiscoIpUrpfMib::Cipurpftable>())
-	,cipurpfvrfiftable(std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>())
-	,cipurpfvrftable(std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>())
+    cipurpfifmontable(std::make_shared<CISCOIPURPFMIB::Cipurpfifmontable>())
+	,cipurpfscalar(std::make_shared<CISCOIPURPFMIB::Cipurpfscalar>())
+	,cipurpftable(std::make_shared<CISCOIPURPFMIB::Cipurpftable>())
+	,cipurpfvrfiftable(std::make_shared<CISCOIPURPFMIB::Cipurpfvrfiftable>())
+	,cipurpfvrftable(std::make_shared<CISCOIPURPFMIB::Cipurpfvrftable>())
 {
     cipurpfifmontable->parent = this;
-
     cipurpfscalar->parent = this;
-
     cipurpftable->parent = this;
-
     cipurpfvrfiftable->parent = this;
-
     cipurpfvrftable->parent = this;
 
-    yang_name = "CISCO-IP-URPF-MIB"; yang_parent_name = "CISCO-IP-URPF-MIB";
+    yang_name = "CISCO-IP-URPF-MIB"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::~CiscoIpUrpfMib()
+CISCOIPURPFMIB::~CISCOIPURPFMIB()
 {
 }
 
-bool CiscoIpUrpfMib::has_data() const
+bool CISCOIPURPFMIB::has_data() const
 {
     return (cipurpfifmontable !=  nullptr && cipurpfifmontable->has_data())
 	|| (cipurpfscalar !=  nullptr && cipurpfscalar->has_data())
@@ -45,7 +41,7 @@ bool CiscoIpUrpfMib::has_data() const
 	|| (cipurpfvrftable !=  nullptr && cipurpfvrftable->has_data());
 }
 
-bool CiscoIpUrpfMib::has_operation() const
+bool CISCOIPURPFMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cipurpfifmontable !=  nullptr && cipurpfifmontable->has_operation())
@@ -55,40 +51,29 @@ bool CiscoIpUrpfMib::has_operation() const
 	|| (cipurpfvrftable !=  nullptr && cipurpfvrftable->has_operation());
 }
 
-std::string CiscoIpUrpfMib::get_segment_path() const
+std::string CISCOIPURPFMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfIfMonTable")
     {
         if(cipurpfifmontable == nullptr)
         {
-            cipurpfifmontable = std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable>();
+            cipurpfifmontable = std::make_shared<CISCOIPURPFMIB::Cipurpfifmontable>();
         }
         return cipurpfifmontable;
     }
@@ -97,7 +82,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
     {
         if(cipurpfscalar == nullptr)
         {
-            cipurpfscalar = std::make_shared<CiscoIpUrpfMib::Cipurpfscalar>();
+            cipurpfscalar = std::make_shared<CISCOIPURPFMIB::Cipurpfscalar>();
         }
         return cipurpfscalar;
     }
@@ -106,7 +91,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
     {
         if(cipurpftable == nullptr)
         {
-            cipurpftable = std::make_shared<CiscoIpUrpfMib::Cipurpftable>();
+            cipurpftable = std::make_shared<CISCOIPURPFMIB::Cipurpftable>();
         }
         return cipurpftable;
     }
@@ -115,7 +100,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
     {
         if(cipurpfvrfiftable == nullptr)
         {
-            cipurpfvrfiftable = std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable>();
+            cipurpfvrfiftable = std::make_shared<CISCOIPURPFMIB::Cipurpfvrfiftable>();
         }
         return cipurpfvrfiftable;
     }
@@ -124,7 +109,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
     {
         if(cipurpfvrftable == nullptr)
         {
-            cipurpfvrftable = std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable>();
+            cipurpfvrftable = std::make_shared<CISCOIPURPFMIB::Cipurpfvrftable>();
         }
         return cipurpfvrftable;
     }
@@ -132,7 +117,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cipurpfifmontable != nullptr)
@@ -163,396 +148,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::get_children() co
     return children;
 }
 
-void CiscoIpUrpfMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpUrpfMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIPURPFMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoIpUrpfMib>();
+    return std::make_shared<CISCOIPURPFMIB>();
 }
 
-std::string CiscoIpUrpfMib::get_bundle_yang_models_location() const
+std::string CISCOIPURPFMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIpUrpfMib::get_bundle_name() const
+std::string CISCOIPURPFMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIpUrpfMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIPURPFMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIpUrpfMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIPURPFMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIpUrpfMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfIfMonTable" || name == "cipUrpfScalar" || name == "cipUrpfTable" || name == "cipUrpfVrfIfTable" || name == "cipUrpfVrfTable")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfscalar::Cipurpfscalar()
-    :
-    cipurpfcomputeinterval{YType::int32, "cipUrpfComputeInterval"},
-    cipurpfdropnotifyholddowntime{YType::int32, "cipUrpfDropNotifyHoldDownTime"},
-    cipurpfdropratewindow{YType::int32, "cipUrpfDropRateWindow"}
+CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmontable()
 {
-    yang_name = "cipUrpfScalar"; yang_parent_name = "CISCO-IP-URPF-MIB";
+
+    yang_name = "cipUrpfIfMonTable"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfscalar::~Cipurpfscalar()
+CISCOIPURPFMIB::Cipurpfifmontable::~Cipurpfifmontable()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfscalar::has_data() const
-{
-    return cipurpfcomputeinterval.is_set
-	|| cipurpfdropnotifyholddowntime.is_set
-	|| cipurpfdropratewindow.is_set;
-}
-
-bool CiscoIpUrpfMib::Cipurpfscalar::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cipurpfcomputeinterval.yfilter)
-	|| ydk::is_set(cipurpfdropnotifyholddowntime.yfilter)
-	|| ydk::is_set(cipurpfdropratewindow.yfilter);
-}
-
-std::string CiscoIpUrpfMib::Cipurpfscalar::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipUrpfScalar";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpUrpfMib::Cipurpfscalar::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipurpfcomputeinterval.is_set || is_set(cipurpfcomputeinterval.yfilter)) leaf_name_data.push_back(cipurpfcomputeinterval.get_name_leafdata());
-    if (cipurpfdropnotifyholddowntime.is_set || is_set(cipurpfdropnotifyholddowntime.yfilter)) leaf_name_data.push_back(cipurpfdropnotifyholddowntime.get_name_leafdata());
-    if (cipurpfdropratewindow.is_set || is_set(cipurpfdropratewindow.yfilter)) leaf_name_data.push_back(cipurpfdropratewindow.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfscalar::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfscalar::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoIpUrpfMib::Cipurpfscalar::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipUrpfComputeInterval")
-    {
-        cipurpfcomputeinterval = value;
-        cipurpfcomputeinterval.value_namespace = name_space;
-        cipurpfcomputeinterval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipUrpfDropNotifyHoldDownTime")
-    {
-        cipurpfdropnotifyholddowntime = value;
-        cipurpfdropnotifyholddowntime.value_namespace = name_space;
-        cipurpfdropnotifyholddowntime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipUrpfDropRateWindow")
-    {
-        cipurpfdropratewindow = value;
-        cipurpfdropratewindow.value_namespace = name_space;
-        cipurpfdropratewindow.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoIpUrpfMib::Cipurpfscalar::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipUrpfComputeInterval")
-    {
-        cipurpfcomputeinterval.yfilter = yfilter;
-    }
-    if(value_path == "cipUrpfDropNotifyHoldDownTime")
-    {
-        cipurpfdropnotifyholddowntime.yfilter = yfilter;
-    }
-    if(value_path == "cipUrpfDropRateWindow")
-    {
-        cipurpfdropratewindow.yfilter = yfilter;
-    }
-}
-
-bool CiscoIpUrpfMib::Cipurpfscalar::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipUrpfComputeInterval" || name == "cipUrpfDropNotifyHoldDownTime" || name == "cipUrpfDropRateWindow")
-        return true;
-    return false;
-}
-
-CiscoIpUrpfMib::Cipurpftable::Cipurpftable()
-{
-    yang_name = "cipUrpfTable"; yang_parent_name = "CISCO-IP-URPF-MIB";
-}
-
-CiscoIpUrpfMib::Cipurpftable::~Cipurpftable()
-{
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::has_data() const
-{
-    for (std::size_t index=0; index<cipurpfentry.size(); index++)
-    {
-        if(cipurpfentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::has_operation() const
-{
-    for (std::size_t index=0; index<cipurpfentry.size(); index++)
-    {
-        if(cipurpfentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoIpUrpfMib::Cipurpftable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipUrpfTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpUrpfMib::Cipurpftable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cipUrpfEntry")
-    {
-        for(auto const & c : cipurpfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoIpUrpfMib::Cipurpftable::Cipurpfentry>();
-        c->parent = this;
-        cipurpfentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpftable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cipurpfentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoIpUrpfMib::Cipurpftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoIpUrpfMib::Cipurpftable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipUrpfEntry")
-        return true;
-    return false;
-}
-
-CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::Cipurpfentry()
-    :
-    cipurpfipversion{YType::enumeration, "cipUrpfIpVersion"},
-    cipurpfdroprate{YType::uint32, "cipUrpfDropRate"},
-    cipurpfdrops{YType::uint32, "cipUrpfDrops"}
-{
-    yang_name = "cipUrpfEntry"; yang_parent_name = "cipUrpfTable";
-}
-
-CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::~Cipurpfentry()
-{
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::has_data() const
-{
-    return cipurpfipversion.is_set
-	|| cipurpfdroprate.is_set
-	|| cipurpfdrops.is_set;
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cipurpfipversion.yfilter)
-	|| ydk::is_set(cipurpfdroprate.yfilter)
-	|| ydk::is_set(cipurpfdrops.yfilter);
-}
-
-std::string CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cipUrpfEntry" <<"[cipUrpfIpVersion='" <<cipurpfipversion <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cipurpfipversion.is_set || is_set(cipurpfipversion.yfilter)) leaf_name_data.push_back(cipurpfipversion.get_name_leafdata());
-    if (cipurpfdroprate.is_set || is_set(cipurpfdroprate.yfilter)) leaf_name_data.push_back(cipurpfdroprate.get_name_leafdata());
-    if (cipurpfdrops.is_set || is_set(cipurpfdrops.yfilter)) leaf_name_data.push_back(cipurpfdrops.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cipUrpfIpVersion")
-    {
-        cipurpfipversion = value;
-        cipurpfipversion.value_namespace = name_space;
-        cipurpfipversion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipUrpfDropRate")
-    {
-        cipurpfdroprate = value;
-        cipurpfdroprate.value_namespace = name_space;
-        cipurpfdroprate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cipUrpfDrops")
-    {
-        cipurpfdrops = value;
-        cipurpfdrops.value_namespace = name_space;
-        cipurpfdrops.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cipUrpfIpVersion")
-    {
-        cipurpfipversion.yfilter = yfilter;
-    }
-    if(value_path == "cipUrpfDropRate")
-    {
-        cipurpfdroprate.yfilter = yfilter;
-    }
-    if(value_path == "cipUrpfDrops")
-    {
-        cipurpfdrops.yfilter = yfilter;
-    }
-}
-
-bool CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cipUrpfIpVersion" || name == "cipUrpfDropRate" || name == "cipUrpfDrops")
-        return true;
-    return false;
-}
-
-CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmontable()
-{
-    yang_name = "cipUrpfIfMonTable"; yang_parent_name = "CISCO-IP-URPF-MIB";
-}
-
-CiscoIpUrpfMib::Cipurpfifmontable::~Cipurpfifmontable()
-{
-}
-
-bool CiscoIpUrpfMib::Cipurpfifmontable::has_data() const
+bool CISCOIPURPFMIB::Cipurpfifmontable::has_data() const
 {
     for (std::size_t index=0; index<cipurpfifmonentry.size(); index++)
     {
@@ -562,7 +208,7 @@ bool CiscoIpUrpfMib::Cipurpfifmontable::has_data() const
     return false;
 }
 
-bool CiscoIpUrpfMib::Cipurpfifmontable::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfifmontable::has_operation() const
 {
     for (std::size_t index=0; index<cipurpfifmonentry.size(); index++)
     {
@@ -572,37 +218,30 @@ bool CiscoIpUrpfMib::Cipurpfifmontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfifmontable::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfifmontable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfifmontable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfIfMonTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfifmontable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfifmontable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfifmontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfIfMonEntry")
     {
@@ -614,7 +253,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry>();
+        auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry>();
         c->parent = this;
         cipurpfifmonentry.push_back(c);
         return c;
@@ -623,7 +262,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfifmontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfifmontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipurpfifmonentry)
@@ -634,22 +273,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfifmontable
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfifmontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfifmontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpUrpfMib::Cipurpfifmontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfifmontable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfifmontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfifmontable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfIfMonEntry")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifmonentry()
+CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifmonentry()
     :
     ifindex{YType::str, "ifIndex"},
     cipurpfifipversion{YType::enumeration, "cipUrpfIfIpVersion"},
@@ -664,14 +303,15 @@ CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifmonentry()
     cipurpfifvrfname{YType::str, "cipUrpfIfVrfName"},
     cipurpfifwhichroutetableid{YType::enumeration, "cipUrpfIfWhichRouteTableID"}
 {
-    yang_name = "cipUrpfIfMonEntry"; yang_parent_name = "cipUrpfIfMonTable";
+
+    yang_name = "cipUrpfIfMonEntry"; yang_parent_name = "cipUrpfIfMonTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::~Cipurpfifmonentry()
+CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::~Cipurpfifmonentry()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::has_data() const
+bool CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::has_data() const
 {
     return ifindex.is_set
 	|| cipurpfifipversion.is_set
@@ -687,7 +327,7 @@ bool CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::has_data() const
 	|| cipurpfifwhichroutetableid.is_set;
 }
 
-bool CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -704,27 +344,22 @@ bool CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::has_operation() const
 	|| ydk::is_set(cipurpfifwhichroutetableid.yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfIfMonTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfIfMonEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cipUrpfIfIpVersion='" <<cipurpfifipversion <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfIfMonTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
@@ -740,24 +375,22 @@ const EntityPath CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::get_entit
     if (cipurpfifvrfname.is_set || is_set(cipurpfifvrfname.yfilter)) leaf_name_data.push_back(cipurpfifvrfname.get_name_leafdata());
     if (cipurpfifwhichroutetableid.is_set || is_set(cipurpfifwhichroutetableid.yfilter)) leaf_name_data.push_back(cipurpfifwhichroutetableid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -833,7 +466,7 @@ void CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::set_value(const std::
     }
 }
 
-void CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -885,23 +518,346 @@ void CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::set_filter(const std:
     }
 }
 
-bool CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cipUrpfIfIpVersion" || name == "cipUrpfIfCheckStrict" || name == "cipUrpfIfDiscontinuityTime" || name == "cipUrpfIfDropRate" || name == "cipUrpfIfDropRateNotifyEnable" || name == "cipUrpfIfDrops" || name == "cipUrpfIfNotifyDrHoldDownReset" || name == "cipUrpfIfNotifyDropRateThreshold" || name == "cipUrpfIfSuppressedDrops" || name == "cipUrpfIfVrfName" || name == "cipUrpfIfWhichRouteTableID")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfiftable()
+CISCOIPURPFMIB::Cipurpfscalar::Cipurpfscalar()
+    :
+    cipurpfcomputeinterval{YType::int32, "cipUrpfComputeInterval"},
+    cipurpfdropnotifyholddowntime{YType::int32, "cipUrpfDropNotifyHoldDownTime"},
+    cipurpfdropratewindow{YType::int32, "cipUrpfDropRateWindow"}
 {
-    yang_name = "cipUrpfVrfIfTable"; yang_parent_name = "CISCO-IP-URPF-MIB";
+
+    yang_name = "cipUrpfScalar"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrfiftable::~Cipurpfvrfiftable()
+CISCOIPURPFMIB::Cipurpfscalar::~Cipurpfscalar()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_data() const
+bool CISCOIPURPFMIB::Cipurpfscalar::has_data() const
+{
+    return cipurpfcomputeinterval.is_set
+	|| cipurpfdropnotifyholddowntime.is_set
+	|| cipurpfdropratewindow.is_set;
+}
+
+bool CISCOIPURPFMIB::Cipurpfscalar::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cipurpfcomputeinterval.yfilter)
+	|| ydk::is_set(cipurpfdropnotifyholddowntime.yfilter)
+	|| ydk::is_set(cipurpfdropratewindow.yfilter);
+}
+
+std::string CISCOIPURPFMIB::Cipurpfscalar::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfscalar::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipUrpfScalar";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfscalar::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipurpfcomputeinterval.is_set || is_set(cipurpfcomputeinterval.yfilter)) leaf_name_data.push_back(cipurpfcomputeinterval.get_name_leafdata());
+    if (cipurpfdropnotifyholddowntime.is_set || is_set(cipurpfdropnotifyholddowntime.yfilter)) leaf_name_data.push_back(cipurpfdropnotifyholddowntime.get_name_leafdata());
+    if (cipurpfdropratewindow.is_set || is_set(cipurpfdropratewindow.yfilter)) leaf_name_data.push_back(cipurpfdropratewindow.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfscalar::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfscalar::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPURPFMIB::Cipurpfscalar::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipUrpfComputeInterval")
+    {
+        cipurpfcomputeinterval = value;
+        cipurpfcomputeinterval.value_namespace = name_space;
+        cipurpfcomputeinterval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipUrpfDropNotifyHoldDownTime")
+    {
+        cipurpfdropnotifyholddowntime = value;
+        cipurpfdropnotifyholddowntime.value_namespace = name_space;
+        cipurpfdropnotifyholddowntime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipUrpfDropRateWindow")
+    {
+        cipurpfdropratewindow = value;
+        cipurpfdropratewindow.value_namespace = name_space;
+        cipurpfdropratewindow.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPURPFMIB::Cipurpfscalar::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipUrpfComputeInterval")
+    {
+        cipurpfcomputeinterval.yfilter = yfilter;
+    }
+    if(value_path == "cipUrpfDropNotifyHoldDownTime")
+    {
+        cipurpfdropnotifyholddowntime.yfilter = yfilter;
+    }
+    if(value_path == "cipUrpfDropRateWindow")
+    {
+        cipurpfdropratewindow.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPURPFMIB::Cipurpfscalar::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipUrpfComputeInterval" || name == "cipUrpfDropNotifyHoldDownTime" || name == "cipUrpfDropRateWindow")
+        return true;
+    return false;
+}
+
+CISCOIPURPFMIB::Cipurpftable::Cipurpftable()
+{
+
+    yang_name = "cipUrpfTable"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPURPFMIB::Cipurpftable::~Cipurpftable()
+{
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::has_data() const
+{
+    for (std::size_t index=0; index<cipurpfentry.size(); index++)
+    {
+        if(cipurpfentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::has_operation() const
+{
+    for (std::size_t index=0; index<cipurpfentry.size(); index++)
+    {
+        if(cipurpfentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOIPURPFMIB::Cipurpftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpftable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipUrpfTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpftable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cipUrpfEntry")
+    {
+        for(auto const & c : cipurpfentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOIPURPFMIB::Cipurpftable::Cipurpfentry>();
+        c->parent = this;
+        cipurpfentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpftable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cipurpfentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOIPURPFMIB::Cipurpftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOIPURPFMIB::Cipurpftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipUrpfEntry")
+        return true;
+    return false;
+}
+
+CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfentry()
+    :
+    cipurpfipversion{YType::enumeration, "cipUrpfIpVersion"},
+    cipurpfdroprate{YType::uint32, "cipUrpfDropRate"},
+    cipurpfdrops{YType::uint32, "cipUrpfDrops"}
+{
+
+    yang_name = "cipUrpfEntry"; yang_parent_name = "cipUrpfTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::~Cipurpfentry()
+{
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::has_data() const
+{
+    return cipurpfipversion.is_set
+	|| cipurpfdroprate.is_set
+	|| cipurpfdrops.is_set;
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cipurpfipversion.yfilter)
+	|| ydk::is_set(cipurpfdroprate.yfilter)
+	|| ydk::is_set(cipurpfdrops.yfilter);
+}
+
+std::string CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cipUrpfEntry" <<"[cipUrpfIpVersion='" <<cipurpfipversion <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cipurpfipversion.is_set || is_set(cipurpfipversion.yfilter)) leaf_name_data.push_back(cipurpfipversion.get_name_leafdata());
+    if (cipurpfdroprate.is_set || is_set(cipurpfdroprate.yfilter)) leaf_name_data.push_back(cipurpfdroprate.get_name_leafdata());
+    if (cipurpfdrops.is_set || is_set(cipurpfdrops.yfilter)) leaf_name_data.push_back(cipurpfdrops.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cipUrpfIpVersion")
+    {
+        cipurpfipversion = value;
+        cipurpfipversion.value_namespace = name_space;
+        cipurpfipversion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipUrpfDropRate")
+    {
+        cipurpfdroprate = value;
+        cipurpfdroprate.value_namespace = name_space;
+        cipurpfdroprate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cipUrpfDrops")
+    {
+        cipurpfdrops = value;
+        cipurpfdrops.value_namespace = name_space;
+        cipurpfdrops.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cipUrpfIpVersion")
+    {
+        cipurpfipversion.yfilter = yfilter;
+    }
+    if(value_path == "cipUrpfDropRate")
+    {
+        cipurpfdroprate.yfilter = yfilter;
+    }
+    if(value_path == "cipUrpfDrops")
+    {
+        cipurpfdrops.yfilter = yfilter;
+    }
+}
+
+bool CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cipUrpfIpVersion" || name == "cipUrpfDropRate" || name == "cipUrpfDrops")
+        return true;
+    return false;
+}
+
+CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfiftable()
+{
+
+    yang_name = "cipUrpfVrfIfTable"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOIPURPFMIB::Cipurpfvrfiftable::~Cipurpfvrfiftable()
+{
+}
+
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::has_data() const
 {
     for (std::size_t index=0; index<cipurpfvrfifentry.size(); index++)
     {
@@ -911,7 +867,7 @@ bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_data() const
     return false;
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::has_operation() const
 {
     for (std::size_t index=0; index<cipurpfvrfifentry.size(); index++)
     {
@@ -921,37 +877,30 @@ bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfvrfiftable::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfvrfiftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfvrfiftable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfVrfIfTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfvrfiftable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfvrfiftable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrfiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfVrfIfEntry")
     {
@@ -963,7 +912,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry>();
+        auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry>();
         c->parent = this;
         cipurpfvrfifentry.push_back(c);
         return c;
@@ -972,7 +921,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrfiftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrfiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipurpfvrfifentry)
@@ -983,36 +932,37 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrfiftable
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfvrfiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfvrfiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpUrpfMib::Cipurpfvrfiftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfvrfiftable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfVrfIfEntry")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::Cipurpfvrfifentry()
+CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::Cipurpfvrfifentry()
     :
     cipurpfvrfname{YType::str, "cipUrpfVrfName"},
     ifindex{YType::str, "ifIndex"},
     cipurpfvrfifdiscontinuitytime{YType::uint32, "cipUrpfVrfIfDiscontinuityTime"},
     cipurpfvrfifdrops{YType::uint32, "cipUrpfVrfIfDrops"}
 {
-    yang_name = "cipUrpfVrfIfEntry"; yang_parent_name = "cipUrpfVrfIfTable";
+
+    yang_name = "cipUrpfVrfIfEntry"; yang_parent_name = "cipUrpfVrfIfTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::~Cipurpfvrfifentry()
+CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::~Cipurpfvrfifentry()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::has_data() const
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::has_data() const
 {
     return cipurpfvrfname.is_set
 	|| ifindex.is_set
@@ -1020,7 +970,7 @@ bool CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::has_data() const
 	|| cipurpfvrfifdrops.is_set;
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipurpfvrfname.yfilter)
@@ -1029,27 +979,22 @@ bool CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::has_operation() const
 	|| ydk::is_set(cipurpfvrfifdrops.yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfVrfIfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfVrfIfEntry" <<"[cipUrpfVrfName='" <<cipurpfvrfname <<"']" <<"[ifIndex='" <<ifindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfVrfIfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipurpfvrfname.is_set || is_set(cipurpfvrfname.yfilter)) leaf_name_data.push_back(cipurpfvrfname.get_name_leafdata());
@@ -1057,24 +1002,22 @@ const EntityPath CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::get_entit
     if (cipurpfvrfifdiscontinuitytime.is_set || is_set(cipurpfvrfifdiscontinuitytime.yfilter)) leaf_name_data.push_back(cipurpfvrfifdiscontinuitytime.get_name_leafdata());
     if (cipurpfvrfifdrops.is_set || is_set(cipurpfvrfifdrops.yfilter)) leaf_name_data.push_back(cipurpfvrfifdrops.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipUrpfVrfName")
     {
@@ -1102,7 +1045,7 @@ void CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::set_value(const std::
     }
 }
 
-void CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipUrpfVrfName")
     {
@@ -1122,23 +1065,24 @@ void CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::set_filter(const std:
     }
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrfiftable::Cipurpfvrfifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfVrfName" || name == "ifIndex" || name == "cipUrpfVrfIfDiscontinuityTime" || name == "cipUrpfVrfIfDrops")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrftable()
+CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrftable()
 {
-    yang_name = "cipUrpfVrfTable"; yang_parent_name = "CISCO-IP-URPF-MIB";
+
+    yang_name = "cipUrpfVrfTable"; yang_parent_name = "CISCO-IP-URPF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrftable::~Cipurpfvrftable()
+CISCOIPURPFMIB::Cipurpfvrftable::~Cipurpfvrftable()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::has_data() const
+bool CISCOIPURPFMIB::Cipurpfvrftable::has_data() const
 {
     for (std::size_t index=0; index<cipurpfvrfentry.size(); index++)
     {
@@ -1148,7 +1092,7 @@ bool CiscoIpUrpfMib::Cipurpfvrftable::has_data() const
     return false;
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfvrftable::has_operation() const
 {
     for (std::size_t index=0; index<cipurpfvrfentry.size(); index++)
     {
@@ -1158,37 +1102,30 @@ bool CiscoIpUrpfMib::Cipurpfvrftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfvrftable::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfvrftable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfvrftable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfVrfTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfvrftable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfvrftable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfVrfEntry")
     {
@@ -1200,7 +1137,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry>();
+        auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry>();
         c->parent = this;
         cipurpfvrfentry.push_back(c);
         return c;
@@ -1209,7 +1146,7 @@ std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cipurpfvrfentry)
@@ -1220,86 +1157,80 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrftable::
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfvrftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfvrftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIpUrpfMib::Cipurpfvrftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfvrftable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfvrftable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfVrfEntry")
         return true;
     return false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::Cipurpfvrfentry()
+CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::Cipurpfvrfentry()
     :
     cipurpfvrfname{YType::str, "cipUrpfVrfName"}
 {
-    yang_name = "cipUrpfVrfEntry"; yang_parent_name = "cipUrpfVrfTable";
+
+    yang_name = "cipUrpfVrfEntry"; yang_parent_name = "cipUrpfVrfTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::~Cipurpfvrfentry()
+CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::~Cipurpfvrfentry()
 {
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::has_data() const
+bool CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::has_data() const
 {
     return cipurpfvrfname.is_set;
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::has_operation() const
+bool CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cipurpfvrfname.yfilter);
 }
 
-std::string CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::get_segment_path() const
+std::string CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfVrfTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cipUrpfVrfEntry" <<"[cipUrpfVrfName='" <<cipurpfvrfname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IP-URPF-MIB:CISCO-IP-URPF-MIB/cipUrpfVrfTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipurpfvrfname.is_set || is_set(cipurpfvrfname.yfilter)) leaf_name_data.push_back(cipurpfvrfname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cipUrpfVrfName")
     {
@@ -1309,7 +1240,7 @@ void CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::set_value(const std::stri
     }
 }
 
-void CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cipUrpfVrfName")
     {
@@ -1317,28 +1248,28 @@ void CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::set_filter(const std::str
     }
 }
 
-bool CiscoIpUrpfMib::Cipurpfvrftable::Cipurpfvrfentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cipUrpfVrfName")
         return true;
     return false;
 }
 
-const Enum::YLeaf Unicastrpftype::strict {1, "strict"};
-const Enum::YLeaf Unicastrpftype::loose {2, "loose"};
-const Enum::YLeaf Unicastrpftype::disabled {3, "disabled"};
+const Enum::YLeaf UnicastRpfType::strict {1, "strict"};
+const Enum::YLeaf UnicastRpfType::loose {2, "loose"};
+const Enum::YLeaf UnicastRpfType::disabled {3, "disabled"};
 
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::Cipurpfipversion::ipv4 {1, "ipv4"};
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpftable::Cipurpfentry::Cipurpfipversion::ipv6 {2, "ipv6"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion::ipv4 {1, "ipv4"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion::ipv4 {1, "ipv4"};
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifipversion::ipv6 {2, "ipv6"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict::strict {1, "strict"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict::loose {2, "loose"};
 
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict::strict {1, "strict"};
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifcheckstrict::loose {2, "loose"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid::default_ {1, "default"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid::vrf {2, "vrf"};
 
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid::default_ {1, "default"};
-const Enum::YLeaf CiscoIpUrpfMib::Cipurpfifmontable::Cipurpfifmonentry::Cipurpfifwhichroutetableid::vrf {2, "vrf"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfipversion::ipv4 {1, "ipv4"};
+const Enum::YLeaf CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::Cipurpfipversion::ipv6 {2, "ipv6"};
 
 
 }

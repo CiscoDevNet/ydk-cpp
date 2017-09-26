@@ -18,14 +18,6 @@ class CfmMepDir : public ydk::Enum
 
 };
 
-class CfmAisInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_1s;
-        static const ydk::Enum::YLeaf Y_1m;
-
-};
-
 class CfmCcmInterval : public ydk::Enum
 {
     public:
@@ -44,6 +36,14 @@ class BandwidthNotificationState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ok;
         static const ydk::Enum::YLeaf degraded;
+
+};
+
+class CfmAisInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1s;
+        static const ydk::Enum::YLeaf Y_1m;
 
 };
 

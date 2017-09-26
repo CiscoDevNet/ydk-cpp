@@ -18,7 +18,7 @@ class Fib : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -35,8 +35,8 @@ class Fib : public ydk::Entity
         class PbtsForwardClassFallbacks; //type: Fib::PbtsForwardClassFallbacks
         class Platform; //type: Fib::Platform
 
-        std::shared_ptr<Cisco_IOS_XR_fib_common_cfg::Fib::PbtsForwardClassFallbacks> pbts_forward_class_fallbacks;
-        std::shared_ptr<Cisco_IOS_XR_fib_common_cfg::Fib::Platform> platform;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_cfg::Fib::PbtsForwardClassFallbacks> pbts_forward_class_fallbacks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_cfg::Fib::Platform> platform;
         
 }; // Fib
 
@@ -49,17 +49,18 @@ class Fib::PbtsForwardClassFallbacks : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PbtsForwardClassFallback; //type: Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_cfg::Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback> > pbts_forward_class_fallback;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_cfg::Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback> > pbts_forward_class_fallback;
         
 }; // Fib::PbtsForwardClassFallbacks
 
@@ -72,15 +73,16 @@ class Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf forward_class_number; //type: one of uint32, enumeration
+        ydk::YLeaf forward_class_number; //type: one of enumeration, uint32
         ydk::YLeaf fallback_type; //type: FibPbtsFallback
         ydk::YLeafList fallback_class_number_array; //type: list of  uint32
 
@@ -95,17 +97,18 @@ class Fib::Platform : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class LabelSwitchedMulticast; //type: Fib::Platform::LabelSwitchedMulticast
 
-        std::shared_ptr<Cisco_IOS_XR_fib_common_cfg::Fib::Platform::LabelSwitchedMulticast> label_switched_multicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_cfg::Fib::Platform::LabelSwitchedMulticast> label_switched_multicast;
         
 }; // Fib::Platform
 
@@ -118,13 +121,14 @@ class Fib::Platform::LabelSwitchedMulticast : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf frr_holdtime; //type: uint32
 

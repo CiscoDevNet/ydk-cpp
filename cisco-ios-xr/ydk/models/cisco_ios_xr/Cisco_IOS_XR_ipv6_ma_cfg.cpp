@@ -16,14 +16,14 @@ const Enum::YLeaf Ipv6Qppb::ip_precedence {1, "ip-precedence"};
 const Enum::YLeaf Ipv6Qppb::qos_group {2, "qos-group"};
 const Enum::YLeaf Ipv6Qppb::both {3, "both"};
 
-const Enum::YLeaf Ipv6DefaultPing::disabled {0, "disabled"};
-const Enum::YLeaf Ipv6DefaultPing::enabled {1, "enabled"};
-
 const Enum::YLeaf Ipv6SelfPing::disabled {0, "disabled"};
 const Enum::YLeaf Ipv6SelfPing::enabled {1, "enabled"};
 
 const Enum::YLeaf Ipv6Reachable::any {0, "any"};
 const Enum::YLeaf Ipv6Reachable::received {1, "received"};
+
+const Enum::YLeaf Ipv6DefaultPing::disabled {0, "disabled"};
+const Enum::YLeaf Ipv6DefaultPing::enabled {1, "enabled"};
 
 
 }

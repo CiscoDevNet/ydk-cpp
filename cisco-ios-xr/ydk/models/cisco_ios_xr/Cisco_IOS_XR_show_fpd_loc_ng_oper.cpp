@@ -21,18 +21,13 @@ ShowFpd::ShowFpd()
 	,package(std::make_shared<ShowFpd::Package>())
 {
     help_locations->parent = this;
-
     hw_module_fpd->parent = this;
-
     hw_module_fpd_help_fpd->parent = this;
-
     location_help->parent = this;
-
     locations->parent = this;
-
     package->parent = this;
 
-    yang_name = "show-fpd"; yang_parent_name = "Cisco-IOS-XR-show-fpd-loc-ng-oper";
+    yang_name = "show-fpd"; yang_parent_name = "Cisco-IOS-XR-show-fpd-loc-ng-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ShowFpd::~ShowFpd()
@@ -64,26 +59,15 @@ std::string ShowFpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -222,70 +206,64 @@ bool ShowFpd::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-ShowFpd::Locations::Locations()
+ShowFpd::HelpLocations::HelpLocations()
 {
-    yang_name = "locations"; yang_parent_name = "show-fpd";
+
+    yang_name = "help-locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ShowFpd::Locations::~Locations()
+ShowFpd::HelpLocations::~HelpLocations()
 {
 }
 
-bool ShowFpd::Locations::has_data() const
+bool ShowFpd::HelpLocations::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<help_location.size(); index++)
     {
-        if(location[index]->has_data())
+        if(help_location[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool ShowFpd::Locations::has_operation() const
+bool ShowFpd::HelpLocations::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<help_location.size(); index++)
     {
-        if(location[index]->has_operation())
+        if(help_location[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string ShowFpd::Locations::get_segment_path() const
+std::string ShowFpd::HelpLocations::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "locations";
-
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Locations::get_entity_path(Entity* ancestor) const
+std::string ShowFpd::HelpLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "help-locations";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "location")
+    if(child_yang_name == "help-location")
     {
-        for(auto const & c : location)
+        for(auto const & c : help_location)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -293,19 +271,19 @@ std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string 
                 return c;
             }
         }
-        auto c = std::make_shared<ShowFpd::Locations::Location>();
+        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
         c->parent = this;
-        location.push_back(c);
+        help_location.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : location)
+    for (auto const & c : help_location)
     {
         children[c->get_segment_path()] = c;
     }
@@ -313,117 +291,99 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children(
     return children;
 }
 
-void ShowFpd::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::HelpLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ShowFpd::Locations::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::HelpLocations::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ShowFpd::Locations::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::HelpLocations::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "location")
+    if(name == "help-location")
         return true;
     return false;
 }
 
-ShowFpd::Locations::Location::Location()
+ShowFpd::HelpLocations::HelpLocation::HelpLocation()
     :
     location_name{YType::str, "location-name"}
+    	,
+    help_fpd(std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd>())
 {
-    yang_name = "location"; yang_parent_name = "locations";
+    help_fpd->parent = this;
+
+    yang_name = "help-location"; yang_parent_name = "help-locations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ShowFpd::Locations::Location::~Location()
+ShowFpd::HelpLocations::HelpLocation::~HelpLocation()
 {
 }
 
-bool ShowFpd::Locations::Location::has_data() const
+bool ShowFpd::HelpLocations::HelpLocation::has_data() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
-    {
-        if(fpd[index]->has_data())
-            return true;
-    }
-    return location_name.is_set;
+    return location_name.is_set
+	|| (help_fpd !=  nullptr && help_fpd->has_data());
 }
 
-bool ShowFpd::Locations::Location::has_operation() const
+bool ShowFpd::HelpLocations::HelpLocation::has_operation() const
 {
-    for (std::size_t index=0; index<fpd.size(); index++)
-    {
-        if(fpd[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter);
+	|| ydk::is_set(location_name.yfilter)
+	|| (help_fpd !=  nullptr && help_fpd->has_operation());
 }
 
-std::string ShowFpd::Locations::Location::get_segment_path() const
+std::string ShowFpd::HelpLocations::HelpLocation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
-
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/help-locations/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Locations::Location::get_entity_path(Entity* ancestor) const
+std::string ShowFpd::HelpLocations::HelpLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/locations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "help-location" <<"[location-name='" <<location_name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocation::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fpd")
+    if(child_yang_name == "help-fpd")
     {
-        for(auto const & c : fpd)
+        if(help_fpd == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            help_fpd = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd>();
         }
-        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd>();
-        c->parent = this;
-        fpd.push_back(c);
-        return c;
+        return help_fpd;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : fpd)
+    if(help_fpd != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["help-fpd"] = help_fpd;
     }
 
     return children;
 }
 
-void ShowFpd::Locations::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::HelpLocations::HelpLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location-name")
     {
@@ -433,7 +393,7 @@ void ShowFpd::Locations::Location::set_value(const std::string & value_path, con
     }
 }
 
-void ShowFpd::Locations::Location::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::HelpLocations::HelpLocation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "location-name")
     {
@@ -441,81 +401,64 @@ void ShowFpd::Locations::Location::set_filter(const std::string & value_path, YF
     }
 }
 
-bool ShowFpd::Locations::Location::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::HelpLocations::HelpLocation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpd" || name == "location-name")
+    if(name == "help-fpd" || name == "location-name")
         return true;
     return false;
 }
 
-ShowFpd::Locations::Location::Fpd::Fpd()
-    :
-    fpd_name{YType::str, "fpd-name"}
+ShowFpd::HelpLocations::HelpLocation::HelpFpd::HelpFpd()
 {
-    yang_name = "fpd"; yang_parent_name = "location";
+
+    yang_name = "help-fpd"; yang_parent_name = "help-location"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ShowFpd::Locations::Location::Fpd::~Fpd()
+ShowFpd::HelpLocations::HelpLocation::HelpFpd::~HelpFpd()
 {
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_data() const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_data() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    for (std::size_t index=0; index<fpd_name.size(); index++)
     {
-        if(fpd_info_detaile[index]->has_data())
+        if(fpd_name[index]->has_data())
             return true;
     }
-    return fpd_name.is_set;
+    return false;
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_operation() const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_operation() const
 {
-    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    for (std::size_t index=0; index<fpd_name.size(); index++)
     {
-        if(fpd_info_detaile[index]->has_operation())
+        if(fpd_name[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(fpd_name.yfilter);
+    return is_set(yfilter);
 }
 
-std::string ShowFpd::Locations::Location::Fpd::get_segment_path() const
+std::string ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd" <<"[fpd-name='" <<fpd_name <<"']";
-
+    path_buffer << "help-fpd";
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Locations::Location::Fpd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Fpd' in Cisco_IOS_XR_show_fpd_loc_ng_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fpd-info-detaile")
+    if(child_yang_name == "fpd-name")
     {
-        for(auto const & c : fpd_info_detaile)
+        for(auto const & c : fpd_name)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -523,19 +466,19 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd::FpdInfoDetaile>();
+        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
         c->parent = this;
-        fpd_info_detaile.push_back(c);
+        fpd_name.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : fpd_info_detaile)
+    for (auto const & c : fpd_name)
     {
         children[c->get_segment_path()] = c;
     }
@@ -543,142 +486,83 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd
     return children;
 }
 
-void ShowFpd::Locations::Location::Fpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::HelpLocations::HelpLocation::HelpFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "fpd-name")
-    {
-        fpd_name = value;
-        fpd_name.value_namespace = name_space;
-        fpd_name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void ShowFpd::Locations::Location::Fpd::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::HelpLocations::HelpLocation::HelpFpd::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "fpd-name")
-    {
-        fpd_name.yfilter = yfilter;
-    }
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpd-info-detaile" || name == "fpd-name")
+    if(name == "fpd-name")
         return true;
     return false;
 }
 
-ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::FpdInfoDetaile()
+ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::FpdName()
     :
-    card_name{YType::str, "card-name"},
     fpd_name{YType::str, "fpd-name"},
-    hw_version{YType::str, "hw-version"},
-    location{YType::str, "location"},
-    programd_version{YType::str, "programd-version"},
-    running_version{YType::str, "running-version"},
-    secure_boot_attr{YType::str, "secure-boot-attr"},
-    status{YType::str, "status"}
+    location{YType::str, "location"}
 {
-    yang_name = "fpd-info-detaile"; yang_parent_name = "fpd";
+
+    yang_name = "fpd-name"; yang_parent_name = "help-fpd"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::~FpdInfoDetaile()
+ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::~FpdName()
 {
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_data() const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_data() const
 {
-    return card_name.is_set
-	|| fpd_name.is_set
-	|| hw_version.is_set
-	|| location.is_set
-	|| programd_version.is_set
-	|| running_version.is_set
-	|| secure_boot_attr.is_set
-	|| status.is_set;
+    return fpd_name.is_set
+	|| location.is_set;
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_operation() const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(card_name.yfilter)
 	|| ydk::is_set(fpd_name.yfilter)
-	|| ydk::is_set(hw_version.yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| ydk::is_set(programd_version.yfilter)
-	|| ydk::is_set(running_version.yfilter)
-	|| ydk::is_set(secure_boot_attr.yfilter)
-	|| ydk::is_set(status.yfilter);
+	|| ydk::is_set(location.yfilter);
 }
 
-std::string ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_segment_path() const
+std::string ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd-info-detaile";
-
+    path_buffer << "fpd-name";
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FpdInfoDetaile' in Cisco_IOS_XR_show_fpd_loc_ng_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (card_name.is_set || is_set(card_name.yfilter)) leaf_name_data.push_back(card_name.get_name_leafdata());
     if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
-    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (programd_version.is_set || is_set(programd_version.yfilter)) leaf_name_data.push_back(programd_version.get_name_leafdata());
-    if (running_version.is_set || is_set(running_version.yfilter)) leaf_name_data.push_back(running_version.get_name_leafdata());
-    if (secure_boot_attr.is_set || is_set(secure_boot_attr.yfilter)) leaf_name_data.push_back(secure_boot_attr.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "card-name")
-    {
-        card_name = value;
-        card_name.value_namespace = name_space;
-        card_name.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "fpd-name")
     {
         fpd_name = value;
         fpd_name.value_namespace = name_space;
         fpd_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hw-version")
-    {
-        hw_version = value;
-        hw_version.value_namespace = name_space;
-        hw_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
@@ -686,78 +570,31 @@ void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_value(const std::str
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "programd-version")
-    {
-        programd_version = value;
-        programd_version.value_namespace = name_space;
-        programd_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "running-version")
-    {
-        running_version = value;
-        running_version.value_namespace = name_space;
-        running_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secure-boot-attr")
-    {
-        secure_boot_attr = value;
-        secure_boot_attr.value_namespace = name_space;
-        secure_boot_attr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "card-name")
-    {
-        card_name.yfilter = yfilter;
-    }
     if(value_path == "fpd-name")
     {
         fpd_name.yfilter = yfilter;
-    }
-    if(value_path == "hw-version")
-    {
-        hw_version.yfilter = yfilter;
     }
     if(value_path == "location")
     {
         location.yfilter = yfilter;
     }
-    if(value_path == "programd-version")
-    {
-        programd_version.yfilter = yfilter;
-    }
-    if(value_path == "running-version")
-    {
-        running_version.yfilter = yfilter;
-    }
-    if(value_path == "secure-boot-attr")
-    {
-        secure_boot_attr.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "card-name" || name == "fpd-name" || name == "hw-version" || name == "location" || name == "programd-version" || name == "running-version" || name == "secure-boot-attr" || name == "status")
+    if(name == "fpd-name" || name == "location")
         return true;
     return false;
 }
 
 ShowFpd::HwModuleFpd::HwModuleFpd()
 {
-    yang_name = "hw-module-fpd"; yang_parent_name = "show-fpd";
+
+    yang_name = "hw-module-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::HwModuleFpd::~HwModuleFpd()
@@ -784,33 +621,26 @@ bool ShowFpd::HwModuleFpd::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ShowFpd::HwModuleFpd::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::HwModuleFpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-module-fpd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::HwModuleFpd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -872,7 +702,8 @@ ShowFpd::HwModuleFpd::FpdInfoDetaile::FpdInfoDetaile()
     secure_boot_attr{YType::str, "secure-boot-attr"},
     status{YType::str, "status"}
 {
-    yang_name = "fpd-info-detaile"; yang_parent_name = "hw-module-fpd";
+
+    yang_name = "fpd-info-detaile"; yang_parent_name = "hw-module-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::HwModuleFpd::FpdInfoDetaile::~FpdInfoDetaile()
@@ -904,27 +735,22 @@ bool ShowFpd::HwModuleFpd::FpdInfoDetaile::has_operation() const
 	|| ydk::is_set(status.yfilter);
 }
 
+std::string ShowFpd::HwModuleFpd::FpdInfoDetaile::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/hw-module-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::HwModuleFpd::FpdInfoDetaile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-info-detaile";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::HwModuleFpd::FpdInfoDetaile::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpd::FpdInfoDetaile::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/hw-module-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_name.is_set || is_set(card_name.yfilter)) leaf_name_data.push_back(card_name.get_name_leafdata());
@@ -936,9 +762,7 @@ const EntityPath ShowFpd::HwModuleFpd::FpdInfoDetaile::get_entity_path(Entity* a
     if (secure_boot_attr.is_set || is_set(secure_boot_attr.yfilter)) leaf_name_data.push_back(secure_boot_attr.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1048,433 +872,10 @@ bool ShowFpd::HwModuleFpd::FpdInfoDetaile::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-ShowFpd::HelpLocations::HelpLocations()
-{
-    yang_name = "help-locations"; yang_parent_name = "show-fpd";
-}
-
-ShowFpd::HelpLocations::~HelpLocations()
-{
-}
-
-bool ShowFpd::HelpLocations::has_data() const
-{
-    for (std::size_t index=0; index<help_location.size(); index++)
-    {
-        if(help_location[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ShowFpd::HelpLocations::has_operation() const
-{
-    for (std::size_t index=0; index<help_location.size(); index++)
-    {
-        if(help_location[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ShowFpd::HelpLocations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "help-locations";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::HelpLocations::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "help-location")
-    {
-        for(auto const & c : help_location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
-        c->parent = this;
-        help_location.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : help_location)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ShowFpd::HelpLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ShowFpd::HelpLocations::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ShowFpd::HelpLocations::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "help-location")
-        return true;
-    return false;
-}
-
-ShowFpd::HelpLocations::HelpLocation::HelpLocation()
-    :
-    location_name{YType::str, "location-name"}
-    	,
-    help_fpd(std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd>())
-{
-    help_fpd->parent = this;
-
-    yang_name = "help-location"; yang_parent_name = "help-locations";
-}
-
-ShowFpd::HelpLocations::HelpLocation::~HelpLocation()
-{
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::has_data() const
-{
-    return location_name.is_set
-	|| (help_fpd !=  nullptr && help_fpd->has_data());
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter)
-	|| (help_fpd !=  nullptr && help_fpd->has_operation());
-}
-
-std::string ShowFpd::HelpLocations::HelpLocation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "help-location" <<"[location-name='" <<location_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::HelpLocations::HelpLocation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/help-locations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "help-fpd")
-    {
-        if(help_fpd == nullptr)
-        {
-            help_fpd = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd>();
-        }
-        return help_fpd;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(help_fpd != nullptr)
-    {
-        children["help-fpd"] = help_fpd;
-    }
-
-    return children;
-}
-
-void ShowFpd::HelpLocations::HelpLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location-name")
-    {
-        location_name = value;
-        location_name.value_namespace = name_space;
-        location_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ShowFpd::HelpLocations::HelpLocation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location-name")
-    {
-        location_name.yfilter = yfilter;
-    }
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "help-fpd" || name == "location-name")
-        return true;
-    return false;
-}
-
-ShowFpd::HelpLocations::HelpLocation::HelpFpd::HelpFpd()
-{
-    yang_name = "help-fpd"; yang_parent_name = "help-location";
-}
-
-ShowFpd::HelpLocations::HelpLocation::HelpFpd::~HelpFpd()
-{
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_data() const
-{
-    for (std::size_t index=0; index<fpd_name.size(); index++)
-    {
-        if(fpd_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_operation() const
-{
-    for (std::size_t index=0; index<fpd_name.size(); index++)
-    {
-        if(fpd_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "help-fpd";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelpFpd' in Cisco_IOS_XR_show_fpd_loc_ng_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fpd-name")
-    {
-        for(auto const & c : fpd_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
-        c->parent = this;
-        fpd_name.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : fpd_name)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ShowFpd::HelpLocations::HelpLocation::HelpFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ShowFpd::HelpLocations::HelpLocation::HelpFpd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fpd-name")
-        return true;
-    return false;
-}
-
-ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::FpdName()
-    :
-    fpd_name{YType::str, "fpd-name"},
-    location{YType::str, "location"}
-{
-    yang_name = "fpd-name"; yang_parent_name = "help-fpd";
-}
-
-ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::~FpdName()
-{
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_data() const
-{
-    return fpd_name.is_set
-	|| location.is_set;
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fpd_name.yfilter)
-	|| ydk::is_set(location.yfilter);
-}
-
-std::string ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fpd-name";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FpdName' in Cisco_IOS_XR_show_fpd_loc_ng_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fpd-name")
-    {
-        fpd_name = value;
-        fpd_name.value_namespace = name_space;
-        fpd_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fpd-name")
-    {
-        fpd_name.yfilter = yfilter;
-    }
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-}
-
-bool ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fpd-name" || name == "location")
-        return true;
-    return false;
-}
-
 ShowFpd::HwModuleFpdHelpFpd::HwModuleFpdHelpFpd()
 {
-    yang_name = "hw-module-fpd-help-fpd"; yang_parent_name = "show-fpd";
+
+    yang_name = "hw-module-fpd-help-fpd"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::HwModuleFpdHelpFpd::~HwModuleFpdHelpFpd()
@@ -1501,33 +902,26 @@ bool ShowFpd::HwModuleFpdHelpFpd::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ShowFpd::HwModuleFpdHelpFpd::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::HwModuleFpdHelpFpd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-module-fpd-help-fpd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::HwModuleFpdHelpFpd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpdHelpFpd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1583,7 +977,8 @@ ShowFpd::HwModuleFpdHelpFpd::FpdName::FpdName()
     fpd_name{YType::str, "fpd-name"},
     location{YType::str, "location"}
 {
-    yang_name = "fpd-name"; yang_parent_name = "hw-module-fpd-help-fpd";
+
+    yang_name = "fpd-name"; yang_parent_name = "hw-module-fpd-help-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::HwModuleFpdHelpFpd::FpdName::~FpdName()
@@ -1603,35 +998,28 @@ bool ShowFpd::HwModuleFpdHelpFpd::FpdName::has_operation() const
 	|| ydk::is_set(location.yfilter);
 }
 
+std::string ShowFpd::HwModuleFpdHelpFpd::FpdName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/hw-module-fpd-help-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::HwModuleFpdHelpFpd::FpdName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-name";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::HwModuleFpdHelpFpd::FpdName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpdHelpFpd::FpdName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/hw-module-fpd-help-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1681,9 +1069,688 @@ bool ShowFpd::HwModuleFpdHelpFpd::FpdName::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+ShowFpd::LocationHelp::LocationHelp()
+{
+
+    yang_name = "location-help"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ShowFpd::LocationHelp::~LocationHelp()
+{
+}
+
+bool ShowFpd::LocationHelp::has_data() const
+{
+    for (std::size_t index=0; index<location_name.size(); index++)
+    {
+        if(location_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ShowFpd::LocationHelp::has_operation() const
+{
+    for (std::size_t index=0; index<location_name.size(); index++)
+    {
+        if(location_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ShowFpd::LocationHelp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ShowFpd::LocationHelp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location-help";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::LocationHelp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location-name")
+    {
+        for(auto const & c : location_name)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ShowFpd::LocationHelp::LocationName>();
+        c->parent = this;
+        location_name.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : location_name)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ShowFpd::LocationHelp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ShowFpd::LocationHelp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ShowFpd::LocationHelp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location-name")
+        return true;
+    return false;
+}
+
+ShowFpd::LocationHelp::LocationName::LocationName()
+    :
+    location_name{YType::str, "location-name"}
+{
+
+    yang_name = "location-name"; yang_parent_name = "location-help"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ShowFpd::LocationHelp::LocationName::~LocationName()
+{
+}
+
+bool ShowFpd::LocationHelp::LocationName::has_data() const
+{
+    return location_name.is_set;
+}
+
+bool ShowFpd::LocationHelp::LocationName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter);
+}
+
+std::string ShowFpd::LocationHelp::LocationName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/location-help/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ShowFpd::LocationHelp::LocationName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location-name";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::LocationHelp::LocationName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::LocationHelp::LocationName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::LocationName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ShowFpd::LocationHelp::LocationName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "location-name")
+    {
+        location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ShowFpd::LocationHelp::LocationName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool ShowFpd::LocationHelp::LocationName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location-name")
+        return true;
+    return false;
+}
+
+ShowFpd::Locations::Locations()
+{
+
+    yang_name = "locations"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ShowFpd::Locations::~Locations()
+{
+}
+
+bool ShowFpd::Locations::has_data() const
+{
+    for (std::size_t index=0; index<location.size(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ShowFpd::Locations::has_operation() const
+{
+    for (std::size_t index=0; index<location.size(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ShowFpd::Locations::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ShowFpd::Locations::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "locations";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        for(auto const & c : location)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ShowFpd::Locations::Location>();
+        c->parent = this;
+        location.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : location)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ShowFpd::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ShowFpd::Locations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ShowFpd::Locations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+ShowFpd::Locations::Location::Location()
+    :
+    location_name{YType::str, "location-name"}
+{
+
+    yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ShowFpd::Locations::Location::~Location()
+{
+}
+
+bool ShowFpd::Locations::Location::has_data() const
+{
+    for (std::size_t index=0; index<fpd.size(); index++)
+    {
+        if(fpd[index]->has_data())
+            return true;
+    }
+    return location_name.is_set;
+}
+
+bool ShowFpd::Locations::Location::has_operation() const
+{
+    for (std::size_t index=0; index<fpd.size(); index++)
+    {
+        if(fpd[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter);
+}
+
+std::string ShowFpd::Locations::Location::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/locations/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ShowFpd::Locations::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fpd")
+    {
+        for(auto const & c : fpd)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd>();
+        c->parent = this;
+        fpd.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : fpd)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ShowFpd::Locations::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "location-name")
+    {
+        location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ShowFpd::Locations::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool ShowFpd::Locations::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fpd" || name == "location-name")
+        return true;
+    return false;
+}
+
+ShowFpd::Locations::Location::Fpd::Fpd()
+    :
+    fpd_name{YType::str, "fpd-name"}
+{
+
+    yang_name = "fpd"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ShowFpd::Locations::Location::Fpd::~Fpd()
+{
+}
+
+bool ShowFpd::Locations::Location::Fpd::has_data() const
+{
+    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    {
+        if(fpd_info_detaile[index]->has_data())
+            return true;
+    }
+    return fpd_name.is_set;
+}
+
+bool ShowFpd::Locations::Location::Fpd::has_operation() const
+{
+    for (std::size_t index=0; index<fpd_info_detaile.size(); index++)
+    {
+        if(fpd_info_detaile[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(fpd_name.yfilter);
+}
+
+std::string ShowFpd::Locations::Location::Fpd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fpd" <<"[fpd-name='" <<fpd_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Fpd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fpd-info-detaile")
+    {
+        for(auto const & c : fpd_info_detaile)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd::FpdInfoDetaile>();
+        c->parent = this;
+        fpd_info_detaile.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : fpd_info_detaile)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void ShowFpd::Locations::Location::Fpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fpd-name")
+    {
+        fpd_name = value;
+        fpd_name.value_namespace = name_space;
+        fpd_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ShowFpd::Locations::Location::Fpd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fpd-name")
+    {
+        fpd_name.yfilter = yfilter;
+    }
+}
+
+bool ShowFpd::Locations::Location::Fpd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fpd-info-detaile" || name == "fpd-name")
+        return true;
+    return false;
+}
+
+ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::FpdInfoDetaile()
+    :
+    card_name{YType::str, "card-name"},
+    fpd_name{YType::str, "fpd-name"},
+    hw_version{YType::str, "hw-version"},
+    location{YType::str, "location"},
+    programd_version{YType::str, "programd-version"},
+    running_version{YType::str, "running-version"},
+    secure_boot_attr{YType::str, "secure-boot-attr"},
+    status{YType::str, "status"}
+{
+
+    yang_name = "fpd-info-detaile"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::~FpdInfoDetaile()
+{
+}
+
+bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_data() const
+{
+    return card_name.is_set
+	|| fpd_name.is_set
+	|| hw_version.is_set
+	|| location.is_set
+	|| programd_version.is_set
+	|| running_version.is_set
+	|| secure_boot_attr.is_set
+	|| status.is_set;
+}
+
+bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(card_name.yfilter)
+	|| ydk::is_set(fpd_name.yfilter)
+	|| ydk::is_set(hw_version.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(programd_version.yfilter)
+	|| ydk::is_set(running_version.yfilter)
+	|| ydk::is_set(secure_boot_attr.yfilter)
+	|| ydk::is_set(status.yfilter);
+}
+
+std::string ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fpd-info-detaile";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (card_name.is_set || is_set(card_name.yfilter)) leaf_name_data.push_back(card_name.get_name_leafdata());
+    if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
+    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (programd_version.is_set || is_set(programd_version.yfilter)) leaf_name_data.push_back(programd_version.get_name_leafdata());
+    if (running_version.is_set || is_set(running_version.yfilter)) leaf_name_data.push_back(running_version.get_name_leafdata());
+    if (secure_boot_attr.is_set || is_set(secure_boot_attr.yfilter)) leaf_name_data.push_back(secure_boot_attr.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "card-name")
+    {
+        card_name = value;
+        card_name.value_namespace = name_space;
+        card_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fpd-name")
+    {
+        fpd_name = value;
+        fpd_name.value_namespace = name_space;
+        fpd_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version = value;
+        hw_version.value_namespace = name_space;
+        hw_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "programd-version")
+    {
+        programd_version = value;
+        programd_version.value_namespace = name_space;
+        programd_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running-version")
+    {
+        running_version = value;
+        running_version.value_namespace = name_space;
+        running_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secure-boot-attr")
+    {
+        secure_boot_attr = value;
+        secure_boot_attr.value_namespace = name_space;
+        secure_boot_attr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "card-name")
+    {
+        card_name.yfilter = yfilter;
+    }
+    if(value_path == "fpd-name")
+    {
+        fpd_name.yfilter = yfilter;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "programd-version")
+    {
+        programd_version.yfilter = yfilter;
+    }
+    if(value_path == "running-version")
+    {
+        running_version.yfilter = yfilter;
+    }
+    if(value_path == "secure-boot-attr")
+    {
+        secure_boot_attr.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "card-name" || name == "fpd-name" || name == "hw-version" || name == "location" || name == "programd-version" || name == "running-version" || name == "secure-boot-attr" || name == "status")
+        return true;
+    return false;
+}
+
 ShowFpd::Package::Package()
 {
-    yang_name = "package"; yang_parent_name = "show-fpd";
+
+    yang_name = "package"; yang_parent_name = "show-fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::Package::~Package()
@@ -1710,33 +1777,26 @@ bool ShowFpd::Package::has_operation() const
     return is_set(yfilter);
 }
 
+std::string ShowFpd::Package::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Package::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Package::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1796,7 +1856,8 @@ ShowFpd::Package::FpdPkgData::FpdPkgData()
     min_sw_ver{YType::str, "min-sw-ver"},
     upgrade_method{YType::str, "upgrade-method"}
 {
-    yang_name = "fpd-pkg-data"; yang_parent_name = "package";
+
+    yang_name = "fpd-pkg-data"; yang_parent_name = "package"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ShowFpd::Package::FpdPkgData::~FpdPkgData()
@@ -1824,27 +1885,22 @@ bool ShowFpd::Package::FpdPkgData::has_operation() const
 	|| ydk::is_set(upgrade_method.yfilter);
 }
 
+std::string ShowFpd::Package::FpdPkgData::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/package/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ShowFpd::Package::FpdPkgData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-pkg-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ShowFpd::Package::FpdPkgData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Package::FpdPkgData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/package/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
@@ -1854,9 +1910,7 @@ const EntityPath ShowFpd::Package::FpdPkgData::get_entity_path(Entity* ancestor)
     if (min_sw_ver.is_set || is_set(min_sw_ver.yfilter)) leaf_name_data.push_back(min_sw_ver.get_name_leafdata());
     if (upgrade_method.is_set || is_set(upgrade_method.yfilter)) leaf_name_data.push_back(upgrade_method.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1942,201 +1996,6 @@ void ShowFpd::Package::FpdPkgData::set_filter(const std::string & value_path, YF
 bool ShowFpd::Package::FpdPkgData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "card-type" || name == "fpd-desc" || name == "fpd-ver" || name == "min-hw-ver" || name == "min-sw-ver" || name == "upgrade-method")
-        return true;
-    return false;
-}
-
-ShowFpd::LocationHelp::LocationHelp()
-{
-    yang_name = "location-help"; yang_parent_name = "show-fpd";
-}
-
-ShowFpd::LocationHelp::~LocationHelp()
-{
-}
-
-bool ShowFpd::LocationHelp::has_data() const
-{
-    for (std::size_t index=0; index<location_name.size(); index++)
-    {
-        if(location_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ShowFpd::LocationHelp::has_operation() const
-{
-    for (std::size_t index=0; index<location_name.size(); index++)
-    {
-        if(location_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ShowFpd::LocationHelp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location-help";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::LocationHelp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "location-name")
-    {
-        for(auto const & c : location_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ShowFpd::LocationHelp::LocationName>();
-        c->parent = this;
-        location_name.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : location_name)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ShowFpd::LocationHelp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ShowFpd::LocationHelp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ShowFpd::LocationHelp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location-name")
-        return true;
-    return false;
-}
-
-ShowFpd::LocationHelp::LocationName::LocationName()
-    :
-    location_name{YType::str, "location-name"}
-{
-    yang_name = "location-name"; yang_parent_name = "location-help";
-}
-
-ShowFpd::LocationHelp::LocationName::~LocationName()
-{
-}
-
-bool ShowFpd::LocationHelp::LocationName::has_data() const
-{
-    return location_name.is_set;
-}
-
-bool ShowFpd::LocationHelp::LocationName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter);
-}
-
-std::string ShowFpd::LocationHelp::LocationName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location-name";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ShowFpd::LocationHelp::LocationName::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-show-fpd-loc-ng-oper:show-fpd/location-help/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ShowFpd::LocationHelp::LocationName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::LocationName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ShowFpd::LocationHelp::LocationName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location-name")
-    {
-        location_name = value;
-        location_name.value_namespace = name_space;
-        location_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ShowFpd::LocationHelp::LocationName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location-name")
-    {
-        location_name.yfilter = yfilter;
-    }
-}
-
-bool ShowFpd::LocationHelp::LocationName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location-name")
         return true;
     return false;
 }

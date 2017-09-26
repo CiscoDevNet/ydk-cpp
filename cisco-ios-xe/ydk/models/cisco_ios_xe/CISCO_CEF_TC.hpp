@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_CEF_TC {
 
-class Cefprefixsearchstate : public ydk::Enum
+class CefPrefixSearchState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;
@@ -19,7 +19,26 @@ class Cefprefixsearchstate : public ydk::Enum
 
 };
 
-class Cefccstatus : public ydk::Enum
+class CefAdjLinkType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf raw;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class CefOperStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+
+};
+
+class CefCCStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ccStatusIdle;
@@ -28,39 +47,7 @@ class Cefccstatus : public ydk::Enum
 
 };
 
-class Cefccaction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ccActionStart;
-        static const ydk::Enum::YLeaf ccActionAbort;
-        static const ydk::Enum::YLeaf ccActionNone;
-
-};
-
-class Cefforwardingelementspecialtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf illegal;
-        static const ydk::Enum::YLeaf punt;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf discard;
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf glean;
-        static const ydk::Enum::YLeaf unresolved;
-        static const ydk::Enum::YLeaf noRoute;
-        static const ydk::Enum::YLeaf none;
-
-};
-
-class Cefipversion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class Cefadminstatus : public ydk::Enum
+class CefAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -68,22 +55,7 @@ class Cefadminstatus : public ydk::Enum
 
 };
 
-class Cefpathtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf connectedPrefix;
-        static const ydk::Enum::YLeaf attachedPrefix;
-        static const ydk::Enum::YLeaf attachedHost;
-        static const ydk::Enum::YLeaf attachedNexthop;
-        static const ydk::Enum::YLeaf recursiveNexthop;
-        static const ydk::Enum::YLeaf adjacencyPrefix;
-        static const ydk::Enum::YLeaf specialPrefix;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class Cefcctype : public ydk::Enum
+class CefCCType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lcDetect;
@@ -102,26 +74,54 @@ class Cefcctype : public ydk::Enum
 
 };
 
-class Cefoperstatus : public ydk::Enum
+class CefCCAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf ccActionStart;
+        static const ydk::Enum::YLeaf ccActionAbort;
+        static const ydk::Enum::YLeaf ccActionNone;
 
 };
 
-class Cefadjlinktype : public ydk::Enum
+class CefPathType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf mpls;
-        static const ydk::Enum::YLeaf raw;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf connectedPrefix;
+        static const ydk::Enum::YLeaf attachedPrefix;
+        static const ydk::Enum::YLeaf attachedHost;
+        static const ydk::Enum::YLeaf attachedNexthop;
+        static const ydk::Enum::YLeaf recursiveNexthop;
+        static const ydk::Enum::YLeaf adjacencyPrefix;
+        static const ydk::Enum::YLeaf specialPrefix;
         static const ydk::Enum::YLeaf unknown;
 
 };
 
-class Ceffailurereason : public ydk::Enum
+class CefForwardingElementSpecialType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf illegal;
+        static const ydk::Enum::YLeaf punt;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf discard;
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf glean;
+        static const ydk::Enum::YLeaf unresolved;
+        static const ydk::Enum::YLeaf noRoute;
+        static const ydk::Enum::YLeaf none;
+
+};
+
+class CefIpVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class CefFailureReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

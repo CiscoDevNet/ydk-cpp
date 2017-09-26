@@ -21,12 +21,10 @@ Dhcpv6::Dhcpv6()
 	,profiles(std::make_shared<Dhcpv6::Profiles>())
 {
     database->parent = this;
-
     interfaces->parent = this;
-
     profiles->parent = this;
 
-    yang_name = "dhcpv6"; yang_parent_name = "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg";
+    yang_name = "dhcpv6"; yang_parent_name = "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Dhcpv6::~Dhcpv6()
@@ -56,28 +54,17 @@ std::string Dhcpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allow_duid_change.is_set || is_set(allow_duid_change.yfilter)) leaf_name_data.push_back(allow_duid_change.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -202,7 +189,8 @@ Dhcpv6::Database::Database()
     relay{YType::empty, "relay"},
     server{YType::empty, "server"}
 {
-    yang_name = "database"; yang_parent_name = "dhcpv6";
+
+    yang_name = "database"; yang_parent_name = "dhcpv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Dhcpv6::Database::~Database()
@@ -228,27 +216,22 @@ bool Dhcpv6::Database::has_operation() const
 	|| ydk::is_set(server.yfilter);
 }
 
+std::string Dhcpv6::Database::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Dhcpv6::Database::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "database";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Database::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Database::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (full_write_interval.is_set || is_set(full_write_interval.yfilter)) leaf_name_data.push_back(full_write_interval.get_name_leafdata());
@@ -257,9 +240,7 @@ const EntityPath Dhcpv6::Database::get_entity_path(Entity* ancestor) const
     if (relay.is_set || is_set(relay.yfilter)) leaf_name_data.push_back(relay.get_name_leafdata());
     if (server.is_set || is_set(server.yfilter)) leaf_name_data.push_back(server.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -339,9 +320,664 @@ bool Dhcpv6::Database::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Dhcpv6::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "dhcpv6"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Dhcpv6::Interfaces::~Interfaces()
+{
+}
+
+bool Dhcpv6::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Dhcpv6::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        for(auto const & c : interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Interfaces::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"}
+    	,
+    base(std::make_shared<Dhcpv6::Interfaces::Interface::Base>())
+	,pppoe(std::make_shared<Dhcpv6::Interfaces::Interface::Pppoe>())
+	,proxy(std::make_shared<Dhcpv6::Interfaces::Interface::Proxy>())
+	,relay(std::make_shared<Dhcpv6::Interfaces::Interface::Relay>())
+	,server(std::make_shared<Dhcpv6::Interfaces::Interface::Server>())
+{
+    base->parent = this;
+    pppoe->parent = this;
+    proxy->parent = this;
+    relay->parent = this;
+    server->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Dhcpv6::Interfaces::Interface::~Interface()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::has_data() const
+{
+    return interface_name.is_set
+	|| (base !=  nullptr && base->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data())
+	|| (proxy !=  nullptr && proxy->has_data())
+	|| (relay !=  nullptr && relay->has_data())
+	|| (server !=  nullptr && server->has_data());
+}
+
+bool Dhcpv6::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| (base !=  nullptr && base->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation())
+	|| (proxy !=  nullptr && proxy->has_operation())
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (server !=  nullptr && server->has_operation());
+}
+
+std::string Dhcpv6::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Dhcpv6::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "base")
+    {
+        if(base == nullptr)
+        {
+            base = std::make_shared<Dhcpv6::Interfaces::Interface::Base>();
+        }
+        return base;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Dhcpv6::Interfaces::Interface::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    if(child_yang_name == "proxy")
+    {
+        if(proxy == nullptr)
+        {
+            proxy = std::make_shared<Dhcpv6::Interfaces::Interface::Proxy>();
+        }
+        return proxy;
+    }
+
+    if(child_yang_name == "relay")
+    {
+        if(relay == nullptr)
+        {
+            relay = std::make_shared<Dhcpv6::Interfaces::Interface::Relay>();
+        }
+        return relay;
+    }
+
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Dhcpv6::Interfaces::Interface::Server>();
+        }
+        return server;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
+    {
+        children["base"] = base;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    if(proxy != nullptr)
+    {
+        children["proxy"] = proxy;
+    }
+
+    if(relay != nullptr)
+    {
+        children["relay"] = relay;
+    }
+
+    if(server != nullptr)
+    {
+        children["server"] = server;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "pppoe" || name == "proxy" || name == "relay" || name == "server" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Base::Base()
+    :
+    profile{YType::str, "profile"}
+{
+
+    yang_name = "base"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Interfaces::Interface::Base::~Base()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::Base::has_data() const
+{
+    return profile.is_set;
+}
+
+bool Dhcpv6::Interfaces::Interface::Base::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
+}
+
+std::string Dhcpv6::Interfaces::Interface::Base::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "base";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::Base::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Base::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Pppoe::Pppoe()
+    :
+    profile{YType::str, "profile"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Interfaces::Interface::Pppoe::~Pppoe()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::Pppoe::has_data() const
+{
+    return profile.is_set;
+}
+
+bool Dhcpv6::Interfaces::Interface::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
+}
+
+std::string Dhcpv6::Interfaces::Interface::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Proxy::Proxy()
+    :
+    profile{YType::str, "profile"}
+{
+
+    yang_name = "proxy"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Interfaces::Interface::Proxy::~Proxy()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::Proxy::has_data() const
+{
+    return profile.is_set;
+}
+
+bool Dhcpv6::Interfaces::Interface::Proxy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
+}
+
+std::string Dhcpv6::Interfaces::Interface::Proxy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "proxy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::Proxy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Proxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Proxy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::Proxy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::Proxy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::Proxy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Relay::Relay()
+    :
+    profile{YType::str, "profile"}
+{
+
+    yang_name = "relay"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Interfaces::Interface::Relay::~Relay()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::Relay::has_data() const
+{
+    return profile.is_set;
+}
+
+bool Dhcpv6::Interfaces::Interface::Relay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
+}
+
+std::string Dhcpv6::Interfaces::Interface::Relay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "relay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::Relay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Relay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::Relay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::Relay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::Relay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
+}
+
+Dhcpv6::Interfaces::Interface::Server::Server()
+    :
+    profile{YType::str, "profile"}
+{
+
+    yang_name = "server"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Interfaces::Interface::Server::~Server()
+{
+}
+
+bool Dhcpv6::Interfaces::Interface::Server::has_data() const
+{
+    return profile.is_set;
+}
+
+bool Dhcpv6::Interfaces::Interface::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
+}
+
+std::string Dhcpv6::Interfaces::Interface::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Interfaces::Interface::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Interfaces::Interface::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Interfaces::Interface::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Interfaces::Interface::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
+}
+
 Dhcpv6::Profiles::Profiles()
 {
-    yang_name = "profiles"; yang_parent_name = "dhcpv6";
+
+    yang_name = "profiles"; yang_parent_name = "dhcpv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Dhcpv6::Profiles::~Profiles()
@@ -368,33 +1004,26 @@ bool Dhcpv6::Profiles::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Dhcpv6::Profiles::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Dhcpv6::Profiles::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profiles";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -454,7 +1083,8 @@ Dhcpv6::Profiles::Profile::Profile()
 	,relay(nullptr) // presence node
 	,server(nullptr) // presence node
 {
-    yang_name = "profile"; yang_parent_name = "profiles";
+
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Dhcpv6::Profiles::Profile::~Profile()
@@ -480,34 +1110,27 @@ bool Dhcpv6::Profiles::Profile::has_operation() const
 	|| (server !=  nullptr && server->has_operation());
 }
 
+std::string Dhcpv6::Profiles::Profile::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/profiles/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Dhcpv6::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/profiles/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -603,338 +1226,6 @@ bool Dhcpv6::Profiles::Profile::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Relay::Relay()
-    :
-    enable{YType::empty, "enable"},
-    iana_route_add{YType::empty, "iana-route-add"}
-    	,
-    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses>())
-{
-    helper_addresses->parent = this;
-
-    yang_name = "relay"; yang_parent_name = "profile";
-}
-
-Dhcpv6::Profiles::Profile::Relay::~Relay()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::has_data() const
-{
-    return enable.is_set
-	|| iana_route_add.is_set
-	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(iana_route_add.yfilter)
-	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Relay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "relay";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Relay::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Relay' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (iana_route_add.is_set || is_set(iana_route_add.yfilter)) leaf_name_data.push_back(iana_route_add.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-addresses")
-    {
-        if(helper_addresses == nullptr)
-        {
-            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses>();
-        }
-        return helper_addresses;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(helper_addresses != nullptr)
-    {
-        children["helper-addresses"] = helper_addresses;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Relay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "iana-route-add")
-    {
-        iana_route_add = value;
-        iana_route_add.value_namespace = name_space;
-        iana_route_add.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Relay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "iana-route-add")
-    {
-        iana_route_add.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-addresses" || name == "enable" || name == "iana-route-add")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddresses()
-{
-    yang_name = "helper-addresses"; yang_parent_name = "relay";
-}
-
-Dhcpv6::Profiles::Profile::Relay::HelperAddresses::~HelperAddresses()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_data() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_operation() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-addresses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddresses' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-address")
-    {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress>();
-        c->parent = this;
-        helper_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : helper_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-address")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::HelperAddress()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    helper_address{YType::str, "helper-address"}
-{
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses";
-}
-
-Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::~HelperAddress()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_data() const
-{
-    return vrf_name.is_set
-	|| helper_address.is_set;
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(helper_address.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[vrf-name='" <<vrf_name <<"']" <<"[helper-address='" <<helper_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddress' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "helper-address")
-    {
-        helper_address = value;
-        helper_address.value_namespace = name_space;
-        helper_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "helper-address")
-    {
-        helper_address.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name" || name == "helper-address")
-        return true;
-    return false;
-}
-
 Dhcpv6::Profiles::Profile::Base::Base()
     :
     enable{YType::empty, "enable"}
@@ -943,10 +1234,9 @@ Dhcpv6::Profiles::Profile::Base::Base()
 	,match(std::make_shared<Dhcpv6::Profiles::Profile::Base::Match>())
 {
     default_->parent = this;
-
     match->parent = this;
 
-    yang_name = "base"; yang_parent_name = "profile";
+    yang_name = "base"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::~Base()
@@ -972,30 +1262,16 @@ std::string Dhcpv6::Profiles::Profile::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Base' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1065,7 +1341,8 @@ bool Dhcpv6::Profiles::Profile::Base::has_leaf_or_child_of_name(const std::strin
 
 Dhcpv6::Profiles::Profile::Base::Default_::Default_()
 {
-    yang_name = "default"; yang_parent_name = "base";
+
+    yang_name = "default"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Default_::~Default_()
@@ -1096,29 +1373,15 @@ std::string Dhcpv6::Profiles::Profile::Base::Default_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Default_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Default_' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1175,7 +1438,8 @@ Dhcpv6::Profiles::Profile::Base::Default_::Profile_::Profile_()
     proxy_mode{YType::empty, "proxy-mode"},
     server_mode{YType::empty, "server-mode"}
 {
-    yang_name = "profile"; yang_parent_name = "default";
+
+    yang_name = "profile"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Default_::Profile_::~Profile_()
@@ -1201,32 +1465,18 @@ std::string Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Profile_' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
     if (proxy_mode.is_set || is_set(proxy_mode.yfilter)) leaf_name_data.push_back(proxy_mode.get_name_leafdata());
     if (server_mode.is_set || is_set(server_mode.yfilter)) leaf_name_data.push_back(server_mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1292,7 +1542,7 @@ Dhcpv6::Profiles::Profile::Base::Match::Match()
 {
     mode_classes->parent = this;
 
-    yang_name = "match"; yang_parent_name = "base";
+    yang_name = "match"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Match::~Match()
@@ -1314,29 +1564,15 @@ std::string Dhcpv6::Profiles::Profile::Base::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Match::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Match::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Match' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1382,7 +1618,8 @@ bool Dhcpv6::Profiles::Profile::Base::Match::has_leaf_or_child_of_name(const std
 
 Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClasses()
 {
-    yang_name = "mode-classes"; yang_parent_name = "match";
+
+    yang_name = "mode-classes"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::~ModeClasses()
@@ -1413,29 +1650,15 @@ std::string Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "mode-classes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ModeClasses' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1490,7 +1713,8 @@ Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::ModeClass()
     :
     class_name{YType::str, "class-name"}
 {
-    yang_name = "mode-class"; yang_parent_name = "mode-classes";
+
+    yang_name = "mode-class"; yang_parent_name = "mode-classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::~ModeClass()
@@ -1522,30 +1746,16 @@ std::string Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "mode-class" <<"[class-name='" <<class_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ModeClass' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1612,7 +1822,8 @@ Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::Profil
     proxy_mode{YType::empty, "proxy-mode"},
     server_mode{YType::empty, "server-mode"}
 {
-    yang_name = "profile"; yang_parent_name = "mode-class";
+
+    yang_name = "profile"; yang_parent_name = "mode-class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::~Profile_()
@@ -1638,32 +1849,18 @@ std::string Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Prof
 {
     std::ostringstream path_buffer;
     path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Profile_' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
     if (proxy_mode.is_set || is_set(proxy_mode.yfilter)) leaf_name_data.push_back(proxy_mode.get_name_leafdata());
     if (server_mode.is_set || is_set(server_mode.yfilter)) leaf_name_data.push_back(server_mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1727,26 +1924,25 @@ Dhcpv6::Profiles::Profile::Proxy::Proxy()
     :
     enable{YType::empty, "enable"},
     link_address{YType::str, "link-address"},
+    linkaddress_from_ra_enable{YType::empty, "linkaddress-from-ra-enable"},
     route_add_disable{YType::empty, "route-add-disable"},
     src_intf_name{YType::str, "src-intf-name"}
     	,
-    classes(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes>())
+    authentication(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Authentication>())
+	,classes(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes>())
 	,interfaces(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Interfaces>())
 	,relay(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Relay>())
 	,sessions(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Sessions>())
 	,vrfs(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs>())
 {
+    authentication->parent = this;
     classes->parent = this;
-
     interfaces->parent = this;
-
     relay->parent = this;
-
     sessions->parent = this;
-
     vrfs->parent = this;
 
-    yang_name = "proxy"; yang_parent_name = "profile";
+    yang_name = "proxy"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::~Proxy()
@@ -1757,8 +1953,10 @@ bool Dhcpv6::Profiles::Profile::Proxy::has_data() const
 {
     return enable.is_set
 	|| link_address.is_set
+	|| linkaddress_from_ra_enable.is_set
 	|| route_add_disable.is_set
 	|| src_intf_name.is_set
+	|| (authentication !=  nullptr && authentication->has_data())
 	|| (classes !=  nullptr && classes->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (relay !=  nullptr && relay->has_data())
@@ -1771,8 +1969,10 @@ bool Dhcpv6::Profiles::Profile::Proxy::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(link_address.yfilter)
+	|| ydk::is_set(linkaddress_from_ra_enable.yfilter)
 	|| ydk::is_set(route_add_disable.yfilter)
 	|| ydk::is_set(src_intf_name.yfilter)
+	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (classes !=  nullptr && classes->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (relay !=  nullptr && relay->has_operation())
@@ -1784,38 +1984,34 @@ std::string Dhcpv6::Profiles::Profile::Proxy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "proxy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Proxy' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (link_address.is_set || is_set(link_address.yfilter)) leaf_name_data.push_back(link_address.get_name_leafdata());
+    if (linkaddress_from_ra_enable.is_set || is_set(linkaddress_from_ra_enable.yfilter)) leaf_name_data.push_back(linkaddress_from_ra_enable.get_name_leafdata());
     if (route_add_disable.is_set || is_set(route_add_disable.yfilter)) leaf_name_data.push_back(route_add_disable.get_name_leafdata());
     if (src_intf_name.is_set || is_set(src_intf_name.yfilter)) leaf_name_data.push_back(src_intf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "authentication")
+    {
+        if(authentication == nullptr)
+        {
+            authentication = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Authentication>();
+        }
+        return authentication;
+    }
+
     if(child_yang_name == "classes")
     {
         if(classes == nullptr)
@@ -1867,6 +2063,11 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(authentication != nullptr)
+    {
+        children["authentication"] = authentication;
+    }
+
     if(classes != nullptr)
     {
         children["classes"] = classes;
@@ -1909,6 +2110,12 @@ void Dhcpv6::Profiles::Profile::Proxy::set_value(const std::string & value_path,
         link_address.value_namespace = name_space;
         link_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "linkaddress-from-ra-enable")
+    {
+        linkaddress_from_ra_enable = value;
+        linkaddress_from_ra_enable.value_namespace = name_space;
+        linkaddress_from_ra_enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "route-add-disable")
     {
         route_add_disable = value;
@@ -1933,6 +2140,10 @@ void Dhcpv6::Profiles::Profile::Proxy::set_filter(const std::string & value_path
     {
         link_address.yfilter = yfilter;
     }
+    if(value_path == "linkaddress-from-ra-enable")
+    {
+        linkaddress_from_ra_enable.yfilter = yfilter;
+    }
     if(value_path == "route-add-disable")
     {
         route_add_disable.yfilter = yfilter;
@@ -1945,14 +2156,476 @@ void Dhcpv6::Profiles::Profile::Proxy::set_filter(const std::string & value_path
 
 bool Dhcpv6::Profiles::Profile::Proxy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "classes" || name == "interfaces" || name == "relay" || name == "sessions" || name == "vrfs" || name == "enable" || name == "link-address" || name == "route-add-disable" || name == "src-intf-name")
+    if(name == "authentication" || name == "classes" || name == "interfaces" || name == "relay" || name == "sessions" || name == "vrfs" || name == "enable" || name == "link-address" || name == "linkaddress-from-ra-enable" || name == "route-add-disable" || name == "src-intf-name")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Authentication::Authentication()
+    :
+    username{YType::empty, "username"}
+{
+
+    yang_name = "authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Authentication::~Authentication()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Authentication::has_data() const
+{
+    return username.is_set;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Authentication::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(username.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Authentication::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Authentication::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "username")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Classes()
+{
+
+    yang_name = "classes"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::~Classes()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_data() const
+{
+    for (std::size_t index=0; index<class_.size(); index++)
+    {
+        if(class_[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_operation() const
+{
+    for (std::size_t index=0; index<class_.size(); index++)
+    {
+        if(class_[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "classes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "class")
+    {
+        for(auto const & c : class_)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_>();
+        c->parent = this;
+        class_.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : class_)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::Class_()
+    :
+    class_name{YType::str, "class-name"},
+    link_address{YType::str, "link-address"}
+    	,
+    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>())
+{
+    helper_addresses->parent = this;
+
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::~Class_()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_data() const
+{
+    return class_name.is_set
+	|| link_address.is_set
+	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(link_address.yfilter)
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (link_address.is_set || is_set(link_address.yfilter)) leaf_name_data.push_back(link_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-addresses")
+    {
+        if(helper_addresses == nullptr)
+        {
+            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>();
+        }
+        return helper_addresses;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(helper_addresses != nullptr)
+    {
+        children["helper-addresses"] = helper_addresses;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "class-name")
+    {
+        class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-address")
+    {
+        link_address = value;
+        link_address.value_namespace = name_space;
+        link_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "link-address")
+    {
+        link_address.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-addresses" || name == "class-name" || name == "link-address")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddresses()
+{
+
+    yang_name = "helper-addresses"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::~HelperAddresses()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_data() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_operation() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-address")
+    {
+        for(auto const & c : helper_address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress>();
+        c->parent = this;
+        helper_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : helper_address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-address")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::HelperAddress()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    helper_address{YType::str, "helper-address"}
+{
+
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::~HelperAddress()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_data() const
+{
+    return vrf_name.is_set
+	|| helper_address.is_set;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(helper_address.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-address" <<"[vrf-name='" <<vrf_name <<"']" <<"[helper-address='" <<helper_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-address")
+    {
+        helper_address = value;
+        helper_address.value_namespace = name_space;
+        helper_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "helper-address")
+    {
+        helper_address.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "helper-address")
         return true;
     return false;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "proxy";
+
+    yang_name = "interfaces"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Interfaces::~Interfaces()
@@ -1983,29 +2656,15 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2061,7 +2720,8 @@ Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::Interface()
     interface_name{YType::str, "interface-name"},
     interface_id{YType::str, "interface-id"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::~Interface()
@@ -2085,31 +2745,17 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2165,7 +2811,7 @@ Dhcpv6::Profiles::Profile::Proxy::Relay::Relay()
 {
     option->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "proxy";
+    yang_name = "relay"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Relay::~Relay()
@@ -2187,29 +2833,15 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Relay::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "relay";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Relay::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Relay' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2264,7 +2896,7 @@ Dhcpv6::Profiles::Profile::Proxy::Relay::Option::Option()
 {
     interface_id->parent = this;
 
-    yang_name = "option"; yang_parent_name = "relay";
+    yang_name = "option"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Relay::Option::~Option()
@@ -2294,23 +2926,11 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "option";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Option' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (link_layer_addr.is_set || is_set(link_layer_addr.yfilter)) leaf_name_data.push_back(link_layer_addr.get_name_leafdata());
@@ -2318,9 +2938,7 @@ const EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_entity_pat
     if (remote_id.is_set || is_set(remote_id.yfilter)) leaf_name_data.push_back(remote_id.get_name_leafdata());
     if (subscriber_id.is_set || is_set(subscriber_id.yfilter)) leaf_name_data.push_back(subscriber_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2408,7 +3026,8 @@ Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::InterfaceId()
     :
     insert{YType::enumeration, "insert"}
 {
-    yang_name = "interface-id"; yang_parent_name = "option";
+
+    yang_name = "interface-id"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::~InterfaceId()
@@ -2430,30 +3049,16 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-id";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceId' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (insert.is_set || is_set(insert.yfilter)) leaf_name_data.push_back(insert.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2493,889 +3098,13 @@ bool Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::has_leaf_or_c
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrfs()
-{
-    yang_name = "vrfs"; yang_parent_name = "proxy";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::~Vrfs()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_data() const
-{
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_operation() const
-{
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrfs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrfs' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::Vrf()
-    :
-    vrf_name{YType::str, "vrf-name"}
-    	,
-    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses>())
-{
-    helper_addresses->parent = this;
-
-    yang_name = "vrf"; yang_parent_name = "vrfs";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::~Vrf()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_data() const
-{
-    return vrf_name.is_set
-	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrf' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-addresses")
-    {
-        if(helper_addresses == nullptr)
-        {
-            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses>();
-        }
-        return helper_addresses;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(helper_addresses != nullptr)
-    {
-        children["helper-addresses"] = helper_addresses;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-addresses" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddresses()
-{
-    yang_name = "helper-addresses"; yang_parent_name = "vrf";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_data() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_operation() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-addresses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddresses' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-address")
-    {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress>();
-        c->parent = this;
-        helper_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : helper_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-address")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::HelperAddress()
-    :
-    helper_address{YType::str, "helper-address"},
-    any_out_interface{YType::empty, "any-out-interface"},
-    out_interface{YType::str, "out-interface"}
-{
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
-{
-    return helper_address.is_set
-	|| any_out_interface.is_set
-	|| out_interface.is_set;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(helper_address.yfilter)
-	|| ydk::is_set(any_out_interface.yfilter)
-	|| ydk::is_set(out_interface.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[helper-address='" <<helper_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddress' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
-    if (any_out_interface.is_set || is_set(any_out_interface.yfilter)) leaf_name_data.push_back(any_out_interface.get_name_leafdata());
-    if (out_interface.is_set || is_set(out_interface.yfilter)) leaf_name_data.push_back(out_interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "helper-address")
-    {
-        helper_address = value;
-        helper_address.value_namespace = name_space;
-        helper_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "any-out-interface")
-    {
-        any_out_interface = value;
-        any_out_interface.value_namespace = name_space;
-        any_out_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "out-interface")
-    {
-        out_interface = value;
-        out_interface.value_namespace = name_space;
-        out_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "helper-address")
-    {
-        helper_address.yfilter = yfilter;
-    }
-    if(value_path == "any-out-interface")
-    {
-        any_out_interface.yfilter = yfilter;
-    }
-    if(value_path == "out-interface")
-    {
-        out_interface.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-address" || name == "any-out-interface" || name == "out-interface")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Classes()
-{
-    yang_name = "classes"; yang_parent_name = "proxy";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::~Classes()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_data() const
-{
-    for (std::size_t index=0; index<class_.size(); index++)
-    {
-        if(class_[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_operation() const
-{
-    for (std::size_t index=0; index<class_.size(); index++)
-    {
-        if(class_[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "classes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Classes' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "class")
-    {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_>();
-        c->parent = this;
-        class_.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : class_)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "class")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::Class_()
-    :
-    class_name{YType::str, "class-name"},
-    link_address{YType::str, "link-address"}
-    	,
-    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>())
-{
-    helper_addresses->parent = this;
-
-    yang_name = "class"; yang_parent_name = "classes";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::~Class_()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_data() const
-{
-    return class_name.is_set
-	|| link_address.is_set
-	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(class_name.yfilter)
-	|| ydk::is_set(link_address.yfilter)
-	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-name='" <<class_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Class_' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (link_address.is_set || is_set(link_address.yfilter)) leaf_name_data.push_back(link_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-addresses")
-    {
-        if(helper_addresses == nullptr)
-        {
-            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>();
-        }
-        return helper_addresses;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(helper_addresses != nullptr)
-    {
-        children["helper-addresses"] = helper_addresses;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "class-name")
-    {
-        class_name = value;
-        class_name.value_namespace = name_space;
-        class_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-address")
-    {
-        link_address = value;
-        link_address.value_namespace = name_space;
-        link_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "class-name")
-    {
-        class_name.yfilter = yfilter;
-    }
-    if(value_path == "link-address")
-    {
-        link_address.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-addresses" || name == "class-name" || name == "link-address")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddresses()
-{
-    yang_name = "helper-addresses"; yang_parent_name = "class";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::~HelperAddresses()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_data() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_operation() const
-{
-    for (std::size_t index=0; index<helper_address.size(); index++)
-    {
-        if(helper_address[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-addresses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddresses' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "helper-address")
-    {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress>();
-        c->parent = this;
-        helper_address.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : helper_address)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "helper-address")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::HelperAddress()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    helper_address{YType::str, "helper-address"}
-{
-    yang_name = "helper-address"; yang_parent_name = "helper-addresses";
-}
-
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::~HelperAddress()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_data() const
-{
-    return vrf_name.is_set
-	|| helper_address.is_set;
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(helper_address.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[vrf-name='" <<vrf_name <<"']" <<"[helper-address='" <<helper_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HelperAddress' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "helper-address")
-    {
-        helper_address = value;
-        helper_address.value_namespace = name_space;
-        helper_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "helper-address")
-    {
-        helper_address.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name" || name == "helper-address")
-        return true;
-    return false;
-}
-
 Dhcpv6::Profiles::Profile::Proxy::Sessions::Sessions()
     :
     mac(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac>())
 {
     mac->parent = this;
 
-    yang_name = "sessions"; yang_parent_name = "proxy";
+    yang_name = "sessions"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Sessions::~Sessions()
@@ -3397,29 +3126,15 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sessions' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3469,7 +3184,7 @@ Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Mac()
 {
     throttle->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "sessions";
+    yang_name = "mac"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::~Mac()
@@ -3491,29 +3206,15 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mac' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3563,7 +3264,8 @@ Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::Throttle()
     limit{YType::uint32, "limit"},
     request{YType::uint32, "request"}
 {
-    yang_name = "throttle"; yang_parent_name = "mac";
+
+    yang_name = "throttle"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::~Throttle()
@@ -3589,32 +3291,18 @@ std::string Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "throttle";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Throttle' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (block.is_set || is_set(block.yfilter)) leaf_name_data.push_back(block.get_name_leafdata());
     if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
     if (request.is_set || is_set(request.yfilter)) leaf_name_data.push_back(request.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3674,6 +3362,683 @@ bool Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::has_leaf_or_chil
     return false;
 }
 
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrfs()
+{
+
+    yang_name = "vrfs"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::~Vrfs()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_data() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_operation() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrfs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf")
+    {
+        for(auto const & c : vrf)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf>();
+        c->parent = this;
+        vrf.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : vrf)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::Vrf()
+    :
+    vrf_name{YType::str, "vrf-name"}
+    	,
+    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses>())
+{
+    helper_addresses->parent = this;
+
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::~Vrf()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_data() const
+{
+    return vrf_name.is_set
+	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-addresses")
+    {
+        if(helper_addresses == nullptr)
+        {
+            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses>();
+        }
+        return helper_addresses;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(helper_addresses != nullptr)
+    {
+        children["helper-addresses"] = helper_addresses;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-addresses" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddresses()
+{
+
+    yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_data() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_operation() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-address")
+    {
+        for(auto const & c : helper_address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress>();
+        c->parent = this;
+        helper_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : helper_address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-address")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::HelperAddress()
+    :
+    helper_address{YType::str, "helper-address"},
+    any_out_interface{YType::empty, "any-out-interface"},
+    out_interface{YType::str, "out-interface"}
+{
+
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
+{
+    return helper_address.is_set
+	|| any_out_interface.is_set
+	|| out_interface.is_set;
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(helper_address.yfilter)
+	|| ydk::is_set(any_out_interface.yfilter)
+	|| ydk::is_set(out_interface.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-address" <<"[helper-address='" <<helper_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
+    if (any_out_interface.is_set || is_set(any_out_interface.yfilter)) leaf_name_data.push_back(any_out_interface.get_name_leafdata());
+    if (out_interface.is_set || is_set(out_interface.yfilter)) leaf_name_data.push_back(out_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "helper-address")
+    {
+        helper_address = value;
+        helper_address.value_namespace = name_space;
+        helper_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "any-out-interface")
+    {
+        any_out_interface = value;
+        any_out_interface.value_namespace = name_space;
+        any_out_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-interface")
+    {
+        out_interface = value;
+        out_interface.value_namespace = name_space;
+        out_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "helper-address")
+    {
+        helper_address.yfilter = yfilter;
+    }
+    if(value_path == "any-out-interface")
+    {
+        any_out_interface.yfilter = yfilter;
+    }
+    if(value_path == "out-interface")
+    {
+        out_interface.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-address" || name == "any-out-interface" || name == "out-interface")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Relay::Relay()
+    :
+    enable{YType::empty, "enable"},
+    iana_route_add{YType::empty, "iana-route-add"}
+    	,
+    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses>())
+{
+    helper_addresses->parent = this;
+
+    yang_name = "relay"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Relay::~Relay()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::has_data() const
+{
+    return enable.is_set
+	|| iana_route_add.is_set
+	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(iana_route_add.yfilter)
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
+}
+
+std::string Dhcpv6::Profiles::Profile::Relay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "relay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Relay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (iana_route_add.is_set || is_set(iana_route_add.yfilter)) leaf_name_data.push_back(iana_route_add.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-addresses")
+    {
+        if(helper_addresses == nullptr)
+        {
+            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses>();
+        }
+        return helper_addresses;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(helper_addresses != nullptr)
+    {
+        children["helper-addresses"] = helper_addresses;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Relay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iana-route-add")
+    {
+        iana_route_add = value;
+        iana_route_add.value_namespace = name_space;
+        iana_route_add.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Relay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "iana-route-add")
+    {
+        iana_route_add.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-addresses" || name == "enable" || name == "iana-route-add")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddresses()
+{
+
+    yang_name = "helper-addresses"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Relay::HelperAddresses::~HelperAddresses()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_data() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_operation() const
+{
+    for (std::size_t index=0; index<helper_address.size(); index++)
+    {
+        if(helper_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "helper-address")
+    {
+        for(auto const & c : helper_address)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress>();
+        c->parent = this;
+        helper_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : helper_address)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-address")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::HelperAddress()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    helper_address{YType::str, "helper-address"}
+{
+
+    yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::~HelperAddress()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_data() const
+{
+    return vrf_name.is_set
+	|| helper_address.is_set;
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(helper_address.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "helper-address" <<"[vrf-name='" <<vrf_name <<"']" <<"[helper-address='" <<helper_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (helper_address.is_set || is_set(helper_address.yfilter)) leaf_name_data.push_back(helper_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-address")
+    {
+        helper_address = value;
+        helper_address.value_namespace = name_space;
+        helper_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "helper-address")
+    {
+        helper_address.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "helper-address")
+        return true;
+    return false;
+}
+
 Dhcpv6::Profiles::Profile::Server::Server()
     :
     address_pool{YType::str, "address-pool"},
@@ -3691,16 +4056,12 @@ Dhcpv6::Profiles::Profile::Server::Server()
 	,sessions(std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions>())
 {
     classes->parent = this;
-
     dhcpv6_options->parent = this;
-
     dns_servers->parent = this;
-
     lease->parent = this;
-
     sessions->parent = this;
 
-    yang_name = "server"; yang_parent_name = "profile";
+    yang_name = "server"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Server::~Server()
@@ -3744,23 +4105,11 @@ std::string Dhcpv6::Profiles::Profile::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Server' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_pool.is_set || is_set(address_pool.yfilter)) leaf_name_data.push_back(address_pool.get_name_leafdata());
@@ -3771,9 +4120,7 @@ const EntityPath Dhcpv6::Profiles::Profile::Server::get_entity_path(Entity* ance
     if (prefix_pool.is_set || is_set(prefix_pool.yfilter)) leaf_name_data.push_back(prefix_pool.get_name_leafdata());
     if (rapid_commit.is_set || is_set(rapid_commit.yfilter)) leaf_name_data.push_back(rapid_commit.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3943,412 +4290,10 @@ bool Dhcpv6::Profiles::Profile::Server::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Server::Sessions::Sessions()
-    :
-    mac(std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac>())
-{
-    mac->parent = this;
-
-    yang_name = "sessions"; yang_parent_name = "server";
-}
-
-Dhcpv6::Profiles::Profile::Server::Sessions::~Sessions()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::has_data() const
-{
-    return (mac !=  nullptr && mac->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mac !=  nullptr && mac->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Server::Sessions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sessions";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sessions' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mac")
-    {
-        if(mac == nullptr)
-        {
-            mac = std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac>();
-        }
-        return mac;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mac != nullptr)
-    {
-        children["mac"] = mac;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mac")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Mac()
-    :
-    throttle(std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle>())
-{
-    throttle->parent = this;
-
-    yang_name = "mac"; yang_parent_name = "sessions";
-}
-
-Dhcpv6::Profiles::Profile::Server::Sessions::Mac::~Mac()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_data() const
-{
-    return (throttle !=  nullptr && throttle->has_data());
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_operation() const
-{
-    return is_set(yfilter)
-	|| (throttle !=  nullptr && throttle->has_operation());
-}
-
-std::string Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mac";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mac' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "throttle")
-    {
-        if(throttle == nullptr)
-        {
-            throttle = std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle>();
-        }
-        return throttle;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(throttle != nullptr)
-    {
-        children["throttle"] = throttle;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "throttle")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::Throttle()
-    :
-    block{YType::uint32, "block"},
-    limit{YType::uint32, "limit"},
-    request{YType::uint32, "request"}
-{
-    yang_name = "throttle"; yang_parent_name = "mac";
-}
-
-Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::~Throttle()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_data() const
-{
-    return block.is_set
-	|| limit.is_set
-	|| request.is_set;
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(block.yfilter)
-	|| ydk::is_set(limit.yfilter)
-	|| ydk::is_set(request.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "throttle";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Throttle' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block.is_set || is_set(block.yfilter)) leaf_name_data.push_back(block.get_name_leafdata());
-    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (request.is_set || is_set(request.yfilter)) leaf_name_data.push_back(request.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "block")
-    {
-        block = value;
-        block.value_namespace = name_space;
-        block.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "limit")
-    {
-        limit = value;
-        limit.value_namespace = name_space;
-        limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request")
-    {
-        request = value;
-        request.value_namespace = name_space;
-        request.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "block")
-    {
-        block.yfilter = yfilter;
-    }
-    if(value_path == "limit")
-    {
-        limit.yfilter = yfilter;
-    }
-    if(value_path == "request")
-    {
-        request.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block" || name == "limit" || name == "request")
-        return true;
-    return false;
-}
-
-Dhcpv6::Profiles::Profile::Server::DnsServers::DnsServers()
-    :
-    dns_server{YType::str, "dns-server"}
-{
-    yang_name = "dns-servers"; yang_parent_name = "server";
-}
-
-Dhcpv6::Profiles::Profile::Server::DnsServers::~DnsServers()
-{
-}
-
-bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_data() const
-{
-    for (auto const & leaf : dns_server.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_operation() const
-{
-    for (auto const & leaf : dns_server.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(dns_server.yfilter);
-}
-
-std::string Dhcpv6::Profiles::Profile::Server::DnsServers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dns-servers";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Profiles::Profile::Server::DnsServers::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DnsServers' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto dns_server_name_datas = dns_server.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dns_server_name_datas.begin(), dns_server_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::DnsServers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Server::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dns-server")
-    {
-        dns_server.append(value);
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Server::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dns-server")
-    {
-        dns_server.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dns-server")
-        return true;
-    return false;
-}
-
 Dhcpv6::Profiles::Profile::Server::Classes::Classes()
 {
-    yang_name = "classes"; yang_parent_name = "server";
+
+    yang_name = "classes"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Server::Classes::~Classes()
@@ -4379,29 +4324,15 @@ std::string Dhcpv6::Profiles::Profile::Server::Classes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "classes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Classes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Classes' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4464,7 +4395,7 @@ Dhcpv6::Profiles::Profile::Server::Classes::Class_::Class_()
 {
     dns_servers->parent = this;
 
-    yang_name = "class"; yang_parent_name = "classes";
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Server::Classes::Class_::~Class_()
@@ -4496,23 +4427,11 @@ std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Class_' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
@@ -4521,9 +4440,7 @@ const EntityPath Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_entity_
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
     if (prefix_pool.is_set || is_set(prefix_pool.yfilter)) leaf_name_data.push_back(prefix_pool.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4621,7 +4538,8 @@ Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::DnsServers()
     :
     dns_server{YType::str, "dns-server"}
 {
-    yang_name = "dns-servers"; yang_parent_name = "class";
+
+    yang_name = "dns-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::~DnsServers()
@@ -4653,31 +4571,17 @@ std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "dns-servers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DnsServers' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto dns_server_name_datas = dns_server.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), dns_server_name_datas.begin(), dns_server_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4715,6 +4619,261 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_leaf_or
     return false;
 }
 
+Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::Dhcpv6Options()
+    :
+    vendor_options(std::make_shared<Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions>())
+{
+    vendor_options->parent = this;
+
+    yang_name = "dhcpv6-options"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::~Dhcpv6Options()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_data() const
+{
+    return (vendor_options !=  nullptr && vendor_options->has_data());
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_operation() const
+{
+    return is_set(yfilter)
+	|| (vendor_options !=  nullptr && vendor_options->has_operation());
+}
+
+std::string Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcpv6-options";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vendor-options")
+    {
+        if(vendor_options == nullptr)
+        {
+            vendor_options = std::make_shared<Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions>();
+        }
+        return vendor_options;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vendor_options != nullptr)
+    {
+        children["vendor-options"] = vendor_options;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vendor-options")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::VendorOptions()
+    :
+    type{YType::str, "type"},
+    vendor_options{YType::str, "vendor-options"}
+{
+
+    yang_name = "vendor-options"; yang_parent_name = "dhcpv6-options"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::~VendorOptions()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_data() const
+{
+    return type.is_set
+	|| vendor_options.is_set;
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(vendor_options.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vendor-options";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (vendor_options.is_set || is_set(vendor_options.yfilter)) leaf_name_data.push_back(vendor_options.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-options")
+    {
+        vendor_options = value;
+        vendor_options.value_namespace = name_space;
+        vendor_options.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "vendor-options")
+    {
+        vendor_options.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "vendor-options")
+        return true;
+    return false;
+}
+
+Dhcpv6::Profiles::Profile::Server::DnsServers::DnsServers()
+    :
+    dns_server{YType::str, "dns-server"}
+{
+
+    yang_name = "dns-servers"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dhcpv6::Profiles::Profile::Server::DnsServers::~DnsServers()
+{
+}
+
+bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_data() const
+{
+    for (auto const & leaf : dns_server.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_operation() const
+{
+    for (auto const & leaf : dns_server.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(dns_server.yfilter);
+}
+
+std::string Dhcpv6::Profiles::Profile::Server::DnsServers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dns-servers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::DnsServers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto dns_server_name_datas = dns_server.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), dns_server_name_datas.begin(), dns_server_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::DnsServers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dhcpv6::Profiles::Profile::Server::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dns-server")
+    {
+        dns_server.append(value);
+    }
+}
+
+void Dhcpv6::Profiles::Profile::Server::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dns-server")
+    {
+        dns_server.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dns-server")
+        return true;
+    return false;
+}
+
 Dhcpv6::Profiles::Profile::Server::Lease::Lease()
     :
     days{YType::uint32, "days"},
@@ -4722,7 +4881,8 @@ Dhcpv6::Profiles::Profile::Server::Lease::Lease()
     infinite{YType::str, "infinite"},
     minutes{YType::uint32, "minutes"}
 {
-    yang_name = "lease"; yang_parent_name = "server";
+
+    yang_name = "lease"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dhcpv6::Profiles::Profile::Server::Lease::~Lease()
@@ -4750,23 +4910,11 @@ std::string Dhcpv6::Profiles::Profile::Server::Lease::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lease";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Lease::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Lease::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lease' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
@@ -4774,9 +4922,7 @@ const EntityPath Dhcpv6::Profiles::Profile::Server::Lease::get_entity_path(Entit
     if (infinite.is_set || is_set(infinite.yfilter)) leaf_name_data.push_back(infinite.get_name_leafdata());
     if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4846,942 +4992,273 @@ bool Dhcpv6::Profiles::Profile::Server::Lease::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::Dhcpv6Options()
+Dhcpv6::Profiles::Profile::Server::Sessions::Sessions()
     :
-    vendor_options(std::make_shared<Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions>())
+    mac(std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac>())
 {
-    vendor_options->parent = this;
+    mac->parent = this;
 
-    yang_name = "dhcpv6-options"; yang_parent_name = "server";
+    yang_name = "sessions"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::~Dhcpv6Options()
+Dhcpv6::Profiles::Profile::Server::Sessions::~Sessions()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_data() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::has_data() const
 {
-    return (vendor_options !=  nullptr && vendor_options->has_data());
+    return (mac !=  nullptr && mac->has_data());
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_operation() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::has_operation() const
 {
     return is_set(yfilter)
-	|| (vendor_options !=  nullptr && vendor_options->has_operation());
+	|| (mac !=  nullptr && mac->has_operation());
 }
 
-std::string Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Server::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcpv6-options";
-
+    path_buffer << "sessions";
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dhcpv6Options' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vendor-options")
+    if(child_yang_name == "mac")
     {
-        if(vendor_options == nullptr)
+        if(mac == nullptr)
         {
-            vendor_options = std::make_shared<Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions>();
+            mac = std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac>();
         }
-        return vendor_options;
+        return mac;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(vendor_options != nullptr)
+    if(mac != nullptr)
     {
-        children["vendor-options"] = vendor_options;
+        children["mac"] = mac;
     }
 
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Server::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Server::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vendor-options")
+    if(name == "mac")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::VendorOptions()
+Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Mac()
     :
-    type{YType::str, "type"},
-    vendor_options{YType::str, "vendor-options"}
+    throttle(std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle>())
 {
-    yang_name = "vendor-options"; yang_parent_name = "dhcpv6-options";
+    throttle->parent = this;
+
+    yang_name = "mac"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::~VendorOptions()
+Dhcpv6::Profiles::Profile::Server::Sessions::Mac::~Mac()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_data() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_data() const
 {
-    return type.is_set
-	|| vendor_options.is_set;
+    return (throttle !=  nullptr && throttle->has_data());
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_operation() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(vendor_options.yfilter);
+	|| (throttle !=  nullptr && throttle->has_operation());
 }
 
-std::string Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vendor-options";
-
+    path_buffer << "mac";
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VendorOptions' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (vendor_options.is_set || is_set(vendor_options.yfilter)) leaf_name_data.push_back(vendor_options.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-options")
-    {
-        vendor_options = value;
-        vendor_options.value_namespace = name_space;
-        vendor_options.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "vendor-options")
-    {
-        vendor_options.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "vendor-options")
-        return true;
-    return false;
-}
-
-Dhcpv6::Interfaces::Interfaces()
-{
-    yang_name = "interfaces"; yang_parent_name = "dhcpv6";
-}
-
-Dhcpv6::Interfaces::~Interfaces()
-{
-}
-
-bool Dhcpv6::Interfaces::has_data() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dhcpv6::Interfaces::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Dhcpv6::Interfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Interfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface")
+    if(child_yang_name == "throttle")
     {
-        for(auto const & c : interface)
+        if(throttle == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            throttle = std::make_shared<Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle>();
         }
-        auto c = std::make_shared<Dhcpv6::Interfaces::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
+        return throttle;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
+    if(throttle != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["throttle"] = throttle;
     }
 
     return children;
 }
 
-void Dhcpv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dhcpv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dhcpv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface")
+    if(name == "throttle")
         return true;
     return false;
 }
 
-Dhcpv6::Interfaces::Interface::Interface()
+Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::Throttle()
     :
-    interface_name{YType::str, "interface-name"}
-    	,
-    base(std::make_shared<Dhcpv6::Interfaces::Interface::Base>())
-	,pppoe(std::make_shared<Dhcpv6::Interfaces::Interface::Pppoe>())
-	,proxy(std::make_shared<Dhcpv6::Interfaces::Interface::Proxy>())
-	,relay(std::make_shared<Dhcpv6::Interfaces::Interface::Relay>())
-	,server(std::make_shared<Dhcpv6::Interfaces::Interface::Server>())
+    block{YType::uint32, "block"},
+    limit{YType::uint32, "limit"},
+    request{YType::uint32, "request"}
 {
-    base->parent = this;
 
-    pppoe->parent = this;
-
-    proxy->parent = this;
-
-    relay->parent = this;
-
-    server->parent = this;
-
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "throttle"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Interfaces::Interface::~Interface()
+Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::~Throttle()
 {
 }
 
-bool Dhcpv6::Interfaces::Interface::has_data() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_data() const
 {
-    return interface_name.is_set
-	|| (base !=  nullptr && base->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data())
-	|| (proxy !=  nullptr && proxy->has_data())
-	|| (relay !=  nullptr && relay->has_data())
-	|| (server !=  nullptr && server->has_data());
+    return block.is_set
+	|| limit.is_set
+	|| request.is_set;
 }
 
-bool Dhcpv6::Interfaces::Interface::has_operation() const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| (base !=  nullptr && base->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation())
-	|| (proxy !=  nullptr && proxy->has_operation())
-	|| (relay !=  nullptr && relay->has_operation())
-	|| (server !=  nullptr && server->has_operation());
+	|| ydk::is_set(block.yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(request.yfilter);
 }
 
-std::string Dhcpv6::Interfaces::Interface::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
+    path_buffer << "throttle";
     return path_buffer.str();
-
 }
 
-const EntityPath Dhcpv6::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg:dhcpv6/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (block.is_set || is_set(block.yfilter)) leaf_name_data.push_back(block.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (request.is_set || is_set(request.yfilter)) leaf_name_data.push_back(request.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "base")
-    {
-        if(base == nullptr)
-        {
-            base = std::make_shared<Dhcpv6::Interfaces::Interface::Base>();
-        }
-        return base;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Dhcpv6::Interfaces::Interface::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    if(child_yang_name == "proxy")
-    {
-        if(proxy == nullptr)
-        {
-            proxy = std::make_shared<Dhcpv6::Interfaces::Interface::Proxy>();
-        }
-        return proxy;
-    }
-
-    if(child_yang_name == "relay")
-    {
-        if(relay == nullptr)
-        {
-            relay = std::make_shared<Dhcpv6::Interfaces::Interface::Relay>();
-        }
-        return relay;
-    }
-
-    if(child_yang_name == "server")
-    {
-        if(server == nullptr)
-        {
-            server = std::make_shared<Dhcpv6::Interfaces::Interface::Server>();
-        }
-        return server;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(base != nullptr)
-    {
-        children["base"] = base;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    if(proxy != nullptr)
-    {
-        children["proxy"] = proxy;
-    }
-
-    if(relay != nullptr)
-    {
-        children["relay"] = relay;
-    }
-
-    if(server != nullptr)
-    {
-        children["server"] = server;
-    }
-
-    return children;
-}
-
-void Dhcpv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "base" || name == "pppoe" || name == "proxy" || name == "relay" || name == "server" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Dhcpv6::Interfaces::Interface::Pppoe::Pppoe()
-    :
-    profile{YType::str, "profile"}
-{
-    yang_name = "pppoe"; yang_parent_name = "interface";
-}
-
-Dhcpv6::Interfaces::Interface::Pppoe::~Pppoe()
-{
-}
-
-bool Dhcpv6::Interfaces::Interface::Pppoe::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Dhcpv6::Interfaces::Interface::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Dhcpv6::Interfaces::Interface::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
+    return leaf_name_data;
 
 }
 
-const EntityPath Dhcpv6::Interfaces::Interface::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dhcpv6::Interfaces::Interface::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile")
+    if(value_path == "block")
     {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
+        block = value;
+        block.value_namespace = name_space;
+        block.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "limit")
+    {
+        limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request")
+    {
+        request = value;
+        request.value_namespace = name_space;
+        request.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Dhcpv6::Interfaces::Interface::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile")
+    if(value_path == "block")
     {
-        profile.yfilter = yfilter;
+        block.yfilter = yfilter;
+    }
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "request")
+    {
+        request.yfilter = yfilter;
     }
 }
 
-bool Dhcpv6::Interfaces::Interface::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile")
+    if(name == "block" || name == "limit" || name == "request")
         return true;
     return false;
 }
-
-Dhcpv6::Interfaces::Interface::Proxy::Proxy()
-    :
-    profile{YType::str, "profile"}
-{
-    yang_name = "proxy"; yang_parent_name = "interface";
-}
-
-Dhcpv6::Interfaces::Interface::Proxy::~Proxy()
-{
-}
-
-bool Dhcpv6::Interfaces::Interface::Proxy::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Dhcpv6::Interfaces::Interface::Proxy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Dhcpv6::Interfaces::Interface::Proxy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "proxy";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Interfaces::Interface::Proxy::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Proxy' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Proxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Proxy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Interfaces::Interface::Proxy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Interfaces::Interface::Proxy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Interfaces::Interface::Proxy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Dhcpv6::Interfaces::Interface::Base::Base()
-    :
-    profile{YType::str, "profile"}
-{
-    yang_name = "base"; yang_parent_name = "interface";
-}
-
-Dhcpv6::Interfaces::Interface::Base::~Base()
-{
-}
-
-bool Dhcpv6::Interfaces::Interface::Base::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Dhcpv6::Interfaces::Interface::Base::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Dhcpv6::Interfaces::Interface::Base::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "base";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Interfaces::Interface::Base::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Base' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Base::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Interfaces::Interface::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Interfaces::Interface::Base::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Interfaces::Interface::Base::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Dhcpv6::Interfaces::Interface::Server::Server()
-    :
-    profile{YType::str, "profile"}
-{
-    yang_name = "server"; yang_parent_name = "interface";
-}
-
-Dhcpv6::Interfaces::Interface::Server::~Server()
-{
-}
-
-bool Dhcpv6::Interfaces::Interface::Server::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Dhcpv6::Interfaces::Interface::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Dhcpv6::Interfaces::Interface::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Interfaces::Interface::Server::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Server' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Interfaces::Interface::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Interfaces::Interface::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Interfaces::Interface::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Dhcpv6::Interfaces::Interface::Relay::Relay()
-    :
-    profile{YType::str, "profile"}
-{
-    yang_name = "relay"; yang_parent_name = "interface";
-}
-
-Dhcpv6::Interfaces::Interface::Relay::~Relay()
-{
-}
-
-bool Dhcpv6::Interfaces::Interface::Relay::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Dhcpv6::Interfaces::Interface::Relay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Dhcpv6::Interfaces::Interface::Relay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "relay";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dhcpv6::Interfaces::Interface::Relay::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Relay' in Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Relay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dhcpv6::Interfaces::Interface::Relay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dhcpv6::Interfaces::Interface::Relay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Dhcpv6::Interfaces::Interface::Relay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf LinkLayerAddr::set {4, "set"};
 
 const Enum::YLeaf SubscriberId::pppoe {3, "pppoe"};
+
+const Enum::YLeaf LinkLayerAddr::set {4, "set"};
 
 const Enum::YLeaf Insert::local {0, "local"};
 const Enum::YLeaf Insert::received {1, "received"};

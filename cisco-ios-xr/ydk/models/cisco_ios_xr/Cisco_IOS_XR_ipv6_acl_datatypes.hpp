@@ -18,6 +18,14 @@ class Ipv6AclTypeEnum : public ydk::Enum
 
 };
 
+class Ipv6AclLoggingEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
+
+};
+
 class Ipv6AclDscpNumber : public ydk::Enum
 {
     public:
@@ -45,40 +53,39 @@ class Ipv6AclDscpNumber : public ydk::Enum
 
 };
 
-class Ipv6PrefixMatchMinLength : public ydk::Enum
+class Ipv6AclTcpBitsNumber : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_min_length;
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf ack;
+        static const ydk::Enum::YLeaf rst;
+        static const ydk::Enum::YLeaf fin;
+        static const ydk::Enum::YLeaf psh;
+        static const ydk::Enum::YLeaf syn;
+        static const ydk::Enum::YLeaf urg;
 
 };
 
-class Ipv6AclProtocolNumber : public ydk::Enum
+class Ipv6AclTcpMatchOperatorEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf igmp;
-        static const ydk::Enum::YLeaf ip_in_ip;
-        static const ydk::Enum::YLeaf tcp;
-        static const ydk::Enum::YLeaf igrp;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf esp;
-        static const ydk::Enum::YLeaf ahp;
-        static const ydk::Enum::YLeaf icmpv6;
-        static const ydk::Enum::YLeaf eigrp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf nos;
-        static const ydk::Enum::YLeaf pim;
-        static const ydk::Enum::YLeaf pcp;
-        static const ydk::Enum::YLeaf sctp;
+        static const ydk::Enum::YLeaf match_all;
+        static const ydk::Enum::YLeaf match_any;
 
 };
 
-class Ipv6PrefixMatchExactLength : public ydk::Enum
+class Ipv6PrefixMatchMaxLength : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_exact_length;
+        static const ydk::Enum::YLeaf match_max_length;
+
+};
+
+class Ipv6AclGrantEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deny;
+        static const ydk::Enum::YLeaf permit;
 
 };
 
@@ -124,30 +131,40 @@ class Ipv6AclIcmpTypeCodeEnum : public ydk::Enum
 
 };
 
-class Ipv6AclOperatorEnum : public ydk::Enum
+class Ipv6AclProtocolNumber : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf equal;
-        static const ydk::Enum::YLeaf greater_than;
-        static const ydk::Enum::YLeaf less_than;
-        static const ydk::Enum::YLeaf not_equal;
-        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf ip_in_ip;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf igrp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf esp;
+        static const ydk::Enum::YLeaf ahp;
+        static const ydk::Enum::YLeaf icmpv6;
+        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf nos;
+        static const ydk::Enum::YLeaf pim;
+        static const ydk::Enum::YLeaf pcp;
+        static const ydk::Enum::YLeaf sctp;
 
 };
 
-class Ipv6AclGrantEnum : public ydk::Enum
+class Ipv6AclPrecedenceNumber : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf deny;
-        static const ydk::Enum::YLeaf permit;
-
-};
-
-class Ipv6AclLoggingEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf routine;
 
 };
 
@@ -205,24 +222,21 @@ class Ipv6AclPortNumber : public ydk::Enum
 
 };
 
-class Ipv6AclTcpBitsNumber : public ydk::Enum
+class Ipv6AclOperatorEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf ack;
-        static const ydk::Enum::YLeaf rst;
-        static const ydk::Enum::YLeaf fin;
-        static const ydk::Enum::YLeaf psh;
-        static const ydk::Enum::YLeaf syn;
-        static const ydk::Enum::YLeaf urg;
+        static const ydk::Enum::YLeaf equal;
+        static const ydk::Enum::YLeaf greater_than;
+        static const ydk::Enum::YLeaf less_than;
+        static const ydk::Enum::YLeaf not_equal;
+        static const ydk::Enum::YLeaf range;
 
 };
 
-class Ipv6AclTcpMatchOperatorEnum : public ydk::Enum
+class Ipv6PrefixMatchMinLength : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_all;
-        static const ydk::Enum::YLeaf match_any;
+        static const ydk::Enum::YLeaf match_min_length;
 
 };
 
@@ -234,24 +248,10 @@ class Ipv6AclStatusEnum : public ydk::Enum
 
 };
 
-class Ipv6PrefixMatchMaxLength : public ydk::Enum
+class Ipv6PrefixMatchExactLength : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_max_length;
-
-};
-
-class Ipv6AclPrecedenceNumber : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf routine;
+        static const ydk::Enum::YLeaf match_exact_length;
 
 };
 

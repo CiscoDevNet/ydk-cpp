@@ -20,6 +20,9 @@ const Enum::YLeaf LptsPreIFibPrecedenceNumber::network {7, "network"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::priority {1, "priority"};
 const Enum::YLeaf LptsPreIFibPrecedenceNumber::routine {0, "routine"};
 
+const Enum::YLeaf LptsDynamicFlowConfig::flows_config {0, "flows-config"};
+const Enum::YLeaf LptsDynamicFlowConfig::platform_config {1, "platform-config"};
+
 const Enum::YLeaf LptsFlow::config_default {0, "config-default"};
 const Enum::YLeaf LptsFlow::l2tpv2_fragment {1, "l2tpv2-fragment"};
 const Enum::YLeaf LptsFlow::fragment {2, "fragment"};
@@ -117,6 +120,7 @@ const Enum::YLeaf LptsFlow::dhcp4 {93, "dhcp4"};
 const Enum::YLeaf LptsFlow::dhcp6 {94, "dhcp6"};
 const Enum::YLeaf LptsFlow::onepk {95, "onepk"};
 const Enum::YLeaf LptsFlow::exr {96, "exr"};
+const Enum::YLeaf LptsFlow::platform_limit {97, "platform-limit"};
 
 
 }

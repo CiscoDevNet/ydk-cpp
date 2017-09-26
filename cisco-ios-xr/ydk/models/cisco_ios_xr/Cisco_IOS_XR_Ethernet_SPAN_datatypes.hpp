@@ -16,6 +16,8 @@ class SpanSessionClass : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet;
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf mpls_ipv4;
+        static const ydk::Enum::YLeaf mpls_ipv6;
 
 };
 

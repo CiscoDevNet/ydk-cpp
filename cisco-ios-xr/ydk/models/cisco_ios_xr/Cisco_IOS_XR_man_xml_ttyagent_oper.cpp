@@ -17,7 +17,7 @@ Netconf::Netconf()
 {
     agent->parent = this;
 
-    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper";
+    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Netconf::~Netconf()
@@ -39,26 +39,15 @@ std::string Netconf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Netconf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,7 @@ Netconf::Agent::Agent()
 {
     tty->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "netconf";
+    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Netconf::Agent::~Agent()
@@ -151,33 +140,26 @@ bool Netconf::Agent::has_operation() const
 	|| (tty !=  nullptr && tty->has_operation());
 }
 
+std::string Netconf::Agent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Netconf::Agent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "agent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -227,7 +209,7 @@ Netconf::Agent::Tty::Tty()
 {
     sessions->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent";
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Netconf::Agent::Tty::~Tty()
@@ -245,33 +227,26 @@ bool Netconf::Agent::Tty::has_operation() const
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
+std::string Netconf::Agent::Tty::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Netconf::Agent::Tty::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tty";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -317,7 +292,8 @@ bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) co
 
 Netconf::Agent::Tty::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "tty";
+
+    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Netconf::Agent::Tty::Sessions::~Sessions()
@@ -344,33 +320,26 @@ bool Netconf::Agent::Tty::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Netconf::Agent::Tty::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Netconf::Agent::Tty::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::Tty::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -436,7 +405,8 @@ Netconf::Agent::Tty::Sessions::Session::Session()
     username{YType::str, "username"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "session"; yang_parent_name = "sessions";
+
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Netconf::Agent::Tty::Sessions::Session::~Session()
@@ -476,27 +446,22 @@ bool Netconf::Agent::Tty::Sessions::Session::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Netconf::Agent::Tty::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/tty/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Netconf::Agent::Tty::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Netconf::Agent::Tty::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:netconf/agent/tty/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
@@ -512,9 +477,7 @@ const EntityPath Netconf::Agent::Tty::Sessions::Session::get_entity_path(Entity*
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -670,7 +633,7 @@ XrXml::XrXml()
 {
     agent->parent = this;
 
-    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper";
+    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 XrXml::~XrXml()
@@ -692,26 +655,15 @@ std::string XrXml::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -787,12 +739,10 @@ XrXml::Agent::Agent()
 	,tty(std::make_shared<XrXml::Agent::Tty>())
 {
     default_->parent = this;
-
     ssl->parent = this;
-
     tty->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "xr-xml";
+    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::~Agent()
@@ -814,33 +764,26 @@ bool XrXml::Agent::has_operation() const
 	|| (tty !=  nullptr && tty->has_operation());
 }
 
+std::string XrXml::Agent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "agent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -912,456 +855,13 @@ bool XrXml::Agent::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-XrXml::Agent::Tty::Tty()
-    :
-    sessions(std::make_shared<XrXml::Agent::Tty::Sessions>())
-{
-    sessions->parent = this;
-
-    yang_name = "tty"; yang_parent_name = "agent";
-}
-
-XrXml::Agent::Tty::~Tty()
-{
-}
-
-bool XrXml::Agent::Tty::has_data() const
-{
-    return (sessions !=  nullptr && sessions->has_data());
-}
-
-bool XrXml::Agent::Tty::has_operation() const
-{
-    return is_set(yfilter)
-	|| (sessions !=  nullptr && sessions->has_operation());
-}
-
-std::string XrXml::Agent::Tty::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tty";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sessions")
-    {
-        if(sessions == nullptr)
-        {
-            sessions = std::make_shared<XrXml::Agent::Tty::Sessions>();
-        }
-        return sessions;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(sessions != nullptr)
-    {
-        children["sessions"] = sessions;
-    }
-
-    return children;
-}
-
-void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sessions")
-        return true;
-    return false;
-}
-
-XrXml::Agent::Tty::Sessions::Sessions()
-{
-    yang_name = "sessions"; yang_parent_name = "tty";
-}
-
-XrXml::Agent::Tty::Sessions::~Sessions()
-{
-}
-
-bool XrXml::Agent::Tty::Sessions::has_data() const
-{
-    for (std::size_t index=0; index<session.size(); index++)
-    {
-        if(session[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool XrXml::Agent::Tty::Sessions::has_operation() const
-{
-    for (std::size_t index=0; index<session.size(); index++)
-    {
-        if(session[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string XrXml::Agent::Tty::Sessions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sessions";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::Sessions::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "session")
-    {
-        for(auto const & c : session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<XrXml::Agent::Tty::Sessions::Session>();
-        c->parent = this;
-        session.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : session)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void XrXml::Agent::Tty::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void XrXml::Agent::Tty::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool XrXml::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session")
-        return true;
-    return false;
-}
-
-XrXml::Agent::Tty::Sessions::Session::Session()
-    :
-    session_id{YType::int32, "session-id"},
-    admin_config_session_id{YType::str, "admin-config-session-id"},
-    alarm_notification{YType::enumeration, "alarm-notification"},
-    client_address{YType::str, "client-address"},
-    client_port{YType::uint32, "client-port"},
-    config_session_id{YType::str, "config-session-id"},
-    elapsed_time{YType::uint32, "elapsed-time"},
-    last_state_change{YType::uint32, "last-state-change"},
-    start_time{YType::uint32, "start-time"},
-    state{YType::enumeration, "state"},
-    username{YType::str, "username"},
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "session"; yang_parent_name = "sessions";
-}
-
-XrXml::Agent::Tty::Sessions::Session::~Session()
-{
-}
-
-bool XrXml::Agent::Tty::Sessions::Session::has_data() const
-{
-    return session_id.is_set
-	|| admin_config_session_id.is_set
-	|| alarm_notification.is_set
-	|| client_address.is_set
-	|| client_port.is_set
-	|| config_session_id.is_set
-	|| elapsed_time.is_set
-	|| last_state_change.is_set
-	|| start_time.is_set
-	|| state.is_set
-	|| username.is_set
-	|| vrf_name.is_set;
-}
-
-bool XrXml::Agent::Tty::Sessions::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(admin_config_session_id.yfilter)
-	|| ydk::is_set(alarm_notification.yfilter)
-	|| ydk::is_set(client_address.yfilter)
-	|| ydk::is_set(client_port.yfilter)
-	|| ydk::is_set(config_session_id.yfilter)
-	|| ydk::is_set(elapsed_time.yfilter)
-	|| ydk::is_set(last_state_change.yfilter)
-	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string XrXml::Agent::Tty::Sessions::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath XrXml::Agent::Tty::Sessions::Session::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/tty/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
-    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
-    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
-    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
-    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
-    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
-    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> XrXml::Agent::Tty::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void XrXml::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-id")
-    {
-        session_id = value;
-        session_id.value_namespace = name_space;
-        session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-config-session-id")
-    {
-        admin_config_session_id = value;
-        admin_config_session_id.value_namespace = name_space;
-        admin_config_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alarm-notification")
-    {
-        alarm_notification = value;
-        alarm_notification.value_namespace = name_space;
-        alarm_notification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "client-address")
-    {
-        client_address = value;
-        client_address.value_namespace = name_space;
-        client_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "client-port")
-    {
-        client_port = value;
-        client_port.value_namespace = name_space;
-        client_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "config-session-id")
-    {
-        config_session_id = value;
-        config_session_id.value_namespace = name_space;
-        config_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "elapsed-time")
-    {
-        elapsed_time = value;
-        elapsed_time.value_namespace = name_space;
-        elapsed_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-state-change")
-    {
-        last_state_change = value;
-        last_state_change.value_namespace = name_space;
-        last_state_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-time")
-    {
-        start_time = value;
-        start_time.value_namespace = name_space;
-        start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void XrXml::Agent::Tty::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-id")
-    {
-        session_id.yfilter = yfilter;
-    }
-    if(value_path == "admin-config-session-id")
-    {
-        admin_config_session_id.yfilter = yfilter;
-    }
-    if(value_path == "alarm-notification")
-    {
-        alarm_notification.yfilter = yfilter;
-    }
-    if(value_path == "client-address")
-    {
-        client_address.yfilter = yfilter;
-    }
-    if(value_path == "client-port")
-    {
-        client_port.yfilter = yfilter;
-    }
-    if(value_path == "config-session-id")
-    {
-        config_session_id.yfilter = yfilter;
-    }
-    if(value_path == "elapsed-time")
-    {
-        elapsed_time.yfilter = yfilter;
-    }
-    if(value_path == "last-state-change")
-    {
-        last_state_change.yfilter = yfilter;
-    }
-    if(value_path == "start-time")
-    {
-        start_time.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool XrXml::Agent::Tty::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
-        return true;
-    return false;
-}
-
 XrXml::Agent::Default_::Default_()
     :
     sessions(std::make_shared<XrXml::Agent::Default_::Sessions>())
 {
     sessions->parent = this;
 
-    yang_name = "default"; yang_parent_name = "agent";
+    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::~Default_()
@@ -1379,33 +879,26 @@ bool XrXml::Agent::Default_::has_operation() const
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
+std::string XrXml::Agent::Default_::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1451,7 +944,8 @@ bool XrXml::Agent::Default_::has_leaf_or_child_of_name(const std::string & name)
 
 XrXml::Agent::Default_::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "default";
+
+    yang_name = "sessions"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Sessions::~Sessions()
@@ -1478,33 +972,26 @@ bool XrXml::Agent::Default_::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string XrXml::Agent::Default_::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/default/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/default/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1570,7 +1057,8 @@ XrXml::Agent::Default_::Sessions::Session::Session()
     username{YType::str, "username"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "session"; yang_parent_name = "sessions";
+
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Default_::Sessions::Session::~Session()
@@ -1610,27 +1098,22 @@ bool XrXml::Agent::Default_::Sessions::Session::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string XrXml::Agent::Default_::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/default/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Default_::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Default_::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/default/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
@@ -1646,9 +1129,7 @@ const EntityPath XrXml::Agent::Default_::Sessions::Session::get_entity_path(Enti
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1804,7 +1285,7 @@ XrXml::Agent::Ssl::Ssl()
 {
     sessions->parent = this;
 
-    yang_name = "ssl"; yang_parent_name = "agent";
+    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::~Ssl()
@@ -1822,33 +1303,26 @@ bool XrXml::Agent::Ssl::has_operation() const
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
+std::string XrXml::Agent::Ssl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1894,7 +1368,8 @@ bool XrXml::Agent::Ssl::has_leaf_or_child_of_name(const std::string & name) cons
 
 XrXml::Agent::Ssl::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "ssl";
+
+    yang_name = "sessions"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Sessions::~Sessions()
@@ -1921,33 +1396,26 @@ bool XrXml::Agent::Ssl::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/ssl/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/ssl/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2013,7 +1481,8 @@ XrXml::Agent::Ssl::Sessions::Session::Session()
     username{YType::str, "username"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "session"; yang_parent_name = "sessions";
+
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 XrXml::Agent::Ssl::Sessions::Session::~Session()
@@ -2053,27 +1522,22 @@ bool XrXml::Agent::Ssl::Sessions::Session::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string XrXml::Agent::Ssl::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/ssl/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string XrXml::Agent::Ssl::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath XrXml::Agent::Ssl::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/ssl/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
@@ -2089,9 +1553,7 @@ const EntityPath XrXml::Agent::Ssl::Sessions::Session::get_entity_path(Entity* a
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2235,6 +1697,430 @@ void XrXml::Agent::Ssl::Sessions::Session::set_filter(const std::string & value_
 }
 
 bool XrXml::Agent::Ssl::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+XrXml::Agent::Tty::Tty()
+    :
+    sessions(std::make_shared<XrXml::Agent::Tty::Sessions>())
+{
+    sessions->parent = this;
+
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+XrXml::Agent::Tty::~Tty()
+{
+}
+
+bool XrXml::Agent::Tty::has_data() const
+{
+    return (sessions !=  nullptr && sessions->has_data());
+}
+
+bool XrXml::Agent::Tty::has_operation() const
+{
+    return is_set(yfilter)
+	|| (sessions !=  nullptr && sessions->has_operation());
+}
+
+std::string XrXml::Agent::Tty::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tty";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sessions")
+    {
+        if(sessions == nullptr)
+        {
+            sessions = std::make_shared<XrXml::Agent::Tty::Sessions>();
+        }
+        return sessions;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(sessions != nullptr)
+    {
+        children["sessions"] = sessions;
+    }
+
+    return children;
+}
+
+void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
+}
+
+XrXml::Agent::Tty::Sessions::Sessions()
+{
+
+    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+XrXml::Agent::Tty::Sessions::~Sessions()
+{
+}
+
+bool XrXml::Agent::Tty::Sessions::has_data() const
+{
+    for (std::size_t index=0; index<session.size(); index++)
+    {
+        if(session[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool XrXml::Agent::Tty::Sessions::has_operation() const
+{
+    for (std::size_t index=0; index<session.size(); index++)
+    {
+        if(session[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string XrXml::Agent::Tty::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::Sessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sessions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Sessions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> XrXml::Agent::Tty::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session")
+    {
+        for(auto const & c : session)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<XrXml::Agent::Tty::Sessions::Session>();
+        c->parent = this;
+        session.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : session)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void XrXml::Agent::Tty::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void XrXml::Agent::Tty::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
+}
+
+XrXml::Agent::Tty::Sessions::Session::Session()
+    :
+    session_id{YType::int32, "session-id"},
+    admin_config_session_id{YType::str, "admin-config-session-id"},
+    alarm_notification{YType::enumeration, "alarm-notification"},
+    client_address{YType::str, "client-address"},
+    client_port{YType::uint32, "client-port"},
+    config_session_id{YType::str, "config-session-id"},
+    elapsed_time{YType::uint32, "elapsed-time"},
+    last_state_change{YType::uint32, "last-state-change"},
+    start_time{YType::uint32, "start-time"},
+    state{YType::enumeration, "state"},
+    username{YType::str, "username"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+XrXml::Agent::Tty::Sessions::Session::~Session()
+{
+}
+
+bool XrXml::Agent::Tty::Sessions::Session::has_data() const
+{
+    return session_id.is_set
+	|| admin_config_session_id.is_set
+	|| alarm_notification.is_set
+	|| client_address.is_set
+	|| client_port.is_set
+	|| config_session_id.is_set
+	|| elapsed_time.is_set
+	|| last_state_change.is_set
+	|| start_time.is_set
+	|| state.is_set
+	|| username.is_set
+	|| vrf_name.is_set;
+}
+
+bool XrXml::Agent::Tty::Sessions::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(admin_config_session_id.yfilter)
+	|| ydk::is_set(alarm_notification.yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(client_port.yfilter)
+	|| ydk::is_set(config_session_id.yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(last_state_change.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string XrXml::Agent::Tty::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-oper:xr-xml/agent/tty/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string XrXml::Agent::Tty::Sessions::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Sessions::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
+    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
+    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> XrXml::Agent::Tty::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void XrXml::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id = value;
+        admin_config_session_id.value_namespace = name_space;
+        admin_config_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification = value;
+        alarm_notification.value_namespace = name_space;
+        alarm_notification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-address")
+    {
+        client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-port")
+    {
+        client_port = value;
+        client_port.value_namespace = name_space;
+        client_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id = value;
+        config_session_id.value_namespace = name_space;
+        config_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change = value;
+        last_state_change.value_namespace = name_space;
+        last_state_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void XrXml::Agent::Tty::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification.yfilter = yfilter;
+    }
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "client-port")
+    {
+        client_port.yfilter = yfilter;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
         return true;

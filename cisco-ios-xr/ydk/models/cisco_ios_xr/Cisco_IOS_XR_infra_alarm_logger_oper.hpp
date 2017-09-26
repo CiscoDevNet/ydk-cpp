@@ -18,7 +18,7 @@ class AlarmLogger : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,35 +34,10 @@ class AlarmLogger : public ydk::Entity
         class BufferStatus; //type: AlarmLogger::BufferStatus
         class Alarms; //type: AlarmLogger::Alarms
 
-        std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms> alarms;
-        std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::BufferStatus> buffer_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms> alarms;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::BufferStatus> buffer_status;
         
 }; // AlarmLogger
-
-
-class AlarmLogger::BufferStatus : public ydk::Entity
-{
-    public:
-        BufferStatus();
-        ~BufferStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf log_buffer_size; //type: uint32
-        ydk::YLeaf max_log_buffer_size; //type: uint32
-        ydk::YLeaf record_count; //type: uint32
-        ydk::YLeaf capacity_threshold; //type: uint32
-        ydk::YLeaf severity_filter; //type: AlAlarmSeverity
-
-}; // AlarmLogger::BufferStatus
 
 
 class AlarmLogger::Alarms : public ydk::Entity
@@ -73,17 +48,18 @@ class AlarmLogger::Alarms : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Alarm; //type: AlarmLogger::Alarms::Alarm
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms::Alarm> > alarm;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms::Alarm> > alarm;
         
 }; // AlarmLogger::Alarms
 
@@ -96,13 +72,14 @@ class AlarmLogger::Alarms::Alarm : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf event_id; //type: int32
         ydk::YLeaf source_id; //type: string
@@ -117,6 +94,32 @@ class AlarmLogger::Alarms::Alarm : public ydk::Entity
         ydk::YLeaf additional_text; //type: string
 
 }; // AlarmLogger::Alarms::Alarm
+
+
+class AlarmLogger::BufferStatus : public ydk::Entity
+{
+    public:
+        BufferStatus();
+        ~BufferStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf log_buffer_size; //type: uint32
+        ydk::YLeaf max_log_buffer_size; //type: uint32
+        ydk::YLeaf record_count; //type: uint32
+        ydk::YLeaf capacity_threshold; //type: uint32
+        ydk::YLeaf severity_filter; //type: AlAlarmSeverity
+
+}; // AlarmLogger::BufferStatus
 
 class AlAlarmBistate : public ydk::Enum
 {

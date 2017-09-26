@@ -32,6 +32,14 @@ class MplsLdpDownstreamOnDemand : public ydk::Enum
 
 };
 
+class MplsLdpNbrPassword : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf specified;
+
+};
+
 class MplsLdpSessionProtection : public ydk::Enum
 {
     public:
@@ -41,14 +49,6 @@ class MplsLdpSessionProtection : public ydk::Enum
         static const ydk::Enum::YLeaf for_with_duration;
         static const ydk::Enum::YLeaf all_with_forever;
         static const ydk::Enum::YLeaf for_with_forever;
-
-};
-
-class MplsLdpNbrPassword : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf specified;
 
 };
 

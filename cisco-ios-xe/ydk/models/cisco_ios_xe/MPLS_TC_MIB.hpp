@@ -10,7 +10,16 @@
 namespace cisco_ios_xe {
 namespace MPLS_TC_MIB {
 
-class Mplsinitialcreationsource : public ydk::Enum
+class MplsLdpLabelTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
+
+};
+
+class MplsInitialCreationSource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -20,15 +29,6 @@ class Mplsinitialcreationsource : public ydk::Enum
         static const ydk::Enum::YLeaf crldp;
         static const ydk::Enum::YLeaf policyAgent;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class Mplsldplabeltypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf generic;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf frameRelay;
 
 };
 

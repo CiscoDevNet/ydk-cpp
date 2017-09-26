@@ -17,10 +17,9 @@ NetconfYang::NetconfYang()
 	,cisco_odm(std::make_shared<NetconfYang::CiscoOdm>())
 {
     cisco_ia->parent = this;
-
     cisco_odm->parent = this;
 
-    yang_name = "netconf-yang"; yang_parent_name = "cisco-self-mgmt";
+    yang_name = "netconf-yang"; yang_parent_name = "cisco-self-mgmt"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NetconfYang::~NetconfYang()
@@ -44,26 +43,15 @@ std::string NetconfYang::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-self-mgmt:netconf-yang";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -166,12 +154,10 @@ NetconfYang::CiscoIa::CiscoIa()
 	,snmp_trap_control(std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl>())
 {
     blocking->parent = this;
-
     logging->parent = this;
-
     snmp_trap_control->parent = this;
 
-    yang_name = "cisco-ia"; yang_parent_name = "netconf-yang";
+    yang_name = "cisco-ia"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfYang::CiscoIa::~CiscoIa()
@@ -267,27 +253,22 @@ bool NetconfYang::CiscoIa::has_operation() const
 	|| (snmp_trap_control !=  nullptr && snmp_trap_control->has_operation());
 }
 
+std::string NetconfYang::CiscoIa::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfYang::CiscoIa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-ia:cisco-ia";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::CiscoIa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (auto_sync.is_set || is_set(auto_sync.yfilter)) leaf_name_data.push_back(auto_sync.get_name_leafdata());
@@ -303,9 +284,7 @@ const EntityPath NetconfYang::CiscoIa::get_entity_path(Entity* ancestor) const
     if (restored.is_set || is_set(restored.yfilter)) leaf_name_data.push_back(restored.get_name_leafdata());
     if (snmp_community_string.is_set || is_set(snmp_community_string.yfilter)) leaf_name_data.push_back(snmp_community_string.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -602,853 +581,13 @@ bool NetconfYang::CiscoIa::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-NetconfYang::CiscoIa::SnmpTrapControl::SnmpTrapControl()
-    :
-    global_forwarding{YType::boolean, "global-forwarding"}
-{
-    yang_name = "snmp-trap-control"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::SnmpTrapControl::~SnmpTrapControl()
-{
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::has_data() const
-{
-    for (std::size_t index=0; index<trap_list.size(); index++)
-    {
-        if(trap_list[index]->has_data())
-            return true;
-    }
-    return global_forwarding.is_set;
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::has_operation() const
-{
-    for (std::size_t index=0; index<trap_list.size(); index++)
-    {
-        if(trap_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(global_forwarding.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::SnmpTrapControl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "snmp-trap-control";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::SnmpTrapControl::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (global_forwarding.is_set || is_set(global_forwarding.yfilter)) leaf_name_data.push_back(global_forwarding.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trap-list")
-    {
-        for(auto const & c : trap_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl::TrapList>();
-        c->parent = this;
-        trap_list.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::SnmpTrapControl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_list)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void NetconfYang::CiscoIa::SnmpTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "global-forwarding")
-    {
-        global_forwarding = value;
-        global_forwarding.value_namespace = name_space;
-        global_forwarding.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::SnmpTrapControl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "global-forwarding")
-    {
-        global_forwarding.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trap-list" || name == "global-forwarding")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::SnmpTrapControl::TrapList::TrapList()
-    :
-    trap_oid{YType::str, "trap-oid"},
-    description{YType::str, "description"},
-    forward{YType::boolean, "forward"}
-{
-    yang_name = "trap-list"; yang_parent_name = "snmp-trap-control";
-}
-
-NetconfYang::CiscoIa::SnmpTrapControl::TrapList::~TrapList()
-{
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_data() const
-{
-    return trap_oid.is_set
-	|| description.is_set
-	|| forward.is_set;
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(trap_oid.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(forward.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-list" <<"[trap-oid='" <<trap_oid <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/snmp-trap-control/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (trap_oid.is_set || is_set(trap_oid.yfilter)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (forward.is_set || is_set(forward.yfilter)) leaf_name_data.push_back(forward.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::SnmpTrapControl::TrapList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "trap-oid")
-    {
-        trap_oid = value;
-        trap_oid.value_namespace = name_space;
-        trap_oid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forward")
-    {
-        forward = value;
-        forward.value_namespace = name_space;
-        forward.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::SnmpTrapControl::TrapList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "trap-oid")
-    {
-        trap_oid.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "forward")
-    {
-        forward.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trap-oid" || name == "description" || name == "forward")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::PreserveNedPath::PreserveNedPath()
-    :
-    xpath{YType::str, "xpath"}
-{
-    yang_name = "preserve-ned-path"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::PreserveNedPath::~PreserveNedPath()
-{
-}
-
-bool NetconfYang::CiscoIa::PreserveNedPath::has_data() const
-{
-    return xpath.is_set;
-}
-
-bool NetconfYang::CiscoIa::PreserveNedPath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(xpath.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::PreserveNedPath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "preserve-ned-path" <<"[xpath='" <<xpath <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::PreserveNedPath::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::PreserveNedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::PreserveNedPath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::PreserveNedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "xpath")
-    {
-        xpath = value;
-        xpath.value_namespace = name_space;
-        xpath.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::PreserveNedPath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "xpath")
-    {
-        xpath.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::PreserveNedPath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "xpath")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::ParserMsgIgnore::ParserMsgIgnore()
-    :
-    message{YType::str, "message"}
-{
-    yang_name = "parser-msg-ignore"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::ParserMsgIgnore::~ParserMsgIgnore()
-{
-}
-
-bool NetconfYang::CiscoIa::ParserMsgIgnore::has_data() const
-{
-    return message.is_set;
-}
-
-bool NetconfYang::CiscoIa::ParserMsgIgnore::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(message.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::ParserMsgIgnore::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parser-msg-ignore" <<"[message='" <<message <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::ParserMsgIgnore::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::ParserMsgIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ParserMsgIgnore::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::ParserMsgIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "message")
-    {
-        message = value;
-        message.value_namespace = name_space;
-        message.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::ParserMsgIgnore::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "message")
-    {
-        message.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::ParserMsgIgnore::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "message")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::ConfParserMsgIgnore::ConfParserMsgIgnore()
-    :
-    message{YType::str, "message"}
-{
-    yang_name = "conf-parser-msg-ignore"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::ConfParserMsgIgnore::~ConfParserMsgIgnore()
-{
-}
-
-bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_data() const
-{
-    return message.is_set;
-}
-
-bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(message.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::ConfParserMsgIgnore::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "conf-parser-msg-ignore" <<"[message='" <<message <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::ConfParserMsgIgnore::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::ConfParserMsgIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ConfParserMsgIgnore::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::ConfParserMsgIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "message")
-    {
-        message = value;
-        message.value_namespace = name_space;
-        message.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::ConfParserMsgIgnore::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "message")
-    {
-        message.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "message")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::FullSyncCli::FullSyncCli()
-    :
-    command{YType::str, "command"}
-{
-    yang_name = "full-sync-cli"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::FullSyncCli::~FullSyncCli()
-{
-}
-
-bool NetconfYang::CiscoIa::FullSyncCli::has_data() const
-{
-    return command.is_set;
-}
-
-bool NetconfYang::CiscoIa::FullSyncCli::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(command.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::FullSyncCli::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "full-sync-cli" <<"[command='" <<command <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::FullSyncCli::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::FullSyncCli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::FullSyncCli::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::FullSyncCli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "command")
-    {
-        command = value;
-        command.value_namespace = name_space;
-        command.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::FullSyncCli::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "command")
-    {
-        command.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::FullSyncCli::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "command")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::ConfFullSyncCli::ConfFullSyncCli()
-    :
-    command{YType::str, "command"}
-{
-    yang_name = "conf-full-sync-cli"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::ConfFullSyncCli::~ConfFullSyncCli()
-{
-}
-
-bool NetconfYang::CiscoIa::ConfFullSyncCli::has_data() const
-{
-    return command.is_set;
-}
-
-bool NetconfYang::CiscoIa::ConfFullSyncCli::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(command.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::ConfFullSyncCli::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "conf-full-sync-cli" <<"[command='" <<command <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::ConfFullSyncCli::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::ConfFullSyncCli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ConfFullSyncCli::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::ConfFullSyncCli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "command")
-    {
-        command = value;
-        command.value_namespace = name_space;
-        command.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::ConfFullSyncCli::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "command")
-    {
-        command.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::ConfFullSyncCli::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "command")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoIa::Logging::Logging()
-    :
-    ciaauthd_log_level{YType::enumeration, "ciaauthd-log-level"},
-    confd_log_level{YType::enumeration, "confd-log-level"},
-    nes_log_level{YType::enumeration, "nes-log-level"},
-    odm_log_level{YType::enumeration, "odm-log-level"},
-    onep_log_level{YType::enumeration, "onep-log-level"},
-    sync_log_level{YType::enumeration, "sync-log-level"}
-{
-    yang_name = "logging"; yang_parent_name = "cisco-ia";
-}
-
-NetconfYang::CiscoIa::Logging::~Logging()
-{
-}
-
-bool NetconfYang::CiscoIa::Logging::has_data() const
-{
-    return ciaauthd_log_level.is_set
-	|| confd_log_level.is_set
-	|| nes_log_level.is_set
-	|| odm_log_level.is_set
-	|| onep_log_level.is_set
-	|| sync_log_level.is_set;
-}
-
-bool NetconfYang::CiscoIa::Logging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ciaauthd_log_level.yfilter)
-	|| ydk::is_set(confd_log_level.yfilter)
-	|| ydk::is_set(nes_log_level.yfilter)
-	|| ydk::is_set(odm_log_level.yfilter)
-	|| ydk::is_set(onep_log_level.yfilter)
-	|| ydk::is_set(sync_log_level.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::Logging::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ciaauthd_log_level.is_set || is_set(ciaauthd_log_level.yfilter)) leaf_name_data.push_back(ciaauthd_log_level.get_name_leafdata());
-    if (confd_log_level.is_set || is_set(confd_log_level.yfilter)) leaf_name_data.push_back(confd_log_level.get_name_leafdata());
-    if (nes_log_level.is_set || is_set(nes_log_level.yfilter)) leaf_name_data.push_back(nes_log_level.get_name_leafdata());
-    if (odm_log_level.is_set || is_set(odm_log_level.yfilter)) leaf_name_data.push_back(odm_log_level.get_name_leafdata());
-    if (onep_log_level.is_set || is_set(onep_log_level.yfilter)) leaf_name_data.push_back(onep_log_level.get_name_leafdata());
-    if (sync_log_level.is_set || is_set(sync_log_level.yfilter)) leaf_name_data.push_back(sync_log_level.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ciaauthd-log-level")
-    {
-        ciaauthd_log_level = value;
-        ciaauthd_log_level.value_namespace = name_space;
-        ciaauthd_log_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "confd-log-level")
-    {
-        confd_log_level = value;
-        confd_log_level.value_namespace = name_space;
-        confd_log_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nes-log-level")
-    {
-        nes_log_level = value;
-        nes_log_level.value_namespace = name_space;
-        nes_log_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "odm-log-level")
-    {
-        odm_log_level = value;
-        odm_log_level.value_namespace = name_space;
-        odm_log_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "onep-log-level")
-    {
-        onep_log_level = value;
-        onep_log_level.value_namespace = name_space;
-        onep_log_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sync-log-level")
-    {
-        sync_log_level = value;
-        sync_log_level.value_namespace = name_space;
-        sync_log_level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ciaauthd-log-level")
-    {
-        ciaauthd_log_level.yfilter = yfilter;
-    }
-    if(value_path == "confd-log-level")
-    {
-        confd_log_level.yfilter = yfilter;
-    }
-    if(value_path == "nes-log-level")
-    {
-        nes_log_level.yfilter = yfilter;
-    }
-    if(value_path == "odm-log-level")
-    {
-        odm_log_level.yfilter = yfilter;
-    }
-    if(value_path == "onep-log-level")
-    {
-        onep_log_level.yfilter = yfilter;
-    }
-    if(value_path == "sync-log-level")
-    {
-        sync_log_level.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ciaauthd-log-level" || name == "confd-log-level" || name == "nes-log-level" || name == "odm-log-level" || name == "onep-log-level" || name == "sync-log-level")
-        return true;
-    return false;
-}
-
 NetconfYang::CiscoIa::Blocking::Blocking()
     :
     cli_blocking_enabled{YType::boolean, "cli-blocking-enabled"},
     confd_cfg_blocking_enabled{YType::boolean, "confd-cfg-blocking-enabled"}
 {
-    yang_name = "blocking"; yang_parent_name = "cisco-ia";
+
+    yang_name = "blocking"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfYang::CiscoIa::Blocking::~Blocking()
@@ -1488,35 +627,28 @@ bool NetconfYang::CiscoIa::Blocking::has_operation() const
 	|| ydk::is_set(confd_cfg_blocking_enabled.yfilter);
 }
 
+std::string NetconfYang::CiscoIa::Blocking::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfYang::CiscoIa::Blocking::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "blocking";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::CiscoIa::Blocking::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::Blocking::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cli_blocking_enabled.is_set || is_set(cli_blocking_enabled.yfilter)) leaf_name_data.push_back(cli_blocking_enabled.get_name_leafdata());
     if (confd_cfg_blocking_enabled.is_set || is_set(confd_cfg_blocking_enabled.yfilter)) leaf_name_data.push_back(confd_cfg_blocking_enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1608,100 +740,12 @@ bool NetconfYang::CiscoIa::Blocking::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
-NetconfYang::CiscoIa::Blocking::NetworkElementCommand::NetworkElementCommand()
-    :
-    command{YType::str, "command"}
-{
-    yang_name = "network-element-command"; yang_parent_name = "blocking";
-}
-
-NetconfYang::CiscoIa::Blocking::NetworkElementCommand::~NetworkElementCommand()
-{
-}
-
-bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_data() const
-{
-    return command.is_set;
-}
-
-bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(command.yfilter);
-}
-
-std::string NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-element-command" <<"[command='" <<command <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/blocking/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void NetconfYang::CiscoIa::Blocking::NetworkElementCommand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "command")
-    {
-        command = value;
-        command.value_namespace = name_space;
-        command.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoIa::Blocking::NetworkElementCommand::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "command")
-    {
-        command.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "command")
-        return true;
-    return false;
-}
-
 NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::ConfdCfgCommand()
     :
     command{YType::str, "command"}
 {
-    yang_name = "confd-cfg-command"; yang_parent_name = "blocking";
+
+    yang_name = "confd-cfg-command"; yang_parent_name = "blocking"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::~ConfdCfgCommand()
@@ -1719,34 +763,27 @@ bool NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::has_operation() const
 	|| ydk::is_set(command.yfilter);
 }
 
+std::string NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/blocking/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "confd-cfg-command" <<"[command='" <<command <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/blocking/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1786,13 +823,890 @@ bool NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::has_leaf_or_child_of_name(
     return false;
 }
 
+NetconfYang::CiscoIa::Blocking::NetworkElementCommand::NetworkElementCommand()
+    :
+    command{YType::str, "command"}
+{
+
+    yang_name = "network-element-command"; yang_parent_name = "blocking"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::Blocking::NetworkElementCommand::~NetworkElementCommand()
+{
+}
+
+bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_data() const
+{
+    return command.is_set;
+}
+
+bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(command.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/blocking/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-element-command" <<"[command='" <<command <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::Blocking::NetworkElementCommand::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::Blocking::NetworkElementCommand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "command")
+    {
+        command = value;
+        command.value_namespace = name_space;
+        command.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::Blocking::NetworkElementCommand::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command")
+    {
+        command.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::Blocking::NetworkElementCommand::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::ConfFullSyncCli::ConfFullSyncCli()
+    :
+    command{YType::str, "command"}
+{
+
+    yang_name = "conf-full-sync-cli"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::ConfFullSyncCli::~ConfFullSyncCli()
+{
+}
+
+bool NetconfYang::CiscoIa::ConfFullSyncCli::has_data() const
+{
+    return command.is_set;
+}
+
+bool NetconfYang::CiscoIa::ConfFullSyncCli::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(command.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::ConfFullSyncCli::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::ConfFullSyncCli::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conf-full-sync-cli" <<"[command='" <<command <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::ConfFullSyncCli::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::ConfFullSyncCli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ConfFullSyncCli::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::ConfFullSyncCli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "command")
+    {
+        command = value;
+        command.value_namespace = name_space;
+        command.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::ConfFullSyncCli::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command")
+    {
+        command.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::ConfFullSyncCli::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::ConfParserMsgIgnore::ConfParserMsgIgnore()
+    :
+    message{YType::str, "message"}
+{
+
+    yang_name = "conf-parser-msg-ignore"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::ConfParserMsgIgnore::~ConfParserMsgIgnore()
+{
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_data() const
+{
+    return message.is_set;
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::ConfParserMsgIgnore::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::ConfParserMsgIgnore::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conf-parser-msg-ignore" <<"[message='" <<message <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::ConfParserMsgIgnore::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::ConfParserMsgIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ConfParserMsgIgnore::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::ConfParserMsgIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::ConfParserMsgIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::FullSyncCli::FullSyncCli()
+    :
+    command{YType::str, "command"}
+{
+
+    yang_name = "full-sync-cli"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::FullSyncCli::~FullSyncCli()
+{
+}
+
+bool NetconfYang::CiscoIa::FullSyncCli::has_data() const
+{
+    return command.is_set;
+}
+
+bool NetconfYang::CiscoIa::FullSyncCli::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(command.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::FullSyncCli::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::FullSyncCli::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "full-sync-cli" <<"[command='" <<command <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::FullSyncCli::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::FullSyncCli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::FullSyncCli::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::FullSyncCli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "command")
+    {
+        command = value;
+        command.value_namespace = name_space;
+        command.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::FullSyncCli::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command")
+    {
+        command.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::FullSyncCli::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::Logging::Logging()
+    :
+    ciaauthd_log_level{YType::enumeration, "ciaauthd-log-level"},
+    confd_log_level{YType::enumeration, "confd-log-level"},
+    nes_log_level{YType::enumeration, "nes-log-level"},
+    odm_log_level{YType::enumeration, "odm-log-level"},
+    onep_log_level{YType::enumeration, "onep-log-level"},
+    sync_log_level{YType::enumeration, "sync-log-level"}
+{
+
+    yang_name = "logging"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::Logging::~Logging()
+{
+}
+
+bool NetconfYang::CiscoIa::Logging::has_data() const
+{
+    return ciaauthd_log_level.is_set
+	|| confd_log_level.is_set
+	|| nes_log_level.is_set
+	|| odm_log_level.is_set
+	|| onep_log_level.is_set
+	|| sync_log_level.is_set;
+}
+
+bool NetconfYang::CiscoIa::Logging::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ciaauthd_log_level.yfilter)
+	|| ydk::is_set(confd_log_level.yfilter)
+	|| ydk::is_set(nes_log_level.yfilter)
+	|| ydk::is_set(odm_log_level.yfilter)
+	|| ydk::is_set(onep_log_level.yfilter)
+	|| ydk::is_set(sync_log_level.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::Logging::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::Logging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::Logging::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ciaauthd_log_level.is_set || is_set(ciaauthd_log_level.yfilter)) leaf_name_data.push_back(ciaauthd_log_level.get_name_leafdata());
+    if (confd_log_level.is_set || is_set(confd_log_level.yfilter)) leaf_name_data.push_back(confd_log_level.get_name_leafdata());
+    if (nes_log_level.is_set || is_set(nes_log_level.yfilter)) leaf_name_data.push_back(nes_log_level.get_name_leafdata());
+    if (odm_log_level.is_set || is_set(odm_log_level.yfilter)) leaf_name_data.push_back(odm_log_level.get_name_leafdata());
+    if (onep_log_level.is_set || is_set(onep_log_level.yfilter)) leaf_name_data.push_back(onep_log_level.get_name_leafdata());
+    if (sync_log_level.is_set || is_set(sync_log_level.yfilter)) leaf_name_data.push_back(sync_log_level.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::Logging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ciaauthd-log-level")
+    {
+        ciaauthd_log_level = value;
+        ciaauthd_log_level.value_namespace = name_space;
+        ciaauthd_log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "confd-log-level")
+    {
+        confd_log_level = value;
+        confd_log_level.value_namespace = name_space;
+        confd_log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nes-log-level")
+    {
+        nes_log_level = value;
+        nes_log_level.value_namespace = name_space;
+        nes_log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "odm-log-level")
+    {
+        odm_log_level = value;
+        odm_log_level.value_namespace = name_space;
+        odm_log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "onep-log-level")
+    {
+        onep_log_level = value;
+        onep_log_level.value_namespace = name_space;
+        onep_log_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sync-log-level")
+    {
+        sync_log_level = value;
+        sync_log_level.value_namespace = name_space;
+        sync_log_level.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciaauthd-log-level")
+    {
+        ciaauthd_log_level.yfilter = yfilter;
+    }
+    if(value_path == "confd-log-level")
+    {
+        confd_log_level.yfilter = yfilter;
+    }
+    if(value_path == "nes-log-level")
+    {
+        nes_log_level.yfilter = yfilter;
+    }
+    if(value_path == "odm-log-level")
+    {
+        odm_log_level.yfilter = yfilter;
+    }
+    if(value_path == "onep-log-level")
+    {
+        onep_log_level.yfilter = yfilter;
+    }
+    if(value_path == "sync-log-level")
+    {
+        sync_log_level.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::Logging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciaauthd-log-level" || name == "confd-log-level" || name == "nes-log-level" || name == "odm-log-level" || name == "onep-log-level" || name == "sync-log-level")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::ParserMsgIgnore::ParserMsgIgnore()
+    :
+    message{YType::str, "message"}
+{
+
+    yang_name = "parser-msg-ignore"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::ParserMsgIgnore::~ParserMsgIgnore()
+{
+}
+
+bool NetconfYang::CiscoIa::ParserMsgIgnore::has_data() const
+{
+    return message.is_set;
+}
+
+bool NetconfYang::CiscoIa::ParserMsgIgnore::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::ParserMsgIgnore::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::ParserMsgIgnore::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parser-msg-ignore" <<"[message='" <<message <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::ParserMsgIgnore::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::ParserMsgIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::ParserMsgIgnore::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::ParserMsgIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::ParserMsgIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::ParserMsgIgnore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::PreserveNedPath::PreserveNedPath()
+    :
+    xpath{YType::str, "xpath"}
+{
+
+    yang_name = "preserve-ned-path"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::PreserveNedPath::~PreserveNedPath()
+{
+}
+
+bool NetconfYang::CiscoIa::PreserveNedPath::has_data() const
+{
+    return xpath.is_set;
+}
+
+bool NetconfYang::CiscoIa::PreserveNedPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(xpath.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::PreserveNedPath::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::PreserveNedPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "preserve-ned-path" <<"[xpath='" <<xpath <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::PreserveNedPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::PreserveNedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::PreserveNedPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::PreserveNedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xpath")
+    {
+        xpath = value;
+        xpath.value_namespace = name_space;
+        xpath.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::PreserveNedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xpath")
+    {
+        xpath.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::PreserveNedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xpath")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::SnmpTrapControl::SnmpTrapControl()
+    :
+    global_forwarding{YType::boolean, "global-forwarding"}
+{
+
+    yang_name = "snmp-trap-control"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::SnmpTrapControl::~SnmpTrapControl()
+{
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::has_data() const
+{
+    for (std::size_t index=0; index<trap_list.size(); index++)
+    {
+        if(trap_list[index]->has_data())
+            return true;
+    }
+    return global_forwarding.is_set;
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::has_operation() const
+{
+    for (std::size_t index=0; index<trap_list.size(); index++)
+    {
+        if(trap_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(global_forwarding.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::SnmpTrapControl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::SnmpTrapControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "snmp-trap-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::SnmpTrapControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global_forwarding.is_set || is_set(global_forwarding.yfilter)) leaf_name_data.push_back(global_forwarding.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "trap-list")
+    {
+        for(auto const & c : trap_list)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<NetconfYang::CiscoIa::SnmpTrapControl::TrapList>();
+        c->parent = this;
+        trap_list.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::SnmpTrapControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : trap_list)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void NetconfYang::CiscoIa::SnmpTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "global-forwarding")
+    {
+        global_forwarding = value;
+        global_forwarding.value_namespace = name_space;
+        global_forwarding.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::SnmpTrapControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-forwarding")
+    {
+        global_forwarding.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-list" || name == "global-forwarding")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::SnmpTrapControl::TrapList::TrapList()
+    :
+    trap_oid{YType::str, "trap-oid"},
+    description{YType::str, "description"},
+    forward{YType::boolean, "forward"}
+{
+
+    yang_name = "trap-list"; yang_parent_name = "snmp-trap-control"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+NetconfYang::CiscoIa::SnmpTrapControl::TrapList::~TrapList()
+{
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_data() const
+{
+    return trap_oid.is_set
+	|| description.is_set
+	|| forward.is_set;
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(trap_oid.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(forward.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/snmp-trap-control/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trap-list" <<"[trap-oid='" <<trap_oid <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (trap_oid.is_set || is_set(trap_oid.yfilter)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (forward.is_set || is_set(forward.yfilter)) leaf_name_data.push_back(forward.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoIa::SnmpTrapControl::TrapList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void NetconfYang::CiscoIa::SnmpTrapControl::TrapList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "trap-oid")
+    {
+        trap_oid = value;
+        trap_oid.value_namespace = name_space;
+        trap_oid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forward")
+    {
+        forward = value;
+        forward.value_namespace = name_space;
+        forward.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::SnmpTrapControl::TrapList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trap-oid")
+    {
+        trap_oid.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "forward")
+    {
+        forward.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::SnmpTrapControl::TrapList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-oid" || name == "description" || name == "forward")
+        return true;
+    return false;
+}
+
 NetconfYang::CiscoOdm::CiscoOdm()
     :
     on_demand_default_time{YType::uint32, "on-demand-default-time"},
     on_demand_enable{YType::boolean, "on-demand-enable"},
     polling_enable{YType::boolean, "polling-enable"}
 {
-    yang_name = "cisco-odm"; yang_parent_name = "netconf-yang";
+
+    yang_name = "cisco-odm"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfYang::CiscoOdm::~CiscoOdm()
@@ -1824,36 +1738,29 @@ bool NetconfYang::CiscoOdm::has_operation() const
 	|| ydk::is_set(polling_enable.yfilter);
 }
 
+std::string NetconfYang::CiscoOdm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfYang::CiscoOdm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-odm:cisco-odm";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::CiscoOdm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoOdm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (on_demand_default_time.is_set || is_set(on_demand_default_time.yfilter)) leaf_name_data.push_back(on_demand_default_time.get_name_leafdata());
     if (on_demand_enable.is_set || is_set(on_demand_enable.yfilter)) leaf_name_data.push_back(on_demand_enable.get_name_leafdata());
     if (polling_enable.is_set || is_set(polling_enable.yfilter)) leaf_name_data.push_back(polling_enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1941,7 +1848,8 @@ NetconfYang::CiscoOdm::Actions::Actions()
     mode{YType::enumeration, "mode"},
     polling_interval{YType::uint32, "polling-interval"}
 {
-    yang_name = "actions"; yang_parent_name = "cisco-odm";
+
+    yang_name = "actions"; yang_parent_name = "cisco-odm"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetconfYang::CiscoOdm::Actions::~Actions()
@@ -1965,27 +1873,22 @@ bool NetconfYang::CiscoOdm::Actions::has_operation() const
 	|| ydk::is_set(polling_interval.yfilter);
 }
 
+std::string NetconfYang::CiscoOdm::Actions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-odm:cisco-odm/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetconfYang::CiscoOdm::Actions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "actions" <<"[action-name='" <<action_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetconfYang::CiscoOdm::Actions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoOdm::Actions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "cisco-self-mgmt:netconf-yang/cisco-odm:cisco-odm/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action_name.is_set || is_set(action_name.yfilter)) leaf_name_data.push_back(action_name.get_name_leafdata());
@@ -1993,9 +1896,7 @@ const EntityPath NetconfYang::CiscoOdm::Actions::get_entity_path(Entity* ancesto
     if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
     if (polling_interval.is_set || is_set(polling_interval.yfilter)) leaf_name_data.push_back(polling_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

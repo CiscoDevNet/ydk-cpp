@@ -19,7 +19,7 @@ Ipv4Virtual::Ipv4Virtual()
 {
     vrfs->parent = this;
 
-    yang_name = "ipv4-virtual"; yang_parent_name = "Cisco-IOS-XR-ipv4-smiap-cfg";
+    yang_name = "ipv4-virtual"; yang_parent_name = "Cisco-IOS-XR-ipv4-smiap-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv4Virtual::~Ipv4Virtual()
@@ -43,27 +43,16 @@ std::string Ipv4Virtual::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-smiap-cfg:ipv4-virtual";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4Virtual::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4Virtual::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (use_as_source_address.is_set || is_set(use_as_source_address.yfilter)) leaf_name_data.push_back(use_as_source_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -144,7 +133,8 @@ bool Ipv4Virtual::has_leaf_or_child_of_name(const std::string & name) const
 
 Ipv4Virtual::Vrfs::Vrfs()
 {
-    yang_name = "vrfs"; yang_parent_name = "ipv4-virtual";
+
+    yang_name = "vrfs"; yang_parent_name = "ipv4-virtual"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv4Virtual::Vrfs::~Vrfs()
@@ -171,33 +161,26 @@ bool Ipv4Virtual::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv4Virtual::Vrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-smiap-cfg:ipv4-virtual/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv4Virtual::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4Virtual::Vrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4Virtual::Vrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-smiap-cfg:ipv4-virtual/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -254,7 +237,8 @@ Ipv4Virtual::Vrfs::Vrf::Vrf()
     	,
     address(nullptr) // presence node
 {
-    yang_name = "vrf"; yang_parent_name = "vrfs";
+
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv4Virtual::Vrfs::Vrf::~Vrf()
@@ -274,34 +258,27 @@ bool Ipv4Virtual::Vrfs::Vrf::has_operation() const
 	|| (address !=  nullptr && address->has_operation());
 }
 
+std::string Ipv4Virtual::Vrfs::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-smiap-cfg:ipv4-virtual/vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv4Virtual::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4Virtual::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4Virtual::Vrfs::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-smiap-cfg:ipv4-virtual/vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -360,7 +337,8 @@ Ipv4Virtual::Vrfs::Vrf::Address::Address()
     address{YType::str, "address"},
     netmask{YType::uint8, "netmask"}
 {
-    yang_name = "address"; yang_parent_name = "vrf";
+
+    yang_name = "address"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv4Virtual::Vrfs::Vrf::Address::~Address()
@@ -384,31 +362,17 @@ std::string Ipv4Virtual::Vrfs::Vrf::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4Virtual::Vrfs::Vrf::Address::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4Virtual::Vrfs::Vrf::Address::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Address' in Cisco_IOS_XR_ipv4_smiap_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

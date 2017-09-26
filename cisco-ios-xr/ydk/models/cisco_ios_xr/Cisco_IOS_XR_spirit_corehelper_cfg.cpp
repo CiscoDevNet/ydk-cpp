@@ -17,7 +17,7 @@ Exception::Exception()
 {
     file->parent = this;
 
-    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-spirit-corehelper-cfg";
+    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-spirit-corehelper-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Exception::~Exception()
@@ -39,26 +39,15 @@ std::string Exception::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-spirit-corehelper-cfg:exception";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Exception::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Exception::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,8 @@ Exception::File::File()
     choice2{YType::str, "choice2"},
     choice3{YType::str, "choice3"}
 {
-    yang_name = "file"; yang_parent_name = "exception";
+
+    yang_name = "file"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Exception::File::~File()
@@ -155,36 +145,29 @@ bool Exception::File::has_operation() const
 	|| ydk::is_set(choice3.yfilter);
 }
 
+std::string Exception::File::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-corehelper-cfg:exception/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Exception::File::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "file";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Exception::File::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Exception::File::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-spirit-corehelper-cfg:exception/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (choice1.is_set || is_set(choice1.yfilter)) leaf_name_data.push_back(choice1.get_name_leafdata());
     if (choice2.is_set || is_set(choice2.yfilter)) leaf_name_data.push_back(choice2.get_name_leafdata());
     if (choice3.is_set || is_set(choice3.yfilter)) leaf_name_data.push_back(choice3.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

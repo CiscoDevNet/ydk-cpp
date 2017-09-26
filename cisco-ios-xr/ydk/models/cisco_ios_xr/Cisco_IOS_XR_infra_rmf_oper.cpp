@@ -17,10 +17,9 @@ Redundancy::Redundancy()
 	,summary(std::make_shared<Redundancy::Summary>())
 {
     nodes->parent = this;
-
     summary->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-rmf-oper";
+    yang_name = "redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-rmf-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Redundancy::~Redundancy()
@@ -44,26 +43,15 @@ std::string Redundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +136,8 @@ bool Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 
 Redundancy::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "redundancy";
+
+    yang_name = "nodes"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Redundancy::Nodes::~Nodes()
@@ -175,33 +164,26 @@ bool Redundancy::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Redundancy::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Redundancy::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -264,7 +246,7 @@ Redundancy::Nodes::Node::Node()
 {
     redundancy->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Redundancy::Nodes::Node::~Node()
@@ -292,27 +274,22 @@ bool Redundancy::Nodes::Node::has_operation() const
 	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
+std::string Redundancy::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Redundancy::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-id='" <<node_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
@@ -321,9 +298,7 @@ const EntityPath Redundancy::Nodes::Node::get_entity_path(Entity* ancestor) cons
     if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
     if (standby_reboot_reason.is_set || is_set(standby_reboot_reason.yfilter)) leaf_name_data.push_back(standby_reboot_reason.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -424,7 +399,8 @@ Redundancy::Nodes::Node::Redundancy_::Redundancy_()
     nsr_state{YType::str, "nsr-state"},
     standby{YType::str, "standby"}
 {
-    yang_name = "redundancy"; yang_parent_name = "node";
+
+    yang_name = "redundancy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Redundancy::Nodes::Node::Redundancy_::~Redundancy_()
@@ -462,23 +438,11 @@ std::string Redundancy::Nodes::Node::Redundancy_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Nodes::Node::Redundancy_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::Redundancy_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redundancy_' in Cisco_IOS_XR_infra_rmf_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
@@ -486,9 +450,7 @@ const EntityPath Redundancy::Nodes::Node::Redundancy_::get_entity_path(Entity* a
     if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
     if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -586,7 +548,8 @@ Redundancy::Nodes::Node::Redundancy_::Groupinfo::Groupinfo()
     nsr_state{YType::str, "nsr-state"},
     standby{YType::str, "standby"}
 {
-    yang_name = "groupinfo"; yang_parent_name = "redundancy";
+
+    yang_name = "groupinfo"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Redundancy::Nodes::Node::Redundancy_::Groupinfo::~Groupinfo()
@@ -614,23 +577,11 @@ std::string Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "groupinfo";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Groupinfo' in Cisco_IOS_XR_infra_rmf_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
@@ -638,9 +589,7 @@ const EntityPath Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_entity_pat
     if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
     if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -714,7 +663,8 @@ Redundancy::Summary::Summary()
     :
     err_log{YType::str, "err-log"}
 {
-    yang_name = "summary"; yang_parent_name = "redundancy";
+
+    yang_name = "summary"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Redundancy::Summary::~Summary()
@@ -742,34 +692,27 @@ bool Redundancy::Summary::has_operation() const
 	|| ydk::is_set(err_log.yfilter);
 }
 
+std::string Redundancy::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Redundancy::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Summary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (err_log.is_set || is_set(err_log.yfilter)) leaf_name_data.push_back(err_log.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -837,7 +780,8 @@ Redundancy::Summary::RedPair::RedPair()
     nsr_state{YType::str, "nsr-state"},
     standby{YType::str, "standby"}
 {
-    yang_name = "red-pair"; yang_parent_name = "summary";
+
+    yang_name = "red-pair"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Redundancy::Summary::RedPair::~RedPair()
@@ -871,27 +815,22 @@ bool Redundancy::Summary::RedPair::has_operation() const
 	|| ydk::is_set(standby.yfilter);
 }
 
+std::string Redundancy::Summary::RedPair::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Redundancy::Summary::RedPair::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "red-pair";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Summary::RedPair::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::RedPair::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
@@ -899,9 +838,7 @@ const EntityPath Redundancy::Summary::RedPair::get_entity_path(Entity* ancestor)
     if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
     if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -999,7 +936,8 @@ Redundancy::Summary::RedPair::Groupinfo::Groupinfo()
     nsr_state{YType::str, "nsr-state"},
     standby{YType::str, "standby"}
 {
-    yang_name = "groupinfo"; yang_parent_name = "red-pair";
+
+    yang_name = "groupinfo"; yang_parent_name = "red-pair"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Redundancy::Summary::RedPair::Groupinfo::~Groupinfo()
@@ -1023,27 +961,22 @@ bool Redundancy::Summary::RedPair::Groupinfo::has_operation() const
 	|| ydk::is_set(standby.yfilter);
 }
 
+std::string Redundancy::Summary::RedPair::Groupinfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/summary/red-pair/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Redundancy::Summary::RedPair::Groupinfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groupinfo";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Redundancy::Summary::RedPair::Groupinfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::RedPair::Groupinfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-rmf-oper:redundancy/summary/red-pair/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
@@ -1051,9 +984,7 @@ const EntityPath Redundancy::Summary::RedPair::Groupinfo::get_entity_path(Entity
     if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
     if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

@@ -3,6 +3,8 @@
 
 #include <map>
 #include <string>
+#include <vector>
+#include <unordered_map>
 
 namespace cisco_ios_xe
 {

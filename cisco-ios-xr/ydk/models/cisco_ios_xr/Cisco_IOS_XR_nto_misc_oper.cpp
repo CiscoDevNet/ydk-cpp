@@ -17,7 +17,7 @@ MemorySummary::MemorySummary()
 {
     nodes->parent = this;
 
-    yang_name = "memory-summary"; yang_parent_name = "Cisco-IOS-XR-nto-misc-oper";
+    yang_name = "memory-summary"; yang_parent_name = "Cisco-IOS-XR-nto-misc-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MemorySummary::~MemorySummary()
@@ -39,26 +39,15 @@ std::string MemorySummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-nto-misc-oper:memory-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemorySummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemorySummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool MemorySummary::has_leaf_or_child_of_name(const std::string & name) const
 
 MemorySummary::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "memory-summary";
+
+    yang_name = "nodes"; yang_parent_name = "memory-summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MemorySummary::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool MemorySummary::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MemorySummary::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-nto-misc-oper:memory-summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MemorySummary::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemorySummary::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-nto-misc-oper:memory-summary/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,10 +224,9 @@ MemorySummary::Nodes::Node::Node()
 	,summary(std::make_shared<MemorySummary::Nodes::Node::Summary>())
 {
     detail->parent = this;
-
     summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MemorySummary::Nodes::Node::~Node()
@@ -266,34 +248,27 @@ bool MemorySummary::Nodes::Node::has_operation() const
 	|| (summary !=  nullptr && summary->has_operation());
 }
 
+std::string MemorySummary::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MemorySummary::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemorySummary::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -361,221 +336,6 @@ bool MemorySummary::Nodes::Node::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
-MemorySummary::Nodes::Node::Summary::Summary()
-    :
-    boot_ram_size{YType::uint64, "boot-ram-size"},
-    flash_system{YType::uint64, "flash-system"},
-    free_application_memory{YType::uint64, "free-application-memory"},
-    free_physical_memory{YType::uint64, "free-physical-memory"},
-    image_memory{YType::uint64, "image-memory"},
-    io_memory{YType::uint64, "io-memory"},
-    page_size{YType::uint32, "page-size"},
-    ram_memory{YType::uint64, "ram-memory"},
-    reserved_memory{YType::uint64, "reserved-memory"},
-    system_ram_memory{YType::uint64, "system-ram-memory"}
-{
-    yang_name = "summary"; yang_parent_name = "node";
-}
-
-MemorySummary::Nodes::Node::Summary::~Summary()
-{
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_data() const
-{
-    return boot_ram_size.is_set
-	|| flash_system.is_set
-	|| free_application_memory.is_set
-	|| free_physical_memory.is_set
-	|| image_memory.is_set
-	|| io_memory.is_set
-	|| page_size.is_set
-	|| ram_memory.is_set
-	|| reserved_memory.is_set
-	|| system_ram_memory.is_set;
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(boot_ram_size.yfilter)
-	|| ydk::is_set(flash_system.yfilter)
-	|| ydk::is_set(free_application_memory.yfilter)
-	|| ydk::is_set(free_physical_memory.yfilter)
-	|| ydk::is_set(image_memory.yfilter)
-	|| ydk::is_set(io_memory.yfilter)
-	|| ydk::is_set(page_size.yfilter)
-	|| ydk::is_set(ram_memory.yfilter)
-	|| ydk::is_set(reserved_memory.yfilter)
-	|| ydk::is_set(system_ram_memory.yfilter);
-}
-
-std::string MemorySummary::Nodes::Node::Summary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MemorySummary::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_nto_misc_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
-    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
-    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
-    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
-    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
-    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
-    if (page_size.is_set || is_set(page_size.yfilter)) leaf_name_data.push_back(page_size.get_name_leafdata());
-    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
-    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
-    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MemorySummary::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "boot-ram-size")
-    {
-        boot_ram_size = value;
-        boot_ram_size.value_namespace = name_space;
-        boot_ram_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system = value;
-        flash_system.value_namespace = name_space;
-        flash_system.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory = value;
-        free_application_memory.value_namespace = name_space;
-        free_application_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "free-physical-memory")
-    {
-        free_physical_memory = value;
-        free_physical_memory.value_namespace = name_space;
-        free_physical_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "image-memory")
-    {
-        image_memory = value;
-        image_memory.value_namespace = name_space;
-        image_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "io-memory")
-    {
-        io_memory = value;
-        io_memory.value_namespace = name_space;
-        io_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "page-size")
-    {
-        page_size = value;
-        page_size.value_namespace = name_space;
-        page_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory = value;
-        ram_memory.value_namespace = name_space;
-        ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory = value;
-        reserved_memory.value_namespace = name_space;
-        reserved_memory.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory = value;
-        system_ram_memory.value_namespace = name_space;
-        system_ram_memory.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MemorySummary::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "boot-ram-size")
-    {
-        boot_ram_size.yfilter = yfilter;
-    }
-    if(value_path == "flash-system")
-    {
-        flash_system.yfilter = yfilter;
-    }
-    if(value_path == "free-application-memory")
-    {
-        free_application_memory.yfilter = yfilter;
-    }
-    if(value_path == "free-physical-memory")
-    {
-        free_physical_memory.yfilter = yfilter;
-    }
-    if(value_path == "image-memory")
-    {
-        image_memory.yfilter = yfilter;
-    }
-    if(value_path == "io-memory")
-    {
-        io_memory.yfilter = yfilter;
-    }
-    if(value_path == "page-size")
-    {
-        page_size.yfilter = yfilter;
-    }
-    if(value_path == "ram-memory")
-    {
-        ram_memory.yfilter = yfilter;
-    }
-    if(value_path == "reserved-memory")
-    {
-        reserved_memory.yfilter = yfilter;
-    }
-    if(value_path == "system-ram-memory")
-    {
-        system_ram_memory.yfilter = yfilter;
-    }
-}
-
-bool MemorySummary::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "boot-ram-size" || name == "flash-system" || name == "free-application-memory" || name == "free-physical-memory" || name == "image-memory" || name == "io-memory" || name == "page-size" || name == "ram-memory" || name == "reserved-memory" || name == "system-ram-memory")
-        return true;
-    return false;
-}
-
 MemorySummary::Nodes::Node::Detail::Detail()
     :
     allocated_memory{YType::uint64, "allocated-memory"},
@@ -595,7 +355,8 @@ MemorySummary::Nodes::Node::Detail::Detail()
     system_ram_memory{YType::uint64, "system-ram-memory"},
     total_shared_window{YType::uint64, "total-shared-window"}
 {
-    yang_name = "detail"; yang_parent_name = "node";
+
+    yang_name = "detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MemorySummary::Nodes::Node::Detail::~Detail()
@@ -657,23 +418,11 @@ std::string MemorySummary::Nodes::Node::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemorySummary::Nodes::Node::Detail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Detail' in Cisco_IOS_XR_nto_misc_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allocated_memory.is_set || is_set(allocated_memory.yfilter)) leaf_name_data.push_back(allocated_memory.get_name_leafdata());
@@ -693,9 +442,7 @@ const EntityPath MemorySummary::Nodes::Node::Detail::get_entity_path(Entity* anc
     if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
     if (total_shared_window.is_set || is_set(total_shared_window.yfilter)) leaf_name_data.push_back(total_shared_window.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -911,7 +658,8 @@ MemorySummary::Nodes::Node::Detail::SharedWindow::SharedWindow()
     shared_window{YType::str, "shared-window"},
     window_size{YType::uint64, "window-size"}
 {
-    yang_name = "shared-window"; yang_parent_name = "detail";
+
+    yang_name = "shared-window"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MemorySummary::Nodes::Node::Detail::SharedWindow::~SharedWindow()
@@ -935,31 +683,17 @@ std::string MemorySummary::Nodes::Node::Detail::SharedWindow::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-window";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MemorySummary::Nodes::Node::Detail::SharedWindow::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detail::SharedWindow::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SharedWindow' in Cisco_IOS_XR_nto_misc_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (shared_window.is_set || is_set(shared_window.yfilter)) leaf_name_data.push_back(shared_window.get_name_leafdata());
     if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1005,6 +739,208 @@ void MemorySummary::Nodes::Node::Detail::SharedWindow::set_filter(const std::str
 bool MemorySummary::Nodes::Node::Detail::SharedWindow::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "shared-window" || name == "window-size")
+        return true;
+    return false;
+}
+
+MemorySummary::Nodes::Node::Summary::Summary()
+    :
+    boot_ram_size{YType::uint64, "boot-ram-size"},
+    flash_system{YType::uint64, "flash-system"},
+    free_application_memory{YType::uint64, "free-application-memory"},
+    free_physical_memory{YType::uint64, "free-physical-memory"},
+    image_memory{YType::uint64, "image-memory"},
+    io_memory{YType::uint64, "io-memory"},
+    page_size{YType::uint32, "page-size"},
+    ram_memory{YType::uint64, "ram-memory"},
+    reserved_memory{YType::uint64, "reserved-memory"},
+    system_ram_memory{YType::uint64, "system-ram-memory"}
+{
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MemorySummary::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_data() const
+{
+    return boot_ram_size.is_set
+	|| flash_system.is_set
+	|| free_application_memory.is_set
+	|| free_physical_memory.is_set
+	|| image_memory.is_set
+	|| io_memory.is_set
+	|| page_size.is_set
+	|| ram_memory.is_set
+	|| reserved_memory.is_set
+	|| system_ram_memory.is_set;
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(boot_ram_size.yfilter)
+	|| ydk::is_set(flash_system.yfilter)
+	|| ydk::is_set(free_application_memory.yfilter)
+	|| ydk::is_set(free_physical_memory.yfilter)
+	|| ydk::is_set(image_memory.yfilter)
+	|| ydk::is_set(io_memory.yfilter)
+	|| ydk::is_set(page_size.yfilter)
+	|| ydk::is_set(ram_memory.yfilter)
+	|| ydk::is_set(reserved_memory.yfilter)
+	|| ydk::is_set(system_ram_memory.yfilter);
+}
+
+std::string MemorySummary::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (boot_ram_size.is_set || is_set(boot_ram_size.yfilter)) leaf_name_data.push_back(boot_ram_size.get_name_leafdata());
+    if (flash_system.is_set || is_set(flash_system.yfilter)) leaf_name_data.push_back(flash_system.get_name_leafdata());
+    if (free_application_memory.is_set || is_set(free_application_memory.yfilter)) leaf_name_data.push_back(free_application_memory.get_name_leafdata());
+    if (free_physical_memory.is_set || is_set(free_physical_memory.yfilter)) leaf_name_data.push_back(free_physical_memory.get_name_leafdata());
+    if (image_memory.is_set || is_set(image_memory.yfilter)) leaf_name_data.push_back(image_memory.get_name_leafdata());
+    if (io_memory.is_set || is_set(io_memory.yfilter)) leaf_name_data.push_back(io_memory.get_name_leafdata());
+    if (page_size.is_set || is_set(page_size.yfilter)) leaf_name_data.push_back(page_size.get_name_leafdata());
+    if (ram_memory.is_set || is_set(ram_memory.yfilter)) leaf_name_data.push_back(ram_memory.get_name_leafdata());
+    if (reserved_memory.is_set || is_set(reserved_memory.yfilter)) leaf_name_data.push_back(reserved_memory.get_name_leafdata());
+    if (system_ram_memory.is_set || is_set(system_ram_memory.yfilter)) leaf_name_data.push_back(system_ram_memory.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MemorySummary::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size = value;
+        boot_ram_size.value_namespace = name_space;
+        boot_ram_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flash-system")
+    {
+        flash_system = value;
+        flash_system.value_namespace = name_space;
+        flash_system.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory = value;
+        free_application_memory.value_namespace = name_space;
+        free_application_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "free-physical-memory")
+    {
+        free_physical_memory = value;
+        free_physical_memory.value_namespace = name_space;
+        free_physical_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "image-memory")
+    {
+        image_memory = value;
+        image_memory.value_namespace = name_space;
+        image_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "io-memory")
+    {
+        io_memory = value;
+        io_memory.value_namespace = name_space;
+        io_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "page-size")
+    {
+        page_size = value;
+        page_size.value_namespace = name_space;
+        page_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ram-memory")
+    {
+        ram_memory = value;
+        ram_memory.value_namespace = name_space;
+        ram_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory = value;
+        reserved_memory.value_namespace = name_space;
+        reserved_memory.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory = value;
+        system_ram_memory.value_namespace = name_space;
+        system_ram_memory.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MemorySummary::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "boot-ram-size")
+    {
+        boot_ram_size.yfilter = yfilter;
+    }
+    if(value_path == "flash-system")
+    {
+        flash_system.yfilter = yfilter;
+    }
+    if(value_path == "free-application-memory")
+    {
+        free_application_memory.yfilter = yfilter;
+    }
+    if(value_path == "free-physical-memory")
+    {
+        free_physical_memory.yfilter = yfilter;
+    }
+    if(value_path == "image-memory")
+    {
+        image_memory.yfilter = yfilter;
+    }
+    if(value_path == "io-memory")
+    {
+        io_memory.yfilter = yfilter;
+    }
+    if(value_path == "page-size")
+    {
+        page_size.yfilter = yfilter;
+    }
+    if(value_path == "ram-memory")
+    {
+        ram_memory.yfilter = yfilter;
+    }
+    if(value_path == "reserved-memory")
+    {
+        reserved_memory.yfilter = yfilter;
+    }
+    if(value_path == "system-ram-memory")
+    {
+        system_ram_memory.yfilter = yfilter;
+    }
+}
+
+bool MemorySummary::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "boot-ram-size" || name == "flash-system" || name == "free-application-memory" || name == "free-physical-memory" || name == "image-memory" || name == "io-memory" || name == "page-size" || name == "ram-memory" || name == "reserved-memory" || name == "system-ram-memory")
         return true;
     return false;
 }

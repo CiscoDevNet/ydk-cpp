@@ -18,7 +18,7 @@ class ExplicitPaths : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class ExplicitPaths : public ydk::Entity
         class Identifiers; //type: ExplicitPaths::Identifiers
         class Names; //type: ExplicitPaths::Names
 
-        std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers> identifiers;
-        std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names> names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers> identifiers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names> names;
         
 }; // ExplicitPaths
 
@@ -48,17 +48,18 @@ class ExplicitPaths::Identifiers : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Identifier; //type: ExplicitPaths::Identifiers::Identifier
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier> > identifier;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier> > identifier;
         
 }; // ExplicitPaths::Identifiers
 
@@ -71,19 +72,20 @@ class ExplicitPaths::Identifiers::Identifier : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf identifier_id; //type: int32
         ydk::YLeaf status; //type: IepStatus
         class Address; //type: ExplicitPaths::Identifiers::Identifier::Address
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier::Address> > address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier::Address> > address;
         
 }; // ExplicitPaths::Identifiers::Identifier
 
@@ -96,7 +98,7 @@ class ExplicitPaths::Identifiers::Identifier::Address : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -122,17 +124,18 @@ class ExplicitPaths::Names : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Name; //type: ExplicitPaths::Names::Name
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name> > name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name> > name;
         
 }; // ExplicitPaths::Names
 
@@ -145,19 +148,20 @@ class ExplicitPaths::Names::Name : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf path_name; //type: string
         ydk::YLeaf status; //type: IepStatus
         class Address; //type: ExplicitPaths::Names::Name::Address
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name::Address> > address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name::Address> > address;
         
 }; // ExplicitPaths::Names::Name
 
@@ -170,7 +174,7 @@ class ExplicitPaths::Names::Name::Address : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -187,19 +191,19 @@ class ExplicitPaths::Names::Name::Address : public ydk::Entity
 
 }; // ExplicitPaths::Names::Name::Address
 
-class IepStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
 class IepHop : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
+
+};
+
+class IepStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_efp_oper {
 
 EfpStats::EfpStats()
 {
-    yang_name = "efp-stats"; yang_parent_name = "Cisco-IOS-XE-efp-oper";
+
+    yang_name = "efp-stats"; yang_parent_name = "Cisco-IOS-XE-efp-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 EfpStats::~EfpStats()
@@ -44,26 +45,15 @@ std::string EfpStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-efp-oper:efp-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EfpStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EfpStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +138,8 @@ EfpStats::EfpStat::EfpStat()
     out_bytes{YType::uint64, "out-bytes"},
     out_pkts{YType::uint64, "out-pkts"}
 {
-    yang_name = "efp-stat"; yang_parent_name = "efp-stats";
+
+    yang_name = "efp-stat"; yang_parent_name = "efp-stats"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EfpStats::EfpStat::~EfpStat()
@@ -176,27 +167,22 @@ bool EfpStats::EfpStat::has_operation() const
 	|| ydk::is_set(out_pkts.yfilter);
 }
 
+std::string EfpStats::EfpStat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-efp-oper:efp-stats/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EfpStats::EfpStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "efp-stat" <<"[id='" <<id <<"']" <<"[interface='" <<interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EfpStats::EfpStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EfpStats::EfpStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-efp-oper:efp-stats/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
@@ -206,9 +192,7 @@ const EntityPath EfpStats::EfpStat::get_entity_path(Entity* ancestor) const
     if (out_bytes.is_set || is_set(out_bytes.yfilter)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
     if (out_pkts.is_set || is_set(out_pkts.yfilter)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

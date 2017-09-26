@@ -11,17 +11,17 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace MPLS_TC_MIB {
 
-const Enum::YLeaf Mplsinitialcreationsource::other {1, "other"};
-const Enum::YLeaf Mplsinitialcreationsource::snmp {2, "snmp"};
-const Enum::YLeaf Mplsinitialcreationsource::ldp {3, "ldp"};
-const Enum::YLeaf Mplsinitialcreationsource::rsvp {4, "rsvp"};
-const Enum::YLeaf Mplsinitialcreationsource::crldp {5, "crldp"};
-const Enum::YLeaf Mplsinitialcreationsource::policyAgent {6, "policyAgent"};
-const Enum::YLeaf Mplsinitialcreationsource::unknown {7, "unknown"};
+const Enum::YLeaf MplsLdpLabelTypes::generic {1, "generic"};
+const Enum::YLeaf MplsLdpLabelTypes::atm {2, "atm"};
+const Enum::YLeaf MplsLdpLabelTypes::frameRelay {3, "frameRelay"};
 
-const Enum::YLeaf Mplsldplabeltypes::generic {1, "generic"};
-const Enum::YLeaf Mplsldplabeltypes::atm {2, "atm"};
-const Enum::YLeaf Mplsldplabeltypes::frameRelay {3, "frameRelay"};
+const Enum::YLeaf MplsInitialCreationSource::other {1, "other"};
+const Enum::YLeaf MplsInitialCreationSource::snmp {2, "snmp"};
+const Enum::YLeaf MplsInitialCreationSource::ldp {3, "ldp"};
+const Enum::YLeaf MplsInitialCreationSource::rsvp {4, "rsvp"};
+const Enum::YLeaf MplsInitialCreationSource::crldp {5, "crldp"};
+const Enum::YLeaf MplsInitialCreationSource::policyAgent {6, "policyAgent"};
+const Enum::YLeaf MplsInitialCreationSource::unknown {7, "unknown"};
 
 
 }

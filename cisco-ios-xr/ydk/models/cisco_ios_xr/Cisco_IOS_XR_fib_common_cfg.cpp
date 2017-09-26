@@ -19,10 +19,9 @@ Fib::Fib()
 	,platform(std::make_shared<Fib::Platform>())
 {
     pbts_forward_class_fallbacks->parent = this;
-
     platform->parent = this;
 
-    yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-cfg";
+    yang_name = "fib"; yang_parent_name = "Cisco-IOS-XR-fib-common-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Fib::~Fib()
@@ -48,27 +47,16 @@ std::string Fib::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fib::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prefer_aib_routes.is_set || is_set(prefer_aib_routes.yfilter)) leaf_name_data.push_back(prefer_aib_routes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -163,7 +151,8 @@ bool Fib::has_leaf_or_child_of_name(const std::string & name) const
 
 Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallbacks()
 {
-    yang_name = "pbts-forward-class-fallbacks"; yang_parent_name = "fib";
+
+    yang_name = "pbts-forward-class-fallbacks"; yang_parent_name = "fib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fib::PbtsForwardClassFallbacks::~PbtsForwardClassFallbacks()
@@ -190,33 +179,26 @@ bool Fib::PbtsForwardClassFallbacks::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Fib::PbtsForwardClassFallbacks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fib::PbtsForwardClassFallbacks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-forward-class-fallbacks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fib::PbtsForwardClassFallbacks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fib::PbtsForwardClassFallbacks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -273,7 +255,8 @@ Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::PbtsForwardClassFallba
     fallback_class_number_array{YType::uint32, "fallback-class-number-array"},
     fallback_type{YType::enumeration, "fallback-type"}
 {
-    yang_name = "pbts-forward-class-fallback"; yang_parent_name = "pbts-forward-class-fallbacks";
+
+    yang_name = "pbts-forward-class-fallback"; yang_parent_name = "pbts-forward-class-fallbacks"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::~PbtsForwardClassFallback()
@@ -304,27 +287,22 @@ bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_operation() c
 	|| ydk::is_set(fallback_type.yfilter);
 }
 
+std::string Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/pbts-forward-class-fallbacks/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-forward-class-fallback" <<"[forward-class-number='" <<forward_class_number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/pbts-forward-class-fallbacks/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (forward_class_number.is_set || is_set(forward_class_number.yfilter)) leaf_name_data.push_back(forward_class_number.get_name_leafdata());
@@ -332,9 +310,7 @@ const EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_e
 
     auto fallback_class_number_array_name_datas = fallback_class_number_array.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), fallback_class_number_array_name_datas.begin(), fallback_class_number_array_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -398,7 +374,7 @@ Fib::Platform::Platform()
 {
     label_switched_multicast->parent = this;
 
-    yang_name = "platform"; yang_parent_name = "fib";
+    yang_name = "platform"; yang_parent_name = "fib"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fib::Platform::~Platform()
@@ -416,33 +392,26 @@ bool Fib::Platform::has_operation() const
 	|| (label_switched_multicast !=  nullptr && label_switched_multicast->has_operation());
 }
 
+std::string Fib::Platform::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fib::Platform::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "platform";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fib::Platform::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fib::Platform::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -490,7 +459,8 @@ Fib::Platform::LabelSwitchedMulticast::LabelSwitchedMulticast()
     :
     frr_holdtime{YType::uint32, "frr-holdtime"}
 {
-    yang_name = "label-switched-multicast"; yang_parent_name = "platform";
+
+    yang_name = "label-switched-multicast"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fib::Platform::LabelSwitchedMulticast::~LabelSwitchedMulticast()
@@ -508,34 +478,27 @@ bool Fib::Platform::LabelSwitchedMulticast::has_operation() const
 	|| ydk::is_set(frr_holdtime.yfilter);
 }
 
+std::string Fib::Platform::LabelSwitchedMulticast::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/platform/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fib::Platform::LabelSwitchedMulticast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "label-switched-multicast";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fib::Platform::LabelSwitchedMulticast::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fib::Platform::LabelSwitchedMulticast::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-fib-common-cfg:fib/platform/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (frr_holdtime.is_set || is_set(frr_holdtime.yfilter)) leaf_name_data.push_back(frr_holdtime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

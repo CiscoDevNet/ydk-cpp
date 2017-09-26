@@ -13,7 +13,8 @@ namespace Cisco_IOS_XE_platform_oper {
 
 Components::Components()
 {
-    yang_name = "components"; yang_parent_name = "Cisco-IOS-XE-platform-oper";
+
+    yang_name = "components"; yang_parent_name = "Cisco-IOS-XE-platform-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Components::~Components()
@@ -44,26 +45,15 @@ std::string Components::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-platform-oper:components";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Components::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Components::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,12 +138,10 @@ Components::Component::Component()
 	,state(std::make_shared<Components::Component::State>())
 {
     platform_properties->parent = this;
-
     platform_subcomponents->parent = this;
-
     state->parent = this;
 
-    yang_name = "component"; yang_parent_name = "components";
+    yang_name = "component"; yang_parent_name = "components"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Components::Component::~Component()
@@ -177,34 +165,27 @@ bool Components::Component::has_operation() const
 	|| (state !=  nullptr && state->has_operation());
 }
 
+std::string Components::Component::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-oper:components/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Components::Component::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "component" <<"[cname='" <<cname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Components::Component::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Components::Component::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-oper:components/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cname.is_set || is_set(cname.yfilter)) leaf_name_data.push_back(cname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -286,6 +267,537 @@ bool Components::Component::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
+Components::Component::PlatformProperties::PlatformProperties()
+{
+
+    yang_name = "platform-properties"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::PlatformProperties::~PlatformProperties()
+{
+}
+
+bool Components::Component::PlatformProperties::has_data() const
+{
+    for (std::size_t index=0; index<platform_property.size(); index++)
+    {
+        if(platform_property[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Components::Component::PlatformProperties::has_operation() const
+{
+    for (std::size_t index=0; index<platform_property.size(); index++)
+    {
+        if(platform_property[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Components::Component::PlatformProperties::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "platform-properties";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformProperties::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "platform-property")
+    {
+        for(auto const & c : platform_property)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
+        c->parent = this;
+        platform_property.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : platform_property)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Components::Component::PlatformProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Components::Component::PlatformProperties::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Components::Component::PlatformProperties::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "platform-property")
+        return true;
+    return false;
+}
+
+Components::Component::PlatformProperties::PlatformProperty::PlatformProperty()
+    :
+    name{YType::str, "name"},
+    configurable{YType::boolean, "configurable"},
+    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
+    	,
+    value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>())
+{
+    value_->parent = this;
+
+    yang_name = "platform-property"; yang_parent_name = "platform-properties"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::PlatformProperties::PlatformProperty::~PlatformProperty()
+{
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::has_data() const
+{
+    return name.is_set
+	|| configurable.is_set
+	|| parent_platform_component_cname_key.is_set
+	|| (value_ !=  nullptr && value_->has_data());
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(configurable.yfilter)
+	|| ydk::is_set(parent_platform_component_cname_key.yfilter)
+	|| (value_ !=  nullptr && value_->has_operation());
+}
+
+std::string Components::Component::PlatformProperties::PlatformProperty::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "platform-property" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformProperties::PlatformProperty::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (configurable.is_set || is_set(configurable.yfilter)) leaf_name_data.push_back(configurable.get_name_leafdata());
+    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "value")
+    {
+        if(value_ == nullptr)
+        {
+            value_ = std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>();
+        }
+        return value_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(value_ != nullptr)
+    {
+        children["value"] = value_;
+    }
+
+    return children;
+}
+
+void Components::Component::PlatformProperties::PlatformProperty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configurable")
+    {
+        configurable = value;
+        configurable.value_namespace = name_space;
+        configurable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-platform-component-cname-key")
+    {
+        parent_platform_component_cname_key = value;
+        parent_platform_component_cname_key.value_namespace = name_space;
+        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::PlatformProperties::PlatformProperty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "configurable")
+    {
+        configurable.yfilter = yfilter;
+    }
+    if(value_path == "parent-platform-component-cname-key")
+    {
+        parent_platform_component_cname_key.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "name" || name == "configurable" || name == "parent-platform-component-cname-key")
+        return true;
+    return false;
+}
+
+Components::Component::PlatformProperties::PlatformProperty::Value_::Value_()
+    :
+    boolean{YType::boolean, "boolean"},
+    decimal{YType::str, "decimal"},
+    intsixfour{YType::int64, "intsixfour"},
+    string{YType::str, "string"},
+    uintsixfour{YType::uint64, "uintsixfour"}
+{
+
+    yang_name = "value"; yang_parent_name = "platform-property"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::PlatformProperties::PlatformProperty::Value_::~Value_()
+{
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_data() const
+{
+    return boolean.is_set
+	|| decimal.is_set
+	|| intsixfour.is_set
+	|| string.is_set
+	|| uintsixfour.is_set;
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(boolean.yfilter)
+	|| ydk::is_set(decimal.yfilter)
+	|| ydk::is_set(intsixfour.yfilter)
+	|| ydk::is_set(string.yfilter)
+	|| ydk::is_set(uintsixfour.yfilter);
+}
+
+std::string Components::Component::PlatformProperties::PlatformProperty::Value_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "value";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformProperties::PlatformProperty::Value_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (boolean.is_set || is_set(boolean.yfilter)) leaf_name_data.push_back(boolean.get_name_leafdata());
+    if (decimal.is_set || is_set(decimal.yfilter)) leaf_name_data.push_back(decimal.get_name_leafdata());
+    if (intsixfour.is_set || is_set(intsixfour.yfilter)) leaf_name_data.push_back(intsixfour.get_name_leafdata());
+    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
+    if (uintsixfour.is_set || is_set(uintsixfour.yfilter)) leaf_name_data.push_back(uintsixfour.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::Value_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Components::Component::PlatformProperties::PlatformProperty::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "boolean")
+    {
+        boolean = value;
+        boolean.value_namespace = name_space;
+        boolean.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "decimal")
+    {
+        decimal = value;
+        decimal.value_namespace = name_space;
+        decimal.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intsixfour")
+    {
+        intsixfour = value;
+        intsixfour.value_namespace = name_space;
+        intsixfour.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "string")
+    {
+        string = value;
+        string.value_namespace = name_space;
+        string.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uintsixfour")
+    {
+        uintsixfour = value;
+        uintsixfour.value_namespace = name_space;
+        uintsixfour.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::PlatformProperties::PlatformProperty::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "boolean")
+    {
+        boolean.yfilter = yfilter;
+    }
+    if(value_path == "decimal")
+    {
+        decimal.yfilter = yfilter;
+    }
+    if(value_path == "intsixfour")
+    {
+        intsixfour.yfilter = yfilter;
+    }
+    if(value_path == "string")
+    {
+        string.yfilter = yfilter;
+    }
+    if(value_path == "uintsixfour")
+    {
+        uintsixfour.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "boolean" || name == "decimal" || name == "intsixfour" || name == "string" || name == "uintsixfour")
+        return true;
+    return false;
+}
+
+Components::Component::PlatformSubcomponents::PlatformSubcomponents()
+{
+
+    yang_name = "platform-subcomponents"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::PlatformSubcomponents::~PlatformSubcomponents()
+{
+}
+
+bool Components::Component::PlatformSubcomponents::has_data() const
+{
+    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
+    {
+        if(platform_subcomponent[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Components::Component::PlatformSubcomponents::has_operation() const
+{
+    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
+    {
+        if(platform_subcomponent[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Components::Component::PlatformSubcomponents::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "platform-subcomponents";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformSubcomponents::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "platform-subcomponent")
+    {
+        for(auto const & c : platform_subcomponent)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
+        c->parent = this;
+        platform_subcomponent.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : platform_subcomponent)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Components::Component::PlatformSubcomponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Components::Component::PlatformSubcomponents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Components::Component::PlatformSubcomponents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "platform-subcomponent")
+        return true;
+    return false;
+}
+
+Components::Component::PlatformSubcomponents::PlatformSubcomponent::PlatformSubcomponent()
+    :
+    name{YType::str, "name"},
+    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
+{
+
+    yang_name = "platform-subcomponent"; yang_parent_name = "platform-subcomponents"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Components::Component::PlatformSubcomponents::PlatformSubcomponent::~PlatformSubcomponent()
+{
+}
+
+bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_data() const
+{
+    return name.is_set
+	|| parent_platform_component_cname_key.is_set;
+}
+
+bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(parent_platform_component_cname_key.yfilter);
+}
+
+std::string Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "platform-subcomponent" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-platform-component-cname-key")
+    {
+        parent_platform_component_cname_key = value;
+        parent_platform_component_cname_key.value_namespace = name_space;
+        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "parent-platform-component-cname-key")
+    {
+        parent_platform_component_cname_key.yfilter = yfilter;
+    }
+}
+
+bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "parent-platform-component-cname-key")
+        return true;
+    return false;
+}
+
 Components::Component::State::State()
     :
     description{YType::str, "description"},
@@ -300,7 +812,7 @@ Components::Component::State::State()
 {
     temp->parent = this;
 
-    yang_name = "state"; yang_parent_name = "component";
+    yang_name = "state"; yang_parent_name = "component"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Components::Component::State::~State()
@@ -336,23 +848,11 @@ std::string Components::Component::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Components::Component::State::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Components::Component::State::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
@@ -363,9 +863,7 @@ const EntityPath Components::Component::State::get_entity_path(Entity* ancestor)
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -486,7 +984,8 @@ Components::Component::State::Temp::Temp()
     temp_max{YType::str, "temp-max"},
     temp_min{YType::str, "temp-min"}
 {
-    yang_name = "temp"; yang_parent_name = "state";
+
+    yang_name = "temp"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Components::Component::State::Temp::~Temp()
@@ -514,23 +1013,11 @@ std::string Components::Component::State::Temp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "temp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Components::Component::State::Temp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Components::Component::State::Temp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Temp' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (temp_avg.is_set || is_set(temp_avg.yfilter)) leaf_name_data.push_back(temp_avg.get_name_leafdata());
@@ -538,9 +1025,7 @@ const EntityPath Components::Component::State::Temp::get_entity_path(Entity* anc
     if (temp_max.is_set || is_set(temp_max.yfilter)) leaf_name_data.push_back(temp_max.get_name_leafdata());
     if (temp_min.is_set || is_set(temp_min.yfilter)) leaf_name_data.push_back(temp_min.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -606,603 +1091,6 @@ void Components::Component::State::Temp::set_filter(const std::string & value_pa
 bool Components::Component::State::Temp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "temp-avg" || name == "temp-instant" || name == "temp-max" || name == "temp-min")
-        return true;
-    return false;
-}
-
-Components::Component::PlatformProperties::PlatformProperties()
-{
-    yang_name = "platform-properties"; yang_parent_name = "component";
-}
-
-Components::Component::PlatformProperties::~PlatformProperties()
-{
-}
-
-bool Components::Component::PlatformProperties::has_data() const
-{
-    for (std::size_t index=0; index<platform_property.size(); index++)
-    {
-        if(platform_property[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Components::Component::PlatformProperties::has_operation() const
-{
-    for (std::size_t index=0; index<platform_property.size(); index++)
-    {
-        if(platform_property[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Components::Component::PlatformProperties::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "platform-properties";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Components::Component::PlatformProperties::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PlatformProperties' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "platform-property")
-    {
-        for(auto const & c : platform_property)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
-        c->parent = this;
-        platform_property.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : platform_property)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Components::Component::PlatformProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Components::Component::PlatformProperties::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Components::Component::PlatformProperties::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "platform-property")
-        return true;
-    return false;
-}
-
-Components::Component::PlatformProperties::PlatformProperty::PlatformProperty()
-    :
-    name{YType::str, "name"},
-    configurable{YType::boolean, "configurable"},
-    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
-    	,
-    value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>())
-{
-    value_->parent = this;
-
-    yang_name = "platform-property"; yang_parent_name = "platform-properties";
-}
-
-Components::Component::PlatformProperties::PlatformProperty::~PlatformProperty()
-{
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::has_data() const
-{
-    return name.is_set
-	|| configurable.is_set
-	|| parent_platform_component_cname_key.is_set
-	|| (value_ !=  nullptr && value_->has_data());
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(configurable.yfilter)
-	|| ydk::is_set(parent_platform_component_cname_key.yfilter)
-	|| (value_ !=  nullptr && value_->has_operation());
-}
-
-std::string Components::Component::PlatformProperties::PlatformProperty::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "platform-property" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Components::Component::PlatformProperties::PlatformProperty::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PlatformProperty' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (configurable.is_set || is_set(configurable.yfilter)) leaf_name_data.push_back(configurable.get_name_leafdata());
-    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "value")
-    {
-        if(value_ == nullptr)
-        {
-            value_ = std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>();
-        }
-        return value_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(value_ != nullptr)
-    {
-        children["value"] = value_;
-    }
-
-    return children;
-}
-
-void Components::Component::PlatformProperties::PlatformProperty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configurable")
-    {
-        configurable = value;
-        configurable.value_namespace = name_space;
-        configurable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key = value;
-        parent_platform_component_cname_key.value_namespace = name_space;
-        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::PlatformProperties::PlatformProperty::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "configurable")
-    {
-        configurable.yfilter = yfilter;
-    }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "value" || name == "name" || name == "configurable" || name == "parent-platform-component-cname-key")
-        return true;
-    return false;
-}
-
-Components::Component::PlatformProperties::PlatformProperty::Value_::Value_()
-    :
-    boolean{YType::boolean, "boolean"},
-    decimal{YType::str, "decimal"},
-    intsixfour{YType::int64, "intsixfour"},
-    string{YType::str, "string"},
-    uintsixfour{YType::uint64, "uintsixfour"}
-{
-    yang_name = "value"; yang_parent_name = "platform-property";
-}
-
-Components::Component::PlatformProperties::PlatformProperty::Value_::~Value_()
-{
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_data() const
-{
-    return boolean.is_set
-	|| decimal.is_set
-	|| intsixfour.is_set
-	|| string.is_set
-	|| uintsixfour.is_set;
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(boolean.yfilter)
-	|| ydk::is_set(decimal.yfilter)
-	|| ydk::is_set(intsixfour.yfilter)
-	|| ydk::is_set(string.yfilter)
-	|| ydk::is_set(uintsixfour.yfilter);
-}
-
-std::string Components::Component::PlatformProperties::PlatformProperty::Value_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "value";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Components::Component::PlatformProperties::PlatformProperty::Value_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Value_' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (boolean.is_set || is_set(boolean.yfilter)) leaf_name_data.push_back(boolean.get_name_leafdata());
-    if (decimal.is_set || is_set(decimal.yfilter)) leaf_name_data.push_back(decimal.get_name_leafdata());
-    if (intsixfour.is_set || is_set(intsixfour.yfilter)) leaf_name_data.push_back(intsixfour.get_name_leafdata());
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-    if (uintsixfour.is_set || is_set(uintsixfour.yfilter)) leaf_name_data.push_back(uintsixfour.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::Value_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Components::Component::PlatformProperties::PlatformProperty::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "boolean")
-    {
-        boolean = value;
-        boolean.value_namespace = name_space;
-        boolean.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "decimal")
-    {
-        decimal = value;
-        decimal.value_namespace = name_space;
-        decimal.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "intsixfour")
-    {
-        intsixfour = value;
-        intsixfour.value_namespace = name_space;
-        intsixfour.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uintsixfour")
-    {
-        uintsixfour = value;
-        uintsixfour.value_namespace = name_space;
-        uintsixfour.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::PlatformProperties::PlatformProperty::Value_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "boolean")
-    {
-        boolean.yfilter = yfilter;
-    }
-    if(value_path == "decimal")
-    {
-        decimal.yfilter = yfilter;
-    }
-    if(value_path == "intsixfour")
-    {
-        intsixfour.yfilter = yfilter;
-    }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-    if(value_path == "uintsixfour")
-    {
-        uintsixfour.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "boolean" || name == "decimal" || name == "intsixfour" || name == "string" || name == "uintsixfour")
-        return true;
-    return false;
-}
-
-Components::Component::PlatformSubcomponents::PlatformSubcomponents()
-{
-    yang_name = "platform-subcomponents"; yang_parent_name = "component";
-}
-
-Components::Component::PlatformSubcomponents::~PlatformSubcomponents()
-{
-}
-
-bool Components::Component::PlatformSubcomponents::has_data() const
-{
-    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
-    {
-        if(platform_subcomponent[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Components::Component::PlatformSubcomponents::has_operation() const
-{
-    for (std::size_t index=0; index<platform_subcomponent.size(); index++)
-    {
-        if(platform_subcomponent[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Components::Component::PlatformSubcomponents::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "platform-subcomponents";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Components::Component::PlatformSubcomponents::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PlatformSubcomponents' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "platform-subcomponent")
-    {
-        for(auto const & c : platform_subcomponent)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
-        c->parent = this;
-        platform_subcomponent.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : platform_subcomponent)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Components::Component::PlatformSubcomponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Components::Component::PlatformSubcomponents::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Components::Component::PlatformSubcomponents::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "platform-subcomponent")
-        return true;
-    return false;
-}
-
-Components::Component::PlatformSubcomponents::PlatformSubcomponent::PlatformSubcomponent()
-    :
-    name{YType::str, "name"},
-    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
-{
-    yang_name = "platform-subcomponent"; yang_parent_name = "platform-subcomponents";
-}
-
-Components::Component::PlatformSubcomponents::PlatformSubcomponent::~PlatformSubcomponent()
-{
-}
-
-bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_data() const
-{
-    return name.is_set
-	|| parent_platform_component_cname_key.is_set;
-}
-
-bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(parent_platform_component_cname_key.yfilter);
-}
-
-std::string Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "platform-subcomponent" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PlatformSubcomponent' in Cisco_IOS_XE_platform_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key = value;
-        parent_platform_component_cname_key.value_namespace = name_space;
-        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key.yfilter = yfilter;
-    }
-}
-
-bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "parent-platform-component-cname-key")
         return true;
     return false;
 }

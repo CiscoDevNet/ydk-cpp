@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_MIB {
 
-class CiscoIetfPwMib : public ydk::Entity
+class CISCOIETFPWMIB : public ydk::Entity
 {
     public:
-        CiscoIetfPwMib();
-        ~CiscoIetfPwMib();
+        CISCOIETFPWMIB();
+        ~CISCOIETFPWMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,26 +32,76 @@ class CiscoIetfPwMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpwvcobjects; //type: CiscoIetfPwMib::Cpwvcobjects
-        class Cpwvctable; //type: CiscoIetfPwMib::Cpwvctable
-        class Cpwvcperfcurrenttable; //type: CiscoIetfPwMib::Cpwvcperfcurrenttable
-        class Cpwvcperfintervaltable; //type: CiscoIetfPwMib::Cpwvcperfintervaltable
-        class Cpwvcperftotaltable; //type: CiscoIetfPwMib::Cpwvcperftotaltable
-        class Cpwvcidmappingtable; //type: CiscoIetfPwMib::Cpwvcidmappingtable
-        class Cpwvcpeermappingtable; //type: CiscoIetfPwMib::Cpwvcpeermappingtable
+        class Cpwvcobjects; //type: CISCOIETFPWMIB::Cpwvcobjects
+        class Cpwvctable; //type: CISCOIETFPWMIB::Cpwvctable
+        class Cpwvcperfcurrenttable; //type: CISCOIETFPWMIB::Cpwvcperfcurrenttable
+        class Cpwvcperfintervaltable; //type: CISCOIETFPWMIB::Cpwvcperfintervaltable
+        class Cpwvcperftotaltable; //type: CISCOIETFPWMIB::Cpwvcperftotaltable
+        class Cpwvcidmappingtable; //type: CISCOIETFPWMIB::Cpwvcidmappingtable
+        class Cpwvcpeermappingtable; //type: CISCOIETFPWMIB::Cpwvcpeermappingtable
 
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcidmappingtable> cpwvcidmappingtable;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcobjects> cpwvcobjects;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcpeermappingtable> cpwvcpeermappingtable;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperfcurrenttable> cpwvcperfcurrenttable;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperfintervaltable> cpwvcperfintervaltable;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperftotaltable> cpwvcperftotaltable;
-        std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable> cpwvctable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable> cpwvcidmappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcobjects> cpwvcobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable> cpwvcpeermappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfcurrenttable> cpwvcperfcurrenttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfintervaltable> cpwvcperfintervaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperftotaltable> cpwvcperftotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable> cpwvctable;
         
-}; // CiscoIetfPwMib
+}; // CISCOIETFPWMIB
 
 
-class CiscoIetfPwMib::Cpwvcobjects : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvcidmappingtable : public ydk::Entity
+{
+    public:
+        Cpwvcidmappingtable();
+        ~Cpwvcidmappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcidmappingentry; //type: CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry> > cpwvcidmappingentry;
+        
+}; // CISCOIETFPWMIB::Cpwvcidmappingtable
+
+
+class CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry : public ydk::Entity
+{
+    public:
+        Cpwvcidmappingentry();
+        ~Cpwvcidmappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpwvcidmappingvctype; //type: CpwVcType
+        ydk::YLeaf cpwvcidmappingvcid; //type: uint32
+        ydk::YLeaf cpwvcidmappingpeeraddrtype; //type: InetAddressType
+        ydk::YLeaf cpwvcidmappingpeeraddr; //type: binary
+        ydk::YLeaf cpwvcidmappingvcindex; //type: uint32
+
+}; // CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
+
+
+class CISCOIETFPWMIB::Cpwvcobjects : public ydk::Entity
 {
     public:
         Cpwvcobjects();
@@ -59,23 +109,231 @@ class CiscoIetfPwMib::Cpwvcobjects : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cpwvcindexnext; //type: uint32
         ydk::YLeaf cpwvcperftotalerrorpackets; //type: uint64
         ydk::YLeaf cpwvcupdownnotifenable; //type: boolean
         ydk::YLeaf cpwvcnotifrate; //type: uint32
 
-}; // CiscoIetfPwMib::Cpwvcobjects
+}; // CISCOIETFPWMIB::Cpwvcobjects
 
 
-class CiscoIetfPwMib::Cpwvctable : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvcpeermappingtable : public ydk::Entity
+{
+    public:
+        Cpwvcpeermappingtable();
+        ~Cpwvcpeermappingtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcpeermappingentry; //type: CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry> > cpwvcpeermappingentry;
+        
+}; // CISCOIETFPWMIB::Cpwvcpeermappingtable
+
+
+class CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry : public ydk::Entity
+{
+    public:
+        Cpwvcpeermappingentry();
+        ~Cpwvcpeermappingentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cpwvcpeermappingpeeraddrtype; //type: InetAddressType
+        ydk::YLeaf cpwvcpeermappingpeeraddr; //type: binary
+        ydk::YLeaf cpwvcpeermappingvctype; //type: CpwVcType
+        ydk::YLeaf cpwvcpeermappingvcid; //type: uint32
+        ydk::YLeaf cpwvcpeermappingvcindex; //type: uint32
+
+}; // CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry
+
+
+class CISCOIETFPWMIB::Cpwvcperfcurrenttable : public ydk::Entity
+{
+    public:
+        Cpwvcperfcurrenttable();
+        ~Cpwvcperfcurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcperfcurrententry; //type: CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry> > cpwvcperfcurrententry;
+        
+}; // CISCOIETFPWMIB::Cpwvcperfcurrenttable
+
+
+class CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry : public ydk::Entity
+{
+    public:
+        Cpwvcperfcurrententry();
+        ~Cpwvcperfcurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwvcperfcurrentinhcpackets; //type: uint64
+        ydk::YLeaf cpwvcperfcurrentinhcbytes; //type: uint64
+        ydk::YLeaf cpwvcperfcurrentouthcpackets; //type: uint64
+        ydk::YLeaf cpwvcperfcurrentouthcbytes; //type: uint64
+
+}; // CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry
+
+
+class CISCOIETFPWMIB::Cpwvcperfintervaltable : public ydk::Entity
+{
+    public:
+        Cpwvcperfintervaltable();
+        ~Cpwvcperfintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcperfintervalentry; //type: CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry> > cpwvcperfintervalentry;
+        
+}; // CISCOIETFPWMIB::Cpwvcperfintervaltable
+
+
+class CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry : public ydk::Entity
+{
+    public:
+        Cpwvcperfintervalentry();
+        ~Cpwvcperfintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwvcperfintervalnumber; //type: int32
+        ydk::YLeaf cpwvcperfintervalvaliddata; //type: boolean
+        ydk::YLeaf cpwvcperfintervaltimeelapsed; //type: int32
+        ydk::YLeaf cpwvcperfintervalinhcpackets; //type: uint64
+        ydk::YLeaf cpwvcperfintervalinhcbytes; //type: uint64
+        ydk::YLeaf cpwvcperfintervalouthcpackets; //type: uint64
+        ydk::YLeaf cpwvcperfintervalouthcbytes; //type: uint64
+
+}; // CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry
+
+
+class CISCOIETFPWMIB::Cpwvcperftotaltable : public ydk::Entity
+{
+    public:
+        Cpwvcperftotaltable();
+        ~Cpwvcperftotaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwvcperftotalentry; //type: CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry> > cpwvcperftotalentry;
+        
+}; // CISCOIETFPWMIB::Cpwvcperftotaltable
+
+
+class CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry : public ydk::Entity
+{
+    public:
+        Cpwvcperftotalentry();
+        ~Cpwvcperftotalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwvcperftotalinhcpackets; //type: uint64
+        ydk::YLeaf cpwvcperftotalinhcbytes; //type: uint64
+        ydk::YLeaf cpwvcperftotalouthcpackets; //type: uint64
+        ydk::YLeaf cpwvcperftotalouthcbytes; //type: uint64
+        ydk::YLeaf cpwvcperftotaldiscontinuitytime; //type: uint32
+
+}; // CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry
+
+
+class CISCOIETFPWMIB::Cpwvctable : public ydk::Entity
 {
     public:
         Cpwvctable();
@@ -83,22 +341,23 @@ class CiscoIetfPwMib::Cpwvctable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cpwvcentry; //type: CiscoIetfPwMib::Cpwvctable::Cpwvcentry
+        class Cpwvcentry; //type: CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry> > cpwvcentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry> > cpwvcentry;
         
-}; // CiscoIetfPwMib::Cpwvctable
+}; // CISCOIETFPWMIB::Cpwvctable
 
 
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry : public ydk::Entity
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry : public ydk::Entity
 {
     public:
         Cpwvcentry();
@@ -106,22 +365,23 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cpwvcindex; //type: uint32
-        ydk::YLeaf cpwvctype; //type: Cpwvctype
+        ydk::YLeaf cpwvctype; //type: CpwVcType
         ydk::YLeaf cpwvcowner; //type: Cpwvcowner
         ydk::YLeaf cpwvcpsntype; //type: Cpwvcpsntype
         ydk::YLeaf cpwvcsetuppriority; //type: int32
         ydk::YLeaf cpwvcholdingpriority; //type: int32
         ydk::YLeaf cpwvcinboundmode; //type: Cpwvcinboundmode
-        ydk::YLeaf cpwvcpeeraddrtype; //type: Inetaddresstype
+        ydk::YLeaf cpwvcpeeraddrtype; //type: InetAddressType
         ydk::YLeaf cpwvcpeeraddr; //type: binary
         ydk::YLeaf cpwvcid; //type: uint32
         ydk::YLeaf cpwvclocalgroupid; //type: uint32
@@ -139,269 +399,22 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry : public ydk::Entity
         ydk::YLeaf cpwvccreatetime; //type: uint32
         ydk::YLeaf cpwvcuptime; //type: uint32
         ydk::YLeaf cpwvcadminstatus; //type: Cpwvcadminstatus
-        ydk::YLeaf cpwvcoperstatus; //type: Cpwoperstatus
-        ydk::YLeaf cpwvcinboundoperstatus; //type: Cpwoperstatus
-        ydk::YLeaf cpwvcoutboundoperstatus; //type: Cpwoperstatus
+        ydk::YLeaf cpwvcoperstatus; //type: CpwOperStatus
+        ydk::YLeaf cpwvcinboundoperstatus; //type: CpwOperStatus
+        ydk::YLeaf cpwvcoutboundoperstatus; //type: CpwOperStatus
         ydk::YLeaf cpwvctimeelapsed; //type: int32
         ydk::YLeaf cpwvcvalidintervals; //type: int32
-        ydk::YLeaf cpwvcrowstatus; //type: Rowstatus
-        ydk::YLeaf cpwvcstoragetype; //type: Storagetype
+        ydk::YLeaf cpwvcrowstatus; //type: RowStatus
+        ydk::YLeaf cpwvcstoragetype; //type: StorageType
         class Cpwvcowner;
         class Cpwvcpsntype;
         class Cpwvcinboundmode;
         class Cpwvcremotecontrolword;
         class Cpwvcadminstatus;
 
-}; // CiscoIetfPwMib::Cpwvctable::Cpwvcentry
+}; // CISCOIETFPWMIB::Cpwvctable::Cpwvcentry
 
-
-class CiscoIetfPwMib::Cpwvcperfcurrenttable : public ydk::Entity
-{
-    public:
-        Cpwvcperfcurrenttable();
-        ~Cpwvcperfcurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwvcperfcurrententry; //type: CiscoIetfPwMib::Cpwvcperfcurrenttable::Cpwvcperfcurrententry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperfcurrenttable::Cpwvcperfcurrententry> > cpwvcperfcurrententry;
-        
-}; // CiscoIetfPwMib::Cpwvcperfcurrenttable
-
-
-class CiscoIetfPwMib::Cpwvcperfcurrenttable::Cpwvcperfcurrententry : public ydk::Entity
-{
-    public:
-        Cpwvcperfcurrententry();
-        ~Cpwvcperfcurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwvcperfcurrentinhcpackets; //type: uint64
-        ydk::YLeaf cpwvcperfcurrentinhcbytes; //type: uint64
-        ydk::YLeaf cpwvcperfcurrentouthcpackets; //type: uint64
-        ydk::YLeaf cpwvcperfcurrentouthcbytes; //type: uint64
-
-}; // CiscoIetfPwMib::Cpwvcperfcurrenttable::Cpwvcperfcurrententry
-
-
-class CiscoIetfPwMib::Cpwvcperfintervaltable : public ydk::Entity
-{
-    public:
-        Cpwvcperfintervaltable();
-        ~Cpwvcperfintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwvcperfintervalentry; //type: CiscoIetfPwMib::Cpwvcperfintervaltable::Cpwvcperfintervalentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperfintervaltable::Cpwvcperfintervalentry> > cpwvcperfintervalentry;
-        
-}; // CiscoIetfPwMib::Cpwvcperfintervaltable
-
-
-class CiscoIetfPwMib::Cpwvcperfintervaltable::Cpwvcperfintervalentry : public ydk::Entity
-{
-    public:
-        Cpwvcperfintervalentry();
-        ~Cpwvcperfintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwvcperfintervalnumber; //type: int32
-        ydk::YLeaf cpwvcperfintervalvaliddata; //type: boolean
-        ydk::YLeaf cpwvcperfintervaltimeelapsed; //type: int32
-        ydk::YLeaf cpwvcperfintervalinhcpackets; //type: uint64
-        ydk::YLeaf cpwvcperfintervalinhcbytes; //type: uint64
-        ydk::YLeaf cpwvcperfintervalouthcpackets; //type: uint64
-        ydk::YLeaf cpwvcperfintervalouthcbytes; //type: uint64
-
-}; // CiscoIetfPwMib::Cpwvcperfintervaltable::Cpwvcperfintervalentry
-
-
-class CiscoIetfPwMib::Cpwvcperftotaltable : public ydk::Entity
-{
-    public:
-        Cpwvcperftotaltable();
-        ~Cpwvcperftotaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwvcperftotalentry; //type: CiscoIetfPwMib::Cpwvcperftotaltable::Cpwvcperftotalentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcperftotaltable::Cpwvcperftotalentry> > cpwvcperftotalentry;
-        
-}; // CiscoIetfPwMib::Cpwvcperftotaltable
-
-
-class CiscoIetfPwMib::Cpwvcperftotaltable::Cpwvcperftotalentry : public ydk::Entity
-{
-    public:
-        Cpwvcperftotalentry();
-        ~Cpwvcperftotalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwvcperftotalinhcpackets; //type: uint64
-        ydk::YLeaf cpwvcperftotalinhcbytes; //type: uint64
-        ydk::YLeaf cpwvcperftotalouthcpackets; //type: uint64
-        ydk::YLeaf cpwvcperftotalouthcbytes; //type: uint64
-        ydk::YLeaf cpwvcperftotaldiscontinuitytime; //type: uint32
-
-}; // CiscoIetfPwMib::Cpwvcperftotaltable::Cpwvcperftotalentry
-
-
-class CiscoIetfPwMib::Cpwvcidmappingtable : public ydk::Entity
-{
-    public:
-        Cpwvcidmappingtable();
-        ~Cpwvcidmappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwvcidmappingentry; //type: CiscoIetfPwMib::Cpwvcidmappingtable::Cpwvcidmappingentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcidmappingtable::Cpwvcidmappingentry> > cpwvcidmappingentry;
-        
-}; // CiscoIetfPwMib::Cpwvcidmappingtable
-
-
-class CiscoIetfPwMib::Cpwvcidmappingtable::Cpwvcidmappingentry : public ydk::Entity
-{
-    public:
-        Cpwvcidmappingentry();
-        ~Cpwvcidmappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cpwvcidmappingvctype; //type: Cpwvctype
-        ydk::YLeaf cpwvcidmappingvcid; //type: uint32
-        ydk::YLeaf cpwvcidmappingpeeraddrtype; //type: Inetaddresstype
-        ydk::YLeaf cpwvcidmappingpeeraddr; //type: binary
-        ydk::YLeaf cpwvcidmappingvcindex; //type: uint32
-
-}; // CiscoIetfPwMib::Cpwvcidmappingtable::Cpwvcidmappingentry
-
-
-class CiscoIetfPwMib::Cpwvcpeermappingtable : public ydk::Entity
-{
-    public:
-        Cpwvcpeermappingtable();
-        ~Cpwvcpeermappingtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwvcpeermappingentry; //type: CiscoIetfPwMib::Cpwvcpeermappingtable::Cpwvcpeermappingentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvcpeermappingtable::Cpwvcpeermappingentry> > cpwvcpeermappingentry;
-        
-}; // CiscoIetfPwMib::Cpwvcpeermappingtable
-
-
-class CiscoIetfPwMib::Cpwvcpeermappingtable::Cpwvcpeermappingentry : public ydk::Entity
-{
-    public:
-        Cpwvcpeermappingentry();
-        ~Cpwvcpeermappingentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cpwvcpeermappingpeeraddrtype; //type: Inetaddresstype
-        ydk::YLeaf cpwvcpeermappingpeeraddr; //type: binary
-        ydk::YLeaf cpwvcpeermappingvctype; //type: Cpwvctype
-        ydk::YLeaf cpwvcpeermappingvcid; //type: uint32
-        ydk::YLeaf cpwvcpeermappingvcindex; //type: uint32
-
-}; // CiscoIetfPwMib::Cpwvcpeermappingtable::Cpwvcpeermappingentry
-
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcowner : public ydk::Enum
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcowner : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf manual;
@@ -410,7 +423,7 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcowner : public ydk::Enum
 
 };
 
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcpsntype : public ydk::Enum
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcpsntype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mpls;
@@ -422,7 +435,7 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcpsntype : public ydk::Enum
 
 };
 
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcinboundmode : public ydk::Enum
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcinboundmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf loose;
@@ -430,7 +443,7 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcinboundmode : public ydk::Enu
 
 };
 
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword : public ydk::Enum
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noControlWord;
@@ -439,7 +452,7 @@ class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcremotecontrolword : public yd
 
 };
 
-class CiscoIetfPwMib::Cpwvctable::Cpwvcentry::Cpwvcadminstatus : public ydk::Enum
+class CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::Cpwvcadminstatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;

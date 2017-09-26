@@ -18,7 +18,7 @@ class CiscoPlatformSoftware : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class CiscoPlatformSoftware : public ydk::Entity
 
         class ControlProcesses; //type: CiscoPlatformSoftware::ControlProcesses
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses> control_processes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses> control_processes;
         
 }; // CiscoPlatformSoftware
 
@@ -46,17 +46,18 @@ class CiscoPlatformSoftware::ControlProcesses : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class ControlProcess; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess> > control_process;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess> > control_process;
         
 }; // CiscoPlatformSoftware::ControlProcesses
 
@@ -69,13 +70,14 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf fru; //type: BFru
         ydk::YLeaf slotnum; //type: int16
@@ -88,10 +90,10 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess : public ydk::Enti
         class MemoryStats; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats
         class PerCoreStats; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats> load_average_stats;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes> load_avg_minutes;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats> memory_stats;
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats> per_core_stats;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats> load_average_stats;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes> load_avg_minutes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats> memory_stats;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats> per_core_stats;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess
 
@@ -104,7 +106,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -125,7 +127,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -135,7 +137,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes : 
 
         class LoadAvgMinute; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute> > load_avg_minute;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute> > load_avg_minute;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes
 
@@ -148,7 +150,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -160,7 +162,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::L
         ydk::YLeaf average; //type: decimal64
         class Status; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status> status;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status> status;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute
 
@@ -173,7 +175,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -196,7 +198,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -216,7 +218,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats : pub
         ydk::YLeaf committed_percent; //type: uint8
         class Status; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status
 
-        std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status> status;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status> status;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats
 
@@ -229,7 +231,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Stat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -251,7 +253,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -261,7 +263,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats : pu
 
         class PerCoreStat; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat> > per_core_stat;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat> > per_core_stat;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats
 
@@ -274,7 +276,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::Per
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

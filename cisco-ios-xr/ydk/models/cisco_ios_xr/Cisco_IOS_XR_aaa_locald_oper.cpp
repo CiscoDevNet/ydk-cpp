@@ -26,28 +26,18 @@ Aaa::Aaa()
 	,users(std::make_shared<Aaa::Users>())
 {
     all_tasks->parent = this;
-
     authen_method->parent = this;
-
     current_usergroup->parent = this;
-
     currentuser_detail->parent = this;
-
     diameter->parent = this;
-
     radius->parent = this;
-
     tacacs->parent = this;
-
     task_map->parent = this;
-
     taskgroups->parent = this;
-
     usergroups->parent = this;
-
     users->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-oper";
+    yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Aaa::~Aaa()
@@ -89,26 +79,15 @@ std::string Aaa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -321,7 +300,8 @@ Aaa::AllTasks::AllTasks()
     :
     task_id{YType::str, "task-id"}
 {
-    yang_name = "all-tasks"; yang_parent_name = "aaa";
+
+    yang_name = "all-tasks"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::AllTasks::~AllTasks()
@@ -349,35 +329,28 @@ bool Aaa::AllTasks::has_operation() const
 	|| ydk::is_set(task_id.yfilter);
 }
 
+std::string Aaa::AllTasks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::AllTasks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all-tasks";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::AllTasks::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::AllTasks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto task_id_name_datas = task_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), task_id_name_datas.begin(), task_id_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -415,2721 +388,6 @@ bool Aaa::AllTasks::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Aaa::CurrentuserDetail::CurrentuserDetail()
-    :
-    authenmethod{YType::int32, "authenmethod"},
-    name{YType::str, "name"},
-    taskmap{YType::str, "taskmap"},
-    usergroup{YType::str, "usergroup"}
-{
-    yang_name = "currentuser-detail"; yang_parent_name = "aaa";
-}
-
-Aaa::CurrentuserDetail::~CurrentuserDetail()
-{
-}
-
-bool Aaa::CurrentuserDetail::has_data() const
-{
-    for (auto const & leaf : taskmap.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return authenmethod.is_set
-	|| name.is_set;
-}
-
-bool Aaa::CurrentuserDetail::has_operation() const
-{
-    for (auto const & leaf : taskmap.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(authenmethod.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(taskmap.yfilter)
-	|| ydk::is_set(usergroup.yfilter);
-}
-
-std::string Aaa::CurrentuserDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "currentuser-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::CurrentuserDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    auto taskmap_name_datas = taskmap.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
-    auto usergroup_name_datas = usergroup.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::CurrentuserDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentuserDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::CurrentuserDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "authenmethod")
-    {
-        authenmethod = value;
-        authenmethod.value_namespace = name_space;
-        authenmethod.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "taskmap")
-    {
-        taskmap.append(value);
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.append(value);
-    }
-}
-
-void Aaa::CurrentuserDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "authenmethod")
-    {
-        authenmethod.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "taskmap")
-    {
-        taskmap.yfilter = yfilter;
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.yfilter = yfilter;
-    }
-}
-
-bool Aaa::CurrentuserDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authenmethod" || name == "name" || name == "taskmap" || name == "usergroup")
-        return true;
-    return false;
-}
-
-Aaa::TaskMap::TaskMap()
-    :
-    authenmethod{YType::int32, "authenmethod"},
-    name{YType::str, "name"},
-    taskmap{YType::str, "taskmap"},
-    usergroup{YType::str, "usergroup"}
-{
-    yang_name = "task-map"; yang_parent_name = "aaa";
-}
-
-Aaa::TaskMap::~TaskMap()
-{
-}
-
-bool Aaa::TaskMap::has_data() const
-{
-    for (auto const & leaf : taskmap.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return authenmethod.is_set
-	|| name.is_set;
-}
-
-bool Aaa::TaskMap::has_operation() const
-{
-    for (auto const & leaf : taskmap.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(authenmethod.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(taskmap.yfilter)
-	|| ydk::is_set(usergroup.yfilter);
-}
-
-std::string Aaa::TaskMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "task-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::TaskMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    auto taskmap_name_datas = taskmap.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
-    auto usergroup_name_datas = usergroup.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::TaskMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "authenmethod")
-    {
-        authenmethod = value;
-        authenmethod.value_namespace = name_space;
-        authenmethod.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "taskmap")
-    {
-        taskmap.append(value);
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.append(value);
-    }
-}
-
-void Aaa::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "authenmethod")
-    {
-        authenmethod.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "taskmap")
-    {
-        taskmap.yfilter = yfilter;
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.yfilter = yfilter;
-    }
-}
-
-bool Aaa::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authenmethod" || name == "name" || name == "taskmap" || name == "usergroup")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroups()
-{
-    yang_name = "taskgroups"; yang_parent_name = "aaa";
-}
-
-Aaa::Taskgroups::~Taskgroups()
-{
-}
-
-bool Aaa::Taskgroups::has_data() const
-{
-    for (std::size_t index=0; index<taskgroup.size(); index++)
-    {
-        if(taskgroup[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Taskgroups::has_operation() const
-{
-    for (std::size_t index=0; index<taskgroup.size(); index++)
-    {
-        if(taskgroup[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Taskgroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "taskgroups";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "taskgroup")
-    {
-        for(auto const & c : taskgroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup>();
-        c->parent = this;
-        taskgroup.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : taskgroup)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Taskgroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Taskgroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Taskgroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "taskgroup")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroup::Taskgroup()
-    :
-    name{YType::str, "name"},
-    name_xr{YType::str, "name-xr"}
-    	,
-    included_task_ids(std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds>())
-	,task_map(std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>())
-{
-    included_task_ids->parent = this;
-
-    task_map->parent = this;
-
-    yang_name = "taskgroup"; yang_parent_name = "taskgroups";
-}
-
-Aaa::Taskgroups::Taskgroup::~Taskgroup()
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::has_data() const
-{
-    return name.is_set
-	|| name_xr.is_set
-	|| (included_task_ids !=  nullptr && included_task_ids->has_data())
-	|| (task_map !=  nullptr && task_map->has_data());
-}
-
-bool Aaa::Taskgroups::Taskgroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(name_xr.yfilter)
-	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
-	|| (task_map !=  nullptr && task_map->has_operation());
-}
-
-std::string Aaa::Taskgroups::Taskgroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "taskgroup" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::Taskgroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/taskgroups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "included-task-ids")
-    {
-        if(included_task_ids == nullptr)
-        {
-            included_task_ids = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds>();
-        }
-        return included_task_ids;
-    }
-
-    if(child_yang_name == "task-map")
-    {
-        if(task_map == nullptr)
-        {
-            task_map = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>();
-        }
-        return task_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(included_task_ids != nullptr)
-    {
-        children["included-task-ids"] = included_task_ids;
-    }
-
-    if(task_map != nullptr)
-    {
-        children["task-map"] = task_map;
-    }
-
-    return children;
-}
-
-void Aaa::Taskgroups::Taskgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr = value;
-        name_xr.value_namespace = name_space;
-        name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Taskgroups::Taskgroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Taskgroups::Taskgroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "included-task-ids" || name == "task-map" || name == "name" || name == "name-xr")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroup::IncludedTaskIds::IncludedTaskIds()
-{
-    yang_name = "included-task-ids"; yang_parent_name = "taskgroup";
-}
-
-Aaa::Taskgroups::Taskgroup::IncludedTaskIds::~IncludedTaskIds()
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "included-task-ids";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IncludedTaskIds' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "included-task-ids";
-}
-
-Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroup::TaskMap::TaskMap()
-{
-    yang_name = "task-map"; yang_parent_name = "taskgroup";
-}
-
-Aaa::Taskgroups::Taskgroup::TaskMap::~TaskMap()
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Taskgroups::Taskgroup::TaskMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "task-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TaskMap' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Taskgroups::Taskgroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Taskgroups::Taskgroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "task-map";
-}
-
-Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
-Aaa::Users::Users()
-{
-    yang_name = "users"; yang_parent_name = "aaa";
-}
-
-Aaa::Users::~Users()
-{
-}
-
-bool Aaa::Users::has_data() const
-{
-    for (std::size_t index=0; index<user.size(); index++)
-    {
-        if(user[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Users::has_operation() const
-{
-    for (std::size_t index=0; index<user.size(); index++)
-    {
-        if(user[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Users::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "users";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Users::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "user")
-    {
-        for(auto const & c : user)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Users::User>();
-        c->parent = this;
-        user.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : user)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Users::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Users::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Users::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "user")
-        return true;
-    return false;
-}
-
-Aaa::Users::User::User()
-    :
-    name{YType::str, "name"},
-    admin_user{YType::boolean, "admin-user"},
-    first_user{YType::boolean, "first-user"},
-    name_xr{YType::str, "name-xr"},
-    usergroup{YType::str, "usergroup"}
-    	,
-    task_map(std::make_shared<Aaa::Users::User::TaskMap>())
-{
-    task_map->parent = this;
-
-    yang_name = "user"; yang_parent_name = "users";
-}
-
-Aaa::Users::User::~User()
-{
-}
-
-bool Aaa::Users::User::has_data() const
-{
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return name.is_set
-	|| admin_user.is_set
-	|| first_user.is_set
-	|| name_xr.is_set
-	|| (task_map !=  nullptr && task_map->has_data());
-}
-
-bool Aaa::Users::User::has_operation() const
-{
-    for (auto const & leaf : usergroup.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(admin_user.yfilter)
-	|| ydk::is_set(first_user.yfilter)
-	|| ydk::is_set(name_xr.yfilter)
-	|| ydk::is_set(usergroup.yfilter)
-	|| (task_map !=  nullptr && task_map->has_operation());
-}
-
-std::string Aaa::Users::User::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "user" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Users::User::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/users/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (admin_user.is_set || is_set(admin_user.yfilter)) leaf_name_data.push_back(admin_user.get_name_leafdata());
-    if (first_user.is_set || is_set(first_user.yfilter)) leaf_name_data.push_back(first_user.get_name_leafdata());
-    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
-
-    auto usergroup_name_datas = usergroup.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "task-map")
-    {
-        if(task_map == nullptr)
-        {
-            task_map = std::make_shared<Aaa::Users::User::TaskMap>();
-        }
-        return task_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(task_map != nullptr)
-    {
-        children["task-map"] = task_map;
-    }
-
-    return children;
-}
-
-void Aaa::Users::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-user")
-    {
-        admin_user = value;
-        admin_user.value_namespace = name_space;
-        admin_user.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "first-user")
-    {
-        first_user = value;
-        first_user.value_namespace = name_space;
-        first_user.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr = value;
-        name_xr.value_namespace = name_space;
-        name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.append(value);
-    }
-}
-
-void Aaa::Users::User::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "admin-user")
-    {
-        admin_user.yfilter = yfilter;
-    }
-    if(value_path == "first-user")
-    {
-        first_user.yfilter = yfilter;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr.yfilter = yfilter;
-    }
-    if(value_path == "usergroup")
-    {
-        usergroup.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Users::User::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "task-map" || name == "name" || name == "admin-user" || name == "first-user" || name == "name-xr" || name == "usergroup")
-        return true;
-    return false;
-}
-
-Aaa::Users::User::TaskMap::TaskMap()
-{
-    yang_name = "task-map"; yang_parent_name = "user";
-}
-
-Aaa::Users::User::TaskMap::~TaskMap()
-{
-}
-
-bool Aaa::Users::User::TaskMap::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Users::User::TaskMap::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Users::User::TaskMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "task-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Users::User::TaskMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TaskMap' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Users::User::TaskMap::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Users::User::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Users::User::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Users::User::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Users::User::TaskMap::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "task-map";
-}
-
-Aaa::Users::User::TaskMap::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Users::User::TaskMap::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Users::User::TaskMap::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Users::User::TaskMap::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Users::User::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Users::User::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Users::User::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Users::User::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Users::User::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroups()
-{
-    yang_name = "usergroups"; yang_parent_name = "aaa";
-}
-
-Aaa::Usergroups::~Usergroups()
-{
-}
-
-bool Aaa::Usergroups::has_data() const
-{
-    for (std::size_t index=0; index<usergroup.size(); index++)
-    {
-        if(usergroup[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Usergroups::has_operation() const
-{
-    for (std::size_t index=0; index<usergroup.size(); index++)
-    {
-        if(usergroup[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Usergroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "usergroups";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "usergroup")
-    {
-        for(auto const & c : usergroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Usergroups::Usergroup>();
-        c->parent = this;
-        usergroup.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : usergroup)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Usergroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Usergroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "usergroup")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Usergroup()
-    :
-    name{YType::str, "name"},
-    name_xr{YType::str, "name-xr"}
-    	,
-    task_map(std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>())
-{
-    task_map->parent = this;
-
-    yang_name = "usergroup"; yang_parent_name = "usergroups";
-}
-
-Aaa::Usergroups::Usergroup::~Usergroup()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::has_data() const
-{
-    for (std::size_t index=0; index<taskgroup.size(); index++)
-    {
-        if(taskgroup[index]->has_data())
-            return true;
-    }
-    return name.is_set
-	|| name_xr.is_set
-	|| (task_map !=  nullptr && task_map->has_data());
-}
-
-bool Aaa::Usergroups::Usergroup::has_operation() const
-{
-    for (std::size_t index=0; index<taskgroup.size(); index++)
-    {
-        if(taskgroup[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(name_xr.yfilter)
-	|| (task_map !=  nullptr && task_map->has_operation());
-}
-
-std::string Aaa::Usergroups::Usergroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "usergroup" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/usergroups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "task-map")
-    {
-        if(task_map == nullptr)
-        {
-            task_map = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>();
-        }
-        return task_map;
-    }
-
-    if(child_yang_name == "taskgroup")
-    {
-        for(auto const & c : taskgroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup>();
-        c->parent = this;
-        taskgroup.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(task_map != nullptr)
-    {
-        children["task-map"] = task_map;
-    }
-
-    for (auto const & c : taskgroup)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr = value;
-        name_xr.value_namespace = name_space;
-        name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usergroups::Usergroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usergroups::Usergroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "task-map" || name == "taskgroup" || name == "name" || name == "name-xr")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::TaskMap::TaskMap()
-{
-    yang_name = "task-map"; yang_parent_name = "usergroup";
-}
-
-Aaa::Usergroups::Usergroup::TaskMap::~TaskMap()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::TaskMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "task-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::TaskMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TaskMap' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Usergroups::Usergroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::TaskMap::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "task-map";
-}
-
-Aaa::Usergroups::Usergroup::TaskMap::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usergroups::Usergroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::Taskgroup()
-    :
-    name_xr{YType::str, "name-xr"}
-    	,
-    included_task_ids(std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds>())
-	,task_map(std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>())
-{
-    included_task_ids->parent = this;
-
-    task_map->parent = this;
-
-    yang_name = "taskgroup"; yang_parent_name = "usergroup";
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::~Taskgroup()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::has_data() const
-{
-    return name_xr.is_set
-	|| (included_task_ids !=  nullptr && included_task_ids->has_data())
-	|| (task_map !=  nullptr && task_map->has_data());
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name_xr.yfilter)
-	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
-	|| (task_map !=  nullptr && task_map->has_operation());
-}
-
-std::string Aaa::Usergroups::Usergroup::Taskgroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "taskgroup";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Taskgroup' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "included-task-ids")
-    {
-        if(included_task_ids == nullptr)
-        {
-            included_task_ids = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds>();
-        }
-        return included_task_ids;
-    }
-
-    if(child_yang_name == "task-map")
-    {
-        if(task_map == nullptr)
-        {
-            task_map = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>();
-        }
-        return task_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(included_task_ids != nullptr)
-    {
-        children["included-task-ids"] = included_task_ids;
-    }
-
-    if(task_map != nullptr)
-    {
-        children["task-map"] = task_map;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name-xr")
-    {
-        name_xr = value;
-        name_xr.value_namespace = name_space;
-        name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name-xr")
-    {
-        name_xr.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "included-task-ids" || name == "task-map" || name == "name-xr")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::IncludedTaskIds()
-{
-    yang_name = "included-task-ids"; yang_parent_name = "taskgroup";
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::~IncludedTaskIds()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "included-task-ids";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IncludedTaskIds' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "included-task-ids";
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::TaskMap()
-{
-    yang_name = "task-map"; yang_parent_name = "taskgroup";
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::~TaskMap()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_data() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_operation() const
-{
-    for (std::size_t index=0; index<tasks.size(); index++)
-    {
-        if(tasks[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "task-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TaskMap' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tasks")
-    {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks>();
-        c->parent = this;
-        tasks.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tasks)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tasks")
-        return true;
-    return false;
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::Tasks()
-    :
-    debug{YType::boolean, "debug"},
-    execute{YType::boolean, "execute"},
-    read{YType::boolean, "read"},
-    task_id{YType::str, "task-id"},
-    write{YType::boolean, "write"}
-{
-    yang_name = "tasks"; yang_parent_name = "task-map";
-}
-
-Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::~Tasks()
-{
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_data() const
-{
-    return debug.is_set
-	|| execute.is_set
-	|| read.is_set
-	|| task_id.is_set
-	|| write.is_set;
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(debug.yfilter)
-	|| ydk::is_set(execute.yfilter)
-	|| ydk::is_set(read.yfilter)
-	|| ydk::is_set(task_id.yfilter)
-	|| ydk::is_set(write.yfilter);
-}
-
-std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tasks";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tasks' in Cisco_IOS_XR_aaa_locald_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
-    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
-    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
-    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
-    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "debug")
-    {
-        debug = value;
-        debug.value_namespace = name_space;
-        debug.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "execute")
-    {
-        execute = value;
-        execute.value_namespace = name_space;
-        execute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "read")
-    {
-        read = value;
-        read.value_namespace = name_space;
-        read.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "task-id")
-    {
-        task_id = value;
-        task_id.value_namespace = name_space;
-        task_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "write")
-    {
-        write = value;
-        write.value_namespace = name_space;
-        write.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "debug")
-    {
-        debug.yfilter = yfilter;
-    }
-    if(value_path == "execute")
-    {
-        execute.yfilter = yfilter;
-    }
-    if(value_path == "read")
-    {
-        read.yfilter = yfilter;
-    }
-    if(value_path == "task-id")
-    {
-        task_id.yfilter = yfilter;
-    }
-    if(value_path == "write")
-    {
-        write.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
-        return true;
-    return false;
-}
-
 Aaa::AuthenMethod::AuthenMethod()
     :
     authenmethod{YType::int32, "authenmethod"},
@@ -3137,7 +395,8 @@ Aaa::AuthenMethod::AuthenMethod()
     taskmap{YType::str, "taskmap"},
     usergroup{YType::str, "usergroup"}
 {
-    yang_name = "authen-method"; yang_parent_name = "aaa";
+
+    yang_name = "authen-method"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::AuthenMethod::~AuthenMethod()
@@ -3179,27 +438,22 @@ bool Aaa::AuthenMethod::has_operation() const
 	|| ydk::is_set(usergroup.yfilter);
 }
 
+std::string Aaa::AuthenMethod::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::AuthenMethod::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authen-method";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::AuthenMethod::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::AuthenMethod::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
@@ -3209,9 +463,7 @@ const EntityPath Aaa::AuthenMethod::get_entity_path(Entity* ancestor) const
     leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
     auto usergroup_name_datas = usergroup.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3284,7 +536,8 @@ Aaa::CurrentUsergroup::CurrentUsergroup()
     taskmap{YType::str, "taskmap"},
     usergroup{YType::str, "usergroup"}
 {
-    yang_name = "current-usergroup"; yang_parent_name = "aaa";
+
+    yang_name = "current-usergroup"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::CurrentUsergroup::~CurrentUsergroup()
@@ -3326,27 +579,22 @@ bool Aaa::CurrentUsergroup::has_operation() const
 	|| ydk::is_set(usergroup.yfilter);
 }
 
+std::string Aaa::CurrentUsergroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::CurrentUsergroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "current-usergroup";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::CurrentUsergroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::CurrentUsergroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
@@ -3356,9 +604,7 @@ const EntityPath Aaa::CurrentUsergroup::get_entity_path(Entity* ancestor) const
     leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
     auto usergroup_name_datas = usergroup.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3424,6 +670,147 @@ bool Aaa::CurrentUsergroup::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
+Aaa::CurrentuserDetail::CurrentuserDetail()
+    :
+    authenmethod{YType::int32, "authenmethod"},
+    name{YType::str, "name"},
+    taskmap{YType::str, "taskmap"},
+    usergroup{YType::str, "usergroup"}
+{
+
+    yang_name = "currentuser-detail"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::CurrentuserDetail::~CurrentuserDetail()
+{
+}
+
+bool Aaa::CurrentuserDetail::has_data() const
+{
+    for (auto const & leaf : taskmap.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return authenmethod.is_set
+	|| name.is_set;
+}
+
+bool Aaa::CurrentuserDetail::has_operation() const
+{
+    for (auto const & leaf : taskmap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(authenmethod.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(taskmap.yfilter)
+	|| ydk::is_set(usergroup.yfilter);
+}
+
+std::string Aaa::CurrentuserDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::CurrentuserDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "currentuser-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::CurrentuserDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    auto taskmap_name_datas = taskmap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
+    auto usergroup_name_datas = usergroup.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::CurrentuserDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentuserDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::CurrentuserDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "authenmethod")
+    {
+        authenmethod = value;
+        authenmethod.value_namespace = name_space;
+        authenmethod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "taskmap")
+    {
+        taskmap.append(value);
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.append(value);
+    }
+}
+
+void Aaa::CurrentuserDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authenmethod")
+    {
+        authenmethod.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "taskmap")
+    {
+        taskmap.yfilter = yfilter;
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.yfilter = yfilter;
+    }
+}
+
+bool Aaa::CurrentuserDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authenmethod" || name == "name" || name == "taskmap" || name == "usergroup")
+        return true;
+    return false;
+}
+
 Aaa::Diameter::Diameter()
     :
     gx(std::make_shared<Aaa::Diameter::Gx>())
@@ -3438,26 +825,17 @@ Aaa::Diameter::Diameter()
 	,peers(std::make_shared<Aaa::Diameter::Peers>())
 {
     gx->parent = this;
-
     gx_session_ids->parent = this;
-
     gx_statistics->parent = this;
-
     gy->parent = this;
-
     gy_session_ids->parent = this;
-
     gy_statistics->parent = this;
-
     nas->parent = this;
-
     nas_session->parent = this;
-
     nas_summary->parent = this;
-
     peers->parent = this;
 
-    yang_name = "diameter"; yang_parent_name = "aaa";
+    yang_name = "diameter"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Diameter::~Diameter()
@@ -3493,33 +871,26 @@ bool Aaa::Diameter::has_operation() const
 	|| (peers !=  nullptr && peers->has_operation());
 }
 
+std::string Aaa::Diameter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Diameter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-aaa-diameter-oper:diameter";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3689,27 +1060,28 @@ bool Aaa::Diameter::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Aaa::Diameter::Gy::Gy()
+Aaa::Diameter::Gx::Gx()
     :
     is_enabled{YType::boolean, "is-enabled"},
     retransmits{YType::uint32, "retransmits"},
     tx_timer{YType::uint32, "tx-timer"}
 {
-    yang_name = "gy"; yang_parent_name = "diameter";
+
+    yang_name = "gx"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Aaa::Diameter::Gy::~Gy()
+Aaa::Diameter::Gx::~Gx()
 {
 }
 
-bool Aaa::Diameter::Gy::has_data() const
+bool Aaa::Diameter::Gx::has_data() const
 {
     return is_enabled.is_set
 	|| retransmits.is_set
 	|| tx_timer.is_set;
 }
 
-bool Aaa::Diameter::Gy::has_operation() const
+bool Aaa::Diameter::Gx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_enabled.yfilter)
@@ -3717,51 +1089,44 @@ bool Aaa::Diameter::Gy::has_operation() const
 	|| ydk::is_set(tx_timer.yfilter);
 }
 
-std::string Aaa::Diameter::Gy::get_segment_path() const
+std::string Aaa::Diameter::Gx::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gy";
-
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::Gy::get_entity_path(Entity* ancestor) const
+std::string Aaa::Diameter::Gx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "gx";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Gx::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_enabled.is_set || is_set(is_enabled.yfilter)) leaf_name_data.push_back(is_enabled.get_name_leafdata());
     if (retransmits.is_set || is_set(retransmits.yfilter)) leaf_name_data.push_back(retransmits.get_name_leafdata());
     if (tx_timer.is_set || is_set(tx_timer.yfilter)) leaf_name_data.push_back(tx_timer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Aaa::Diameter::Gy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Aaa::Diameter::Gx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Aaa::Diameter::Gy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::Diameter::Gx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-enabled")
     {
@@ -3783,7 +1148,7 @@ void Aaa::Diameter::Gy::set_value(const std::string & value_path, const std::str
     }
 }
 
-void Aaa::Diameter::Gy::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::Diameter::Gx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-enabled")
     {
@@ -3799,9 +1164,276 @@ void Aaa::Diameter::Gy::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-bool Aaa::Diameter::Gy::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::Diameter::Gx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-enabled" || name == "retransmits" || name == "tx-timer")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::GxSessionIds::GxSessionIds()
+{
+
+    yang_name = "gx-session-ids"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::GxSessionIds::~GxSessionIds()
+{
+}
+
+bool Aaa::Diameter::GxSessionIds::has_data() const
+{
+    for (std::size_t index=0; index<gx_session_id.size(); index++)
+    {
+        if(gx_session_id[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Diameter::GxSessionIds::has_operation() const
+{
+    for (std::size_t index=0; index<gx_session_id.size(); index++)
+    {
+        if(gx_session_id[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Diameter::GxSessionIds::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::GxSessionIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gx-session-ids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GxSessionIds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gx-session-id")
+    {
+        for(auto const & c : gx_session_id)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Diameter::GxSessionIds::GxSessionId>();
+        c->parent = this;
+        gx_session_id.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : gx_session_id)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Diameter::GxSessionIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Diameter::GxSessionIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Diameter::GxSessionIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gx-session-id")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::GxSessionIds::GxSessionId::GxSessionId()
+    :
+    session_id{YType::int32, "session-id"},
+    aaa_session_id{YType::uint32, "aaa-session-id"},
+    diameter_session_id{YType::str, "diameter-session-id"},
+    request_number{YType::uint32, "request-number"},
+    request_type{YType::str, "request-type"},
+    retry_count{YType::uint32, "retry-count"},
+    session_state{YType::str, "session-state"}
+{
+
+    yang_name = "gx-session-id"; yang_parent_name = "gx-session-ids"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::GxSessionIds::GxSessionId::~GxSessionId()
+{
+}
+
+bool Aaa::Diameter::GxSessionIds::GxSessionId::has_data() const
+{
+    return session_id.is_set
+	|| aaa_session_id.is_set
+	|| diameter_session_id.is_set
+	|| request_number.is_set
+	|| request_type.is_set
+	|| retry_count.is_set
+	|| session_state.is_set;
+}
+
+bool Aaa::Diameter::GxSessionIds::GxSessionId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(aaa_session_id.yfilter)
+	|| ydk::is_set(diameter_session_id.yfilter)
+	|| ydk::is_set(request_number.yfilter)
+	|| ydk::is_set(request_type.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(session_state.yfilter);
+}
+
+std::string Aaa::Diameter::GxSessionIds::GxSessionId::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/gx-session-ids/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::GxSessionIds::GxSessionId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gx-session-id" <<"[session-id='" <<session_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GxSessionIds::GxSessionId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
+    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
+    if (request_number.is_set || is_set(request_number.yfilter)) leaf_name_data.push_back(request_number.get_name_leafdata());
+    if (request_type.is_set || is_set(request_type.yfilter)) leaf_name_data.push_back(request_type.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::GxSessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::GxSessionId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::GxSessionIds::GxSessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id = value;
+        aaa_session_id.value_namespace = name_space;
+        aaa_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id = value;
+        diameter_session_id.value_namespace = name_space;
+        diameter_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-number")
+    {
+        request_number = value;
+        request_number.value_namespace = name_space;
+        request_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-type")
+    {
+        request_type = value;
+        request_type.value_namespace = name_space;
+        request_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-state")
+    {
+        session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::GxSessionIds::GxSessionId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id.yfilter = yfilter;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id.yfilter = yfilter;
+    }
+    if(value_path == "request-number")
+    {
+        request_number.yfilter = yfilter;
+    }
+    if(value_path == "request-type")
+    {
+        request_type.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::GxSessionIds::GxSessionId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "request-number" || name == "request-type" || name == "retry-count" || name == "session-state")
         return true;
     return false;
 }
@@ -3841,7 +1473,8 @@ Aaa::Diameter::GxStatistics::GxStatistics()
     session_termination_messages{YType::uint32, "session-termination-messages"},
     unknown_request_messages{YType::uint32, "unknown-request-messages"}
 {
-    yang_name = "gx-statistics"; yang_parent_name = "diameter";
+
+    yang_name = "gx-statistics"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Diameter::GxStatistics::~GxStatistics()
@@ -3921,27 +1554,22 @@ bool Aaa::Diameter::GxStatistics::has_operation() const
 	|| ydk::is_set(unknown_request_messages.yfilter);
 }
 
+std::string Aaa::Diameter::GxStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Diameter::GxStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "gx-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::GxStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GxStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
@@ -3977,9 +1605,7 @@ const EntityPath Aaa::Diameter::GxStatistics::get_entity_path(Entity* ancestor) 
     if (session_termination_messages.is_set || is_set(session_termination_messages.yfilter)) leaf_name_data.push_back(session_termination_messages.get_name_leafdata());
     if (unknown_request_messages.is_set || is_set(unknown_request_messages.yfilter)) leaf_name_data.push_back(unknown_request_messages.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4329,27 +1955,28 @@ bool Aaa::Diameter::GxStatistics::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-Aaa::Diameter::Gx::Gx()
+Aaa::Diameter::Gy::Gy()
     :
     is_enabled{YType::boolean, "is-enabled"},
     retransmits{YType::uint32, "retransmits"},
     tx_timer{YType::uint32, "tx-timer"}
 {
-    yang_name = "gx"; yang_parent_name = "diameter";
+
+    yang_name = "gy"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Aaa::Diameter::Gx::~Gx()
+Aaa::Diameter::Gy::~Gy()
 {
 }
 
-bool Aaa::Diameter::Gx::has_data() const
+bool Aaa::Diameter::Gy::has_data() const
 {
     return is_enabled.is_set
 	|| retransmits.is_set
 	|| tx_timer.is_set;
 }
 
-bool Aaa::Diameter::Gx::has_operation() const
+bool Aaa::Diameter::Gy::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_enabled.yfilter)
@@ -4357,51 +1984,44 @@ bool Aaa::Diameter::Gx::has_operation() const
 	|| ydk::is_set(tx_timer.yfilter);
 }
 
-std::string Aaa::Diameter::Gx::get_segment_path() const
+std::string Aaa::Diameter::Gy::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gx";
-
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::Gx::get_entity_path(Entity* ancestor) const
+std::string Aaa::Diameter::Gy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "gy";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Gy::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_enabled.is_set || is_set(is_enabled.yfilter)) leaf_name_data.push_back(is_enabled.get_name_leafdata());
     if (retransmits.is_set || is_set(retransmits.yfilter)) leaf_name_data.push_back(retransmits.get_name_leafdata());
     if (tx_timer.is_set || is_set(tx_timer.yfilter)) leaf_name_data.push_back(tx_timer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Aaa::Diameter::Gx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Aaa::Diameter::Gy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Aaa::Diameter::Gx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::Diameter::Gy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-enabled")
     {
@@ -4423,7 +2043,7 @@ void Aaa::Diameter::Gx::set_value(const std::string & value_path, const std::str
     }
 }
 
-void Aaa::Diameter::Gx::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::Diameter::Gy::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-enabled")
     {
@@ -4439,9 +2059,2208 @@ void Aaa::Diameter::Gx::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-bool Aaa::Diameter::Gx::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::Diameter::Gy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-enabled" || name == "retransmits" || name == "tx-timer")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::GySessionIds::GySessionIds()
+{
+
+    yang_name = "gy-session-ids"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::GySessionIds::~GySessionIds()
+{
+}
+
+bool Aaa::Diameter::GySessionIds::has_data() const
+{
+    for (std::size_t index=0; index<gy_session_id.size(); index++)
+    {
+        if(gy_session_id[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Diameter::GySessionIds::has_operation() const
+{
+    for (std::size_t index=0; index<gy_session_id.size(); index++)
+    {
+        if(gy_session_id[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Diameter::GySessionIds::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::GySessionIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gy-session-ids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GySessionIds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "gy-session-id")
+    {
+        for(auto const & c : gy_session_id)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Diameter::GySessionIds::GySessionId>();
+        c->parent = this;
+        gy_session_id.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : gy_session_id)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Diameter::GySessionIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Diameter::GySessionIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Diameter::GySessionIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gy-session-id")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::GySessionIds::GySessionId::GySessionId()
+    :
+    session_id{YType::int32, "session-id"},
+    aaa_session_id{YType::uint32, "aaa-session-id"},
+    diameter_session_id{YType::str, "diameter-session-id"},
+    parent_aaa_session_id{YType::uint32, "parent-aaa-session-id"},
+    request_number{YType::uint32, "request-number"},
+    request_type{YType::str, "request-type"},
+    retry_count{YType::uint32, "retry-count"},
+    session_state{YType::str, "session-state"}
+{
+
+    yang_name = "gy-session-id"; yang_parent_name = "gy-session-ids"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::GySessionIds::GySessionId::~GySessionId()
+{
+}
+
+bool Aaa::Diameter::GySessionIds::GySessionId::has_data() const
+{
+    return session_id.is_set
+	|| aaa_session_id.is_set
+	|| diameter_session_id.is_set
+	|| parent_aaa_session_id.is_set
+	|| request_number.is_set
+	|| request_type.is_set
+	|| retry_count.is_set
+	|| session_state.is_set;
+}
+
+bool Aaa::Diameter::GySessionIds::GySessionId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(aaa_session_id.yfilter)
+	|| ydk::is_set(diameter_session_id.yfilter)
+	|| ydk::is_set(parent_aaa_session_id.yfilter)
+	|| ydk::is_set(request_number.yfilter)
+	|| ydk::is_set(request_type.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(session_state.yfilter);
+}
+
+std::string Aaa::Diameter::GySessionIds::GySessionId::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/gy-session-ids/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::GySessionIds::GySessionId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gy-session-id" <<"[session-id='" <<session_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GySessionIds::GySessionId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
+    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
+    if (parent_aaa_session_id.is_set || is_set(parent_aaa_session_id.yfilter)) leaf_name_data.push_back(parent_aaa_session_id.get_name_leafdata());
+    if (request_number.is_set || is_set(request_number.yfilter)) leaf_name_data.push_back(request_number.get_name_leafdata());
+    if (request_type.is_set || is_set(request_type.yfilter)) leaf_name_data.push_back(request_type.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::GySessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::GySessionId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::GySessionIds::GySessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id = value;
+        aaa_session_id.value_namespace = name_space;
+        aaa_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id = value;
+        diameter_session_id.value_namespace = name_space;
+        diameter_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-aaa-session-id")
+    {
+        parent_aaa_session_id = value;
+        parent_aaa_session_id.value_namespace = name_space;
+        parent_aaa_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-number")
+    {
+        request_number = value;
+        request_number.value_namespace = name_space;
+        request_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-type")
+    {
+        request_type = value;
+        request_type.value_namespace = name_space;
+        request_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-state")
+    {
+        session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::GySessionIds::GySessionId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id.yfilter = yfilter;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id.yfilter = yfilter;
+    }
+    if(value_path == "parent-aaa-session-id")
+    {
+        parent_aaa_session_id.yfilter = yfilter;
+    }
+    if(value_path == "request-number")
+    {
+        request_number.yfilter = yfilter;
+    }
+    if(value_path == "request-type")
+    {
+        request_type.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::GySessionIds::GySessionId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "parent-aaa-session-id" || name == "request-number" || name == "request-type" || name == "retry-count" || name == "session-state")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::GyStatistics::GyStatistics()
+    :
+    active_sessions{YType::uint32, "active-sessions"},
+    asa_sent_error_messages{YType::uint32, "asa-sent-error-messages"},
+    asa_sent_messages{YType::uint32, "asa-sent-messages"},
+    asr_received_error_messages{YType::uint32, "asr-received-error-messages"},
+    asr_received_messages{YType::uint32, "asr-received-messages"},
+    cca_final_error_messages{YType::uint32, "cca-final-error-messages"},
+    cca_final_messages{YType::uint32, "cca-final-messages"},
+    cca_init_error_messages{YType::uint32, "cca-init-error-messages"},
+    cca_init_messages{YType::uint32, "cca-init-messages"},
+    cca_update_error_messages{YType::uint32, "cca-update-error-messages"},
+    cca_update_messages{YType::uint32, "cca-update-messages"},
+    ccr_final_failed_messages{YType::uint32, "ccr-final-failed-messages"},
+    ccr_final_messages{YType::uint32, "ccr-final-messages"},
+    ccr_final_retry_messages{YType::uint32, "ccr-final-retry-messages"},
+    ccr_final_timed_out_messages{YType::uint32, "ccr-final-timed-out-messages"},
+    ccr_init_failed_messages{YType::uint32, "ccr-init-failed-messages"},
+    ccr_init_messages{YType::uint32, "ccr-init-messages"},
+    ccr_init_retry_messages{YType::uint32, "ccr-init-retry-messages"},
+    ccr_init_timed_out_messages{YType::uint32, "ccr-init-timed-out-messages"},
+    ccr_update_failed_messages{YType::uint32, "ccr-update-failed-messages"},
+    ccr_update_messages{YType::uint32, "ccr-update-messages"},
+    ccr_update_retry_messages{YType::uint32, "ccr-update-retry-messages"},
+    ccr_update_timed_out_messages{YType::uint32, "ccr-update-timed-out-messages"},
+    close_sessions{YType::uint32, "close-sessions"},
+    open_sessions{YType::uint32, "open-sessions"},
+    raa_sent_error_messages{YType::uint32, "raa-sent-error-messages"},
+    raa_sent_messages{YType::uint32, "raa-sent-messages"},
+    rar_received_error_messages{YType::uint32, "rar-received-error-messages"},
+    rar_received_messages{YType::uint32, "rar-received-messages"},
+    restore_sessions{YType::uint32, "restore-sessions"},
+    unknown_request_messages{YType::uint32, "unknown-request-messages"}
+{
+
+    yang_name = "gy-statistics"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::GyStatistics::~GyStatistics()
+{
+}
+
+bool Aaa::Diameter::GyStatistics::has_data() const
+{
+    return active_sessions.is_set
+	|| asa_sent_error_messages.is_set
+	|| asa_sent_messages.is_set
+	|| asr_received_error_messages.is_set
+	|| asr_received_messages.is_set
+	|| cca_final_error_messages.is_set
+	|| cca_final_messages.is_set
+	|| cca_init_error_messages.is_set
+	|| cca_init_messages.is_set
+	|| cca_update_error_messages.is_set
+	|| cca_update_messages.is_set
+	|| ccr_final_failed_messages.is_set
+	|| ccr_final_messages.is_set
+	|| ccr_final_retry_messages.is_set
+	|| ccr_final_timed_out_messages.is_set
+	|| ccr_init_failed_messages.is_set
+	|| ccr_init_messages.is_set
+	|| ccr_init_retry_messages.is_set
+	|| ccr_init_timed_out_messages.is_set
+	|| ccr_update_failed_messages.is_set
+	|| ccr_update_messages.is_set
+	|| ccr_update_retry_messages.is_set
+	|| ccr_update_timed_out_messages.is_set
+	|| close_sessions.is_set
+	|| open_sessions.is_set
+	|| raa_sent_error_messages.is_set
+	|| raa_sent_messages.is_set
+	|| rar_received_error_messages.is_set
+	|| rar_received_messages.is_set
+	|| restore_sessions.is_set
+	|| unknown_request_messages.is_set;
+}
+
+bool Aaa::Diameter::GyStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(asa_sent_error_messages.yfilter)
+	|| ydk::is_set(asa_sent_messages.yfilter)
+	|| ydk::is_set(asr_received_error_messages.yfilter)
+	|| ydk::is_set(asr_received_messages.yfilter)
+	|| ydk::is_set(cca_final_error_messages.yfilter)
+	|| ydk::is_set(cca_final_messages.yfilter)
+	|| ydk::is_set(cca_init_error_messages.yfilter)
+	|| ydk::is_set(cca_init_messages.yfilter)
+	|| ydk::is_set(cca_update_error_messages.yfilter)
+	|| ydk::is_set(cca_update_messages.yfilter)
+	|| ydk::is_set(ccr_final_failed_messages.yfilter)
+	|| ydk::is_set(ccr_final_messages.yfilter)
+	|| ydk::is_set(ccr_final_retry_messages.yfilter)
+	|| ydk::is_set(ccr_final_timed_out_messages.yfilter)
+	|| ydk::is_set(ccr_init_failed_messages.yfilter)
+	|| ydk::is_set(ccr_init_messages.yfilter)
+	|| ydk::is_set(ccr_init_retry_messages.yfilter)
+	|| ydk::is_set(ccr_init_timed_out_messages.yfilter)
+	|| ydk::is_set(ccr_update_failed_messages.yfilter)
+	|| ydk::is_set(ccr_update_messages.yfilter)
+	|| ydk::is_set(ccr_update_retry_messages.yfilter)
+	|| ydk::is_set(ccr_update_timed_out_messages.yfilter)
+	|| ydk::is_set(close_sessions.yfilter)
+	|| ydk::is_set(open_sessions.yfilter)
+	|| ydk::is_set(raa_sent_error_messages.yfilter)
+	|| ydk::is_set(raa_sent_messages.yfilter)
+	|| ydk::is_set(rar_received_error_messages.yfilter)
+	|| ydk::is_set(rar_received_messages.yfilter)
+	|| ydk::is_set(restore_sessions.yfilter)
+	|| ydk::is_set(unknown_request_messages.yfilter);
+}
+
+std::string Aaa::Diameter::GyStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::GyStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gy-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GyStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (asa_sent_error_messages.is_set || is_set(asa_sent_error_messages.yfilter)) leaf_name_data.push_back(asa_sent_error_messages.get_name_leafdata());
+    if (asa_sent_messages.is_set || is_set(asa_sent_messages.yfilter)) leaf_name_data.push_back(asa_sent_messages.get_name_leafdata());
+    if (asr_received_error_messages.is_set || is_set(asr_received_error_messages.yfilter)) leaf_name_data.push_back(asr_received_error_messages.get_name_leafdata());
+    if (asr_received_messages.is_set || is_set(asr_received_messages.yfilter)) leaf_name_data.push_back(asr_received_messages.get_name_leafdata());
+    if (cca_final_error_messages.is_set || is_set(cca_final_error_messages.yfilter)) leaf_name_data.push_back(cca_final_error_messages.get_name_leafdata());
+    if (cca_final_messages.is_set || is_set(cca_final_messages.yfilter)) leaf_name_data.push_back(cca_final_messages.get_name_leafdata());
+    if (cca_init_error_messages.is_set || is_set(cca_init_error_messages.yfilter)) leaf_name_data.push_back(cca_init_error_messages.get_name_leafdata());
+    if (cca_init_messages.is_set || is_set(cca_init_messages.yfilter)) leaf_name_data.push_back(cca_init_messages.get_name_leafdata());
+    if (cca_update_error_messages.is_set || is_set(cca_update_error_messages.yfilter)) leaf_name_data.push_back(cca_update_error_messages.get_name_leafdata());
+    if (cca_update_messages.is_set || is_set(cca_update_messages.yfilter)) leaf_name_data.push_back(cca_update_messages.get_name_leafdata());
+    if (ccr_final_failed_messages.is_set || is_set(ccr_final_failed_messages.yfilter)) leaf_name_data.push_back(ccr_final_failed_messages.get_name_leafdata());
+    if (ccr_final_messages.is_set || is_set(ccr_final_messages.yfilter)) leaf_name_data.push_back(ccr_final_messages.get_name_leafdata());
+    if (ccr_final_retry_messages.is_set || is_set(ccr_final_retry_messages.yfilter)) leaf_name_data.push_back(ccr_final_retry_messages.get_name_leafdata());
+    if (ccr_final_timed_out_messages.is_set || is_set(ccr_final_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_final_timed_out_messages.get_name_leafdata());
+    if (ccr_init_failed_messages.is_set || is_set(ccr_init_failed_messages.yfilter)) leaf_name_data.push_back(ccr_init_failed_messages.get_name_leafdata());
+    if (ccr_init_messages.is_set || is_set(ccr_init_messages.yfilter)) leaf_name_data.push_back(ccr_init_messages.get_name_leafdata());
+    if (ccr_init_retry_messages.is_set || is_set(ccr_init_retry_messages.yfilter)) leaf_name_data.push_back(ccr_init_retry_messages.get_name_leafdata());
+    if (ccr_init_timed_out_messages.is_set || is_set(ccr_init_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_init_timed_out_messages.get_name_leafdata());
+    if (ccr_update_failed_messages.is_set || is_set(ccr_update_failed_messages.yfilter)) leaf_name_data.push_back(ccr_update_failed_messages.get_name_leafdata());
+    if (ccr_update_messages.is_set || is_set(ccr_update_messages.yfilter)) leaf_name_data.push_back(ccr_update_messages.get_name_leafdata());
+    if (ccr_update_retry_messages.is_set || is_set(ccr_update_retry_messages.yfilter)) leaf_name_data.push_back(ccr_update_retry_messages.get_name_leafdata());
+    if (ccr_update_timed_out_messages.is_set || is_set(ccr_update_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_update_timed_out_messages.get_name_leafdata());
+    if (close_sessions.is_set || is_set(close_sessions.yfilter)) leaf_name_data.push_back(close_sessions.get_name_leafdata());
+    if (open_sessions.is_set || is_set(open_sessions.yfilter)) leaf_name_data.push_back(open_sessions.get_name_leafdata());
+    if (raa_sent_error_messages.is_set || is_set(raa_sent_error_messages.yfilter)) leaf_name_data.push_back(raa_sent_error_messages.get_name_leafdata());
+    if (raa_sent_messages.is_set || is_set(raa_sent_messages.yfilter)) leaf_name_data.push_back(raa_sent_messages.get_name_leafdata());
+    if (rar_received_error_messages.is_set || is_set(rar_received_error_messages.yfilter)) leaf_name_data.push_back(rar_received_error_messages.get_name_leafdata());
+    if (rar_received_messages.is_set || is_set(rar_received_messages.yfilter)) leaf_name_data.push_back(rar_received_messages.get_name_leafdata());
+    if (restore_sessions.is_set || is_set(restore_sessions.yfilter)) leaf_name_data.push_back(restore_sessions.get_name_leafdata());
+    if (unknown_request_messages.is_set || is_set(unknown_request_messages.yfilter)) leaf_name_data.push_back(unknown_request_messages.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::GyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GyStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::GyStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "active-sessions")
+    {
+        active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asa-sent-error-messages")
+    {
+        asa_sent_error_messages = value;
+        asa_sent_error_messages.value_namespace = name_space;
+        asa_sent_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asa-sent-messages")
+    {
+        asa_sent_messages = value;
+        asa_sent_messages.value_namespace = name_space;
+        asa_sent_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asr-received-error-messages")
+    {
+        asr_received_error_messages = value;
+        asr_received_error_messages.value_namespace = name_space;
+        asr_received_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asr-received-messages")
+    {
+        asr_received_messages = value;
+        asr_received_messages.value_namespace = name_space;
+        asr_received_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-final-error-messages")
+    {
+        cca_final_error_messages = value;
+        cca_final_error_messages.value_namespace = name_space;
+        cca_final_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-final-messages")
+    {
+        cca_final_messages = value;
+        cca_final_messages.value_namespace = name_space;
+        cca_final_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-init-error-messages")
+    {
+        cca_init_error_messages = value;
+        cca_init_error_messages.value_namespace = name_space;
+        cca_init_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-init-messages")
+    {
+        cca_init_messages = value;
+        cca_init_messages.value_namespace = name_space;
+        cca_init_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-update-error-messages")
+    {
+        cca_update_error_messages = value;
+        cca_update_error_messages.value_namespace = name_space;
+        cca_update_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cca-update-messages")
+    {
+        cca_update_messages = value;
+        cca_update_messages.value_namespace = name_space;
+        cca_update_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-final-failed-messages")
+    {
+        ccr_final_failed_messages = value;
+        ccr_final_failed_messages.value_namespace = name_space;
+        ccr_final_failed_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-final-messages")
+    {
+        ccr_final_messages = value;
+        ccr_final_messages.value_namespace = name_space;
+        ccr_final_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-final-retry-messages")
+    {
+        ccr_final_retry_messages = value;
+        ccr_final_retry_messages.value_namespace = name_space;
+        ccr_final_retry_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-final-timed-out-messages")
+    {
+        ccr_final_timed_out_messages = value;
+        ccr_final_timed_out_messages.value_namespace = name_space;
+        ccr_final_timed_out_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-init-failed-messages")
+    {
+        ccr_init_failed_messages = value;
+        ccr_init_failed_messages.value_namespace = name_space;
+        ccr_init_failed_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-init-messages")
+    {
+        ccr_init_messages = value;
+        ccr_init_messages.value_namespace = name_space;
+        ccr_init_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-init-retry-messages")
+    {
+        ccr_init_retry_messages = value;
+        ccr_init_retry_messages.value_namespace = name_space;
+        ccr_init_retry_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-init-timed-out-messages")
+    {
+        ccr_init_timed_out_messages = value;
+        ccr_init_timed_out_messages.value_namespace = name_space;
+        ccr_init_timed_out_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-update-failed-messages")
+    {
+        ccr_update_failed_messages = value;
+        ccr_update_failed_messages.value_namespace = name_space;
+        ccr_update_failed_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-update-messages")
+    {
+        ccr_update_messages = value;
+        ccr_update_messages.value_namespace = name_space;
+        ccr_update_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-update-retry-messages")
+    {
+        ccr_update_retry_messages = value;
+        ccr_update_retry_messages.value_namespace = name_space;
+        ccr_update_retry_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccr-update-timed-out-messages")
+    {
+        ccr_update_timed_out_messages = value;
+        ccr_update_timed_out_messages.value_namespace = name_space;
+        ccr_update_timed_out_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "close-sessions")
+    {
+        close_sessions = value;
+        close_sessions.value_namespace = name_space;
+        close_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "open-sessions")
+    {
+        open_sessions = value;
+        open_sessions.value_namespace = name_space;
+        open_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "raa-sent-error-messages")
+    {
+        raa_sent_error_messages = value;
+        raa_sent_error_messages.value_namespace = name_space;
+        raa_sent_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "raa-sent-messages")
+    {
+        raa_sent_messages = value;
+        raa_sent_messages.value_namespace = name_space;
+        raa_sent_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rar-received-error-messages")
+    {
+        rar_received_error_messages = value;
+        rar_received_error_messages.value_namespace = name_space;
+        rar_received_error_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rar-received-messages")
+    {
+        rar_received_messages = value;
+        rar_received_messages.value_namespace = name_space;
+        rar_received_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restore-sessions")
+    {
+        restore_sessions = value;
+        restore_sessions.value_namespace = name_space;
+        restore_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-request-messages")
+    {
+        unknown_request_messages = value;
+        unknown_request_messages.value_namespace = name_space;
+        unknown_request_messages.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::GyStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "asa-sent-error-messages")
+    {
+        asa_sent_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "asa-sent-messages")
+    {
+        asa_sent_messages.yfilter = yfilter;
+    }
+    if(value_path == "asr-received-error-messages")
+    {
+        asr_received_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "asr-received-messages")
+    {
+        asr_received_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-final-error-messages")
+    {
+        cca_final_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-final-messages")
+    {
+        cca_final_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-init-error-messages")
+    {
+        cca_init_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-init-messages")
+    {
+        cca_init_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-update-error-messages")
+    {
+        cca_update_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "cca-update-messages")
+    {
+        cca_update_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-final-failed-messages")
+    {
+        ccr_final_failed_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-final-messages")
+    {
+        ccr_final_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-final-retry-messages")
+    {
+        ccr_final_retry_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-final-timed-out-messages")
+    {
+        ccr_final_timed_out_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-init-failed-messages")
+    {
+        ccr_init_failed_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-init-messages")
+    {
+        ccr_init_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-init-retry-messages")
+    {
+        ccr_init_retry_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-init-timed-out-messages")
+    {
+        ccr_init_timed_out_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-update-failed-messages")
+    {
+        ccr_update_failed_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-update-messages")
+    {
+        ccr_update_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-update-retry-messages")
+    {
+        ccr_update_retry_messages.yfilter = yfilter;
+    }
+    if(value_path == "ccr-update-timed-out-messages")
+    {
+        ccr_update_timed_out_messages.yfilter = yfilter;
+    }
+    if(value_path == "close-sessions")
+    {
+        close_sessions.yfilter = yfilter;
+    }
+    if(value_path == "open-sessions")
+    {
+        open_sessions.yfilter = yfilter;
+    }
+    if(value_path == "raa-sent-error-messages")
+    {
+        raa_sent_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "raa-sent-messages")
+    {
+        raa_sent_messages.yfilter = yfilter;
+    }
+    if(value_path == "rar-received-error-messages")
+    {
+        rar_received_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "rar-received-messages")
+    {
+        rar_received_messages.yfilter = yfilter;
+    }
+    if(value_path == "restore-sessions")
+    {
+        restore_sessions.yfilter = yfilter;
+    }
+    if(value_path == "unknown-request-messages")
+    {
+        unknown_request_messages.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::GyStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-sessions" || name == "asa-sent-error-messages" || name == "asa-sent-messages" || name == "asr-received-error-messages" || name == "asr-received-messages" || name == "cca-final-error-messages" || name == "cca-final-messages" || name == "cca-init-error-messages" || name == "cca-init-messages" || name == "cca-update-error-messages" || name == "cca-update-messages" || name == "ccr-final-failed-messages" || name == "ccr-final-messages" || name == "ccr-final-retry-messages" || name == "ccr-final-timed-out-messages" || name == "ccr-init-failed-messages" || name == "ccr-init-messages" || name == "ccr-init-retry-messages" || name == "ccr-init-timed-out-messages" || name == "ccr-update-failed-messages" || name == "ccr-update-messages" || name == "ccr-update-retry-messages" || name == "ccr-update-timed-out-messages" || name == "close-sessions" || name == "open-sessions" || name == "raa-sent-error-messages" || name == "raa-sent-messages" || name == "rar-received-error-messages" || name == "rar-received-messages" || name == "restore-sessions" || name == "unknown-request-messages")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::Nas::Nas()
+    :
+    aaanas_id{YType::str, "aaanas-id"}
+{
+
+    yang_name = "nas"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::Nas::~Nas()
+{
+}
+
+bool Aaa::Diameter::Nas::has_data() const
+{
+    for (std::size_t index=0; index<list_of_nas.size(); index++)
+    {
+        if(list_of_nas[index]->has_data())
+            return true;
+    }
+    return aaanas_id.is_set;
+}
+
+bool Aaa::Diameter::Nas::has_operation() const
+{
+    for (std::size_t index=0; index<list_of_nas.size(); index++)
+    {
+        if(list_of_nas[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(aaanas_id.yfilter);
+}
+
+std::string Aaa::Diameter::Nas::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::Nas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Nas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aaanas_id.is_set || is_set(aaanas_id.yfilter)) leaf_name_data.push_back(aaanas_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list-of-nas")
+    {
+        for(auto const & c : list_of_nas)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Diameter::Nas::ListOfNas>();
+        c->parent = this;
+        list_of_nas.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : list_of_nas)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Diameter::Nas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aaanas-id")
+    {
+        aaanas_id = value;
+        aaanas_id.value_namespace = name_space;
+        aaanas_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::Nas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaanas-id")
+    {
+        aaanas_id.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::Nas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list-of-nas" || name == "aaanas-id")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::Nas::ListOfNas::ListOfNas()
+    :
+    aaa_session_id{YType::str, "aaa-session-id"},
+    accounting_intrim_in_packets{YType::uint32, "accounting-intrim-in-packets"},
+    accounting_intrim_out_packets{YType::uint32, "accounting-intrim-out-packets"},
+    accounting_status{YType::uint32, "accounting-status"},
+    accounting_status_stop{YType::uint32, "accounting-status-stop"},
+    authentication_status{YType::uint32, "authentication-status"},
+    authorization_status{YType::uint32, "authorization-status"},
+    diameter_session_id{YType::str, "diameter-session-id"},
+    disconnect_status{YType::uint32, "disconnect-status"},
+    method_list{YType::str, "method-list"},
+    server_used_list{YType::str, "server-used-list"}
+{
+
+    yang_name = "list-of-nas"; yang_parent_name = "nas"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::Nas::ListOfNas::~ListOfNas()
+{
+}
+
+bool Aaa::Diameter::Nas::ListOfNas::has_data() const
+{
+    return aaa_session_id.is_set
+	|| accounting_intrim_in_packets.is_set
+	|| accounting_intrim_out_packets.is_set
+	|| accounting_status.is_set
+	|| accounting_status_stop.is_set
+	|| authentication_status.is_set
+	|| authorization_status.is_set
+	|| diameter_session_id.is_set
+	|| disconnect_status.is_set
+	|| method_list.is_set
+	|| server_used_list.is_set;
+}
+
+bool Aaa::Diameter::Nas::ListOfNas::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_session_id.yfilter)
+	|| ydk::is_set(accounting_intrim_in_packets.yfilter)
+	|| ydk::is_set(accounting_intrim_out_packets.yfilter)
+	|| ydk::is_set(accounting_status.yfilter)
+	|| ydk::is_set(accounting_status_stop.yfilter)
+	|| ydk::is_set(authentication_status.yfilter)
+	|| ydk::is_set(authorization_status.yfilter)
+	|| ydk::is_set(diameter_session_id.yfilter)
+	|| ydk::is_set(disconnect_status.yfilter)
+	|| ydk::is_set(method_list.yfilter)
+	|| ydk::is_set(server_used_list.yfilter);
+}
+
+std::string Aaa::Diameter::Nas::ListOfNas::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/nas/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::Nas::ListOfNas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list-of-nas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Nas::ListOfNas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
+    if (accounting_intrim_in_packets.is_set || is_set(accounting_intrim_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_in_packets.get_name_leafdata());
+    if (accounting_intrim_out_packets.is_set || is_set(accounting_intrim_out_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_out_packets.get_name_leafdata());
+    if (accounting_status.is_set || is_set(accounting_status.yfilter)) leaf_name_data.push_back(accounting_status.get_name_leafdata());
+    if (accounting_status_stop.is_set || is_set(accounting_status_stop.yfilter)) leaf_name_data.push_back(accounting_status_stop.get_name_leafdata());
+    if (authentication_status.is_set || is_set(authentication_status.yfilter)) leaf_name_data.push_back(authentication_status.get_name_leafdata());
+    if (authorization_status.is_set || is_set(authorization_status.yfilter)) leaf_name_data.push_back(authorization_status.get_name_leafdata());
+    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
+    if (disconnect_status.is_set || is_set(disconnect_status.yfilter)) leaf_name_data.push_back(disconnect_status.get_name_leafdata());
+    if (method_list.is_set || is_set(method_list.yfilter)) leaf_name_data.push_back(method_list.get_name_leafdata());
+    if (server_used_list.is_set || is_set(server_used_list.yfilter)) leaf_name_data.push_back(server_used_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::Nas::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::ListOfNas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::Nas::ListOfNas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id = value;
+        aaa_session_id.value_namespace = name_space;
+        aaa_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-intrim-in-packets")
+    {
+        accounting_intrim_in_packets = value;
+        accounting_intrim_in_packets.value_namespace = name_space;
+        accounting_intrim_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-intrim-out-packets")
+    {
+        accounting_intrim_out_packets = value;
+        accounting_intrim_out_packets.value_namespace = name_space;
+        accounting_intrim_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-status")
+    {
+        accounting_status = value;
+        accounting_status.value_namespace = name_space;
+        accounting_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-status-stop")
+    {
+        accounting_status_stop = value;
+        accounting_status_stop.value_namespace = name_space;
+        accounting_status_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-status")
+    {
+        authentication_status = value;
+        authentication_status.value_namespace = name_space;
+        authentication_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-status")
+    {
+        authorization_status = value;
+        authorization_status.value_namespace = name_space;
+        authorization_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id = value;
+        diameter_session_id.value_namespace = name_space;
+        diameter_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-status")
+    {
+        disconnect_status = value;
+        disconnect_status.value_namespace = name_space;
+        disconnect_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "method-list")
+    {
+        method_list = value;
+        method_list.value_namespace = name_space;
+        method_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "server-used-list")
+    {
+        server_used_list = value;
+        server_used_list.value_namespace = name_space;
+        server_used_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::Nas::ListOfNas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id.yfilter = yfilter;
+    }
+    if(value_path == "accounting-intrim-in-packets")
+    {
+        accounting_intrim_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-intrim-out-packets")
+    {
+        accounting_intrim_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-status")
+    {
+        accounting_status.yfilter = yfilter;
+    }
+    if(value_path == "accounting-status-stop")
+    {
+        accounting_status_stop.yfilter = yfilter;
+    }
+    if(value_path == "authentication-status")
+    {
+        authentication_status.yfilter = yfilter;
+    }
+    if(value_path == "authorization-status")
+    {
+        authorization_status.yfilter = yfilter;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-status")
+    {
+        disconnect_status.yfilter = yfilter;
+    }
+    if(value_path == "method-list")
+    {
+        method_list.yfilter = yfilter;
+    }
+    if(value_path == "server-used-list")
+    {
+        server_used_list.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::Nas::ListOfNas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-session-id" || name == "accounting-intrim-in-packets" || name == "accounting-intrim-out-packets" || name == "accounting-status" || name == "accounting-status-stop" || name == "authentication-status" || name == "authorization-status" || name == "diameter-session-id" || name == "disconnect-status" || name == "method-list" || name == "server-used-list")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::NasSession::NasSession()
+    :
+    aaanas_id{YType::str, "aaanas-id"}
+{
+
+    yang_name = "nas-session"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::NasSession::~NasSession()
+{
+}
+
+bool Aaa::Diameter::NasSession::has_data() const
+{
+    for (std::size_t index=0; index<list_of_nas.size(); index++)
+    {
+        if(list_of_nas[index]->has_data())
+            return true;
+    }
+    return aaanas_id.is_set;
+}
+
+bool Aaa::Diameter::NasSession::has_operation() const
+{
+    for (std::size_t index=0; index<list_of_nas.size(); index++)
+    {
+        if(list_of_nas[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(aaanas_id.yfilter);
+}
+
+std::string Aaa::Diameter::NasSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::NasSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nas-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::NasSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aaanas_id.is_set || is_set(aaanas_id.yfilter)) leaf_name_data.push_back(aaanas_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list-of-nas")
+    {
+        for(auto const & c : list_of_nas)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Diameter::NasSession::ListOfNas>();
+        c->parent = this;
+        list_of_nas.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : list_of_nas)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Diameter::NasSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aaanas-id")
+    {
+        aaanas_id = value;
+        aaanas_id.value_namespace = name_space;
+        aaanas_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::NasSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaanas-id")
+    {
+        aaanas_id.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::NasSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list-of-nas" || name == "aaanas-id")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::NasSession::ListOfNas::ListOfNas()
+    :
+    aaa_session_id{YType::str, "aaa-session-id"},
+    accounting_intrim_in_packets{YType::uint32, "accounting-intrim-in-packets"},
+    accounting_intrim_out_packets{YType::uint32, "accounting-intrim-out-packets"},
+    accounting_status{YType::uint32, "accounting-status"},
+    accounting_status_stop{YType::uint32, "accounting-status-stop"},
+    authentication_status{YType::uint32, "authentication-status"},
+    authorization_status{YType::uint32, "authorization-status"},
+    diameter_session_id{YType::str, "diameter-session-id"},
+    disconnect_status{YType::uint32, "disconnect-status"},
+    method_list{YType::str, "method-list"},
+    server_used_list{YType::str, "server-used-list"}
+{
+
+    yang_name = "list-of-nas"; yang_parent_name = "nas-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::NasSession::ListOfNas::~ListOfNas()
+{
+}
+
+bool Aaa::Diameter::NasSession::ListOfNas::has_data() const
+{
+    return aaa_session_id.is_set
+	|| accounting_intrim_in_packets.is_set
+	|| accounting_intrim_out_packets.is_set
+	|| accounting_status.is_set
+	|| accounting_status_stop.is_set
+	|| authentication_status.is_set
+	|| authorization_status.is_set
+	|| diameter_session_id.is_set
+	|| disconnect_status.is_set
+	|| method_list.is_set
+	|| server_used_list.is_set;
+}
+
+bool Aaa::Diameter::NasSession::ListOfNas::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_session_id.yfilter)
+	|| ydk::is_set(accounting_intrim_in_packets.yfilter)
+	|| ydk::is_set(accounting_intrim_out_packets.yfilter)
+	|| ydk::is_set(accounting_status.yfilter)
+	|| ydk::is_set(accounting_status_stop.yfilter)
+	|| ydk::is_set(authentication_status.yfilter)
+	|| ydk::is_set(authorization_status.yfilter)
+	|| ydk::is_set(diameter_session_id.yfilter)
+	|| ydk::is_set(disconnect_status.yfilter)
+	|| ydk::is_set(method_list.yfilter)
+	|| ydk::is_set(server_used_list.yfilter);
+}
+
+std::string Aaa::Diameter::NasSession::ListOfNas::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/nas-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::NasSession::ListOfNas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list-of-nas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::NasSession::ListOfNas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
+    if (accounting_intrim_in_packets.is_set || is_set(accounting_intrim_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_in_packets.get_name_leafdata());
+    if (accounting_intrim_out_packets.is_set || is_set(accounting_intrim_out_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_out_packets.get_name_leafdata());
+    if (accounting_status.is_set || is_set(accounting_status.yfilter)) leaf_name_data.push_back(accounting_status.get_name_leafdata());
+    if (accounting_status_stop.is_set || is_set(accounting_status_stop.yfilter)) leaf_name_data.push_back(accounting_status_stop.get_name_leafdata());
+    if (authentication_status.is_set || is_set(authentication_status.yfilter)) leaf_name_data.push_back(authentication_status.get_name_leafdata());
+    if (authorization_status.is_set || is_set(authorization_status.yfilter)) leaf_name_data.push_back(authorization_status.get_name_leafdata());
+    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
+    if (disconnect_status.is_set || is_set(disconnect_status.yfilter)) leaf_name_data.push_back(disconnect_status.get_name_leafdata());
+    if (method_list.is_set || is_set(method_list.yfilter)) leaf_name_data.push_back(method_list.get_name_leafdata());
+    if (server_used_list.is_set || is_set(server_used_list.yfilter)) leaf_name_data.push_back(server_used_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::NasSession::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::ListOfNas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::NasSession::ListOfNas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id = value;
+        aaa_session_id.value_namespace = name_space;
+        aaa_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-intrim-in-packets")
+    {
+        accounting_intrim_in_packets = value;
+        accounting_intrim_in_packets.value_namespace = name_space;
+        accounting_intrim_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-intrim-out-packets")
+    {
+        accounting_intrim_out_packets = value;
+        accounting_intrim_out_packets.value_namespace = name_space;
+        accounting_intrim_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-status")
+    {
+        accounting_status = value;
+        accounting_status.value_namespace = name_space;
+        accounting_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-status-stop")
+    {
+        accounting_status_stop = value;
+        accounting_status_stop.value_namespace = name_space;
+        accounting_status_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-status")
+    {
+        authentication_status = value;
+        authentication_status.value_namespace = name_space;
+        authentication_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-status")
+    {
+        authorization_status = value;
+        authorization_status.value_namespace = name_space;
+        authorization_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id = value;
+        diameter_session_id.value_namespace = name_space;
+        diameter_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-status")
+    {
+        disconnect_status = value;
+        disconnect_status.value_namespace = name_space;
+        disconnect_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "method-list")
+    {
+        method_list = value;
+        method_list.value_namespace = name_space;
+        method_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "server-used-list")
+    {
+        server_used_list = value;
+        server_used_list.value_namespace = name_space;
+        server_used_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::NasSession::ListOfNas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-session-id")
+    {
+        aaa_session_id.yfilter = yfilter;
+    }
+    if(value_path == "accounting-intrim-in-packets")
+    {
+        accounting_intrim_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-intrim-out-packets")
+    {
+        accounting_intrim_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-status")
+    {
+        accounting_status.yfilter = yfilter;
+    }
+    if(value_path == "accounting-status-stop")
+    {
+        accounting_status_stop.yfilter = yfilter;
+    }
+    if(value_path == "authentication-status")
+    {
+        authentication_status.yfilter = yfilter;
+    }
+    if(value_path == "authorization-status")
+    {
+        authorization_status.yfilter = yfilter;
+    }
+    if(value_path == "diameter-session-id")
+    {
+        diameter_session_id.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-status")
+    {
+        disconnect_status.yfilter = yfilter;
+    }
+    if(value_path == "method-list")
+    {
+        method_list.yfilter = yfilter;
+    }
+    if(value_path == "server-used-list")
+    {
+        server_used_list.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::NasSession::ListOfNas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-session-id" || name == "accounting-intrim-in-packets" || name == "accounting-intrim-out-packets" || name == "accounting-status" || name == "accounting-status-stop" || name == "authentication-status" || name == "authorization-status" || name == "diameter-session-id" || name == "disconnect-status" || name == "method-list" || name == "server-used-list")
+        return true;
+    return false;
+}
+
+Aaa::Diameter::NasSummary::NasSummary()
+    :
+    accounting_interim_failed_packets{YType::uint32, "accounting-interim-failed-packets"},
+    accounting_interim_request_in_packets{YType::uint32, "accounting-interim-request-in-packets"},
+    accounting_interim_request_out_packets{YType::uint32, "accounting-interim-request-out-packets"},
+    accounting_interim_response_out_packets{YType::uint32, "accounting-interim-response-out-packets"},
+    accounting_interim_success_packets{YType::uint32, "accounting-interim-success-packets"},
+    accounting_intrim_response_in_packets{YType::uint32, "accounting-intrim-response-in-packets"},
+    accounting_request_out_packets{YType::uint32, "accounting-request-out-packets"},
+    accounting_response_in_packets{YType::uint32, "accounting-response-in-packets"},
+    accounting_start_failed_packets{YType::uint32, "accounting-start-failed-packets"},
+    accounting_start_request_packets{YType::uint32, "accounting-start-request-packets"},
+    accounting_start_response_packets{YType::uint32, "accounting-start-response-packets"},
+    accounting_start_success_packets{YType::uint32, "accounting-start-success-packets"},
+    accounting_stop_failed_packets{YType::uint32, "accounting-stop-failed-packets"},
+    accounting_stop_request_in_packets{YType::uint32, "accounting-stop-request-in-packets"},
+    accounting_stop_request_out_packets{YType::uint32, "accounting-stop-request-out-packets"},
+    accounting_stop_response_in_packets{YType::uint32, "accounting-stop-response-in-packets"},
+    accounting_stop_response_out_packets{YType::uint32, "accounting-stop-response-out-packets"},
+    accounting_stop_success_response_packets{YType::uint32, "accounting-stop-success-response-packets"},
+    authen_request_in_packets{YType::uint32, "authen-request-in-packets"},
+    authen_request_out_packets{YType::uint32, "authen-request-out-packets"},
+    authen_response_fail_packets{YType::uint32, "authen-response-fail-packets"},
+    authen_response_in_packets{YType::uint32, "authen-response-in-packets"},
+    authen_response_out_packets{YType::uint32, "authen-response-out-packets"},
+    authen_success_packets{YType::uint32, "authen-success-packets"},
+    authorization_in_packets{YType::uint32, "authorization-in-packets"},
+    authorization_out_packets{YType::uint32, "authorization-out-packets"},
+    authorization_request_in_packets{YType::uint32, "authorization-request-in-packets"},
+    authorization_response_fail_packets{YType::uint32, "authorization-response-fail-packets"},
+    authorization_response_out_packets{YType::uint32, "authorization-response-out-packets"},
+    authorization_response_success_packets{YType::uint32, "authorization-response-success-packets"},
+    coa_failed_packets{YType::uint32, "coa-failed-packets"},
+    coa_request_in_packets{YType::uint32, "coa-request-in-packets"},
+    coa_request_packets{YType::uint32, "coa-request-packets"},
+    coa_response_out_packets{YType::uint32, "coa-response-out-packets"},
+    coa_response_packets{YType::uint32, "coa-response-packets"},
+    coa_success_packets{YType::uint32, "coa-success-packets"},
+    disconnect_failed_response_packets{YType::uint32, "disconnect-failed-response-packets"},
+    disconnect_request_in_packets{YType::uint32, "disconnect-request-in-packets"},
+    disconnect_request_out_packets{YType::uint32, "disconnect-request-out-packets"},
+    disconnect_response_in_packets{YType::uint32, "disconnect-response-in-packets"},
+    disconnect_response_out_packets{YType::uint32, "disconnect-response-out-packets"},
+    disconnect_success_response_packets{YType::uint32, "disconnect-success-response-packets"},
+    pod_failed_packets{YType::uint32, "pod-failed-packets"},
+    pod_in_packets{YType::uint32, "pod-in-packets"},
+    pod_out_packets{YType::uint32, "pod-out-packets"},
+    pod_request_in_packets{YType::uint32, "pod-request-in-packets"},
+    pod_response_out_packets{YType::uint32, "pod-response-out-packets"},
+    pod_success_packets{YType::uint32, "pod-success-packets"}
+{
+
+    yang_name = "nas-summary"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Diameter::NasSummary::~NasSummary()
+{
+}
+
+bool Aaa::Diameter::NasSummary::has_data() const
+{
+    return accounting_interim_failed_packets.is_set
+	|| accounting_interim_request_in_packets.is_set
+	|| accounting_interim_request_out_packets.is_set
+	|| accounting_interim_response_out_packets.is_set
+	|| accounting_interim_success_packets.is_set
+	|| accounting_intrim_response_in_packets.is_set
+	|| accounting_request_out_packets.is_set
+	|| accounting_response_in_packets.is_set
+	|| accounting_start_failed_packets.is_set
+	|| accounting_start_request_packets.is_set
+	|| accounting_start_response_packets.is_set
+	|| accounting_start_success_packets.is_set
+	|| accounting_stop_failed_packets.is_set
+	|| accounting_stop_request_in_packets.is_set
+	|| accounting_stop_request_out_packets.is_set
+	|| accounting_stop_response_in_packets.is_set
+	|| accounting_stop_response_out_packets.is_set
+	|| accounting_stop_success_response_packets.is_set
+	|| authen_request_in_packets.is_set
+	|| authen_request_out_packets.is_set
+	|| authen_response_fail_packets.is_set
+	|| authen_response_in_packets.is_set
+	|| authen_response_out_packets.is_set
+	|| authen_success_packets.is_set
+	|| authorization_in_packets.is_set
+	|| authorization_out_packets.is_set
+	|| authorization_request_in_packets.is_set
+	|| authorization_response_fail_packets.is_set
+	|| authorization_response_out_packets.is_set
+	|| authorization_response_success_packets.is_set
+	|| coa_failed_packets.is_set
+	|| coa_request_in_packets.is_set
+	|| coa_request_packets.is_set
+	|| coa_response_out_packets.is_set
+	|| coa_response_packets.is_set
+	|| coa_success_packets.is_set
+	|| disconnect_failed_response_packets.is_set
+	|| disconnect_request_in_packets.is_set
+	|| disconnect_request_out_packets.is_set
+	|| disconnect_response_in_packets.is_set
+	|| disconnect_response_out_packets.is_set
+	|| disconnect_success_response_packets.is_set
+	|| pod_failed_packets.is_set
+	|| pod_in_packets.is_set
+	|| pod_out_packets.is_set
+	|| pod_request_in_packets.is_set
+	|| pod_response_out_packets.is_set
+	|| pod_success_packets.is_set;
+}
+
+bool Aaa::Diameter::NasSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_interim_failed_packets.yfilter)
+	|| ydk::is_set(accounting_interim_request_in_packets.yfilter)
+	|| ydk::is_set(accounting_interim_request_out_packets.yfilter)
+	|| ydk::is_set(accounting_interim_response_out_packets.yfilter)
+	|| ydk::is_set(accounting_interim_success_packets.yfilter)
+	|| ydk::is_set(accounting_intrim_response_in_packets.yfilter)
+	|| ydk::is_set(accounting_request_out_packets.yfilter)
+	|| ydk::is_set(accounting_response_in_packets.yfilter)
+	|| ydk::is_set(accounting_start_failed_packets.yfilter)
+	|| ydk::is_set(accounting_start_request_packets.yfilter)
+	|| ydk::is_set(accounting_start_response_packets.yfilter)
+	|| ydk::is_set(accounting_start_success_packets.yfilter)
+	|| ydk::is_set(accounting_stop_failed_packets.yfilter)
+	|| ydk::is_set(accounting_stop_request_in_packets.yfilter)
+	|| ydk::is_set(accounting_stop_request_out_packets.yfilter)
+	|| ydk::is_set(accounting_stop_response_in_packets.yfilter)
+	|| ydk::is_set(accounting_stop_response_out_packets.yfilter)
+	|| ydk::is_set(accounting_stop_success_response_packets.yfilter)
+	|| ydk::is_set(authen_request_in_packets.yfilter)
+	|| ydk::is_set(authen_request_out_packets.yfilter)
+	|| ydk::is_set(authen_response_fail_packets.yfilter)
+	|| ydk::is_set(authen_response_in_packets.yfilter)
+	|| ydk::is_set(authen_response_out_packets.yfilter)
+	|| ydk::is_set(authen_success_packets.yfilter)
+	|| ydk::is_set(authorization_in_packets.yfilter)
+	|| ydk::is_set(authorization_out_packets.yfilter)
+	|| ydk::is_set(authorization_request_in_packets.yfilter)
+	|| ydk::is_set(authorization_response_fail_packets.yfilter)
+	|| ydk::is_set(authorization_response_out_packets.yfilter)
+	|| ydk::is_set(authorization_response_success_packets.yfilter)
+	|| ydk::is_set(coa_failed_packets.yfilter)
+	|| ydk::is_set(coa_request_in_packets.yfilter)
+	|| ydk::is_set(coa_request_packets.yfilter)
+	|| ydk::is_set(coa_response_out_packets.yfilter)
+	|| ydk::is_set(coa_response_packets.yfilter)
+	|| ydk::is_set(coa_success_packets.yfilter)
+	|| ydk::is_set(disconnect_failed_response_packets.yfilter)
+	|| ydk::is_set(disconnect_request_in_packets.yfilter)
+	|| ydk::is_set(disconnect_request_out_packets.yfilter)
+	|| ydk::is_set(disconnect_response_in_packets.yfilter)
+	|| ydk::is_set(disconnect_response_out_packets.yfilter)
+	|| ydk::is_set(disconnect_success_response_packets.yfilter)
+	|| ydk::is_set(pod_failed_packets.yfilter)
+	|| ydk::is_set(pod_in_packets.yfilter)
+	|| ydk::is_set(pod_out_packets.yfilter)
+	|| ydk::is_set(pod_request_in_packets.yfilter)
+	|| ydk::is_set(pod_response_out_packets.yfilter)
+	|| ydk::is_set(pod_success_packets.yfilter);
+}
+
+std::string Aaa::Diameter::NasSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Diameter::NasSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nas-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::NasSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (accounting_interim_failed_packets.is_set || is_set(accounting_interim_failed_packets.yfilter)) leaf_name_data.push_back(accounting_interim_failed_packets.get_name_leafdata());
+    if (accounting_interim_request_in_packets.is_set || is_set(accounting_interim_request_in_packets.yfilter)) leaf_name_data.push_back(accounting_interim_request_in_packets.get_name_leafdata());
+    if (accounting_interim_request_out_packets.is_set || is_set(accounting_interim_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_interim_request_out_packets.get_name_leafdata());
+    if (accounting_interim_response_out_packets.is_set || is_set(accounting_interim_response_out_packets.yfilter)) leaf_name_data.push_back(accounting_interim_response_out_packets.get_name_leafdata());
+    if (accounting_interim_success_packets.is_set || is_set(accounting_interim_success_packets.yfilter)) leaf_name_data.push_back(accounting_interim_success_packets.get_name_leafdata());
+    if (accounting_intrim_response_in_packets.is_set || is_set(accounting_intrim_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_response_in_packets.get_name_leafdata());
+    if (accounting_request_out_packets.is_set || is_set(accounting_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_request_out_packets.get_name_leafdata());
+    if (accounting_response_in_packets.is_set || is_set(accounting_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_response_in_packets.get_name_leafdata());
+    if (accounting_start_failed_packets.is_set || is_set(accounting_start_failed_packets.yfilter)) leaf_name_data.push_back(accounting_start_failed_packets.get_name_leafdata());
+    if (accounting_start_request_packets.is_set || is_set(accounting_start_request_packets.yfilter)) leaf_name_data.push_back(accounting_start_request_packets.get_name_leafdata());
+    if (accounting_start_response_packets.is_set || is_set(accounting_start_response_packets.yfilter)) leaf_name_data.push_back(accounting_start_response_packets.get_name_leafdata());
+    if (accounting_start_success_packets.is_set || is_set(accounting_start_success_packets.yfilter)) leaf_name_data.push_back(accounting_start_success_packets.get_name_leafdata());
+    if (accounting_stop_failed_packets.is_set || is_set(accounting_stop_failed_packets.yfilter)) leaf_name_data.push_back(accounting_stop_failed_packets.get_name_leafdata());
+    if (accounting_stop_request_in_packets.is_set || is_set(accounting_stop_request_in_packets.yfilter)) leaf_name_data.push_back(accounting_stop_request_in_packets.get_name_leafdata());
+    if (accounting_stop_request_out_packets.is_set || is_set(accounting_stop_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_stop_request_out_packets.get_name_leafdata());
+    if (accounting_stop_response_in_packets.is_set || is_set(accounting_stop_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_stop_response_in_packets.get_name_leafdata());
+    if (accounting_stop_response_out_packets.is_set || is_set(accounting_stop_response_out_packets.yfilter)) leaf_name_data.push_back(accounting_stop_response_out_packets.get_name_leafdata());
+    if (accounting_stop_success_response_packets.is_set || is_set(accounting_stop_success_response_packets.yfilter)) leaf_name_data.push_back(accounting_stop_success_response_packets.get_name_leafdata());
+    if (authen_request_in_packets.is_set || is_set(authen_request_in_packets.yfilter)) leaf_name_data.push_back(authen_request_in_packets.get_name_leafdata());
+    if (authen_request_out_packets.is_set || is_set(authen_request_out_packets.yfilter)) leaf_name_data.push_back(authen_request_out_packets.get_name_leafdata());
+    if (authen_response_fail_packets.is_set || is_set(authen_response_fail_packets.yfilter)) leaf_name_data.push_back(authen_response_fail_packets.get_name_leafdata());
+    if (authen_response_in_packets.is_set || is_set(authen_response_in_packets.yfilter)) leaf_name_data.push_back(authen_response_in_packets.get_name_leafdata());
+    if (authen_response_out_packets.is_set || is_set(authen_response_out_packets.yfilter)) leaf_name_data.push_back(authen_response_out_packets.get_name_leafdata());
+    if (authen_success_packets.is_set || is_set(authen_success_packets.yfilter)) leaf_name_data.push_back(authen_success_packets.get_name_leafdata());
+    if (authorization_in_packets.is_set || is_set(authorization_in_packets.yfilter)) leaf_name_data.push_back(authorization_in_packets.get_name_leafdata());
+    if (authorization_out_packets.is_set || is_set(authorization_out_packets.yfilter)) leaf_name_data.push_back(authorization_out_packets.get_name_leafdata());
+    if (authorization_request_in_packets.is_set || is_set(authorization_request_in_packets.yfilter)) leaf_name_data.push_back(authorization_request_in_packets.get_name_leafdata());
+    if (authorization_response_fail_packets.is_set || is_set(authorization_response_fail_packets.yfilter)) leaf_name_data.push_back(authorization_response_fail_packets.get_name_leafdata());
+    if (authorization_response_out_packets.is_set || is_set(authorization_response_out_packets.yfilter)) leaf_name_data.push_back(authorization_response_out_packets.get_name_leafdata());
+    if (authorization_response_success_packets.is_set || is_set(authorization_response_success_packets.yfilter)) leaf_name_data.push_back(authorization_response_success_packets.get_name_leafdata());
+    if (coa_failed_packets.is_set || is_set(coa_failed_packets.yfilter)) leaf_name_data.push_back(coa_failed_packets.get_name_leafdata());
+    if (coa_request_in_packets.is_set || is_set(coa_request_in_packets.yfilter)) leaf_name_data.push_back(coa_request_in_packets.get_name_leafdata());
+    if (coa_request_packets.is_set || is_set(coa_request_packets.yfilter)) leaf_name_data.push_back(coa_request_packets.get_name_leafdata());
+    if (coa_response_out_packets.is_set || is_set(coa_response_out_packets.yfilter)) leaf_name_data.push_back(coa_response_out_packets.get_name_leafdata());
+    if (coa_response_packets.is_set || is_set(coa_response_packets.yfilter)) leaf_name_data.push_back(coa_response_packets.get_name_leafdata());
+    if (coa_success_packets.is_set || is_set(coa_success_packets.yfilter)) leaf_name_data.push_back(coa_success_packets.get_name_leafdata());
+    if (disconnect_failed_response_packets.is_set || is_set(disconnect_failed_response_packets.yfilter)) leaf_name_data.push_back(disconnect_failed_response_packets.get_name_leafdata());
+    if (disconnect_request_in_packets.is_set || is_set(disconnect_request_in_packets.yfilter)) leaf_name_data.push_back(disconnect_request_in_packets.get_name_leafdata());
+    if (disconnect_request_out_packets.is_set || is_set(disconnect_request_out_packets.yfilter)) leaf_name_data.push_back(disconnect_request_out_packets.get_name_leafdata());
+    if (disconnect_response_in_packets.is_set || is_set(disconnect_response_in_packets.yfilter)) leaf_name_data.push_back(disconnect_response_in_packets.get_name_leafdata());
+    if (disconnect_response_out_packets.is_set || is_set(disconnect_response_out_packets.yfilter)) leaf_name_data.push_back(disconnect_response_out_packets.get_name_leafdata());
+    if (disconnect_success_response_packets.is_set || is_set(disconnect_success_response_packets.yfilter)) leaf_name_data.push_back(disconnect_success_response_packets.get_name_leafdata());
+    if (pod_failed_packets.is_set || is_set(pod_failed_packets.yfilter)) leaf_name_data.push_back(pod_failed_packets.get_name_leafdata());
+    if (pod_in_packets.is_set || is_set(pod_in_packets.yfilter)) leaf_name_data.push_back(pod_in_packets.get_name_leafdata());
+    if (pod_out_packets.is_set || is_set(pod_out_packets.yfilter)) leaf_name_data.push_back(pod_out_packets.get_name_leafdata());
+    if (pod_request_in_packets.is_set || is_set(pod_request_in_packets.yfilter)) leaf_name_data.push_back(pod_request_in_packets.get_name_leafdata());
+    if (pod_response_out_packets.is_set || is_set(pod_response_out_packets.yfilter)) leaf_name_data.push_back(pod_response_out_packets.get_name_leafdata());
+    if (pod_success_packets.is_set || is_set(pod_success_packets.yfilter)) leaf_name_data.push_back(pod_success_packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Diameter::NasSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Diameter::NasSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "accounting-interim-failed-packets")
+    {
+        accounting_interim_failed_packets = value;
+        accounting_interim_failed_packets.value_namespace = name_space;
+        accounting_interim_failed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-interim-request-in-packets")
+    {
+        accounting_interim_request_in_packets = value;
+        accounting_interim_request_in_packets.value_namespace = name_space;
+        accounting_interim_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-interim-request-out-packets")
+    {
+        accounting_interim_request_out_packets = value;
+        accounting_interim_request_out_packets.value_namespace = name_space;
+        accounting_interim_request_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-interim-response-out-packets")
+    {
+        accounting_interim_response_out_packets = value;
+        accounting_interim_response_out_packets.value_namespace = name_space;
+        accounting_interim_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-interim-success-packets")
+    {
+        accounting_interim_success_packets = value;
+        accounting_interim_success_packets.value_namespace = name_space;
+        accounting_interim_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-intrim-response-in-packets")
+    {
+        accounting_intrim_response_in_packets = value;
+        accounting_intrim_response_in_packets.value_namespace = name_space;
+        accounting_intrim_response_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-request-out-packets")
+    {
+        accounting_request_out_packets = value;
+        accounting_request_out_packets.value_namespace = name_space;
+        accounting_request_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-response-in-packets")
+    {
+        accounting_response_in_packets = value;
+        accounting_response_in_packets.value_namespace = name_space;
+        accounting_response_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-start-failed-packets")
+    {
+        accounting_start_failed_packets = value;
+        accounting_start_failed_packets.value_namespace = name_space;
+        accounting_start_failed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-start-request-packets")
+    {
+        accounting_start_request_packets = value;
+        accounting_start_request_packets.value_namespace = name_space;
+        accounting_start_request_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-start-response-packets")
+    {
+        accounting_start_response_packets = value;
+        accounting_start_response_packets.value_namespace = name_space;
+        accounting_start_response_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-start-success-packets")
+    {
+        accounting_start_success_packets = value;
+        accounting_start_success_packets.value_namespace = name_space;
+        accounting_start_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-failed-packets")
+    {
+        accounting_stop_failed_packets = value;
+        accounting_stop_failed_packets.value_namespace = name_space;
+        accounting_stop_failed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-request-in-packets")
+    {
+        accounting_stop_request_in_packets = value;
+        accounting_stop_request_in_packets.value_namespace = name_space;
+        accounting_stop_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-request-out-packets")
+    {
+        accounting_stop_request_out_packets = value;
+        accounting_stop_request_out_packets.value_namespace = name_space;
+        accounting_stop_request_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-response-in-packets")
+    {
+        accounting_stop_response_in_packets = value;
+        accounting_stop_response_in_packets.value_namespace = name_space;
+        accounting_stop_response_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-response-out-packets")
+    {
+        accounting_stop_response_out_packets = value;
+        accounting_stop_response_out_packets.value_namespace = name_space;
+        accounting_stop_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-stop-success-response-packets")
+    {
+        accounting_stop_success_response_packets = value;
+        accounting_stop_success_response_packets.value_namespace = name_space;
+        accounting_stop_success_response_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-request-in-packets")
+    {
+        authen_request_in_packets = value;
+        authen_request_in_packets.value_namespace = name_space;
+        authen_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-request-out-packets")
+    {
+        authen_request_out_packets = value;
+        authen_request_out_packets.value_namespace = name_space;
+        authen_request_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-response-fail-packets")
+    {
+        authen_response_fail_packets = value;
+        authen_response_fail_packets.value_namespace = name_space;
+        authen_response_fail_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-response-in-packets")
+    {
+        authen_response_in_packets = value;
+        authen_response_in_packets.value_namespace = name_space;
+        authen_response_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-response-out-packets")
+    {
+        authen_response_out_packets = value;
+        authen_response_out_packets.value_namespace = name_space;
+        authen_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-success-packets")
+    {
+        authen_success_packets = value;
+        authen_success_packets.value_namespace = name_space;
+        authen_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-in-packets")
+    {
+        authorization_in_packets = value;
+        authorization_in_packets.value_namespace = name_space;
+        authorization_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-out-packets")
+    {
+        authorization_out_packets = value;
+        authorization_out_packets.value_namespace = name_space;
+        authorization_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-request-in-packets")
+    {
+        authorization_request_in_packets = value;
+        authorization_request_in_packets.value_namespace = name_space;
+        authorization_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-response-fail-packets")
+    {
+        authorization_response_fail_packets = value;
+        authorization_response_fail_packets.value_namespace = name_space;
+        authorization_response_fail_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-response-out-packets")
+    {
+        authorization_response_out_packets = value;
+        authorization_response_out_packets.value_namespace = name_space;
+        authorization_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authorization-response-success-packets")
+    {
+        authorization_response_success_packets = value;
+        authorization_response_success_packets.value_namespace = name_space;
+        authorization_response_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-failed-packets")
+    {
+        coa_failed_packets = value;
+        coa_failed_packets.value_namespace = name_space;
+        coa_failed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-request-in-packets")
+    {
+        coa_request_in_packets = value;
+        coa_request_in_packets.value_namespace = name_space;
+        coa_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-request-packets")
+    {
+        coa_request_packets = value;
+        coa_request_packets.value_namespace = name_space;
+        coa_request_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-response-out-packets")
+    {
+        coa_response_out_packets = value;
+        coa_response_out_packets.value_namespace = name_space;
+        coa_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-response-packets")
+    {
+        coa_response_packets = value;
+        coa_response_packets.value_namespace = name_space;
+        coa_response_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-success-packets")
+    {
+        coa_success_packets = value;
+        coa_success_packets.value_namespace = name_space;
+        coa_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-failed-response-packets")
+    {
+        disconnect_failed_response_packets = value;
+        disconnect_failed_response_packets.value_namespace = name_space;
+        disconnect_failed_response_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-request-in-packets")
+    {
+        disconnect_request_in_packets = value;
+        disconnect_request_in_packets.value_namespace = name_space;
+        disconnect_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-request-out-packets")
+    {
+        disconnect_request_out_packets = value;
+        disconnect_request_out_packets.value_namespace = name_space;
+        disconnect_request_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-response-in-packets")
+    {
+        disconnect_response_in_packets = value;
+        disconnect_response_in_packets.value_namespace = name_space;
+        disconnect_response_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-response-out-packets")
+    {
+        disconnect_response_out_packets = value;
+        disconnect_response_out_packets.value_namespace = name_space;
+        disconnect_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnect-success-response-packets")
+    {
+        disconnect_success_response_packets = value;
+        disconnect_success_response_packets.value_namespace = name_space;
+        disconnect_success_response_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-failed-packets")
+    {
+        pod_failed_packets = value;
+        pod_failed_packets.value_namespace = name_space;
+        pod_failed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-in-packets")
+    {
+        pod_in_packets = value;
+        pod_in_packets.value_namespace = name_space;
+        pod_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-out-packets")
+    {
+        pod_out_packets = value;
+        pod_out_packets.value_namespace = name_space;
+        pod_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-request-in-packets")
+    {
+        pod_request_in_packets = value;
+        pod_request_in_packets.value_namespace = name_space;
+        pod_request_in_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-response-out-packets")
+    {
+        pod_response_out_packets = value;
+        pod_response_out_packets.value_namespace = name_space;
+        pod_response_out_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pod-success-packets")
+    {
+        pod_success_packets = value;
+        pod_success_packets.value_namespace = name_space;
+        pod_success_packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Diameter::NasSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-interim-failed-packets")
+    {
+        accounting_interim_failed_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-interim-request-in-packets")
+    {
+        accounting_interim_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-interim-request-out-packets")
+    {
+        accounting_interim_request_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-interim-response-out-packets")
+    {
+        accounting_interim_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-interim-success-packets")
+    {
+        accounting_interim_success_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-intrim-response-in-packets")
+    {
+        accounting_intrim_response_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-request-out-packets")
+    {
+        accounting_request_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-response-in-packets")
+    {
+        accounting_response_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-start-failed-packets")
+    {
+        accounting_start_failed_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-start-request-packets")
+    {
+        accounting_start_request_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-start-response-packets")
+    {
+        accounting_start_response_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-start-success-packets")
+    {
+        accounting_start_success_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-failed-packets")
+    {
+        accounting_stop_failed_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-request-in-packets")
+    {
+        accounting_stop_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-request-out-packets")
+    {
+        accounting_stop_request_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-response-in-packets")
+    {
+        accounting_stop_response_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-response-out-packets")
+    {
+        accounting_stop_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-stop-success-response-packets")
+    {
+        accounting_stop_success_response_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-request-in-packets")
+    {
+        authen_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-request-out-packets")
+    {
+        authen_request_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-response-fail-packets")
+    {
+        authen_response_fail_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-response-in-packets")
+    {
+        authen_response_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-response-out-packets")
+    {
+        authen_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "authen-success-packets")
+    {
+        authen_success_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-in-packets")
+    {
+        authorization_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-out-packets")
+    {
+        authorization_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-request-in-packets")
+    {
+        authorization_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-response-fail-packets")
+    {
+        authorization_response_fail_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-response-out-packets")
+    {
+        authorization_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "authorization-response-success-packets")
+    {
+        authorization_response_success_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-failed-packets")
+    {
+        coa_failed_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-request-in-packets")
+    {
+        coa_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-request-packets")
+    {
+        coa_request_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-response-out-packets")
+    {
+        coa_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-response-packets")
+    {
+        coa_response_packets.yfilter = yfilter;
+    }
+    if(value_path == "coa-success-packets")
+    {
+        coa_success_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-failed-response-packets")
+    {
+        disconnect_failed_response_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-request-in-packets")
+    {
+        disconnect_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-request-out-packets")
+    {
+        disconnect_request_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-response-in-packets")
+    {
+        disconnect_response_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-response-out-packets")
+    {
+        disconnect_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-success-response-packets")
+    {
+        disconnect_success_response_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-failed-packets")
+    {
+        pod_failed_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-in-packets")
+    {
+        pod_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-out-packets")
+    {
+        pod_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-request-in-packets")
+    {
+        pod_request_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-response-out-packets")
+    {
+        pod_response_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "pod-success-packets")
+    {
+        pod_success_packets.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Diameter::NasSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-interim-failed-packets" || name == "accounting-interim-request-in-packets" || name == "accounting-interim-request-out-packets" || name == "accounting-interim-response-out-packets" || name == "accounting-interim-success-packets" || name == "accounting-intrim-response-in-packets" || name == "accounting-request-out-packets" || name == "accounting-response-in-packets" || name == "accounting-start-failed-packets" || name == "accounting-start-request-packets" || name == "accounting-start-response-packets" || name == "accounting-start-success-packets" || name == "accounting-stop-failed-packets" || name == "accounting-stop-request-in-packets" || name == "accounting-stop-request-out-packets" || name == "accounting-stop-response-in-packets" || name == "accounting-stop-response-out-packets" || name == "accounting-stop-success-response-packets" || name == "authen-request-in-packets" || name == "authen-request-out-packets" || name == "authen-response-fail-packets" || name == "authen-response-in-packets" || name == "authen-response-out-packets" || name == "authen-success-packets" || name == "authorization-in-packets" || name == "authorization-out-packets" || name == "authorization-request-in-packets" || name == "authorization-response-fail-packets" || name == "authorization-response-out-packets" || name == "authorization-response-success-packets" || name == "coa-failed-packets" || name == "coa-request-in-packets" || name == "coa-request-packets" || name == "coa-response-out-packets" || name == "coa-response-packets" || name == "coa-success-packets" || name == "disconnect-failed-response-packets" || name == "disconnect-request-in-packets" || name == "disconnect-request-out-packets" || name == "disconnect-response-in-packets" || name == "disconnect-response-out-packets" || name == "disconnect-success-response-packets" || name == "pod-failed-packets" || name == "pod-in-packets" || name == "pod-out-packets" || name == "pod-request-in-packets" || name == "pod-response-out-packets" || name == "pod-success-packets")
         return true;
     return false;
 }
@@ -4458,7 +4277,8 @@ Aaa::Diameter::Peers::Peers()
     transaction_timer{YType::uint32, "transaction-timer"},
     watchdog_timer{YType::uint32, "watchdog-timer"}
 {
-    yang_name = "peers"; yang_parent_name = "diameter";
+
+    yang_name = "peers"; yang_parent_name = "diameter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Diameter::Peers::~Peers()
@@ -4502,27 +4322,22 @@ bool Aaa::Diameter::Peers::has_operation() const
 	|| ydk::is_set(watchdog_timer.yfilter);
 }
 
+std::string Aaa::Diameter::Peers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Diameter::Peers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::Peers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Peers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (conn_retry_timer.is_set || is_set(conn_retry_timer.yfilter)) leaf_name_data.push_back(conn_retry_timer.get_name_leafdata());
@@ -4535,9 +4350,7 @@ const EntityPath Aaa::Diameter::Peers::get_entity_path(Entity* ancestor) const
     if (transaction_timer.is_set || is_set(transaction_timer.yfilter)) leaf_name_data.push_back(transaction_timer.get_name_leafdata());
     if (watchdog_timer.is_set || is_set(watchdog_timer.yfilter)) leaf_name_data.push_back(watchdog_timer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4743,7 +4556,8 @@ Aaa::Diameter::Peers::Peer::Peer()
     watchdog_timer{YType::uint32, "watchdog-timer"},
     who_init_disconnect{YType::enumeration, "who-init-disconnect"}
 {
-    yang_name = "peer"; yang_parent_name = "peers";
+
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Diameter::Peers::Peer::~Peer()
@@ -4883,27 +4697,22 @@ bool Aaa::Diameter::Peers::Peer::has_operation() const
 	|| ydk::is_set(who_init_disconnect.yfilter);
 }
 
+std::string Aaa::Diameter::Peers::Peer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/peers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Diameter::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Diameter::Peers::Peer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Peers::Peer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/peers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -4969,9 +4778,7 @@ const EntityPath Aaa::Diameter::Peers::Peer::get_entity_path(Entity* ancestor) c
     if (watchdog_timer.is_set || is_set(watchdog_timer.yfilter)) leaf_name_data.push_back(watchdog_timer.get_name_leafdata());
     if (who_init_disconnect.is_set || is_set(who_init_disconnect.yfilter)) leaf_name_data.push_back(who_init_disconnect.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5621,2532 +5428,6 @@ bool Aaa::Diameter::Peers::Peer::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
-Aaa::Diameter::Nas::Nas()
-    :
-    aaanas_id{YType::str, "aaanas-id"}
-{
-    yang_name = "nas"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::Nas::~Nas()
-{
-}
-
-bool Aaa::Diameter::Nas::has_data() const
-{
-    for (std::size_t index=0; index<list_of_nas.size(); index++)
-    {
-        if(list_of_nas[index]->has_data())
-            return true;
-    }
-    return aaanas_id.is_set;
-}
-
-bool Aaa::Diameter::Nas::has_operation() const
-{
-    for (std::size_t index=0; index<list_of_nas.size(); index++)
-    {
-        if(list_of_nas[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(aaanas_id.yfilter);
-}
-
-std::string Aaa::Diameter::Nas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::Nas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aaanas_id.is_set || is_set(aaanas_id.yfilter)) leaf_name_data.push_back(aaanas_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "list-of-nas")
-    {
-        for(auto const & c : list_of_nas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Diameter::Nas::ListOfNas>();
-        c->parent = this;
-        list_of_nas.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : list_of_nas)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Diameter::Nas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aaanas-id")
-    {
-        aaanas_id = value;
-        aaanas_id.value_namespace = name_space;
-        aaanas_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::Nas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aaanas-id")
-    {
-        aaanas_id.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::Nas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "list-of-nas" || name == "aaanas-id")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::Nas::ListOfNas::ListOfNas()
-    :
-    aaa_session_id{YType::str, "aaa-session-id"},
-    accounting_intrim_in_packets{YType::uint32, "accounting-intrim-in-packets"},
-    accounting_intrim_out_packets{YType::uint32, "accounting-intrim-out-packets"},
-    accounting_status{YType::uint32, "accounting-status"},
-    accounting_status_stop{YType::uint32, "accounting-status-stop"},
-    authentication_status{YType::uint32, "authentication-status"},
-    authorization_status{YType::uint32, "authorization-status"},
-    diameter_session_id{YType::str, "diameter-session-id"},
-    disconnect_status{YType::uint32, "disconnect-status"},
-    method_list{YType::str, "method-list"},
-    server_used_list{YType::str, "server-used-list"}
-{
-    yang_name = "list-of-nas"; yang_parent_name = "nas";
-}
-
-Aaa::Diameter::Nas::ListOfNas::~ListOfNas()
-{
-}
-
-bool Aaa::Diameter::Nas::ListOfNas::has_data() const
-{
-    return aaa_session_id.is_set
-	|| accounting_intrim_in_packets.is_set
-	|| accounting_intrim_out_packets.is_set
-	|| accounting_status.is_set
-	|| accounting_status_stop.is_set
-	|| authentication_status.is_set
-	|| authorization_status.is_set
-	|| diameter_session_id.is_set
-	|| disconnect_status.is_set
-	|| method_list.is_set
-	|| server_used_list.is_set;
-}
-
-bool Aaa::Diameter::Nas::ListOfNas::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(aaa_session_id.yfilter)
-	|| ydk::is_set(accounting_intrim_in_packets.yfilter)
-	|| ydk::is_set(accounting_intrim_out_packets.yfilter)
-	|| ydk::is_set(accounting_status.yfilter)
-	|| ydk::is_set(accounting_status_stop.yfilter)
-	|| ydk::is_set(authentication_status.yfilter)
-	|| ydk::is_set(authorization_status.yfilter)
-	|| ydk::is_set(diameter_session_id.yfilter)
-	|| ydk::is_set(disconnect_status.yfilter)
-	|| ydk::is_set(method_list.yfilter)
-	|| ydk::is_set(server_used_list.yfilter);
-}
-
-std::string Aaa::Diameter::Nas::ListOfNas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "list-of-nas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::Nas::ListOfNas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/nas/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
-    if (accounting_intrim_in_packets.is_set || is_set(accounting_intrim_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_in_packets.get_name_leafdata());
-    if (accounting_intrim_out_packets.is_set || is_set(accounting_intrim_out_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_out_packets.get_name_leafdata());
-    if (accounting_status.is_set || is_set(accounting_status.yfilter)) leaf_name_data.push_back(accounting_status.get_name_leafdata());
-    if (accounting_status_stop.is_set || is_set(accounting_status_stop.yfilter)) leaf_name_data.push_back(accounting_status_stop.get_name_leafdata());
-    if (authentication_status.is_set || is_set(authentication_status.yfilter)) leaf_name_data.push_back(authentication_status.get_name_leafdata());
-    if (authorization_status.is_set || is_set(authorization_status.yfilter)) leaf_name_data.push_back(authorization_status.get_name_leafdata());
-    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
-    if (disconnect_status.is_set || is_set(disconnect_status.yfilter)) leaf_name_data.push_back(disconnect_status.get_name_leafdata());
-    if (method_list.is_set || is_set(method_list.yfilter)) leaf_name_data.push_back(method_list.get_name_leafdata());
-    if (server_used_list.is_set || is_set(server_used_list.yfilter)) leaf_name_data.push_back(server_used_list.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::Nas::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::ListOfNas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::Nas::ListOfNas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id = value;
-        aaa_session_id.value_namespace = name_space;
-        aaa_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-intrim-in-packets")
-    {
-        accounting_intrim_in_packets = value;
-        accounting_intrim_in_packets.value_namespace = name_space;
-        accounting_intrim_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-intrim-out-packets")
-    {
-        accounting_intrim_out_packets = value;
-        accounting_intrim_out_packets.value_namespace = name_space;
-        accounting_intrim_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-status")
-    {
-        accounting_status = value;
-        accounting_status.value_namespace = name_space;
-        accounting_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-status-stop")
-    {
-        accounting_status_stop = value;
-        accounting_status_stop.value_namespace = name_space;
-        accounting_status_stop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-status")
-    {
-        authentication_status = value;
-        authentication_status.value_namespace = name_space;
-        authentication_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-status")
-    {
-        authorization_status = value;
-        authorization_status.value_namespace = name_space;
-        authorization_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id = value;
-        diameter_session_id.value_namespace = name_space;
-        diameter_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-status")
-    {
-        disconnect_status = value;
-        disconnect_status.value_namespace = name_space;
-        disconnect_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "method-list")
-    {
-        method_list = value;
-        method_list.value_namespace = name_space;
-        method_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "server-used-list")
-    {
-        server_used_list = value;
-        server_used_list.value_namespace = name_space;
-        server_used_list.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::Nas::ListOfNas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id.yfilter = yfilter;
-    }
-    if(value_path == "accounting-intrim-in-packets")
-    {
-        accounting_intrim_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-intrim-out-packets")
-    {
-        accounting_intrim_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-status")
-    {
-        accounting_status.yfilter = yfilter;
-    }
-    if(value_path == "accounting-status-stop")
-    {
-        accounting_status_stop.yfilter = yfilter;
-    }
-    if(value_path == "authentication-status")
-    {
-        authentication_status.yfilter = yfilter;
-    }
-    if(value_path == "authorization-status")
-    {
-        authorization_status.yfilter = yfilter;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-status")
-    {
-        disconnect_status.yfilter = yfilter;
-    }
-    if(value_path == "method-list")
-    {
-        method_list.yfilter = yfilter;
-    }
-    if(value_path == "server-used-list")
-    {
-        server_used_list.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::Nas::ListOfNas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "aaa-session-id" || name == "accounting-intrim-in-packets" || name == "accounting-intrim-out-packets" || name == "accounting-status" || name == "accounting-status-stop" || name == "authentication-status" || name == "authorization-status" || name == "diameter-session-id" || name == "disconnect-status" || name == "method-list" || name == "server-used-list")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::NasSummary::NasSummary()
-    :
-    accounting_interim_failed_packets{YType::uint32, "accounting-interim-failed-packets"},
-    accounting_interim_request_in_packets{YType::uint32, "accounting-interim-request-in-packets"},
-    accounting_interim_request_out_packets{YType::uint32, "accounting-interim-request-out-packets"},
-    accounting_interim_response_out_packets{YType::uint32, "accounting-interim-response-out-packets"},
-    accounting_interim_success_packets{YType::uint32, "accounting-interim-success-packets"},
-    accounting_intrim_response_in_packets{YType::uint32, "accounting-intrim-response-in-packets"},
-    accounting_request_out_packets{YType::uint32, "accounting-request-out-packets"},
-    accounting_response_in_packets{YType::uint32, "accounting-response-in-packets"},
-    accounting_start_failed_packets{YType::uint32, "accounting-start-failed-packets"},
-    accounting_start_request_packets{YType::uint32, "accounting-start-request-packets"},
-    accounting_start_response_packets{YType::uint32, "accounting-start-response-packets"},
-    accounting_start_success_packets{YType::uint32, "accounting-start-success-packets"},
-    accounting_stop_failed_packets{YType::uint32, "accounting-stop-failed-packets"},
-    accounting_stop_request_in_packets{YType::uint32, "accounting-stop-request-in-packets"},
-    accounting_stop_request_out_packets{YType::uint32, "accounting-stop-request-out-packets"},
-    accounting_stop_response_in_packets{YType::uint32, "accounting-stop-response-in-packets"},
-    accounting_stop_response_out_packets{YType::uint32, "accounting-stop-response-out-packets"},
-    accounting_stop_success_response_packets{YType::uint32, "accounting-stop-success-response-packets"},
-    authen_request_in_packets{YType::uint32, "authen-request-in-packets"},
-    authen_request_out_packets{YType::uint32, "authen-request-out-packets"},
-    authen_response_fail_packets{YType::uint32, "authen-response-fail-packets"},
-    authen_response_in_packets{YType::uint32, "authen-response-in-packets"},
-    authen_response_out_packets{YType::uint32, "authen-response-out-packets"},
-    authen_success_packets{YType::uint32, "authen-success-packets"},
-    authorization_in_packets{YType::uint32, "authorization-in-packets"},
-    authorization_out_packets{YType::uint32, "authorization-out-packets"},
-    authorization_request_in_packets{YType::uint32, "authorization-request-in-packets"},
-    authorization_response_fail_packets{YType::uint32, "authorization-response-fail-packets"},
-    authorization_response_out_packets{YType::uint32, "authorization-response-out-packets"},
-    authorization_response_success_packets{YType::uint32, "authorization-response-success-packets"},
-    coa_failed_packets{YType::uint32, "coa-failed-packets"},
-    coa_request_in_packets{YType::uint32, "coa-request-in-packets"},
-    coa_request_packets{YType::uint32, "coa-request-packets"},
-    coa_response_out_packets{YType::uint32, "coa-response-out-packets"},
-    coa_response_packets{YType::uint32, "coa-response-packets"},
-    coa_success_packets{YType::uint32, "coa-success-packets"},
-    disconnect_failed_response_packets{YType::uint32, "disconnect-failed-response-packets"},
-    disconnect_request_in_packets{YType::uint32, "disconnect-request-in-packets"},
-    disconnect_request_out_packets{YType::uint32, "disconnect-request-out-packets"},
-    disconnect_response_in_packets{YType::uint32, "disconnect-response-in-packets"},
-    disconnect_response_out_packets{YType::uint32, "disconnect-response-out-packets"},
-    disconnect_success_response_packets{YType::uint32, "disconnect-success-response-packets"},
-    pod_failed_packets{YType::uint32, "pod-failed-packets"},
-    pod_in_packets{YType::uint32, "pod-in-packets"},
-    pod_out_packets{YType::uint32, "pod-out-packets"},
-    pod_request_in_packets{YType::uint32, "pod-request-in-packets"},
-    pod_response_out_packets{YType::uint32, "pod-response-out-packets"},
-    pod_success_packets{YType::uint32, "pod-success-packets"}
-{
-    yang_name = "nas-summary"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::NasSummary::~NasSummary()
-{
-}
-
-bool Aaa::Diameter::NasSummary::has_data() const
-{
-    return accounting_interim_failed_packets.is_set
-	|| accounting_interim_request_in_packets.is_set
-	|| accounting_interim_request_out_packets.is_set
-	|| accounting_interim_response_out_packets.is_set
-	|| accounting_interim_success_packets.is_set
-	|| accounting_intrim_response_in_packets.is_set
-	|| accounting_request_out_packets.is_set
-	|| accounting_response_in_packets.is_set
-	|| accounting_start_failed_packets.is_set
-	|| accounting_start_request_packets.is_set
-	|| accounting_start_response_packets.is_set
-	|| accounting_start_success_packets.is_set
-	|| accounting_stop_failed_packets.is_set
-	|| accounting_stop_request_in_packets.is_set
-	|| accounting_stop_request_out_packets.is_set
-	|| accounting_stop_response_in_packets.is_set
-	|| accounting_stop_response_out_packets.is_set
-	|| accounting_stop_success_response_packets.is_set
-	|| authen_request_in_packets.is_set
-	|| authen_request_out_packets.is_set
-	|| authen_response_fail_packets.is_set
-	|| authen_response_in_packets.is_set
-	|| authen_response_out_packets.is_set
-	|| authen_success_packets.is_set
-	|| authorization_in_packets.is_set
-	|| authorization_out_packets.is_set
-	|| authorization_request_in_packets.is_set
-	|| authorization_response_fail_packets.is_set
-	|| authorization_response_out_packets.is_set
-	|| authorization_response_success_packets.is_set
-	|| coa_failed_packets.is_set
-	|| coa_request_in_packets.is_set
-	|| coa_request_packets.is_set
-	|| coa_response_out_packets.is_set
-	|| coa_response_packets.is_set
-	|| coa_success_packets.is_set
-	|| disconnect_failed_response_packets.is_set
-	|| disconnect_request_in_packets.is_set
-	|| disconnect_request_out_packets.is_set
-	|| disconnect_response_in_packets.is_set
-	|| disconnect_response_out_packets.is_set
-	|| disconnect_success_response_packets.is_set
-	|| pod_failed_packets.is_set
-	|| pod_in_packets.is_set
-	|| pod_out_packets.is_set
-	|| pod_request_in_packets.is_set
-	|| pod_response_out_packets.is_set
-	|| pod_success_packets.is_set;
-}
-
-bool Aaa::Diameter::NasSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(accounting_interim_failed_packets.yfilter)
-	|| ydk::is_set(accounting_interim_request_in_packets.yfilter)
-	|| ydk::is_set(accounting_interim_request_out_packets.yfilter)
-	|| ydk::is_set(accounting_interim_response_out_packets.yfilter)
-	|| ydk::is_set(accounting_interim_success_packets.yfilter)
-	|| ydk::is_set(accounting_intrim_response_in_packets.yfilter)
-	|| ydk::is_set(accounting_request_out_packets.yfilter)
-	|| ydk::is_set(accounting_response_in_packets.yfilter)
-	|| ydk::is_set(accounting_start_failed_packets.yfilter)
-	|| ydk::is_set(accounting_start_request_packets.yfilter)
-	|| ydk::is_set(accounting_start_response_packets.yfilter)
-	|| ydk::is_set(accounting_start_success_packets.yfilter)
-	|| ydk::is_set(accounting_stop_failed_packets.yfilter)
-	|| ydk::is_set(accounting_stop_request_in_packets.yfilter)
-	|| ydk::is_set(accounting_stop_request_out_packets.yfilter)
-	|| ydk::is_set(accounting_stop_response_in_packets.yfilter)
-	|| ydk::is_set(accounting_stop_response_out_packets.yfilter)
-	|| ydk::is_set(accounting_stop_success_response_packets.yfilter)
-	|| ydk::is_set(authen_request_in_packets.yfilter)
-	|| ydk::is_set(authen_request_out_packets.yfilter)
-	|| ydk::is_set(authen_response_fail_packets.yfilter)
-	|| ydk::is_set(authen_response_in_packets.yfilter)
-	|| ydk::is_set(authen_response_out_packets.yfilter)
-	|| ydk::is_set(authen_success_packets.yfilter)
-	|| ydk::is_set(authorization_in_packets.yfilter)
-	|| ydk::is_set(authorization_out_packets.yfilter)
-	|| ydk::is_set(authorization_request_in_packets.yfilter)
-	|| ydk::is_set(authorization_response_fail_packets.yfilter)
-	|| ydk::is_set(authorization_response_out_packets.yfilter)
-	|| ydk::is_set(authorization_response_success_packets.yfilter)
-	|| ydk::is_set(coa_failed_packets.yfilter)
-	|| ydk::is_set(coa_request_in_packets.yfilter)
-	|| ydk::is_set(coa_request_packets.yfilter)
-	|| ydk::is_set(coa_response_out_packets.yfilter)
-	|| ydk::is_set(coa_response_packets.yfilter)
-	|| ydk::is_set(coa_success_packets.yfilter)
-	|| ydk::is_set(disconnect_failed_response_packets.yfilter)
-	|| ydk::is_set(disconnect_request_in_packets.yfilter)
-	|| ydk::is_set(disconnect_request_out_packets.yfilter)
-	|| ydk::is_set(disconnect_response_in_packets.yfilter)
-	|| ydk::is_set(disconnect_response_out_packets.yfilter)
-	|| ydk::is_set(disconnect_success_response_packets.yfilter)
-	|| ydk::is_set(pod_failed_packets.yfilter)
-	|| ydk::is_set(pod_in_packets.yfilter)
-	|| ydk::is_set(pod_out_packets.yfilter)
-	|| ydk::is_set(pod_request_in_packets.yfilter)
-	|| ydk::is_set(pod_response_out_packets.yfilter)
-	|| ydk::is_set(pod_success_packets.yfilter);
-}
-
-std::string Aaa::Diameter::NasSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nas-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::NasSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (accounting_interim_failed_packets.is_set || is_set(accounting_interim_failed_packets.yfilter)) leaf_name_data.push_back(accounting_interim_failed_packets.get_name_leafdata());
-    if (accounting_interim_request_in_packets.is_set || is_set(accounting_interim_request_in_packets.yfilter)) leaf_name_data.push_back(accounting_interim_request_in_packets.get_name_leafdata());
-    if (accounting_interim_request_out_packets.is_set || is_set(accounting_interim_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_interim_request_out_packets.get_name_leafdata());
-    if (accounting_interim_response_out_packets.is_set || is_set(accounting_interim_response_out_packets.yfilter)) leaf_name_data.push_back(accounting_interim_response_out_packets.get_name_leafdata());
-    if (accounting_interim_success_packets.is_set || is_set(accounting_interim_success_packets.yfilter)) leaf_name_data.push_back(accounting_interim_success_packets.get_name_leafdata());
-    if (accounting_intrim_response_in_packets.is_set || is_set(accounting_intrim_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_response_in_packets.get_name_leafdata());
-    if (accounting_request_out_packets.is_set || is_set(accounting_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_request_out_packets.get_name_leafdata());
-    if (accounting_response_in_packets.is_set || is_set(accounting_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_response_in_packets.get_name_leafdata());
-    if (accounting_start_failed_packets.is_set || is_set(accounting_start_failed_packets.yfilter)) leaf_name_data.push_back(accounting_start_failed_packets.get_name_leafdata());
-    if (accounting_start_request_packets.is_set || is_set(accounting_start_request_packets.yfilter)) leaf_name_data.push_back(accounting_start_request_packets.get_name_leafdata());
-    if (accounting_start_response_packets.is_set || is_set(accounting_start_response_packets.yfilter)) leaf_name_data.push_back(accounting_start_response_packets.get_name_leafdata());
-    if (accounting_start_success_packets.is_set || is_set(accounting_start_success_packets.yfilter)) leaf_name_data.push_back(accounting_start_success_packets.get_name_leafdata());
-    if (accounting_stop_failed_packets.is_set || is_set(accounting_stop_failed_packets.yfilter)) leaf_name_data.push_back(accounting_stop_failed_packets.get_name_leafdata());
-    if (accounting_stop_request_in_packets.is_set || is_set(accounting_stop_request_in_packets.yfilter)) leaf_name_data.push_back(accounting_stop_request_in_packets.get_name_leafdata());
-    if (accounting_stop_request_out_packets.is_set || is_set(accounting_stop_request_out_packets.yfilter)) leaf_name_data.push_back(accounting_stop_request_out_packets.get_name_leafdata());
-    if (accounting_stop_response_in_packets.is_set || is_set(accounting_stop_response_in_packets.yfilter)) leaf_name_data.push_back(accounting_stop_response_in_packets.get_name_leafdata());
-    if (accounting_stop_response_out_packets.is_set || is_set(accounting_stop_response_out_packets.yfilter)) leaf_name_data.push_back(accounting_stop_response_out_packets.get_name_leafdata());
-    if (accounting_stop_success_response_packets.is_set || is_set(accounting_stop_success_response_packets.yfilter)) leaf_name_data.push_back(accounting_stop_success_response_packets.get_name_leafdata());
-    if (authen_request_in_packets.is_set || is_set(authen_request_in_packets.yfilter)) leaf_name_data.push_back(authen_request_in_packets.get_name_leafdata());
-    if (authen_request_out_packets.is_set || is_set(authen_request_out_packets.yfilter)) leaf_name_data.push_back(authen_request_out_packets.get_name_leafdata());
-    if (authen_response_fail_packets.is_set || is_set(authen_response_fail_packets.yfilter)) leaf_name_data.push_back(authen_response_fail_packets.get_name_leafdata());
-    if (authen_response_in_packets.is_set || is_set(authen_response_in_packets.yfilter)) leaf_name_data.push_back(authen_response_in_packets.get_name_leafdata());
-    if (authen_response_out_packets.is_set || is_set(authen_response_out_packets.yfilter)) leaf_name_data.push_back(authen_response_out_packets.get_name_leafdata());
-    if (authen_success_packets.is_set || is_set(authen_success_packets.yfilter)) leaf_name_data.push_back(authen_success_packets.get_name_leafdata());
-    if (authorization_in_packets.is_set || is_set(authorization_in_packets.yfilter)) leaf_name_data.push_back(authorization_in_packets.get_name_leafdata());
-    if (authorization_out_packets.is_set || is_set(authorization_out_packets.yfilter)) leaf_name_data.push_back(authorization_out_packets.get_name_leafdata());
-    if (authorization_request_in_packets.is_set || is_set(authorization_request_in_packets.yfilter)) leaf_name_data.push_back(authorization_request_in_packets.get_name_leafdata());
-    if (authorization_response_fail_packets.is_set || is_set(authorization_response_fail_packets.yfilter)) leaf_name_data.push_back(authorization_response_fail_packets.get_name_leafdata());
-    if (authorization_response_out_packets.is_set || is_set(authorization_response_out_packets.yfilter)) leaf_name_data.push_back(authorization_response_out_packets.get_name_leafdata());
-    if (authorization_response_success_packets.is_set || is_set(authorization_response_success_packets.yfilter)) leaf_name_data.push_back(authorization_response_success_packets.get_name_leafdata());
-    if (coa_failed_packets.is_set || is_set(coa_failed_packets.yfilter)) leaf_name_data.push_back(coa_failed_packets.get_name_leafdata());
-    if (coa_request_in_packets.is_set || is_set(coa_request_in_packets.yfilter)) leaf_name_data.push_back(coa_request_in_packets.get_name_leafdata());
-    if (coa_request_packets.is_set || is_set(coa_request_packets.yfilter)) leaf_name_data.push_back(coa_request_packets.get_name_leafdata());
-    if (coa_response_out_packets.is_set || is_set(coa_response_out_packets.yfilter)) leaf_name_data.push_back(coa_response_out_packets.get_name_leafdata());
-    if (coa_response_packets.is_set || is_set(coa_response_packets.yfilter)) leaf_name_data.push_back(coa_response_packets.get_name_leafdata());
-    if (coa_success_packets.is_set || is_set(coa_success_packets.yfilter)) leaf_name_data.push_back(coa_success_packets.get_name_leafdata());
-    if (disconnect_failed_response_packets.is_set || is_set(disconnect_failed_response_packets.yfilter)) leaf_name_data.push_back(disconnect_failed_response_packets.get_name_leafdata());
-    if (disconnect_request_in_packets.is_set || is_set(disconnect_request_in_packets.yfilter)) leaf_name_data.push_back(disconnect_request_in_packets.get_name_leafdata());
-    if (disconnect_request_out_packets.is_set || is_set(disconnect_request_out_packets.yfilter)) leaf_name_data.push_back(disconnect_request_out_packets.get_name_leafdata());
-    if (disconnect_response_in_packets.is_set || is_set(disconnect_response_in_packets.yfilter)) leaf_name_data.push_back(disconnect_response_in_packets.get_name_leafdata());
-    if (disconnect_response_out_packets.is_set || is_set(disconnect_response_out_packets.yfilter)) leaf_name_data.push_back(disconnect_response_out_packets.get_name_leafdata());
-    if (disconnect_success_response_packets.is_set || is_set(disconnect_success_response_packets.yfilter)) leaf_name_data.push_back(disconnect_success_response_packets.get_name_leafdata());
-    if (pod_failed_packets.is_set || is_set(pod_failed_packets.yfilter)) leaf_name_data.push_back(pod_failed_packets.get_name_leafdata());
-    if (pod_in_packets.is_set || is_set(pod_in_packets.yfilter)) leaf_name_data.push_back(pod_in_packets.get_name_leafdata());
-    if (pod_out_packets.is_set || is_set(pod_out_packets.yfilter)) leaf_name_data.push_back(pod_out_packets.get_name_leafdata());
-    if (pod_request_in_packets.is_set || is_set(pod_request_in_packets.yfilter)) leaf_name_data.push_back(pod_request_in_packets.get_name_leafdata());
-    if (pod_response_out_packets.is_set || is_set(pod_response_out_packets.yfilter)) leaf_name_data.push_back(pod_response_out_packets.get_name_leafdata());
-    if (pod_success_packets.is_set || is_set(pod_success_packets.yfilter)) leaf_name_data.push_back(pod_success_packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::NasSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::NasSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "accounting-interim-failed-packets")
-    {
-        accounting_interim_failed_packets = value;
-        accounting_interim_failed_packets.value_namespace = name_space;
-        accounting_interim_failed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-request-in-packets")
-    {
-        accounting_interim_request_in_packets = value;
-        accounting_interim_request_in_packets.value_namespace = name_space;
-        accounting_interim_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-request-out-packets")
-    {
-        accounting_interim_request_out_packets = value;
-        accounting_interim_request_out_packets.value_namespace = name_space;
-        accounting_interim_request_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-response-out-packets")
-    {
-        accounting_interim_response_out_packets = value;
-        accounting_interim_response_out_packets.value_namespace = name_space;
-        accounting_interim_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-success-packets")
-    {
-        accounting_interim_success_packets = value;
-        accounting_interim_success_packets.value_namespace = name_space;
-        accounting_interim_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-intrim-response-in-packets")
-    {
-        accounting_intrim_response_in_packets = value;
-        accounting_intrim_response_in_packets.value_namespace = name_space;
-        accounting_intrim_response_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-request-out-packets")
-    {
-        accounting_request_out_packets = value;
-        accounting_request_out_packets.value_namespace = name_space;
-        accounting_request_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-response-in-packets")
-    {
-        accounting_response_in_packets = value;
-        accounting_response_in_packets.value_namespace = name_space;
-        accounting_response_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-start-failed-packets")
-    {
-        accounting_start_failed_packets = value;
-        accounting_start_failed_packets.value_namespace = name_space;
-        accounting_start_failed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-start-request-packets")
-    {
-        accounting_start_request_packets = value;
-        accounting_start_request_packets.value_namespace = name_space;
-        accounting_start_request_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-start-response-packets")
-    {
-        accounting_start_response_packets = value;
-        accounting_start_response_packets.value_namespace = name_space;
-        accounting_start_response_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-start-success-packets")
-    {
-        accounting_start_success_packets = value;
-        accounting_start_success_packets.value_namespace = name_space;
-        accounting_start_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-failed-packets")
-    {
-        accounting_stop_failed_packets = value;
-        accounting_stop_failed_packets.value_namespace = name_space;
-        accounting_stop_failed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-request-in-packets")
-    {
-        accounting_stop_request_in_packets = value;
-        accounting_stop_request_in_packets.value_namespace = name_space;
-        accounting_stop_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-request-out-packets")
-    {
-        accounting_stop_request_out_packets = value;
-        accounting_stop_request_out_packets.value_namespace = name_space;
-        accounting_stop_request_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-response-in-packets")
-    {
-        accounting_stop_response_in_packets = value;
-        accounting_stop_response_in_packets.value_namespace = name_space;
-        accounting_stop_response_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-response-out-packets")
-    {
-        accounting_stop_response_out_packets = value;
-        accounting_stop_response_out_packets.value_namespace = name_space;
-        accounting_stop_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-stop-success-response-packets")
-    {
-        accounting_stop_success_response_packets = value;
-        accounting_stop_success_response_packets.value_namespace = name_space;
-        accounting_stop_success_response_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-request-in-packets")
-    {
-        authen_request_in_packets = value;
-        authen_request_in_packets.value_namespace = name_space;
-        authen_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-request-out-packets")
-    {
-        authen_request_out_packets = value;
-        authen_request_out_packets.value_namespace = name_space;
-        authen_request_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-response-fail-packets")
-    {
-        authen_response_fail_packets = value;
-        authen_response_fail_packets.value_namespace = name_space;
-        authen_response_fail_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-response-in-packets")
-    {
-        authen_response_in_packets = value;
-        authen_response_in_packets.value_namespace = name_space;
-        authen_response_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-response-out-packets")
-    {
-        authen_response_out_packets = value;
-        authen_response_out_packets.value_namespace = name_space;
-        authen_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-success-packets")
-    {
-        authen_success_packets = value;
-        authen_success_packets.value_namespace = name_space;
-        authen_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-in-packets")
-    {
-        authorization_in_packets = value;
-        authorization_in_packets.value_namespace = name_space;
-        authorization_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-out-packets")
-    {
-        authorization_out_packets = value;
-        authorization_out_packets.value_namespace = name_space;
-        authorization_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-request-in-packets")
-    {
-        authorization_request_in_packets = value;
-        authorization_request_in_packets.value_namespace = name_space;
-        authorization_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-response-fail-packets")
-    {
-        authorization_response_fail_packets = value;
-        authorization_response_fail_packets.value_namespace = name_space;
-        authorization_response_fail_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-response-out-packets")
-    {
-        authorization_response_out_packets = value;
-        authorization_response_out_packets.value_namespace = name_space;
-        authorization_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-response-success-packets")
-    {
-        authorization_response_success_packets = value;
-        authorization_response_success_packets.value_namespace = name_space;
-        authorization_response_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-failed-packets")
-    {
-        coa_failed_packets = value;
-        coa_failed_packets.value_namespace = name_space;
-        coa_failed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-request-in-packets")
-    {
-        coa_request_in_packets = value;
-        coa_request_in_packets.value_namespace = name_space;
-        coa_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-request-packets")
-    {
-        coa_request_packets = value;
-        coa_request_packets.value_namespace = name_space;
-        coa_request_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-response-out-packets")
-    {
-        coa_response_out_packets = value;
-        coa_response_out_packets.value_namespace = name_space;
-        coa_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-response-packets")
-    {
-        coa_response_packets = value;
-        coa_response_packets.value_namespace = name_space;
-        coa_response_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-success-packets")
-    {
-        coa_success_packets = value;
-        coa_success_packets.value_namespace = name_space;
-        coa_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-failed-response-packets")
-    {
-        disconnect_failed_response_packets = value;
-        disconnect_failed_response_packets.value_namespace = name_space;
-        disconnect_failed_response_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-request-in-packets")
-    {
-        disconnect_request_in_packets = value;
-        disconnect_request_in_packets.value_namespace = name_space;
-        disconnect_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-request-out-packets")
-    {
-        disconnect_request_out_packets = value;
-        disconnect_request_out_packets.value_namespace = name_space;
-        disconnect_request_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-response-in-packets")
-    {
-        disconnect_response_in_packets = value;
-        disconnect_response_in_packets.value_namespace = name_space;
-        disconnect_response_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-response-out-packets")
-    {
-        disconnect_response_out_packets = value;
-        disconnect_response_out_packets.value_namespace = name_space;
-        disconnect_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-success-response-packets")
-    {
-        disconnect_success_response_packets = value;
-        disconnect_success_response_packets.value_namespace = name_space;
-        disconnect_success_response_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-failed-packets")
-    {
-        pod_failed_packets = value;
-        pod_failed_packets.value_namespace = name_space;
-        pod_failed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-in-packets")
-    {
-        pod_in_packets = value;
-        pod_in_packets.value_namespace = name_space;
-        pod_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-out-packets")
-    {
-        pod_out_packets = value;
-        pod_out_packets.value_namespace = name_space;
-        pod_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-request-in-packets")
-    {
-        pod_request_in_packets = value;
-        pod_request_in_packets.value_namespace = name_space;
-        pod_request_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-response-out-packets")
-    {
-        pod_response_out_packets = value;
-        pod_response_out_packets.value_namespace = name_space;
-        pod_response_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pod-success-packets")
-    {
-        pod_success_packets = value;
-        pod_success_packets.value_namespace = name_space;
-        pod_success_packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::NasSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "accounting-interim-failed-packets")
-    {
-        accounting_interim_failed_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-request-in-packets")
-    {
-        accounting_interim_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-request-out-packets")
-    {
-        accounting_interim_request_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-response-out-packets")
-    {
-        accounting_interim_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-success-packets")
-    {
-        accounting_interim_success_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-intrim-response-in-packets")
-    {
-        accounting_intrim_response_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-request-out-packets")
-    {
-        accounting_request_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-response-in-packets")
-    {
-        accounting_response_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-start-failed-packets")
-    {
-        accounting_start_failed_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-start-request-packets")
-    {
-        accounting_start_request_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-start-response-packets")
-    {
-        accounting_start_response_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-start-success-packets")
-    {
-        accounting_start_success_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-failed-packets")
-    {
-        accounting_stop_failed_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-request-in-packets")
-    {
-        accounting_stop_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-request-out-packets")
-    {
-        accounting_stop_request_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-response-in-packets")
-    {
-        accounting_stop_response_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-response-out-packets")
-    {
-        accounting_stop_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-stop-success-response-packets")
-    {
-        accounting_stop_success_response_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-request-in-packets")
-    {
-        authen_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-request-out-packets")
-    {
-        authen_request_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-response-fail-packets")
-    {
-        authen_response_fail_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-response-in-packets")
-    {
-        authen_response_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-response-out-packets")
-    {
-        authen_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "authen-success-packets")
-    {
-        authen_success_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-in-packets")
-    {
-        authorization_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-out-packets")
-    {
-        authorization_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-request-in-packets")
-    {
-        authorization_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-response-fail-packets")
-    {
-        authorization_response_fail_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-response-out-packets")
-    {
-        authorization_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "authorization-response-success-packets")
-    {
-        authorization_response_success_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-failed-packets")
-    {
-        coa_failed_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-request-in-packets")
-    {
-        coa_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-request-packets")
-    {
-        coa_request_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-response-out-packets")
-    {
-        coa_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-response-packets")
-    {
-        coa_response_packets.yfilter = yfilter;
-    }
-    if(value_path == "coa-success-packets")
-    {
-        coa_success_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-failed-response-packets")
-    {
-        disconnect_failed_response_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-request-in-packets")
-    {
-        disconnect_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-request-out-packets")
-    {
-        disconnect_request_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-response-in-packets")
-    {
-        disconnect_response_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-response-out-packets")
-    {
-        disconnect_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-success-response-packets")
-    {
-        disconnect_success_response_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-failed-packets")
-    {
-        pod_failed_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-in-packets")
-    {
-        pod_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-out-packets")
-    {
-        pod_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-request-in-packets")
-    {
-        pod_request_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-response-out-packets")
-    {
-        pod_response_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "pod-success-packets")
-    {
-        pod_success_packets.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::NasSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "accounting-interim-failed-packets" || name == "accounting-interim-request-in-packets" || name == "accounting-interim-request-out-packets" || name == "accounting-interim-response-out-packets" || name == "accounting-interim-success-packets" || name == "accounting-intrim-response-in-packets" || name == "accounting-request-out-packets" || name == "accounting-response-in-packets" || name == "accounting-start-failed-packets" || name == "accounting-start-request-packets" || name == "accounting-start-response-packets" || name == "accounting-start-success-packets" || name == "accounting-stop-failed-packets" || name == "accounting-stop-request-in-packets" || name == "accounting-stop-request-out-packets" || name == "accounting-stop-response-in-packets" || name == "accounting-stop-response-out-packets" || name == "accounting-stop-success-response-packets" || name == "authen-request-in-packets" || name == "authen-request-out-packets" || name == "authen-response-fail-packets" || name == "authen-response-in-packets" || name == "authen-response-out-packets" || name == "authen-success-packets" || name == "authorization-in-packets" || name == "authorization-out-packets" || name == "authorization-request-in-packets" || name == "authorization-response-fail-packets" || name == "authorization-response-out-packets" || name == "authorization-response-success-packets" || name == "coa-failed-packets" || name == "coa-request-in-packets" || name == "coa-request-packets" || name == "coa-response-out-packets" || name == "coa-response-packets" || name == "coa-success-packets" || name == "disconnect-failed-response-packets" || name == "disconnect-request-in-packets" || name == "disconnect-request-out-packets" || name == "disconnect-response-in-packets" || name == "disconnect-response-out-packets" || name == "disconnect-success-response-packets" || name == "pod-failed-packets" || name == "pod-in-packets" || name == "pod-out-packets" || name == "pod-request-in-packets" || name == "pod-response-out-packets" || name == "pod-success-packets")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::GySessionIds::GySessionIds()
-{
-    yang_name = "gy-session-ids"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::GySessionIds::~GySessionIds()
-{
-}
-
-bool Aaa::Diameter::GySessionIds::has_data() const
-{
-    for (std::size_t index=0; index<gy_session_id.size(); index++)
-    {
-        if(gy_session_id[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Diameter::GySessionIds::has_operation() const
-{
-    for (std::size_t index=0; index<gy_session_id.size(); index++)
-    {
-        if(gy_session_id[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Diameter::GySessionIds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gy-session-ids";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::GySessionIds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gy-session-id")
-    {
-        for(auto const & c : gy_session_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Diameter::GySessionIds::GySessionId>();
-        c->parent = this;
-        gy_session_id.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : gy_session_id)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Diameter::GySessionIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Diameter::GySessionIds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Diameter::GySessionIds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gy-session-id")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::GySessionIds::GySessionId::GySessionId()
-    :
-    session_id{YType::int32, "session-id"},
-    aaa_session_id{YType::uint32, "aaa-session-id"},
-    diameter_session_id{YType::str, "diameter-session-id"},
-    parent_aaa_session_id{YType::uint32, "parent-aaa-session-id"},
-    request_number{YType::uint32, "request-number"},
-    request_type{YType::str, "request-type"},
-    retry_count{YType::uint32, "retry-count"},
-    session_state{YType::str, "session-state"}
-{
-    yang_name = "gy-session-id"; yang_parent_name = "gy-session-ids";
-}
-
-Aaa::Diameter::GySessionIds::GySessionId::~GySessionId()
-{
-}
-
-bool Aaa::Diameter::GySessionIds::GySessionId::has_data() const
-{
-    return session_id.is_set
-	|| aaa_session_id.is_set
-	|| diameter_session_id.is_set
-	|| parent_aaa_session_id.is_set
-	|| request_number.is_set
-	|| request_type.is_set
-	|| retry_count.is_set
-	|| session_state.is_set;
-}
-
-bool Aaa::Diameter::GySessionIds::GySessionId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(aaa_session_id.yfilter)
-	|| ydk::is_set(diameter_session_id.yfilter)
-	|| ydk::is_set(parent_aaa_session_id.yfilter)
-	|| ydk::is_set(request_number.yfilter)
-	|| ydk::is_set(request_type.yfilter)
-	|| ydk::is_set(retry_count.yfilter)
-	|| ydk::is_set(session_state.yfilter);
-}
-
-std::string Aaa::Diameter::GySessionIds::GySessionId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gy-session-id" <<"[session-id='" <<session_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::GySessionIds::GySessionId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/gy-session-ids/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
-    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
-    if (parent_aaa_session_id.is_set || is_set(parent_aaa_session_id.yfilter)) leaf_name_data.push_back(parent_aaa_session_id.get_name_leafdata());
-    if (request_number.is_set || is_set(request_number.yfilter)) leaf_name_data.push_back(request_number.get_name_leafdata());
-    if (request_type.is_set || is_set(request_type.yfilter)) leaf_name_data.push_back(request_type.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::GySessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::GySessionId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::GySessionIds::GySessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-id")
-    {
-        session_id = value;
-        session_id.value_namespace = name_space;
-        session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id = value;
-        aaa_session_id.value_namespace = name_space;
-        aaa_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id = value;
-        diameter_session_id.value_namespace = name_space;
-        diameter_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-aaa-session-id")
-    {
-        parent_aaa_session_id = value;
-        parent_aaa_session_id.value_namespace = name_space;
-        parent_aaa_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-number")
-    {
-        request_number = value;
-        request_number.value_namespace = name_space;
-        request_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-type")
-    {
-        request_type = value;
-        request_type.value_namespace = name_space;
-        request_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count = value;
-        retry_count.value_namespace = name_space;
-        retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-state")
-    {
-        session_state = value;
-        session_state.value_namespace = name_space;
-        session_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::GySessionIds::GySessionId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-id")
-    {
-        session_id.yfilter = yfilter;
-    }
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id.yfilter = yfilter;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id.yfilter = yfilter;
-    }
-    if(value_path == "parent-aaa-session-id")
-    {
-        parent_aaa_session_id.yfilter = yfilter;
-    }
-    if(value_path == "request-number")
-    {
-        request_number.yfilter = yfilter;
-    }
-    if(value_path == "request-type")
-    {
-        request_type.yfilter = yfilter;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count.yfilter = yfilter;
-    }
-    if(value_path == "session-state")
-    {
-        session_state.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::GySessionIds::GySessionId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "parent-aaa-session-id" || name == "request-number" || name == "request-type" || name == "retry-count" || name == "session-state")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::GyStatistics::GyStatistics()
-    :
-    active_sessions{YType::uint32, "active-sessions"},
-    asa_sent_error_messages{YType::uint32, "asa-sent-error-messages"},
-    asa_sent_messages{YType::uint32, "asa-sent-messages"},
-    asr_received_error_messages{YType::uint32, "asr-received-error-messages"},
-    asr_received_messages{YType::uint32, "asr-received-messages"},
-    cca_final_error_messages{YType::uint32, "cca-final-error-messages"},
-    cca_final_messages{YType::uint32, "cca-final-messages"},
-    cca_init_error_messages{YType::uint32, "cca-init-error-messages"},
-    cca_init_messages{YType::uint32, "cca-init-messages"},
-    cca_update_error_messages{YType::uint32, "cca-update-error-messages"},
-    cca_update_messages{YType::uint32, "cca-update-messages"},
-    ccr_final_failed_messages{YType::uint32, "ccr-final-failed-messages"},
-    ccr_final_messages{YType::uint32, "ccr-final-messages"},
-    ccr_final_retry_messages{YType::uint32, "ccr-final-retry-messages"},
-    ccr_final_timed_out_messages{YType::uint32, "ccr-final-timed-out-messages"},
-    ccr_init_failed_messages{YType::uint32, "ccr-init-failed-messages"},
-    ccr_init_messages{YType::uint32, "ccr-init-messages"},
-    ccr_init_retry_messages{YType::uint32, "ccr-init-retry-messages"},
-    ccr_init_timed_out_messages{YType::uint32, "ccr-init-timed-out-messages"},
-    ccr_update_failed_messages{YType::uint32, "ccr-update-failed-messages"},
-    ccr_update_messages{YType::uint32, "ccr-update-messages"},
-    ccr_update_retry_messages{YType::uint32, "ccr-update-retry-messages"},
-    ccr_update_timed_out_messages{YType::uint32, "ccr-update-timed-out-messages"},
-    close_sessions{YType::uint32, "close-sessions"},
-    open_sessions{YType::uint32, "open-sessions"},
-    raa_sent_error_messages{YType::uint32, "raa-sent-error-messages"},
-    raa_sent_messages{YType::uint32, "raa-sent-messages"},
-    rar_received_error_messages{YType::uint32, "rar-received-error-messages"},
-    rar_received_messages{YType::uint32, "rar-received-messages"},
-    restore_sessions{YType::uint32, "restore-sessions"},
-    unknown_request_messages{YType::uint32, "unknown-request-messages"}
-{
-    yang_name = "gy-statistics"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::GyStatistics::~GyStatistics()
-{
-}
-
-bool Aaa::Diameter::GyStatistics::has_data() const
-{
-    return active_sessions.is_set
-	|| asa_sent_error_messages.is_set
-	|| asa_sent_messages.is_set
-	|| asr_received_error_messages.is_set
-	|| asr_received_messages.is_set
-	|| cca_final_error_messages.is_set
-	|| cca_final_messages.is_set
-	|| cca_init_error_messages.is_set
-	|| cca_init_messages.is_set
-	|| cca_update_error_messages.is_set
-	|| cca_update_messages.is_set
-	|| ccr_final_failed_messages.is_set
-	|| ccr_final_messages.is_set
-	|| ccr_final_retry_messages.is_set
-	|| ccr_final_timed_out_messages.is_set
-	|| ccr_init_failed_messages.is_set
-	|| ccr_init_messages.is_set
-	|| ccr_init_retry_messages.is_set
-	|| ccr_init_timed_out_messages.is_set
-	|| ccr_update_failed_messages.is_set
-	|| ccr_update_messages.is_set
-	|| ccr_update_retry_messages.is_set
-	|| ccr_update_timed_out_messages.is_set
-	|| close_sessions.is_set
-	|| open_sessions.is_set
-	|| raa_sent_error_messages.is_set
-	|| raa_sent_messages.is_set
-	|| rar_received_error_messages.is_set
-	|| rar_received_messages.is_set
-	|| restore_sessions.is_set
-	|| unknown_request_messages.is_set;
-}
-
-bool Aaa::Diameter::GyStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(active_sessions.yfilter)
-	|| ydk::is_set(asa_sent_error_messages.yfilter)
-	|| ydk::is_set(asa_sent_messages.yfilter)
-	|| ydk::is_set(asr_received_error_messages.yfilter)
-	|| ydk::is_set(asr_received_messages.yfilter)
-	|| ydk::is_set(cca_final_error_messages.yfilter)
-	|| ydk::is_set(cca_final_messages.yfilter)
-	|| ydk::is_set(cca_init_error_messages.yfilter)
-	|| ydk::is_set(cca_init_messages.yfilter)
-	|| ydk::is_set(cca_update_error_messages.yfilter)
-	|| ydk::is_set(cca_update_messages.yfilter)
-	|| ydk::is_set(ccr_final_failed_messages.yfilter)
-	|| ydk::is_set(ccr_final_messages.yfilter)
-	|| ydk::is_set(ccr_final_retry_messages.yfilter)
-	|| ydk::is_set(ccr_final_timed_out_messages.yfilter)
-	|| ydk::is_set(ccr_init_failed_messages.yfilter)
-	|| ydk::is_set(ccr_init_messages.yfilter)
-	|| ydk::is_set(ccr_init_retry_messages.yfilter)
-	|| ydk::is_set(ccr_init_timed_out_messages.yfilter)
-	|| ydk::is_set(ccr_update_failed_messages.yfilter)
-	|| ydk::is_set(ccr_update_messages.yfilter)
-	|| ydk::is_set(ccr_update_retry_messages.yfilter)
-	|| ydk::is_set(ccr_update_timed_out_messages.yfilter)
-	|| ydk::is_set(close_sessions.yfilter)
-	|| ydk::is_set(open_sessions.yfilter)
-	|| ydk::is_set(raa_sent_error_messages.yfilter)
-	|| ydk::is_set(raa_sent_messages.yfilter)
-	|| ydk::is_set(rar_received_error_messages.yfilter)
-	|| ydk::is_set(rar_received_messages.yfilter)
-	|| ydk::is_set(restore_sessions.yfilter)
-	|| ydk::is_set(unknown_request_messages.yfilter);
-}
-
-std::string Aaa::Diameter::GyStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gy-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::GyStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (asa_sent_error_messages.is_set || is_set(asa_sent_error_messages.yfilter)) leaf_name_data.push_back(asa_sent_error_messages.get_name_leafdata());
-    if (asa_sent_messages.is_set || is_set(asa_sent_messages.yfilter)) leaf_name_data.push_back(asa_sent_messages.get_name_leafdata());
-    if (asr_received_error_messages.is_set || is_set(asr_received_error_messages.yfilter)) leaf_name_data.push_back(asr_received_error_messages.get_name_leafdata());
-    if (asr_received_messages.is_set || is_set(asr_received_messages.yfilter)) leaf_name_data.push_back(asr_received_messages.get_name_leafdata());
-    if (cca_final_error_messages.is_set || is_set(cca_final_error_messages.yfilter)) leaf_name_data.push_back(cca_final_error_messages.get_name_leafdata());
-    if (cca_final_messages.is_set || is_set(cca_final_messages.yfilter)) leaf_name_data.push_back(cca_final_messages.get_name_leafdata());
-    if (cca_init_error_messages.is_set || is_set(cca_init_error_messages.yfilter)) leaf_name_data.push_back(cca_init_error_messages.get_name_leafdata());
-    if (cca_init_messages.is_set || is_set(cca_init_messages.yfilter)) leaf_name_data.push_back(cca_init_messages.get_name_leafdata());
-    if (cca_update_error_messages.is_set || is_set(cca_update_error_messages.yfilter)) leaf_name_data.push_back(cca_update_error_messages.get_name_leafdata());
-    if (cca_update_messages.is_set || is_set(cca_update_messages.yfilter)) leaf_name_data.push_back(cca_update_messages.get_name_leafdata());
-    if (ccr_final_failed_messages.is_set || is_set(ccr_final_failed_messages.yfilter)) leaf_name_data.push_back(ccr_final_failed_messages.get_name_leafdata());
-    if (ccr_final_messages.is_set || is_set(ccr_final_messages.yfilter)) leaf_name_data.push_back(ccr_final_messages.get_name_leafdata());
-    if (ccr_final_retry_messages.is_set || is_set(ccr_final_retry_messages.yfilter)) leaf_name_data.push_back(ccr_final_retry_messages.get_name_leafdata());
-    if (ccr_final_timed_out_messages.is_set || is_set(ccr_final_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_final_timed_out_messages.get_name_leafdata());
-    if (ccr_init_failed_messages.is_set || is_set(ccr_init_failed_messages.yfilter)) leaf_name_data.push_back(ccr_init_failed_messages.get_name_leafdata());
-    if (ccr_init_messages.is_set || is_set(ccr_init_messages.yfilter)) leaf_name_data.push_back(ccr_init_messages.get_name_leafdata());
-    if (ccr_init_retry_messages.is_set || is_set(ccr_init_retry_messages.yfilter)) leaf_name_data.push_back(ccr_init_retry_messages.get_name_leafdata());
-    if (ccr_init_timed_out_messages.is_set || is_set(ccr_init_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_init_timed_out_messages.get_name_leafdata());
-    if (ccr_update_failed_messages.is_set || is_set(ccr_update_failed_messages.yfilter)) leaf_name_data.push_back(ccr_update_failed_messages.get_name_leafdata());
-    if (ccr_update_messages.is_set || is_set(ccr_update_messages.yfilter)) leaf_name_data.push_back(ccr_update_messages.get_name_leafdata());
-    if (ccr_update_retry_messages.is_set || is_set(ccr_update_retry_messages.yfilter)) leaf_name_data.push_back(ccr_update_retry_messages.get_name_leafdata());
-    if (ccr_update_timed_out_messages.is_set || is_set(ccr_update_timed_out_messages.yfilter)) leaf_name_data.push_back(ccr_update_timed_out_messages.get_name_leafdata());
-    if (close_sessions.is_set || is_set(close_sessions.yfilter)) leaf_name_data.push_back(close_sessions.get_name_leafdata());
-    if (open_sessions.is_set || is_set(open_sessions.yfilter)) leaf_name_data.push_back(open_sessions.get_name_leafdata());
-    if (raa_sent_error_messages.is_set || is_set(raa_sent_error_messages.yfilter)) leaf_name_data.push_back(raa_sent_error_messages.get_name_leafdata());
-    if (raa_sent_messages.is_set || is_set(raa_sent_messages.yfilter)) leaf_name_data.push_back(raa_sent_messages.get_name_leafdata());
-    if (rar_received_error_messages.is_set || is_set(rar_received_error_messages.yfilter)) leaf_name_data.push_back(rar_received_error_messages.get_name_leafdata());
-    if (rar_received_messages.is_set || is_set(rar_received_messages.yfilter)) leaf_name_data.push_back(rar_received_messages.get_name_leafdata());
-    if (restore_sessions.is_set || is_set(restore_sessions.yfilter)) leaf_name_data.push_back(restore_sessions.get_name_leafdata());
-    if (unknown_request_messages.is_set || is_set(unknown_request_messages.yfilter)) leaf_name_data.push_back(unknown_request_messages.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::GyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GyStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::GyStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions = value;
-        active_sessions.value_namespace = name_space;
-        active_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asa-sent-error-messages")
-    {
-        asa_sent_error_messages = value;
-        asa_sent_error_messages.value_namespace = name_space;
-        asa_sent_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asa-sent-messages")
-    {
-        asa_sent_messages = value;
-        asa_sent_messages.value_namespace = name_space;
-        asa_sent_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asr-received-error-messages")
-    {
-        asr_received_error_messages = value;
-        asr_received_error_messages.value_namespace = name_space;
-        asr_received_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asr-received-messages")
-    {
-        asr_received_messages = value;
-        asr_received_messages.value_namespace = name_space;
-        asr_received_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-final-error-messages")
-    {
-        cca_final_error_messages = value;
-        cca_final_error_messages.value_namespace = name_space;
-        cca_final_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-final-messages")
-    {
-        cca_final_messages = value;
-        cca_final_messages.value_namespace = name_space;
-        cca_final_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-init-error-messages")
-    {
-        cca_init_error_messages = value;
-        cca_init_error_messages.value_namespace = name_space;
-        cca_init_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-init-messages")
-    {
-        cca_init_messages = value;
-        cca_init_messages.value_namespace = name_space;
-        cca_init_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-update-error-messages")
-    {
-        cca_update_error_messages = value;
-        cca_update_error_messages.value_namespace = name_space;
-        cca_update_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cca-update-messages")
-    {
-        cca_update_messages = value;
-        cca_update_messages.value_namespace = name_space;
-        cca_update_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-final-failed-messages")
-    {
-        ccr_final_failed_messages = value;
-        ccr_final_failed_messages.value_namespace = name_space;
-        ccr_final_failed_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-final-messages")
-    {
-        ccr_final_messages = value;
-        ccr_final_messages.value_namespace = name_space;
-        ccr_final_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-final-retry-messages")
-    {
-        ccr_final_retry_messages = value;
-        ccr_final_retry_messages.value_namespace = name_space;
-        ccr_final_retry_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-final-timed-out-messages")
-    {
-        ccr_final_timed_out_messages = value;
-        ccr_final_timed_out_messages.value_namespace = name_space;
-        ccr_final_timed_out_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-init-failed-messages")
-    {
-        ccr_init_failed_messages = value;
-        ccr_init_failed_messages.value_namespace = name_space;
-        ccr_init_failed_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-init-messages")
-    {
-        ccr_init_messages = value;
-        ccr_init_messages.value_namespace = name_space;
-        ccr_init_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-init-retry-messages")
-    {
-        ccr_init_retry_messages = value;
-        ccr_init_retry_messages.value_namespace = name_space;
-        ccr_init_retry_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-init-timed-out-messages")
-    {
-        ccr_init_timed_out_messages = value;
-        ccr_init_timed_out_messages.value_namespace = name_space;
-        ccr_init_timed_out_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-update-failed-messages")
-    {
-        ccr_update_failed_messages = value;
-        ccr_update_failed_messages.value_namespace = name_space;
-        ccr_update_failed_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-update-messages")
-    {
-        ccr_update_messages = value;
-        ccr_update_messages.value_namespace = name_space;
-        ccr_update_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-update-retry-messages")
-    {
-        ccr_update_retry_messages = value;
-        ccr_update_retry_messages.value_namespace = name_space;
-        ccr_update_retry_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccr-update-timed-out-messages")
-    {
-        ccr_update_timed_out_messages = value;
-        ccr_update_timed_out_messages.value_namespace = name_space;
-        ccr_update_timed_out_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "close-sessions")
-    {
-        close_sessions = value;
-        close_sessions.value_namespace = name_space;
-        close_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "open-sessions")
-    {
-        open_sessions = value;
-        open_sessions.value_namespace = name_space;
-        open_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "raa-sent-error-messages")
-    {
-        raa_sent_error_messages = value;
-        raa_sent_error_messages.value_namespace = name_space;
-        raa_sent_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "raa-sent-messages")
-    {
-        raa_sent_messages = value;
-        raa_sent_messages.value_namespace = name_space;
-        raa_sent_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rar-received-error-messages")
-    {
-        rar_received_error_messages = value;
-        rar_received_error_messages.value_namespace = name_space;
-        rar_received_error_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rar-received-messages")
-    {
-        rar_received_messages = value;
-        rar_received_messages.value_namespace = name_space;
-        rar_received_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "restore-sessions")
-    {
-        restore_sessions = value;
-        restore_sessions.value_namespace = name_space;
-        restore_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-request-messages")
-    {
-        unknown_request_messages = value;
-        unknown_request_messages.value_namespace = name_space;
-        unknown_request_messages.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::GyStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "active-sessions")
-    {
-        active_sessions.yfilter = yfilter;
-    }
-    if(value_path == "asa-sent-error-messages")
-    {
-        asa_sent_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "asa-sent-messages")
-    {
-        asa_sent_messages.yfilter = yfilter;
-    }
-    if(value_path == "asr-received-error-messages")
-    {
-        asr_received_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "asr-received-messages")
-    {
-        asr_received_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-final-error-messages")
-    {
-        cca_final_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-final-messages")
-    {
-        cca_final_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-init-error-messages")
-    {
-        cca_init_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-init-messages")
-    {
-        cca_init_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-update-error-messages")
-    {
-        cca_update_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "cca-update-messages")
-    {
-        cca_update_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-final-failed-messages")
-    {
-        ccr_final_failed_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-final-messages")
-    {
-        ccr_final_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-final-retry-messages")
-    {
-        ccr_final_retry_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-final-timed-out-messages")
-    {
-        ccr_final_timed_out_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-init-failed-messages")
-    {
-        ccr_init_failed_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-init-messages")
-    {
-        ccr_init_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-init-retry-messages")
-    {
-        ccr_init_retry_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-init-timed-out-messages")
-    {
-        ccr_init_timed_out_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-update-failed-messages")
-    {
-        ccr_update_failed_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-update-messages")
-    {
-        ccr_update_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-update-retry-messages")
-    {
-        ccr_update_retry_messages.yfilter = yfilter;
-    }
-    if(value_path == "ccr-update-timed-out-messages")
-    {
-        ccr_update_timed_out_messages.yfilter = yfilter;
-    }
-    if(value_path == "close-sessions")
-    {
-        close_sessions.yfilter = yfilter;
-    }
-    if(value_path == "open-sessions")
-    {
-        open_sessions.yfilter = yfilter;
-    }
-    if(value_path == "raa-sent-error-messages")
-    {
-        raa_sent_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "raa-sent-messages")
-    {
-        raa_sent_messages.yfilter = yfilter;
-    }
-    if(value_path == "rar-received-error-messages")
-    {
-        rar_received_error_messages.yfilter = yfilter;
-    }
-    if(value_path == "rar-received-messages")
-    {
-        rar_received_messages.yfilter = yfilter;
-    }
-    if(value_path == "restore-sessions")
-    {
-        restore_sessions.yfilter = yfilter;
-    }
-    if(value_path == "unknown-request-messages")
-    {
-        unknown_request_messages.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::GyStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-sessions" || name == "asa-sent-error-messages" || name == "asa-sent-messages" || name == "asr-received-error-messages" || name == "asr-received-messages" || name == "cca-final-error-messages" || name == "cca-final-messages" || name == "cca-init-error-messages" || name == "cca-init-messages" || name == "cca-update-error-messages" || name == "cca-update-messages" || name == "ccr-final-failed-messages" || name == "ccr-final-messages" || name == "ccr-final-retry-messages" || name == "ccr-final-timed-out-messages" || name == "ccr-init-failed-messages" || name == "ccr-init-messages" || name == "ccr-init-retry-messages" || name == "ccr-init-timed-out-messages" || name == "ccr-update-failed-messages" || name == "ccr-update-messages" || name == "ccr-update-retry-messages" || name == "ccr-update-timed-out-messages" || name == "close-sessions" || name == "open-sessions" || name == "raa-sent-error-messages" || name == "raa-sent-messages" || name == "rar-received-error-messages" || name == "rar-received-messages" || name == "restore-sessions" || name == "unknown-request-messages")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::GxSessionIds::GxSessionIds()
-{
-    yang_name = "gx-session-ids"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::GxSessionIds::~GxSessionIds()
-{
-}
-
-bool Aaa::Diameter::GxSessionIds::has_data() const
-{
-    for (std::size_t index=0; index<gx_session_id.size(); index++)
-    {
-        if(gx_session_id[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Diameter::GxSessionIds::has_operation() const
-{
-    for (std::size_t index=0; index<gx_session_id.size(); index++)
-    {
-        if(gx_session_id[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Diameter::GxSessionIds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gx-session-ids";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::GxSessionIds::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "gx-session-id")
-    {
-        for(auto const & c : gx_session_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Diameter::GxSessionIds::GxSessionId>();
-        c->parent = this;
-        gx_session_id.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : gx_session_id)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Diameter::GxSessionIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Diameter::GxSessionIds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Diameter::GxSessionIds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "gx-session-id")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::GxSessionIds::GxSessionId::GxSessionId()
-    :
-    session_id{YType::int32, "session-id"},
-    aaa_session_id{YType::uint32, "aaa-session-id"},
-    diameter_session_id{YType::str, "diameter-session-id"},
-    request_number{YType::uint32, "request-number"},
-    request_type{YType::str, "request-type"},
-    retry_count{YType::uint32, "retry-count"},
-    session_state{YType::str, "session-state"}
-{
-    yang_name = "gx-session-id"; yang_parent_name = "gx-session-ids";
-}
-
-Aaa::Diameter::GxSessionIds::GxSessionId::~GxSessionId()
-{
-}
-
-bool Aaa::Diameter::GxSessionIds::GxSessionId::has_data() const
-{
-    return session_id.is_set
-	|| aaa_session_id.is_set
-	|| diameter_session_id.is_set
-	|| request_number.is_set
-	|| request_type.is_set
-	|| retry_count.is_set
-	|| session_state.is_set;
-}
-
-bool Aaa::Diameter::GxSessionIds::GxSessionId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(aaa_session_id.yfilter)
-	|| ydk::is_set(diameter_session_id.yfilter)
-	|| ydk::is_set(request_number.yfilter)
-	|| ydk::is_set(request_type.yfilter)
-	|| ydk::is_set(retry_count.yfilter)
-	|| ydk::is_set(session_state.yfilter);
-}
-
-std::string Aaa::Diameter::GxSessionIds::GxSessionId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gx-session-id" <<"[session-id='" <<session_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::GxSessionIds::GxSessionId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/gx-session-ids/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
-    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
-    if (request_number.is_set || is_set(request_number.yfilter)) leaf_name_data.push_back(request_number.get_name_leafdata());
-    if (request_type.is_set || is_set(request_type.yfilter)) leaf_name_data.push_back(request_type.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::GxSessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::GxSessionId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::GxSessionIds::GxSessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-id")
-    {
-        session_id = value;
-        session_id.value_namespace = name_space;
-        session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id = value;
-        aaa_session_id.value_namespace = name_space;
-        aaa_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id = value;
-        diameter_session_id.value_namespace = name_space;
-        diameter_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-number")
-    {
-        request_number = value;
-        request_number.value_namespace = name_space;
-        request_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-type")
-    {
-        request_type = value;
-        request_type.value_namespace = name_space;
-        request_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count = value;
-        retry_count.value_namespace = name_space;
-        retry_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-state")
-    {
-        session_state = value;
-        session_state.value_namespace = name_space;
-        session_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::GxSessionIds::GxSessionId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-id")
-    {
-        session_id.yfilter = yfilter;
-    }
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id.yfilter = yfilter;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id.yfilter = yfilter;
-    }
-    if(value_path == "request-number")
-    {
-        request_number.yfilter = yfilter;
-    }
-    if(value_path == "request-type")
-    {
-        request_type.yfilter = yfilter;
-    }
-    if(value_path == "retry-count")
-    {
-        retry_count.yfilter = yfilter;
-    }
-    if(value_path == "session-state")
-    {
-        session_state.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::GxSessionIds::GxSessionId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "request-number" || name == "request-type" || name == "retry-count" || name == "session-state")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::NasSession::NasSession()
-    :
-    aaanas_id{YType::str, "aaanas-id"}
-{
-    yang_name = "nas-session"; yang_parent_name = "diameter";
-}
-
-Aaa::Diameter::NasSession::~NasSession()
-{
-}
-
-bool Aaa::Diameter::NasSession::has_data() const
-{
-    for (std::size_t index=0; index<list_of_nas.size(); index++)
-    {
-        if(list_of_nas[index]->has_data())
-            return true;
-    }
-    return aaanas_id.is_set;
-}
-
-bool Aaa::Diameter::NasSession::has_operation() const
-{
-    for (std::size_t index=0; index<list_of_nas.size(); index++)
-    {
-        if(list_of_nas[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(aaanas_id.yfilter);
-}
-
-std::string Aaa::Diameter::NasSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nas-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::NasSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aaanas_id.is_set || is_set(aaanas_id.yfilter)) leaf_name_data.push_back(aaanas_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "list-of-nas")
-    {
-        for(auto const & c : list_of_nas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Diameter::NasSession::ListOfNas>();
-        c->parent = this;
-        list_of_nas.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : list_of_nas)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Diameter::NasSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aaanas-id")
-    {
-        aaanas_id = value;
-        aaanas_id.value_namespace = name_space;
-        aaanas_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::NasSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aaanas-id")
-    {
-        aaanas_id.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::NasSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "list-of-nas" || name == "aaanas-id")
-        return true;
-    return false;
-}
-
-Aaa::Diameter::NasSession::ListOfNas::ListOfNas()
-    :
-    aaa_session_id{YType::str, "aaa-session-id"},
-    accounting_intrim_in_packets{YType::uint32, "accounting-intrim-in-packets"},
-    accounting_intrim_out_packets{YType::uint32, "accounting-intrim-out-packets"},
-    accounting_status{YType::uint32, "accounting-status"},
-    accounting_status_stop{YType::uint32, "accounting-status-stop"},
-    authentication_status{YType::uint32, "authentication-status"},
-    authorization_status{YType::uint32, "authorization-status"},
-    diameter_session_id{YType::str, "diameter-session-id"},
-    disconnect_status{YType::uint32, "disconnect-status"},
-    method_list{YType::str, "method-list"},
-    server_used_list{YType::str, "server-used-list"}
-{
-    yang_name = "list-of-nas"; yang_parent_name = "nas-session";
-}
-
-Aaa::Diameter::NasSession::ListOfNas::~ListOfNas()
-{
-}
-
-bool Aaa::Diameter::NasSession::ListOfNas::has_data() const
-{
-    return aaa_session_id.is_set
-	|| accounting_intrim_in_packets.is_set
-	|| accounting_intrim_out_packets.is_set
-	|| accounting_status.is_set
-	|| accounting_status_stop.is_set
-	|| authentication_status.is_set
-	|| authorization_status.is_set
-	|| diameter_session_id.is_set
-	|| disconnect_status.is_set
-	|| method_list.is_set
-	|| server_used_list.is_set;
-}
-
-bool Aaa::Diameter::NasSession::ListOfNas::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(aaa_session_id.yfilter)
-	|| ydk::is_set(accounting_intrim_in_packets.yfilter)
-	|| ydk::is_set(accounting_intrim_out_packets.yfilter)
-	|| ydk::is_set(accounting_status.yfilter)
-	|| ydk::is_set(accounting_status_stop.yfilter)
-	|| ydk::is_set(authentication_status.yfilter)
-	|| ydk::is_set(authorization_status.yfilter)
-	|| ydk::is_set(diameter_session_id.yfilter)
-	|| ydk::is_set(disconnect_status.yfilter)
-	|| ydk::is_set(method_list.yfilter)
-	|| ydk::is_set(server_used_list.yfilter);
-}
-
-std::string Aaa::Diameter::NasSession::ListOfNas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "list-of-nas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Diameter::NasSession::ListOfNas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-diameter-oper:diameter/nas-session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aaa_session_id.is_set || is_set(aaa_session_id.yfilter)) leaf_name_data.push_back(aaa_session_id.get_name_leafdata());
-    if (accounting_intrim_in_packets.is_set || is_set(accounting_intrim_in_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_in_packets.get_name_leafdata());
-    if (accounting_intrim_out_packets.is_set || is_set(accounting_intrim_out_packets.yfilter)) leaf_name_data.push_back(accounting_intrim_out_packets.get_name_leafdata());
-    if (accounting_status.is_set || is_set(accounting_status.yfilter)) leaf_name_data.push_back(accounting_status.get_name_leafdata());
-    if (accounting_status_stop.is_set || is_set(accounting_status_stop.yfilter)) leaf_name_data.push_back(accounting_status_stop.get_name_leafdata());
-    if (authentication_status.is_set || is_set(authentication_status.yfilter)) leaf_name_data.push_back(authentication_status.get_name_leafdata());
-    if (authorization_status.is_set || is_set(authorization_status.yfilter)) leaf_name_data.push_back(authorization_status.get_name_leafdata());
-    if (diameter_session_id.is_set || is_set(diameter_session_id.yfilter)) leaf_name_data.push_back(diameter_session_id.get_name_leafdata());
-    if (disconnect_status.is_set || is_set(disconnect_status.yfilter)) leaf_name_data.push_back(disconnect_status.get_name_leafdata());
-    if (method_list.is_set || is_set(method_list.yfilter)) leaf_name_data.push_back(method_list.get_name_leafdata());
-    if (server_used_list.is_set || is_set(server_used_list.yfilter)) leaf_name_data.push_back(server_used_list.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Diameter::NasSession::ListOfNas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::ListOfNas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Diameter::NasSession::ListOfNas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id = value;
-        aaa_session_id.value_namespace = name_space;
-        aaa_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-intrim-in-packets")
-    {
-        accounting_intrim_in_packets = value;
-        accounting_intrim_in_packets.value_namespace = name_space;
-        accounting_intrim_in_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-intrim-out-packets")
-    {
-        accounting_intrim_out_packets = value;
-        accounting_intrim_out_packets.value_namespace = name_space;
-        accounting_intrim_out_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-status")
-    {
-        accounting_status = value;
-        accounting_status.value_namespace = name_space;
-        accounting_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-status-stop")
-    {
-        accounting_status_stop = value;
-        accounting_status_stop.value_namespace = name_space;
-        accounting_status_stop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-status")
-    {
-        authentication_status = value;
-        authentication_status.value_namespace = name_space;
-        authentication_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authorization-status")
-    {
-        authorization_status = value;
-        authorization_status.value_namespace = name_space;
-        authorization_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id = value;
-        diameter_session_id.value_namespace = name_space;
-        diameter_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnect-status")
-    {
-        disconnect_status = value;
-        disconnect_status.value_namespace = name_space;
-        disconnect_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "method-list")
-    {
-        method_list = value;
-        method_list.value_namespace = name_space;
-        method_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "server-used-list")
-    {
-        server_used_list = value;
-        server_used_list.value_namespace = name_space;
-        server_used_list.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Diameter::NasSession::ListOfNas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aaa-session-id")
-    {
-        aaa_session_id.yfilter = yfilter;
-    }
-    if(value_path == "accounting-intrim-in-packets")
-    {
-        accounting_intrim_in_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-intrim-out-packets")
-    {
-        accounting_intrim_out_packets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-status")
-    {
-        accounting_status.yfilter = yfilter;
-    }
-    if(value_path == "accounting-status-stop")
-    {
-        accounting_status_stop.yfilter = yfilter;
-    }
-    if(value_path == "authentication-status")
-    {
-        authentication_status.yfilter = yfilter;
-    }
-    if(value_path == "authorization-status")
-    {
-        authorization_status.yfilter = yfilter;
-    }
-    if(value_path == "diameter-session-id")
-    {
-        diameter_session_id.yfilter = yfilter;
-    }
-    if(value_path == "disconnect-status")
-    {
-        disconnect_status.yfilter = yfilter;
-    }
-    if(value_path == "method-list")
-    {
-        method_list.yfilter = yfilter;
-    }
-    if(value_path == "server-used-list")
-    {
-        server_used_list.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Diameter::NasSession::ListOfNas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "aaa-session-id" || name == "accounting-intrim-in-packets" || name == "accounting-intrim-out-packets" || name == "accounting-status" || name == "accounting-status-stop" || name == "authentication-status" || name == "authorization-status" || name == "diameter-session-id" || name == "disconnect-status" || name == "method-list" || name == "server-used-list")
-        return true;
-    return false;
-}
-
 Aaa::Radius::Radius()
     :
     global(std::make_shared<Aaa::Radius::Global>())
@@ -8154,12 +5435,10 @@ Aaa::Radius::Radius()
 	,servers(std::make_shared<Aaa::Radius::Servers>())
 {
     global->parent = this;
-
     radius_source_interface->parent = this;
-
     servers->parent = this;
 
-    yang_name = "radius"; yang_parent_name = "aaa";
+    yang_name = "radius"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Radius::~Radius()
@@ -8181,33 +5460,26 @@ bool Aaa::Radius::has_operation() const
 	|| (servers !=  nullptr && servers->has_operation());
 }
 
+std::string Aaa::Radius::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Radius::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Radius::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8279,9 +5551,360 @@ bool Aaa::Radius::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Aaa::Radius::Global::Global()
+    :
+    accounting_nas_id{YType::str, "accounting-nas-id"},
+    authentication_nas_id{YType::str, "authentication-nas-id"},
+    unknown_accounting_response{YType::uint32, "unknown-accounting-response"},
+    unknown_authentication_response{YType::uint32, "unknown-authentication-response"}
+{
+
+    yang_name = "global"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Radius::Global::~Global()
+{
+}
+
+bool Aaa::Radius::Global::has_data() const
+{
+    return accounting_nas_id.is_set
+	|| authentication_nas_id.is_set
+	|| unknown_accounting_response.is_set
+	|| unknown_authentication_response.is_set;
+}
+
+bool Aaa::Radius::Global::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_nas_id.yfilter)
+	|| ydk::is_set(authentication_nas_id.yfilter)
+	|| ydk::is_set(unknown_accounting_response.yfilter)
+	|| ydk::is_set(unknown_authentication_response.yfilter);
+}
+
+std::string Aaa::Radius::Global::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::Global::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Global::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (accounting_nas_id.is_set || is_set(accounting_nas_id.yfilter)) leaf_name_data.push_back(accounting_nas_id.get_name_leafdata());
+    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
+    if (unknown_accounting_response.is_set || is_set(unknown_accounting_response.yfilter)) leaf_name_data.push_back(unknown_accounting_response.get_name_leafdata());
+    if (unknown_authentication_response.is_set || is_set(unknown_authentication_response.yfilter)) leaf_name_data.push_back(unknown_authentication_response.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Radius::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "accounting-nas-id")
+    {
+        accounting_nas_id = value;
+        accounting_nas_id.value_namespace = name_space;
+        accounting_nas_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-nas-id")
+    {
+        authentication_nas_id = value;
+        authentication_nas_id.value_namespace = name_space;
+        authentication_nas_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-accounting-response")
+    {
+        unknown_accounting_response = value;
+        unknown_accounting_response.value_namespace = name_space;
+        unknown_accounting_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-authentication-response")
+    {
+        unknown_authentication_response = value;
+        unknown_authentication_response.value_namespace = name_space;
+        unknown_authentication_response.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Radius::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-nas-id")
+    {
+        accounting_nas_id.yfilter = yfilter;
+    }
+    if(value_path == "authentication-nas-id")
+    {
+        authentication_nas_id.yfilter = yfilter;
+    }
+    if(value_path == "unknown-accounting-response")
+    {
+        unknown_accounting_response.yfilter = yfilter;
+    }
+    if(value_path == "unknown-authentication-response")
+    {
+        unknown_authentication_response.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Radius::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-nas-id" || name == "authentication-nas-id" || name == "unknown-accounting-response" || name == "unknown-authentication-response")
+        return true;
+    return false;
+}
+
+Aaa::Radius::RadiusSourceInterface::RadiusSourceInterface()
+{
+
+    yang_name = "radius-source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Radius::RadiusSourceInterface::~RadiusSourceInterface()
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_data() const
+{
+    for (std::size_t index=0; index<list_of_source_interface.size(); index++)
+    {
+        if(list_of_source_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_operation() const
+{
+    for (std::size_t index=0; index<list_of_source_interface.size(); index++)
+    {
+        if(list_of_source_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "radius-source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list-of-source-interface")
+    {
+        for(auto const & c : list_of_source_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
+        c->parent = this;
+        list_of_source_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : list_of_source_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Radius::RadiusSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Radius::RadiusSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list-of-source-interface")
+        return true;
+    return false;
+}
+
+Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::ListOfSourceInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    ipaddrv4{YType::str, "ipaddrv4"},
+    ipaddrv6{YType::str, "ipaddrv6"},
+    vrfid{YType::uint32, "vrfid"}
+{
+
+    yang_name = "list-of-source-interface"; yang_parent_name = "radius-source-interface"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::~ListOfSourceInterface()
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_data() const
+{
+    return interface_name.is_set
+	|| ipaddrv4.is_set
+	|| ipaddrv6.is_set
+	|| vrfid.is_set;
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ipaddrv4.yfilter)
+	|| ydk::is_set(ipaddrv6.yfilter)
+	|| ydk::is_set(vrfid.yfilter);
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/radius-source-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list-of-source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ipaddrv4.is_set || is_set(ipaddrv4.yfilter)) leaf_name_data.push_back(ipaddrv4.get_name_leafdata());
+    if (ipaddrv6.is_set || is_set(ipaddrv6.yfilter)) leaf_name_data.push_back(ipaddrv6.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipaddrv4")
+    {
+        ipaddrv4 = value;
+        ipaddrv4.value_namespace = name_space;
+        ipaddrv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipaddrv6")
+    {
+        ipaddrv6 = value;
+        ipaddrv6.value_namespace = name_space;
+        ipaddrv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipaddrv4")
+    {
+        ipaddrv4.yfilter = yfilter;
+    }
+    if(value_path == "ipaddrv6")
+    {
+        ipaddrv6.yfilter = yfilter;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "ipaddrv4" || name == "ipaddrv6" || name == "vrfid")
+        return true;
+    return false;
+}
+
 Aaa::Radius::Servers::Servers()
 {
-    yang_name = "servers"; yang_parent_name = "radius";
+
+    yang_name = "servers"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Radius::Servers::~Servers()
@@ -8308,33 +5931,26 @@ bool Aaa::Radius::Servers::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Aaa::Radius::Servers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Radius::Servers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "servers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Radius::Servers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8476,7 +6092,8 @@ Aaa::Radius::Servers::Server::Server()
     unknown_access_types{YType::uint32, "unknown-access-types"},
     unknown_accounting_types{YType::uint32, "unknown-accounting-types"}
 {
-    yang_name = "server"; yang_parent_name = "servers";
+
+    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Radius::Servers::Server::~Server()
@@ -8668,27 +6285,22 @@ bool Aaa::Radius::Servers::Server::has_operation() const
 	|| ydk::is_set(unknown_accounting_types.yfilter);
 }
 
+std::string Aaa::Radius::Servers::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Radius::Servers::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Radius::Servers::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/servers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
@@ -8780,9 +6392,7 @@ const EntityPath Aaa::Radius::Servers::Server::get_entity_path(Entity* ancestor)
     if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
     if (unknown_accounting_types.is_set || is_set(unknown_accounting_types.yfilter)) leaf_name_data.push_back(unknown_accounting_types.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9692,374 +7302,6 @@ bool Aaa::Radius::Servers::Server::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-Aaa::Radius::RadiusSourceInterface::RadiusSourceInterface()
-{
-    yang_name = "radius-source-interface"; yang_parent_name = "radius";
-}
-
-Aaa::Radius::RadiusSourceInterface::~RadiusSourceInterface()
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_data() const
-{
-    for (std::size_t index=0; index<list_of_source_interface.size(); index++)
-    {
-        if(list_of_source_interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_operation() const
-{
-    for (std::size_t index=0; index<list_of_source_interface.size(); index++)
-    {
-        if(list_of_source_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "radius-source-interface";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Radius::RadiusSourceInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "list-of-source-interface")
-    {
-        for(auto const & c : list_of_source_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
-        c->parent = this;
-        list_of_source_interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : list_of_source_interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Radius::RadiusSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Radius::RadiusSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "list-of-source-interface")
-        return true;
-    return false;
-}
-
-Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::ListOfSourceInterface()
-    :
-    interface_name{YType::str, "interface-name"},
-    ipaddrv4{YType::str, "ipaddrv4"},
-    ipaddrv6{YType::str, "ipaddrv6"},
-    vrfid{YType::uint32, "vrfid"}
-{
-    yang_name = "list-of-source-interface"; yang_parent_name = "radius-source-interface";
-}
-
-Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::~ListOfSourceInterface()
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_data() const
-{
-    return interface_name.is_set
-	|| ipaddrv4.is_set
-	|| ipaddrv6.is_set
-	|| vrfid.is_set;
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(ipaddrv4.yfilter)
-	|| ydk::is_set(ipaddrv6.yfilter)
-	|| ydk::is_set(vrfid.yfilter);
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "list-of-source-interface";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/radius-source-interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ipaddrv4.is_set || is_set(ipaddrv4.yfilter)) leaf_name_data.push_back(ipaddrv4.get_name_leafdata());
-    if (ipaddrv6.is_set || is_set(ipaddrv6.yfilter)) leaf_name_data.push_back(ipaddrv6.get_name_leafdata());
-    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipaddrv4")
-    {
-        ipaddrv4 = value;
-        ipaddrv4.value_namespace = name_space;
-        ipaddrv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipaddrv6")
-    {
-        ipaddrv6 = value;
-        ipaddrv6.value_namespace = name_space;
-        ipaddrv6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrfid")
-    {
-        vrfid = value;
-        vrfid.value_namespace = name_space;
-        vrfid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "ipaddrv4")
-    {
-        ipaddrv4.yfilter = yfilter;
-    }
-    if(value_path == "ipaddrv6")
-    {
-        ipaddrv6.yfilter = yfilter;
-    }
-    if(value_path == "vrfid")
-    {
-        vrfid.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "ipaddrv4" || name == "ipaddrv6" || name == "vrfid")
-        return true;
-    return false;
-}
-
-Aaa::Radius::Global::Global()
-    :
-    accounting_nas_id{YType::str, "accounting-nas-id"},
-    authentication_nas_id{YType::str, "authentication-nas-id"},
-    unknown_accounting_response{YType::uint32, "unknown-accounting-response"},
-    unknown_authentication_response{YType::uint32, "unknown-authentication-response"}
-{
-    yang_name = "global"; yang_parent_name = "radius";
-}
-
-Aaa::Radius::Global::~Global()
-{
-}
-
-bool Aaa::Radius::Global::has_data() const
-{
-    return accounting_nas_id.is_set
-	|| authentication_nas_id.is_set
-	|| unknown_accounting_response.is_set
-	|| unknown_authentication_response.is_set;
-}
-
-bool Aaa::Radius::Global::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(accounting_nas_id.yfilter)
-	|| ydk::is_set(authentication_nas_id.yfilter)
-	|| ydk::is_set(unknown_accounting_response.yfilter)
-	|| ydk::is_set(unknown_authentication_response.yfilter);
-}
-
-std::string Aaa::Radius::Global::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Aaa::Radius::Global::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (accounting_nas_id.is_set || is_set(accounting_nas_id.yfilter)) leaf_name_data.push_back(accounting_nas_id.get_name_leafdata());
-    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
-    if (unknown_accounting_response.is_set || is_set(unknown_accounting_response.yfilter)) leaf_name_data.push_back(unknown_accounting_response.get_name_leafdata());
-    if (unknown_authentication_response.is_set || is_set(unknown_authentication_response.yfilter)) leaf_name_data.push_back(unknown_authentication_response.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Aaa::Radius::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "accounting-nas-id")
-    {
-        accounting_nas_id = value;
-        accounting_nas_id.value_namespace = name_space;
-        accounting_nas_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id = value;
-        authentication_nas_id.value_namespace = name_space;
-        authentication_nas_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-accounting-response")
-    {
-        unknown_accounting_response = value;
-        unknown_accounting_response.value_namespace = name_space;
-        unknown_accounting_response.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-authentication-response")
-    {
-        unknown_authentication_response = value;
-        unknown_authentication_response.value_namespace = name_space;
-        unknown_authentication_response.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Radius::Global::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "accounting-nas-id")
-    {
-        accounting_nas_id.yfilter = yfilter;
-    }
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id.yfilter = yfilter;
-    }
-    if(value_path == "unknown-accounting-response")
-    {
-        unknown_accounting_response.yfilter = yfilter;
-    }
-    if(value_path == "unknown-authentication-response")
-    {
-        unknown_authentication_response.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Radius::Global::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "accounting-nas-id" || name == "authentication-nas-id" || name == "unknown-accounting-response" || name == "unknown-authentication-response")
-        return true;
-    return false;
-}
-
 Aaa::Tacacs::Tacacs()
     :
     requests(std::make_shared<Aaa::Tacacs::Requests>())
@@ -10067,12 +7309,10 @@ Aaa::Tacacs::Tacacs()
 	,servers(std::make_shared<Aaa::Tacacs::Servers>())
 {
     requests->parent = this;
-
     server_groups->parent = this;
-
     servers->parent = this;
 
-    yang_name = "tacacs"; yang_parent_name = "aaa";
+    yang_name = "tacacs"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::~Tacacs()
@@ -10094,33 +7334,26 @@ bool Aaa::Tacacs::has_operation() const
 	|| (servers !=  nullptr && servers->has_operation());
 }
 
+std::string Aaa::Tacacs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-aaa-tacacs-oper:tacacs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10194,7 +7427,8 @@ bool Aaa::Tacacs::has_leaf_or_child_of_name(const std::string & name) const
 
 Aaa::Tacacs::Requests::Requests()
 {
-    yang_name = "requests"; yang_parent_name = "tacacs";
+
+    yang_name = "requests"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::Requests::~Requests()
@@ -10221,33 +7455,26 @@ bool Aaa::Tacacs::Requests::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Aaa::Tacacs::Requests::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::Requests::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "requests";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::Requests::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10300,7 +7527,8 @@ bool Aaa::Tacacs::Requests::has_leaf_or_child_of_name(const std::string & name) 
 
 Aaa::Tacacs::Requests::Request::Request()
 {
-    yang_name = "request"; yang_parent_name = "requests";
+
+    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::Requests::Request::~Request()
@@ -10327,33 +7555,26 @@ bool Aaa::Tacacs::Requests::Request::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Aaa::Tacacs::Requests::Request::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::Requests::Request::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::Requests::Request::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10415,7 +7636,8 @@ Aaa::Tacacs::Requests::Request::TacacsRequestbag::TacacsRequestbag()
     sock{YType::int32, "sock"},
     time_remaining{YType::uint32, "time-remaining"}
 {
-    yang_name = "tacacs-requestbag"; yang_parent_name = "request";
+
+    yang_name = "tacacs-requestbag"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::Requests::Request::TacacsRequestbag::~TacacsRequestbag()
@@ -10447,27 +7669,22 @@ bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_operation() const
 	|| ydk::is_set(time_remaining.yfilter);
 }
 
+std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tacacs-requestbag";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/requests/request/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
@@ -10479,9 +7696,7 @@ const EntityPath Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_entity_pa
     if (sock.is_set || is_set(sock.yfilter)) leaf_name_data.push_back(sock.get_name_leafdata());
     if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10591,9 +7806,587 @@ bool Aaa::Tacacs::Requests::Request::TacacsRequestbag::has_leaf_or_child_of_name
     return false;
 }
 
+Aaa::Tacacs::ServerGroups::ServerGroups()
+{
+
+    yang_name = "server-groups"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Tacacs::ServerGroups::~ServerGroups()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::has_data() const
+{
+    for (std::size_t index=0; index<server_group.size(); index++)
+    {
+        if(server_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Tacacs::ServerGroups::has_operation() const
+{
+    for (std::size_t index=0; index<server_group.size(); index++)
+    {
+        if(server_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server-group")
+    {
+        for(auto const & c : server_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
+        c->parent = this;
+        server_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : server_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Tacacs::ServerGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-group")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
+    :
+    group_name{YType::str, "group-name"},
+    sg_map_num{YType::uint32, "sg-map-num"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return group_name.is_set
+	|| sg_map_num.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
+{
+    for (std::size_t index=0; index<server.size(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(sg_map_num.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (sg_map_num.is_set || is_set(sg_map_num.yfilter)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        for(auto const & c : server)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
+        c->parent = this;
+        server.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : server)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sg-map-num")
+    {
+        sg_map_num = value;
+        sg_map_num.value_namespace = name_space;
+        sg_map_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "sg-map-num")
+    {
+        sg_map_num.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server" || name == "group-name" || name == "sg-map-num" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
+    :
+    aborts{YType::uint32, "aborts"},
+    addr{YType::str, "addr"},
+    addr_buf{YType::str, "addr-buf"},
+    bytes_in{YType::uint32, "bytes-in"},
+    bytes_out{YType::uint32, "bytes-out"},
+    closes{YType::uint32, "closes"},
+    conn_up{YType::boolean, "conn-up"},
+    errors{YType::uint32, "errors"},
+    family{YType::str, "family"},
+    is_private{YType::boolean, "is-private"},
+    opens{YType::uint32, "opens"},
+    paks_in{YType::uint32, "paks-in"},
+    paks_out{YType::uint32, "paks-out"},
+    port{YType::uint32, "port"},
+    replies_expected{YType::uint32, "replies-expected"},
+    single_connect{YType::boolean, "single-connect"},
+    timeout{YType::uint32, "timeout"},
+    up{YType::boolean, "up"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "server"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
+{
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
+{
+    return aborts.is_set
+	|| addr.is_set
+	|| addr_buf.is_set
+	|| bytes_in.is_set
+	|| bytes_out.is_set
+	|| closes.is_set
+	|| conn_up.is_set
+	|| errors.is_set
+	|| family.is_set
+	|| is_private.is_set
+	|| opens.is_set
+	|| paks_in.is_set
+	|| paks_out.is_set
+	|| port.is_set
+	|| replies_expected.is_set
+	|| single_connect.is_set
+	|| timeout.is_set
+	|| up.is_set
+	|| vrf_name.is_set;
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aborts.yfilter)
+	|| ydk::is_set(addr.yfilter)
+	|| ydk::is_set(addr_buf.yfilter)
+	|| ydk::is_set(bytes_in.yfilter)
+	|| ydk::is_set(bytes_out.yfilter)
+	|| ydk::is_set(closes.yfilter)
+	|| ydk::is_set(conn_up.yfilter)
+	|| ydk::is_set(errors.yfilter)
+	|| ydk::is_set(family.yfilter)
+	|| ydk::is_set(is_private.yfilter)
+	|| ydk::is_set(opens.yfilter)
+	|| ydk::is_set(paks_in.yfilter)
+	|| ydk::is_set(paks_out.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(replies_expected.yfilter)
+	|| ydk::is_set(single_connect.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
+    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
+    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
+    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
+    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
+    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
+    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
+    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
+    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
+    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aborts")
+    {
+        aborts = value;
+        aborts.value_namespace = name_space;
+        aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr")
+    {
+        addr = value;
+        addr.value_namespace = name_space;
+        addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf = value;
+        addr_buf.value_namespace = name_space;
+        addr_buf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in = value;
+        bytes_in.value_namespace = name_space;
+        bytes_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out = value;
+        bytes_out.value_namespace = name_space;
+        bytes_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "closes")
+    {
+        closes = value;
+        closes.value_namespace = name_space;
+        closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up = value;
+        conn_up.value_namespace = name_space;
+        conn_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errors")
+    {
+        errors = value;
+        errors.value_namespace = name_space;
+        errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-private")
+    {
+        is_private = value;
+        is_private.value_namespace = name_space;
+        is_private.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "opens")
+    {
+        opens = value;
+        opens.value_namespace = name_space;
+        opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in = value;
+        paks_in.value_namespace = name_space;
+        paks_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out = value;
+        paks_out.value_namespace = name_space;
+        paks_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+        replies_expected.value_namespace = name_space;
+        replies_expected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect = value;
+        single_connect.value_namespace = name_space;
+        single_connect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aborts")
+    {
+        aborts.yfilter = yfilter;
+    }
+    if(value_path == "addr")
+    {
+        addr.yfilter = yfilter;
+    }
+    if(value_path == "addr-buf")
+    {
+        addr_buf.yfilter = yfilter;
+    }
+    if(value_path == "bytes-in")
+    {
+        bytes_in.yfilter = yfilter;
+    }
+    if(value_path == "bytes-out")
+    {
+        bytes_out.yfilter = yfilter;
+    }
+    if(value_path == "closes")
+    {
+        closes.yfilter = yfilter;
+    }
+    if(value_path == "conn-up")
+    {
+        conn_up.yfilter = yfilter;
+    }
+    if(value_path == "errors")
+    {
+        errors.yfilter = yfilter;
+    }
+    if(value_path == "family")
+    {
+        family.yfilter = yfilter;
+    }
+    if(value_path == "is-private")
+    {
+        is_private.yfilter = yfilter;
+    }
+    if(value_path == "opens")
+    {
+        opens.yfilter = yfilter;
+    }
+    if(value_path == "paks-in")
+    {
+        paks_in.yfilter = yfilter;
+    }
+    if(value_path == "paks-out")
+    {
+        paks_out.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected.yfilter = yfilter;
+    }
+    if(value_path == "single-connect")
+    {
+        single_connect.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aborts" || name == "addr" || name == "addr-buf" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "conn-up" || name == "errors" || name == "family" || name == "is-private" || name == "opens" || name == "paks-in" || name == "paks-out" || name == "port" || name == "replies-expected" || name == "single-connect" || name == "timeout" || name == "up" || name == "vrf-name")
+        return true;
+    return false;
+}
+
 Aaa::Tacacs::Servers::Servers()
 {
-    yang_name = "servers"; yang_parent_name = "tacacs";
+
+    yang_name = "servers"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::Servers::~Servers()
@@ -10620,33 +8413,26 @@ bool Aaa::Tacacs::Servers::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Aaa::Tacacs::Servers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::Servers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "servers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::Servers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10719,7 +8505,8 @@ Aaa::Tacacs::Servers::Server::Server()
     up{YType::boolean, "up"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "server"; yang_parent_name = "servers";
+
+    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Aaa::Tacacs::Servers::Server::~Server()
@@ -10773,27 +8560,22 @@ bool Aaa::Tacacs::Servers::Server::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Aaa::Tacacs::Servers::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Aaa::Tacacs::Servers::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::Servers::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Tacacs::Servers::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/servers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
@@ -10816,9 +8598,7 @@ const EntityPath Aaa::Tacacs::Servers::Server::get_entity_path(Entity* ancestor)
     if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11038,70 +8818,205 @@ bool Aaa::Tacacs::Servers::Server::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-Aaa::Tacacs::ServerGroups::ServerGroups()
+Aaa::TaskMap::TaskMap()
+    :
+    authenmethod{YType::int32, "authenmethod"},
+    name{YType::str, "name"},
+    taskmap{YType::str, "taskmap"},
+    usergroup{YType::str, "usergroup"}
 {
-    yang_name = "server-groups"; yang_parent_name = "tacacs";
+
+    yang_name = "task-map"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Aaa::Tacacs::ServerGroups::~ServerGroups()
+Aaa::TaskMap::~TaskMap()
 {
 }
 
-bool Aaa::Tacacs::ServerGroups::has_data() const
+bool Aaa::TaskMap::has_data() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    for (auto const & leaf : taskmap.getYLeafs())
     {
-        if(server_group[index]->has_data())
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return authenmethod.is_set
+	|| name.is_set;
+}
+
+bool Aaa::TaskMap::has_operation() const
+{
+    for (auto const & leaf : taskmap.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(authenmethod.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(taskmap.yfilter)
+	|| ydk::is_set(usergroup.yfilter);
+}
+
+std::string Aaa::TaskMap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::TaskMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "task-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::TaskMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (authenmethod.is_set || is_set(authenmethod.yfilter)) leaf_name_data.push_back(authenmethod.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    auto taskmap_name_datas = taskmap.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), taskmap_name_datas.begin(), taskmap_name_datas.end());
+    auto usergroup_name_datas = usergroup.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::TaskMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "authenmethod")
+    {
+        authenmethod = value;
+        authenmethod.value_namespace = name_space;
+        authenmethod.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "taskmap")
+    {
+        taskmap.append(value);
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.append(value);
+    }
+}
+
+void Aaa::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authenmethod")
+    {
+        authenmethod.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "taskmap")
+    {
+        taskmap.yfilter = yfilter;
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.yfilter = yfilter;
+    }
+}
+
+bool Aaa::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authenmethod" || name == "name" || name == "taskmap" || name == "usergroup")
+        return true;
+    return false;
+}
+
+Aaa::Taskgroups::Taskgroups()
+{
+
+    yang_name = "taskgroups"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Taskgroups::~Taskgroups()
+{
+}
+
+bool Aaa::Taskgroups::has_data() const
+{
+    for (std::size_t index=0; index<taskgroup.size(); index++)
+    {
+        if(taskgroup[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Aaa::Tacacs::ServerGroups::has_operation() const
+bool Aaa::Taskgroups::has_operation() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    for (std::size_t index=0; index<taskgroup.size(); index++)
     {
-        if(server_group[index]->has_operation())
+        if(taskgroup[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Aaa::Tacacs::ServerGroups::get_segment_path() const
+std::string Aaa::Taskgroups::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server-groups";
-
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::ServerGroups::get_entity_path(Entity* ancestor) const
+std::string Aaa::Taskgroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "taskgroups";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "server-group")
+    if(child_yang_name == "taskgroup")
     {
-        for(auto const & c : server_group)
+        for(auto const & c : taskgroup)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11109,19 +9024,19 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::
                 return c;
             }
         }
-        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
+        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup>();
         c->parent = this;
-        server_group.push_back(c);
+        taskgroup.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : server_group)
+    for (auto const & c : taskgroup)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11129,97 +9044,206 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::get_ch
     return children;
 }
 
-void Aaa::Tacacs::ServerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::Taskgroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Aaa::Tacacs::ServerGroups::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::Taskgroups::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Aaa::Tacacs::ServerGroups::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::Taskgroups::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "server-group")
+    if(name == "taskgroup")
         return true;
     return false;
 }
 
-Aaa::Tacacs::ServerGroups::ServerGroup::ServerGroup()
+Aaa::Taskgroups::Taskgroup::Taskgroup()
     :
-    group_name{YType::str, "group-name"},
-    sg_map_num{YType::uint32, "sg-map-num"},
-    vrf_name{YType::str, "vrf-name"}
+    name{YType::str, "name"},
+    name_xr{YType::str, "name-xr"}
+    	,
+    included_task_ids(std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds>())
+	,task_map(std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>())
 {
-    yang_name = "server-group"; yang_parent_name = "server-groups";
+    included_task_ids->parent = this;
+    task_map->parent = this;
+
+    yang_name = "taskgroup"; yang_parent_name = "taskgroups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Aaa::Tacacs::ServerGroups::ServerGroup::~ServerGroup()
+Aaa::Taskgroups::Taskgroup::~Taskgroup()
 {
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_data() const
+bool Aaa::Taskgroups::Taskgroup::has_data() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return group_name.is_set
-	|| sg_map_num.is_set
-	|| vrf_name.is_set;
+    return name.is_set
+	|| name_xr.is_set
+	|| (included_task_ids !=  nullptr && included_task_ids->has_data())
+	|| (task_map !=  nullptr && task_map->has_data());
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_operation() const
+bool Aaa::Taskgroups::Taskgroup::has_operation() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(sg_map_num.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(name_xr.yfilter)
+	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
+	|| (task_map !=  nullptr && task_map->has_operation());
 }
 
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::get_segment_path() const
+std::string Aaa::Taskgroups::Taskgroup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server-group";
-
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/taskgroups/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::get_entity_path(Entity* ancestor) const
+std::string Aaa::Taskgroups::Taskgroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "taskgroup" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::Taskgroup::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (sg_map_num.is_set || is_set(sg_map_num.yfilter)) leaf_name_data.push_back(sg_map_num.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "server")
+    if(child_yang_name == "included-task-ids")
     {
-        for(auto const & c : server)
+        if(included_task_ids == nullptr)
+        {
+            included_task_ids = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds>();
+        }
+        return included_task_ids;
+    }
+
+    if(child_yang_name == "task-map")
+    {
+        if(task_map == nullptr)
+        {
+            task_map = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap>();
+        }
+        return task_map;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(included_task_ids != nullptr)
+    {
+        children["included-task-ids"] = included_task_ids;
+    }
+
+    if(task_map != nullptr)
+    {
+        children["task-map"] = task_map;
+    }
+
+    return children;
+}
+
+void Aaa::Taskgroups::Taskgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Taskgroups::Taskgroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Taskgroups::Taskgroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "included-task-ids" || name == "task-map" || name == "name" || name == "name-xr")
+        return true;
+    return false;
+}
+
+Aaa::Taskgroups::Taskgroup::IncludedTaskIds::IncludedTaskIds()
+{
+
+    yang_name = "included-task-ids"; yang_parent_name = "taskgroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Taskgroups::Taskgroup::IncludedTaskIds::~IncludedTaskIds()
+{
+}
+
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "included-task-ids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11227,19 +9251,19 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_nam
                 return c;
             }
         }
-        auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
+        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks>();
         c->parent = this;
-        server.push_back(c);
+        tasks.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : server)
+    for (auto const & c : tasks)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11247,388 +9271,1900 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::Server
     return children;
 }
 
-void Aaa::Tacacs::ServerGroups::ServerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sg-map-num")
-    {
-        sg_map_num = value;
-        sg_map_num.value_namespace = name_space;
-        sg_map_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Aaa::Tacacs::ServerGroups::ServerGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "sg-map-num")
-    {
-        sg_map_num.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "server" || name == "group-name" || name == "sg-map-num" || name == "vrf-name")
+    if(name == "tasks")
         return true;
     return false;
 }
 
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::Server()
+Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::Tasks()
     :
-    aborts{YType::uint32, "aborts"},
-    addr{YType::str, "addr"},
-    addr_buf{YType::str, "addr-buf"},
-    bytes_in{YType::uint32, "bytes-in"},
-    bytes_out{YType::uint32, "bytes-out"},
-    closes{YType::uint32, "closes"},
-    conn_up{YType::boolean, "conn-up"},
-    errors{YType::uint32, "errors"},
-    family{YType::str, "family"},
-    is_private{YType::boolean, "is-private"},
-    opens{YType::uint32, "opens"},
-    paks_in{YType::uint32, "paks-in"},
-    paks_out{YType::uint32, "paks-out"},
-    port{YType::uint32, "port"},
-    replies_expected{YType::uint32, "replies-expected"},
-    single_connect{YType::boolean, "single-connect"},
-    timeout{YType::uint32, "timeout"},
-    up{YType::boolean, "up"},
-    vrf_name{YType::str, "vrf-name"}
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
 {
-    yang_name = "server"; yang_parent_name = "server-group";
+
+    yang_name = "tasks"; yang_parent_name = "included-task-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Aaa::Tacacs::ServerGroups::ServerGroup::Server::~Server()
+Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::~Tasks()
 {
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_data() const
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_data() const
 {
-    return aborts.is_set
-	|| addr.is_set
-	|| addr_buf.is_set
-	|| bytes_in.is_set
-	|| bytes_out.is_set
-	|| closes.is_set
-	|| conn_up.is_set
-	|| errors.is_set
-	|| family.is_set
-	|| is_private.is_set
-	|| opens.is_set
-	|| paks_in.is_set
-	|| paks_out.is_set
-	|| port.is_set
-	|| replies_expected.is_set
-	|| single_connect.is_set
-	|| timeout.is_set
-	|| up.is_set
-	|| vrf_name.is_set;
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_operation() const
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(aborts.yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(addr_buf.yfilter)
-	|| ydk::is_set(bytes_in.yfilter)
-	|| ydk::is_set(bytes_out.yfilter)
-	|| ydk::is_set(closes.yfilter)
-	|| ydk::is_set(conn_up.yfilter)
-	|| ydk::is_set(errors.yfilter)
-	|| ydk::is_set(family.yfilter)
-	|| ydk::is_set(is_private.yfilter)
-	|| ydk::is_set(opens.yfilter)
-	|| ydk::is_set(paks_in.yfilter)
-	|| ydk::is_set(paks_out.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(replies_expected.yfilter)
-	|| ydk::is_set(single_connect.yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
 }
 
-std::string Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_segment_path() const
+std::string Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server";
-
+    path_buffer << "tasks";
     return path_buffer.str();
-
 }
 
-const EntityPath Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-tacacs-oper:tacacs/server-groups/server-group/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (addr_buf.is_set || is_set(addr_buf.yfilter)) leaf_name_data.push_back(addr_buf.get_name_leafdata());
-    if (bytes_in.is_set || is_set(bytes_in.yfilter)) leaf_name_data.push_back(bytes_in.get_name_leafdata());
-    if (bytes_out.is_set || is_set(bytes_out.yfilter)) leaf_name_data.push_back(bytes_out.get_name_leafdata());
-    if (closes.is_set || is_set(closes.yfilter)) leaf_name_data.push_back(closes.get_name_leafdata());
-    if (conn_up.is_set || is_set(conn_up.yfilter)) leaf_name_data.push_back(conn_up.get_name_leafdata());
-    if (errors.is_set || is_set(errors.yfilter)) leaf_name_data.push_back(errors.get_name_leafdata());
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
-    if (is_private.is_set || is_set(is_private.yfilter)) leaf_name_data.push_back(is_private.get_name_leafdata());
-    if (opens.is_set || is_set(opens.yfilter)) leaf_name_data.push_back(opens.get_name_leafdata());
-    if (paks_in.is_set || is_set(paks_in.yfilter)) leaf_name_data.push_back(paks_in.get_name_leafdata());
-    if (paks_out.is_set || is_set(paks_out.yfilter)) leaf_name_data.push_back(paks_out.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (single_connect.is_set || is_set(single_connect.yfilter)) leaf_name_data.push_back(single_connect.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "aborts")
+    if(value_path == "debug")
     {
-        aborts = value;
-        aborts.value_namespace = name_space;
-        aborts.value_namespace_prefix = name_space_prefix;
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "addr")
+    if(value_path == "execute")
     {
-        addr = value;
-        addr.value_namespace = name_space;
-        addr.value_namespace_prefix = name_space_prefix;
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "addr-buf")
+    if(value_path == "read")
     {
-        addr_buf = value;
-        addr_buf.value_namespace = name_space;
-        addr_buf.value_namespace_prefix = name_space_prefix;
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bytes-in")
+    if(value_path == "task-id")
     {
-        bytes_in = value;
-        bytes_in.value_namespace = name_space;
-        bytes_in.value_namespace_prefix = name_space_prefix;
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "bytes-out")
+    if(value_path == "write")
     {
-        bytes_out = value;
-        bytes_out.value_namespace = name_space;
-        bytes_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "closes")
-    {
-        closes = value;
-        closes.value_namespace = name_space;
-        closes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up = value;
-        conn_up.value_namespace = name_space;
-        conn_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "errors")
-    {
-        errors = value;
-        errors.value_namespace = name_space;
-        errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-private")
-    {
-        is_private = value;
-        is_private.value_namespace = name_space;
-        is_private.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "opens")
-    {
-        opens = value;
-        opens.value_namespace = name_space;
-        opens.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in = value;
-        paks_in.value_namespace = name_space;
-        paks_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out = value;
-        paks_out.value_namespace = name_space;
-        paks_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-        replies_expected.value_namespace = name_space;
-        replies_expected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect = value;
-        single_connect.value_namespace = name_space;
-        single_connect.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Aaa::Tacacs::ServerGroups::ServerGroup::Server::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "aborts")
+    if(value_path == "debug")
     {
-        aborts.yfilter = yfilter;
+        debug.yfilter = yfilter;
     }
-    if(value_path == "addr")
+    if(value_path == "execute")
     {
-        addr.yfilter = yfilter;
+        execute.yfilter = yfilter;
     }
-    if(value_path == "addr-buf")
+    if(value_path == "read")
     {
-        addr_buf.yfilter = yfilter;
+        read.yfilter = yfilter;
     }
-    if(value_path == "bytes-in")
+    if(value_path == "task-id")
     {
-        bytes_in.yfilter = yfilter;
+        task_id.yfilter = yfilter;
     }
-    if(value_path == "bytes-out")
+    if(value_path == "write")
     {
-        bytes_out.yfilter = yfilter;
-    }
-    if(value_path == "closes")
-    {
-        closes.yfilter = yfilter;
-    }
-    if(value_path == "conn-up")
-    {
-        conn_up.yfilter = yfilter;
-    }
-    if(value_path == "errors")
-    {
-        errors.yfilter = yfilter;
-    }
-    if(value_path == "family")
-    {
-        family.yfilter = yfilter;
-    }
-    if(value_path == "is-private")
-    {
-        is_private.yfilter = yfilter;
-    }
-    if(value_path == "opens")
-    {
-        opens.yfilter = yfilter;
-    }
-    if(value_path == "paks-in")
-    {
-        paks_in.yfilter = yfilter;
-    }
-    if(value_path == "paks-out")
-    {
-        paks_out.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected.yfilter = yfilter;
-    }
-    if(value_path == "single-connect")
-    {
-        single_connect.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
+        write.yfilter = yfilter;
     }
 }
 
-bool Aaa::Tacacs::ServerGroups::ServerGroup::Server::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aborts" || name == "addr" || name == "addr-buf" || name == "bytes-in" || name == "bytes-out" || name == "closes" || name == "conn-up" || name == "errors" || name == "family" || name == "is-private" || name == "opens" || name == "paks-in" || name == "paks-out" || name == "port" || name == "replies-expected" || name == "single-connect" || name == "timeout" || name == "up" || name == "vrf-name")
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
+        return true;
+    return false;
+}
+
+Aaa::Taskgroups::Taskgroup::TaskMap::TaskMap()
+{
+
+    yang_name = "task-map"; yang_parent_name = "taskgroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Taskgroups::Taskgroup::TaskMap::~TaskMap()
+{
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Taskgroups::Taskgroup::TaskMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "task-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::Taskgroup::TaskMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap::Tasks>();
+        c->parent = this;
+        tasks.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tasks)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Taskgroups::Taskgroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Taskgroups::Taskgroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tasks")
+        return true;
+    return false;
+}
+
+Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::Tasks()
+    :
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
+{
+
+    yang_name = "tasks"; yang_parent_name = "task-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::~Tasks()
+{
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_data() const
+{
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
+}
+
+std::string Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tasks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "debug")
+    {
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "execute")
+    {
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "read")
+    {
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "task-id")
+    {
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "write")
+    {
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "debug")
+    {
+        debug.yfilter = yfilter;
+    }
+    if(value_path == "execute")
+    {
+        execute.yfilter = yfilter;
+    }
+    if(value_path == "read")
+    {
+        read.yfilter = yfilter;
+    }
+    if(value_path == "task-id")
+    {
+        task_id.yfilter = yfilter;
+    }
+    if(value_path == "write")
+    {
+        write.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroups()
+{
+
+    yang_name = "usergroups"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Usergroups::~Usergroups()
+{
+}
+
+bool Aaa::Usergroups::has_data() const
+{
+    for (std::size_t index=0; index<usergroup.size(); index++)
+    {
+        if(usergroup[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Usergroups::has_operation() const
+{
+    for (std::size_t index=0; index<usergroup.size(); index++)
+    {
+        if(usergroup[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Usergroups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Usergroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "usergroups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "usergroup")
+    {
+        for(auto const & c : usergroup)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Usergroups::Usergroup>();
+        c->parent = this;
+        usergroup.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : usergroup)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Usergroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usergroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usergroup")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Usergroup()
+    :
+    name{YType::str, "name"},
+    name_xr{YType::str, "name-xr"}
+    	,
+    task_map(std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>())
+{
+    task_map->parent = this;
+
+    yang_name = "usergroup"; yang_parent_name = "usergroups"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Usergroups::Usergroup::~Usergroup()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::has_data() const
+{
+    for (std::size_t index=0; index<taskgroup.size(); index++)
+    {
+        if(taskgroup[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| name_xr.is_set
+	|| (task_map !=  nullptr && task_map->has_data());
+}
+
+bool Aaa::Usergroups::Usergroup::has_operation() const
+{
+    for (std::size_t index=0; index<taskgroup.size(); index++)
+    {
+        if(taskgroup[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(name_xr.yfilter)
+	|| (task_map !=  nullptr && task_map->has_operation());
+}
+
+std::string Aaa::Usergroups::Usergroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/usergroups/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Usergroups::Usergroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "usergroup" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "task-map")
+    {
+        if(task_map == nullptr)
+        {
+            task_map = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap>();
+        }
+        return task_map;
+    }
+
+    if(child_yang_name == "taskgroup")
+    {
+        for(auto const & c : taskgroup)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup>();
+        c->parent = this;
+        taskgroup.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(task_map != nullptr)
+    {
+        children["task-map"] = task_map;
+    }
+
+    for (auto const & c : taskgroup)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usergroups::Usergroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usergroups::Usergroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "task-map" || name == "taskgroup" || name == "name" || name == "name-xr")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::TaskMap::TaskMap()
+{
+
+    yang_name = "task-map"; yang_parent_name = "usergroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::TaskMap::~TaskMap()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::TaskMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "task-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::TaskMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap::Tasks>();
+        c->parent = this;
+        tasks.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tasks)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Usergroups::Usergroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tasks")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::TaskMap::Tasks::Tasks()
+    :
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
+{
+
+    yang_name = "tasks"; yang_parent_name = "task-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::TaskMap::Tasks::~Tasks()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_data() const
+{
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tasks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "debug")
+    {
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "execute")
+    {
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "read")
+    {
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "task-id")
+    {
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "write")
+    {
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usergroups::Usergroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "debug")
+    {
+        debug.yfilter = yfilter;
+    }
+    if(value_path == "execute")
+    {
+        execute.yfilter = yfilter;
+    }
+    if(value_path == "read")
+    {
+        read.yfilter = yfilter;
+    }
+    if(value_path == "task-id")
+    {
+        task_id.yfilter = yfilter;
+    }
+    if(value_path == "write")
+    {
+        write.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usergroups::Usergroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::Taskgroup()
+    :
+    name_xr{YType::str, "name-xr"}
+    	,
+    included_task_ids(std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds>())
+	,task_map(std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>())
+{
+    included_task_ids->parent = this;
+    task_map->parent = this;
+
+    yang_name = "taskgroup"; yang_parent_name = "usergroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::~Taskgroup()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::has_data() const
+{
+    return name_xr.is_set
+	|| (included_task_ids !=  nullptr && included_task_ids->has_data())
+	|| (task_map !=  nullptr && task_map->has_data());
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name_xr.yfilter)
+	|| (included_task_ids !=  nullptr && included_task_ids->has_operation())
+	|| (task_map !=  nullptr && task_map->has_operation());
+}
+
+std::string Aaa::Usergroups::Usergroup::Taskgroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "taskgroup";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::Taskgroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "included-task-ids")
+    {
+        if(included_task_ids == nullptr)
+        {
+            included_task_ids = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds>();
+        }
+        return included_task_ids;
+    }
+
+    if(child_yang_name == "task-map")
+    {
+        if(task_map == nullptr)
+        {
+            task_map = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap>();
+        }
+        return task_map;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(included_task_ids != nullptr)
+    {
+        children["included-task-ids"] = included_task_ids;
+    }
+
+    if(task_map != nullptr)
+    {
+        children["task-map"] = task_map;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "included-task-ids" || name == "task-map" || name == "name-xr")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::IncludedTaskIds()
+{
+
+    yang_name = "included-task-ids"; yang_parent_name = "taskgroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::~IncludedTaskIds()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "included-task-ids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks>();
+        c->parent = this;
+        tasks.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tasks)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tasks")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::Tasks()
+    :
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
+{
+
+    yang_name = "tasks"; yang_parent_name = "included-task-ids"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::~Tasks()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_data() const
+{
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tasks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "debug")
+    {
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "execute")
+    {
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "read")
+    {
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "task-id")
+    {
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "write")
+    {
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "debug")
+    {
+        debug.yfilter = yfilter;
+    }
+    if(value_path == "execute")
+    {
+        execute.yfilter = yfilter;
+    }
+    if(value_path == "read")
+    {
+        read.yfilter = yfilter;
+    }
+    if(value_path == "task-id")
+    {
+        task_id.yfilter = yfilter;
+    }
+    if(value_path == "write")
+    {
+        write.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::TaskMap()
+{
+
+    yang_name = "task-map"; yang_parent_name = "taskgroup"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::~TaskMap()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "task-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks>();
+        c->parent = this;
+        tasks.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tasks)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tasks")
+        return true;
+    return false;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::Tasks()
+    :
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
+{
+
+    yang_name = "tasks"; yang_parent_name = "task-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::~Tasks()
+{
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_data() const
+{
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
+}
+
+std::string Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tasks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "debug")
+    {
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "execute")
+    {
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "read")
+    {
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "task-id")
+    {
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "write")
+    {
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "debug")
+    {
+        debug.yfilter = yfilter;
+    }
+    if(value_path == "execute")
+    {
+        execute.yfilter = yfilter;
+    }
+    if(value_path == "read")
+    {
+        read.yfilter = yfilter;
+    }
+    if(value_path == "task-id")
+    {
+        task_id.yfilter = yfilter;
+    }
+    if(value_path == "write")
+    {
+        write.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
+        return true;
+    return false;
+}
+
+Aaa::Users::Users()
+{
+
+    yang_name = "users"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Users::~Users()
+{
+}
+
+bool Aaa::Users::has_data() const
+{
+    for (std::size_t index=0; index<user.size(); index++)
+    {
+        if(user[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Users::has_operation() const
+{
+    for (std::size_t index=0; index<user.size(); index++)
+    {
+        if(user[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Users::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Users::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "users";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Users::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "user")
+    {
+        for(auto const & c : user)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Users::User>();
+        c->parent = this;
+        user.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : user)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Users::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Users::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Users::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user")
+        return true;
+    return false;
+}
+
+Aaa::Users::User::User()
+    :
+    name{YType::str, "name"},
+    admin_user{YType::boolean, "admin-user"},
+    first_user{YType::boolean, "first-user"},
+    name_xr{YType::str, "name-xr"},
+    usergroup{YType::str, "usergroup"}
+    	,
+    task_map(std::make_shared<Aaa::Users::User::TaskMap>())
+{
+    task_map->parent = this;
+
+    yang_name = "user"; yang_parent_name = "users"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::Users::User::~User()
+{
+}
+
+bool Aaa::Users::User::has_data() const
+{
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return name.is_set
+	|| admin_user.is_set
+	|| first_user.is_set
+	|| name_xr.is_set
+	|| (task_map !=  nullptr && task_map->has_data());
+}
+
+bool Aaa::Users::User::has_operation() const
+{
+    for (auto const & leaf : usergroup.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(admin_user.yfilter)
+	|| ydk::is_set(first_user.yfilter)
+	|| ydk::is_set(name_xr.yfilter)
+	|| ydk::is_set(usergroup.yfilter)
+	|| (task_map !=  nullptr && task_map->has_operation());
+}
+
+std::string Aaa::Users::User::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/users/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Users::User::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "user" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Users::User::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (admin_user.is_set || is_set(admin_user.yfilter)) leaf_name_data.push_back(admin_user.get_name_leafdata());
+    if (first_user.is_set || is_set(first_user.yfilter)) leaf_name_data.push_back(first_user.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+
+    auto usergroup_name_datas = usergroup.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), usergroup_name_datas.begin(), usergroup_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "task-map")
+    {
+        if(task_map == nullptr)
+        {
+            task_map = std::make_shared<Aaa::Users::User::TaskMap>();
+        }
+        return task_map;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(task_map != nullptr)
+    {
+        children["task-map"] = task_map;
+    }
+
+    return children;
+}
+
+void Aaa::Users::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-user")
+    {
+        admin_user = value;
+        admin_user.value_namespace = name_space;
+        admin_user.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "first-user")
+    {
+        first_user = value;
+        first_user.value_namespace = name_space;
+        first_user.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.append(value);
+    }
+}
+
+void Aaa::Users::User::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "admin-user")
+    {
+        admin_user.yfilter = yfilter;
+    }
+    if(value_path == "first-user")
+    {
+        first_user.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+    if(value_path == "usergroup")
+    {
+        usergroup.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Users::User::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "task-map" || name == "name" || name == "admin-user" || name == "first-user" || name == "name-xr" || name == "usergroup")
+        return true;
+    return false;
+}
+
+Aaa::Users::User::TaskMap::TaskMap()
+{
+
+    yang_name = "task-map"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Users::User::TaskMap::~TaskMap()
+{
+}
+
+bool Aaa::Users::User::TaskMap::has_data() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Users::User::TaskMap::has_operation() const
+{
+    for (std::size_t index=0; index<tasks.size(); index++)
+    {
+        if(tasks[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Users::User::TaskMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "task-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Users::User::TaskMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tasks")
+    {
+        for(auto const & c : tasks)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Aaa::Users::User::TaskMap::Tasks>();
+        c->parent = this;
+        tasks.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : tasks)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Users::User::TaskMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Users::User::TaskMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Users::User::TaskMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tasks")
+        return true;
+    return false;
+}
+
+Aaa::Users::User::TaskMap::Tasks::Tasks()
+    :
+    debug{YType::boolean, "debug"},
+    execute{YType::boolean, "execute"},
+    read{YType::boolean, "read"},
+    task_id{YType::str, "task-id"},
+    write{YType::boolean, "write"}
+{
+
+    yang_name = "tasks"; yang_parent_name = "task-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::Users::User::TaskMap::Tasks::~Tasks()
+{
+}
+
+bool Aaa::Users::User::TaskMap::Tasks::has_data() const
+{
+    return debug.is_set
+	|| execute.is_set
+	|| read.is_set
+	|| task_id.is_set
+	|| write.is_set;
+}
+
+bool Aaa::Users::User::TaskMap::Tasks::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(debug.yfilter)
+	|| ydk::is_set(execute.yfilter)
+	|| ydk::is_set(read.yfilter)
+	|| ydk::is_set(task_id.yfilter)
+	|| ydk::is_set(write.yfilter);
+}
+
+std::string Aaa::Users::User::TaskMap::Tasks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tasks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Users::User::TaskMap::Tasks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (debug.is_set || is_set(debug.yfilter)) leaf_name_data.push_back(debug.get_name_leafdata());
+    if (execute.is_set || is_set(execute.yfilter)) leaf_name_data.push_back(execute.get_name_leafdata());
+    if (read.is_set || is_set(read.yfilter)) leaf_name_data.push_back(read.get_name_leafdata());
+    if (task_id.is_set || is_set(task_id.yfilter)) leaf_name_data.push_back(task_id.get_name_leafdata());
+    if (write.is_set || is_set(write.yfilter)) leaf_name_data.push_back(write.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Users::User::TaskMap::Tasks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::Tasks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Aaa::Users::User::TaskMap::Tasks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "debug")
+    {
+        debug = value;
+        debug.value_namespace = name_space;
+        debug.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "execute")
+    {
+        execute = value;
+        execute.value_namespace = name_space;
+        execute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "read")
+    {
+        read = value;
+        read.value_namespace = name_space;
+        read.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "task-id")
+    {
+        task_id = value;
+        task_id.value_namespace = name_space;
+        task_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "write")
+    {
+        write = value;
+        write.value_namespace = name_space;
+        write.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Users::User::TaskMap::Tasks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "debug")
+    {
+        debug.yfilter = yfilter;
+    }
+    if(value_path == "execute")
+    {
+        execute.yfilter = yfilter;
+    }
+    if(value_path == "read")
+    {
+        read.yfilter = yfilter;
+    }
+    if(value_path == "task-id")
+    {
+        task_id.yfilter = yfilter;
+    }
+    if(value_path == "write")
+    {
+        write.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Users::User::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "debug" || name == "execute" || name == "read" || name == "task-id" || name == "write")
         return true;
     return false;
 }

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_linux_os_reboot_history_oper {
 
 RebootHistory::RebootHistory()
 {
-    yang_name = "reboot-history"; yang_parent_name = "Cisco-IOS-XR-linux-os-reboot-history-oper";
+
+    yang_name = "reboot-history"; yang_parent_name = "Cisco-IOS-XR-linux-os-reboot-history-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 RebootHistory::~RebootHistory()
@@ -44,26 +45,15 @@ std::string RebootHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-linux-os-reboot-history-oper:reboot-history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RebootHistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RebootHistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -143,7 +133,8 @@ RebootHistory::Node::Node()
     :
     node_name{YType::str, "node-name"}
 {
-    yang_name = "node"; yang_parent_name = "reboot-history";
+
+    yang_name = "node"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 RebootHistory::Node::~Node()
@@ -171,34 +162,27 @@ bool RebootHistory::Node::has_operation() const
 	|| ydk::is_set(node_name.yfilter);
 }
 
+std::string RebootHistory::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-linux-os-reboot-history-oper:reboot-history/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string RebootHistory::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RebootHistory::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RebootHistory::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-linux-os-reboot-history-oper:reboot-history/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -266,7 +250,8 @@ RebootHistory::Node::RebootHistory_::RebootHistory_()
     reason{YType::str, "reason"},
     time{YType::str, "time"}
 {
-    yang_name = "reboot-history"; yang_parent_name = "node";
+
+    yang_name = "reboot-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 RebootHistory::Node::RebootHistory_::~RebootHistory_()
@@ -294,23 +279,11 @@ std::string RebootHistory::Node::RebootHistory_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reboot-history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath RebootHistory::Node::RebootHistory_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RebootHistory::Node::RebootHistory_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RebootHistory_' in Cisco_IOS_XR_linux_os_reboot_history_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cause_code.is_set || is_set(cause_code.yfilter)) leaf_name_data.push_back(cause_code.get_name_leafdata());
@@ -318,9 +291,7 @@ const EntityPath RebootHistory::Node::RebootHistory_::get_entity_path(Entity* an
     if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
     if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

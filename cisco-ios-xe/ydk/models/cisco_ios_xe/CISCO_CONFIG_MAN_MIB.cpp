@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_CONFIG_MAN_MIB {
 
-CiscoConfigManMib::CiscoConfigManMib()
+CISCOCONFIGMANMIB::CISCOCONFIGMANMIB()
     :
-    ccmclicfg(std::make_shared<CiscoConfigManMib::Ccmclicfg>())
-	,ccmclihistory(std::make_shared<CiscoConfigManMib::Ccmclihistory>())
-	,ccmclihistorycommandtable(std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>())
-	,ccmctidobjects(std::make_shared<CiscoConfigManMib::Ccmctidobjects>())
-	,ccmhistory(std::make_shared<CiscoConfigManMib::Ccmhistory>())
-	,ccmhistoryeventtable(std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>())
+    ccmclicfg(std::make_shared<CISCOCONFIGMANMIB::Ccmclicfg>())
+	,ccmclihistory(std::make_shared<CISCOCONFIGMANMIB::Ccmclihistory>())
+	,ccmclihistorycommandtable(std::make_shared<CISCOCONFIGMANMIB::Ccmclihistorycommandtable>())
+	,ccmctidobjects(std::make_shared<CISCOCONFIGMANMIB::Ccmctidobjects>())
+	,ccmhistory(std::make_shared<CISCOCONFIGMANMIB::Ccmhistory>())
+	,ccmhistoryeventtable(std::make_shared<CISCOCONFIGMANMIB::Ccmhistoryeventtable>())
 {
     ccmclicfg->parent = this;
-
     ccmclihistory->parent = this;
-
     ccmclihistorycommandtable->parent = this;
-
     ccmctidobjects->parent = this;
-
     ccmhistory->parent = this;
-
     ccmhistoryeventtable->parent = this;
 
-    yang_name = "CISCO-CONFIG-MAN-MIB"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
+    yang_name = "CISCO-CONFIG-MAN-MIB"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoConfigManMib::~CiscoConfigManMib()
+CISCOCONFIGMANMIB::~CISCOCONFIGMANMIB()
 {
 }
 
-bool CiscoConfigManMib::has_data() const
+bool CISCOCONFIGMANMIB::has_data() const
 {
     return (ccmclicfg !=  nullptr && ccmclicfg->has_data())
 	|| (ccmclihistory !=  nullptr && ccmclihistory->has_data())
@@ -49,7 +44,7 @@ bool CiscoConfigManMib::has_data() const
 	|| (ccmhistoryeventtable !=  nullptr && ccmhistoryeventtable->has_data());
 }
 
-bool CiscoConfigManMib::has_operation() const
+bool CISCOCONFIGMANMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ccmclicfg !=  nullptr && ccmclicfg->has_operation())
@@ -60,40 +55,29 @@ bool CiscoConfigManMib::has_operation() const
 	|| (ccmhistoryeventtable !=  nullptr && ccmhistoryeventtable->has_operation());
 }
 
-std::string CiscoConfigManMib::get_segment_path() const
+std::string CISCOCONFIGMANMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoConfigManMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccmCLICfg")
     {
         if(ccmclicfg == nullptr)
         {
-            ccmclicfg = std::make_shared<CiscoConfigManMib::Ccmclicfg>();
+            ccmclicfg = std::make_shared<CISCOCONFIGMANMIB::Ccmclicfg>();
         }
         return ccmclicfg;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     {
         if(ccmclihistory == nullptr)
         {
-            ccmclihistory = std::make_shared<CiscoConfigManMib::Ccmclihistory>();
+            ccmclihistory = std::make_shared<CISCOCONFIGMANMIB::Ccmclihistory>();
         }
         return ccmclihistory;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     {
         if(ccmclihistorycommandtable == nullptr)
         {
-            ccmclihistorycommandtable = std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable>();
+            ccmclihistorycommandtable = std::make_shared<CISCOCONFIGMANMIB::Ccmclihistorycommandtable>();
         }
         return ccmclihistorycommandtable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     {
         if(ccmctidobjects == nullptr)
         {
-            ccmctidobjects = std::make_shared<CiscoConfigManMib::Ccmctidobjects>();
+            ccmctidobjects = std::make_shared<CISCOCONFIGMANMIB::Ccmctidobjects>();
         }
         return ccmctidobjects;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     {
         if(ccmhistory == nullptr)
         {
-            ccmhistory = std::make_shared<CiscoConfigManMib::Ccmhistory>();
+            ccmhistory = std::make_shared<CISCOCONFIGMANMIB::Ccmhistory>();
         }
         return ccmhistory;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     {
         if(ccmhistoryeventtable == nullptr)
         {
-            ccmhistoryeventtable = std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable>();
+            ccmhistoryeventtable = std::make_shared<CISCOCONFIGMANMIB::Ccmhistoryeventtable>();
         }
         return ccmhistoryeventtable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ccmclicfg != nullptr)
@@ -182,47 +166,577 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::get_children()
     return children;
 }
 
-void CiscoConfigManMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGMANMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoConfigManMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGMANMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoConfigManMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoConfigManMib>();
+    return std::make_shared<CISCOCONFIGMANMIB>();
 }
 
-std::string CiscoConfigManMib::get_bundle_yang_models_location() const
+std::string CISCOCONFIGMANMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoConfigManMib::get_bundle_name() const
+std::string CISCOCONFIGMANMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoConfigManMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOCONFIGMANMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoConfigManMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOCONFIGMANMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoConfigManMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGMANMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccmCLICfg" || name == "ccmCLIHistory" || name == "ccmCLIHistoryCommandTable" || name == "ccmCTIDObjects" || name == "ccmHistory" || name == "ccmHistoryEventTable")
         return true;
     return false;
 }
 
-CiscoConfigManMib::Ccmhistory::Ccmhistory()
+CISCOCONFIGMANMIB::Ccmclicfg::Ccmclicfg()
+    :
+    ccmclicfgrunconfnotifenable{YType::boolean, "ccmCLICfgRunConfNotifEnable"}
+{
+
+    yang_name = "ccmCLICfg"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGMANMIB::Ccmclicfg::~Ccmclicfg()
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmclicfg::has_data() const
+{
+    return ccmclicfgrunconfnotifenable.is_set;
+}
+
+bool CISCOCONFIGMANMIB::Ccmclicfg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ccmclicfgrunconfnotifenable.yfilter);
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclicfg::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclicfg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccmCLICfg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmclicfg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ccmclicfgrunconfnotifenable.is_set || is_set(ccmclicfgrunconfnotifenable.yfilter)) leaf_name_data.push_back(ccmclicfgrunconfnotifenable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclicfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclicfg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOCONFIGMANMIB::Ccmclicfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ccmCLICfgRunConfNotifEnable")
+    {
+        ccmclicfgrunconfnotifenable = value;
+        ccmclicfgrunconfnotifenable.value_namespace = name_space;
+        ccmclicfgrunconfnotifenable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOCONFIGMANMIB::Ccmclicfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccmCLICfgRunConfNotifEnable")
+    {
+        ccmclicfgrunconfnotifenable.yfilter = yfilter;
+    }
+}
+
+bool CISCOCONFIGMANMIB::Ccmclicfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccmCLICfgRunConfNotifEnable")
+        return true;
+    return false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistory::Ccmclihistory()
+    :
+    ccmclihistorycmdentries{YType::uint32, "ccmCLIHistoryCmdEntries"},
+    ccmclihistorycmdentriesallowed{YType::uint32, "ccmCLIHistoryCmdEntriesAllowed"},
+    ccmclihistorymaxcmdentries{YType::uint32, "ccmCLIHistoryMaxCmdEntries"}
+{
+
+    yang_name = "ccmCLIHistory"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistory::~Ccmclihistory()
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistory::has_data() const
+{
+    return ccmclihistorycmdentries.is_set
+	|| ccmclihistorycmdentriesallowed.is_set
+	|| ccmclihistorymaxcmdentries.is_set;
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ccmclihistorycmdentries.yfilter)
+	|| ydk::is_set(ccmclihistorycmdentriesallowed.yfilter)
+	|| ydk::is_set(ccmclihistorymaxcmdentries.yfilter);
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccmCLIHistory";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmclihistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ccmclihistorycmdentries.is_set || is_set(ccmclihistorycmdentries.yfilter)) leaf_name_data.push_back(ccmclihistorycmdentries.get_name_leafdata());
+    if (ccmclihistorycmdentriesallowed.is_set || is_set(ccmclihistorycmdentriesallowed.yfilter)) leaf_name_data.push_back(ccmclihistorycmdentriesallowed.get_name_leafdata());
+    if (ccmclihistorymaxcmdentries.is_set || is_set(ccmclihistorymaxcmdentries.yfilter)) leaf_name_data.push_back(ccmclihistorymaxcmdentries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ccmCLIHistoryCmdEntries")
+    {
+        ccmclihistorycmdentries = value;
+        ccmclihistorycmdentries.value_namespace = name_space;
+        ccmclihistorycmdentries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCLIHistoryCmdEntriesAllowed")
+    {
+        ccmclihistorycmdentriesallowed = value;
+        ccmclihistorycmdentriesallowed.value_namespace = name_space;
+        ccmclihistorycmdentriesallowed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCLIHistoryMaxCmdEntries")
+    {
+        ccmclihistorymaxcmdentries = value;
+        ccmclihistorymaxcmdentries.value_namespace = name_space;
+        ccmclihistorymaxcmdentries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccmCLIHistoryCmdEntries")
+    {
+        ccmclihistorycmdentries.yfilter = yfilter;
+    }
+    if(value_path == "ccmCLIHistoryCmdEntriesAllowed")
+    {
+        ccmclihistorycmdentriesallowed.yfilter = yfilter;
+    }
+    if(value_path == "ccmCLIHistoryMaxCmdEntries")
+    {
+        ccmclihistorymaxcmdentries.yfilter = yfilter;
+    }
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccmCLIHistoryCmdEntries" || name == "ccmCLIHistoryCmdEntriesAllowed" || name == "ccmCLIHistoryMaxCmdEntries")
+        return true;
+    return false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandtable()
+{
+
+    yang_name = "ccmCLIHistoryCommandTable"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistorycommandtable::~Ccmclihistorycommandtable()
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::has_data() const
+{
+    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
+    {
+        if(ccmclihistorycommandentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::has_operation() const
+{
+    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
+    {
+        if(ccmclihistorycommandentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccmCLIHistoryCommandTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ccmCLIHistoryCommandEntry")
+    {
+        for(auto const & c : ccmclihistorycommandentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry>();
+        c->parent = this;
+        ccmclihistorycommandentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ccmclihistorycommandentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistorycommandtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistorycommandtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccmCLIHistoryCommandEntry")
+        return true;
+    return false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::Ccmclihistorycommandentry()
+    :
+    ccmhistoryeventindex{YType::str, "ccmHistoryEventIndex"},
+    ccmclihistorycommandindex{YType::uint32, "ccmCLIHistoryCommandIndex"},
+    ccmclihistorycommand{YType::str, "ccmCLIHistoryCommand"}
+{
+
+    yang_name = "ccmCLIHistoryCommandEntry"; yang_parent_name = "ccmCLIHistoryCommandTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::~Ccmclihistorycommandentry()
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_data() const
+{
+    return ccmhistoryeventindex.is_set
+	|| ccmclihistorycommandindex.is_set
+	|| ccmclihistorycommand.is_set;
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ccmhistoryeventindex.yfilter)
+	|| ydk::is_set(ccmclihistorycommandindex.yfilter)
+	|| ydk::is_set(ccmclihistorycommand.yfilter);
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/ccmCLIHistoryCommandTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccmCLIHistoryCommandEntry" <<"[ccmHistoryEventIndex='" <<ccmhistoryeventindex <<"']" <<"[ccmCLIHistoryCommandIndex='" <<ccmclihistorycommandindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ccmhistoryeventindex.is_set || is_set(ccmhistoryeventindex.yfilter)) leaf_name_data.push_back(ccmhistoryeventindex.get_name_leafdata());
+    if (ccmclihistorycommandindex.is_set || is_set(ccmclihistorycommandindex.yfilter)) leaf_name_data.push_back(ccmclihistorycommandindex.get_name_leafdata());
+    if (ccmclihistorycommand.is_set || is_set(ccmclihistorycommand.yfilter)) leaf_name_data.push_back(ccmclihistorycommand.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ccmHistoryEventIndex")
+    {
+        ccmhistoryeventindex = value;
+        ccmhistoryeventindex.value_namespace = name_space;
+        ccmhistoryeventindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCLIHistoryCommandIndex")
+    {
+        ccmclihistorycommandindex = value;
+        ccmclihistorycommandindex.value_namespace = name_space;
+        ccmclihistorycommandindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCLIHistoryCommand")
+    {
+        ccmclihistorycommand = value;
+        ccmclihistorycommand.value_namespace = name_space;
+        ccmclihistorycommand.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccmHistoryEventIndex")
+    {
+        ccmhistoryeventindex.yfilter = yfilter;
+    }
+    if(value_path == "ccmCLIHistoryCommandIndex")
+    {
+        ccmclihistorycommandindex.yfilter = yfilter;
+    }
+    if(value_path == "ccmCLIHistoryCommand")
+    {
+        ccmclihistorycommand.yfilter = yfilter;
+    }
+}
+
+bool CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccmHistoryEventIndex" || name == "ccmCLIHistoryCommandIndex" || name == "ccmCLIHistoryCommand")
+        return true;
+    return false;
+}
+
+CISCOCONFIGMANMIB::Ccmctidobjects::Ccmctidobjects()
+    :
+    ccmctid{YType::uint64, "ccmCTID"},
+    ccmctidlastchangetime{YType::str, "ccmCTIDLastChangeTime"},
+    ccmctidrolledovernotifenable{YType::boolean, "ccmCTIDRolledOverNotifEnable"},
+    ccmctidwhochanged{YType::str, "ccmCTIDWhoChanged"}
+{
+
+    yang_name = "ccmCTIDObjects"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOCONFIGMANMIB::Ccmctidobjects::~Ccmctidobjects()
+{
+}
+
+bool CISCOCONFIGMANMIB::Ccmctidobjects::has_data() const
+{
+    return ccmctid.is_set
+	|| ccmctidlastchangetime.is_set
+	|| ccmctidrolledovernotifenable.is_set
+	|| ccmctidwhochanged.is_set;
+}
+
+bool CISCOCONFIGMANMIB::Ccmctidobjects::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ccmctid.yfilter)
+	|| ydk::is_set(ccmctidlastchangetime.yfilter)
+	|| ydk::is_set(ccmctidrolledovernotifenable.yfilter)
+	|| ydk::is_set(ccmctidwhochanged.yfilter);
+}
+
+std::string CISCOCONFIGMANMIB::Ccmctidobjects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmctidobjects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ccmCTIDObjects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmctidobjects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ccmctid.is_set || is_set(ccmctid.yfilter)) leaf_name_data.push_back(ccmctid.get_name_leafdata());
+    if (ccmctidlastchangetime.is_set || is_set(ccmctidlastchangetime.yfilter)) leaf_name_data.push_back(ccmctidlastchangetime.get_name_leafdata());
+    if (ccmctidrolledovernotifenable.is_set || is_set(ccmctidrolledovernotifenable.yfilter)) leaf_name_data.push_back(ccmctidrolledovernotifenable.get_name_leafdata());
+    if (ccmctidwhochanged.is_set || is_set(ccmctidwhochanged.yfilter)) leaf_name_data.push_back(ccmctidwhochanged.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmctidobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmctidobjects::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOCONFIGMANMIB::Ccmctidobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ccmCTID")
+    {
+        ccmctid = value;
+        ccmctid.value_namespace = name_space;
+        ccmctid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCTIDLastChangeTime")
+    {
+        ccmctidlastchangetime = value;
+        ccmctidlastchangetime.value_namespace = name_space;
+        ccmctidlastchangetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCTIDRolledOverNotifEnable")
+    {
+        ccmctidrolledovernotifenable = value;
+        ccmctidrolledovernotifenable.value_namespace = name_space;
+        ccmctidrolledovernotifenable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ccmCTIDWhoChanged")
+    {
+        ccmctidwhochanged = value;
+        ccmctidwhochanged.value_namespace = name_space;
+        ccmctidwhochanged.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOCONFIGMANMIB::Ccmctidobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccmCTID")
+    {
+        ccmctid.yfilter = yfilter;
+    }
+    if(value_path == "ccmCTIDLastChangeTime")
+    {
+        ccmctidlastchangetime.yfilter = yfilter;
+    }
+    if(value_path == "ccmCTIDRolledOverNotifEnable")
+    {
+        ccmctidrolledovernotifenable.yfilter = yfilter;
+    }
+    if(value_path == "ccmCTIDWhoChanged")
+    {
+        ccmctidwhochanged.yfilter = yfilter;
+    }
+}
+
+bool CISCOCONFIGMANMIB::Ccmctidobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccmCTID" || name == "ccmCTIDLastChangeTime" || name == "ccmCTIDRolledOverNotifEnable" || name == "ccmCTIDWhoChanged")
+        return true;
+    return false;
+}
+
+CISCOCONFIGMANMIB::Ccmhistory::Ccmhistory()
     :
     ccmhistoryevententriesbumped{YType::uint32, "ccmHistoryEventEntriesBumped"},
     ccmhistorymaxevententries{YType::int32, "ccmHistoryMaxEventEntries"},
@@ -230,14 +744,15 @@ CiscoConfigManMib::Ccmhistory::Ccmhistory()
     ccmhistoryrunninglastsaved{YType::uint32, "ccmHistoryRunningLastSaved"},
     ccmhistorystartuplastchanged{YType::uint32, "ccmHistoryStartupLastChanged"}
 {
-    yang_name = "ccmHistory"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
+
+    yang_name = "ccmHistory"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoConfigManMib::Ccmhistory::~Ccmhistory()
+CISCOCONFIGMANMIB::Ccmhistory::~Ccmhistory()
 {
 }
 
-bool CiscoConfigManMib::Ccmhistory::has_data() const
+bool CISCOCONFIGMANMIB::Ccmhistory::has_data() const
 {
     return ccmhistoryevententriesbumped.is_set
 	|| ccmhistorymaxevententries.is_set
@@ -246,7 +761,7 @@ bool CiscoConfigManMib::Ccmhistory::has_data() const
 	|| ccmhistorystartuplastchanged.is_set;
 }
 
-bool CiscoConfigManMib::Ccmhistory::has_operation() const
+bool CISCOCONFIGMANMIB::Ccmhistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccmhistoryevententriesbumped.yfilter)
@@ -256,27 +771,22 @@ bool CiscoConfigManMib::Ccmhistory::has_operation() const
 	|| ydk::is_set(ccmhistorystartuplastchanged.yfilter);
 }
 
-std::string CiscoConfigManMib::Ccmhistory::get_segment_path() const
+std::string CISCOCONFIGMANMIB::Ccmhistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmhistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccmHistory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoConfigManMib::Ccmhistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmhistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ccmhistoryevententriesbumped.is_set || is_set(ccmhistoryevententriesbumped.yfilter)) leaf_name_data.push_back(ccmhistoryevententriesbumped.get_name_leafdata());
@@ -285,24 +795,22 @@ const EntityPath CiscoConfigManMib::Ccmhistory::get_entity_path(Entity* ancestor
     if (ccmhistoryrunninglastsaved.is_set || is_set(ccmhistoryrunninglastsaved.yfilter)) leaf_name_data.push_back(ccmhistoryrunninglastsaved.get_name_leafdata());
     if (ccmhistorystartuplastchanged.is_set || is_set(ccmhistorystartuplastchanged.yfilter)) leaf_name_data.push_back(ccmhistorystartuplastchanged.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmhistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoConfigManMib::Ccmhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGMANMIB::Ccmhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccmHistoryEventEntriesBumped")
     {
@@ -336,7 +844,7 @@ void CiscoConfigManMib::Ccmhistory::set_value(const std::string & value_path, co
     }
 }
 
-void CiscoConfigManMib::Ccmhistory::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGMANMIB::Ccmhistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccmHistoryEventEntriesBumped")
     {
@@ -360,360 +868,24 @@ void CiscoConfigManMib::Ccmhistory::set_filter(const std::string & value_path, Y
     }
 }
 
-bool CiscoConfigManMib::Ccmhistory::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGMANMIB::Ccmhistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccmHistoryEventEntriesBumped" || name == "ccmHistoryMaxEventEntries" || name == "ccmHistoryRunningLastChanged" || name == "ccmHistoryRunningLastSaved" || name == "ccmHistoryStartupLastChanged")
         return true;
     return false;
 }
 
-CiscoConfigManMib::Ccmclihistory::Ccmclihistory()
-    :
-    ccmclihistorycmdentries{YType::uint32, "ccmCLIHistoryCmdEntries"},
-    ccmclihistorycmdentriesallowed{YType::uint32, "ccmCLIHistoryCmdEntriesAllowed"},
-    ccmclihistorymaxcmdentries{YType::uint32, "ccmCLIHistoryMaxCmdEntries"}
+CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryeventtable()
 {
-    yang_name = "ccmCLIHistory"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
+
+    yang_name = "ccmHistoryEventTable"; yang_parent_name = "CISCO-CONFIG-MAN-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoConfigManMib::Ccmclihistory::~Ccmclihistory()
+CISCOCONFIGMANMIB::Ccmhistoryeventtable::~Ccmhistoryeventtable()
 {
 }
 
-bool CiscoConfigManMib::Ccmclihistory::has_data() const
-{
-    return ccmclihistorycmdentries.is_set
-	|| ccmclihistorycmdentriesallowed.is_set
-	|| ccmclihistorymaxcmdentries.is_set;
-}
-
-bool CiscoConfigManMib::Ccmclihistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ccmclihistorycmdentries.yfilter)
-	|| ydk::is_set(ccmclihistorycmdentriesallowed.yfilter)
-	|| ydk::is_set(ccmclihistorymaxcmdentries.yfilter);
-}
-
-std::string CiscoConfigManMib::Ccmclihistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccmCLIHistory";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoConfigManMib::Ccmclihistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ccmclihistorycmdentries.is_set || is_set(ccmclihistorycmdentries.yfilter)) leaf_name_data.push_back(ccmclihistorycmdentries.get_name_leafdata());
-    if (ccmclihistorycmdentriesallowed.is_set || is_set(ccmclihistorycmdentriesallowed.yfilter)) leaf_name_data.push_back(ccmclihistorycmdentriesallowed.get_name_leafdata());
-    if (ccmclihistorymaxcmdentries.is_set || is_set(ccmclihistorymaxcmdentries.yfilter)) leaf_name_data.push_back(ccmclihistorymaxcmdentries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmclihistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoConfigManMib::Ccmclihistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ccmCLIHistoryCmdEntries")
-    {
-        ccmclihistorycmdentries = value;
-        ccmclihistorycmdentries.value_namespace = name_space;
-        ccmclihistorycmdentries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCLIHistoryCmdEntriesAllowed")
-    {
-        ccmclihistorycmdentriesallowed = value;
-        ccmclihistorycmdentriesallowed.value_namespace = name_space;
-        ccmclihistorycmdentriesallowed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCLIHistoryMaxCmdEntries")
-    {
-        ccmclihistorymaxcmdentries = value;
-        ccmclihistorymaxcmdentries.value_namespace = name_space;
-        ccmclihistorymaxcmdentries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoConfigManMib::Ccmclihistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ccmCLIHistoryCmdEntries")
-    {
-        ccmclihistorycmdentries.yfilter = yfilter;
-    }
-    if(value_path == "ccmCLIHistoryCmdEntriesAllowed")
-    {
-        ccmclihistorycmdentriesallowed.yfilter = yfilter;
-    }
-    if(value_path == "ccmCLIHistoryMaxCmdEntries")
-    {
-        ccmclihistorymaxcmdentries.yfilter = yfilter;
-    }
-}
-
-bool CiscoConfigManMib::Ccmclihistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccmCLIHistoryCmdEntries" || name == "ccmCLIHistoryCmdEntriesAllowed" || name == "ccmCLIHistoryMaxCmdEntries")
-        return true;
-    return false;
-}
-
-CiscoConfigManMib::Ccmclicfg::Ccmclicfg()
-    :
-    ccmclicfgrunconfnotifenable{YType::boolean, "ccmCLICfgRunConfNotifEnable"}
-{
-    yang_name = "ccmCLICfg"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
-}
-
-CiscoConfigManMib::Ccmclicfg::~Ccmclicfg()
-{
-}
-
-bool CiscoConfigManMib::Ccmclicfg::has_data() const
-{
-    return ccmclicfgrunconfnotifenable.is_set;
-}
-
-bool CiscoConfigManMib::Ccmclicfg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ccmclicfgrunconfnotifenable.yfilter);
-}
-
-std::string CiscoConfigManMib::Ccmclicfg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccmCLICfg";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoConfigManMib::Ccmclicfg::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ccmclicfgrunconfnotifenable.is_set || is_set(ccmclicfgrunconfnotifenable.yfilter)) leaf_name_data.push_back(ccmclicfgrunconfnotifenable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmclicfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmclicfg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoConfigManMib::Ccmclicfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ccmCLICfgRunConfNotifEnable")
-    {
-        ccmclicfgrunconfnotifenable = value;
-        ccmclicfgrunconfnotifenable.value_namespace = name_space;
-        ccmclicfgrunconfnotifenable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoConfigManMib::Ccmclicfg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ccmCLICfgRunConfNotifEnable")
-    {
-        ccmclicfgrunconfnotifenable.yfilter = yfilter;
-    }
-}
-
-bool CiscoConfigManMib::Ccmclicfg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccmCLICfgRunConfNotifEnable")
-        return true;
-    return false;
-}
-
-CiscoConfigManMib::Ccmctidobjects::Ccmctidobjects()
-    :
-    ccmctid{YType::uint64, "ccmCTID"},
-    ccmctidlastchangetime{YType::str, "ccmCTIDLastChangeTime"},
-    ccmctidrolledovernotifenable{YType::boolean, "ccmCTIDRolledOverNotifEnable"},
-    ccmctidwhochanged{YType::str, "ccmCTIDWhoChanged"}
-{
-    yang_name = "ccmCTIDObjects"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
-}
-
-CiscoConfigManMib::Ccmctidobjects::~Ccmctidobjects()
-{
-}
-
-bool CiscoConfigManMib::Ccmctidobjects::has_data() const
-{
-    return ccmctid.is_set
-	|| ccmctidlastchangetime.is_set
-	|| ccmctidrolledovernotifenable.is_set
-	|| ccmctidwhochanged.is_set;
-}
-
-bool CiscoConfigManMib::Ccmctidobjects::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ccmctid.yfilter)
-	|| ydk::is_set(ccmctidlastchangetime.yfilter)
-	|| ydk::is_set(ccmctidrolledovernotifenable.yfilter)
-	|| ydk::is_set(ccmctidwhochanged.yfilter);
-}
-
-std::string CiscoConfigManMib::Ccmctidobjects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccmCTIDObjects";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoConfigManMib::Ccmctidobjects::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ccmctid.is_set || is_set(ccmctid.yfilter)) leaf_name_data.push_back(ccmctid.get_name_leafdata());
-    if (ccmctidlastchangetime.is_set || is_set(ccmctidlastchangetime.yfilter)) leaf_name_data.push_back(ccmctidlastchangetime.get_name_leafdata());
-    if (ccmctidrolledovernotifenable.is_set || is_set(ccmctidrolledovernotifenable.yfilter)) leaf_name_data.push_back(ccmctidrolledovernotifenable.get_name_leafdata());
-    if (ccmctidwhochanged.is_set || is_set(ccmctidwhochanged.yfilter)) leaf_name_data.push_back(ccmctidwhochanged.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmctidobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmctidobjects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoConfigManMib::Ccmctidobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ccmCTID")
-    {
-        ccmctid = value;
-        ccmctid.value_namespace = name_space;
-        ccmctid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCTIDLastChangeTime")
-    {
-        ccmctidlastchangetime = value;
-        ccmctidlastchangetime.value_namespace = name_space;
-        ccmctidlastchangetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCTIDRolledOverNotifEnable")
-    {
-        ccmctidrolledovernotifenable = value;
-        ccmctidrolledovernotifenable.value_namespace = name_space;
-        ccmctidrolledovernotifenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCTIDWhoChanged")
-    {
-        ccmctidwhochanged = value;
-        ccmctidwhochanged.value_namespace = name_space;
-        ccmctidwhochanged.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoConfigManMib::Ccmctidobjects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ccmCTID")
-    {
-        ccmctid.yfilter = yfilter;
-    }
-    if(value_path == "ccmCTIDLastChangeTime")
-    {
-        ccmctidlastchangetime.yfilter = yfilter;
-    }
-    if(value_path == "ccmCTIDRolledOverNotifEnable")
-    {
-        ccmctidrolledovernotifenable.yfilter = yfilter;
-    }
-    if(value_path == "ccmCTIDWhoChanged")
-    {
-        ccmctidwhochanged.yfilter = yfilter;
-    }
-}
-
-bool CiscoConfigManMib::Ccmctidobjects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccmCTID" || name == "ccmCTIDLastChangeTime" || name == "ccmCTIDRolledOverNotifEnable" || name == "ccmCTIDWhoChanged")
-        return true;
-    return false;
-}
-
-CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryeventtable()
-{
-    yang_name = "ccmHistoryEventTable"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
-}
-
-CiscoConfigManMib::Ccmhistoryeventtable::~Ccmhistoryeventtable()
-{
-}
-
-bool CiscoConfigManMib::Ccmhistoryeventtable::has_data() const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::has_data() const
 {
     for (std::size_t index=0; index<ccmhistoryevententry.size(); index++)
     {
@@ -723,7 +895,7 @@ bool CiscoConfigManMib::Ccmhistoryeventtable::has_data() const
     return false;
 }
 
-bool CiscoConfigManMib::Ccmhistoryeventtable::has_operation() const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::has_operation() const
 {
     for (std::size_t index=0; index<ccmhistoryevententry.size(); index++)
     {
@@ -733,37 +905,30 @@ bool CiscoConfigManMib::Ccmhistoryeventtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoConfigManMib::Ccmhistoryeventtable::get_segment_path() const
+std::string CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccmHistoryEventTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoConfigManMib::Ccmhistoryeventtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccmHistoryEventEntry")
     {
@@ -775,7 +940,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_na
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry>();
+        auto c = std::make_shared<CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry>();
         c->parent = this;
         ccmhistoryevententry.push_back(c);
         return c;
@@ -784,7 +949,7 @@ std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmhistoryeventtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ccmhistoryevententry)
@@ -795,22 +960,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmhistoryeven
     return children;
 }
 
-void CiscoConfigManMib::Ccmhistoryeventtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGMANMIB::Ccmhistoryeventtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoConfigManMib::Ccmhistoryeventtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGMANMIB::Ccmhistoryeventtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoConfigManMib::Ccmhistoryeventtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccmHistoryEventEntry")
         return true;
     return false;
 }
 
-CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryevententry()
+CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryevententry()
     :
     ccmhistoryeventindex{YType::int32, "ccmHistoryEventIndex"},
     ccmhistoryclicmdentriesbumped{YType::uint32, "ccmHistoryCLICmdEntriesBumped"},
@@ -832,14 +997,15 @@ CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventen
     ccmhistoryeventtime{YType::uint32, "ccmHistoryEventTime"},
     ccmhistoryeventvirtualhostname{YType::str, "ccmHistoryEventVirtualHostName"}
 {
-    yang_name = "ccmHistoryEventEntry"; yang_parent_name = "ccmHistoryEventTable";
+
+    yang_name = "ccmHistoryEventEntry"; yang_parent_name = "ccmHistoryEventTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::~Ccmhistoryevententry()
+CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::~Ccmhistoryevententry()
 {
 }
 
-bool CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::has_data() const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::has_data() const
 {
     return ccmhistoryeventindex.is_set
 	|| ccmhistoryclicmdentriesbumped.is_set
@@ -862,7 +1028,7 @@ bool CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::has_data() c
 	|| ccmhistoryeventvirtualhostname.is_set;
 }
 
-bool CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::has_operation() const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccmhistoryeventindex.yfilter)
@@ -886,27 +1052,22 @@ bool CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::has_operatio
 	|| ydk::is_set(ccmhistoryeventvirtualhostname.yfilter);
 }
 
-std::string CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::get_segment_path() const
+std::string CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/ccmHistoryEventTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccmHistoryEventEntry" <<"[ccmHistoryEventIndex='" <<ccmhistoryeventindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/ccmHistoryEventTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ccmhistoryeventindex.is_set || is_set(ccmhistoryeventindex.yfilter)) leaf_name_data.push_back(ccmhistoryeventindex.get_name_leafdata());
@@ -929,24 +1090,22 @@ const EntityPath CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::
     if (ccmhistoryeventtime.is_set || is_set(ccmhistoryeventtime.yfilter)) leaf_name_data.push_back(ccmhistoryeventtime.get_name_leafdata());
     if (ccmhistoryeventvirtualhostname.is_set || is_set(ccmhistoryeventvirtualhostname.yfilter)) leaf_name_data.push_back(ccmhistoryeventvirtualhostname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccmHistoryEventIndex")
     {
@@ -1064,7 +1223,7 @@ void CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::set_value(co
     }
 }
 
-void CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccmHistoryEventIndex")
     {
@@ -1144,255 +1303,32 @@ void CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::set_filter(c
     }
 }
 
-bool CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccmHistoryEventIndex" || name == "ccmHistoryCLICmdEntriesBumped" || name == "ccmHistoryEventCommandSource" || name == "ccmHistoryEventCommandSourceAddress" || name == "ccmHistoryEventCommandSourceAddrRev1" || name == "ccmHistoryEventCommandSourceAddrType" || name == "ccmHistoryEventConfigDestination" || name == "ccmHistoryEventConfigSource" || name == "ccmHistoryEventFile" || name == "ccmHistoryEventRcpUser" || name == "ccmHistoryEventServerAddress" || name == "ccmHistoryEventServerAddrRev1" || name == "ccmHistoryEventServerAddrType" || name == "ccmHistoryEventTerminalLocation" || name == "ccmHistoryEventTerminalNumber" || name == "ccmHistoryEventTerminalType" || name == "ccmHistoryEventTerminalUser" || name == "ccmHistoryEventTime" || name == "ccmHistoryEventVirtualHostName")
         return true;
     return false;
 }
 
-CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandtable()
-{
-    yang_name = "ccmCLIHistoryCommandTable"; yang_parent_name = "CISCO-CONFIG-MAN-MIB";
-}
+const Enum::YLeaf HistoryEventMedium::erase {1, "erase"};
+const Enum::YLeaf HistoryEventMedium::commandSource {2, "commandSource"};
+const Enum::YLeaf HistoryEventMedium::running {3, "running"};
+const Enum::YLeaf HistoryEventMedium::startup {4, "startup"};
+const Enum::YLeaf HistoryEventMedium::local {5, "local"};
+const Enum::YLeaf HistoryEventMedium::networkTftp {6, "networkTftp"};
+const Enum::YLeaf HistoryEventMedium::networkRcp {7, "networkRcp"};
+const Enum::YLeaf HistoryEventMedium::networkFtp {8, "networkFtp"};
+const Enum::YLeaf HistoryEventMedium::networkScp {9, "networkScp"};
 
-CiscoConfigManMib::Ccmclihistorycommandtable::~Ccmclihistorycommandtable()
-{
-}
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventcommandsource::commandLine {1, "commandLine"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventcommandsource::snmp {2, "snmp"};
 
-bool CiscoConfigManMib::Ccmclihistorycommandtable::has_data() const
-{
-    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
-    {
-        if(ccmclihistorycommandentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoConfigManMib::Ccmclihistorycommandtable::has_operation() const
-{
-    for (std::size_t index=0; index<ccmclihistorycommandentry.size(); index++)
-    {
-        if(ccmclihistorycommandentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoConfigManMib::Ccmclihistorycommandtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccmCLIHistoryCommandTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoConfigManMib::Ccmclihistorycommandtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistorycommandtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ccmCLIHistoryCommandEntry")
-    {
-        for(auto const & c : ccmclihistorycommandentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry>();
-        c->parent = this;
-        ccmclihistorycommandentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmclihistorycommandtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ccmclihistorycommandentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoConfigManMib::Ccmclihistorycommandtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoConfigManMib::Ccmclihistorycommandtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoConfigManMib::Ccmclihistorycommandtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccmCLIHistoryCommandEntry")
-        return true;
-    return false;
-}
-
-CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::Ccmclihistorycommandentry()
-    :
-    ccmhistoryeventindex{YType::str, "ccmHistoryEventIndex"},
-    ccmclihistorycommandindex{YType::uint32, "ccmCLIHistoryCommandIndex"},
-    ccmclihistorycommand{YType::str, "ccmCLIHistoryCommand"}
-{
-    yang_name = "ccmCLIHistoryCommandEntry"; yang_parent_name = "ccmCLIHistoryCommandTable";
-}
-
-CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::~Ccmclihistorycommandentry()
-{
-}
-
-bool CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_data() const
-{
-    return ccmhistoryeventindex.is_set
-	|| ccmclihistorycommandindex.is_set
-	|| ccmclihistorycommand.is_set;
-}
-
-bool CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ccmhistoryeventindex.yfilter)
-	|| ydk::is_set(ccmclihistorycommandindex.yfilter)
-	|| ydk::is_set(ccmclihistorycommand.yfilter);
-}
-
-std::string CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ccmCLIHistoryCommandEntry" <<"[ccmHistoryEventIndex='" <<ccmhistoryeventindex <<"']" <<"[ccmCLIHistoryCommandIndex='" <<ccmclihistorycommandindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-CONFIG-MAN-MIB:CISCO-CONFIG-MAN-MIB/ccmCLIHistoryCommandTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ccmhistoryeventindex.is_set || is_set(ccmhistoryeventindex.yfilter)) leaf_name_data.push_back(ccmhistoryeventindex.get_name_leafdata());
-    if (ccmclihistorycommandindex.is_set || is_set(ccmclihistorycommandindex.yfilter)) leaf_name_data.push_back(ccmclihistorycommandindex.get_name_leafdata());
-    if (ccmclihistorycommand.is_set || is_set(ccmclihistorycommand.yfilter)) leaf_name_data.push_back(ccmclihistorycommand.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ccmHistoryEventIndex")
-    {
-        ccmhistoryeventindex = value;
-        ccmhistoryeventindex.value_namespace = name_space;
-        ccmhistoryeventindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCLIHistoryCommandIndex")
-    {
-        ccmclihistorycommandindex = value;
-        ccmclihistorycommandindex.value_namespace = name_space;
-        ccmclihistorycommandindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ccmCLIHistoryCommand")
-    {
-        ccmclihistorycommand = value;
-        ccmclihistorycommand.value_namespace = name_space;
-        ccmclihistorycommand.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ccmHistoryEventIndex")
-    {
-        ccmhistoryeventindex.yfilter = yfilter;
-    }
-    if(value_path == "ccmCLIHistoryCommandIndex")
-    {
-        ccmclihistorycommandindex.yfilter = yfilter;
-    }
-    if(value_path == "ccmCLIHistoryCommand")
-    {
-        ccmclihistorycommand.yfilter = yfilter;
-    }
-}
-
-bool CiscoConfigManMib::Ccmclihistorycommandtable::Ccmclihistorycommandentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ccmHistoryEventIndex" || name == "ccmCLIHistoryCommandIndex" || name == "ccmCLIHistoryCommand")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf Historyeventmedium::erase {1, "erase"};
-const Enum::YLeaf Historyeventmedium::commandSource {2, "commandSource"};
-const Enum::YLeaf Historyeventmedium::running {3, "running"};
-const Enum::YLeaf Historyeventmedium::startup {4, "startup"};
-const Enum::YLeaf Historyeventmedium::local {5, "local"};
-const Enum::YLeaf Historyeventmedium::networkTftp {6, "networkTftp"};
-const Enum::YLeaf Historyeventmedium::networkRcp {7, "networkRcp"};
-const Enum::YLeaf Historyeventmedium::networkFtp {8, "networkFtp"};
-const Enum::YLeaf Historyeventmedium::networkScp {9, "networkScp"};
-
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventcommandsource::commandLine {1, "commandLine"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventcommandsource::snmp {2, "snmp"};
-
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::unknown {2, "unknown"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::console {3, "console"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::terminal {4, "terminal"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::virtual_ {5, "virtual"};
-const Enum::YLeaf CiscoConfigManMib::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::auxiliary {6, "auxiliary"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::unknown {2, "unknown"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::console {3, "console"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::terminal {4, "terminal"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::virtual_ {5, "virtual"};
+const Enum::YLeaf CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::Ccmhistoryeventterminaltype::auxiliary {6, "auxiliary"};
 
 
 }

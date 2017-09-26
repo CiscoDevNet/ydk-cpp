@@ -18,7 +18,7 @@ class LldpSnoopData : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,83 +34,10 @@ class LldpSnoopData : public ydk::Entity
         class LldpNeighborBrief; //type: LldpSnoopData::LldpNeighborBrief
         class EthernetControllerNames; //type: LldpSnoopData::EthernetControllerNames
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames> ethernet_controller_names;
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief> lldp_neighbor_brief;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames> ethernet_controller_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief> lldp_neighbor_brief;
         
 }; // LldpSnoopData
-
-
-class LldpSnoopData::LldpNeighborBrief : public ydk::Entity
-{
-    public:
-        LldpNeighborBrief();
-        ~LldpNeighborBrief();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf number_of_entries; //type: uint16
-        class Neighbours; //type: LldpSnoopData::LldpNeighborBrief::Neighbours
-
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief::Neighbours> neighbours;
-        
-}; // LldpSnoopData::LldpNeighborBrief
-
-
-class LldpSnoopData::LldpNeighborBrief::Neighbours : public ydk::Entity
-{
-    public:
-        Neighbours();
-        ~Neighbours();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LldpNeighborBriefEntry; //type: LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry> > lldp_neighbor_brief_entry;
-        
-}; // LldpSnoopData::LldpNeighborBrief::Neighbours
-
-
-class LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry : public ydk::Entity
-{
-    public:
-        LldpNeighborBriefEntry();
-        ~LldpNeighborBriefEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf chassis_id; //type: string
-        ydk::YLeaf port_id_detail; //type: string
-        ydk::YLeaf system_name; //type: string
-        ydk::YLeaf enabled_capabilities; //type: string
-        ydk::YLeaf recv_intf; //type: string
-        ydk::YLeaf hold_time; //type: uint16
-
-}; // LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry
 
 
 class LldpSnoopData::EthernetControllerNames : public ydk::Entity
@@ -121,17 +48,18 @@ class LldpSnoopData::EthernetControllerNames : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class EthernetControllerName; //type: LldpSnoopData::EthernetControllerNames::EthernetControllerName
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName> > ethernet_controller_name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName> > ethernet_controller_name;
         
 }; // LldpSnoopData::EthernetControllerNames
 
@@ -144,13 +72,14 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf source_mac; //type: string
@@ -167,7 +96,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName : public yd
         ydk::YLeaf rx_lldp_pkts; //type: uint64
         class NetworkAddresses; //type: LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses> network_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses> network_addresses;
         
 }; // LldpSnoopData::EthernetControllerNames::EthernetControllerName
 
@@ -180,7 +109,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -190,7 +119,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
 
         class LldpAddrEntry; //type: LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry> > lldp_addr_entry;
         
 }; // LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses
 
@@ -203,7 +132,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -215,7 +144,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
         ydk::YLeaf if_num; //type: uint32
         class Address; //type: LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address> address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address> address;
         
 }; // LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry
 
@@ -228,7 +157,7 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -241,6 +170,82 @@ class LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAdd
         ydk::YLeaf ipv6_address; //type: string
 
 }; // LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address
+
+
+class LldpSnoopData::LldpNeighborBrief : public ydk::Entity
+{
+    public:
+        LldpNeighborBrief();
+        ~LldpNeighborBrief();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf number_of_entries; //type: uint16
+        class Neighbours; //type: LldpSnoopData::LldpNeighborBrief::Neighbours
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief::Neighbours> neighbours;
+        
+}; // LldpSnoopData::LldpNeighborBrief
+
+
+class LldpSnoopData::LldpNeighborBrief::Neighbours : public ydk::Entity
+{
+    public:
+        Neighbours();
+        ~Neighbours();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class LldpNeighborBriefEntry; //type: LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_lldp_oper::LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry> > lldp_neighbor_brief_entry;
+        
+}; // LldpSnoopData::LldpNeighborBrief::Neighbours
+
+
+class LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry : public ydk::Entity
+{
+    public:
+        LldpNeighborBriefEntry();
+        ~LldpNeighborBriefEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf chassis_id; //type: string
+        ydk::YLeaf port_id_detail; //type: string
+        ydk::YLeaf system_name; //type: string
+        ydk::YLeaf enabled_capabilities; //type: string
+        ydk::YLeaf recv_intf; //type: string
+        ydk::YLeaf hold_time; //type: uint16
+
+}; // LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry
 
 class LldpL3AddrProtocol : public ydk::Enum
 {

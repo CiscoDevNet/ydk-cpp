@@ -20,16 +20,12 @@ Vpdn::Vpdn()
 	,vpdn_redundancy(std::make_shared<Vpdn::VpdnRedundancy>())
 {
     history_failures->parent = this;
-
     sessions->parent = this;
-
     tunnel_destinations->parent = this;
-
     vpdn_mirroring->parent = this;
-
     vpdn_redundancy->parent = this;
 
-    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-oper";
+    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Vpdn::~Vpdn()
@@ -59,26 +55,15 @@ std::string Vpdn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -203,9 +188,375 @@ bool Vpdn::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Vpdn::HistoryFailures::HistoryFailures()
+{
+
+    yang_name = "history-failures"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Vpdn::HistoryFailures::~HistoryFailures()
+{
+}
+
+bool Vpdn::HistoryFailures::has_data() const
+{
+    for (std::size_t index=0; index<history_failure.size(); index++)
+    {
+        if(history_failure[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Vpdn::HistoryFailures::has_operation() const
+{
+    for (std::size_t index=0; index<history_failure.size(); index++)
+    {
+        if(history_failure[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Vpdn::HistoryFailures::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Vpdn::HistoryFailures::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history-failures";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::HistoryFailures::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "history-failure")
+    {
+        for(auto const & c : history_failure)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Vpdn::HistoryFailures::HistoryFailure>();
+        c->parent = this;
+        history_failure.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : history_failure)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Vpdn::HistoryFailures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vpdn::HistoryFailures::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vpdn::HistoryFailures::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "history-failure")
+        return true;
+    return false;
+}
+
+Vpdn::HistoryFailures::HistoryFailure::HistoryFailure()
+    :
+    destination_address{YType::str, "destination-address"},
+    domain_name{YType::str, "domain-name"},
+    error_repeat_count{YType::uint16, "error-repeat-count"},
+    event_time{YType::str, "event-time"},
+    failure_type{YType::enumeration, "failure-type"},
+    home_gateway{YType::str, "home-gateway"},
+    local_client_id{YType::uint16, "local-client-id"},
+    mid{YType::uint16, "mid"},
+    nas{YType::str, "nas"},
+    remote_client_id{YType::uint16, "remote-client-id"},
+    remote_name{YType::str, "remote-name"},
+    source_address{YType::str, "source-address"},
+    username{YType::str, "username"},
+    username_xr{YType::str, "username-xr"}
+{
+
+    yang_name = "history-failure"; yang_parent_name = "history-failures"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Vpdn::HistoryFailures::HistoryFailure::~HistoryFailure()
+{
+}
+
+bool Vpdn::HistoryFailures::HistoryFailure::has_data() const
+{
+    return destination_address.is_set
+	|| domain_name.is_set
+	|| error_repeat_count.is_set
+	|| event_time.is_set
+	|| failure_type.is_set
+	|| home_gateway.is_set
+	|| local_client_id.is_set
+	|| mid.is_set
+	|| nas.is_set
+	|| remote_client_id.is_set
+	|| remote_name.is_set
+	|| source_address.is_set
+	|| username.is_set
+	|| username_xr.is_set;
+}
+
+bool Vpdn::HistoryFailures::HistoryFailure::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(error_repeat_count.yfilter)
+	|| ydk::is_set(event_time.yfilter)
+	|| ydk::is_set(failure_type.yfilter)
+	|| ydk::is_set(home_gateway.yfilter)
+	|| ydk::is_set(local_client_id.yfilter)
+	|| ydk::is_set(mid.yfilter)
+	|| ydk::is_set(nas.yfilter)
+	|| ydk::is_set(remote_client_id.yfilter)
+	|| ydk::is_set(remote_name.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(username_xr.yfilter);
+}
+
+std::string Vpdn::HistoryFailures::HistoryFailure::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/history-failures/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Vpdn::HistoryFailures::HistoryFailure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history-failure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::HistoryFailures::HistoryFailure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (error_repeat_count.is_set || is_set(error_repeat_count.yfilter)) leaf_name_data.push_back(error_repeat_count.get_name_leafdata());
+    if (event_time.is_set || is_set(event_time.yfilter)) leaf_name_data.push_back(event_time.get_name_leafdata());
+    if (failure_type.is_set || is_set(failure_type.yfilter)) leaf_name_data.push_back(failure_type.get_name_leafdata());
+    if (home_gateway.is_set || is_set(home_gateway.yfilter)) leaf_name_data.push_back(home_gateway.get_name_leafdata());
+    if (local_client_id.is_set || is_set(local_client_id.yfilter)) leaf_name_data.push_back(local_client_id.get_name_leafdata());
+    if (mid.is_set || is_set(mid.yfilter)) leaf_name_data.push_back(mid.get_name_leafdata());
+    if (nas.is_set || is_set(nas.yfilter)) leaf_name_data.push_back(nas.get_name_leafdata());
+    if (remote_client_id.is_set || is_set(remote_client_id.yfilter)) leaf_name_data.push_back(remote_client_id.get_name_leafdata());
+    if (remote_name.is_set || is_set(remote_name.yfilter)) leaf_name_data.push_back(remote_name.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (username_xr.is_set || is_set(username_xr.yfilter)) leaf_name_data.push_back(username_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::HistoryFailures::HistoryFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::HistoryFailure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vpdn::HistoryFailures::HistoryFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-repeat-count")
+    {
+        error_repeat_count = value;
+        error_repeat_count.value_namespace = name_space;
+        error_repeat_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "event-time")
+    {
+        event_time = value;
+        event_time.value_namespace = name_space;
+        event_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failure-type")
+    {
+        failure_type = value;
+        failure_type.value_namespace = name_space;
+        failure_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "home-gateway")
+    {
+        home_gateway = value;
+        home_gateway.value_namespace = name_space;
+        home_gateway.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-client-id")
+    {
+        local_client_id = value;
+        local_client_id.value_namespace = name_space;
+        local_client_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid")
+    {
+        mid = value;
+        mid.value_namespace = name_space;
+        mid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nas")
+    {
+        nas = value;
+        nas.value_namespace = name_space;
+        nas.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-client-id")
+    {
+        remote_client_id = value;
+        remote_client_id.value_namespace = name_space;
+        remote_client_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-name")
+    {
+        remote_name = value;
+        remote_name.value_namespace = name_space;
+        remote_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "username-xr")
+    {
+        username_xr = value;
+        username_xr.value_namespace = name_space;
+        username_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vpdn::HistoryFailures::HistoryFailure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "error-repeat-count")
+    {
+        error_repeat_count.yfilter = yfilter;
+    }
+    if(value_path == "event-time")
+    {
+        event_time.yfilter = yfilter;
+    }
+    if(value_path == "failure-type")
+    {
+        failure_type.yfilter = yfilter;
+    }
+    if(value_path == "home-gateway")
+    {
+        home_gateway.yfilter = yfilter;
+    }
+    if(value_path == "local-client-id")
+    {
+        local_client_id.yfilter = yfilter;
+    }
+    if(value_path == "mid")
+    {
+        mid.yfilter = yfilter;
+    }
+    if(value_path == "nas")
+    {
+        nas.yfilter = yfilter;
+    }
+    if(value_path == "remote-client-id")
+    {
+        remote_client_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-name")
+    {
+        remote_name.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "username-xr")
+    {
+        username_xr.yfilter = yfilter;
+    }
+}
+
+bool Vpdn::HistoryFailures::HistoryFailure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "domain-name" || name == "error-repeat-count" || name == "event-time" || name == "failure-type" || name == "home-gateway" || name == "local-client-id" || name == "mid" || name == "nas" || name == "remote-client-id" || name == "remote-name" || name == "source-address" || name == "username" || name == "username-xr")
+        return true;
+    return false;
+}
+
 Vpdn::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "vpdn";
+
+    yang_name = "sessions"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::Sessions::~Sessions()
@@ -232,33 +583,26 @@ bool Vpdn::Sessions::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Vpdn::Sessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -321,14 +665,11 @@ Vpdn::Sessions::Session::Session()
 	,subscriber(std::make_shared<Vpdn::Sessions::Session::Subscriber>())
 {
     configuration->parent = this;
-
     l2tp->parent = this;
-
     session->parent = this;
-
     subscriber->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions";
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::Sessions::Session::~Session()
@@ -358,36 +699,29 @@ bool Vpdn::Sessions::Session::has_operation() const
 	|| (subscriber !=  nullptr && subscriber->has_operation());
 }
 
+std::string Vpdn::Sessions::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-label='" <<session_label <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::Sessions::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/sessions/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_label.is_set || is_set(session_label.yfilter)) leaf_name_data.push_back(session_label.get_name_leafdata());
     if (parent_interface_name.is_set || is_set(parent_interface_name.yfilter)) leaf_name_data.push_back(parent_interface_name.get_name_leafdata());
     if (setup_time.is_set || is_set(setup_time.yfilter)) leaf_name_data.push_back(setup_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -503,189 +837,257 @@ bool Vpdn::Sessions::Session::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-Vpdn::Sessions::Session::Session_::Session_()
+Vpdn::Sessions::Session::Configuration::Configuration()
     :
-    domain_name{YType::str, "domain-name"},
-    interface_name{YType::str, "interface-name"},
-    l2tp_session_id{YType::uint16, "l2tp-session-id"},
-    l2tp_tunnel_id{YType::uint16, "l2tp-tunnel-id"},
-    last_change{YType::str, "last-change"},
-    srg_slave{YType::boolean, "srg-slave"},
-    state{YType::enumeration, "state"},
-    username{YType::str, "username"}
+    dsl_line_forwarding{YType::boolean, "dsl-line-forwarding"},
+    l2tp_busy_timeout{YType::uint16, "l2tp-busy-timeout"},
+    template_name{YType::str, "template-name"},
+    tos{YType::uint8, "tos"},
+    tos_mode{YType::enumeration, "tos-mode"},
+    vrf_name{YType::str, "vrf-name"}
+    	,
+    vpn_id(std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>())
 {
-    yang_name = "session"; yang_parent_name = "session";
+    vpn_id->parent = this;
+
+    yang_name = "configuration"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Sessions::Session::Session_::~Session_()
+Vpdn::Sessions::Session::Configuration::~Configuration()
 {
 }
 
-bool Vpdn::Sessions::Session::Session_::has_data() const
+bool Vpdn::Sessions::Session::Configuration::has_data() const
 {
-    return domain_name.is_set
-	|| interface_name.is_set
-	|| l2tp_session_id.is_set
-	|| l2tp_tunnel_id.is_set
-	|| last_change.is_set
-	|| srg_slave.is_set
-	|| state.is_set
-	|| username.is_set;
+    return dsl_line_forwarding.is_set
+	|| l2tp_busy_timeout.is_set
+	|| template_name.is_set
+	|| tos.is_set
+	|| tos_mode.is_set
+	|| vrf_name.is_set
+	|| (vpn_id !=  nullptr && vpn_id->has_data());
 }
 
-bool Vpdn::Sessions::Session::Session_::has_operation() const
+bool Vpdn::Sessions::Session::Configuration::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(domain_name.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(l2tp_session_id.yfilter)
-	|| ydk::is_set(l2tp_tunnel_id.yfilter)
-	|| ydk::is_set(last_change.yfilter)
-	|| ydk::is_set(srg_slave.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(username.yfilter);
+	|| ydk::is_set(dsl_line_forwarding.yfilter)
+	|| ydk::is_set(l2tp_busy_timeout.yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(tos.yfilter)
+	|| ydk::is_set(tos_mode.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (vpn_id !=  nullptr && vpn_id->has_operation());
 }
 
-std::string Vpdn::Sessions::Session::Session_::get_segment_path() const
+std::string Vpdn::Sessions::Session::Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session";
-
+    path_buffer << "configuration";
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::Sessions::Session::Session_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::Configuration::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Session_' in Cisco_IOS_XR_tunnel_vpdn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (l2tp_session_id.is_set || is_set(l2tp_session_id.yfilter)) leaf_name_data.push_back(l2tp_session_id.get_name_leafdata());
-    if (l2tp_tunnel_id.is_set || is_set(l2tp_tunnel_id.yfilter)) leaf_name_data.push_back(l2tp_tunnel_id.get_name_leafdata());
-    if (last_change.is_set || is_set(last_change.yfilter)) leaf_name_data.push_back(last_change.get_name_leafdata());
-    if (srg_slave.is_set || is_set(srg_slave.yfilter)) leaf_name_data.push_back(srg_slave.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (dsl_line_forwarding.is_set || is_set(dsl_line_forwarding.yfilter)) leaf_name_data.push_back(dsl_line_forwarding.get_name_leafdata());
+    if (l2tp_busy_timeout.is_set || is_set(l2tp_busy_timeout.yfilter)) leaf_name_data.push_back(l2tp_busy_timeout.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (tos_mode.is_set || is_set(tos_mode.yfilter)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Vpdn::Sessions::Session::Session_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vpn-id")
+    {
+        if(vpn_id == nullptr)
+        {
+            vpn_id = std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>();
+        }
+        return vpn_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(vpn_id != nullptr)
+    {
+        children["vpn-id"] = vpn_id;
+    }
+
+    return children;
+}
+
+void Vpdn::Sessions::Session::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dsl-line-forwarding")
+    {
+        dsl_line_forwarding = value;
+        dsl_line_forwarding.value_namespace = name_space;
+        dsl_line_forwarding.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2tp-busy-timeout")
+    {
+        l2tp_busy_timeout = value;
+        l2tp_busy_timeout.value_namespace = name_space;
+        l2tp_busy_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "template-name")
+    {
+        template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tos")
+    {
+        tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tos-mode")
+    {
+        tos_mode = value;
+        tos_mode.value_namespace = name_space;
+        tos_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vpdn::Sessions::Session::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsl-line-forwarding")
+    {
+        dsl_line_forwarding.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-busy-timeout")
+    {
+        l2tp_busy_timeout.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+    if(value_path == "tos-mode")
+    {
+        tos_mode.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Vpdn::Sessions::Session::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vpn-id" || name == "dsl-line-forwarding" || name == "l2tp-busy-timeout" || name == "template-name" || name == "tos" || name == "tos-mode" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Vpdn::Sessions::Session::Configuration::VpnId::VpnId()
+    :
+    index_{YType::uint32, "index"},
+    oui{YType::uint32, "oui"}
+{
+
+    yang_name = "vpn-id"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vpdn::Sessions::Session::Configuration::VpnId::~VpnId()
+{
+}
+
+bool Vpdn::Sessions::Session::Configuration::VpnId::has_data() const
+{
+    return index_.is_set
+	|| oui.is_set;
+}
+
+bool Vpdn::Sessions::Session::Configuration::VpnId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(oui.yfilter);
+}
+
+std::string Vpdn::Sessions::Session::Configuration::VpnId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vpn-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::Configuration::VpnId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::VpnId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Session_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::VpnId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Vpdn::Sessions::Session::Session_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Sessions::Session::Configuration::VpnId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "domain-name")
+    if(value_path == "index")
     {
-        domain_name = value;
-        domain_name.value_namespace = name_space;
-        domain_name.value_namespace_prefix = name_space_prefix;
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "interface-name")
+    if(value_path == "oui")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2tp-session-id")
-    {
-        l2tp_session_id = value;
-        l2tp_session_id.value_namespace = name_space;
-        l2tp_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2tp-tunnel-id")
-    {
-        l2tp_tunnel_id = value;
-        l2tp_tunnel_id.value_namespace = name_space;
-        l2tp_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-change")
-    {
-        last_change = value;
-        last_change.value_namespace = name_space;
-        last_change.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srg-slave")
-    {
-        srg_slave = value;
-        srg_slave.value_namespace = name_space;
-        srg_slave.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
+        oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Vpdn::Sessions::Session::Session_::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Sessions::Session::Configuration::VpnId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "domain-name")
+    if(value_path == "index")
     {
-        domain_name.yfilter = yfilter;
+        index_.yfilter = yfilter;
     }
-    if(value_path == "interface-name")
+    if(value_path == "oui")
     {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "l2tp-session-id")
-    {
-        l2tp_session_id.yfilter = yfilter;
-    }
-    if(value_path == "l2tp-tunnel-id")
-    {
-        l2tp_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "last-change")
-    {
-        last_change.yfilter = yfilter;
-    }
-    if(value_path == "srg-slave")
-    {
-        srg_slave.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
+        oui.yfilter = yfilter;
     }
 }
 
-bool Vpdn::Sessions::Session::Session_::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Sessions::Session::Configuration::VpnId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "domain-name" || name == "interface-name" || name == "l2tp-session-id" || name == "l2tp-tunnel-id" || name == "last-change" || name == "srg-slave" || name == "state" || name == "username")
+    if(name == "index" || name == "oui")
         return true;
     return false;
 }
@@ -706,7 +1108,8 @@ Vpdn::Sessions::Session::L2Tp::L2Tp()
     tunnel_client_authentication_id{YType::str, "tunnel-client-authentication-id"},
     tunnel_server_authentication_id{YType::str, "tunnel-server-authentication-id"}
 {
-    yang_name = "l2tp"; yang_parent_name = "session";
+
+    yang_name = "l2tp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Vpdn::Sessions::Session::L2Tp::~L2Tp()
@@ -752,23 +1155,11 @@ std::string Vpdn::Sessions::Session::L2Tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::Sessions::Session::L2Tp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::L2Tp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L2Tp' in Cisco_IOS_XR_tunnel_vpdn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (call_serial_number.is_set || is_set(call_serial_number.yfilter)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
@@ -785,9 +1176,7 @@ const EntityPath Vpdn::Sessions::Session::L2Tp::get_entity_path(Entity* ancestor
     if (tunnel_client_authentication_id.is_set || is_set(tunnel_client_authentication_id.yfilter)) leaf_name_data.push_back(tunnel_client_authentication_id.get_name_leafdata());
     if (tunnel_server_authentication_id.is_set || is_set(tunnel_server_authentication_id.yfilter)) leaf_name_data.push_back(tunnel_server_authentication_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -947,6 +1336,180 @@ bool Vpdn::Sessions::Session::L2Tp::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
+Vpdn::Sessions::Session::Session_::Session_()
+    :
+    domain_name{YType::str, "domain-name"},
+    interface_name{YType::str, "interface-name"},
+    l2tp_session_id{YType::uint16, "l2tp-session-id"},
+    l2tp_tunnel_id{YType::uint16, "l2tp-tunnel-id"},
+    last_change{YType::str, "last-change"},
+    srg_slave{YType::boolean, "srg-slave"},
+    state{YType::enumeration, "state"},
+    username{YType::str, "username"}
+{
+
+    yang_name = "session"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vpdn::Sessions::Session::Session_::~Session_()
+{
+}
+
+bool Vpdn::Sessions::Session::Session_::has_data() const
+{
+    return domain_name.is_set
+	|| interface_name.is_set
+	|| l2tp_session_id.is_set
+	|| l2tp_tunnel_id.is_set
+	|| last_change.is_set
+	|| srg_slave.is_set
+	|| state.is_set
+	|| username.is_set;
+}
+
+bool Vpdn::Sessions::Session::Session_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(l2tp_session_id.yfilter)
+	|| ydk::is_set(l2tp_tunnel_id.yfilter)
+	|| ydk::is_set(last_change.yfilter)
+	|| ydk::is_set(srg_slave.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter);
+}
+
+std::string Vpdn::Sessions::Session::Session_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::Session_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (l2tp_session_id.is_set || is_set(l2tp_session_id.yfilter)) leaf_name_data.push_back(l2tp_session_id.get_name_leafdata());
+    if (l2tp_tunnel_id.is_set || is_set(l2tp_tunnel_id.yfilter)) leaf_name_data.push_back(l2tp_tunnel_id.get_name_leafdata());
+    if (last_change.is_set || is_set(last_change.yfilter)) leaf_name_data.push_back(last_change.get_name_leafdata());
+    if (srg_slave.is_set || is_set(srg_slave.yfilter)) leaf_name_data.push_back(srg_slave.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::Sessions::Session::Session_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Session_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vpdn::Sessions::Session::Session_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2tp-session-id")
+    {
+        l2tp_session_id = value;
+        l2tp_session_id.value_namespace = name_space;
+        l2tp_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2tp-tunnel-id")
+    {
+        l2tp_tunnel_id = value;
+        l2tp_tunnel_id.value_namespace = name_space;
+        l2tp_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-change")
+    {
+        last_change = value;
+        last_change.value_namespace = name_space;
+        last_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-slave")
+    {
+        srg_slave = value;
+        srg_slave.value_namespace = name_space;
+        srg_slave.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vpdn::Sessions::Session::Session_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-session-id")
+    {
+        l2tp_session_id.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-tunnel-id")
+    {
+        l2tp_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "last-change")
+    {
+        last_change.yfilter = yfilter;
+    }
+    if(value_path == "srg-slave")
+    {
+        srg_slave.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool Vpdn::Sessions::Session::Session_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-name" || name == "interface-name" || name == "l2tp-session-id" || name == "l2tp-tunnel-id" || name == "last-change" || name == "srg-slave" || name == "state" || name == "username")
+        return true;
+    return false;
+}
+
 Vpdn::Sessions::Session::Subscriber::Subscriber()
     :
     nas_port{YType::uint8, "nas-port"},
@@ -955,7 +1518,8 @@ Vpdn::Sessions::Session::Subscriber::Subscriber()
     receive_connect_speed{YType::uint64, "receive-connect-speed"},
     transmit_connect_speed{YType::uint64, "transmit-connect-speed"}
 {
-    yang_name = "subscriber"; yang_parent_name = "session";
+
+    yang_name = "subscriber"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Vpdn::Sessions::Session::Subscriber::~Subscriber()
@@ -994,23 +1558,11 @@ std::string Vpdn::Sessions::Session::Subscriber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subscriber";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::Sessions::Session::Subscriber::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::Subscriber::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Subscriber' in Cisco_IOS_XR_tunnel_vpdn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (nas_port_type.is_set || is_set(nas_port_type.yfilter)) leaf_name_data.push_back(nas_port_type.get_name_leafdata());
@@ -1020,9 +1572,7 @@ const EntityPath Vpdn::Sessions::Session::Subscriber::get_entity_path(Entity* an
 
     auto nas_port_name_datas = nas_port.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), nas_port_name_datas.begin(), nas_port_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1100,291 +1650,10 @@ bool Vpdn::Sessions::Session::Subscriber::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Vpdn::Sessions::Session::Configuration::Configuration()
-    :
-    dsl_line_forwarding{YType::boolean, "dsl-line-forwarding"},
-    l2tp_busy_timeout{YType::uint16, "l2tp-busy-timeout"},
-    template_name{YType::str, "template-name"},
-    tos{YType::uint8, "tos"},
-    tos_mode{YType::enumeration, "tos-mode"},
-    vrf_name{YType::str, "vrf-name"}
-    	,
-    vpn_id(std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>())
-{
-    vpn_id->parent = this;
-
-    yang_name = "configuration"; yang_parent_name = "session";
-}
-
-Vpdn::Sessions::Session::Configuration::~Configuration()
-{
-}
-
-bool Vpdn::Sessions::Session::Configuration::has_data() const
-{
-    return dsl_line_forwarding.is_set
-	|| l2tp_busy_timeout.is_set
-	|| template_name.is_set
-	|| tos.is_set
-	|| tos_mode.is_set
-	|| vrf_name.is_set
-	|| (vpn_id !=  nullptr && vpn_id->has_data());
-}
-
-bool Vpdn::Sessions::Session::Configuration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dsl_line_forwarding.yfilter)
-	|| ydk::is_set(l2tp_busy_timeout.yfilter)
-	|| ydk::is_set(template_name.yfilter)
-	|| ydk::is_set(tos.yfilter)
-	|| ydk::is_set(tos_mode.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| (vpn_id !=  nullptr && vpn_id->has_operation());
-}
-
-std::string Vpdn::Sessions::Session::Configuration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "configuration";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::Sessions::Session::Configuration::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Configuration' in Cisco_IOS_XR_tunnel_vpdn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dsl_line_forwarding.is_set || is_set(dsl_line_forwarding.yfilter)) leaf_name_data.push_back(dsl_line_forwarding.get_name_leafdata());
-    if (l2tp_busy_timeout.is_set || is_set(l2tp_busy_timeout.yfilter)) leaf_name_data.push_back(l2tp_busy_timeout.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
-    if (tos_mode.is_set || is_set(tos_mode.yfilter)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vpn-id")
-    {
-        if(vpn_id == nullptr)
-        {
-            vpn_id = std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>();
-        }
-        return vpn_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(vpn_id != nullptr)
-    {
-        children["vpn-id"] = vpn_id;
-    }
-
-    return children;
-}
-
-void Vpdn::Sessions::Session::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dsl-line-forwarding")
-    {
-        dsl_line_forwarding = value;
-        dsl_line_forwarding.value_namespace = name_space;
-        dsl_line_forwarding.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2tp-busy-timeout")
-    {
-        l2tp_busy_timeout = value;
-        l2tp_busy_timeout.value_namespace = name_space;
-        l2tp_busy_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "template-name")
-    {
-        template_name = value;
-        template_name.value_namespace = name_space;
-        template_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tos")
-    {
-        tos = value;
-        tos.value_namespace = name_space;
-        tos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tos-mode")
-    {
-        tos_mode = value;
-        tos_mode.value_namespace = name_space;
-        tos_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vpdn::Sessions::Session::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dsl-line-forwarding")
-    {
-        dsl_line_forwarding.yfilter = yfilter;
-    }
-    if(value_path == "l2tp-busy-timeout")
-    {
-        l2tp_busy_timeout.yfilter = yfilter;
-    }
-    if(value_path == "template-name")
-    {
-        template_name.yfilter = yfilter;
-    }
-    if(value_path == "tos")
-    {
-        tos.yfilter = yfilter;
-    }
-    if(value_path == "tos-mode")
-    {
-        tos_mode.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Vpdn::Sessions::Session::Configuration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vpn-id" || name == "dsl-line-forwarding" || name == "l2tp-busy-timeout" || name == "template-name" || name == "tos" || name == "tos-mode" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Vpdn::Sessions::Session::Configuration::VpnId::VpnId()
-    :
-    index_{YType::uint32, "index"},
-    oui{YType::uint32, "oui"}
-{
-    yang_name = "vpn-id"; yang_parent_name = "configuration";
-}
-
-Vpdn::Sessions::Session::Configuration::VpnId::~VpnId()
-{
-}
-
-bool Vpdn::Sessions::Session::Configuration::VpnId::has_data() const
-{
-    return index_.is_set
-	|| oui.is_set;
-}
-
-bool Vpdn::Sessions::Session::Configuration::VpnId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(oui.yfilter);
-}
-
-std::string Vpdn::Sessions::Session::Configuration::VpnId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vpn-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::Sessions::Session::Configuration::VpnId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VpnId' in Cisco_IOS_XR_tunnel_vpdn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::VpnId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::VpnId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vpdn::Sessions::Session::Configuration::VpnId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oui")
-    {
-        oui = value;
-        oui.value_namespace = name_space;
-        oui.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vpdn::Sessions::Session::Configuration::VpnId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "oui")
-    {
-        oui.yfilter = yfilter;
-    }
-}
-
-bool Vpdn::Sessions::Session::Configuration::VpnId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index" || name == "oui")
-        return true;
-    return false;
-}
-
 Vpdn::TunnelDestinations::TunnelDestinations()
 {
-    yang_name = "tunnel-destinations"; yang_parent_name = "vpdn";
+
+    yang_name = "tunnel-destinations"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::TunnelDestinations::~TunnelDestinations()
@@ -1411,33 +1680,26 @@ bool Vpdn::TunnelDestinations::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Vpdn::TunnelDestinations::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::TunnelDestinations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-destinations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::TunnelDestinations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::TunnelDestinations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1500,7 +1762,8 @@ Vpdn::TunnelDestinations::TunnelDestination::TunnelDestination()
     vrf_name{YType::str, "vrf-name"},
     vrf_name_xr{YType::str, "vrf-name-xr"}
 {
-    yang_name = "tunnel-destination"; yang_parent_name = "tunnel-destinations";
+
+    yang_name = "tunnel-destination"; yang_parent_name = "tunnel-destinations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::TunnelDestinations::TunnelDestination::~TunnelDestination()
@@ -1534,27 +1797,22 @@ bool Vpdn::TunnelDestinations::TunnelDestination::has_operation() const
 	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
+std::string Vpdn::TunnelDestinations::TunnelDestination::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/tunnel-destinations/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::TunnelDestinations::TunnelDestination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-destination";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::TunnelDestinations::TunnelDestination::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::TunnelDestinations::TunnelDestination::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/tunnel-destinations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -1567,9 +1825,7 @@ const EntityPath Vpdn::TunnelDestinations::TunnelDestination::get_entity_path(En
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1703,14 +1959,11 @@ Vpdn::VpdnMirroring::VpdnMirroring()
 	,qad_send_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadSendStatsLastClear>())
 {
     qad_recv_stats->parent = this;
-
     qad_recv_stats_last_clear->parent = this;
-
     qad_send_stats->parent = this;
-
     qad_send_stats_last_clear->parent = this;
 
-    yang_name = "vpdn-mirroring"; yang_parent_name = "vpdn";
+    yang_name = "vpdn-mirroring"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::VpdnMirroring::~VpdnMirroring()
@@ -1744,27 +1997,22 @@ bool Vpdn::VpdnMirroring::has_operation() const
 	|| (qad_send_stats_last_clear !=  nullptr && qad_send_stats_last_clear->has_operation());
 }
 
+std::string Vpdn::VpdnMirroring::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::VpdnMirroring::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpdn-mirroring";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::VpdnMirroring::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnMirroring::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (alloc_cnt.is_set || is_set(alloc_cnt.yfilter)) leaf_name_data.push_back(alloc_cnt.get_name_leafdata());
@@ -1773,9 +2021,7 @@ const EntityPath Vpdn::VpdnMirroring::get_entity_path(Entity* ancestor) const
     if (sso_err_cnt.is_set || is_set(sso_err_cnt.yfilter)) leaf_name_data.push_back(sso_err_cnt.get_name_leafdata());
     if (sync_not_conn_cnt.is_set || is_set(sync_not_conn_cnt.yfilter)) leaf_name_data.push_back(sync_not_conn_cnt.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1911,6 +2157,340 @@ bool Vpdn::VpdnMirroring::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
+Vpdn::VpdnMirroring::QadRecvStats::QadRecvStats()
+    :
+    acks_recvd{YType::uint32, "acks-recvd"},
+    init_drops{YType::uint32, "init-drops"},
+    msg_drops{YType::uint32, "msg-drops"},
+    msgs_recvd{YType::uint32, "msgs-recvd"},
+    ooo_drops{YType::uint32, "ooo-drops"},
+    recvd_acks_failed{YType::uint32, "recvd-acks-failed"},
+    stale_msgs{YType::uint32, "stale-msgs"}
+{
+
+    yang_name = "qad-recv-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Vpdn::VpdnMirroring::QadRecvStats::~QadRecvStats()
+{
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStats::has_data() const
+{
+    return acks_recvd.is_set
+	|| init_drops.is_set
+	|| msg_drops.is_set
+	|| msgs_recvd.is_set
+	|| ooo_drops.is_set
+	|| recvd_acks_failed.is_set
+	|| stale_msgs.is_set;
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(acks_recvd.yfilter)
+	|| ydk::is_set(init_drops.yfilter)
+	|| ydk::is_set(msg_drops.yfilter)
+	|| ydk::is_set(msgs_recvd.yfilter)
+	|| ydk::is_set(ooo_drops.yfilter)
+	|| ydk::is_set(recvd_acks_failed.yfilter)
+	|| ydk::is_set(stale_msgs.yfilter);
+}
+
+std::string Vpdn::VpdnMirroring::QadRecvStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Vpdn::VpdnMirroring::QadRecvStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qad-recv-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnMirroring::QadRecvStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (acks_recvd.is_set || is_set(acks_recvd.yfilter)) leaf_name_data.push_back(acks_recvd.get_name_leafdata());
+    if (init_drops.is_set || is_set(init_drops.yfilter)) leaf_name_data.push_back(init_drops.get_name_leafdata());
+    if (msg_drops.is_set || is_set(msg_drops.yfilter)) leaf_name_data.push_back(msg_drops.get_name_leafdata());
+    if (msgs_recvd.is_set || is_set(msgs_recvd.yfilter)) leaf_name_data.push_back(msgs_recvd.get_name_leafdata());
+    if (ooo_drops.is_set || is_set(ooo_drops.yfilter)) leaf_name_data.push_back(ooo_drops.get_name_leafdata());
+    if (recvd_acks_failed.is_set || is_set(recvd_acks_failed.yfilter)) leaf_name_data.push_back(recvd_acks_failed.get_name_leafdata());
+    if (stale_msgs.is_set || is_set(stale_msgs.yfilter)) leaf_name_data.push_back(stale_msgs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vpdn::VpdnMirroring::QadRecvStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "acks-recvd")
+    {
+        acks_recvd = value;
+        acks_recvd.value_namespace = name_space;
+        acks_recvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "init-drops")
+    {
+        init_drops = value;
+        init_drops.value_namespace = name_space;
+        init_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msg-drops")
+    {
+        msg_drops = value;
+        msg_drops.value_namespace = name_space;
+        msg_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msgs-recvd")
+    {
+        msgs_recvd = value;
+        msgs_recvd.value_namespace = name_space;
+        msgs_recvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ooo-drops")
+    {
+        ooo_drops = value;
+        ooo_drops.value_namespace = name_space;
+        ooo_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recvd-acks-failed")
+    {
+        recvd_acks_failed = value;
+        recvd_acks_failed.value_namespace = name_space;
+        recvd_acks_failed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-msgs")
+    {
+        stale_msgs = value;
+        stale_msgs.value_namespace = name_space;
+        stale_msgs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vpdn::VpdnMirroring::QadRecvStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acks-recvd")
+    {
+        acks_recvd.yfilter = yfilter;
+    }
+    if(value_path == "init-drops")
+    {
+        init_drops.yfilter = yfilter;
+    }
+    if(value_path == "msg-drops")
+    {
+        msg_drops.yfilter = yfilter;
+    }
+    if(value_path == "msgs-recvd")
+    {
+        msgs_recvd.yfilter = yfilter;
+    }
+    if(value_path == "ooo-drops")
+    {
+        ooo_drops.yfilter = yfilter;
+    }
+    if(value_path == "recvd-acks-failed")
+    {
+        recvd_acks_failed.yfilter = yfilter;
+    }
+    if(value_path == "stale-msgs")
+    {
+        stale_msgs.yfilter = yfilter;
+    }
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acks-recvd" || name == "init-drops" || name == "msg-drops" || name == "msgs-recvd" || name == "ooo-drops" || name == "recvd-acks-failed" || name == "stale-msgs")
+        return true;
+    return false;
+}
+
+Vpdn::VpdnMirroring::QadRecvStatsLastClear::QadRecvStatsLastClear()
+    :
+    acks_recvd{YType::uint32, "acks-recvd"},
+    init_drops{YType::uint32, "init-drops"},
+    msg_drops{YType::uint32, "msg-drops"},
+    msgs_recvd{YType::uint32, "msgs-recvd"},
+    ooo_drops{YType::uint32, "ooo-drops"},
+    recvd_acks_failed{YType::uint32, "recvd-acks-failed"},
+    stale_msgs{YType::uint32, "stale-msgs"}
+{
+
+    yang_name = "qad-recv-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Vpdn::VpdnMirroring::QadRecvStatsLastClear::~QadRecvStatsLastClear()
+{
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_data() const
+{
+    return acks_recvd.is_set
+	|| init_drops.is_set
+	|| msg_drops.is_set
+	|| msgs_recvd.is_set
+	|| ooo_drops.is_set
+	|| recvd_acks_failed.is_set
+	|| stale_msgs.is_set;
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(acks_recvd.yfilter)
+	|| ydk::is_set(init_drops.yfilter)
+	|| ydk::is_set(msg_drops.yfilter)
+	|| ydk::is_set(msgs_recvd.yfilter)
+	|| ydk::is_set(ooo_drops.yfilter)
+	|| ydk::is_set(recvd_acks_failed.yfilter)
+	|| ydk::is_set(stale_msgs.yfilter);
+}
+
+std::string Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qad-recv-stats-last-clear";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (acks_recvd.is_set || is_set(acks_recvd.yfilter)) leaf_name_data.push_back(acks_recvd.get_name_leafdata());
+    if (init_drops.is_set || is_set(init_drops.yfilter)) leaf_name_data.push_back(init_drops.get_name_leafdata());
+    if (msg_drops.is_set || is_set(msg_drops.yfilter)) leaf_name_data.push_back(msg_drops.get_name_leafdata());
+    if (msgs_recvd.is_set || is_set(msgs_recvd.yfilter)) leaf_name_data.push_back(msgs_recvd.get_name_leafdata());
+    if (ooo_drops.is_set || is_set(ooo_drops.yfilter)) leaf_name_data.push_back(ooo_drops.get_name_leafdata());
+    if (recvd_acks_failed.is_set || is_set(recvd_acks_failed.yfilter)) leaf_name_data.push_back(recvd_acks_failed.get_name_leafdata());
+    if (stale_msgs.is_set || is_set(stale_msgs.yfilter)) leaf_name_data.push_back(stale_msgs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vpdn::VpdnMirroring::QadRecvStatsLastClear::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "acks-recvd")
+    {
+        acks_recvd = value;
+        acks_recvd.value_namespace = name_space;
+        acks_recvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "init-drops")
+    {
+        init_drops = value;
+        init_drops.value_namespace = name_space;
+        init_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msg-drops")
+    {
+        msg_drops = value;
+        msg_drops.value_namespace = name_space;
+        msg_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msgs-recvd")
+    {
+        msgs_recvd = value;
+        msgs_recvd.value_namespace = name_space;
+        msgs_recvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ooo-drops")
+    {
+        ooo_drops = value;
+        ooo_drops.value_namespace = name_space;
+        ooo_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recvd-acks-failed")
+    {
+        recvd_acks_failed = value;
+        recvd_acks_failed.value_namespace = name_space;
+        recvd_acks_failed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-msgs")
+    {
+        stale_msgs = value;
+        stale_msgs.value_namespace = name_space;
+        stale_msgs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vpdn::VpdnMirroring::QadRecvStatsLastClear::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acks-recvd")
+    {
+        acks_recvd.yfilter = yfilter;
+    }
+    if(value_path == "init-drops")
+    {
+        init_drops.yfilter = yfilter;
+    }
+    if(value_path == "msg-drops")
+    {
+        msg_drops.yfilter = yfilter;
+    }
+    if(value_path == "msgs-recvd")
+    {
+        msgs_recvd.yfilter = yfilter;
+    }
+    if(value_path == "ooo-drops")
+    {
+        ooo_drops.yfilter = yfilter;
+    }
+    if(value_path == "recvd-acks-failed")
+    {
+        recvd_acks_failed.yfilter = yfilter;
+    }
+    if(value_path == "stale-msgs")
+    {
+        stale_msgs.yfilter = yfilter;
+    }
+}
+
+bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acks-recvd" || name == "init-drops" || name == "msg-drops" || name == "msgs-recvd" || name == "ooo-drops" || name == "recvd-acks-failed" || name == "stale-msgs")
+        return true;
+    return false;
+}
+
 Vpdn::VpdnMirroring::QadSendStats::QadSendStats()
     :
     acks_failed{YType::uint32, "acks-failed"},
@@ -1933,7 +2513,8 @@ Vpdn::VpdnMirroring::QadSendStats::QadSendStats()
     suspends{YType::uint32, "suspends"},
     timeouts{YType::uint32, "timeouts"}
 {
-    yang_name = "qad-send-stats"; yang_parent_name = "vpdn-mirroring";
+
+    yang_name = "qad-send-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::VpdnMirroring::QadSendStats::~QadSendStats()
@@ -1987,27 +2568,22 @@ bool Vpdn::VpdnMirroring::QadSendStats::has_operation() const
 	|| ydk::is_set(timeouts.yfilter);
 }
 
+std::string Vpdn::VpdnMirroring::QadSendStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::VpdnMirroring::QadSendStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qad-send-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::VpdnMirroring::QadSendStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnMirroring::QadSendStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (acks_failed.is_set || is_set(acks_failed.yfilter)) leaf_name_data.push_back(acks_failed.get_name_leafdata());
@@ -2030,9 +2606,7 @@ const EntityPath Vpdn::VpdnMirroring::QadSendStats::get_entity_path(Entity* ance
     if (suspends.is_set || is_set(suspends.yfilter)) leaf_name_data.push_back(suspends.get_name_leafdata());
     if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2252,179 +2826,6 @@ bool Vpdn::VpdnMirroring::QadSendStats::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Vpdn::VpdnMirroring::QadRecvStats::QadRecvStats()
-    :
-    acks_recvd{YType::uint32, "acks-recvd"},
-    init_drops{YType::uint32, "init-drops"},
-    msg_drops{YType::uint32, "msg-drops"},
-    msgs_recvd{YType::uint32, "msgs-recvd"},
-    ooo_drops{YType::uint32, "ooo-drops"},
-    recvd_acks_failed{YType::uint32, "recvd-acks-failed"},
-    stale_msgs{YType::uint32, "stale-msgs"}
-{
-    yang_name = "qad-recv-stats"; yang_parent_name = "vpdn-mirroring";
-}
-
-Vpdn::VpdnMirroring::QadRecvStats::~QadRecvStats()
-{
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStats::has_data() const
-{
-    return acks_recvd.is_set
-	|| init_drops.is_set
-	|| msg_drops.is_set
-	|| msgs_recvd.is_set
-	|| ooo_drops.is_set
-	|| recvd_acks_failed.is_set
-	|| stale_msgs.is_set;
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(acks_recvd.yfilter)
-	|| ydk::is_set(init_drops.yfilter)
-	|| ydk::is_set(msg_drops.yfilter)
-	|| ydk::is_set(msgs_recvd.yfilter)
-	|| ydk::is_set(ooo_drops.yfilter)
-	|| ydk::is_set(recvd_acks_failed.yfilter)
-	|| ydk::is_set(stale_msgs.yfilter);
-}
-
-std::string Vpdn::VpdnMirroring::QadRecvStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qad-recv-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::VpdnMirroring::QadRecvStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (acks_recvd.is_set || is_set(acks_recvd.yfilter)) leaf_name_data.push_back(acks_recvd.get_name_leafdata());
-    if (init_drops.is_set || is_set(init_drops.yfilter)) leaf_name_data.push_back(init_drops.get_name_leafdata());
-    if (msg_drops.is_set || is_set(msg_drops.yfilter)) leaf_name_data.push_back(msg_drops.get_name_leafdata());
-    if (msgs_recvd.is_set || is_set(msgs_recvd.yfilter)) leaf_name_data.push_back(msgs_recvd.get_name_leafdata());
-    if (ooo_drops.is_set || is_set(ooo_drops.yfilter)) leaf_name_data.push_back(ooo_drops.get_name_leafdata());
-    if (recvd_acks_failed.is_set || is_set(recvd_acks_failed.yfilter)) leaf_name_data.push_back(recvd_acks_failed.get_name_leafdata());
-    if (stale_msgs.is_set || is_set(stale_msgs.yfilter)) leaf_name_data.push_back(stale_msgs.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vpdn::VpdnMirroring::QadRecvStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "acks-recvd")
-    {
-        acks_recvd = value;
-        acks_recvd.value_namespace = name_space;
-        acks_recvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "init-drops")
-    {
-        init_drops = value;
-        init_drops.value_namespace = name_space;
-        init_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msg-drops")
-    {
-        msg_drops = value;
-        msg_drops.value_namespace = name_space;
-        msg_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msgs-recvd")
-    {
-        msgs_recvd = value;
-        msgs_recvd.value_namespace = name_space;
-        msgs_recvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ooo-drops")
-    {
-        ooo_drops = value;
-        ooo_drops.value_namespace = name_space;
-        ooo_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recvd-acks-failed")
-    {
-        recvd_acks_failed = value;
-        recvd_acks_failed.value_namespace = name_space;
-        recvd_acks_failed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stale-msgs")
-    {
-        stale_msgs = value;
-        stale_msgs.value_namespace = name_space;
-        stale_msgs.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vpdn::VpdnMirroring::QadRecvStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "acks-recvd")
-    {
-        acks_recvd.yfilter = yfilter;
-    }
-    if(value_path == "init-drops")
-    {
-        init_drops.yfilter = yfilter;
-    }
-    if(value_path == "msg-drops")
-    {
-        msg_drops.yfilter = yfilter;
-    }
-    if(value_path == "msgs-recvd")
-    {
-        msgs_recvd.yfilter = yfilter;
-    }
-    if(value_path == "ooo-drops")
-    {
-        ooo_drops.yfilter = yfilter;
-    }
-    if(value_path == "recvd-acks-failed")
-    {
-        recvd_acks_failed.yfilter = yfilter;
-    }
-    if(value_path == "stale-msgs")
-    {
-        stale_msgs.yfilter = yfilter;
-    }
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acks-recvd" || name == "init-drops" || name == "msg-drops" || name == "msgs-recvd" || name == "ooo-drops" || name == "recvd-acks-failed" || name == "stale-msgs")
-        return true;
-    return false;
-}
-
 Vpdn::VpdnMirroring::QadSendStatsLastClear::QadSendStatsLastClear()
     :
     acks_failed{YType::uint32, "acks-failed"},
@@ -2447,7 +2848,8 @@ Vpdn::VpdnMirroring::QadSendStatsLastClear::QadSendStatsLastClear()
     suspends{YType::uint32, "suspends"},
     timeouts{YType::uint32, "timeouts"}
 {
-    yang_name = "qad-send-stats-last-clear"; yang_parent_name = "vpdn-mirroring";
+
+    yang_name = "qad-send-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::VpdnMirroring::QadSendStatsLastClear::~QadSendStatsLastClear()
@@ -2501,27 +2903,22 @@ bool Vpdn::VpdnMirroring::QadSendStatsLastClear::has_operation() const
 	|| ydk::is_set(timeouts.yfilter);
 }
 
+std::string Vpdn::VpdnMirroring::QadSendStatsLastClear::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::VpdnMirroring::QadSendStatsLastClear::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qad-send-stats-last-clear";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::VpdnMirroring::QadSendStatsLastClear::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnMirroring::QadSendStatsLastClear::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (acks_failed.is_set || is_set(acks_failed.yfilter)) leaf_name_data.push_back(acks_failed.get_name_leafdata());
@@ -2544,9 +2941,7 @@ const EntityPath Vpdn::VpdnMirroring::QadSendStatsLastClear::get_entity_path(Ent
     if (suspends.is_set || is_set(suspends.yfilter)) leaf_name_data.push_back(suspends.get_name_leafdata());
     if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2766,179 +3161,6 @@ bool Vpdn::VpdnMirroring::QadSendStatsLastClear::has_leaf_or_child_of_name(const
     return false;
 }
 
-Vpdn::VpdnMirroring::QadRecvStatsLastClear::QadRecvStatsLastClear()
-    :
-    acks_recvd{YType::uint32, "acks-recvd"},
-    init_drops{YType::uint32, "init-drops"},
-    msg_drops{YType::uint32, "msg-drops"},
-    msgs_recvd{YType::uint32, "msgs-recvd"},
-    ooo_drops{YType::uint32, "ooo-drops"},
-    recvd_acks_failed{YType::uint32, "recvd-acks-failed"},
-    stale_msgs{YType::uint32, "stale-msgs"}
-{
-    yang_name = "qad-recv-stats-last-clear"; yang_parent_name = "vpdn-mirroring";
-}
-
-Vpdn::VpdnMirroring::QadRecvStatsLastClear::~QadRecvStatsLastClear()
-{
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_data() const
-{
-    return acks_recvd.is_set
-	|| init_drops.is_set
-	|| msg_drops.is_set
-	|| msgs_recvd.is_set
-	|| ooo_drops.is_set
-	|| recvd_acks_failed.is_set
-	|| stale_msgs.is_set;
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(acks_recvd.yfilter)
-	|| ydk::is_set(init_drops.yfilter)
-	|| ydk::is_set(msg_drops.yfilter)
-	|| ydk::is_set(msgs_recvd.yfilter)
-	|| ydk::is_set(ooo_drops.yfilter)
-	|| ydk::is_set(recvd_acks_failed.yfilter)
-	|| ydk::is_set(stale_msgs.yfilter);
-}
-
-std::string Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qad-recv-stats-last-clear";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/vpdn-mirroring/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (acks_recvd.is_set || is_set(acks_recvd.yfilter)) leaf_name_data.push_back(acks_recvd.get_name_leafdata());
-    if (init_drops.is_set || is_set(init_drops.yfilter)) leaf_name_data.push_back(init_drops.get_name_leafdata());
-    if (msg_drops.is_set || is_set(msg_drops.yfilter)) leaf_name_data.push_back(msg_drops.get_name_leafdata());
-    if (msgs_recvd.is_set || is_set(msgs_recvd.yfilter)) leaf_name_data.push_back(msgs_recvd.get_name_leafdata());
-    if (ooo_drops.is_set || is_set(ooo_drops.yfilter)) leaf_name_data.push_back(ooo_drops.get_name_leafdata());
-    if (recvd_acks_failed.is_set || is_set(recvd_acks_failed.yfilter)) leaf_name_data.push_back(recvd_acks_failed.get_name_leafdata());
-    if (stale_msgs.is_set || is_set(stale_msgs.yfilter)) leaf_name_data.push_back(stale_msgs.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vpdn::VpdnMirroring::QadRecvStatsLastClear::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "acks-recvd")
-    {
-        acks_recvd = value;
-        acks_recvd.value_namespace = name_space;
-        acks_recvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "init-drops")
-    {
-        init_drops = value;
-        init_drops.value_namespace = name_space;
-        init_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msg-drops")
-    {
-        msg_drops = value;
-        msg_drops.value_namespace = name_space;
-        msg_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "msgs-recvd")
-    {
-        msgs_recvd = value;
-        msgs_recvd.value_namespace = name_space;
-        msgs_recvd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ooo-drops")
-    {
-        ooo_drops = value;
-        ooo_drops.value_namespace = name_space;
-        ooo_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recvd-acks-failed")
-    {
-        recvd_acks_failed = value;
-        recvd_acks_failed.value_namespace = name_space;
-        recvd_acks_failed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stale-msgs")
-    {
-        stale_msgs = value;
-        stale_msgs.value_namespace = name_space;
-        stale_msgs.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vpdn::VpdnMirroring::QadRecvStatsLastClear::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "acks-recvd")
-    {
-        acks_recvd.yfilter = yfilter;
-    }
-    if(value_path == "init-drops")
-    {
-        init_drops.yfilter = yfilter;
-    }
-    if(value_path == "msg-drops")
-    {
-        msg_drops.yfilter = yfilter;
-    }
-    if(value_path == "msgs-recvd")
-    {
-        msgs_recvd.yfilter = yfilter;
-    }
-    if(value_path == "ooo-drops")
-    {
-        ooo_drops.yfilter = yfilter;
-    }
-    if(value_path == "recvd-acks-failed")
-    {
-        recvd_acks_failed.yfilter = yfilter;
-    }
-    if(value_path == "stale-msgs")
-    {
-        stale_msgs.yfilter = yfilter;
-    }
-}
-
-bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acks-recvd" || name == "init-drops" || name == "msg-drops" || name == "msgs-recvd" || name == "ooo-drops" || name == "recvd-acks-failed" || name == "stale-msgs")
-        return true;
-    return false;
-}
-
 Vpdn::VpdnRedundancy::VpdnRedundancy()
     :
     abort_time{YType::uint64, "abort-time"},
@@ -2948,7 +3170,8 @@ Vpdn::VpdnRedundancy::VpdnRedundancy()
     start_time{YType::uint64, "start-time"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "vpdn-redundancy"; yang_parent_name = "vpdn";
+
+    yang_name = "vpdn-redundancy"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vpdn::VpdnRedundancy::~VpdnRedundancy()
@@ -2976,27 +3199,22 @@ bool Vpdn::VpdnRedundancy::has_operation() const
 	|| ydk::is_set(state.yfilter);
 }
 
+std::string Vpdn::VpdnRedundancy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vpdn::VpdnRedundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpdn-redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vpdn::VpdnRedundancy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vpdn::VpdnRedundancy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (abort_time.is_set || is_set(abort_time.yfilter)) leaf_name_data.push_back(abort_time.get_name_leafdata());
@@ -3006,9 +3224,7 @@ const EntityPath Vpdn::VpdnRedundancy::get_entity_path(Entity* ancestor) const
     if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3098,388 +3314,9 @@ bool Vpdn::VpdnRedundancy::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-Vpdn::HistoryFailures::HistoryFailures()
-{
-    yang_name = "history-failures"; yang_parent_name = "vpdn";
-}
-
-Vpdn::HistoryFailures::~HistoryFailures()
-{
-}
-
-bool Vpdn::HistoryFailures::has_data() const
-{
-    for (std::size_t index=0; index<history_failure.size(); index++)
-    {
-        if(history_failure[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Vpdn::HistoryFailures::has_operation() const
-{
-    for (std::size_t index=0; index<history_failure.size(); index++)
-    {
-        if(history_failure[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Vpdn::HistoryFailures::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "history-failures";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::HistoryFailures::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "history-failure")
-    {
-        for(auto const & c : history_failure)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Vpdn::HistoryFailures::HistoryFailure>();
-        c->parent = this;
-        history_failure.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : history_failure)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Vpdn::HistoryFailures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Vpdn::HistoryFailures::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Vpdn::HistoryFailures::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "history-failure")
-        return true;
-    return false;
-}
-
-Vpdn::HistoryFailures::HistoryFailure::HistoryFailure()
-    :
-    destination_address{YType::str, "destination-address"},
-    domain_name{YType::str, "domain-name"},
-    error_repeat_count{YType::uint16, "error-repeat-count"},
-    event_time{YType::str, "event-time"},
-    failure_type{YType::enumeration, "failure-type"},
-    home_gateway{YType::str, "home-gateway"},
-    local_client_id{YType::uint16, "local-client-id"},
-    mid{YType::uint16, "mid"},
-    nas{YType::str, "nas"},
-    remote_client_id{YType::uint16, "remote-client-id"},
-    remote_name{YType::str, "remote-name"},
-    source_address{YType::str, "source-address"},
-    username{YType::str, "username"},
-    username_xr{YType::str, "username-xr"}
-{
-    yang_name = "history-failure"; yang_parent_name = "history-failures";
-}
-
-Vpdn::HistoryFailures::HistoryFailure::~HistoryFailure()
-{
-}
-
-bool Vpdn::HistoryFailures::HistoryFailure::has_data() const
-{
-    return destination_address.is_set
-	|| domain_name.is_set
-	|| error_repeat_count.is_set
-	|| event_time.is_set
-	|| failure_type.is_set
-	|| home_gateway.is_set
-	|| local_client_id.is_set
-	|| mid.is_set
-	|| nas.is_set
-	|| remote_client_id.is_set
-	|| remote_name.is_set
-	|| source_address.is_set
-	|| username.is_set
-	|| username_xr.is_set;
-}
-
-bool Vpdn::HistoryFailures::HistoryFailure::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(domain_name.yfilter)
-	|| ydk::is_set(error_repeat_count.yfilter)
-	|| ydk::is_set(event_time.yfilter)
-	|| ydk::is_set(failure_type.yfilter)
-	|| ydk::is_set(home_gateway.yfilter)
-	|| ydk::is_set(local_client_id.yfilter)
-	|| ydk::is_set(mid.yfilter)
-	|| ydk::is_set(nas.yfilter)
-	|| ydk::is_set(remote_client_id.yfilter)
-	|| ydk::is_set(remote_name.yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(username_xr.yfilter);
-}
-
-std::string Vpdn::HistoryFailures::HistoryFailure::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "history-failure";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vpdn::HistoryFailures::HistoryFailure::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tunnel-vpdn-oper:vpdn/history-failures/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (error_repeat_count.is_set || is_set(error_repeat_count.yfilter)) leaf_name_data.push_back(error_repeat_count.get_name_leafdata());
-    if (event_time.is_set || is_set(event_time.yfilter)) leaf_name_data.push_back(event_time.get_name_leafdata());
-    if (failure_type.is_set || is_set(failure_type.yfilter)) leaf_name_data.push_back(failure_type.get_name_leafdata());
-    if (home_gateway.is_set || is_set(home_gateway.yfilter)) leaf_name_data.push_back(home_gateway.get_name_leafdata());
-    if (local_client_id.is_set || is_set(local_client_id.yfilter)) leaf_name_data.push_back(local_client_id.get_name_leafdata());
-    if (mid.is_set || is_set(mid.yfilter)) leaf_name_data.push_back(mid.get_name_leafdata());
-    if (nas.is_set || is_set(nas.yfilter)) leaf_name_data.push_back(nas.get_name_leafdata());
-    if (remote_client_id.is_set || is_set(remote_client_id.yfilter)) leaf_name_data.push_back(remote_client_id.get_name_leafdata());
-    if (remote_name.is_set || is_set(remote_name.yfilter)) leaf_name_data.push_back(remote_name.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (username_xr.is_set || is_set(username_xr.yfilter)) leaf_name_data.push_back(username_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vpdn::HistoryFailures::HistoryFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::HistoryFailure::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vpdn::HistoryFailures::HistoryFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "domain-name")
-    {
-        domain_name = value;
-        domain_name.value_namespace = name_space;
-        domain_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "error-repeat-count")
-    {
-        error_repeat_count = value;
-        error_repeat_count.value_namespace = name_space;
-        error_repeat_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "event-time")
-    {
-        event_time = value;
-        event_time.value_namespace = name_space;
-        event_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "failure-type")
-    {
-        failure_type = value;
-        failure_type.value_namespace = name_space;
-        failure_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "home-gateway")
-    {
-        home_gateway = value;
-        home_gateway.value_namespace = name_space;
-        home_gateway.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-client-id")
-    {
-        local_client_id = value;
-        local_client_id.value_namespace = name_space;
-        local_client_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid")
-    {
-        mid = value;
-        mid.value_namespace = name_space;
-        mid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nas")
-    {
-        nas = value;
-        nas.value_namespace = name_space;
-        nas.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-client-id")
-    {
-        remote_client_id = value;
-        remote_client_id.value_namespace = name_space;
-        remote_client_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-name")
-    {
-        remote_name = value;
-        remote_name.value_namespace = name_space;
-        remote_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username-xr")
-    {
-        username_xr = value;
-        username_xr.value_namespace = name_space;
-        username_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vpdn::HistoryFailures::HistoryFailure::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "domain-name")
-    {
-        domain_name.yfilter = yfilter;
-    }
-    if(value_path == "error-repeat-count")
-    {
-        error_repeat_count.yfilter = yfilter;
-    }
-    if(value_path == "event-time")
-    {
-        event_time.yfilter = yfilter;
-    }
-    if(value_path == "failure-type")
-    {
-        failure_type.yfilter = yfilter;
-    }
-    if(value_path == "home-gateway")
-    {
-        home_gateway.yfilter = yfilter;
-    }
-    if(value_path == "local-client-id")
-    {
-        local_client_id.yfilter = yfilter;
-    }
-    if(value_path == "mid")
-    {
-        mid.yfilter = yfilter;
-    }
-    if(value_path == "nas")
-    {
-        nas.yfilter = yfilter;
-    }
-    if(value_path == "remote-client-id")
-    {
-        remote_client_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-name")
-    {
-        remote_name.yfilter = yfilter;
-    }
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-    if(value_path == "username-xr")
-    {
-        username_xr.yfilter = yfilter;
-    }
-}
-
-bool Vpdn::HistoryFailures::HistoryFailure::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "domain-name" || name == "error-repeat-count" || name == "event-time" || name == "failure-type" || name == "home-gateway" || name == "local-client-id" || name == "mid" || name == "nas" || name == "remote-client-id" || name == "remote-name" || name == "source-address" || name == "username" || name == "username-xr")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf LsgStatus::none {0, "none"};
-const Enum::YLeaf LsgStatus::active {1, "active"};
-const Enum::YLeaf LsgStatus::down {2, "down"};
-const Enum::YLeaf LsgStatus::testable {3, "testable"};
-const Enum::YLeaf LsgStatus::testing {4, "testing"};
+const Enum::YLeaf VpdnState::initial_state {0, "initial-state"};
+const Enum::YLeaf VpdnState::init_sync_in_progress {1, "init-sync-in-progress"};
+const Enum::YLeaf VpdnState::steady_state {2, "steady-state"};
 
 const Enum::YLeaf VpdnNasPort::none {0, "none"};
 const Enum::YLeaf VpdnNasPort::primary {1, "primary"};
@@ -3511,14 +3348,6 @@ const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-ove
 const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_q_in_q {27, "virtual-i-po-e-over-q-in-q"};
 const Enum::YLeaf VpdnNasPort::unknown {28, "unknown"};
 
-const Enum::YLeaf TosMode::default_ {0, "default"};
-const Enum::YLeaf TosMode::set {1, "set"};
-const Enum::YLeaf TosMode::reflect {2, "reflect"};
-
-const Enum::YLeaf VpdnState::initial_state {0, "initial-state"};
-const Enum::YLeaf VpdnState::init_sync_in_progress {1, "init-sync-in-progress"};
-const Enum::YLeaf VpdnState::steady_state {2, "steady-state"};
-
 const Enum::YLeaf VpdnFailcode::unknown {0, "unknown"};
 const Enum::YLeaf VpdnFailcode::peer_action {1, "peer-action"};
 const Enum::YLeaf VpdnFailcode::authentication {2, "authentication"};
@@ -3542,6 +3371,16 @@ const Enum::YLeaf VpdnFailcode::call_prarmeters {18, "call-prarmeters"};
 const Enum::YLeaf SessionState::idle {0, "idle"};
 const Enum::YLeaf SessionState::connected {1, "connected"};
 const Enum::YLeaf SessionState::established {2, "established"};
+
+const Enum::YLeaf LsgStatus::none {0, "none"};
+const Enum::YLeaf LsgStatus::active {1, "active"};
+const Enum::YLeaf LsgStatus::down {2, "down"};
+const Enum::YLeaf LsgStatus::testable {3, "testable"};
+const Enum::YLeaf LsgStatus::testing {4, "testing"};
+
+const Enum::YLeaf TosMode::default_ {0, "default"};
+const Enum::YLeaf TosMode::set {1, "set"};
+const Enum::YLeaf TosMode::reflect {2, "reflect"};
 
 
 }

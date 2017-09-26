@@ -36,10 +36,10 @@ namespace path
 struct Capability;
 }
 
-const std::vector<path::Capability> get_global_capabilities();
+const std::vector<std::unordered_map<std::string, path::Capability>> get_global_capabilities_lookup_tables();
 
 // Variable is generated
-extern std::vector<path::Capability> ydk_global_capabilities;
+extern std::vector<std::unordered_map<std::string, path::Capability>> ydk_global_capabilities_lookup_tables;
 
 }
 

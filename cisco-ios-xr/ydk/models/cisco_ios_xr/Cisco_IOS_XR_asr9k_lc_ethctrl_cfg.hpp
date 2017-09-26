@@ -10,19 +10,19 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_ethctrl_cfg {
 
+class PermitPluggable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+};
+
 class EtherCtrlTransportMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf wan;
         static const ydk::Enum::YLeaf otnopu1e;
         static const ydk::Enum::YLeaf otnopu2e;
-
-};
-
-class PermitPluggable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
 
 };
 

@@ -18,7 +18,7 @@ class FabricStats : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class FabricStats : public ydk::Entity
 
         class Nodes; //type: FabricStats::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes> nodes;
         
 }; // FabricStats
 
@@ -46,17 +46,18 @@ class FabricStats::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: FabricStats::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node> > node;
         
 }; // FabricStats::Nodes
 
@@ -69,18 +70,19 @@ class FabricStats::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         class Statses; //type: FabricStats::Nodes::Node::Statses
 
-        std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses> statses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses> statses;
         
 }; // FabricStats::Nodes::Node
 
@@ -93,7 +95,7 @@ class FabricStats::Nodes::Node::Statses : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -103,7 +105,7 @@ class FabricStats::Nodes::Node::Statses : public ydk::Entity
 
         class Stats; //type: FabricStats::Nodes::Node::Statses::Stats
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats> > stats;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats> > stats;
         
 }; // FabricStats::Nodes::Node::Statses
 
@@ -116,7 +118,7 @@ class FabricStats::Nodes::Node::Statses::Stats : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -125,10 +127,11 @@ class FabricStats::Nodes::Node::Statses::Stats : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
+        ydk::YLeaf last_clear_time; //type: uint64
         ydk::YLeaf stat_table_name; //type: string
         class StatsTable; //type: FabricStats::Nodes::Node::Statses::Stats::StatsTable
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable> > stats_table;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable> > stats_table;
         
 }; // FabricStats::Nodes::Node::Statses::Stats
 
@@ -141,7 +144,7 @@ class FabricStats::Nodes::Node::Statses::Stats::StatsTable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -151,7 +154,7 @@ class FabricStats::Nodes::Node::Statses::Stats::StatsTable : public ydk::Entity
 
         class FsiStat; //type: FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat> > fsi_stat;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_fsi_oper::FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat> > fsi_stat;
         
 }; // FabricStats::Nodes::Node::Statses::Stats::StatsTable
 
@@ -164,7 +167,7 @@ class FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

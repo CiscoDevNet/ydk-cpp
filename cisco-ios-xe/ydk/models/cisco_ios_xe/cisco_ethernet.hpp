@@ -19,59 +19,59 @@ class EthIfSpeed : public virtual ydk::Identity
 
 }; // EthIfSpeed
 
-class EthIfSpeed40Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed100gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed40Gb();
-        ~EthIfSpeed40Gb();
+        EthIfSpeed100gb();
+        ~EthIfSpeed100gb();
 
 
-}; // EthIfSpeed40Gb
+}; // EthIfSpeed100gb
 
-class EthIfSpeed100Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed100mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed100Gb();
-        ~EthIfSpeed100Gb();
+        EthIfSpeed100mb();
+        ~EthIfSpeed100mb();
 
 
-}; // EthIfSpeed100Gb
+}; // EthIfSpeed100mb
 
-class EthIfSpeed100Mb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed10gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed100Mb();
-        ~EthIfSpeed100Mb();
+        EthIfSpeed10gb();
+        ~EthIfSpeed10gb();
 
 
-}; // EthIfSpeed100Mb
+}; // EthIfSpeed10gb
 
-class EthIfSpeed1Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed10mb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed1Gb();
-        ~EthIfSpeed1Gb();
+        EthIfSpeed10mb();
+        ~EthIfSpeed10mb();
 
 
-}; // EthIfSpeed1Gb
+}; // EthIfSpeed10mb
 
-class EthIfSpeed10Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed1gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed10Gb();
-        ~EthIfSpeed10Gb();
+        EthIfSpeed1gb();
+        ~EthIfSpeed1gb();
 
 
-}; // EthIfSpeed10Gb
+}; // EthIfSpeed1gb
 
-class EthIfSpeed10Mb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
+class EthIfSpeed40gb : public cisco_ios_xe::cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed10Mb();
-        ~EthIfSpeed10Mb();
+        EthIfSpeed40gb();
+        ~EthIfSpeed40gb();
 
 
-}; // EthIfSpeed10Mb
+}; // EthIfSpeed40gb
 
 
 }

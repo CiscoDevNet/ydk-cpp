@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_ATM_QOS_MIB {
 
-class CiscoAtmQosMib : public ydk::Entity
+class CISCOATMQOSMIB : public ydk::Entity
 {
     public:
-        CiscoAtmQosMib();
-        ~CiscoAtmQosMib();
+        CISCOATMQOSMIB();
+        ~CISCOATMQOSMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,20 +32,129 @@ class CiscoAtmQosMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Caqvccparamstable; //type: CiscoAtmQosMib::Caqvccparamstable
-        class Caqvpcparamstable; //type: CiscoAtmQosMib::Caqvpcparamstable
-        class Caqqueuingparamstable; //type: CiscoAtmQosMib::Caqqueuingparamstable
-        class Caqqueuingparamsclasstable; //type: CiscoAtmQosMib::Caqqueuingparamsclasstable
+        class Caqvccparamstable; //type: CISCOATMQOSMIB::Caqvccparamstable
+        class Caqvpcparamstable; //type: CISCOATMQOSMIB::Caqvpcparamstable
+        class Caqqueuingparamstable; //type: CISCOATMQOSMIB::Caqqueuingparamstable
+        class Caqqueuingparamsclasstable; //type: CISCOATMQOSMIB::Caqqueuingparamsclasstable
 
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable> caqqueuingparamsclasstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable> caqqueuingparamstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable> caqvccparamstable;
-        std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable> caqvpcparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamsclasstable> caqqueuingparamsclasstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamstable> caqqueuingparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvccparamstable> caqvccparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvpcparamstable> caqvpcparamstable;
         
-}; // CiscoAtmQosMib
+}; // CISCOATMQOSMIB
 
 
-class CiscoAtmQosMib::Caqvccparamstable : public ydk::Entity
+class CISCOATMQOSMIB::Caqqueuingparamsclasstable : public ydk::Entity
+{
+    public:
+        Caqqueuingparamsclasstable();
+        ~Caqqueuingparamsclasstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Caqqueuingparamsclassentry; //type: CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry> > caqqueuingparamsclassentry;
+        
+}; // CISCOATMQOSMIB::Caqqueuingparamsclasstable
+
+
+class CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry : public ydk::Entity
+{
+    public:
+        Caqqueuingparamsclassentry();
+        ~Caqqueuingparamsclassentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        ydk::YLeaf atmvclvci;
+        ydk::YLeaf caqqueuingparamsclassindex; //type: int32
+        ydk::YLeaf caqqueuingparamsclassranddrp; //type: uint32
+        ydk::YLeaf caqqueuingparamsclasstaildrp; //type: uint32
+        ydk::YLeaf caqqueuingparamsclassminthre; //type: uint32
+        ydk::YLeaf caqqueuingparamsclassmaxthre; //type: uint32
+        ydk::YLeaf caqqueuingparamsclassmrkprob; //type: uint32
+
+}; // CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
+
+
+class CISCOATMQOSMIB::Caqqueuingparamstable : public ydk::Entity
+{
+    public:
+        Caqqueuingparamstable();
+        ~Caqqueuingparamstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Caqqueuingparamsentry; //type: CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry> > caqqueuingparamsentry;
+        
+}; // CISCOATMQOSMIB::Caqqueuingparamstable
+
+
+class CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry : public ydk::Entity
+{
+    public:
+        Caqqueuingparamsentry();
+        ~Caqqueuingparamsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        ydk::YLeaf atmvclvpi;
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        ydk::YLeaf atmvclvci;
+        ydk::YLeaf caqqueuingparamsmeanqdepth; //type: uint32
+
+}; // CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry
+
+
+class CISCOATMQOSMIB::Caqvccparamstable : public ydk::Entity
 {
     public:
         Caqvccparamstable();
@@ -53,22 +162,23 @@ class CiscoAtmQosMib::Caqvccparamstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Caqvccparamsentry; //type: CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry
+        class Caqvccparamsentry; //type: CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry> > caqvccparamsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry> > caqvccparamsentry;
         
-}; // CiscoAtmQosMib::Caqvccparamstable
+}; // CISCOATMQOSMIB::Caqvccparamstable
 
 
-class CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
+class CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
 {
     public:
         Caqvccparamsentry();
@@ -76,21 +186,22 @@ class CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
         ydk::YLeaf atmvclvci;
-        ydk::YLeaf caqvccparamstype; //type: Atmservicecategory
+        ydk::YLeaf caqvccparamstype; //type: AtmServiceCategory
         ydk::YLeaf caqvccparamspcrin0; //type: uint32
         ydk::YLeaf caqvccparamspcrin01; //type: uint32
         ydk::YLeaf caqvccparamspcrout0; //type: uint32
@@ -103,12 +214,12 @@ class CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
         ydk::YLeaf caqvccparamsbcsin01; //type: uint32
         ydk::YLeaf caqvccparamsbcsout0; //type: uint32
         ydk::YLeaf caqvccparamsbcsout01; //type: uint32
-        ydk::YLeaf caqvccparamsinheritlevel; //type: Vcparamconfiglocation
+        ydk::YLeaf caqvccparamsinheritlevel; //type: VcParamConfigLocation
         ydk::YLeaf caqvccparamsmcrin; //type: uint32
         ydk::YLeaf caqvccparamsmcrout; //type: uint32
         ydk::YLeaf caqvccparamsinvrdf; //type: uint32
         ydk::YLeaf caqvccparamsinvrif; //type: uint32
-        ydk::YLeaf caqvccparamsrfl; //type: Vcparamconfiglocation
+        ydk::YLeaf caqvccparamsrfl; //type: VcParamConfigLocation
         ydk::YLeaf caqvccparamscdv; //type: uint32
         ydk::YLeaf caqvccparamscdvt; //type: uint32
         ydk::YLeaf caqvccparamsicr; //type: uint32
@@ -119,10 +230,10 @@ class CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
         ydk::YLeaf caqvccparamsinvcdf; //type: uint32
         ydk::YLeaf caqvccparamsadtf; //type: uint32
 
-}; // CiscoAtmQosMib::Caqvccparamstable::Caqvccparamsentry
+}; // CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry
 
 
-class CiscoAtmQosMib::Caqvpcparamstable : public ydk::Entity
+class CISCOATMQOSMIB::Caqvpcparamstable : public ydk::Entity
 {
     public:
         Caqvpcparamstable();
@@ -130,22 +241,23 @@ class CiscoAtmQosMib::Caqvpcparamstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Caqvpcparamsentry; //type: CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry
+        class Caqvpcparamsentry; //type: CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry
 
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry> > caqvpcparamsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry> > caqvpcparamsentry;
         
-}; // CiscoAtmQosMib::Caqvpcparamstable
+}; // CISCOATMQOSMIB::Caqvpcparamstable
 
 
-class CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
+class CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
 {
     public:
         Caqvpcparamsentry();
@@ -153,19 +265,20 @@ class CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvpltable::Atmvplentry::atmvplvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpltable::Atmvplentry::atmvplvpi)
         ydk::YLeaf atmvplvpi;
-        ydk::YLeaf caqvpcparamsvpstate; //type: Vpstate
+        ydk::YLeaf caqvpcparamsvpstate; //type: VpState
         ydk::YLeaf caqvpcparamspeakrate; //type: uint32
         ydk::YLeaf caqvpcparamscesrate; //type: uint32
         ydk::YLeaf caqvpcparamsdatavccount; //type: int32
@@ -176,114 +289,17 @@ class CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
         ydk::YLeaf caqvpcparamsmbs; //type: uint32
         ydk::YLeaf caqvpcparamsavailbw; //type: uint32
 
-}; // CiscoAtmQosMib::Caqvpcparamstable::Caqvpcparamsentry
+}; // CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry
 
-
-class CiscoAtmQosMib::Caqqueuingparamstable : public ydk::Entity
+class VpState : public ydk::Enum
 {
     public:
-        Caqqueuingparamstable();
-        ~Caqqueuingparamstable();
+        static const ydk::Enum::YLeaf vpStateInactive;
+        static const ydk::Enum::YLeaf vpStateActive;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Caqqueuingparamsentry; //type: CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry
-
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry> > caqqueuingparamsentry;
-        
-}; // CiscoAtmQosMib::Caqqueuingparamstable
-
-
-class CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry : public ydk::Entity
-{
-    public:
-        Caqqueuingparamsentry();
-        ~Caqqueuingparamsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvci)
-        ydk::YLeaf atmvclvci;
-        ydk::YLeaf caqqueuingparamsmeanqdepth; //type: uint32
-
-}; // CiscoAtmQosMib::Caqqueuingparamstable::Caqqueuingparamsentry
-
-
-class CiscoAtmQosMib::Caqqueuingparamsclasstable : public ydk::Entity
-{
-    public:
-        Caqqueuingparamsclasstable();
-        ~Caqqueuingparamsclasstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Caqqueuingparamsclassentry; //type: CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
-
-        std::vector<std::shared_ptr<CISCO_ATM_QOS_MIB::CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry> > caqqueuingparamsclassentry;
-        
-}; // CiscoAtmQosMib::Caqqueuingparamsclasstable
-
-
-class CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry : public ydk::Entity
-{
-    public:
-        Caqqueuingparamsclassentry();
-        ~Caqqueuingparamsclassentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvpi)
-        ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to ATM_MIB::AtmMib::Atmvcltable::Atmvclentry::atmvclvci)
-        ydk::YLeaf atmvclvci;
-        ydk::YLeaf caqqueuingparamsclassindex; //type: int32
-        ydk::YLeaf caqqueuingparamsclassranddrp; //type: uint32
-        ydk::YLeaf caqqueuingparamsclasstaildrp; //type: uint32
-        ydk::YLeaf caqqueuingparamsclassminthre; //type: uint32
-        ydk::YLeaf caqqueuingparamsclassmaxthre; //type: uint32
-        ydk::YLeaf caqqueuingparamsclassmrkprob; //type: uint32
-
-}; // CiscoAtmQosMib::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
-
-class Vcparamconfiglocation : public ydk::Enum
+class VcParamConfigLocation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf configDefault;
@@ -291,14 +307,6 @@ class Vcparamconfiglocation : public ydk::Enum
         static const ydk::Enum::YLeaf configVcClass;
         static const ydk::Enum::YLeaf configVcClassSubInterface;
         static const ydk::Enum::YLeaf configVcClassInterface;
-
-};
-
-class Vpstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vpStateInactive;
-        static const ydk::Enum::YLeaf vpStateActive;
 
 };
 

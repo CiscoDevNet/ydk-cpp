@@ -17,10 +17,9 @@ InterfaceDampening::InterfaceDampening()
 	,nodes(std::make_shared<InterfaceDampening::Nodes>())
 {
     interfaces->parent = this;
-
     nodes->parent = this;
 
-    yang_name = "interface-dampening"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper";
+    yang_name = "interface-dampening"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 InterfaceDampening::~InterfaceDampening()
@@ -44,26 +43,15 @@ std::string InterfaceDampening::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +136,8 @@ bool InterfaceDampening::has_leaf_or_child_of_name(const std::string & name) con
 
 InterfaceDampening::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "interface-dampening";
+
+    yang_name = "interfaces"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceDampening::Interfaces::~Interfaces()
@@ -175,33 +164,26 @@ bool InterfaceDampening::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string InterfaceDampening::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceDampening::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -260,7 +242,7 @@ InterfaceDampening::Interfaces::Interface::Interface()
 {
     if_dampening->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceDampening::Interfaces::Interface::~Interface()
@@ -280,34 +262,27 @@ bool InterfaceDampening::Interfaces::Interface::has_operation() const
 	|| (if_dampening !=  nullptr && if_dampening->has_operation());
 }
 
+std::string InterfaceDampening::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceDampening::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -376,7 +351,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::IfDampening()
 {
     interface_dampening->parent = this;
 
-    yang_name = "if-dampening"; yang_parent_name = "interface";
+    yang_name = "if-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::~IfDampening()
@@ -424,23 +399,11 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "if-dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IfDampening' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (half_life.is_set || is_set(half_life.yfilter)) leaf_name_data.push_back(half_life.get_name_leafdata());
@@ -452,9 +415,7 @@ const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_ent
     if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -599,151 +560,6 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::has_leaf_or_child_o
     return false;
 }
 
-InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "interface-dampening"; yang_parent_name = "if-dampening";
-}
-
-InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceDampening_' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
@@ -752,7 +568,7 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "if-dampening";
+    yang_name = "capsulation"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::~Capsulation()
@@ -776,30 +592,16 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation:
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Capsulation' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capsulation_number.is_set || is_set(capsulation_number.yfilter)) leaf_name_data.push_back(capsulation_number.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -861,7 +663,8 @@ InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsulation
     seconds_remaining{YType::uint32, "seconds-remaining"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation";
+
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -891,23 +694,11 @@ std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation:
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation-dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CapsulationDampening' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
@@ -916,9 +707,7 @@ const EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsula
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -998,9 +787,142 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::Capsul
     return false;
 }
 
+InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::InterfaceDampening_()
+    :
+    flaps{YType::uint32, "flaps"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    penalty{YType::uint32, "penalty"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "if-dampening"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_data() const
+{
+    return flaps.is_set
+	|| is_suppressed_enabled.is_set
+	|| penalty.is_set
+	|| seconds_remaining.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+        return true;
+    return false;
+}
+
 InterfaceDampening::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "interface-dampening";
+
+    yang_name = "nodes"; yang_parent_name = "interface-dampening"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceDampening::Nodes::~Nodes()
@@ -1027,33 +949,26 @@ bool InterfaceDampening::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string InterfaceDampening::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceDampening::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1112,7 +1027,7 @@ InterfaceDampening::Nodes::Node::Node()
 {
     show->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceDampening::Nodes::Node::~Node()
@@ -1132,34 +1047,27 @@ bool InterfaceDampening::Nodes::Node::has_operation() const
 	|| (show !=  nullptr && show->has_operation());
 }
 
+std::string InterfaceDampening::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceDampening::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-dampening/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1219,7 +1127,7 @@ InterfaceDampening::Nodes::Node::Show::Show()
 {
     dampening->parent = this;
 
-    yang_name = "show"; yang_parent_name = "node";
+    yang_name = "show"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::~Show()
@@ -1241,29 +1149,15 @@ std::string InterfaceDampening::Nodes::Node::Show::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "show";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Show' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1313,10 +1207,9 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Dampening()
 	,interfaces(std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces>())
 {
     if_handles->parent = this;
-
     interfaces->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "show";
+    yang_name = "dampening"; yang_parent_name = "show"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::~Dampening()
@@ -1340,29 +1233,15 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Dampening' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1422,7 +1301,8 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::has_leaf_or_child_of_name
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandles()
 {
-    yang_name = "if-handles"; yang_parent_name = "dampening";
+
+    yang_name = "if-handles"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::~IfHandles()
@@ -1453,29 +1333,15 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "if-handles";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IfHandles' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1542,7 +1408,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::IfHandle(
 {
     interface_dampening->parent = this;
 
-    yang_name = "if-handle"; yang_parent_name = "if-handles";
+    yang_name = "if-handle"; yang_parent_name = "if-handles"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::~IfHandle()
@@ -1592,23 +1458,11 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 {
     std::ostringstream path_buffer;
     path_buffer << "if-handle" <<"[interface-handle-name='" <<interface_handle_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IfHandle' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_handle_name.is_set || is_set(interface_handle_name.yfilter)) leaf_name_data.push_back(interface_handle_name.get_name_leafdata());
@@ -1621,9 +1475,7 @@ const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::If
     if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1778,151 +1630,6 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
     return false;
 }
 
-InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "interface-dampening"; yang_parent_name = "if-handle";
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceDampening_' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
@@ -1931,7 +1638,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "if-handle";
+    yang_name = "capsulation"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::~Capsulation()
@@ -1955,30 +1662,16 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Capsulation' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capsulation_number.is_set || is_set(capsulation_number.yfilter)) leaf_name_data.push_back(capsulation_number.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2040,7 +1733,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulati
     seconds_remaining{YType::uint32, "seconds-remaining"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation";
+
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -2070,23 +1764,11 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandl
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation-dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CapsulationDampening' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
@@ -2095,9 +1777,7 @@ const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::If
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2177,9 +1857,142 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
     return false;
 }
 
+InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::InterfaceDampening_()
+    :
+    flaps{YType::uint32, "flaps"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    penalty{YType::uint32, "penalty"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "if-handle"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_data() const
+{
+    return flaps.is_set
+	|| is_suppressed_enabled.is_set
+	|| penalty.is_set
+	|| seconds_remaining.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+        return true;
+    return false;
+}
+
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "dampening";
+
+    yang_name = "interfaces"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::~Interfaces()
@@ -2210,29 +2023,15 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2299,7 +2098,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Interfa
 {
     interface_dampening->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::~Interface()
@@ -2349,23 +2148,11 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -2378,9 +2165,7 @@ const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::I
     if (state_transition_count.is_set || is_set(state_transition_count.yfilter)) leaf_name_data.push_back(state_transition_count.get_name_leafdata());
     if (suppress_threshold.is_set || is_set(suppress_threshold.yfilter)) leaf_name_data.push_back(suppress_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2535,151 +2320,6 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
     return false;
 }
 
-InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::InterfaceDampening_()
-    :
-    flaps{YType::uint32, "flaps"},
-    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
-    penalty{YType::uint32, "penalty"},
-    seconds_remaining{YType::uint32, "seconds-remaining"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "interface-dampening"; yang_parent_name = "interface";
-}
-
-InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::~InterfaceDampening_()
-{
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_data() const
-{
-    return flaps.is_set
-	|| is_suppressed_enabled.is_set
-	|| penalty.is_set
-	|| seconds_remaining.is_set
-	|| state.is_set;
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flaps.yfilter)
-	|| ydk::is_set(is_suppressed_enabled.yfilter)
-	|| ydk::is_set(penalty.yfilter)
-	|| ydk::is_set(seconds_remaining.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-dampening";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceDampening_' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
-    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
-    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
-    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flaps")
-    {
-        flaps = value;
-        flaps.value_namespace = name_space;
-        flaps.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled = value;
-        is_suppressed_enabled.value_namespace = name_space;
-        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "penalty")
-    {
-        penalty = value;
-        penalty.value_namespace = name_space;
-        penalty.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining = value;
-        seconds_remaining.value_namespace = name_space;
-        seconds_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flaps")
-    {
-        flaps.yfilter = yfilter;
-    }
-    if(value_path == "is-suppressed-enabled")
-    {
-        is_suppressed_enabled.yfilter = yfilter;
-    }
-    if(value_path == "penalty")
-    {
-        penalty.yfilter = yfilter;
-    }
-    if(value_path == "seconds-remaining")
-    {
-        seconds_remaining.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
-        return true;
-    return false;
-}
-
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::Capsulation()
     :
     capsulation_number{YType::str, "capsulation-number"}
@@ -2688,7 +2328,7 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
 {
     capsulation_dampening->parent = this;
 
-    yang_name = "capsulation"; yang_parent_name = "interface";
+    yang_name = "capsulation"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::~Capsulation()
@@ -2712,30 +2352,16 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Capsulation' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (capsulation_number.is_set || is_set(capsulation_number.yfilter)) leaf_name_data.push_back(capsulation_number.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2797,7 +2423,8 @@ InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsula
     seconds_remaining{YType::uint32, "seconds-remaining"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation";
+
+    yang_name = "capsulation-dampening"; yang_parent_name = "capsulation"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::~CapsulationDampening()
@@ -2827,23 +2454,11 @@ std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interf
 {
     std::ostringstream path_buffer;
     path_buffer << "capsulation-dampening";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CapsulationDampening' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
@@ -2852,9 +2467,7 @@ const EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::I
     if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2934,13 +2547,145 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
     return false;
 }
 
+InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::InterfaceDampening_()
+    :
+    flaps{YType::uint32, "flaps"},
+    is_suppressed_enabled{YType::boolean, "is-suppressed-enabled"},
+    penalty{YType::uint32, "penalty"},
+    seconds_remaining{YType::uint32, "seconds-remaining"},
+    state{YType::enumeration, "state"}
+{
+
+    yang_name = "interface-dampening"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::~InterfaceDampening_()
+{
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_data() const
+{
+    return flaps.is_set
+	|| is_suppressed_enabled.is_set
+	|| penalty.is_set
+	|| seconds_remaining.is_set
+	|| state.is_set;
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flaps.yfilter)
+	|| ydk::is_set(is_suppressed_enabled.yfilter)
+	|| ydk::is_set(penalty.yfilter)
+	|| ydk::is_set(seconds_remaining.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-dampening";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flaps.is_set || is_set(flaps.yfilter)) leaf_name_data.push_back(flaps.get_name_leafdata());
+    if (is_suppressed_enabled.is_set || is_set(is_suppressed_enabled.yfilter)) leaf_name_data.push_back(is_suppressed_enabled.get_name_leafdata());
+    if (penalty.is_set || is_set(penalty.yfilter)) leaf_name_data.push_back(penalty.get_name_leafdata());
+    if (seconds_remaining.is_set || is_set(seconds_remaining.yfilter)) leaf_name_data.push_back(seconds_remaining.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flaps")
+    {
+        flaps = value;
+        flaps.value_namespace = name_space;
+        flaps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled = value;
+        is_suppressed_enabled.value_namespace = name_space;
+        is_suppressed_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "penalty")
+    {
+        penalty = value;
+        penalty.value_namespace = name_space;
+        penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining = value;
+        seconds_remaining.value_namespace = name_space;
+        seconds_remaining.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flaps")
+    {
+        flaps.yfilter = yfilter;
+    }
+    if(value_path == "is-suppressed-enabled")
+    {
+        is_suppressed_enabled.yfilter = yfilter;
+    }
+    if(value_path == "penalty")
+    {
+        penalty.yfilter = yfilter;
+    }
+    if(value_path == "seconds-remaining")
+    {
+        seconds_remaining.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flaps" || name == "is-suppressed-enabled" || name == "penalty" || name == "seconds-remaining" || name == "state")
+        return true;
+    return false;
+}
+
 InterfaceProperties::InterfaceProperties()
     :
     data_nodes(std::make_shared<InterfaceProperties::DataNodes>())
 {
     data_nodes->parent = this;
 
-    yang_name = "interface-properties"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper";
+    yang_name = "interface-properties"; yang_parent_name = "Cisco-IOS-XR-ifmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 InterfaceProperties::~InterfaceProperties()
@@ -2962,26 +2707,15 @@ std::string InterfaceProperties::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-properties";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3052,7 +2786,8 @@ bool InterfaceProperties::has_leaf_or_child_of_name(const std::string & name) co
 
 InterfaceProperties::DataNodes::DataNodes()
 {
-    yang_name = "data-nodes"; yang_parent_name = "interface-properties";
+
+    yang_name = "data-nodes"; yang_parent_name = "interface-properties"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceProperties::DataNodes::~DataNodes()
@@ -3079,33 +2814,26 @@ bool InterfaceProperties::DataNodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string InterfaceProperties::DataNodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-properties/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceProperties::DataNodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "data-nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-properties/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3165,12 +2893,10 @@ InterfaceProperties::DataNodes::DataNode::DataNode()
 	,system_view(std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView>())
 {
     locationviews->parent = this;
-
     pq_node_locations->parent = this;
-
     system_view->parent = this;
 
-    yang_name = "data-node"; yang_parent_name = "data-nodes";
+    yang_name = "data-node"; yang_parent_name = "data-nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InterfaceProperties::DataNodes::DataNode::~DataNode()
@@ -3194,34 +2920,27 @@ bool InterfaceProperties::DataNodes::DataNode::has_operation() const
 	|| (system_view !=  nullptr && system_view->has_operation());
 }
 
+std::string InterfaceProperties::DataNodes::DataNode::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-properties/data-nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InterfaceProperties::DataNodes::DataNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "data-node" <<"[data-node-name='" <<data_node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ifmgr-oper:interface-properties/data-nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (data_node_name.is_set || is_set(data_node_name.yfilter)) leaf_name_data.push_back(data_node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3305,7 +3024,8 @@ bool InterfaceProperties::DataNodes::DataNode::has_leaf_or_child_of_name(const s
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationviews()
 {
-    yang_name = "locationviews"; yang_parent_name = "data-node";
+
+    yang_name = "locationviews"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::~Locationviews()
@@ -3336,29 +3056,15 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "locationviews";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::Locationviews::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Locationviews' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3417,7 +3123,7 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Locationv
 {
     interfaces->parent = this;
 
-    yang_name = "locationview"; yang_parent_name = "locationviews";
+    yang_name = "locationview"; yang_parent_name = "locationviews"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::~Locationview()
@@ -3441,30 +3147,16 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 {
     std::ostringstream path_buffer;
     path_buffer << "locationview" <<"[locationview-name='" <<locationview_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Locationview' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (locationview_name.is_set || is_set(locationview_name.yfilter)) leaf_name_data.push_back(locationview_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3520,7 +3212,8 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::has_
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "locationview";
+
+    yang_name = "interfaces"; yang_parent_name = "locationview"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::~Interfaces()
@@ -3551,29 +3244,15 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3641,7 +3320,8 @@ InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interface
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
     type{YType::str, "type"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::~Interface()
@@ -3689,23 +3369,11 @@ std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationvie
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -3723,9 +3391,7 @@ const EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locati
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3897,7 +3563,8 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Inte
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocations()
 {
-    yang_name = "pq-node-locations"; yang_parent_name = "data-node";
+
+    yang_name = "pq-node-locations"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::~PqNodeLocations()
@@ -3928,29 +3595,15 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "pq-node-locations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PqNodeLocations' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4009,7 +3662,7 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::PqNod
 {
     interfaces->parent = this;
 
-    yang_name = "pq-node-location"; yang_parent_name = "pq-node-locations";
+    yang_name = "pq-node-location"; yang_parent_name = "pq-node-locations"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::~PqNodeLocation()
@@ -4033,30 +3686,16 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 {
     std::ostringstream path_buffer;
     path_buffer << "pq-node-location" <<"[pq-node-name='" <<pq_node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PqNodeLocation' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pq_node_name.is_set || is_set(pq_node_name.yfilter)) leaf_name_data.push_back(pq_node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4112,7 +3751,8 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "pq-node-location";
+
+    yang_name = "interfaces"; yang_parent_name = "pq-node-location"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::~Interfaces()
@@ -4143,29 +3783,15 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4233,7 +3859,8 @@ InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Inter
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
     type{YType::str, "type"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::~Interface()
@@ -4281,23 +3908,11 @@ std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoc
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -4315,9 +3930,7 @@ const EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNo
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4493,7 +4106,7 @@ InterfaceProperties::DataNodes::DataNode::SystemView::SystemView()
 {
     interfaces->parent = this;
 
-    yang_name = "system-view"; yang_parent_name = "data-node";
+    yang_name = "system-view"; yang_parent_name = "data-node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::~SystemView()
@@ -4515,29 +4128,15 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "system-view";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::SystemView::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SystemView' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4583,7 +4182,8 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::has_leaf_or_child_of_
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "system-view";
+
+    yang_name = "interfaces"; yang_parent_name = "system-view"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::~Interfaces()
@@ -4614,29 +4214,15 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4704,7 +4290,8 @@ InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::Int
     sub_interface_mtu_overhead{YType::uint32, "sub-interface-mtu-overhead"},
     type{YType::str, "type"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::~Interface()
@@ -4752,23 +4339,11 @@ std::string InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::In
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ifmgr_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -4786,9 +4361,7 @@ const EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interface
     if (sub_interface_mtu_overhead.is_set || is_set(sub_interface_mtu_overhead.yfilter)) leaf_name_data.push_back(sub_interface_mtu_overhead.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

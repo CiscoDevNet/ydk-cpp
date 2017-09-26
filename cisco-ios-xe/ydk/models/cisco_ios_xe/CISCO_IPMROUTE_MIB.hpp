@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_IPMROUTE_MIB {
 
-class CiscoIpmrouteMib : public ydk::Entity
+class CISCOIPMROUTEMIB : public ydk::Entity
 {
     public:
-        CiscoIpmrouteMib();
-        ~CiscoIpmrouteMib();
+        CISCOIPMROUTEMIB();
+        ~CISCOIPMROUTEMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,16 +32,16 @@ class CiscoIpmrouteMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoipmroute; //type: CiscoIpmrouteMib::Ciscoipmroute
-        class Ciscoipmrouteheartbeattable; //type: CiscoIpmrouteMib::Ciscoipmrouteheartbeattable
+        class Ciscoipmroute; //type: CISCOIPMROUTEMIB::Ciscoipmroute
+        class Ciscoipmrouteheartbeattable; //type: CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable
 
-        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmroute> ciscoipmroute;
-        std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable> ciscoipmrouteheartbeattable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmroute> ciscoipmroute;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable> ciscoipmrouteheartbeattable;
         
-}; // CiscoIpmrouteMib
+}; // CISCOIPMROUTEMIB
 
 
-class CiscoIpmrouteMib::Ciscoipmroute : public ydk::Entity
+class CISCOIPMROUTEMIB::Ciscoipmroute : public ydk::Entity
 {
     public:
         Ciscoipmroute();
@@ -49,20 +49,21 @@ class CiscoIpmrouteMib::Ciscoipmroute : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoipmroutenumberofentries; //type: uint32
 
-}; // CiscoIpmrouteMib::Ciscoipmroute
+}; // CISCOIPMROUTEMIB::Ciscoipmroute
 
 
-class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable : public ydk::Entity
+class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable : public ydk::Entity
 {
     public:
         Ciscoipmrouteheartbeattable();
@@ -70,22 +71,23 @@ class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ciscoipmrouteheartbeatentry; //type: CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
+        class Ciscoipmrouteheartbeatentry; //type: CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
 
-        std::vector<std::shared_ptr<CISCO_IPMROUTE_MIB::CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry> > ciscoipmrouteheartbeatentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry> > ciscoipmrouteheartbeatentry;
         
-}; // CiscoIpmrouteMib::Ciscoipmrouteheartbeattable
+}; // CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable
 
 
-class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry : public ydk::Entity
+class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry : public ydk::Entity
 {
     public:
         Ciscoipmrouteheartbeatentry();
@@ -93,13 +95,14 @@ class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoipmrouteheartbeatgroupaddr; //type: string
         ydk::YLeaf ciscoipmrouteheartbeatsourceaddr; //type: string
@@ -108,9 +111,9 @@ class CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
         ydk::YLeaf ciscoipmrouteheartbeatcount; //type: uint32
         ydk::YLeaf ciscoipmrouteheartbeatminimum; //type: int32
         ydk::YLeaf ciscoipmrouteheartbeatalerttime; //type: uint32
-        ydk::YLeaf ciscoipmrouteheartbeatstatus; //type: Rowstatus
+        ydk::YLeaf ciscoipmrouteheartbeatstatus; //type: RowStatus
 
-}; // CiscoIpmrouteMib::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
+}; // CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
 
 
 }

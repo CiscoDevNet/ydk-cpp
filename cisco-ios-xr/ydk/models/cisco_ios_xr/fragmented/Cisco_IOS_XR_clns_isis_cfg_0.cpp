@@ -18,7 +18,7 @@ Isis::Isis()
 {
     instances->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "Cisco-IOS-XR-clns-isis-cfg";
+    yang_name = "isis"; yang_parent_name = "Cisco-IOS-XR-clns-isis-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Isis::~Isis()
@@ -40,26 +40,15 @@ std::string Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-clns-isis-cfg:isis";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -130,7 +119,8 @@ bool Isis::has_leaf_or_child_of_name(const std::string & name) const
 
 Isis::Instances::Instances()
 {
-    yang_name = "instances"; yang_parent_name = "isis";
+
+    yang_name = "instances"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Isis::Instances::~Instances()
@@ -157,33 +147,26 @@ bool Isis::Instances::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Isis::Instances::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-clns-isis-cfg:isis/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Isis::Instances::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instances";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-clns-isis-cfg:isis/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -268,38 +251,23 @@ Isis::Instances::Instance::Instance()
 	,trace_buffer_size(std::make_shared<Isis::Instances::Instance::TraceBufferSize>())
 {
     afs->parent = this;
-
     interfaces->parent = this;
-
     link_groups->parent = this;
-
     lsp_accept_passwords->parent = this;
-
     lsp_arrival_times->parent = this;
-
     lsp_check_intervals->parent = this;
-
     lsp_generation_intervals->parent = this;
-
     lsp_lifetimes->parent = this;
-
     lsp_mtus->parent = this;
-
     lsp_passwords->parent = this;
-
     lsp_refresh_intervals->parent = this;
-
     max_link_metrics->parent = this;
-
     nets->parent = this;
-
     nsf->parent = this;
-
     overload_bits->parent = this;
-
     trace_buffer_size->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances";
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Isis::Instances::Instance::~Instance()
@@ -373,27 +341,22 @@ bool Isis::Instances::Instance::has_operation() const
 	|| (trace_buffer_size !=  nullptr && trace_buffer_size->has_operation());
 }
 
+std::string Isis::Instances::Instance::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-clns-isis-cfg:isis/instances/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Isis::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance" <<"[instance-name='" <<instance_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-clns-isis-cfg:isis/instances/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
@@ -407,9 +370,7 @@ const EntityPath Isis::Instances::Instance::get_entity_path(Entity* ancestor) co
     if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
     if (tracing_mode.is_set || is_set(tracing_mode.yfilter)) leaf_name_data.push_back(tracing_mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -805,915 +766,13 @@ bool Isis::Instances::Instance::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Isis::Instances::Instance::Srgb::Srgb()
-    :
-    lower_bound{YType::uint32, "lower-bound"},
-    upper_bound{YType::uint32, "upper-bound"}
-{
-    yang_name = "srgb"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::Srgb::~Srgb()
-{
-}
-
-bool Isis::Instances::Instance::Srgb::has_data() const
-{
-    return lower_bound.is_set
-	|| upper_bound.is_set;
-}
-
-bool Isis::Instances::Instance::Srgb::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lower_bound.yfilter)
-	|| ydk::is_set(upper_bound.yfilter);
-}
-
-std::string Isis::Instances::Instance::Srgb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srgb";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Srgb::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Srgb' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Srgb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Srgb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Srgb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lower-bound")
-    {
-        lower_bound = value;
-        lower_bound.value_namespace = name_space;
-        lower_bound.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper-bound")
-    {
-        upper_bound = value;
-        upper_bound.value_namespace = name_space;
-        upper_bound.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Srgb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lower-bound")
-    {
-        lower_bound.yfilter = yfilter;
-    }
-    if(value_path == "upper-bound")
-    {
-        upper_bound.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Srgb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lower-bound" || name == "upper-bound")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspGenerationIntervals::LspGenerationIntervals()
-{
-    yang_name = "lsp-generation-intervals"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspGenerationIntervals::~LspGenerationIntervals()
-{
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::has_data() const
-{
-    for (std::size_t index=0; index<lsp_generation_interval.size(); index++)
-    {
-        if(lsp_generation_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_generation_interval.size(); index++)
-    {
-        if(lsp_generation_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspGenerationIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-generation-intervals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspGenerationIntervals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspGenerationIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspGenerationIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-generation-interval")
-    {
-        for(auto const & c : lsp_generation_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval>();
-        c->parent = this;
-        lsp_generation_interval.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspGenerationIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_generation_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspGenerationIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspGenerationIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-generation-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::LspGenerationInterval()
-    :
-    level{YType::enumeration, "level"},
-    initial_wait{YType::uint32, "initial-wait"},
-    maximum_wait{YType::uint32, "maximum-wait"},
-    secondary_wait{YType::uint32, "secondary-wait"}
-{
-    yang_name = "lsp-generation-interval"; yang_parent_name = "lsp-generation-intervals";
-}
-
-Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::~LspGenerationInterval()
-{
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::has_data() const
-{
-    return level.is_set
-	|| initial_wait.is_set
-	|| maximum_wait.is_set
-	|| secondary_wait.is_set;
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(initial_wait.yfilter)
-	|| ydk::is_set(maximum_wait.yfilter)
-	|| ydk::is_set(secondary_wait.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-generation-interval" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspGenerationInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (initial_wait.is_set || is_set(initial_wait.yfilter)) leaf_name_data.push_back(initial_wait.get_name_leafdata());
-    if (maximum_wait.is_set || is_set(maximum_wait.yfilter)) leaf_name_data.push_back(maximum_wait.get_name_leafdata());
-    if (secondary_wait.is_set || is_set(secondary_wait.yfilter)) leaf_name_data.push_back(secondary_wait.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initial-wait")
-    {
-        initial_wait = value;
-        initial_wait.value_namespace = name_space;
-        initial_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-wait")
-    {
-        maximum_wait = value;
-        maximum_wait.value_namespace = name_space;
-        maximum_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secondary-wait")
-    {
-        secondary_wait = value;
-        secondary_wait.value_namespace = name_space;
-        secondary_wait.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "initial-wait")
-    {
-        initial_wait.yfilter = yfilter;
-    }
-    if(value_path == "maximum-wait")
-    {
-        maximum_wait.yfilter = yfilter;
-    }
-    if(value_path == "secondary-wait")
-    {
-        secondary_wait.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "initial-wait" || name == "maximum-wait" || name == "secondary-wait")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspArrivalTimes::LspArrivalTimes()
-{
-    yang_name = "lsp-arrival-times"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspArrivalTimes::~LspArrivalTimes()
-{
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::has_data() const
-{
-    for (std::size_t index=0; index<lsp_arrival_time.size(); index++)
-    {
-        if(lsp_arrival_time[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_arrival_time.size(); index++)
-    {
-        if(lsp_arrival_time[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspArrivalTimes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-arrival-times";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspArrivalTimes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspArrivalTimes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspArrivalTimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-arrival-time")
-    {
-        for(auto const & c : lsp_arrival_time)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime>();
-        c->parent = this;
-        lsp_arrival_time.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspArrivalTimes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_arrival_time)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspArrivalTimes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspArrivalTimes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-arrival-time")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::LspArrivalTime()
-    :
-    level{YType::enumeration, "level"},
-    initial_wait{YType::uint32, "initial-wait"},
-    maximum_wait{YType::uint32, "maximum-wait"},
-    secondary_wait{YType::uint32, "secondary-wait"}
-{
-    yang_name = "lsp-arrival-time"; yang_parent_name = "lsp-arrival-times";
-}
-
-Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::~LspArrivalTime()
-{
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::has_data() const
-{
-    return level.is_set
-	|| initial_wait.is_set
-	|| maximum_wait.is_set
-	|| secondary_wait.is_set;
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(initial_wait.yfilter)
-	|| ydk::is_set(maximum_wait.yfilter)
-	|| ydk::is_set(secondary_wait.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-arrival-time" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspArrivalTime' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (initial_wait.is_set || is_set(initial_wait.yfilter)) leaf_name_data.push_back(initial_wait.get_name_leafdata());
-    if (maximum_wait.is_set || is_set(maximum_wait.yfilter)) leaf_name_data.push_back(maximum_wait.get_name_leafdata());
-    if (secondary_wait.is_set || is_set(secondary_wait.yfilter)) leaf_name_data.push_back(secondary_wait.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initial-wait")
-    {
-        initial_wait = value;
-        initial_wait.value_namespace = name_space;
-        initial_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-wait")
-    {
-        maximum_wait = value;
-        maximum_wait.value_namespace = name_space;
-        maximum_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "secondary-wait")
-    {
-        secondary_wait = value;
-        secondary_wait.value_namespace = name_space;
-        secondary_wait.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "initial-wait")
-    {
-        initial_wait.yfilter = yfilter;
-    }
-    if(value_path == "maximum-wait")
-    {
-        maximum_wait.yfilter = yfilter;
-    }
-    if(value_path == "secondary-wait")
-    {
-        secondary_wait.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "initial-wait" || name == "maximum-wait" || name == "secondary-wait")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::TraceBufferSize::TraceBufferSize()
-    :
-    detailed{YType::uint32, "detailed"},
-    hello{YType::uint32, "hello"},
-    severe{YType::uint32, "severe"},
-    standard{YType::uint32, "standard"}
-{
-    yang_name = "trace-buffer-size"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::TraceBufferSize::~TraceBufferSize()
-{
-}
-
-bool Isis::Instances::Instance::TraceBufferSize::has_data() const
-{
-    return detailed.is_set
-	|| hello.is_set
-	|| severe.is_set
-	|| standard.is_set;
-}
-
-bool Isis::Instances::Instance::TraceBufferSize::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(detailed.yfilter)
-	|| ydk::is_set(hello.yfilter)
-	|| ydk::is_set(severe.yfilter)
-	|| ydk::is_set(standard.yfilter);
-}
-
-std::string Isis::Instances::Instance::TraceBufferSize::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trace-buffer-size";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::TraceBufferSize::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TraceBufferSize' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (detailed.is_set || is_set(detailed.yfilter)) leaf_name_data.push_back(detailed.get_name_leafdata());
-    if (hello.is_set || is_set(hello.yfilter)) leaf_name_data.push_back(hello.get_name_leafdata());
-    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
-    if (standard.is_set || is_set(standard.yfilter)) leaf_name_data.push_back(standard.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::TraceBufferSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::TraceBufferSize::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::TraceBufferSize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "detailed")
-    {
-        detailed = value;
-        detailed.value_namespace = name_space;
-        detailed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello")
-    {
-        hello = value;
-        hello.value_namespace = name_space;
-        hello.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-        severe.value_namespace = name_space;
-        severe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "standard")
-    {
-        standard = value;
-        standard.value_namespace = name_space;
-        standard.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::TraceBufferSize::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "detailed")
-    {
-        detailed.yfilter = yfilter;
-    }
-    if(value_path == "hello")
-    {
-        hello.yfilter = yfilter;
-    }
-    if(value_path == "severe")
-    {
-        severe.yfilter = yfilter;
-    }
-    if(value_path == "standard")
-    {
-        standard.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::TraceBufferSize::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "detailed" || name == "hello" || name == "severe" || name == "standard")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetrics()
-{
-    yang_name = "max-link-metrics"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::MaxLinkMetrics::~MaxLinkMetrics()
-{
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::has_data() const
-{
-    for (std::size_t index=0; index<max_link_metric.size(); index++)
-    {
-        if(max_link_metric[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::has_operation() const
-{
-    for (std::size_t index=0; index<max_link_metric.size(); index++)
-    {
-        if(max_link_metric[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::MaxLinkMetrics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-link-metrics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::MaxLinkMetrics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxLinkMetrics' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::MaxLinkMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "max-link-metric")
-    {
-        for(auto const & c : max_link_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric>();
-        c->parent = this;
-        max_link_metric.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MaxLinkMetrics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : max_link_metric)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::MaxLinkMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::MaxLinkMetrics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-link-metric")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::MaxLinkMetric()
-    :
-    level{YType::enumeration, "level"}
-{
-    yang_name = "max-link-metric"; yang_parent_name = "max-link-metrics";
-}
-
-Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::~MaxLinkMetric()
-{
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::has_data() const
-{
-    return level.is_set;
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-link-metric" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxLinkMetric' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::AdjacencyStagger::AdjacencyStagger()
     :
     initial_nbr{YType::uint32, "initial-nbr"},
     max_nbr{YType::uint32, "max-nbr"}
 {
-    yang_name = "adjacency-stagger"; yang_parent_name = "instance";
+
+    yang_name = "adjacency-stagger"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::AdjacencyStagger::~AdjacencyStagger()
@@ -1737,31 +796,17 @@ std::string Isis::Instances::Instance::AdjacencyStagger::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-stagger";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::AdjacencyStagger::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AdjacencyStagger::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AdjacencyStagger' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (initial_nbr.is_set || is_set(initial_nbr.yfilter)) leaf_name_data.push_back(initial_nbr.get_name_leafdata());
     if (max_nbr.is_set || is_set(max_nbr.yfilter)) leaf_name_data.push_back(max_nbr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1813,7 +858,8 @@ bool Isis::Instances::Instance::AdjacencyStagger::has_leaf_or_child_of_name(cons
 
 Isis::Instances::Instance::Afs::Afs()
 {
-    yang_name = "afs"; yang_parent_name = "instance";
+
+    yang_name = "afs"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::~Afs()
@@ -1844,29 +890,15 @@ std::string Isis::Instances::Instance::Afs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "afs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Afs' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1924,7 +956,8 @@ Isis::Instances::Instance::Afs::Af::Af()
     	,
     af_data(nullptr) // presence node
 {
-    yang_name = "af"; yang_parent_name = "afs";
+
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::~Af()
@@ -1960,31 +993,17 @@ std::string Isis::Instances::Instance::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Af' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
     if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2087,6 +1106,7 @@ Isis::Instances::Instance::Afs::Af::AfData::AfData()
 	,default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation>())
 	,frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable>())
 	,ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf>())
+	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids>())
 	,max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes>())
 	,metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles>())
 	,metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics>())
@@ -2106,48 +1126,29 @@ Isis::Instances::Instance::Afs::Af::AfData::AfData()
 	,weights(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Weights>())
 {
     admin_distances->parent = this;
-
     default_information->parent = this;
-
     frr_table->parent = this;
-
     ispf->parent = this;
-
+    manual_adj_sids->parent = this;
     max_redist_prefixes->parent = this;
-
     metric_styles->parent = this;
-
     metrics->parent = this;
-
     micro_loop_avoidance->parent = this;
-
     monitor_convergence->parent = this;
-
     mpls->parent = this;
-
     mpls_ldp_global->parent = this;
-
     propagations->parent = this;
-
     redistributions->parent = this;
-
     router_id->parent = this;
-
     segment_routing->parent = this;
-
     spf_intervals->parent = this;
-
     spf_periodic_intervals->parent = this;
-
     spf_prefix_priorities->parent = this;
-
     summary_prefixes->parent = this;
-
     ucmp->parent = this;
-
     weights->parent = this;
 
-    yang_name = "af-data"; yang_parent_name = "af";
+    yang_name = "af-data"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::~AfData()
@@ -2171,6 +1172,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::has_data() const
 	|| (default_information !=  nullptr && default_information->has_data())
 	|| (frr_table !=  nullptr && frr_table->has_data())
 	|| (ispf !=  nullptr && ispf->has_data())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_data())
 	|| (max_redist_prefixes !=  nullptr && max_redist_prefixes->has_data())
 	|| (metric_styles !=  nullptr && metric_styles->has_data())
 	|| (metrics !=  nullptr && metrics->has_data())
@@ -2208,6 +1210,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::has_operation() const
 	|| (default_information !=  nullptr && default_information->has_operation())
 	|| (frr_table !=  nullptr && frr_table->has_operation())
 	|| (ispf !=  nullptr && ispf->has_operation())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_operation())
 	|| (max_redist_prefixes !=  nullptr && max_redist_prefixes->has_operation())
 	|| (metric_styles !=  nullptr && metric_styles->has_operation())
 	|| (metrics !=  nullptr && metrics->has_operation())
@@ -2231,23 +1234,11 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AfData' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (adjacency_check.is_set || is_set(adjacency_check.yfilter)) leaf_name_data.push_back(adjacency_check.get_name_leafdata());
@@ -2262,9 +1253,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::AfData::get_entity_path(Ent
     if (single_topology.is_set || is_set(single_topology.yfilter)) leaf_name_data.push_back(single_topology.get_name_leafdata());
     if (topology_id.is_set || is_set(topology_id.yfilter)) leaf_name_data.push_back(topology_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2304,6 +1293,15 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::get_child_by
             ispf = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf>();
         }
         return ispf;
+    }
+
+    if(child_yang_name == "manual-adj-sids")
+    {
+        if(manual_adj_sids == nullptr)
+        {
+            manual_adj_sids = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids>();
+        }
+        return manual_adj_sids;
     }
 
     if(child_yang_name == "max-redist-prefixes")
@@ -2483,6 +1481,11 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     if(ispf != nullptr)
     {
         children["ispf"] = ispf;
+    }
+
+    if(manual_adj_sids != nullptr)
+    {
+        children["manual-adj-sids"] = manual_adj_sids;
     }
 
     if(max_redist_prefixes != nullptr)
@@ -2693,287 +1696,62 @@ void Isis::Instances::Instance::Afs::Af::AfData::set_filter(const std::string & 
 
 bool Isis::Instances::Instance::Afs::Af::AfData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-distances" || name == "default-information" || name == "frr-table" || name == "ispf" || name == "max-redist-prefixes" || name == "metric-styles" || name == "metrics" || name == "micro-loop-avoidance" || name == "monitor-convergence" || name == "mpls" || name == "mpls-ldp-global" || name == "propagations" || name == "redistributions" || name == "router-id" || name == "segment-routing" || name == "spf-intervals" || name == "spf-periodic-intervals" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "ucmp" || name == "weights" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "advertise-passive-only" || name == "apply-weight" || name == "attached-bit" || name == "default-admin-distance" || name == "ignore-attached-bit" || name == "maximum-paths" || name == "route-source-first-hop" || name == "single-topology" || name == "topology-id")
+    if(name == "admin-distances" || name == "default-information" || name == "frr-table" || name == "ispf" || name == "manual-adj-sids" || name == "max-redist-prefixes" || name == "metric-styles" || name == "metrics" || name == "micro-loop-avoidance" || name == "monitor-convergence" || name == "mpls" || name == "mpls-ldp-global" || name == "propagations" || name == "redistributions" || name == "router-id" || name == "segment-routing" || name == "spf-intervals" || name == "spf-periodic-intervals" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "ucmp" || name == "weights" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "advertise-passive-only" || name == "apply-weight" || name == "attached-bit" || name == "default-admin-distance" || name == "ignore-attached-bit" || name == "maximum-paths" || name == "route-source-first-hop" || name == "single-topology" || name == "topology-id")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::SegmentRouting()
-    :
-    mpls{YType::enumeration, "mpls"}
-    	,
-    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>())
+Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistances()
 {
-    prefix_sid_map->parent = this;
 
-    yang_name = "segment-routing"; yang_parent_name = "af-data";
+    yang_name = "admin-distances"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::~SegmentRouting()
+Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::~AdminDistances()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_data() const
 {
-    return mpls.is_set
-	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mpls.yfilter)
-	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segment-routing";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<admin_distance.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SegmentRouting' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-sid-map")
-    {
-        if(prefix_sid_map == nullptr)
-        {
-            prefix_sid_map = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>();
-        }
-        return prefix_sid_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_sid_map != nullptr)
-    {
-        children["prefix-sid-map"] = prefix_sid_map;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mpls")
-    {
-        mpls = value;
-        mpls.value_namespace = name_space;
-        mpls.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mpls")
-    {
-        mpls.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-sid-map" || name == "mpls")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::PrefixSidMap()
-    :
-    advertise_local{YType::empty, "advertise-local"},
-    receive{YType::boolean, "receive"}
-{
-    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::~PrefixSidMap()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_data() const
-{
-    return advertise_local.is_set
-	|| receive.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(advertise_local.yfilter)
-	|| ydk::is_set(receive.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-sid-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixSidMap' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (advertise_local.is_set || is_set(advertise_local.yfilter)) leaf_name_data.push_back(advertise_local.get_name_leafdata());
-    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "advertise-local")
-    {
-        advertise_local = value;
-        advertise_local.value_namespace = name_space;
-        advertise_local.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "receive")
-    {
-        receive = value;
-        receive.value_namespace = name_space;
-        receive.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "advertise-local")
-    {
-        advertise_local.yfilter = yfilter;
-    }
-    if(value_path == "receive")
-    {
-        receive.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "advertise-local" || name == "receive")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyles()
-{
-    yang_name = "metric-styles"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::~MetricStyles()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_data() const
-{
-    for (std::size_t index=0; index<metric_style.size(); index++)
-    {
-        if(metric_style[index]->has_data())
+        if(admin_distance[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_operation() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    for (std::size_t index=0; index<admin_distance.size(); index++)
     {
-        if(metric_style[index]->has_operation())
+        if(admin_distance[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-styles";
-
+    path_buffer << "admin-distances";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MetricStyles' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "metric-style")
+    if(child_yang_name == "admin-distance")
     {
-        for(auto const & c : metric_style)
+        for(auto const & c : admin_distance)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2981,19 +1759,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance>();
         c->parent = this;
-        metric_style.push_back(c);
+        admin_distance.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : metric_style)
+    for (auto const & c : admin_distance)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3001,134 +1779,225 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "metric-style")
+    if(name == "admin-distance")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::MetricStyle()
+Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::AdminDistance()
     :
-    level{YType::enumeration, "level"},
-    style{YType::enumeration, "style"},
-    transition_state{YType::enumeration, "transition-state"}
+    address_prefix{YType::str, "address-prefix"},
+    distance{YType::uint32, "distance"},
+    prefix_list{YType::str, "prefix-list"}
 {
-    yang_name = "metric-style"; yang_parent_name = "metric-styles";
+
+    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::~MetricStyle()
+Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::~AdminDistance()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_data() const
 {
-    return level.is_set
-	|| style.is_set
-	|| transition_state.is_set;
+    return address_prefix.is_set
+	|| distance.is_set
+	|| prefix_list.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(style.yfilter)
-	|| ydk::is_set(transition_state.yfilter);
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-style" <<"[level='" <<level <<"']";
-
+    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MetricStyle' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
-    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "level")
+    if(value_path == "address-prefix")
     {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
+        address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "style")
+    if(value_path == "distance")
     {
-        style = value;
-        style.value_namespace = name_space;
-        style.value_namespace_prefix = name_space_prefix;
+        distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transition-state")
+    if(value_path == "prefix-list")
     {
-        transition_state = value;
-        transition_state.value_namespace = name_space;
-        transition_state.value_namespace_prefix = name_space_prefix;
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "level")
+    if(value_path == "address-prefix")
     {
-        level.yfilter = yfilter;
+        address_prefix.yfilter = yfilter;
     }
-    if(value_path == "style")
+    if(value_path == "distance")
     {
-        style.yfilter = yfilter;
+        distance.yfilter = yfilter;
     }
-    if(value_path == "transition-state")
+    if(value_path == "prefix-list")
     {
-        transition_state.yfilter = yfilter;
+        prefix_list.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "style" || name == "transition-state")
+    if(name == "address-prefix" || name == "distance" || name == "prefix-list")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::DefaultInformation()
+    :
+    external{YType::empty, "external"},
+    policy_name{YType::str, "policy-name"},
+    use_policy{YType::boolean, "use-policy"}
+{
+
+    yang_name = "default-information"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::~DefaultInformation()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_data() const
+{
+    return external.is_set
+	|| policy_name.is_set
+	|| use_policy.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(external.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(use_policy.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "default-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (use_policy.is_set || is_set(use_policy.yfilter)) leaf_name_data.push_back(use_policy.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "external")
+    {
+        external = value;
+        external.value_namespace = name_space;
+        external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "use-policy")
+    {
+        use_policy = value;
+        use_policy.value_namespace = name_space;
+        use_policy.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external")
+    {
+        external.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "use-policy")
+    {
+        use_policy.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external" || name == "policy-name" || name == "use-policy")
         return true;
     return false;
 }
@@ -3142,16 +2011,12 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTable()
 	,priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits>())
 {
     frr_load_sharings->parent = this;
-
     frr_remote_lfa_prefixes->parent = this;
-
     frr_tiebreakers->parent = this;
-
     frr_use_cand_onlies->parent = this;
-
     priority_limits->parent = this;
 
-    yang_name = "frr-table"; yang_parent_name = "af-data";
+    yang_name = "frr-table"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::~FrrTable()
@@ -3181,29 +2046,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-table";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTable' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3305,7 +2156,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::has_leaf_or_child_of_
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharings()
 {
-    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::~FrrLoadSharings()
@@ -3336,29 +2188,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharing
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-load-sharings";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrLoadSharings' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3414,7 +2252,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSh
     level{YType::enumeration, "level"},
     load_sharing{YType::enumeration, "load-sharing"}
 {
-    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings";
+
+    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::~FrrLoadSharing()
@@ -3438,31 +2277,17 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharing
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-load-sharing" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrLoadSharing' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (load_sharing.is_set || is_set(load_sharing.yfilter)) leaf_name_data.push_back(load_sharing.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3512,232 +2337,10 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrL
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimits()
-{
-    yang_name = "priority-limits"; yang_parent_name = "frr-table";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::~PriorityLimits()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_data() const
-{
-    for (std::size_t index=0; index<priority_limit.size(); index++)
-    {
-        if(priority_limit[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_operation() const
-{
-    for (std::size_t index=0; index<priority_limit.size(); index++)
-    {
-        if(priority_limit[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limits";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PriorityLimits' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "priority-limit")
-    {
-        for(auto const & c : priority_limit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit>();
-        c->parent = this;
-        priority_limit.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : priority_limit)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority-limit")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
-    :
-    level{YType::enumeration, "level"},
-    frr_type{YType::enumeration, "frr-type"},
-    priority{YType::enumeration, "priority"}
-{
-    yang_name = "priority-limit"; yang_parent_name = "priority-limits";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_data() const
-{
-    return level.is_set
-	|| frr_type.is_set
-	|| priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(frr_type.yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PriorityLimit' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "frr-type")
-    {
-        frr_type = value;
-        frr_type.value_namespace = name_space;
-        frr_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "frr-type")
-    {
-        frr_type.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "frr-type" || name == "priority")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefixes()
 {
-    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::~FrrRemoteLfaPrefixes()
@@ -3768,29 +2371,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPr
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-remote-lfa-prefixes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrRemoteLfaPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3846,7 +2435,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrR
     level{YType::enumeration, "level"},
     prefix_list_name{YType::str, "prefix-list-name"}
 {
-    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes";
+
+    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::~FrrRemoteLfaPrefix()
@@ -3870,31 +2460,17 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPr
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-remote-lfa-prefix" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrRemoteLfaPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3946,7 +2522,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes:
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreakers()
 {
-    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::~FrrTiebreakers()
@@ -3977,29 +2554,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tiebreakers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTiebreakers' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4056,7 +2619,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebrea
     tiebreaker{YType::enumeration, "tiebreaker"},
     index_{YType::uint32, "index"}
 {
-    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers";
+
+    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::~FrrTiebreaker()
@@ -4082,32 +2646,18 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTiebreaker' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (tiebreaker.is_set || is_set(tiebreaker.yfilter)) leaf_name_data.push_back(tiebreaker.get_name_leafdata());
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4169,7 +2719,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTi
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnlies()
 {
-    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::~FrrUseCandOnlies()
@@ -4200,29 +2751,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnli
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-use-cand-onlies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrUseCandOnlies' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4278,7 +2815,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCa
     level{YType::enumeration, "level"},
     frr_type{YType::enumeration, "frr-type"}
 {
-    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies";
+
+    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::~FrrUseCandOnly()
@@ -4302,31 +2840,17 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnli
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-use-cand-only" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrUseCandOnly' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4376,173 +2900,57 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::Frr
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::RouterId::RouterId()
-    :
-    address{YType::str, "address"},
-    interface_name{YType::str, "interface-name"}
+Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimits()
 {
-    yang_name = "router-id"; yang_parent_name = "af-data";
+
+    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::RouterId::~RouterId()
+Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::~PriorityLimits()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_data() const
 {
-    return address.is_set
-	|| interface_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "router-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<priority_limit.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RouterId' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriorities()
-{
-    yang_name = "spf-prefix-priorities"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::~SpfPrefixPriorities()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_data() const
-{
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
-    {
-        if(spf_prefix_priority[index]->has_data())
+        if(priority_limit[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_operation() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    for (std::size_t index=0; index<priority_limit.size(); index++)
     {
-        if(spf_prefix_priority[index]->has_operation())
+        if(priority_limit[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priorities";
-
+    path_buffer << "priority-limits";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPrefixPriorities' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "spf-prefix-priority")
+    if(child_yang_name == "priority-limit")
     {
-        for(auto const & c : spf_prefix_priority)
+        for(auto const & c : priority_limit)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4550,19 +2958,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPri
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit>();
         c->parent = this;
-        spf_prefix_priority.push_back(c);
+        priority_limit.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : spf_prefix_priority)
+    for (auto const & c : priority_limit)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4570,98 +2978,81 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "spf-prefix-priority")
+    if(name == "priority-limit")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::SpfPrefixPriority()
+Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
     :
     level{YType::enumeration, "level"},
-    prefix_priority_type{YType::enumeration, "prefix-priority-type"},
-    access_list_name{YType::str, "access-list-name"},
-    admin_tag{YType::uint32, "admin-tag"}
+    frr_type{YType::enumeration, "frr-type"},
+    priority{YType::enumeration, "priority"}
 {
-    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities";
+
+    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
+Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
     return level.is_set
-	|| prefix_priority_type.is_set
-	|| access_list_name.is_set
-	|| admin_tag.is_set;
+	|| frr_type.is_set
+	|| priority.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(prefix_priority_type.yfilter)
-	|| ydk::is_set(access_list_name.yfilter)
-	|| ydk::is_set(admin_tag.yfilter);
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
-
+    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPrefixPriority' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (prefix_priority_type.is_set || is_set(prefix_priority_type.yfilter)) leaf_name_data.push_back(prefix_priority_type.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (admin_tag.is_set || is_set(admin_tag.yfilter)) leaf_name_data.push_back(admin_tag.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
@@ -4669,117 +3060,174 @@ void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixP
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-priority-type")
+    if(value_path == "frr-type")
     {
-        prefix_priority_type = value;
-        prefix_priority_type.value_namespace = name_space;
-        prefix_priority_type.value_namespace_prefix = name_space_prefix;
+        frr_type = value;
+        frr_type.value_namespace = name_space;
+        frr_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "priority")
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-tag")
-    {
-        admin_tag = value;
-        admin_tag.value_namespace = name_space;
-        admin_tag.value_namespace_prefix = name_space_prefix;
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "level")
     {
         level.yfilter = yfilter;
     }
-    if(value_path == "prefix-priority-type")
+    if(value_path == "frr-type")
     {
-        prefix_priority_type.yfilter = yfilter;
+        frr_type.yfilter = yfilter;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "priority")
     {
-        access_list_name.yfilter = yfilter;
-    }
-    if(value_path == "admin-tag")
-    {
-        admin_tag.yfilter = yfilter;
+        priority.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "prefix-priority-type" || name == "access-list-name" || name == "admin-tag")
+    if(name == "level" || name == "frr-type" || name == "priority")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefixes()
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::Ispf()
+    :
+    states(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States>())
 {
-    yang_name = "summary-prefixes"; yang_parent_name = "af-data";
+    states->parent = this;
+
+    yang_name = "ispf"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::~SummaryPrefixes()
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::~Ispf()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_data() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    return (states !=  nullptr && states->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (states !=  nullptr && states->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ispf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "states")
     {
-        if(summary_prefix[index]->has_data())
+        if(states == nullptr)
+        {
+            states = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States>();
+        }
+        return states;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(states != nullptr)
+    {
+        children["states"] = states;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "states")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::States()
+{
+
+    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::~States()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_data() const
+{
+    for (std::size_t index=0; index<state.size(); index++)
+    {
+        if(state[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_operation() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    for (std::size_t index=0; index<state.size(); index++)
     {
-        if(summary_prefix[index]->has_operation())
+        if(state[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefixes";
-
+    path_buffer << "states";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SummaryPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "summary-prefix")
+    if(child_yang_name == "state")
     {
-        for(auto const & c : summary_prefix)
+        for(auto const & c : state)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4787,19 +3235,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefi
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State>();
         c->parent = this;
-        summary_prefix.push_back(c);
+        state.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : summary_prefix)
+    for (auto const & c : state)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4807,536 +3255,162 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "summary-prefix")
+    if(name == "state")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::SummaryPrefix()
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::State()
     :
-    address_prefix{YType::str, "address-prefix"},
-    level{YType::uint32, "level"},
-    tag{YType::uint32, "tag"}
+    level{YType::enumeration, "level"},
+    state{YType::enumeration, "state"}
 {
-    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes";
+
+    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
+Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::~State()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_data() const
 {
-    return address_prefix.is_set
-	|| level.is_set
-	|| tag.is_set;
+    return level.is_set
+	|| state.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address_prefix.yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(tag.yfilter);
+	|| ydk::is_set(state.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
-
+    path_buffer << "state" <<"[level='" <<level <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SummaryPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address-prefix")
-    {
-        address_prefix = value;
-        address_prefix.value_namespace = name_space;
-        address_prefix.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "level")
     {
         level = value;
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag")
+    if(value_path == "state")
     {
-        tag = value;
-        tag.value_namespace = name_space;
-        tag.value_namespace_prefix = name_space_prefix;
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address-prefix")
-    {
-        address_prefix.yfilter = yfilter;
-    }
     if(value_path == "level")
     {
         level.yfilter = yfilter;
     }
-    if(value_path == "tag")
+    if(value_path == "state")
     {
-        tag.yfilter = yfilter;
+        state.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-prefix" || name == "level" || name == "tag")
+    if(name == "level" || name == "state")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::MicroLoopAvoidance()
-    :
-    enable{YType::enumeration, "enable"},
-    rib_update_delay{YType::uint32, "rib-update-delay"}
+Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSids()
 {
-    yang_name = "micro-loop-avoidance"; yang_parent_name = "af-data";
+
+    yang_name = "manual-adj-sids"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::~MicroLoopAvoidance()
+Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::~ManualAdjSids()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_data() const
 {
-    return enable.is_set
-	|| rib_update_delay.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(rib_update_delay.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "micro-loop-avoidance";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MicroLoopAvoidance' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (rib_update_delay.is_set || is_set(rib_update_delay.yfilter)) leaf_name_data.push_back(rib_update_delay.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rib-update-delay")
-    {
-        rib_update_delay = value;
-        rib_update_delay.value_namespace = name_space;
-        rib_update_delay.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "rib-update-delay")
-    {
-        rib_update_delay.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "rib-update-delay")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Ucmp()
-    :
-    delay_interval{YType::uint32, "delay-interval"}
-    	,
-    enable(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable>())
-	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>())
-{
-    enable->parent = this;
-
-    exclude_interfaces->parent = this;
-
-    yang_name = "ucmp"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::~Ucmp()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_data() const
-{
-    return delay_interval.is_set
-	|| (enable !=  nullptr && enable->has_data())
-	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(delay_interval.yfilter)
-	|| (enable !=  nullptr && enable->has_operation())
-	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ucmp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ucmp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (delay_interval.is_set || is_set(delay_interval.yfilter)) leaf_name_data.push_back(delay_interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "enable")
-    {
-        if(enable == nullptr)
-        {
-            enable = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable>();
-        }
-        return enable;
-    }
-
-    if(child_yang_name == "exclude-interfaces")
-    {
-        if(exclude_interfaces == nullptr)
-        {
-            exclude_interfaces = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>();
-        }
-        return exclude_interfaces;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(enable != nullptr)
-    {
-        children["enable"] = enable;
-    }
-
-    if(exclude_interfaces != nullptr)
-    {
-        children["exclude-interfaces"] = exclude_interfaces;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "delay-interval")
-    {
-        delay_interval = value;
-        delay_interval.value_namespace = name_space;
-        delay_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "delay-interval")
-    {
-        delay_interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "exclude-interfaces" || name == "delay-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::Enable()
-    :
-    prefix_list_name{YType::str, "prefix-list-name"},
-    variance{YType::uint32, "variance"}
-{
-    yang_name = "enable"; yang_parent_name = "ucmp";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::~Enable()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_data() const
-{
-    return prefix_list_name.is_set
-	|| variance.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_list_name.yfilter)
-	|| ydk::is_set(variance.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "enable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Enable' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
-    if (variance.is_set || is_set(variance.yfilter)) leaf_name_data.push_back(variance.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name = value;
-        prefix_list_name.value_namespace = name_space;
-        prefix_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "variance")
-    {
-        variance = value;
-        variance.value_namespace = name_space;
-        variance.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name.yfilter = yfilter;
-    }
-    if(value_path == "variance")
-    {
-        variance.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-list-name" || name == "variance")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
-{
-    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
-    {
-        if(exclude_interface[index]->has_data())
+        if(manual_adj_sid[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
     {
-        if(exclude_interface[index]->has_operation())
+        if(manual_adj_sid[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interfaces";
-
+    path_buffer << "manual-adj-sids";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExcludeInterfaces' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "exclude-interface")
+    if(child_yang_name == "manual-adj-sid")
     {
-        for(auto const & c : exclude_interface)
+        for(auto const & c : manual_adj_sid)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -5344,19 +3418,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Exclud
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        manual_adj_sid.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : exclude_interface)
+    for (auto const & c : manual_adj_sid)
     {
         children[c->get_segment_path()] = c;
     }
@@ -5364,113 +3438,143 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exclude-interface")
+    if(name == "manual-adj-sid")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::ExcludeInterface()
+Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::ManualAdjSid()
     :
-    interface_name{YType::str, "interface-name"}
+    level{YType::enumeration, "level"},
+    sid_type{YType::enumeration, "sid-type"},
+    sid{YType::uint32, "sid"},
+    protected_{YType::enumeration, "protected"}
 {
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces";
+
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
+Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::has_data() const
 {
-    return interface_name.is_set;
+    return level.is_set
+	|| sid_type.is_set
+	|| sid.is_set
+	|| protected_.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid.yfilter)
+	|| ydk::is_set(protected_.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
-
+    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExcludeInterface' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid.is_set || is_set(sid.yfilter)) leaf_name_data.push_back(sid.get_name_leafdata());
+    if (protected_.is_set || is_set(protected_.yfilter)) leaf_name_data.push_back(protected_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface-name")
+    if(value_path == "level")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid")
+    {
+        sid = value;
+        sid.value_namespace = name_space;
+        sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected")
+    {
+        protected_ = value;
+        protected_.value_namespace = name_space;
+        protected_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface-name")
+    if(value_path == "level")
     {
-        interface_name.yfilter = yfilter;
+        level.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid")
+    {
+        sid.yfilter = yfilter;
+    }
+    if(value_path == "protected")
+    {
+        protected_.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::ManualAdjSids::ManualAdjSid::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name")
+    if(name == "level" || name == "sid-type" || name == "sid" || name == "protected")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefixes()
 {
-    yang_name = "max-redist-prefixes"; yang_parent_name = "af-data";
+
+    yang_name = "max-redist-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::~MaxRedistPrefixes()
@@ -5501,29 +3605,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "max-redist-prefixes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxRedistPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5579,7 +3669,8 @@ Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::
     level{YType::enumeration, "level"},
     prefix_limit{YType::uint32, "prefix-limit"}
 {
-    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes";
+
+    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::~MaxRedistPrefix()
@@ -5603,31 +3694,17 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRe
 {
     std::ostringstream path_buffer;
     path_buffer << "max-redist-prefix" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxRedistPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5677,9 +3754,967 @@ bool Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPre
     return false;
 }
 
+Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyles()
+{
+
+    yang_name = "metric-styles"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::~MetricStyles()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_data() const
+{
+    for (std::size_t index=0; index<metric_style.size(); index++)
+    {
+        if(metric_style[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_operation() const
+{
+    for (std::size_t index=0; index<metric_style.size(); index++)
+    {
+        if(metric_style[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric-styles";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "metric-style")
+    {
+        for(auto const & c : metric_style)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle>();
+        c->parent = this;
+        metric_style.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : metric_style)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-style")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::MetricStyle()
+    :
+    level{YType::enumeration, "level"},
+    style{YType::enumeration, "style"},
+    transition_state{YType::enumeration, "transition-state"}
+{
+
+    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::~MetricStyle()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_data() const
+{
+    return level.is_set
+	|| style.is_set
+	|| transition_state.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(style.yfilter)
+	|| ydk::is_set(transition_state.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric-style" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
+    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "style")
+    {
+        style = value;
+        style.value_namespace = name_space;
+        style.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transition-state")
+    {
+        transition_state = value;
+        transition_state.value_namespace = name_space;
+        transition_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "style")
+    {
+        style.yfilter = yfilter;
+    }
+    if(value_path == "transition-state")
+    {
+        transition_state.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "style" || name == "transition-state")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metrics()
+{
+
+    yang_name = "metrics"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Metrics::~Metrics()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_data() const
+{
+    for (std::size_t index=0; index<metric.size(); index++)
+    {
+        if(metric[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_operation() const
+{
+    for (std::size_t index=0; index<metric.size(); index++)
+    {
+        if(metric[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "metric")
+    {
+        for(auto const & c : metric)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric>();
+        c->parent = this;
+        metric.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : metric)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Metrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Metrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric()
+    :
+    level{YType::enumeration, "level"},
+    metric{YType::str, "metric"}
+{
+
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::~Metric()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_data() const
+{
+    return level.is_set
+	|| metric.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(metric.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::MicroLoopAvoidance()
+    :
+    enable{YType::enumeration, "enable"},
+    rib_update_delay{YType::uint32, "rib-update-delay"}
+{
+
+    yang_name = "micro-loop-avoidance"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::~MicroLoopAvoidance()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_data() const
+{
+    return enable.is_set
+	|| rib_update_delay.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(rib_update_delay.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "micro-loop-avoidance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (rib_update_delay.is_set || is_set(rib_update_delay.yfilter)) leaf_name_data.push_back(rib_update_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-update-delay")
+    {
+        rib_update_delay = value;
+        rib_update_delay.value_namespace = name_space;
+        rib_update_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "rib-update-delay")
+    {
+        rib_update_delay.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "rib-update-delay")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::MonitorConvergence()
+    :
+    enable{YType::empty, "enable"},
+    prefix_list{YType::str, "prefix-list"},
+    track_ip_frr{YType::empty, "track-ip-frr"}
+{
+
+    yang_name = "monitor-convergence"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::~MonitorConvergence()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_data() const
+{
+    return enable.is_set
+	|| prefix_list.is_set
+	|| track_ip_frr.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(prefix_list.yfilter)
+	|| ydk::is_set(track_ip_frr.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "monitor-convergence";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+    if (track_ip_frr.is_set || is_set(track_ip_frr.yfilter)) leaf_name_data.push_back(track_ip_frr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-ip-frr")
+    {
+        track_ip_frr = value;
+        track_ip_frr.value_namespace = name_space;
+        track_ip_frr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list.yfilter = yfilter;
+    }
+    if(value_path == "track-ip-frr")
+    {
+        track_ip_frr.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "prefix-list" || name == "track-ip-frr")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::Mpls()
+    :
+    igp_intact{YType::empty, "igp-intact"},
+    multicast_intact{YType::empty, "multicast-intact"}
+    	,
+    level(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level>())
+	,router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId>())
+{
+    level->parent = this;
+    router_id->parent = this;
+
+    yang_name = "mpls"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::~Mpls()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_data() const
+{
+    return igp_intact.is_set
+	|| multicast_intact.is_set
+	|| (level !=  nullptr && level->has_data())
+	|| (router_id !=  nullptr && router_id->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(igp_intact.yfilter)
+	|| ydk::is_set(multicast_intact.yfilter)
+	|| (level !=  nullptr && level->has_operation())
+	|| (router_id !=  nullptr && router_id->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (igp_intact.is_set || is_set(igp_intact.yfilter)) leaf_name_data.push_back(igp_intact.get_name_leafdata());
+    if (multicast_intact.is_set || is_set(multicast_intact.yfilter)) leaf_name_data.push_back(multicast_intact.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "level")
+    {
+        if(level == nullptr)
+        {
+            level = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level>();
+        }
+        return level;
+    }
+
+    if(child_yang_name == "router-id")
+    {
+        if(router_id == nullptr)
+        {
+            router_id = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId>();
+        }
+        return router_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(level != nullptr)
+    {
+        children["level"] = level;
+    }
+
+    if(router_id != nullptr)
+    {
+        children["router-id"] = router_id;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "igp-intact")
+    {
+        igp_intact = value;
+        igp_intact.value_namespace = name_space;
+        igp_intact.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast-intact")
+    {
+        multicast_intact = value;
+        multicast_intact.value_namespace = name_space;
+        multicast_intact.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-intact")
+    {
+        igp_intact.yfilter = yfilter;
+    }
+    if(value_path == "multicast-intact")
+    {
+        multicast_intact.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "router-id" || name == "igp-intact" || name == "multicast-intact")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::Level()
+    :
+    level1{YType::boolean, "level1"},
+    level2{YType::boolean, "level2"}
+{
+
+    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::~Level()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::has_data() const
+{
+    return level1.is_set
+	|| level2.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level1.yfilter)
+	|| ydk::is_set(level2.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "level";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level1.is_set || is_set(level1.yfilter)) leaf_name_data.push_back(level1.get_name_leafdata());
+    if (level2.is_set || is_set(level2.yfilter)) leaf_name_data.push_back(level2.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level1")
+    {
+        level1 = value;
+        level1.value_namespace = name_space;
+        level1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "level2")
+    {
+        level2 = value;
+        level2.value_namespace = name_space;
+        level2.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level1")
+    {
+        level1.yfilter = yfilter;
+    }
+    if(value_path == "level2")
+    {
+        level2.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::Level::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level1" || name == "level2")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::RouterId()
+    :
+    address{YType::str, "address"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::~RouterId()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_data() const
+{
+    return address.is_set
+	|| interface_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "router-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::MplsLdpGlobal()
+    :
+    auto_config{YType::boolean, "auto-config"}
+{
+
+    yang_name = "mpls-ldp-global"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::~MplsLdpGlobal()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_data() const
+{
+    return auto_config.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auto_config.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls-ldp-global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auto_config.is_set || is_set(auto_config.yfilter)) leaf_name_data.push_back(auto_config.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auto-config")
+    {
+        auto_config = value;
+        auto_config.value_namespace = name_space;
+        auto_config.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-config")
+    {
+        auto_config.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-config")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagations()
 {
-    yang_name = "propagations"; yang_parent_name = "af-data";
+
+    yang_name = "propagations"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::~Propagations()
@@ -5710,29 +4745,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Propagations::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "propagations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Propagations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Propagations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Propagations' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5789,7 +4810,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::Propagati
     destination_level{YType::enumeration, "destination-level"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "propagation"; yang_parent_name = "propagations";
+
+    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::~Propagation()
@@ -5815,32 +4837,18 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagatio
 {
     std::ostringstream path_buffer;
     path_buffer << "propagation" <<"[source-level='" <<source_level <<"']" <<"[destination-level='" <<destination_level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Propagation' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (source_level.is_set || is_set(source_level.yfilter)) leaf_name_data.push_back(source_level.get_name_leafdata());
     if (destination_level.is_set || is_set(destination_level.yfilter)) leaf_name_data.push_back(destination_level.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5902,7 +4910,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation::has_
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributions()
 {
-    yang_name = "redistributions"; yang_parent_name = "af-data";
+
+    yang_name = "redistributions"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::~Redistributions()
@@ -5933,29 +4942,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "redistributions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redistributions' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6012,7 +5007,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Red
     	,
     connected_or_static_or_rip_or_subscriber_or_mobile(nullptr) // presence node
 {
-    yang_name = "redistribution"; yang_parent_name = "redistributions";
+
+    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::~Redistribution()
@@ -6066,30 +5062,16 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistr
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribution" <<"[protocol-name='" <<protocol_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redistribution' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6206,310 +5188,6 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::ConnectedOrStaticOrRipOrSubscriberOrMobile()
-    :
-    levels{YType::enumeration, "levels"},
-    metric{YType::uint32, "metric"},
-    metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"},
-    route_policy_name{YType::str, "route-policy-name"}
-{
-    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
-{
-    return levels.is_set
-	|| metric.is_set
-	|| metric_type.is_set
-	|| ospf_route_type.is_set
-	|| route_policy_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(metric.yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(ospf_route_type.yfilter)
-	|| ydk::is_set(route_policy_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "connected-or-static-or-rip-or-subscriber-or-mobile";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ConnectedOrStaticOrRipOrSubscriberOrMobile' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type = value;
-        ospf_route_type.value_namespace = name_space;
-        ospf_route_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-        route_policy_name.value_namespace = name_space;
-        route_policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type.yfilter = yfilter;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::OspfOrOspfv3OrIsisOrApplication()
-    :
-    instance_name{YType::str, "instance-name"},
-    levels{YType::enumeration, "levels"},
-    metric{YType::uint32, "metric"},
-    metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"},
-    route_policy_name{YType::str, "route-policy-name"}
-{
-    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
-{
-    return instance_name.is_set
-	|| levels.is_set
-	|| metric.is_set
-	|| metric_type.is_set
-	|| ospf_route_type.is_set
-	|| route_policy_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(instance_name.yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(metric.yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(ospf_route_type.yfilter)
-	|| ydk::is_set(route_policy_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OspfOrOspfv3OrIsisOrApplication' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-        instance_name.value_namespace = name_space;
-        instance_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type = value;
-        ospf_route_type.value_namespace = name_space;
-        ospf_route_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-        route_policy_name.value_namespace = name_space;
-        route_policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name.yfilter = yfilter;
-    }
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type.yfilter = yfilter;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "instance-name" || name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::Bgp()
     :
     as_xx{YType::uint32, "as-xx"},
@@ -6520,7 +5198,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
     ospf_route_type{YType::int32, "ospf-route-type"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "bgp"; yang_parent_name = "redistribution";
+
+    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::~Bgp()
@@ -6554,23 +5233,11 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistr
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bgp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
@@ -6581,9 +5248,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Re
     if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6683,6 +5348,138 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
     return false;
 }
 
+Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::ConnectedOrStaticOrRipOrSubscriberOrMobile()
+    :
+    levels{YType::enumeration, "levels"},
+    metric{YType::uint32, "metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    ospf_route_type{YType::int32, "ospf-route-type"},
+    route_policy_name{YType::str, "route-policy-name"}
+{
+
+    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
+{
+    return levels.is_set
+	|| metric.is_set
+	|| metric_type.is_set
+	|| ospf_route_type.is_set
+	|| route_policy_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(levels.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(ospf_route_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-or-static-or-rip-or-subscriber-or-mobile";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "levels")
+    {
+        levels = value;
+        levels.value_namespace = name_space;
+        levels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type = value;
+        ospf_route_type.value_namespace = name_space;
+        ospf_route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "levels")
+    {
+        levels.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::Eigrp()
     :
     as_zz{YType::uint32, "as-zz"},
@@ -6692,7 +5489,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eig
     ospf_route_type{YType::int32, "ospf-route-type"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "eigrp"; yang_parent_name = "redistribution";
+
+    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::~Eigrp()
@@ -6724,23 +5522,11 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistr
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[as-zz='" <<as_zz <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Eigrp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (as_zz.is_set || is_set(as_zz.yfilter)) leaf_name_data.push_back(as_zz.get_name_leafdata());
@@ -6750,9 +5536,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Re
     if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6842,218 +5626,445 @@ bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicIntervals()
+Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::OspfOrOspfv3OrIsisOrApplication()
+    :
+    instance_name{YType::str, "instance-name"},
+    levels{YType::enumeration, "levels"},
+    metric{YType::uint32, "metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    ospf_route_type{YType::int32, "ospf-route-type"},
+    route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "spf-periodic-intervals"; yang_parent_name = "af-data";
+
+    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::~SpfPeriodicIntervals()
+Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
-    {
-        if(spf_periodic_interval[index]->has_data())
-            return true;
-    }
-    return false;
+    return instance_name.is_set
+	|| levels.is_set
+	|| metric.is_set
+	|| metric_type.is_set
+	|| ospf_route_type.is_set
+	|| route_policy_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_operation() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
-    {
-        if(spf_periodic_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(instance_name.yfilter)
+	|| ydk::is_set(levels.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(ospf_route_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-intervals";
-
+    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPeriodicIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
+    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "spf-periodic-interval")
-    {
-        for(auto const & c : spf_periodic_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval>();
-        c->parent = this;
-        spf_periodic_interval.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : spf_periodic_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "instance-name")
+    {
+        instance_name = value;
+        instance_name.value_namespace = name_space;
+        instance_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "levels")
+    {
+        levels = value;
+        levels.value_namespace = name_space;
+        levels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type = value;
+        ospf_route_type.value_namespace = name_space;
+        ospf_route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "instance-name")
+    {
+        instance_name.yfilter = yfilter;
+    }
+    if(value_path == "levels")
+    {
+        levels.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "spf-periodic-interval")
+    if(name == "instance-name" || name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::SpfPeriodicInterval()
+Isis::Instances::Instance::Afs::Af::AfData::RouterId::RouterId()
     :
-    level{YType::enumeration, "level"},
-    periodic_interval{YType::uint32, "periodic-interval"}
+    address{YType::str, "address"},
+    interface_name{YType::str, "interface-name"}
 {
-    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals";
+
+    yang_name = "router-id"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
+Isis::Instances::Instance::Afs::Af::AfData::RouterId::~RouterId()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_data() const
 {
-    return level.is_set
-	|| periodic_interval.is_set;
+    return address.is_set
+	|| interface_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(periodic_interval.yfilter);
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
-
+    path_buffer << "router-id";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPeriodicInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::RouterId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "level")
+    if(value_path == "address")
     {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "periodic-interval")
+    if(value_path == "interface-name")
     {
-        periodic_interval = value;
-        periodic_interval.value_namespace = name_space;
-        periodic_interval.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "level")
+    if(value_path == "address")
     {
-        level.yfilter = yfilter;
+        address.yfilter = yfilter;
     }
-    if(value_path == "periodic-interval")
+    if(value_path == "interface-name")
     {
-        periodic_interval.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::RouterId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "periodic-interval")
+    if(name == "address" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::SegmentRouting()
+    :
+    bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
+    mpls{YType::enumeration, "mpls"}
+    	,
+    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>())
+{
+    prefix_sid_map->parent = this;
+
+    yang_name = "segment-routing"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::~SegmentRouting()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_data() const
+{
+    return bundle_member_adj_sid.is_set
+	|| mpls.is_set
+	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_member_adj_sid.yfilter)
+	|| ydk::is_set(mpls.yfilter)
+	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment-routing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
+    if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-sid-map")
+    {
+        if(prefix_sid_map == nullptr)
+        {
+            prefix_sid_map = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>();
+        }
+        return prefix_sid_map;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_sid_map != nullptr)
+    {
+        children["prefix-sid-map"] = prefix_sid_map;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bundle-member-adj-sid")
+    {
+        bundle_member_adj_sid = value;
+        bundle_member_adj_sid.value_namespace = name_space;
+        bundle_member_adj_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls")
+    {
+        mpls = value;
+        mpls.value_namespace = name_space;
+        mpls.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-member-adj-sid")
+    {
+        bundle_member_adj_sid.yfilter = yfilter;
+    }
+    if(value_path == "mpls")
+    {
+        mpls.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "mpls")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::PrefixSidMap()
+    :
+    advertise_local{YType::empty, "advertise-local"},
+    receive{YType::boolean, "receive"}
+{
+
+    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::~PrefixSidMap()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_data() const
+{
+    return advertise_local.is_set
+	|| receive.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_local.yfilter)
+	|| ydk::is_set(receive.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-sid-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (advertise_local.is_set || is_set(advertise_local.yfilter)) leaf_name_data.push_back(advertise_local.get_name_leafdata());
+    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "advertise-local")
+    {
+        advertise_local = value;
+        advertise_local.value_namespace = name_space;
+        advertise_local.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "receive")
+    {
+        receive = value;
+        receive.value_namespace = name_space;
+        receive.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-local")
+    {
+        advertise_local.yfilter = yfilter;
+    }
+    if(value_path == "receive")
+    {
+        receive.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-local" || name == "receive")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfIntervals()
 {
-    yang_name = "spf-intervals"; yang_parent_name = "af-data";
+
+    yang_name = "spf-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::~SpfIntervals()
@@ -7084,29 +6095,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "spf-intervals";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7164,7 +6161,8 @@ Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::SpfInterv
     maximum_wait{YType::uint32, "maximum-wait"},
     secondary_wait{YType::uint32, "secondary-wait"}
 {
-    yang_name = "spf-interval"; yang_parent_name = "spf-intervals";
+
+    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::~SpfInterval()
@@ -7192,23 +6190,11 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterva
 {
     std::ostringstream path_buffer;
     path_buffer << "spf-interval" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
@@ -7216,9 +6202,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfIn
     if (maximum_wait.is_set || is_set(maximum_wait.yfilter)) leaf_name_data.push_back(maximum_wait.get_name_leafdata());
     if (secondary_wait.is_set || is_set(secondary_wait.yfilter)) leaf_name_data.push_back(secondary_wait.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7288,304 +6272,57 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval::has_
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::MonitorConvergence()
-    :
-    enable{YType::empty, "enable"},
-    prefix_list{YType::str, "prefix-list"},
-    track_ip_frr{YType::empty, "track-ip-frr"}
+Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicIntervals()
 {
-    yang_name = "monitor-convergence"; yang_parent_name = "af-data";
+
+    yang_name = "spf-periodic-intervals"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::~MonitorConvergence()
+Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::~SpfPeriodicIntervals()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_data() const
 {
-    return enable.is_set
-	|| prefix_list.is_set
-	|| track_ip_frr.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(prefix_list.yfilter)
-	|| ydk::is_set(track_ip_frr.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor-convergence";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MonitorConvergence' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
-    if (track_ip_frr.is_set || is_set(track_ip_frr.yfilter)) leaf_name_data.push_back(track_ip_frr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-list")
-    {
-        prefix_list = value;
-        prefix_list.value_namespace = name_space;
-        prefix_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-ip-frr")
-    {
-        track_ip_frr = value;
-        track_ip_frr.value_namespace = name_space;
-        track_ip_frr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "prefix-list")
-    {
-        prefix_list.yfilter = yfilter;
-    }
-    if(value_path == "track-ip-frr")
-    {
-        track_ip_frr.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "prefix-list" || name == "track-ip-frr")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::DefaultInformation()
-    :
-    external{YType::empty, "external"},
-    policy_name{YType::str, "policy-name"},
-    use_policy{YType::boolean, "use-policy"}
-{
-    yang_name = "default-information"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::~DefaultInformation()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_data() const
-{
-    return external.is_set
-	|| policy_name.is_set
-	|| use_policy.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(external.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(use_policy.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "default-information";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DefaultInformation' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (use_policy.is_set || is_set(use_policy.yfilter)) leaf_name_data.push_back(use_policy.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "external")
-    {
-        external = value;
-        external.value_namespace = name_space;
-        external.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "use-policy")
-    {
-        use_policy = value;
-        use_policy.value_namespace = name_space;
-        use_policy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "external")
-    {
-        external.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "use-policy")
-    {
-        use_policy.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "external" || name == "policy-name" || name == "use-policy")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistances()
-{
-    yang_name = "admin-distances"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::~AdminDistances()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_data() const
-{
-    for (std::size_t index=0; index<admin_distance.size(); index++)
-    {
-        if(admin_distance[index]->has_data())
+        if(spf_periodic_interval[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
     {
-        if(admin_distance[index]->has_operation())
+        if(spf_periodic_interval[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distances";
-
+    path_buffer << "spf-periodic-intervals";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AdminDistances' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "admin-distance")
+    if(child_yang_name == "spf-periodic-interval")
     {
-        for(auto const & c : admin_distance)
+        for(auto const & c : spf_periodic_interval)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7593,19 +6330,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistanc
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval>();
         c->parent = this;
-        admin_distance.push_back(c);
+        spf_periodic_interval.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : admin_distance)
+    for (auto const & c : spf_periodic_interval)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7613,94 +6350,475 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-distance")
+    if(name == "spf-periodic-interval")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::AdminDistance()
+Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::SpfPeriodicInterval()
     :
-    address_prefix{YType::str, "address-prefix"},
-    distance{YType::uint32, "distance"},
-    prefix_list{YType::str, "prefix-list"}
+    level{YType::enumeration, "level"},
+    periodic_interval{YType::uint32, "periodic-interval"}
 {
-    yang_name = "admin-distance"; yang_parent_name = "admin-distances";
+
+    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::~AdminDistance()
+Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
 {
-    return address_prefix.is_set
-	|| distance.is_set
-	|| prefix_list.is_set;
+    return level.is_set
+	|| periodic_interval.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address_prefix.yfilter)
-	|| ydk::is_set(distance.yfilter)
-	|| ydk::is_set(prefix_list.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
-
+    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AdminDistance' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
-    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
-    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "periodic-interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriorities()
+{
+
+    yang_name = "spf-prefix-priorities"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::~SpfPrefixPriorities()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_data() const
+{
+    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    {
+        if(spf_prefix_priority[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_operation() const
+{
+    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    {
+        if(spf_prefix_priority[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spf-prefix-priorities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "spf-prefix-priority")
+    {
+        for(auto const & c : spf_prefix_priority)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority>();
+        c->parent = this;
+        spf_prefix_priority.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : spf_prefix_priority)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spf-prefix-priority")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::SpfPrefixPriority()
+    :
+    level{YType::enumeration, "level"},
+    prefix_priority_type{YType::enumeration, "prefix-priority-type"},
+    access_list_name{YType::str, "access-list-name"},
+    admin_tag{YType::uint32, "admin-tag"}
+{
+
+    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
+{
+    return level.is_set
+	|| prefix_priority_type.is_set
+	|| access_list_name.is_set
+	|| admin_tag.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(prefix_priority_type.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(admin_tag.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (prefix_priority_type.is_set || is_set(prefix_priority_type.yfilter)) leaf_name_data.push_back(prefix_priority_type.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (admin_tag.is_set || is_set(admin_tag.yfilter)) leaf_name_data.push_back(admin_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-priority-type")
+    {
+        prefix_priority_type = value;
+        prefix_priority_type.value_namespace = name_space;
+        prefix_priority_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag = value;
+        admin_tag.value_namespace = name_space;
+        admin_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "prefix-priority-type")
+    {
+        prefix_priority_type.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "prefix-priority-type" || name == "access-list-name" || name == "admin-tag")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefixes()
+{
+
+    yang_name = "summary-prefixes"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::~SummaryPrefixes()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_data() const
+{
+    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    {
+        if(summary_prefix[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_operation() const
+{
+    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    {
+        if(summary_prefix[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-prefixes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "summary-prefix")
+    {
+        for(auto const & c : summary_prefix)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix>();
+        c->parent = this;
+        summary_prefix.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : summary_prefix)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary-prefix")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::SummaryPrefix()
+    :
+    address_prefix{YType::str, "address-prefix"},
+    level{YType::uint32, "level"},
+    tag{YType::uint32, "tag"}
+{
+
+    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_data() const
+{
+    return address_prefix.is_set
+	|| level.is_set
+	|| tag.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(tag.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
@@ -7708,201 +6826,297 @@ void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::
         address_prefix.value_namespace = name_space;
         address_prefix.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "distance")
+    if(value_path == "level")
     {
-        distance = value;
-        distance.value_namespace = name_space;
-        distance.value_namespace_prefix = name_space_prefix;
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-list")
+    if(value_path == "tag")
     {
-        prefix_list = value;
-        prefix_list.value_namespace = name_space;
-        prefix_list.value_namespace_prefix = name_space_prefix;
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-prefix")
     {
         address_prefix.yfilter = yfilter;
     }
-    if(value_path == "distance")
+    if(value_path == "level")
     {
-        distance.yfilter = yfilter;
+        level.yfilter = yfilter;
     }
-    if(value_path == "prefix-list")
+    if(value_path == "tag")
     {
-        prefix_list.yfilter = yfilter;
+        tag.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-prefix" || name == "distance" || name == "prefix-list")
+    if(name == "address-prefix" || name == "level" || name == "tag")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::Ispf()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Ucmp()
     :
-    states(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States>())
+    delay_interval{YType::uint32, "delay-interval"}
+    	,
+    enable(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable>())
+	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>())
 {
-    states->parent = this;
+    enable->parent = this;
+    exclude_interfaces->parent = this;
 
-    yang_name = "ispf"; yang_parent_name = "af-data";
+    yang_name = "ucmp"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::~Ispf()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::~Ucmp()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_data() const
 {
-    return (states !=  nullptr && states->has_data());
+    return delay_interval.is_set
+	|| (enable !=  nullptr && enable->has_data())
+	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_operation() const
 {
     return is_set(yfilter)
-	|| (states !=  nullptr && states->has_operation());
+	|| ydk::is_set(delay_interval.yfilter)
+	|| (enable !=  nullptr && enable->has_operation())
+	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_operation());
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ispf";
-
+    path_buffer << "ucmp";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ispf' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (delay_interval.is_set || is_set(delay_interval.yfilter)) leaf_name_data.push_back(delay_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "states")
+    if(child_yang_name == "enable")
     {
-        if(states == nullptr)
+        if(enable == nullptr)
         {
-            states = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States>();
+            enable = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable>();
         }
-        return states;
+        return enable;
+    }
+
+    if(child_yang_name == "exclude-interfaces")
+    {
+        if(exclude_interfaces == nullptr)
+        {
+            exclude_interfaces = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces>();
+        }
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(states != nullptr)
+    if(enable != nullptr)
     {
-        children["states"] = states;
+        children["enable"] = enable;
+    }
+
+    if(exclude_interfaces != nullptr)
+    {
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "delay-interval")
+    {
+        delay_interval = value;
+        delay_interval.value_namespace = name_space;
+        delay_interval.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "delay-interval")
+    {
+        delay_interval.yfilter = yfilter;
+    }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "states")
+    if(name == "enable" || name == "exclude-interfaces" || name == "delay-interval")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::States()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::Enable()
+    :
+    prefix_list_name{YType::str, "prefix-list-name"},
+    variance{YType::uint32, "variance"}
 {
-    yang_name = "states"; yang_parent_name = "ispf";
+
+    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::~States()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::~Enable()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_data() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    return prefix_list_name.is_set
+	|| variance.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| ydk::is_set(variance.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "enable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+    if (variance.is_set || is_set(variance.yfilter)) leaf_name_data.push_back(variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-list-name")
     {
-        if(state[index]->has_data())
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "variance")
+    {
+        variance = value;
+        variance.value_namespace = name_space;
+        variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+    if(value_path == "variance")
+    {
+        variance.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-name" || name == "variance")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
+{
+
+    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    {
+        if(exclude_interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.size(); index++)
     {
-        if(state[index]->has_operation())
+        if(exclude_interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "states";
-
+    path_buffer << "exclude-interfaces";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'States' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "state")
+    if(child_yang_name == "exclude-interface")
     {
-        for(auto const & c : state)
+        for(auto const & c : exclude_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7910,19 +7124,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        state.push_back(c);
+        exclude_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : state)
+    for (auto const & c : exclude_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7930,426 +7144,74 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state")
+    if(name == "exclude-interface")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::State()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::ExcludeInterface()
     :
-    level{YType::enumeration, "level"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "state"; yang_parent_name = "states";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::~State()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_data() const
-{
-    return level.is_set
-	|| state.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "state")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::MplsLdpGlobal()
-    :
-    auto_config{YType::boolean, "auto-config"}
-{
-    yang_name = "mpls-ldp-global"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::~MplsLdpGlobal()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_data() const
-{
-    return auto_config.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auto_config.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mpls-ldp-global";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MplsLdpGlobal' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auto_config.is_set || is_set(auto_config.yfilter)) leaf_name_data.push_back(auto_config.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auto-config")
-    {
-        auto_config = value;
-        auto_config.value_namespace = name_space;
-        auto_config.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auto-config")
-    {
-        auto_config.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto-config")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Mpls::Mpls()
-    :
-    igp_intact{YType::empty, "igp-intact"},
-    level{YType::enumeration, "level"},
-    multicast_intact{YType::empty, "multicast-intact"}
-    	,
-    router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId>())
-{
-    router_id->parent = this;
-
-    yang_name = "mpls"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Mpls::~Mpls()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_data() const
-{
-    return igp_intact.is_set
-	|| level.is_set
-	|| multicast_intact.is_set
-	|| (router_id !=  nullptr && router_id->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(igp_intact.yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(multicast_intact.yfilter)
-	|| (router_id !=  nullptr && router_id->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mpls";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mpls' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (igp_intact.is_set || is_set(igp_intact.yfilter)) leaf_name_data.push_back(igp_intact.get_name_leafdata());
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (multicast_intact.is_set || is_set(multicast_intact.yfilter)) leaf_name_data.push_back(multicast_intact.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "router-id")
-    {
-        if(router_id == nullptr)
-        {
-            router_id = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId>();
-        }
-        return router_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Mpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(router_id != nullptr)
-    {
-        children["router-id"] = router_id;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "igp-intact")
-    {
-        igp_intact = value;
-        igp_intact.value_namespace = name_space;
-        igp_intact.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-intact")
-    {
-        multicast_intact = value;
-        multicast_intact.value_namespace = name_space;
-        multicast_intact.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "igp-intact")
-    {
-        igp_intact.yfilter = yfilter;
-    }
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "multicast-intact")
-    {
-        multicast_intact.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "router-id" || name == "igp-intact" || name == "level" || name == "multicast-intact")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::RouterId()
-    :
-    address{YType::str, "address"},
     interface_name{YType::str, "interface-name"}
 {
-    yang_name = "router-id"; yang_parent_name = "mpls";
+
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::~RouterId()
+Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_data() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
-    return address.is_set
-	|| interface_name.is_set;
+    return interface_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "router-id";
-
+    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RouterId' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
@@ -8358,237 +7220,25 @@ void Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::set_value(const
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
     if(value_path == "interface-name")
     {
         interface_name.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metrics()
-{
-    yang_name = "metrics"; yang_parent_name = "af-data";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Metrics::~Metrics()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_data() const
-{
-    for (std::size_t index=0; index<metric.size(); index++)
-    {
-        if(metric[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_operation() const
-{
-    for (std::size_t index=0; index<metric.size(); index++)
-    {
-        if(metric[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metrics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Metrics' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "metric")
-    {
-        for(auto const & c : metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric>();
-        c->parent = this;
-        metric.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Metrics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : metric)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Metrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Metrics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric()
-    :
-    level{YType::enumeration, "level"},
-    metric{YType::str, "metric"}
-{
-    yang_name = "metric"; yang_parent_name = "metrics";
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::~Metric()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_data() const
-{
-    return level.is_set
-	|| metric.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(metric.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Metric' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "metric")
+    if(name == "interface-name")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::Weights()
 {
-    yang_name = "weights"; yang_parent_name = "af-data";
+
+    yang_name = "weights"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::~Weights()
@@ -8619,29 +7269,15 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Weights::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "weights";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Weights::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Weights::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Weights' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8697,7 +7333,8 @@ Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::Weight()
     level{YType::enumeration, "level"},
     weight{YType::uint32, "weight"}
 {
-    yang_name = "weight"; yang_parent_name = "weights";
+
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::~Weight()
@@ -8721,31 +7358,17 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "weight" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Weight' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8814,6 +7437,7 @@ Isis::Instances::Instance::Afs::Af::TopologyName::TopologyName()
 	,default_information(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation>())
 	,frr_table(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable>())
 	,ispf(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf>())
+	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids>())
 	,max_redist_prefixes(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes>())
 	,metric_styles(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles>())
 	,metrics(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics>())
@@ -8833,48 +7457,29 @@ Isis::Instances::Instance::Afs::Af::TopologyName::TopologyName()
 	,weights(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Weights>())
 {
     admin_distances->parent = this;
-
     default_information->parent = this;
-
     frr_table->parent = this;
-
     ispf->parent = this;
-
+    manual_adj_sids->parent = this;
     max_redist_prefixes->parent = this;
-
     metric_styles->parent = this;
-
     metrics->parent = this;
-
     micro_loop_avoidance->parent = this;
-
     monitor_convergence->parent = this;
-
     mpls->parent = this;
-
     mpls_ldp_global->parent = this;
-
     propagations->parent = this;
-
     redistributions->parent = this;
-
     router_id->parent = this;
-
     segment_routing->parent = this;
-
     spf_intervals->parent = this;
-
     spf_periodic_intervals->parent = this;
-
     spf_prefix_priorities->parent = this;
-
     summary_prefixes->parent = this;
-
     ucmp->parent = this;
-
     weights->parent = this;
 
-    yang_name = "topology-name"; yang_parent_name = "af";
+    yang_name = "topology-name"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::~TopologyName()
@@ -8899,6 +7504,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_data() const
 	|| (default_information !=  nullptr && default_information->has_data())
 	|| (frr_table !=  nullptr && frr_table->has_data())
 	|| (ispf !=  nullptr && ispf->has_data())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_data())
 	|| (max_redist_prefixes !=  nullptr && max_redist_prefixes->has_data())
 	|| (metric_styles !=  nullptr && metric_styles->has_data())
 	|| (metrics !=  nullptr && metrics->has_data())
@@ -8937,6 +7543,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_operation() const
 	|| (default_information !=  nullptr && default_information->has_operation())
 	|| (frr_table !=  nullptr && frr_table->has_operation())
 	|| (ispf !=  nullptr && ispf->has_operation())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_operation())
 	|| (max_redist_prefixes !=  nullptr && max_redist_prefixes->has_operation())
 	|| (metric_styles !=  nullptr && metric_styles->has_operation())
 	|| (metrics !=  nullptr && metrics->has_operation())
@@ -8960,23 +7567,11 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-name" <<"[topology-name='" <<topology_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TopologyName' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (topology_name.is_set || is_set(topology_name.yfilter)) leaf_name_data.push_back(topology_name.get_name_leafdata());
@@ -8992,9 +7587,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::get_entity_pa
     if (single_topology.is_set || is_set(single_topology.yfilter)) leaf_name_data.push_back(single_topology.get_name_leafdata());
     if (topology_id.is_set || is_set(topology_id.yfilter)) leaf_name_data.push_back(topology_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9034,6 +7627,15 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::get_ch
             ispf = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf>();
         }
         return ispf;
+    }
+
+    if(child_yang_name == "manual-adj-sids")
+    {
+        if(manual_adj_sids == nullptr)
+        {
+            manual_adj_sids = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids>();
+        }
+        return manual_adj_sids;
     }
 
     if(child_yang_name == "max-redist-prefixes")
@@ -9213,6 +7815,11 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     if(ispf != nullptr)
     {
         children["ispf"] = ispf;
+    }
+
+    if(manual_adj_sids != nullptr)
+    {
+        children["manual-adj-sids"] = manual_adj_sids;
     }
 
     if(max_redist_prefixes != nullptr)
@@ -9433,287 +8040,62 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::set_filter(const std::str
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-distances" || name == "default-information" || name == "frr-table" || name == "ispf" || name == "max-redist-prefixes" || name == "metric-styles" || name == "metrics" || name == "micro-loop-avoidance" || name == "monitor-convergence" || name == "mpls" || name == "mpls-ldp-global" || name == "propagations" || name == "redistributions" || name == "router-id" || name == "segment-routing" || name == "spf-intervals" || name == "spf-periodic-intervals" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "ucmp" || name == "weights" || name == "topology-name" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "advertise-passive-only" || name == "apply-weight" || name == "attached-bit" || name == "default-admin-distance" || name == "ignore-attached-bit" || name == "maximum-paths" || name == "route-source-first-hop" || name == "single-topology" || name == "topology-id")
+    if(name == "admin-distances" || name == "default-information" || name == "frr-table" || name == "ispf" || name == "manual-adj-sids" || name == "max-redist-prefixes" || name == "metric-styles" || name == "metrics" || name == "micro-loop-avoidance" || name == "monitor-convergence" || name == "mpls" || name == "mpls-ldp-global" || name == "propagations" || name == "redistributions" || name == "router-id" || name == "segment-routing" || name == "spf-intervals" || name == "spf-periodic-intervals" || name == "spf-prefix-priorities" || name == "summary-prefixes" || name == "ucmp" || name == "weights" || name == "topology-name" || name == "adjacency-check" || name == "advertise-link-attributes" || name == "advertise-passive-only" || name == "apply-weight" || name == "attached-bit" || name == "default-admin-distance" || name == "ignore-attached-bit" || name == "maximum-paths" || name == "route-source-first-hop" || name == "single-topology" || name == "topology-id")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::SegmentRouting()
-    :
-    mpls{YType::enumeration, "mpls"}
-    	,
-    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>())
+Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistances()
 {
-    prefix_sid_map->parent = this;
 
-    yang_name = "segment-routing"; yang_parent_name = "topology-name";
+    yang_name = "admin-distances"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::~SegmentRouting()
+Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::~AdminDistances()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_data() const
 {
-    return mpls.is_set
-	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mpls.yfilter)
-	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "segment-routing";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<admin_distance.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SegmentRouting' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-sid-map")
-    {
-        if(prefix_sid_map == nullptr)
-        {
-            prefix_sid_map = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>();
-        }
-        return prefix_sid_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_sid_map != nullptr)
-    {
-        children["prefix-sid-map"] = prefix_sid_map;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mpls")
-    {
-        mpls = value;
-        mpls.value_namespace = name_space;
-        mpls.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mpls")
-    {
-        mpls.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-sid-map" || name == "mpls")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::PrefixSidMap()
-    :
-    advertise_local{YType::empty, "advertise-local"},
-    receive{YType::boolean, "receive"}
-{
-    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::~PrefixSidMap()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_data() const
-{
-    return advertise_local.is_set
-	|| receive.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(advertise_local.yfilter)
-	|| ydk::is_set(receive.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-sid-map";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixSidMap' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (advertise_local.is_set || is_set(advertise_local.yfilter)) leaf_name_data.push_back(advertise_local.get_name_leafdata());
-    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "advertise-local")
-    {
-        advertise_local = value;
-        advertise_local.value_namespace = name_space;
-        advertise_local.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "receive")
-    {
-        receive = value;
-        receive.value_namespace = name_space;
-        receive.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "advertise-local")
-    {
-        advertise_local.yfilter = yfilter;
-    }
-    if(value_path == "receive")
-    {
-        receive.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "advertise-local" || name == "receive")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyles()
-{
-    yang_name = "metric-styles"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::~MetricStyles()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_data() const
-{
-    for (std::size_t index=0; index<metric_style.size(); index++)
-    {
-        if(metric_style[index]->has_data())
+        if(admin_distance[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_operation() const
 {
-    for (std::size_t index=0; index<metric_style.size(); index++)
+    for (std::size_t index=0; index<admin_distance.size(); index++)
     {
-        if(metric_style[index]->has_operation())
+        if(admin_distance[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-styles";
-
+    path_buffer << "admin-distances";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MetricStyles' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "metric-style")
+    if(child_yang_name == "admin-distance")
     {
-        for(auto const & c : metric_style)
+        for(auto const & c : admin_distance)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -9721,19 +8103,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metric
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance>();
         c->parent = this;
-        metric_style.push_back(c);
+        admin_distance.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : metric_style)
+    for (auto const & c : admin_distance)
     {
         children[c->get_segment_path()] = c;
     }
@@ -9741,134 +8123,225 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "metric-style")
+    if(name == "admin-distance")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::MetricStyle()
+Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::AdminDistance()
     :
-    level{YType::enumeration, "level"},
-    style{YType::enumeration, "style"},
-    transition_state{YType::enumeration, "transition-state"}
+    address_prefix{YType::str, "address-prefix"},
+    distance{YType::uint32, "distance"},
+    prefix_list{YType::str, "prefix-list"}
 {
-    yang_name = "metric-style"; yang_parent_name = "metric-styles";
+
+    yang_name = "admin-distance"; yang_parent_name = "admin-distances"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::~MetricStyle()
+Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::~AdminDistance()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_data() const
 {
-    return level.is_set
-	|| style.is_set
-	|| transition_state.is_set;
+    return address_prefix.is_set
+	|| distance.is_set
+	|| prefix_list.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(style.yfilter)
-	|| ydk::is_set(transition_state.yfilter);
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric-style" <<"[level='" <<level <<"']";
-
+    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MetricStyle' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
-    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "level")
+    if(value_path == "address-prefix")
     {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
+        address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "style")
+    if(value_path == "distance")
     {
-        style = value;
-        style.value_namespace = name_space;
-        style.value_namespace_prefix = name_space_prefix;
+        distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transition-state")
+    if(value_path == "prefix-list")
     {
-        transition_state = value;
-        transition_state.value_namespace = name_space;
-        transition_state.value_namespace_prefix = name_space_prefix;
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "level")
+    if(value_path == "address-prefix")
     {
-        level.yfilter = yfilter;
+        address_prefix.yfilter = yfilter;
     }
-    if(value_path == "style")
+    if(value_path == "distance")
     {
-        style.yfilter = yfilter;
+        distance.yfilter = yfilter;
     }
-    if(value_path == "transition-state")
+    if(value_path == "prefix-list")
     {
-        transition_state.yfilter = yfilter;
+        prefix_list.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "style" || name == "transition-state")
+    if(name == "address-prefix" || name == "distance" || name == "prefix-list")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::DefaultInformation()
+    :
+    external{YType::empty, "external"},
+    policy_name{YType::str, "policy-name"},
+    use_policy{YType::boolean, "use-policy"}
+{
+
+    yang_name = "default-information"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::~DefaultInformation()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_data() const
+{
+    return external.is_set
+	|| policy_name.is_set
+	|| use_policy.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(external.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(use_policy.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "default-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (use_policy.is_set || is_set(use_policy.yfilter)) leaf_name_data.push_back(use_policy.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "external")
+    {
+        external = value;
+        external.value_namespace = name_space;
+        external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "use-policy")
+    {
+        use_policy = value;
+        use_policy.value_namespace = name_space;
+        use_policy.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external")
+    {
+        external.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "use-policy")
+    {
+        use_policy.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external" || name == "policy-name" || name == "use-policy")
         return true;
     return false;
 }
@@ -9882,16 +8355,12 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTable()
 	,priority_limits(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits>())
 {
     frr_load_sharings->parent = this;
-
     frr_remote_lfa_prefixes->parent = this;
-
     frr_tiebreakers->parent = this;
-
     frr_use_cand_onlies->parent = this;
-
     priority_limits->parent = this;
 
-    yang_name = "frr-table"; yang_parent_name = "topology-name";
+    yang_name = "frr-table"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::~FrrTable()
@@ -9921,29 +8390,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-table";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTable' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10045,7 +8500,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::has_leaf_or_chi
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharings()
 {
-    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-load-sharings"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::~FrrLoadSharings()
@@ -10076,29 +8532,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadS
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-load-sharings";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrLoadSharings' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10154,7 +8596,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::Frr
     level{YType::enumeration, "level"},
     load_sharing{YType::enumeration, "load-sharing"}
 {
-    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings";
+
+    yang_name = "frr-load-sharing"; yang_parent_name = "frr-load-sharings"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::~FrrLoadSharing()
@@ -10178,31 +8621,17 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadS
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-load-sharing" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrLoadSharing' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (load_sharing.is_set || is_set(load_sharing.yfilter)) leaf_name_data.push_back(load_sharing.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10252,232 +8681,10 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimits()
-{
-    yang_name = "priority-limits"; yang_parent_name = "frr-table";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::~PriorityLimits()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_data() const
-{
-    for (std::size_t index=0; index<priority_limit.size(); index++)
-    {
-        if(priority_limit[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_operation() const
-{
-    for (std::size_t index=0; index<priority_limit.size(); index++)
-    {
-        if(priority_limit[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limits";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PriorityLimits' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "priority-limit")
-    {
-        for(auto const & c : priority_limit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit>();
-        c->parent = this;
-        priority_limit.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : priority_limit)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority-limit")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
-    :
-    level{YType::enumeration, "level"},
-    frr_type{YType::enumeration, "frr-type"},
-    priority{YType::enumeration, "priority"}
-{
-    yang_name = "priority-limit"; yang_parent_name = "priority-limits";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_data() const
-{
-    return level.is_set
-	|| frr_type.is_set
-	|| priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(frr_type.yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PriorityLimit' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "frr-type")
-    {
-        frr_type = value;
-        frr_type.value_namespace = name_space;
-        frr_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "frr-type")
-    {
-        frr_type.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "frr-type" || name == "priority")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefixes()
 {
-    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-remote-lfa-prefixes"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::~FrrRemoteLfaPrefixes()
@@ -10508,29 +8715,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemot
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-remote-lfa-prefixes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrRemoteLfaPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10586,7 +8779,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
     level{YType::enumeration, "level"},
     prefix_list_name{YType::str, "prefix-list-name"}
 {
-    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes";
+
+    yang_name = "frr-remote-lfa-prefix"; yang_parent_name = "frr-remote-lfa-prefixes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::~FrrRemoteLfaPrefix()
@@ -10610,31 +8804,17 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemot
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-remote-lfa-prefix" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrRemoteLfaPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10686,7 +8866,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPre
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreakers()
 {
-    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-tiebreakers"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::~FrrTiebreakers()
@@ -10717,29 +8898,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebr
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tiebreakers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTiebreakers' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10796,7 +8963,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrT
     tiebreaker{YType::enumeration, "tiebreaker"},
     index_{YType::uint32, "index"}
 {
-    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers";
+
+    yang_name = "frr-tiebreaker"; yang_parent_name = "frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::~FrrTiebreaker()
@@ -10822,32 +8990,18 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebr
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrTiebreaker' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (tiebreaker.is_set || is_set(tiebreaker.yfilter)) leaf_name_data.push_back(tiebreaker.get_name_leafdata());
     if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10909,7 +9063,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers:
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnlies()
 {
-    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table";
+
+    yang_name = "frr-use-cand-onlies"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::~FrrUseCandOnlies()
@@ -10940,29 +9095,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCa
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-use-cand-onlies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrUseCandOnlies' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11018,7 +9159,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::Fr
     level{YType::enumeration, "level"},
     frr_type{YType::enumeration, "frr-type"}
 {
-    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies";
+
+    yang_name = "frr-use-cand-only"; yang_parent_name = "frr-use-cand-onlies"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::~FrrUseCandOnly()
@@ -11042,31 +9184,17 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCa
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-use-cand-only" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FrrUseCandOnly' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11116,173 +9244,57 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlie
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::RouterId()
-    :
-    address{YType::str, "address"},
-    interface_name{YType::str, "interface-name"}
+Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimits()
 {
-    yang_name = "router-id"; yang_parent_name = "topology-name";
+
+    yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::~RouterId()
+Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::~PriorityLimits()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_data() const
 {
-    return address.is_set
-	|| interface_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "router-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<priority_limit.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RouterId' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriorities()
-{
-    yang_name = "spf-prefix-priorities"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::~SpfPrefixPriorities()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_data() const
-{
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
-    {
-        if(spf_prefix_priority[index]->has_data())
+        if(priority_limit[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_operation() const
 {
-    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    for (std::size_t index=0; index<priority_limit.size(); index++)
     {
-        if(spf_prefix_priority[index]->has_operation())
+        if(priority_limit[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priorities";
-
+    path_buffer << "priority-limits";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPrefixPriorities' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "spf-prefix-priority")
+    if(child_yang_name == "priority-limit")
     {
-        for(auto const & c : spf_prefix_priority)
+        for(auto const & c : priority_limit)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11290,19 +9302,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPre
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit>();
         c->parent = this;
-        spf_prefix_priority.push_back(c);
+        priority_limit.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : spf_prefix_priority)
+    for (auto const & c : priority_limit)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11310,98 +9322,81 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "spf-prefix-priority")
+    if(name == "priority-limit")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::SpfPrefixPriority()
+Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
     :
     level{YType::enumeration, "level"},
-    prefix_priority_type{YType::enumeration, "prefix-priority-type"},
-    access_list_name{YType::str, "access-list-name"},
-    admin_tag{YType::uint32, "admin-tag"}
+    frr_type{YType::enumeration, "frr-type"},
+    priority{YType::enumeration, "priority"}
 {
-    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities";
+
+    yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
+Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::~PriorityLimit()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
     return level.is_set
-	|| prefix_priority_type.is_set
-	|| access_list_name.is_set
-	|| admin_tag.is_set;
+	|| frr_type.is_set
+	|| priority.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(prefix_priority_type.yfilter)
-	|| ydk::is_set(access_list_name.yfilter)
-	|| ydk::is_set(admin_tag.yfilter);
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
-
+    path_buffer << "priority-limit" <<"[level='" <<level <<"']" <<"[frr-type='" <<frr_type <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPrefixPriority' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (prefix_priority_type.is_set || is_set(prefix_priority_type.yfilter)) leaf_name_data.push_back(prefix_priority_type.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (admin_tag.is_set || is_set(admin_tag.yfilter)) leaf_name_data.push_back(admin_tag.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
@@ -11409,117 +9404,174 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfP
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-priority-type")
+    if(value_path == "frr-type")
     {
-        prefix_priority_type = value;
-        prefix_priority_type.value_namespace = name_space;
-        prefix_priority_type.value_namespace_prefix = name_space_prefix;
+        frr_type = value;
+        frr_type.value_namespace = name_space;
+        frr_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "priority")
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-tag")
-    {
-        admin_tag = value;
-        admin_tag.value_namespace = name_space;
-        admin_tag.value_namespace_prefix = name_space_prefix;
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "level")
     {
         level.yfilter = yfilter;
     }
-    if(value_path == "prefix-priority-type")
+    if(value_path == "frr-type")
     {
-        prefix_priority_type.yfilter = yfilter;
+        frr_type.yfilter = yfilter;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "priority")
     {
-        access_list_name.yfilter = yfilter;
-    }
-    if(value_path == "admin-tag")
-    {
-        admin_tag.yfilter = yfilter;
+        priority.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "prefix-priority-type" || name == "access-list-name" || name == "admin-tag")
+    if(name == "level" || name == "frr-type" || name == "priority")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefixes()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::Ispf()
+    :
+    states(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States>())
 {
-    yang_name = "summary-prefixes"; yang_parent_name = "topology-name";
+    states->parent = this;
+
+    yang_name = "ispf"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::~SummaryPrefixes()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::~Ispf()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_data() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    return (states !=  nullptr && states->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (states !=  nullptr && states->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ispf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "states")
     {
-        if(summary_prefix[index]->has_data())
+        if(states == nullptr)
+        {
+            states = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States>();
+        }
+        return states;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(states != nullptr)
+    {
+        children["states"] = states;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "states")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::States()
+{
+
+    yang_name = "states"; yang_parent_name = "ispf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::~States()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_data() const
+{
+    for (std::size_t index=0; index<state.size(); index++)
+    {
+        if(state[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_operation() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    for (std::size_t index=0; index<state.size(); index++)
     {
-        if(summary_prefix[index]->has_operation())
+        if(state[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefixes";
-
+    path_buffer << "states";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SummaryPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "summary-prefix")
+    if(child_yang_name == "state")
     {
-        for(auto const & c : summary_prefix)
+        for(auto const & c : state)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11527,19 +9579,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Summar
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State>();
         c->parent = this;
-        summary_prefix.push_back(c);
+        state.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : summary_prefix)
+    for (auto const & c : state)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11547,536 +9599,162 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "summary-prefix")
+    if(name == "state")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::SummaryPrefix()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::State()
     :
-    address_prefix{YType::str, "address-prefix"},
-    level{YType::uint32, "level"},
-    tag{YType::uint32, "tag"}
+    level{YType::enumeration, "level"},
+    state{YType::enumeration, "state"}
 {
-    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes";
+
+    yang_name = "state"; yang_parent_name = "states"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::~State()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_data() const
 {
-    return address_prefix.is_set
-	|| level.is_set
-	|| tag.is_set;
+    return level.is_set
+	|| state.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address_prefix.yfilter)
 	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(tag.yfilter);
+	|| ydk::is_set(state.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
-
+    path_buffer << "state" <<"[level='" <<level <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SummaryPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address-prefix")
-    {
-        address_prefix = value;
-        address_prefix.value_namespace = name_space;
-        address_prefix.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "level")
     {
         level = value;
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag")
+    if(value_path == "state")
     {
-        tag = value;
-        tag.value_namespace = name_space;
-        tag.value_namespace_prefix = name_space_prefix;
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address-prefix")
-    {
-        address_prefix.yfilter = yfilter;
-    }
     if(value_path == "level")
     {
         level.yfilter = yfilter;
     }
-    if(value_path == "tag")
+    if(value_path == "state")
     {
-        tag.yfilter = yfilter;
+        state.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-prefix" || name == "level" || name == "tag")
+    if(name == "level" || name == "state")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::MicroLoopAvoidance()
-    :
-    enable{YType::enumeration, "enable"},
-    rib_update_delay{YType::uint32, "rib-update-delay"}
+Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSids()
 {
-    yang_name = "micro-loop-avoidance"; yang_parent_name = "topology-name";
+
+    yang_name = "manual-adj-sids"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::~MicroLoopAvoidance()
+Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::~ManualAdjSids()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_data() const
 {
-    return enable.is_set
-	|| rib_update_delay.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(rib_update_delay.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "micro-loop-avoidance";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MicroLoopAvoidance' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (rib_update_delay.is_set || is_set(rib_update_delay.yfilter)) leaf_name_data.push_back(rib_update_delay.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rib-update-delay")
-    {
-        rib_update_delay = value;
-        rib_update_delay.value_namespace = name_space;
-        rib_update_delay.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "rib-update-delay")
-    {
-        rib_update_delay.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "rib-update-delay")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Ucmp()
-    :
-    delay_interval{YType::uint32, "delay-interval"}
-    	,
-    enable(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable>())
-	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>())
-{
-    enable->parent = this;
-
-    exclude_interfaces->parent = this;
-
-    yang_name = "ucmp"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::~Ucmp()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_data() const
-{
-    return delay_interval.is_set
-	|| (enable !=  nullptr && enable->has_data())
-	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(delay_interval.yfilter)
-	|| (enable !=  nullptr && enable->has_operation())
-	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ucmp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ucmp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (delay_interval.is_set || is_set(delay_interval.yfilter)) leaf_name_data.push_back(delay_interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "enable")
-    {
-        if(enable == nullptr)
-        {
-            enable = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable>();
-        }
-        return enable;
-    }
-
-    if(child_yang_name == "exclude-interfaces")
-    {
-        if(exclude_interfaces == nullptr)
-        {
-            exclude_interfaces = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>();
-        }
-        return exclude_interfaces;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(enable != nullptr)
-    {
-        children["enable"] = enable;
-    }
-
-    if(exclude_interfaces != nullptr)
-    {
-        children["exclude-interfaces"] = exclude_interfaces;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "delay-interval")
-    {
-        delay_interval = value;
-        delay_interval.value_namespace = name_space;
-        delay_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "delay-interval")
-    {
-        delay_interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "exclude-interfaces" || name == "delay-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::Enable()
-    :
-    prefix_list_name{YType::str, "prefix-list-name"},
-    variance{YType::uint32, "variance"}
-{
-    yang_name = "enable"; yang_parent_name = "ucmp";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::~Enable()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_data() const
-{
-    return prefix_list_name.is_set
-	|| variance.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_list_name.yfilter)
-	|| ydk::is_set(variance.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "enable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Enable' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
-    if (variance.is_set || is_set(variance.yfilter)) leaf_name_data.push_back(variance.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name = value;
-        prefix_list_name.value_namespace = name_space;
-        prefix_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "variance")
-    {
-        variance = value;
-        variance.value_namespace = name_space;
-        variance.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name.yfilter = yfilter;
-    }
-    if(value_path == "variance")
-    {
-        variance.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-list-name" || name == "variance")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
-{
-    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
-    {
-        if(exclude_interface[index]->has_data())
+        if(manual_adj_sid[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
     {
-        if(exclude_interface[index]->has_operation())
+        if(manual_adj_sid[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interfaces";
-
+    path_buffer << "manual-adj-sids";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExcludeInterfaces' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "exclude-interface")
+    if(child_yang_name == "manual-adj-sid")
     {
-        for(auto const & c : exclude_interface)
+        for(auto const & c : manual_adj_sid)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -12084,19 +9762,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        manual_adj_sid.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : exclude_interface)
+    for (auto const & c : manual_adj_sid)
     {
         children[c->get_segment_path()] = c;
     }
@@ -12104,113 +9782,143 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "exclude-interface")
+    if(name == "manual-adj-sid")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::ExcludeInterface()
+Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::ManualAdjSid()
     :
-    interface_name{YType::str, "interface-name"}
+    level{YType::enumeration, "level"},
+    sid_type{YType::enumeration, "sid-type"},
+    sid{YType::uint32, "sid"},
+    protected_{YType::enumeration, "protected"}
 {
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces";
+
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
+Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::has_data() const
 {
-    return interface_name.is_set;
+    return level.is_set
+	|| sid_type.is_set
+	|| sid.is_set
+	|| protected_.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid.yfilter)
+	|| ydk::is_set(protected_.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
-
+    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExcludeInterface' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid.is_set || is_set(sid.yfilter)) leaf_name_data.push_back(sid.get_name_leafdata());
+    if (protected_.is_set || is_set(protected_.yfilter)) leaf_name_data.push_back(protected_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface-name")
+    if(value_path == "level")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid")
+    {
+        sid = value;
+        sid.value_namespace = name_space;
+        sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected")
+    {
+        protected_ = value;
+        protected_.value_namespace = name_space;
+        protected_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface-name")
+    if(value_path == "level")
     {
-        interface_name.yfilter = yfilter;
+        level.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid")
+    {
+        sid.yfilter = yfilter;
+    }
+    if(value_path == "protected")
+    {
+        protected_.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::ManualAdjSids::ManualAdjSid::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name")
+    if(name == "level" || name == "sid-type" || name == "sid" || name == "protected")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefixes()
 {
-    yang_name = "max-redist-prefixes"; yang_parent_name = "topology-name";
+
+    yang_name = "max-redist-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::~MaxRedistPrefixes()
@@ -12241,29 +9949,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes:
 {
     std::ostringstream path_buffer;
     path_buffer << "max-redist-prefixes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxRedistPrefixes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12319,7 +10013,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPr
     level{YType::enumeration, "level"},
     prefix_limit{YType::uint32, "prefix-limit"}
 {
-    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes";
+
+    yang_name = "max-redist-prefix"; yang_parent_name = "max-redist-prefixes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::~MaxRedistPrefix()
@@ -12343,31 +10038,17 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes:
 {
     std::ostringstream path_buffer;
     path_buffer << "max-redist-prefix" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MaxRedistPrefix' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12417,9 +10098,967 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRed
     return false;
 }
 
+Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyles()
+{
+
+    yang_name = "metric-styles"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::~MetricStyles()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_data() const
+{
+    for (std::size_t index=0; index<metric_style.size(); index++)
+    {
+        if(metric_style[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_operation() const
+{
+    for (std::size_t index=0; index<metric_style.size(); index++)
+    {
+        if(metric_style[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric-styles";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "metric-style")
+    {
+        for(auto const & c : metric_style)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle>();
+        c->parent = this;
+        metric_style.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : metric_style)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-style")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::MetricStyle()
+    :
+    level{YType::enumeration, "level"},
+    style{YType::enumeration, "style"},
+    transition_state{YType::enumeration, "transition-state"}
+{
+
+    yang_name = "metric-style"; yang_parent_name = "metric-styles"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::~MetricStyle()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_data() const
+{
+    return level.is_set
+	|| style.is_set
+	|| transition_state.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(style.yfilter)
+	|| ydk::is_set(transition_state.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric-style" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (style.is_set || is_set(style.yfilter)) leaf_name_data.push_back(style.get_name_leafdata());
+    if (transition_state.is_set || is_set(transition_state.yfilter)) leaf_name_data.push_back(transition_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "style")
+    {
+        style = value;
+        style.value_namespace = name_space;
+        style.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transition-state")
+    {
+        transition_state = value;
+        transition_state.value_namespace = name_space;
+        transition_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "style")
+    {
+        style.yfilter = yfilter;
+    }
+    if(value_path == "transition-state")
+    {
+        transition_state.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "style" || name == "transition-state")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metrics()
+{
+
+    yang_name = "metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::~Metrics()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_data() const
+{
+    for (std::size_t index=0; index<metric.size(); index++)
+    {
+        if(metric[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_operation() const
+{
+    for (std::size_t index=0; index<metric.size(); index++)
+    {
+        if(metric[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "metric")
+    {
+        for(auto const & c : metric)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric>();
+        c->parent = this;
+        metric.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : metric)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric()
+    :
+    level{YType::enumeration, "level"},
+    metric{YType::str, "metric"}
+{
+
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::~Metric()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_data() const
+{
+    return level.is_set
+	|| metric.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(metric.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::MicroLoopAvoidance()
+    :
+    enable{YType::enumeration, "enable"},
+    rib_update_delay{YType::uint32, "rib-update-delay"}
+{
+
+    yang_name = "micro-loop-avoidance"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::~MicroLoopAvoidance()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_data() const
+{
+    return enable.is_set
+	|| rib_update_delay.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(rib_update_delay.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "micro-loop-avoidance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (rib_update_delay.is_set || is_set(rib_update_delay.yfilter)) leaf_name_data.push_back(rib_update_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-update-delay")
+    {
+        rib_update_delay = value;
+        rib_update_delay.value_namespace = name_space;
+        rib_update_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "rib-update-delay")
+    {
+        rib_update_delay.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "rib-update-delay")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::MonitorConvergence()
+    :
+    enable{YType::empty, "enable"},
+    prefix_list{YType::str, "prefix-list"},
+    track_ip_frr{YType::empty, "track-ip-frr"}
+{
+
+    yang_name = "monitor-convergence"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::~MonitorConvergence()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_data() const
+{
+    return enable.is_set
+	|| prefix_list.is_set
+	|| track_ip_frr.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(prefix_list.yfilter)
+	|| ydk::is_set(track_ip_frr.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "monitor-convergence";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+    if (track_ip_frr.is_set || is_set(track_ip_frr.yfilter)) leaf_name_data.push_back(track_ip_frr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track-ip-frr")
+    {
+        track_ip_frr = value;
+        track_ip_frr.value_namespace = name_space;
+        track_ip_frr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list.yfilter = yfilter;
+    }
+    if(value_path == "track-ip-frr")
+    {
+        track_ip_frr.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "prefix-list" || name == "track-ip-frr")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Mpls()
+    :
+    igp_intact{YType::empty, "igp-intact"},
+    multicast_intact{YType::empty, "multicast-intact"}
+    	,
+    level(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level>())
+	,router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId>())
+{
+    level->parent = this;
+    router_id->parent = this;
+
+    yang_name = "mpls"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::~Mpls()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_data() const
+{
+    return igp_intact.is_set
+	|| multicast_intact.is_set
+	|| (level !=  nullptr && level->has_data())
+	|| (router_id !=  nullptr && router_id->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(igp_intact.yfilter)
+	|| ydk::is_set(multicast_intact.yfilter)
+	|| (level !=  nullptr && level->has_operation())
+	|| (router_id !=  nullptr && router_id->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (igp_intact.is_set || is_set(igp_intact.yfilter)) leaf_name_data.push_back(igp_intact.get_name_leafdata());
+    if (multicast_intact.is_set || is_set(multicast_intact.yfilter)) leaf_name_data.push_back(multicast_intact.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "level")
+    {
+        if(level == nullptr)
+        {
+            level = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level>();
+        }
+        return level;
+    }
+
+    if(child_yang_name == "router-id")
+    {
+        if(router_id == nullptr)
+        {
+            router_id = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId>();
+        }
+        return router_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(level != nullptr)
+    {
+        children["level"] = level;
+    }
+
+    if(router_id != nullptr)
+    {
+        children["router-id"] = router_id;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "igp-intact")
+    {
+        igp_intact = value;
+        igp_intact.value_namespace = name_space;
+        igp_intact.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast-intact")
+    {
+        multicast_intact = value;
+        multicast_intact.value_namespace = name_space;
+        multicast_intact.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-intact")
+    {
+        igp_intact.yfilter = yfilter;
+    }
+    if(value_path == "multicast-intact")
+    {
+        multicast_intact.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "router-id" || name == "igp-intact" || name == "multicast-intact")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::Level()
+    :
+    level1{YType::boolean, "level1"},
+    level2{YType::boolean, "level2"}
+{
+
+    yang_name = "level"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::~Level()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::has_data() const
+{
+    return level1.is_set
+	|| level2.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level1.yfilter)
+	|| ydk::is_set(level2.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "level";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level1.is_set || is_set(level1.yfilter)) leaf_name_data.push_back(level1.get_name_leafdata());
+    if (level2.is_set || is_set(level2.yfilter)) leaf_name_data.push_back(level2.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level1")
+    {
+        level1 = value;
+        level1.value_namespace = name_space;
+        level1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "level2")
+    {
+        level2 = value;
+        level2.value_namespace = name_space;
+        level2.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level1")
+    {
+        level1.yfilter = yfilter;
+    }
+    if(value_path == "level2")
+    {
+        level2.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Level::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level1" || name == "level2")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::RouterId()
+    :
+    address{YType::str, "address"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "router-id"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::~RouterId()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_data() const
+{
+    return address.is_set
+	|| interface_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "router-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::MplsLdpGlobal()
+    :
+    auto_config{YType::boolean, "auto-config"}
+{
+
+    yang_name = "mpls-ldp-global"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::~MplsLdpGlobal()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_data() const
+{
+    return auto_config.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auto_config.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls-ldp-global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auto_config.is_set || is_set(auto_config.yfilter)) leaf_name_data.push_back(auto_config.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auto-config")
+    {
+        auto_config = value;
+        auto_config.value_namespace = name_space;
+        auto_config.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-config")
+    {
+        auto_config.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-config")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagations()
 {
-    yang_name = "propagations"; yang_parent_name = "topology-name";
+
+    yang_name = "propagations"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::~Propagations()
@@ -12450,29 +11089,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "propagations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Propagations' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12529,7 +11154,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::Pro
     destination_level{YType::enumeration, "destination-level"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "propagation"; yang_parent_name = "propagations";
+
+    yang_name = "propagation"; yang_parent_name = "propagations"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::~Propagation()
@@ -12555,32 +11181,18 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Prop
 {
     std::ostringstream path_buffer;
     path_buffer << "propagation" <<"[source-level='" <<source_level <<"']" <<"[destination-level='" <<destination_level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Propagation' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (source_level.is_set || is_set(source_level.yfilter)) leaf_name_data.push_back(source_level.get_name_leafdata());
     if (destination_level.is_set || is_set(destination_level.yfilter)) leaf_name_data.push_back(destination_level.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12642,7 +11254,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributions()
 {
-    yang_name = "redistributions"; yang_parent_name = "topology-name";
+
+    yang_name = "redistributions"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::~Redistributions()
@@ -12673,29 +11286,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::g
 {
     std::ostringstream path_buffer;
     path_buffer << "redistributions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redistributions' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12752,7 +11351,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     	,
     connected_or_static_or_rip_or_subscriber_or_mobile(nullptr) // presence node
 {
-    yang_name = "redistribution"; yang_parent_name = "redistributions";
+
+    yang_name = "redistribution"; yang_parent_name = "redistributions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::~Redistribution()
@@ -12806,30 +11406,16 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::R
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribution" <<"[protocol-name='" <<protocol_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Redistribution' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12946,310 +11532,6 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::ConnectedOrStaticOrRipOrSubscriberOrMobile()
-    :
-    levels{YType::enumeration, "levels"},
-    metric{YType::uint32, "metric"},
-    metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"},
-    route_policy_name{YType::str, "route-policy-name"}
-{
-    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
-{
-    return levels.is_set
-	|| metric.is_set
-	|| metric_type.is_set
-	|| ospf_route_type.is_set
-	|| route_policy_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(metric.yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(ospf_route_type.yfilter)
-	|| ydk::is_set(route_policy_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "connected-or-static-or-rip-or-subscriber-or-mobile";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ConnectedOrStaticOrRipOrSubscriberOrMobile' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type = value;
-        ospf_route_type.value_namespace = name_space;
-        ospf_route_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-        route_policy_name.value_namespace = name_space;
-        route_policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type.yfilter = yfilter;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::OspfOrOspfv3OrIsisOrApplication()
-    :
-    instance_name{YType::str, "instance-name"},
-    levels{YType::enumeration, "levels"},
-    metric{YType::uint32, "metric"},
-    metric_type{YType::enumeration, "metric-type"},
-    ospf_route_type{YType::int32, "ospf-route-type"},
-    route_policy_name{YType::str, "route-policy-name"}
-{
-    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
-{
-    return instance_name.is_set
-	|| levels.is_set
-	|| metric.is_set
-	|| metric_type.is_set
-	|| ospf_route_type.is_set
-	|| route_policy_name.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(instance_name.yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(metric.yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(ospf_route_type.yfilter)
-	|| ydk::is_set(route_policy_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OspfOrOspfv3OrIsisOrApplication' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name = value;
-        instance_name.value_namespace = name_space;
-        instance_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type = value;
-        ospf_route_type.value_namespace = name_space;
-        ospf_route_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name = value;
-        route_policy_name.value_namespace = name_space;
-        route_policy_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "instance-name")
-    {
-        instance_name.yfilter = yfilter;
-    }
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "ospf-route-type")
-    {
-        ospf_route_type.yfilter = yfilter;
-    }
-    if(value_path == "route-policy-name")
-    {
-        route_policy_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "instance-name" || name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::Bgp()
     :
     as_xx{YType::uint32, "as-xx"},
@@ -13260,7 +11542,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     ospf_route_type{YType::int32, "ospf-route-type"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "bgp"; yang_parent_name = "redistribution";
+
+    yang_name = "bgp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::~Bgp()
@@ -13294,23 +11577,11 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::R
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bgp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
@@ -13321,9 +11592,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributio
     if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -13423,6 +11692,138 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
     return false;
 }
 
+Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::ConnectedOrStaticOrRipOrSubscriberOrMobile()
+    :
+    levels{YType::enumeration, "levels"},
+    metric{YType::uint32, "metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    ospf_route_type{YType::int32, "ospf-route-type"},
+    route_policy_name{YType::str, "route-policy-name"}
+{
+
+    yang_name = "connected-or-static-or-rip-or-subscriber-or-mobile"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::~ConnectedOrStaticOrRipOrSubscriberOrMobile()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_data() const
+{
+    return levels.is_set
+	|| metric.is_set
+	|| metric_type.is_set
+	|| ospf_route_type.is_set
+	|| route_policy_name.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(levels.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(ospf_route_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-or-static-or-rip-or-subscriber-or-mobile";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "levels")
+    {
+        levels = value;
+        levels.value_namespace = name_space;
+        levels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type = value;
+        ospf_route_type.value_namespace = name_space;
+        ospf_route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "levels")
+    {
+        levels.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::Eigrp()
     :
     as_zz{YType::uint32, "as-zz"},
@@ -13432,7 +11833,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistributio
     ospf_route_type{YType::int32, "ospf-route-type"},
     route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "eigrp"; yang_parent_name = "redistribution";
+
+    yang_name = "eigrp"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::~Eigrp()
@@ -13464,23 +11866,11 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::R
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[as-zz='" <<as_zz <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Eigrp' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (as_zz.is_set || is_set(as_zz.yfilter)) leaf_name_data.push_back(as_zz.get_name_leafdata());
@@ -13490,9 +11880,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Redistributio
     if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -13582,218 +11970,445 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistri
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicIntervals()
+Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::OspfOrOspfv3OrIsisOrApplication()
+    :
+    instance_name{YType::str, "instance-name"},
+    levels{YType::enumeration, "levels"},
+    metric{YType::uint32, "metric"},
+    metric_type{YType::enumeration, "metric-type"},
+    ospf_route_type{YType::int32, "ospf-route-type"},
+    route_policy_name{YType::str, "route-policy-name"}
 {
-    yang_name = "spf-periodic-intervals"; yang_parent_name = "topology-name";
+
+    yang_name = "ospf-or-ospfv3-or-isis-or-application"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::~SpfPeriodicIntervals()
+Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::~OspfOrOspfv3OrIsisOrApplication()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_data() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
-    {
-        if(spf_periodic_interval[index]->has_data())
-            return true;
-    }
-    return false;
+    return instance_name.is_set
+	|| levels.is_set
+	|| metric.is_set
+	|| metric_type.is_set
+	|| ospf_route_type.is_set
+	|| route_policy_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_operation() const
 {
-    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
-    {
-        if(spf_periodic_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(instance_name.yfilter)
+	|| ydk::is_set(levels.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(ospf_route_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-intervals";
-
+    path_buffer << "ospf-or-ospfv3-or-isis-or-application" <<"[instance-name='" <<instance_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPeriodicIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
+    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (ospf_route_type.is_set || is_set(ospf_route_type.yfilter)) leaf_name_data.push_back(ospf_route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "spf-periodic-interval")
-    {
-        for(auto const & c : spf_periodic_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval>();
-        c->parent = this;
-        spf_periodic_interval.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : spf_periodic_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "instance-name")
+    {
+        instance_name = value;
+        instance_name.value_namespace = name_space;
+        instance_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "levels")
+    {
+        levels = value;
+        levels.value_namespace = name_space;
+        levels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type = value;
+        ospf_route_type.value_namespace = name_space;
+        ospf_route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "instance-name")
+    {
+        instance_name.yfilter = yfilter;
+    }
+    if(value_path == "levels")
+    {
+        levels.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "ospf-route-type")
+    {
+        ospf_route_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "spf-periodic-interval")
+    if(name == "instance-name" || name == "levels" || name == "metric" || name == "metric-type" || name == "ospf-route-type" || name == "route-policy-name")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::SpfPeriodicInterval()
+Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::RouterId()
     :
-    level{YType::enumeration, "level"},
-    periodic_interval{YType::uint32, "periodic-interval"}
+    address{YType::str, "address"},
+    interface_name{YType::str, "interface-name"}
 {
-    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals";
+
+    yang_name = "router-id"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
+Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::~RouterId()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_data() const
 {
-    return level.is_set
-	|| periodic_interval.is_set;
+    return address.is_set
+	|| interface_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(periodic_interval.yfilter);
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
-
+    path_buffer << "router-id";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfPeriodicInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "level")
+    if(value_path == "address")
     {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "periodic-interval")
+    if(value_path == "interface-name")
     {
-        periodic_interval = value;
-        periodic_interval.value_namespace = name_space;
-        periodic_interval.value_namespace_prefix = name_space_prefix;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "level")
+    if(value_path == "address")
     {
-        level.yfilter = yfilter;
+        address.yfilter = yfilter;
     }
-    if(value_path == "periodic-interval")
+    if(value_path == "interface-name")
     {
-        periodic_interval.yfilter = yfilter;
+        interface_name.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::RouterId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "level" || name == "periodic-interval")
+    if(name == "address" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::SegmentRouting()
+    :
+    bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
+    mpls{YType::enumeration, "mpls"}
+    	,
+    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>())
+{
+    prefix_sid_map->parent = this;
+
+    yang_name = "segment-routing"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::~SegmentRouting()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_data() const
+{
+    return bundle_member_adj_sid.is_set
+	|| mpls.is_set
+	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_member_adj_sid.yfilter)
+	|| ydk::is_set(mpls.yfilter)
+	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment-routing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
+    if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-sid-map")
+    {
+        if(prefix_sid_map == nullptr)
+        {
+            prefix_sid_map = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>();
+        }
+        return prefix_sid_map;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_sid_map != nullptr)
+    {
+        children["prefix-sid-map"] = prefix_sid_map;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bundle-member-adj-sid")
+    {
+        bundle_member_adj_sid = value;
+        bundle_member_adj_sid.value_namespace = name_space;
+        bundle_member_adj_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls")
+    {
+        mpls = value;
+        mpls.value_namespace = name_space;
+        mpls.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-member-adj-sid")
+    {
+        bundle_member_adj_sid.yfilter = yfilter;
+    }
+    if(value_path == "mpls")
+    {
+        mpls.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "mpls")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::PrefixSidMap()
+    :
+    advertise_local{YType::empty, "advertise-local"},
+    receive{YType::boolean, "receive"}
+{
+
+    yang_name = "prefix-sid-map"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::~PrefixSidMap()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_data() const
+{
+    return advertise_local.is_set
+	|| receive.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_local.yfilter)
+	|| ydk::is_set(receive.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-sid-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (advertise_local.is_set || is_set(advertise_local.yfilter)) leaf_name_data.push_back(advertise_local.get_name_leafdata());
+    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "advertise-local")
+    {
+        advertise_local = value;
+        advertise_local.value_namespace = name_space;
+        advertise_local.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "receive")
+    {
+        receive = value;
+        receive.value_namespace = name_space;
+        receive.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-local")
+    {
+        advertise_local.yfilter = yfilter;
+    }
+    if(value_path == "receive")
+    {
+        receive.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-local" || name == "receive")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfIntervals()
 {
-    yang_name = "spf-intervals"; yang_parent_name = "topology-name";
+
+    yang_name = "spf-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::~SpfIntervals()
@@ -13824,29 +12439,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "spf-intervals";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -13904,7 +12505,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::Spf
     maximum_wait{YType::uint32, "maximum-wait"},
     secondary_wait{YType::uint32, "secondary-wait"}
 {
-    yang_name = "spf-interval"; yang_parent_name = "spf-intervals";
+
+    yang_name = "spf-interval"; yang_parent_name = "spf-intervals"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::~SpfInterval()
@@ -13932,23 +12534,11 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfI
 {
     std::ostringstream path_buffer;
     path_buffer << "spf-interval" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SpfInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
@@ -13956,9 +12546,7 @@ const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals:
     if (maximum_wait.is_set || is_set(maximum_wait.yfilter)) leaf_name_data.push_back(maximum_wait.get_name_leafdata());
     if (secondary_wait.is_set || is_set(secondary_wait.yfilter)) leaf_name_data.push_back(secondary_wait.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -14028,304 +12616,57 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::MonitorConvergence()
-    :
-    enable{YType::empty, "enable"},
-    prefix_list{YType::str, "prefix-list"},
-    track_ip_frr{YType::empty, "track-ip-frr"}
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicIntervals()
 {
-    yang_name = "monitor-convergence"; yang_parent_name = "topology-name";
+
+    yang_name = "spf-periodic-intervals"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::~MonitorConvergence()
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::~SpfPeriodicIntervals()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_data() const
 {
-    return enable.is_set
-	|| prefix_list.is_set
-	|| track_ip_frr.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(prefix_list.yfilter)
-	|| ydk::is_set(track_ip_frr.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor-convergence";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MonitorConvergence' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
-    if (track_ip_frr.is_set || is_set(track_ip_frr.yfilter)) leaf_name_data.push_back(track_ip_frr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-list")
-    {
-        prefix_list = value;
-        prefix_list.value_namespace = name_space;
-        prefix_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "track-ip-frr")
-    {
-        track_ip_frr = value;
-        track_ip_frr.value_namespace = name_space;
-        track_ip_frr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "prefix-list")
-    {
-        prefix_list.yfilter = yfilter;
-    }
-    if(value_path == "track-ip-frr")
-    {
-        track_ip_frr.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "prefix-list" || name == "track-ip-frr")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::DefaultInformation()
-    :
-    external{YType::empty, "external"},
-    policy_name{YType::str, "policy-name"},
-    use_policy{YType::boolean, "use-policy"}
-{
-    yang_name = "default-information"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::~DefaultInformation()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_data() const
-{
-    return external.is_set
-	|| policy_name.is_set
-	|| use_policy.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(external.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(use_policy.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "default-information";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DefaultInformation' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (use_policy.is_set || is_set(use_policy.yfilter)) leaf_name_data.push_back(use_policy.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "external")
-    {
-        external = value;
-        external.value_namespace = name_space;
-        external.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "use-policy")
-    {
-        use_policy = value;
-        use_policy.value_namespace = name_space;
-        use_policy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "external")
-    {
-        external.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "use-policy")
-    {
-        use_policy.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "external" || name == "policy-name" || name == "use-policy")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistances()
-{
-    yang_name = "admin-distances"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::~AdminDistances()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_data() const
-{
-    for (std::size_t index=0; index<admin_distance.size(); index++)
-    {
-        if(admin_distance[index]->has_data())
+        if(spf_periodic_interval[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<admin_distance.size(); index++)
+    for (std::size_t index=0; index<spf_periodic_interval.size(); index++)
     {
-        if(admin_distance[index]->has_operation())
+        if(spf_periodic_interval[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distances";
-
+    path_buffer << "spf-periodic-intervals";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AdminDistances' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "admin-distance")
+    if(child_yang_name == "spf-periodic-interval")
     {
-        for(auto const & c : admin_distance)
+        for(auto const & c : spf_periodic_interval)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -14333,19 +12674,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminD
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval>();
         c->parent = this;
-        admin_distance.push_back(c);
+        spf_periodic_interval.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : admin_distance)
+    for (auto const & c : spf_periodic_interval)
     {
         children[c->get_segment_path()] = c;
     }
@@ -14353,94 +12694,475 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "admin-distance")
+    if(name == "spf-periodic-interval")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::AdminDistance()
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::SpfPeriodicInterval()
     :
-    address_prefix{YType::str, "address-prefix"},
-    distance{YType::uint32, "distance"},
-    prefix_list{YType::str, "prefix-list"}
+    level{YType::enumeration, "level"},
+    periodic_interval{YType::uint32, "periodic-interval"}
 {
-    yang_name = "admin-distance"; yang_parent_name = "admin-distances";
+
+    yang_name = "spf-periodic-interval"; yang_parent_name = "spf-periodic-intervals"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::~AdminDistance()
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::~SpfPeriodicInterval()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_data() const
 {
-    return address_prefix.is_set
-	|| distance.is_set
-	|| prefix_list.is_set;
+    return level.is_set
+	|| periodic_interval.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address_prefix.yfilter)
-	|| ydk::is_set(distance.yfilter)
-	|| ydk::is_set(prefix_list.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-distance" <<"[address-prefix='" <<address_prefix <<"']";
-
+    path_buffer << "spf-periodic-interval" <<"[level='" <<level <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AdminDistance' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
-    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
-    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "periodic-interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriorities()
+{
+
+    yang_name = "spf-prefix-priorities"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::~SpfPrefixPriorities()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_data() const
+{
+    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    {
+        if(spf_prefix_priority[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_operation() const
+{
+    for (std::size_t index=0; index<spf_prefix_priority.size(); index++)
+    {
+        if(spf_prefix_priority[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spf-prefix-priorities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "spf-prefix-priority")
+    {
+        for(auto const & c : spf_prefix_priority)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority>();
+        c->parent = this;
+        spf_prefix_priority.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : spf_prefix_priority)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spf-prefix-priority")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::SpfPrefixPriority()
+    :
+    level{YType::enumeration, "level"},
+    prefix_priority_type{YType::enumeration, "prefix-priority-type"},
+    access_list_name{YType::str, "access-list-name"},
+    admin_tag{YType::uint32, "admin-tag"}
+{
+
+    yang_name = "spf-prefix-priority"; yang_parent_name = "spf-prefix-priorities"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::~SpfPrefixPriority()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_data() const
+{
+    return level.is_set
+	|| prefix_priority_type.is_set
+	|| access_list_name.is_set
+	|| admin_tag.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(prefix_priority_type.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(admin_tag.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spf-prefix-priority" <<"[level='" <<level <<"']" <<"[prefix-priority-type='" <<prefix_priority_type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (prefix_priority_type.is_set || is_set(prefix_priority_type.yfilter)) leaf_name_data.push_back(prefix_priority_type.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (admin_tag.is_set || is_set(admin_tag.yfilter)) leaf_name_data.push_back(admin_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-priority-type")
+    {
+        prefix_priority_type = value;
+        prefix_priority_type.value_namespace = name_space;
+        prefix_priority_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag = value;
+        admin_tag.value_namespace = name_space;
+        admin_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "prefix-priority-type")
+    {
+        prefix_priority_type.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "prefix-priority-type" || name == "access-list-name" || name == "admin-tag")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefixes()
+{
+
+    yang_name = "summary-prefixes"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::~SummaryPrefixes()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_data() const
+{
+    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    {
+        if(summary_prefix[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_operation() const
+{
+    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    {
+        if(summary_prefix[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-prefixes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "summary-prefix")
+    {
+        for(auto const & c : summary_prefix)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix>();
+        c->parent = this;
+        summary_prefix.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : summary_prefix)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary-prefix")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::SummaryPrefix()
+    :
+    address_prefix{YType::str, "address-prefix"},
+    level{YType::uint32, "level"},
+    tag{YType::uint32, "tag"}
+{
+
+    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_data() const
+{
+    return address_prefix.is_set
+	|| level.is_set
+	|| tag.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(tag.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
@@ -14448,201 +13170,297 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDist
         address_prefix.value_namespace = name_space;
         address_prefix.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "distance")
+    if(value_path == "level")
     {
-        distance = value;
-        distance.value_namespace = name_space;
-        distance.value_namespace_prefix = name_space_prefix;
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prefix-list")
+    if(value_path == "tag")
     {
-        prefix_list = value;
-        prefix_list.value_namespace = name_space;
-        prefix_list.value_namespace_prefix = name_space_prefix;
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-prefix")
     {
         address_prefix.yfilter = yfilter;
     }
-    if(value_path == "distance")
+    if(value_path == "level")
     {
-        distance.yfilter = yfilter;
+        level.yfilter = yfilter;
     }
-    if(value_path == "prefix-list")
+    if(value_path == "tag")
     {
-        prefix_list.yfilter = yfilter;
+        tag.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-prefix" || name == "distance" || name == "prefix-list")
+    if(name == "address-prefix" || name == "level" || name == "tag")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::Ispf()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Ucmp()
     :
-    states(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States>())
+    delay_interval{YType::uint32, "delay-interval"}
+    	,
+    enable(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable>())
+	,exclude_interfaces(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>())
 {
-    states->parent = this;
+    enable->parent = this;
+    exclude_interfaces->parent = this;
 
-    yang_name = "ispf"; yang_parent_name = "topology-name";
+    yang_name = "ucmp"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::~Ispf()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::~Ucmp()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_data() const
 {
-    return (states !=  nullptr && states->has_data());
+    return delay_interval.is_set
+	|| (enable !=  nullptr && enable->has_data())
+	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_operation() const
 {
     return is_set(yfilter)
-	|| (states !=  nullptr && states->has_operation());
+	|| ydk::is_set(delay_interval.yfilter)
+	|| (enable !=  nullptr && enable->has_operation())
+	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_operation());
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ispf";
-
+    path_buffer << "ucmp";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ispf' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (delay_interval.is_set || is_set(delay_interval.yfilter)) leaf_name_data.push_back(delay_interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "states")
+    if(child_yang_name == "enable")
     {
-        if(states == nullptr)
+        if(enable == nullptr)
         {
-            states = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States>();
+            enable = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable>();
         }
-        return states;
+        return enable;
+    }
+
+    if(child_yang_name == "exclude-interfaces")
+    {
+        if(exclude_interfaces == nullptr)
+        {
+            exclude_interfaces = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces>();
+        }
+        return exclude_interfaces;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(states != nullptr)
+    if(enable != nullptr)
     {
-        children["states"] = states;
+        children["enable"] = enable;
+    }
+
+    if(exclude_interfaces != nullptr)
+    {
+        children["exclude-interfaces"] = exclude_interfaces;
     }
 
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "delay-interval")
+    {
+        delay_interval = value;
+        delay_interval.value_namespace = name_space;
+        delay_interval.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "delay-interval")
+    {
+        delay_interval.yfilter = yfilter;
+    }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "states")
+    if(name == "enable" || name == "exclude-interfaces" || name == "delay-interval")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::States()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::Enable()
+    :
+    prefix_list_name{YType::str, "prefix-list-name"},
+    variance{YType::uint32, "variance"}
 {
-    yang_name = "states"; yang_parent_name = "ispf";
+
+    yang_name = "enable"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::~States()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::~Enable()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_data() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    return prefix_list_name.is_set
+	|| variance.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| ydk::is_set(variance.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "enable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+    if (variance.is_set || is_set(variance.yfilter)) leaf_name_data.push_back(variance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-list-name")
     {
-        if(state[index]->has_data())
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "variance")
+    {
+        variance = value;
+        variance.value_namespace = name_space;
+        variance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+    if(value_path == "variance")
+    {
+        variance.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-list-name" || name == "variance")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterfaces()
+{
+
+    yang_name = "exclude-interfaces"; yang_parent_name = "ucmp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::~ExcludeInterfaces()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    {
+        if(exclude_interface[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<state.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.size(); index++)
     {
-        if(state[index]->has_operation())
+        if(exclude_interface[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "states";
-
+    path_buffer << "exclude-interfaces";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'States' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "state")
+    if(child_yang_name == "exclude-interface")
     {
-        for(auto const & c : state)
+        for(auto const & c : exclude_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -14650,19 +13468,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State>();
+        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        state.push_back(c);
+        exclude_interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : state)
+    for (auto const & c : exclude_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -14670,426 +13488,74 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::A
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state")
+    if(name == "exclude-interface")
         return true;
     return false;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::State()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::ExcludeInterface()
     :
-    level{YType::enumeration, "level"},
-    state{YType::enumeration, "state"}
-{
-    yang_name = "state"; yang_parent_name = "states";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::~State()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_data() const
-{
-    return level.is_set
-	|| state.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(state.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "state")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::MplsLdpGlobal()
-    :
-    auto_config{YType::boolean, "auto-config"}
-{
-    yang_name = "mpls-ldp-global"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::~MplsLdpGlobal()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_data() const
-{
-    return auto_config.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auto_config.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mpls-ldp-global";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MplsLdpGlobal' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auto_config.is_set || is_set(auto_config.yfilter)) leaf_name_data.push_back(auto_config.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auto-config")
-    {
-        auto_config = value;
-        auto_config.value_namespace = name_space;
-        auto_config.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auto-config")
-    {
-        auto_config.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto-config")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::Mpls()
-    :
-    igp_intact{YType::empty, "igp-intact"},
-    level{YType::enumeration, "level"},
-    multicast_intact{YType::empty, "multicast-intact"}
-    	,
-    router_id(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId>())
-{
-    router_id->parent = this;
-
-    yang_name = "mpls"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::~Mpls()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_data() const
-{
-    return igp_intact.is_set
-	|| level.is_set
-	|| multicast_intact.is_set
-	|| (router_id !=  nullptr && router_id->has_data());
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(igp_intact.yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(multicast_intact.yfilter)
-	|| (router_id !=  nullptr && router_id->has_operation());
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mpls";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mpls' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (igp_intact.is_set || is_set(igp_intact.yfilter)) leaf_name_data.push_back(igp_intact.get_name_leafdata());
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (multicast_intact.is_set || is_set(multicast_intact.yfilter)) leaf_name_data.push_back(multicast_intact.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "router-id")
-    {
-        if(router_id == nullptr)
-        {
-            router_id = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId>();
-        }
-        return router_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(router_id != nullptr)
-    {
-        children["router-id"] = router_id;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "igp-intact")
-    {
-        igp_intact = value;
-        igp_intact.value_namespace = name_space;
-        igp_intact.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-intact")
-    {
-        multicast_intact = value;
-        multicast_intact.value_namespace = name_space;
-        multicast_intact.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "igp-intact")
-    {
-        igp_intact.yfilter = yfilter;
-    }
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "multicast-intact")
-    {
-        multicast_intact.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "router-id" || name == "igp-intact" || name == "level" || name == "multicast-intact")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::RouterId()
-    :
-    address{YType::str, "address"},
     interface_name{YType::str, "interface-name"}
 {
-    yang_name = "router-id"; yang_parent_name = "mpls";
+
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::~RouterId()
+Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
 {
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_data() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
-    return address.is_set
-	|| interface_name.is_set;
+    return interface_name.is_set;
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_operation() const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_segment_path() const
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "router-id";
-
+    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RouterId' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "interface-name")
     {
         interface_name = value;
@@ -15098,237 +13564,25 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::set_value
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
     if(value_path == "interface-name")
     {
         interface_name.yfilter = yfilter;
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metrics()
-{
-    yang_name = "metrics"; yang_parent_name = "topology-name";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::~Metrics()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_data() const
-{
-    for (std::size_t index=0; index<metric.size(); index++)
-    {
-        if(metric[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_operation() const
-{
-    for (std::size_t index=0; index<metric.size(); index++)
-    {
-        if(metric[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metrics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Metrics' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "metric")
-    {
-        for(auto const & c : metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric>();
-        c->parent = this;
-        metric.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : metric)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric()
-    :
-    level{YType::enumeration, "level"},
-    metric{YType::str, "metric"}
-{
-    yang_name = "metric"; yang_parent_name = "metrics";
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::~Metric()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_data() const
-{
-    return level.is_set
-	|| metric.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(metric.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Metric' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric")
-    {
-        metric = value;
-        metric.value_namespace = name_space;
-        metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "metric")
-    {
-        metric.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "metric")
+    if(name == "interface-name")
         return true;
     return false;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weights()
 {
-    yang_name = "weights"; yang_parent_name = "topology-name";
+
+    yang_name = "weights"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::~Weights()
@@ -15359,29 +13613,15 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Weights::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "weights";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Weights::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Weights::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Weights' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -15437,7 +13677,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::Weight()
     level{YType::enumeration, "level"},
     weight{YType::uint32, "weight"}
 {
-    yang_name = "weight"; yang_parent_name = "weights";
+
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::~Weight()
@@ -15461,31 +13702,17 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::g
 {
     std::ostringstream path_buffer;
     path_buffer << "weight" <<"[level='" <<level <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Weight' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
     if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -15535,222 +13762,14 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::has_leaf
     return false;
 }
 
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshIntervals()
-{
-    yang_name = "lsp-refresh-intervals"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspRefreshIntervals::~LspRefreshIntervals()
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_data() const
-{
-    for (std::size_t index=0; index<lsp_refresh_interval.size(); index++)
-    {
-        if(lsp_refresh_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_refresh_interval.size(); index++)
-    {
-        if(lsp_refresh_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspRefreshIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-refresh-intervals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspRefreshIntervals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRefreshIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspRefreshIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-refresh-interval")
-    {
-        for(auto const & c : lsp_refresh_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval>();
-        c->parent = this;
-        lsp_refresh_interval.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspRefreshIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_refresh_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-refresh-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::LspRefreshInterval()
-    :
-    level{YType::enumeration, "level"},
-    interval{YType::uint32, "interval"}
-{
-    yang_name = "lsp-refresh-interval"; yang_parent_name = "lsp-refresh-intervals";
-}
-
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::~LspRefreshInterval()
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_data() const
-{
-    return level.is_set
-	|| interval.is_set;
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-refresh-interval" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRefreshInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "interval")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Distribute::Distribute()
     :
     dist_inst_id{YType::uint32, "dist-inst-id"},
     dist_throttle{YType::uint32, "dist-throttle"},
     level{YType::enumeration, "level"}
 {
-    yang_name = "distribute"; yang_parent_name = "instance";
+
+    yang_name = "distribute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Distribute::~Distribute()
@@ -15776,32 +13795,18 @@ std::string Isis::Instances::Instance::Distribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distribute";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Distribute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Distribute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Distribute' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dist_inst_id.is_set || is_set(dist_inst_id.yfilter)) leaf_name_data.push_back(dist_inst_id.get_name_leafdata());
     if (dist_throttle.is_set || is_set(dist_throttle.yfilter)) leaf_name_data.push_back(dist_throttle.get_name_leafdata());
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -15861,1924 +13866,10 @@ bool Isis::Instances::Instance::Distribute::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPasswords()
-{
-    yang_name = "lsp-accept-passwords"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspAcceptPasswords::~LspAcceptPasswords()
-{
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::has_data() const
-{
-    for (std::size_t index=0; index<lsp_accept_password.size(); index++)
-    {
-        if(lsp_accept_password[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_accept_password.size(); index++)
-    {
-        if(lsp_accept_password[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspAcceptPasswords::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-accept-passwords";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspAcceptPasswords::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspAcceptPasswords' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspAcceptPasswords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-accept-password")
-    {
-        for(auto const & c : lsp_accept_password)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword>();
-        c->parent = this;
-        lsp_accept_password.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspAcceptPasswords::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_accept_password)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspAcceptPasswords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspAcceptPasswords::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-accept-password")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::LspAcceptPassword()
-    :
-    level{YType::enumeration, "level"},
-    password{YType::str, "password"}
-{
-    yang_name = "lsp-accept-password"; yang_parent_name = "lsp-accept-passwords";
-}
-
-Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::~LspAcceptPassword()
-{
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_data() const
-{
-    return level.is_set
-	|| password.is_set;
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-accept-password" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspAcceptPassword' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "password")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspMtus::LspMtus()
-{
-    yang_name = "lsp-mtus"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspMtus::~LspMtus()
-{
-}
-
-bool Isis::Instances::Instance::LspMtus::has_data() const
-{
-    for (std::size_t index=0; index<lsp_mtu.size(); index++)
-    {
-        if(lsp_mtu[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspMtus::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_mtu.size(); index++)
-    {
-        if(lsp_mtu[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspMtus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-mtus";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspMtus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspMtus' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspMtus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-mtu")
-    {
-        for(auto const & c : lsp_mtu)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspMtus::LspMtu>();
-        c->parent = this;
-        lsp_mtu.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspMtus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_mtu)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspMtus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspMtus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspMtus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-mtu")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspMtus::LspMtu::LspMtu()
-    :
-    level{YType::enumeration, "level"},
-    mtu{YType::uint32, "mtu"}
-{
-    yang_name = "lsp-mtu"; yang_parent_name = "lsp-mtus";
-}
-
-Isis::Instances::Instance::LspMtus::LspMtu::~LspMtu()
-{
-}
-
-bool Isis::Instances::Instance::LspMtus::LspMtu::has_data() const
-{
-    return level.is_set
-	|| mtu.is_set;
-}
-
-bool Isis::Instances::Instance::LspMtus::LspMtu::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(mtu.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspMtus::LspMtu::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-mtu" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspMtus::LspMtu::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspMtu' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspMtus::LspMtu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspMtus::LspMtu::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspMtus::LspMtu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspMtus::LspMtu::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspMtus::LspMtu::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "mtu")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Nsf::Nsf()
-    :
-    flavor{YType::enumeration, "flavor"},
-    interface_timer{YType::uint32, "interface-timer"},
-    lifetime{YType::uint32, "lifetime"},
-    max_interface_timer_expiry{YType::uint32, "max-interface-timer-expiry"}
-{
-    yang_name = "nsf"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::Nsf::~Nsf()
-{
-}
-
-bool Isis::Instances::Instance::Nsf::has_data() const
-{
-    return flavor.is_set
-	|| interface_timer.is_set
-	|| lifetime.is_set
-	|| max_interface_timer_expiry.is_set;
-}
-
-bool Isis::Instances::Instance::Nsf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flavor.yfilter)
-	|| ydk::is_set(interface_timer.yfilter)
-	|| ydk::is_set(lifetime.yfilter)
-	|| ydk::is_set(max_interface_timer_expiry.yfilter);
-}
-
-std::string Isis::Instances::Instance::Nsf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsf";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Nsf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Nsf' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flavor.is_set || is_set(flavor.yfilter)) leaf_name_data.push_back(flavor.get_name_leafdata());
-    if (interface_timer.is_set || is_set(interface_timer.yfilter)) leaf_name_data.push_back(interface_timer.get_name_leafdata());
-    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
-    if (max_interface_timer_expiry.is_set || is_set(max_interface_timer_expiry.yfilter)) leaf_name_data.push_back(max_interface_timer_expiry.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Nsf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flavor")
-    {
-        flavor = value;
-        flavor.value_namespace = name_space;
-        flavor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-timer")
-    {
-        interface_timer = value;
-        interface_timer.value_namespace = name_space;
-        interface_timer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime = value;
-        lifetime.value_namespace = name_space;
-        lifetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-interface-timer-expiry")
-    {
-        max_interface_timer_expiry = value;
-        max_interface_timer_expiry.value_namespace = name_space;
-        max_interface_timer_expiry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flavor")
-    {
-        flavor.yfilter = yfilter;
-    }
-    if(value_path == "interface-timer")
-    {
-        interface_timer.yfilter = yfilter;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime.yfilter = yfilter;
-    }
-    if(value_path == "max-interface-timer-expiry")
-    {
-        max_interface_timer_expiry.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Nsf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flavor" || name == "interface-timer" || name == "lifetime" || name == "max-interface-timer-expiry")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LinkGroups::LinkGroups()
-{
-    yang_name = "link-groups"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LinkGroups::~LinkGroups()
-{
-}
-
-bool Isis::Instances::Instance::LinkGroups::has_data() const
-{
-    for (std::size_t index=0; index<link_group.size(); index++)
-    {
-        if(link_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LinkGroups::has_operation() const
-{
-    for (std::size_t index=0; index<link_group.size(); index++)
-    {
-        if(link_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LinkGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-groups";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LinkGroups::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkGroups' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LinkGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "link-group")
-    {
-        for(auto const & c : link_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LinkGroups::LinkGroup>();
-        c->parent = this;
-        link_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LinkGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : link_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LinkGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LinkGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LinkGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link-group")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LinkGroups::LinkGroup::LinkGroup()
-    :
-    link_group_name{YType::str, "link-group-name"},
-    enable{YType::empty, "enable"},
-    metric_offset{YType::uint32, "metric-offset"},
-    minimum_members{YType::uint32, "minimum-members"},
-    revert_members{YType::uint32, "revert-members"}
-{
-    yang_name = "link-group"; yang_parent_name = "link-groups";
-}
-
-Isis::Instances::Instance::LinkGroups::LinkGroup::~LinkGroup()
-{
-}
-
-bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_data() const
-{
-    return link_group_name.is_set
-	|| enable.is_set
-	|| metric_offset.is_set
-	|| minimum_members.is_set
-	|| revert_members.is_set;
-}
-
-bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link_group_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(metric_offset.yfilter)
-	|| ydk::is_set(minimum_members.yfilter)
-	|| ydk::is_set(revert_members.yfilter);
-}
-
-std::string Isis::Instances::Instance::LinkGroups::LinkGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-group" <<"[link-group-name='" <<link_group_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LinkGroups::LinkGroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LinkGroup' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link_group_name.is_set || is_set(link_group_name.yfilter)) leaf_name_data.push_back(link_group_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (metric_offset.is_set || is_set(metric_offset.yfilter)) leaf_name_data.push_back(metric_offset.get_name_leafdata());
-    if (minimum_members.is_set || is_set(minimum_members.yfilter)) leaf_name_data.push_back(minimum_members.get_name_leafdata());
-    if (revert_members.is_set || is_set(revert_members.yfilter)) leaf_name_data.push_back(revert_members.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LinkGroups::LinkGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LinkGroups::LinkGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LinkGroups::LinkGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link-group-name")
-    {
-        link_group_name = value;
-        link_group_name.value_namespace = name_space;
-        link_group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-offset")
-    {
-        metric_offset = value;
-        metric_offset.value_namespace = name_space;
-        metric_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-members")
-    {
-        minimum_members = value;
-        minimum_members.value_namespace = name_space;
-        minimum_members.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "revert-members")
-    {
-        revert_members = value;
-        revert_members.value_namespace = name_space;
-        revert_members.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LinkGroups::LinkGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link-group-name")
-    {
-        link_group_name.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "metric-offset")
-    {
-        metric_offset.yfilter = yfilter;
-    }
-    if(value_path == "minimum-members")
-    {
-        minimum_members.yfilter = yfilter;
-    }
-    if(value_path == "revert-members")
-    {
-        revert_members.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LinkGroups::LinkGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link-group-name" || name == "enable" || name == "metric-offset" || name == "minimum-members" || name == "revert-members")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspCheckIntervals::LspCheckIntervals()
-{
-    yang_name = "lsp-check-intervals"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspCheckIntervals::~LspCheckIntervals()
-{
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::has_data() const
-{
-    for (std::size_t index=0; index<lsp_check_interval.size(); index++)
-    {
-        if(lsp_check_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_check_interval.size(); index++)
-    {
-        if(lsp_check_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspCheckIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-check-intervals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspCheckIntervals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspCheckIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspCheckIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-check-interval")
-    {
-        for(auto const & c : lsp_check_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval>();
-        c->parent = this;
-        lsp_check_interval.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspCheckIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_check_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspCheckIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspCheckIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-check-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::LspCheckInterval()
-    :
-    level{YType::enumeration, "level"},
-    interval{YType::uint32, "interval"}
-{
-    yang_name = "lsp-check-interval"; yang_parent_name = "lsp-check-intervals";
-}
-
-Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::~LspCheckInterval()
-{
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_data() const
-{
-    return level.is_set
-	|| interval.is_set;
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-check-interval" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspCheckInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspPasswords::LspPasswords()
-{
-    yang_name = "lsp-passwords"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspPasswords::~LspPasswords()
-{
-}
-
-bool Isis::Instances::Instance::LspPasswords::has_data() const
-{
-    for (std::size_t index=0; index<lsp_password.size(); index++)
-    {
-        if(lsp_password[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspPasswords::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_password.size(); index++)
-    {
-        if(lsp_password[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspPasswords::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-passwords";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspPasswords::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspPasswords' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspPasswords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-password")
-    {
-        for(auto const & c : lsp_password)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspPasswords::LspPassword>();
-        c->parent = this;
-        lsp_password.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspPasswords::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_password)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspPasswords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspPasswords::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspPasswords::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-password")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspPasswords::LspPassword::LspPassword()
-    :
-    level{YType::enumeration, "level"},
-    algorithm{YType::enumeration, "algorithm"},
-    authentication_type{YType::enumeration, "authentication-type"},
-    failure_mode{YType::enumeration, "failure-mode"},
-    password{YType::str, "password"}
-{
-    yang_name = "lsp-password"; yang_parent_name = "lsp-passwords";
-}
-
-Isis::Instances::Instance::LspPasswords::LspPassword::~LspPassword()
-{
-}
-
-bool Isis::Instances::Instance::LspPasswords::LspPassword::has_data() const
-{
-    return level.is_set
-	|| algorithm.is_set
-	|| authentication_type.is_set
-	|| failure_mode.is_set
-	|| password.is_set;
-}
-
-bool Isis::Instances::Instance::LspPasswords::LspPassword::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(algorithm.yfilter)
-	|| ydk::is_set(authentication_type.yfilter)
-	|| ydk::is_set(failure_mode.yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspPasswords::LspPassword::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-password" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspPasswords::LspPassword::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspPassword' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
-    if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
-    if (failure_mode.is_set || is_set(failure_mode.yfilter)) leaf_name_data.push_back(failure_mode.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspPasswords::LspPassword::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspPasswords::LspPassword::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspPasswords::LspPassword::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "algorithm")
-    {
-        algorithm = value;
-        algorithm.value_namespace = name_space;
-        algorithm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-type")
-    {
-        authentication_type = value;
-        authentication_type.value_namespace = name_space;
-        authentication_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "failure-mode")
-    {
-        failure_mode = value;
-        failure_mode.value_namespace = name_space;
-        failure_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspPasswords::LspPassword::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "algorithm")
-    {
-        algorithm.yfilter = yfilter;
-    }
-    if(value_path == "authentication-type")
-    {
-        authentication_type.yfilter = yfilter;
-    }
-    if(value_path == "failure-mode")
-    {
-        failure_mode.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspPasswords::LspPassword::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "algorithm" || name == "authentication-type" || name == "failure-mode" || name == "password")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Nets::Nets()
-{
-    yang_name = "nets"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::Nets::~Nets()
-{
-}
-
-bool Isis::Instances::Instance::Nets::has_data() const
-{
-    for (std::size_t index=0; index<net.size(); index++)
-    {
-        if(net[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Nets::has_operation() const
-{
-    for (std::size_t index=0; index<net.size(); index++)
-    {
-        if(net[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Nets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nets";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Nets::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Nets' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Nets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "net")
-    {
-        for(auto const & c : net)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Nets::Net>();
-        c->parent = this;
-        net.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Nets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : net)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Nets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Nets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Nets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "net")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Nets::Net::Net()
-    :
-    net_name{YType::str, "net-name"}
-{
-    yang_name = "net"; yang_parent_name = "nets";
-}
-
-Isis::Instances::Instance::Nets::Net::~Net()
-{
-}
-
-bool Isis::Instances::Instance::Nets::Net::has_data() const
-{
-    return net_name.is_set;
-}
-
-bool Isis::Instances::Instance::Nets::Net::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(net_name.yfilter);
-}
-
-std::string Isis::Instances::Instance::Nets::Net::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "net" <<"[net-name='" <<net_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Nets::Net::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Net' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (net_name.is_set || is_set(net_name.yfilter)) leaf_name_data.push_back(net_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Nets::Net::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Nets::Net::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Nets::Net::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "net-name")
-    {
-        net_name = value;
-        net_name.value_namespace = name_space;
-        net_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Nets::Net::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "net-name")
-    {
-        net_name.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Nets::Net::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "net-name")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspLifetimes::LspLifetimes()
-{
-    yang_name = "lsp-lifetimes"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::LspLifetimes::~LspLifetimes()
-{
-}
-
-bool Isis::Instances::Instance::LspLifetimes::has_data() const
-{
-    for (std::size_t index=0; index<lsp_lifetime.size(); index++)
-    {
-        if(lsp_lifetime[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspLifetimes::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_lifetime.size(); index++)
-    {
-        if(lsp_lifetime[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspLifetimes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-lifetimes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspLifetimes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspLifetimes' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspLifetimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-lifetime")
-    {
-        for(auto const & c : lsp_lifetime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::LspLifetimes::LspLifetime>();
-        c->parent = this;
-        lsp_lifetime.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspLifetimes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_lifetime)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::LspLifetimes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspLifetimes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspLifetimes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-lifetime")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspLifetimes::LspLifetime::LspLifetime()
-    :
-    level{YType::enumeration, "level"},
-    lifetime{YType::uint32, "lifetime"}
-{
-    yang_name = "lsp-lifetime"; yang_parent_name = "lsp-lifetimes";
-}
-
-Isis::Instances::Instance::LspLifetimes::LspLifetime::~LspLifetime()
-{
-}
-
-bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_data() const
-{
-    return level.is_set
-	|| lifetime.is_set;
-}
-
-bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(lifetime.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspLifetimes::LspLifetime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-lifetime" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::LspLifetimes::LspLifetime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspLifetime' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::LspLifetimes::LspLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::LspLifetimes::LspLifetime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::LspLifetimes::LspLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime = value;
-        lifetime.value_namespace = name_space;
-        lifetime.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspLifetimes::LspLifetime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "lifetime")
-    {
-        lifetime.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspLifetimes::LspLifetime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "lifetime")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::OverloadBits::OverloadBits()
-{
-    yang_name = "overload-bits"; yang_parent_name = "instance";
-}
-
-Isis::Instances::Instance::OverloadBits::~OverloadBits()
-{
-}
-
-bool Isis::Instances::Instance::OverloadBits::has_data() const
-{
-    for (std::size_t index=0; index<overload_bit.size(); index++)
-    {
-        if(overload_bit[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::OverloadBits::has_operation() const
-{
-    for (std::size_t index=0; index<overload_bit.size(); index++)
-    {
-        if(overload_bit[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::OverloadBits::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "overload-bits";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::OverloadBits::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OverloadBits' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::OverloadBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "overload-bit")
-    {
-        for(auto const & c : overload_bit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::OverloadBits::OverloadBit>();
-        c->parent = this;
-        overload_bit.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::OverloadBits::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : overload_bit)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::OverloadBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::OverloadBits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::OverloadBits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "overload-bit")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::OverloadBits::OverloadBit::OverloadBit()
-    :
-    level{YType::enumeration, "level"},
-    external_adv_type{YType::enumeration, "external-adv-type"},
-    hippity_period{YType::uint32, "hippity-period"},
-    inter_level_adv_type{YType::enumeration, "inter-level-adv-type"},
-    overload_bit_mode{YType::enumeration, "overload-bit-mode"}
-{
-    yang_name = "overload-bit"; yang_parent_name = "overload-bits";
-}
-
-Isis::Instances::Instance::OverloadBits::OverloadBit::~OverloadBit()
-{
-}
-
-bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_data() const
-{
-    return level.is_set
-	|| external_adv_type.is_set
-	|| hippity_period.is_set
-	|| inter_level_adv_type.is_set
-	|| overload_bit_mode.is_set;
-}
-
-bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(external_adv_type.yfilter)
-	|| ydk::is_set(hippity_period.yfilter)
-	|| ydk::is_set(inter_level_adv_type.yfilter)
-	|| ydk::is_set(overload_bit_mode.yfilter);
-}
-
-std::string Isis::Instances::Instance::OverloadBits::OverloadBit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "overload-bit" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::OverloadBits::OverloadBit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OverloadBit' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (external_adv_type.is_set || is_set(external_adv_type.yfilter)) leaf_name_data.push_back(external_adv_type.get_name_leafdata());
-    if (hippity_period.is_set || is_set(hippity_period.yfilter)) leaf_name_data.push_back(hippity_period.get_name_leafdata());
-    if (inter_level_adv_type.is_set || is_set(inter_level_adv_type.yfilter)) leaf_name_data.push_back(inter_level_adv_type.get_name_leafdata());
-    if (overload_bit_mode.is_set || is_set(overload_bit_mode.yfilter)) leaf_name_data.push_back(overload_bit_mode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::OverloadBits::OverloadBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::OverloadBits::OverloadBit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::OverloadBits::OverloadBit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-adv-type")
-    {
-        external_adv_type = value;
-        external_adv_type.value_namespace = name_space;
-        external_adv_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hippity-period")
-    {
-        hippity_period = value;
-        hippity_period.value_namespace = name_space;
-        hippity_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "inter-level-adv-type")
-    {
-        inter_level_adv_type = value;
-        inter_level_adv_type.value_namespace = name_space;
-        inter_level_adv_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "overload-bit-mode")
-    {
-        overload_bit_mode = value;
-        overload_bit_mode.value_namespace = name_space;
-        overload_bit_mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::OverloadBits::OverloadBit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "external-adv-type")
-    {
-        external_adv_type.yfilter = yfilter;
-    }
-    if(value_path == "hippity-period")
-    {
-        hippity_period.yfilter = yfilter;
-    }
-    if(value_path == "inter-level-adv-type")
-    {
-        inter_level_adv_type.yfilter = yfilter;
-    }
-    if(value_path == "overload-bit-mode")
-    {
-        overload_bit_mode.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::OverloadBits::OverloadBit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "external-adv-type" || name == "hippity-period" || name == "inter-level-adv-type" || name == "overload-bit-mode")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "instance";
+
+    yang_name = "interfaces"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Interfaces::~Interfaces()
@@ -17809,29 +13900,15 @@ std::string Isis::Instances::Instance::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -17908,34 +13985,21 @@ Isis::Instances::Instance::Interfaces::Interface::Interface()
 	,priorities(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities>())
 {
     bfd->parent = this;
-
     csnp_intervals->parent = this;
-
     hello_accept_passwords->parent = this;
-
     hello_intervals->parent = this;
-
     hello_multipliers->parent = this;
-
     hello_paddings->parent = this;
-
     hello_passwords->parent = this;
-
     interface_afs->parent = this;
-
     lsp_fast_flood_thresholds->parent = this;
-
     lsp_intervals->parent = this;
-
     lsp_retransmit_intervals->parent = this;
-
     lsp_retransmit_throttle_intervals->parent = this;
-
     prefix_attribute_n_flag_clears->parent = this;
-
     priorities->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::~Interface()
@@ -17997,23 +14061,11 @@ std::string Isis::Instances::Instance::Interfaces::Interface::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -18024,9 +14076,7 @@ const EntityPath Isis::Instances::Instance::Interfaces::Interface::get_entity_pa
     if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -18322,424 +14372,6 @@ bool Isis::Instances::Instance::Interfaces::Interface::has_leaf_or_child_of_name
     return false;
 }
 
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleIntervals()
-{
-    yang_name = "lsp-retransmit-throttle-intervals"; yang_parent_name = "interface";
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::~LspRetransmitThrottleIntervals()
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::has_data() const
-{
-    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.size(); index++)
-    {
-        if(lsp_retransmit_throttle_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.size(); index++)
-    {
-        if(lsp_retransmit_throttle_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-throttle-intervals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRetransmitThrottleIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-retransmit-throttle-interval")
-    {
-        for(auto const & c : lsp_retransmit_throttle_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval>();
-        c->parent = this;
-        lsp_retransmit_throttle_interval.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_retransmit_throttle_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-retransmit-throttle-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::LspRetransmitThrottleInterval()
-    :
-    level{YType::enumeration, "level"},
-    interval{YType::uint32, "interval"}
-{
-    yang_name = "lsp-retransmit-throttle-interval"; yang_parent_name = "lsp-retransmit-throttle-intervals";
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::~LspRetransmitThrottleInterval()
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::has_data() const
-{
-    return level.is_set
-	|| interval.is_set;
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-throttle-interval" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRetransmitThrottleInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitIntervals()
-{
-    yang_name = "lsp-retransmit-intervals"; yang_parent_name = "interface";
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::~LspRetransmitIntervals()
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::has_data() const
-{
-    for (std::size_t index=0; index<lsp_retransmit_interval.size(); index++)
-    {
-        if(lsp_retransmit_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_retransmit_interval.size(); index++)
-    {
-        if(lsp_retransmit_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-intervals";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRetransmitIntervals' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-retransmit-interval")
-    {
-        for(auto const & c : lsp_retransmit_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval>();
-        c->parent = this;
-        lsp_retransmit_interval.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lsp_retransmit_interval)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-retransmit-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::LspRetransmitInterval()
-    :
-    level{YType::enumeration, "level"},
-    interval{YType::uint32, "interval"}
-{
-    yang_name = "lsp-retransmit-interval"; yang_parent_name = "lsp-retransmit-intervals";
-}
-
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::~LspRetransmitInterval()
-{
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::has_data() const
-{
-    return level.is_set
-	|| interval.is_set;
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-interval" <<"[level='" <<level <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LspRetransmitInterval' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "interval")
-        return true;
-    return false;
-}
-
 Isis::Instances::Instance::Interfaces::Interface::Bfd::Bfd()
     :
     detection_multiplier{YType::uint32, "detection-multiplier"},
@@ -18747,7 +14379,8 @@ Isis::Instances::Instance::Interfaces::Interface::Bfd::Bfd()
     enable_ipv6{YType::boolean, "enable-ipv6"},
     interval{YType::uint32, "interval"}
 {
-    yang_name = "bfd"; yang_parent_name = "interface";
+
+    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::Bfd::~Bfd()
@@ -18775,23 +14408,11 @@ std::string Isis::Instances::Instance::Interfaces::Interface::Bfd::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::Bfd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::Bfd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bfd' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
@@ -18799,9 +14420,7 @@ const EntityPath Isis::Instances::Instance::Interfaces::Interface::Bfd::get_enti
     if (enable_ipv6.is_set || is_set(enable_ipv6.yfilter)) leaf_name_data.push_back(enable_ipv6.get_name_leafdata());
     if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -18871,70 +14490,57 @@ bool Isis::Instances::Instance::Interfaces::Interface::Bfd::has_leaf_or_child_of
     return false;
 }
 
-Isis::Instances::Instance::Interfaces::Interface::Priorities::Priorities()
+Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpIntervals()
 {
-    yang_name = "priorities"; yang_parent_name = "interface";
+
+    yang_name = "csnp-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Isis::Instances::Instance::Interfaces::Interface::Priorities::~Priorities()
+Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::~CsnpIntervals()
 {
 }
 
-bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_data() const
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<csnp_interval.size(); index++)
     {
-        if(priority[index]->has_data())
+        if(csnp_interval[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_operation() const
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<csnp_interval.size(); index++)
     {
-        if(priority[index]->has_operation())
+        if(csnp_interval[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Isis::Instances::Instance::Interfaces::Interface::Priorities::get_segment_path() const
+std::string Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priorities";
-
+    path_buffer << "csnp-intervals";
     return path_buffer.str();
-
 }
 
-const EntityPath Isis::Instances::Instance::Interfaces::Interface::Priorities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Priorities' in Cisco_IOS_XR_clns_isis_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "priority")
+    if(child_yang_name == "csnp-interval")
     {
-        for(auto const & c : priority)
+        for(auto const & c : csnp_interval)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -18942,19 +14548,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priori
                 return c;
             }
         }
-        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority>();
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval>();
         c->parent = this;
-        priority.push_back(c);
+        csnp_interval.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::Priorities::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : priority)
+    for (auto const & c : csnp_interval)
     {
         children[c->get_segment_path()] = c;
     }
@@ -18962,51 +14568,2754 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     return children;
 }
 
-void Isis::Instances::Instance::Interfaces::Interface::Priorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Isis::Instances::Instance::Interfaces::Interface::Priorities::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "priority")
+    if(name == "csnp-interval")
         return true;
     return false;
 }
 
-const Enum::YLeaf IsisInterfaceState::shutdown {0, "shutdown"};
-const Enum::YLeaf IsisInterfaceState::suppressed {1, "suppressed"};
-const Enum::YLeaf IsisInterfaceState::passive {2, "passive"};
+Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::CsnpInterval()
+    :
+    level{YType::enumeration, "level"},
+    interval{YType::uint32, "interval"}
+{
 
-const Enum::YLeaf IsisAttachedBit::area {0, "area"};
-const Enum::YLeaf IsisAttachedBit::on {1, "on"};
-const Enum::YLeaf IsisAttachedBit::off {2, "off"};
+    yang_name = "csnp-interval"; yang_parent_name = "csnp-intervals"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::~CsnpInterval()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::has_data() const
+{
+    return level.is_set
+	|| interval.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "csnp-interval" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPasswords()
+{
+
+    yang_name = "hello-accept-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::~HelloAcceptPasswords()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has_data() const
+{
+    for (std::size_t index=0; index<hello_accept_password.size(); index++)
+    {
+        if(hello_accept_password[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has_operation() const
+{
+    for (std::size_t index=0; index<hello_accept_password.size(); index++)
+    {
+        if(hello_accept_password[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-accept-passwords";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hello-accept-password")
+    {
+        for(auto const & c : hello_accept_password)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword>();
+        c->parent = this;
+        hello_accept_password.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hello_accept_password)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-accept-password")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::HelloAcceptPassword()
+    :
+    level{YType::enumeration, "level"},
+    password{YType::str, "password"}
+{
+
+    yang_name = "hello-accept-password"; yang_parent_name = "hello-accept-passwords"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::~HelloAcceptPassword()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::has_data() const
+{
+    return level.is_set
+	|| password.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(password.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-accept-password" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "password")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloIntervals()
+{
+
+    yang_name = "hello-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::~HelloIntervals()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_data() const
+{
+    for (std::size_t index=0; index<hello_interval.size(); index++)
+    {
+        if(hello_interval[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_operation() const
+{
+    for (std::size_t index=0; index<hello_interval.size(); index++)
+    {
+        if(hello_interval[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-intervals";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hello-interval")
+    {
+        for(auto const & c : hello_interval)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval>();
+        c->parent = this;
+        hello_interval.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hello_interval)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::HelloInterval()
+    :
+    level{YType::enumeration, "level"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "hello-interval"; yang_parent_name = "hello-intervals"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::~HelloInterval()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::has_data() const
+{
+    return level.is_set
+	|| interval.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-interval" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultipliers()
+{
+
+    yang_name = "hello-multipliers"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::~HelloMultipliers()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_data() const
+{
+    for (std::size_t index=0; index<hello_multiplier.size(); index++)
+    {
+        if(hello_multiplier[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_operation() const
+{
+    for (std::size_t index=0; index<hello_multiplier.size(); index++)
+    {
+        if(hello_multiplier[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-multipliers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hello-multiplier")
+    {
+        for(auto const & c : hello_multiplier)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier>();
+        c->parent = this;
+        hello_multiplier.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hello_multiplier)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-multiplier")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::HelloMultiplier()
+    :
+    level{YType::enumeration, "level"},
+    multiplier{YType::uint32, "multiplier"}
+{
+
+    yang_name = "hello-multiplier"; yang_parent_name = "hello-multipliers"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::~HelloMultiplier()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::has_data() const
+{
+    return level.is_set
+	|| multiplier.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(multiplier.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-multiplier" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (multiplier.is_set || is_set(multiplier.yfilter)) leaf_name_data.push_back(multiplier.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multiplier")
+    {
+        multiplier = value;
+        multiplier.value_namespace = name_space;
+        multiplier.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "multiplier")
+    {
+        multiplier.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "multiplier")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPaddings()
+{
+
+    yang_name = "hello-paddings"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::~HelloPaddings()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_data() const
+{
+    for (std::size_t index=0; index<hello_padding.size(); index++)
+    {
+        if(hello_padding[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_operation() const
+{
+    for (std::size_t index=0; index<hello_padding.size(); index++)
+    {
+        if(hello_padding[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-paddings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hello-padding")
+    {
+        for(auto const & c : hello_padding)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding>();
+        c->parent = this;
+        hello_padding.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hello_padding)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-padding")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::HelloPadding()
+    :
+    level{YType::enumeration, "level"},
+    padding_type{YType::enumeration, "padding-type"}
+{
+
+    yang_name = "hello-padding"; yang_parent_name = "hello-paddings"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::~HelloPadding()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::has_data() const
+{
+    return level.is_set
+	|| padding_type.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(padding_type.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-padding" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (padding_type.is_set || is_set(padding_type.yfilter)) leaf_name_data.push_back(padding_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "padding-type")
+    {
+        padding_type = value;
+        padding_type.value_namespace = name_space;
+        padding_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "padding-type")
+    {
+        padding_type.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "padding-type")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPasswords()
+{
+
+    yang_name = "hello-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::~HelloPasswords()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_data() const
+{
+    for (std::size_t index=0; index<hello_password.size(); index++)
+    {
+        if(hello_password[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_operation() const
+{
+    for (std::size_t index=0; index<hello_password.size(); index++)
+    {
+        if(hello_password[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-passwords";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hello-password")
+    {
+        for(auto const & c : hello_password)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword>();
+        c->parent = this;
+        hello_password.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : hello_password)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-password")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::HelloPassword()
+    :
+    level{YType::enumeration, "level"},
+    algorithm{YType::enumeration, "algorithm"},
+    failure_mode{YType::enumeration, "failure-mode"},
+    password{YType::str, "password"}
+{
+
+    yang_name = "hello-password"; yang_parent_name = "hello-passwords"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::~HelloPassword()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::has_data() const
+{
+    return level.is_set
+	|| algorithm.is_set
+	|| failure_mode.is_set
+	|| password.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(algorithm.yfilter)
+	|| ydk::is_set(failure_mode.yfilter)
+	|| ydk::is_set(password.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hello-password" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (algorithm.is_set || is_set(algorithm.yfilter)) leaf_name_data.push_back(algorithm.get_name_leafdata());
+    if (failure_mode.is_set || is_set(failure_mode.yfilter)) leaf_name_data.push_back(failure_mode.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "algorithm")
+    {
+        algorithm = value;
+        algorithm.value_namespace = name_space;
+        algorithm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failure-mode")
+    {
+        failure_mode = value;
+        failure_mode.value_namespace = name_space;
+        failure_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "algorithm")
+    {
+        algorithm.yfilter = yfilter;
+    }
+    if(value_path == "failure-mode")
+    {
+        failure_mode.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "algorithm" || name == "failure-mode" || name == "password")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAfs()
+{
+
+    yang_name = "interface-afs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::~InterfaceAfs()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_data() const
+{
+    for (std::size_t index=0; index<interface_af.size(); index++)
+    {
+        if(interface_af[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_operation() const
+{
+    for (std::size_t index=0; index<interface_af.size(); index++)
+    {
+        if(interface_af[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-afs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-af")
+    {
+        for(auto const & c : interface_af)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf>();
+        c->parent = this;
+        interface_af.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_af)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-af")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAf()
+    :
+    af_name{YType::enumeration, "af-name"},
+    saf_name{YType::enumeration, "saf-name"}
+    	,
+    interface_af_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData>())
+{
+    interface_af_data->parent = this;
+
+    yang_name = "interface-af"; yang_parent_name = "interface-afs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::~InterfaceAf()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::has_data() const
+{
+    for (std::size_t index=0; index<topology_name.size(); index++)
+    {
+        if(topology_name[index]->has_data())
+            return true;
+    }
+    return af_name.is_set
+	|| saf_name.is_set
+	|| (interface_af_data !=  nullptr && interface_af_data->has_data());
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::has_operation() const
+{
+    for (std::size_t index=0; index<topology_name.size(); index++)
+    {
+        if(topology_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| (interface_af_data !=  nullptr && interface_af_data->has_operation());
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-af-data")
+    {
+        if(interface_af_data == nullptr)
+        {
+            interface_af_data = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData>();
+        }
+        return interface_af_data;
+    }
+
+    if(child_yang_name == "topology-name")
+    {
+        for(auto const & c : topology_name)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName>();
+        c->parent = this;
+        topology_name.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_af_data != nullptr)
+    {
+        children["interface-af-data"] = interface_af_data;
+    }
+
+    for (auto const & c : topology_name)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-af-data" || name == "topology-name" || name == "af-name" || name == "saf-name")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceAfData()
+    :
+    interface_af_state{YType::enumeration, "interface-af-state"},
+    running{YType::empty, "running"}
+    	,
+    admin_tags(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags>())
+	,auto_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics>())
+	,interface_frr_table(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable>())
+	,interface_link_group(nullptr) // presence node
+	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids>())
+	,metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics>())
+	,mpls_ldp(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp>())
+	,prefix_sid(nullptr) // presence node
+	,prefix_sspfsid(nullptr) // presence node
+	,weights(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights>())
+{
+    admin_tags->parent = this;
+    auto_metrics->parent = this;
+    interface_frr_table->parent = this;
+    manual_adj_sids->parent = this;
+    metrics->parent = this;
+    mpls_ldp->parent = this;
+    weights->parent = this;
+
+    yang_name = "interface-af-data"; yang_parent_name = "interface-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::~InterfaceAfData()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::has_data() const
+{
+    return interface_af_state.is_set
+	|| running.is_set
+	|| (admin_tags !=  nullptr && admin_tags->has_data())
+	|| (auto_metrics !=  nullptr && auto_metrics->has_data())
+	|| (interface_frr_table !=  nullptr && interface_frr_table->has_data())
+	|| (interface_link_group !=  nullptr && interface_link_group->has_data())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_data())
+	|| (metrics !=  nullptr && metrics->has_data())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_data())
+	|| (prefix_sid !=  nullptr && prefix_sid->has_data())
+	|| (prefix_sspfsid !=  nullptr && prefix_sspfsid->has_data())
+	|| (weights !=  nullptr && weights->has_data());
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_af_state.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| (admin_tags !=  nullptr && admin_tags->has_operation())
+	|| (auto_metrics !=  nullptr && auto_metrics->has_operation())
+	|| (interface_frr_table !=  nullptr && interface_frr_table->has_operation())
+	|| (interface_link_group !=  nullptr && interface_link_group->has_operation())
+	|| (manual_adj_sids !=  nullptr && manual_adj_sids->has_operation())
+	|| (metrics !=  nullptr && metrics->has_operation())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_operation())
+	|| (prefix_sid !=  nullptr && prefix_sid->has_operation())
+	|| (prefix_sspfsid !=  nullptr && prefix_sspfsid->has_operation())
+	|| (weights !=  nullptr && weights->has_operation());
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-af-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_af_state.is_set || is_set(interface_af_state.yfilter)) leaf_name_data.push_back(interface_af_state.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "admin-tags")
+    {
+        if(admin_tags == nullptr)
+        {
+            admin_tags = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags>();
+        }
+        return admin_tags;
+    }
+
+    if(child_yang_name == "auto-metrics")
+    {
+        if(auto_metrics == nullptr)
+        {
+            auto_metrics = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics>();
+        }
+        return auto_metrics;
+    }
+
+    if(child_yang_name == "interface-frr-table")
+    {
+        if(interface_frr_table == nullptr)
+        {
+            interface_frr_table = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable>();
+        }
+        return interface_frr_table;
+    }
+
+    if(child_yang_name == "interface-link-group")
+    {
+        if(interface_link_group == nullptr)
+        {
+            interface_link_group = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup>();
+        }
+        return interface_link_group;
+    }
+
+    if(child_yang_name == "manual-adj-sids")
+    {
+        if(manual_adj_sids == nullptr)
+        {
+            manual_adj_sids = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids>();
+        }
+        return manual_adj_sids;
+    }
+
+    if(child_yang_name == "metrics")
+    {
+        if(metrics == nullptr)
+        {
+            metrics = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics>();
+        }
+        return metrics;
+    }
+
+    if(child_yang_name == "mpls-ldp")
+    {
+        if(mpls_ldp == nullptr)
+        {
+            mpls_ldp = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp>();
+        }
+        return mpls_ldp;
+    }
+
+    if(child_yang_name == "prefix-sid")
+    {
+        if(prefix_sid == nullptr)
+        {
+            prefix_sid = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid>();
+        }
+        return prefix_sid;
+    }
+
+    if(child_yang_name == "prefix-sspfsid")
+    {
+        if(prefix_sspfsid == nullptr)
+        {
+            prefix_sspfsid = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid>();
+        }
+        return prefix_sspfsid;
+    }
+
+    if(child_yang_name == "weights")
+    {
+        if(weights == nullptr)
+        {
+            weights = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights>();
+        }
+        return weights;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(admin_tags != nullptr)
+    {
+        children["admin-tags"] = admin_tags;
+    }
+
+    if(auto_metrics != nullptr)
+    {
+        children["auto-metrics"] = auto_metrics;
+    }
+
+    if(interface_frr_table != nullptr)
+    {
+        children["interface-frr-table"] = interface_frr_table;
+    }
+
+    if(interface_link_group != nullptr)
+    {
+        children["interface-link-group"] = interface_link_group;
+    }
+
+    if(manual_adj_sids != nullptr)
+    {
+        children["manual-adj-sids"] = manual_adj_sids;
+    }
+
+    if(metrics != nullptr)
+    {
+        children["metrics"] = metrics;
+    }
+
+    if(mpls_ldp != nullptr)
+    {
+        children["mpls-ldp"] = mpls_ldp;
+    }
+
+    if(prefix_sid != nullptr)
+    {
+        children["prefix-sid"] = prefix_sid;
+    }
+
+    if(prefix_sspfsid != nullptr)
+    {
+        children["prefix-sspfsid"] = prefix_sspfsid;
+    }
+
+    if(weights != nullptr)
+    {
+        children["weights"] = weights;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-af-state")
+    {
+        interface_af_state = value;
+        interface_af_state.value_namespace = name_space;
+        interface_af_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-af-state")
+    {
+        interface_af_state.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-tags" || name == "auto-metrics" || name == "interface-frr-table" || name == "interface-link-group" || name == "manual-adj-sids" || name == "metrics" || name == "mpls-ldp" || name == "prefix-sid" || name == "prefix-sspfsid" || name == "weights" || name == "interface-af-state" || name == "running")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTags()
+{
+
+    yang_name = "admin-tags"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::~AdminTags()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::has_data() const
+{
+    for (std::size_t index=0; index<admin_tag.size(); index++)
+    {
+        if(admin_tag[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::has_operation() const
+{
+    for (std::size_t index=0; index<admin_tag.size(); index++)
+    {
+        if(admin_tag[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "admin-tags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "admin-tag")
+    {
+        for(auto const & c : admin_tag)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag>();
+        c->parent = this;
+        admin_tag.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : admin_tag)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-tag")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::AdminTag()
+    :
+    level{YType::enumeration, "level"},
+    admin_tag{YType::uint32, "admin-tag"}
+{
+
+    yang_name = "admin-tag"; yang_parent_name = "admin-tags"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::~AdminTag()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::has_data() const
+{
+    return level.is_set
+	|| admin_tag.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(admin_tag.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "admin-tag" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (admin_tag.is_set || is_set(admin_tag.yfilter)) leaf_name_data.push_back(admin_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag = value;
+        admin_tag.value_namespace = name_space;
+        admin_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "admin-tag")
+    {
+        admin_tag.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "admin-tag")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetrics()
+{
+
+    yang_name = "auto-metrics"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::~AutoMetrics()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::has_data() const
+{
+    for (std::size_t index=0; index<auto_metric.size(); index++)
+    {
+        if(auto_metric[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::has_operation() const
+{
+    for (std::size_t index=0; index<auto_metric.size(); index++)
+    {
+        if(auto_metric[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "auto-metric")
+    {
+        for(auto const & c : auto_metric)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric>();
+        c->parent = this;
+        auto_metric.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : auto_metric)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::AutoMetric()
+    :
+    level{YType::enumeration, "level"},
+    proactive_protect{YType::uint32, "proactive-protect"}
+{
+
+    yang_name = "auto-metric"; yang_parent_name = "auto-metrics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::~AutoMetric()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::has_data() const
+{
+    return level.is_set
+	|| proactive_protect.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(proactive_protect.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-metric" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (proactive_protect.is_set || is_set(proactive_protect.yfilter)) leaf_name_data.push_back(proactive_protect.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proactive-protect")
+    {
+        proactive_protect = value;
+        proactive_protect.value_namespace = name_space;
+        proactive_protect.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "proactive-protect")
+    {
+        proactive_protect.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "proactive-protect")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTable()
+    :
+    frr_exclude_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces>())
+	,frr_remote_lfa_max_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>())
+	,frr_remote_lfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes>())
+	,frr_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes>())
+	,frrlfa_candidate_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces>())
+	,frrtilfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes>())
+	,interface_frr_tiebreaker_defaults(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>())
+	,interface_frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers>())
+{
+    frr_exclude_interfaces->parent = this;
+    frr_remote_lfa_max_metrics->parent = this;
+    frr_remote_lfa_types->parent = this;
+    frr_types->parent = this;
+    frrlfa_candidate_interfaces->parent = this;
+    frrtilfa_types->parent = this;
+    interface_frr_tiebreaker_defaults->parent = this;
+    interface_frr_tiebreakers->parent = this;
+
+    yang_name = "interface-frr-table"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::~InterfaceFrrTable()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::has_data() const
+{
+    return (frr_exclude_interfaces !=  nullptr && frr_exclude_interfaces->has_data())
+	|| (frr_remote_lfa_max_metrics !=  nullptr && frr_remote_lfa_max_metrics->has_data())
+	|| (frr_remote_lfa_types !=  nullptr && frr_remote_lfa_types->has_data())
+	|| (frr_types !=  nullptr && frr_types->has_data())
+	|| (frrlfa_candidate_interfaces !=  nullptr && frrlfa_candidate_interfaces->has_data())
+	|| (frrtilfa_types !=  nullptr && frrtilfa_types->has_data())
+	|| (interface_frr_tiebreaker_defaults !=  nullptr && interface_frr_tiebreaker_defaults->has_data())
+	|| (interface_frr_tiebreakers !=  nullptr && interface_frr_tiebreakers->has_data());
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (frr_exclude_interfaces !=  nullptr && frr_exclude_interfaces->has_operation())
+	|| (frr_remote_lfa_max_metrics !=  nullptr && frr_remote_lfa_max_metrics->has_operation())
+	|| (frr_remote_lfa_types !=  nullptr && frr_remote_lfa_types->has_operation())
+	|| (frr_types !=  nullptr && frr_types->has_operation())
+	|| (frrlfa_candidate_interfaces !=  nullptr && frrlfa_candidate_interfaces->has_operation())
+	|| (frrtilfa_types !=  nullptr && frrtilfa_types->has_operation())
+	|| (interface_frr_tiebreaker_defaults !=  nullptr && interface_frr_tiebreaker_defaults->has_operation())
+	|| (interface_frr_tiebreakers !=  nullptr && interface_frr_tiebreakers->has_operation());
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-frr-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frr-exclude-interfaces")
+    {
+        if(frr_exclude_interfaces == nullptr)
+        {
+            frr_exclude_interfaces = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces>();
+        }
+        return frr_exclude_interfaces;
+    }
+
+    if(child_yang_name == "frr-remote-lfa-max-metrics")
+    {
+        if(frr_remote_lfa_max_metrics == nullptr)
+        {
+            frr_remote_lfa_max_metrics = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>();
+        }
+        return frr_remote_lfa_max_metrics;
+    }
+
+    if(child_yang_name == "frr-remote-lfa-types")
+    {
+        if(frr_remote_lfa_types == nullptr)
+        {
+            frr_remote_lfa_types = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes>();
+        }
+        return frr_remote_lfa_types;
+    }
+
+    if(child_yang_name == "frr-types")
+    {
+        if(frr_types == nullptr)
+        {
+            frr_types = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes>();
+        }
+        return frr_types;
+    }
+
+    if(child_yang_name == "frrlfa-candidate-interfaces")
+    {
+        if(frrlfa_candidate_interfaces == nullptr)
+        {
+            frrlfa_candidate_interfaces = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces>();
+        }
+        return frrlfa_candidate_interfaces;
+    }
+
+    if(child_yang_name == "frrtilfa-types")
+    {
+        if(frrtilfa_types == nullptr)
+        {
+            frrtilfa_types = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes>();
+        }
+        return frrtilfa_types;
+    }
+
+    if(child_yang_name == "interface-frr-tiebreaker-defaults")
+    {
+        if(interface_frr_tiebreaker_defaults == nullptr)
+        {
+            interface_frr_tiebreaker_defaults = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>();
+        }
+        return interface_frr_tiebreaker_defaults;
+    }
+
+    if(child_yang_name == "interface-frr-tiebreakers")
+    {
+        if(interface_frr_tiebreakers == nullptr)
+        {
+            interface_frr_tiebreakers = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers>();
+        }
+        return interface_frr_tiebreakers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(frr_exclude_interfaces != nullptr)
+    {
+        children["frr-exclude-interfaces"] = frr_exclude_interfaces;
+    }
+
+    if(frr_remote_lfa_max_metrics != nullptr)
+    {
+        children["frr-remote-lfa-max-metrics"] = frr_remote_lfa_max_metrics;
+    }
+
+    if(frr_remote_lfa_types != nullptr)
+    {
+        children["frr-remote-lfa-types"] = frr_remote_lfa_types;
+    }
+
+    if(frr_types != nullptr)
+    {
+        children["frr-types"] = frr_types;
+    }
+
+    if(frrlfa_candidate_interfaces != nullptr)
+    {
+        children["frrlfa-candidate-interfaces"] = frrlfa_candidate_interfaces;
+    }
+
+    if(frrtilfa_types != nullptr)
+    {
+        children["frrtilfa-types"] = frrtilfa_types;
+    }
+
+    if(interface_frr_tiebreaker_defaults != nullptr)
+    {
+        children["interface-frr-tiebreaker-defaults"] = interface_frr_tiebreaker_defaults;
+    }
+
+    if(interface_frr_tiebreakers != nullptr)
+    {
+        children["interface-frr-tiebreakers"] = interface_frr_tiebreakers;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-exclude-interfaces" || name == "frr-remote-lfa-max-metrics" || name == "frr-remote-lfa-types" || name == "frr-types" || name == "frrlfa-candidate-interfaces" || name == "frrtilfa-types" || name == "interface-frr-tiebreaker-defaults" || name == "interface-frr-tiebreakers")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterfaces()
+{
+
+    yang_name = "frr-exclude-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::~FrrExcludeInterfaces()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    {
+        if(frr_exclude_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    {
+        if(frr_exclude_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-exclude-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frr-exclude-interface")
+    {
+        for(auto const & c : frr_exclude_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface>();
+        c->parent = this;
+        frr_exclude_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : frr_exclude_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-exclude-interface")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::FrrExcludeInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    frr_type{YType::enumeration, "frr-type"},
+    level{YType::uint32, "level"}
+{
+
+    yang_name = "frr-exclude-interface"; yang_parent_name = "frr-exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::~FrrExcludeInterface()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::has_data() const
+{
+    return interface_name.is_set
+	|| frr_type.is_set
+	|| level.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(level.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-exclude-interface" <<"[interface-name='" <<interface_name <<"']" <<"[frr-type='" <<frr_type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frr-type")
+    {
+        frr_type = value;
+        frr_type.value_namespace = name_space;
+        frr_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "frr-type")
+    {
+        frr_type.yfilter = yfilter;
+    }
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "frr-type" || name == "level")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetrics()
+{
+
+    yang_name = "frr-remote-lfa-max-metrics"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::~FrrRemoteLfaMaxMetrics()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_data() const
+{
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    {
+        if(frr_remote_lfa_max_metric[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_operation() const
+{
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    {
+        if(frr_remote_lfa_max_metric[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-remote-lfa-max-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frr-remote-lfa-max-metric")
+    {
+        for(auto const & c : frr_remote_lfa_max_metric)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric>();
+        c->parent = this;
+        frr_remote_lfa_max_metric.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : frr_remote_lfa_max_metric)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-remote-lfa-max-metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::FrrRemoteLfaMaxMetric()
+    :
+    level{YType::enumeration, "level"},
+    max_metric{YType::uint32, "max-metric"}
+{
+
+    yang_name = "frr-remote-lfa-max-metric"; yang_parent_name = "frr-remote-lfa-max-metrics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::~FrrRemoteLfaMaxMetric()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::has_data() const
+{
+    return level.is_set
+	|| max_metric.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(max_metric.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-remote-lfa-max-metric" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (max_metric.is_set || is_set(max_metric.yfilter)) leaf_name_data.push_back(max_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-metric")
+    {
+        max_metric = value;
+        max_metric.value_namespace = name_space;
+        max_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "max-metric")
+    {
+        max_metric.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "max-metric")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaTypes()
+{
+
+    yang_name = "frr-remote-lfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::~FrrRemoteLfaTypes()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::has_data() const
+{
+    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    {
+        if(frr_remote_lfa_type[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::has_operation() const
+{
+    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    {
+        if(frr_remote_lfa_type[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-remote-lfa-types";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frr-remote-lfa-type")
+    {
+        for(auto const & c : frr_remote_lfa_type)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType>();
+        c->parent = this;
+        frr_remote_lfa_type.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : frr_remote_lfa_type)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-remote-lfa-type")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::FrrRemoteLfaType()
+    :
+    level{YType::enumeration, "level"},
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "frr-remote-lfa-type"; yang_parent_name = "frr-remote-lfa-types"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::~FrrRemoteLfaType()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::has_data() const
+{
+    return level.is_set
+	|| type.is_set;
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-remote-lfa-type" <<"[level='" <<level <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "type")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
+const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
+
+const Enum::YLeaf IsisphpFlag::enable {0, "enable"};
+const Enum::YLeaf IsisphpFlag::disable {1, "disable"};
+
+const Enum::YLeaf NflagClear::disable {0, "disable"};
+const Enum::YLeaf NflagClear::enable {1, "enable"};
+
+const Enum::YLeaf IsisMetricStyleTransition::disabled {0, "disabled"};
+const Enum::YLeaf IsisMetricStyleTransition::enabled {1, "enabled"};
+
+const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
+
+const Enum::YLeaf IsisMibOwnLspPurgeBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibOwnLspPurgeBoolean::true_ {7, "true"};
+
+const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
+const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
+
+const Enum::YLeaf IsisMibAllBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAllBoolean::true_ {19, "true"};
+
+const Enum::YLeaf IsisTracingMode::off {0, "off"};
+const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
+const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
+
+const Enum::YLeaf Isissid1::index_ {1, "index"};
+const Enum::YLeaf Isissid1::absolute {2, "absolute"};
+
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
+
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
+
+const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
+const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
 
 const Enum::YLeaf IsisRemoteLfa::remote_lfa_none {0, "remote-lfa-none"};
 const Enum::YLeaf IsisRemoteLfa::remote_lfa_tunnel_ldp {1, "remote-lfa-tunnel-ldp"};
 
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
 
-const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
+const Enum::YLeaf IsisApplyWeight::ecmp_only {1, "ecmp-only"};
+const Enum::YLeaf IsisApplyWeight::ucmp_only {2, "ucmp-only"};
 
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
+const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
 
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
+const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
 
 const Enum::YLeaf IsisMetric::internal {0, "internal"};
 const Enum::YLeaf IsisMetric::external {1, "external"};
 
-const Enum::YLeaf IsisMibLspErrorDetectedBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibLspErrorDetectedBoolean::true_ {18, "true"};
+const Enum::YLeaf IsisMibAdjacencyChangeBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAdjacencyChangeBoolean::true_ {17, "true"};
 
-const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
-const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
+const Enum::YLeaf IsisInterfaceState::shutdown {0, "shutdown"};
+const Enum::YLeaf IsisInterfaceState::suppressed {1, "suppressed"};
+const Enum::YLeaf IsisInterfaceState::passive {2, "passive"};
+const Enum::YLeaf IsisInterfaceState::enabled_active {3, "enabled-active"};
 
 const Enum::YLeaf IsisHelloPadding::never {0, "never"};
 const Enum::YLeaf IsisHelloPadding::sometimes {1, "sometimes"};
@@ -19015,8 +17324,68 @@ const Enum::YLeaf IsisMetricStyle::old_metric_style {0, "old-metric-style"};
 const Enum::YLeaf IsisMetricStyle::new_metric_style {1, "new-metric-style"};
 const Enum::YLeaf IsisMetricStyle::both_metric_style {2, "both-metric-style"};
 
-const Enum::YLeaf IsisMetricStyleTransition::disabled {0, "disabled"};
-const Enum::YLeaf IsisMetricStyleTransition::enabled {1, "enabled"};
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
+
+const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
+
+const Enum::YLeaf IsisAttachedBit::area {0, "area"};
+const Enum::YLeaf IsisAttachedBit::on {1, "on"};
+const Enum::YLeaf IsisAttachedBit::off {2, "off"};
+
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
+
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
+
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
+
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
+
+const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
+const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
+const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
+
+const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
+const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
+const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
+const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
+const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
+
+const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
+
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
+
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
+
+const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
+const Enum::YLeaf IsisSnpAuth::full {1, "full"};
+
+const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
+
+const Enum::YLeaf IsissidProtected::disable {0, "disable"};
+const Enum::YLeaf IsissidProtected::enable {1, "enable"};
+
+const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
+const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
+const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
+
+const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
+
+const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
 
 const Enum::YLeaf IsisRedistProto::connected {0, "connected"};
 const Enum::YLeaf IsisRedistProto::static_ {1, "static"};
@@ -19030,77 +17399,21 @@ const Enum::YLeaf IsisRedistProto::subscriber {8, "subscriber"};
 const Enum::YLeaf IsisRedistProto::application {9, "application"};
 const Enum::YLeaf IsisRedistProto::mobile {10, "mobile"};
 
-const Enum::YLeaf IsisTracingMode::off {0, "off"};
-const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
-const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
-
-const Enum::YLeaf IsisMibAllBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAllBoolean::true_ {19, "true"};
-
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
-
-const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
-const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
-
-const Enum::YLeaf IsisMibVersionSkewBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibVersionSkewBoolean::true_ {11, "true"};
-
-const Enum::YLeaf Isissid::index_ {1, "index"};
-const Enum::YLeaf Isissid::absolute {2, "absolute"};
-
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
 
 const Enum::YLeaf IsisMibAreaMismatchBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibAreaMismatchBoolean::true_ {12, "true"};
 
-const Enum::YLeaf IsisphpFlag::enable {0, "enable"};
-const Enum::YLeaf IsisphpFlag::disable {1, "disable"};
+const Enum::YLeaf IsisMibVersionSkewBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibVersionSkewBoolean::true_ {11, "true"};
 
-const Enum::YLeaf IsisMibOwnLspPurgeBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibOwnLspPurgeBoolean::true_ {7, "true"};
+const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
+const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
+const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
 
-const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
-const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
-const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
-const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
-const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
-
-const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
-const Enum::YLeaf IsisSnpAuth::full {1, "full"};
-
-const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
-const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
-const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
-
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
-
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
-
-const Enum::YLeaf IsisMibAdjacencyChangeBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAdjacencyChangeBoolean::true_ {17, "true"};
-
-const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
-
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
-
-const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
-
-const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
-
-const Enum::YLeaf IsisApplyWeight::ecmp_only {1, "ecmp-only"};
-const Enum::YLeaf IsisApplyWeight::ucmp_only {2, "ucmp-only"};
+const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
+const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
 
 const Enum::YLeaf Isisfrr::per_link {1, "per-link"};
 const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
@@ -19108,45 +17421,11 @@ const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
 const Enum::YLeaf IsisInterfaceFrrTiebreaker::node_protecting {3, "node-protecting"};
 const Enum::YLeaf IsisInterfaceFrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
 
-const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
-
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
-
-const Enum::YLeaf NflagClear::disable {0, "disable"};
-const Enum::YLeaf NflagClear::enable {1, "enable"};
-
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
-
-const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
-
-const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
-
-const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
-const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
-const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
-
-const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
-const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
-
-const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
-const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
-const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
-
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
-
-const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
-
-const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
-const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
-
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
-
 const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
+
+const Enum::YLeaf IsisMibLspErrorDetectedBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibLspErrorDetectedBoolean::true_ {18, "true"};
 
 const Enum::YLeaf Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 

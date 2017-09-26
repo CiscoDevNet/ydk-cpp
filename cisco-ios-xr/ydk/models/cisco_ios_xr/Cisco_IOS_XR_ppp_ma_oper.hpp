@@ -18,7 +18,7 @@ class Ppp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Ppp : public ydk::Entity
 
         class Nodes; //type: Ppp::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes> nodes;
         
 }; // Ppp
 
@@ -46,17 +46,18 @@ class Ppp::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: Ppp::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node> > node;
         
 }; // Ppp::Nodes
 
@@ -69,13 +70,14 @@ class Ppp::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         class Statistics; //type: Ppp::Nodes::Node::Statistics
@@ -86,26 +88,26 @@ class Ppp::Nodes::Node : public ydk::Entity
         class SsoGroups; //type: Ppp::Nodes::Node::SsoGroups
         class Summary; //type: Ppp::Nodes::Node::Summary
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics> node_interface_statistics;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces> node_interfaces;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts> sso_alerts;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups> sso_groups;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary> sso_summary;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics> statistics;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics> node_interface_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces> node_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts> sso_alerts;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups> sso_groups;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary> sso_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary> summary;
         
 }; // Ppp::Nodes::Node
 
 
-class Ppp::Nodes::Node::Statistics : public ydk::Entity
+class Ppp::Nodes::Node::NodeInterfaceStatistics : public ydk::Entity
 {
     public:
-        Statistics();
-        ~Statistics();
+        NodeInterfaceStatistics();
+        ~NodeInterfaceStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -113,26 +115,22 @@ class Ppp::Nodes::Node::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LcpStatistics; //type: Ppp::Nodes::Node::Statistics::LcpStatistics
-        class AuthenticationStatistics; //type: Ppp::Nodes::Node::Statistics::AuthenticationStatistics
-        class NcpStatisticsArray; //type: Ppp::Nodes::Node::Statistics::NcpStatisticsArray
+        class NodeInterfaceStatistic; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::AuthenticationStatistics> authentication_statistics;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::LcpStatistics> lcp_statistics;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::NcpStatisticsArray> > ncp_statistics_array;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic> > node_interface_statistic;
         
-}; // Ppp::Nodes::Node::Statistics
+}; // Ppp::Nodes::Node::NodeInterfaceStatistics
 
 
-class Ppp::Nodes::Node::Statistics::LcpStatistics : public ydk::Entity
+class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic : public ydk::Entity
 {
     public:
-        LcpStatistics();
-        ~LcpStatistics();
+        NodeInterfaceStatistic();
+        ~NodeInterfaceStatistic();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -140,35 +138,19 @@ class Ppp::Nodes::Node::Statistics::LcpStatistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf conf_req_sent; //type: uint64
-        ydk::YLeaf conf_req_rcvd; //type: uint64
-        ydk::YLeaf conf_ack_sent; //type: uint64
-        ydk::YLeaf conf_ack_rcvd; //type: uint64
-        ydk::YLeaf conf_nak_sent; //type: uint64
-        ydk::YLeaf conf_nak_rcvd; //type: uint64
-        ydk::YLeaf conf_rej_sent; //type: uint64
-        ydk::YLeaf conf_rej_rcvd; //type: uint64
-        ydk::YLeaf term_req_sent; //type: uint64
-        ydk::YLeaf term_req_rcvd; //type: uint64
-        ydk::YLeaf term_ack_sent; //type: uint64
-        ydk::YLeaf term_ack_rcvd; //type: uint64
-        ydk::YLeaf code_rej_sent; //type: uint64
-        ydk::YLeaf code_rej_rcvd; //type: uint64
-        ydk::YLeaf proto_rej_sent; //type: uint64
-        ydk::YLeaf proto_rej_rcvd; //type: uint64
-        ydk::YLeaf echo_req_sent; //type: uint64
-        ydk::YLeaf echo_req_rcvd; //type: uint64
-        ydk::YLeaf echo_rep_sent; //type: uint64
-        ydk::YLeaf echo_rep_rcvd; //type: uint64
-        ydk::YLeaf disc_req_sent; //type: uint64
-        ydk::YLeaf disc_req_rcvd; //type: uint64
-        ydk::YLeaf link_up; //type: uint64
-        ydk::YLeaf link_error; //type: uint64
+        ydk::YLeaf interface_name; //type: string
+        class LcpStatistics; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
+        class AuthenticationStatistics; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics
+        class NcpStatisticsArray; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray
 
-}; // Ppp::Nodes::Node::Statistics::LcpStatistics
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics> authentication_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics> lcp_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray> > ncp_statistics_array;
+        
+}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
 
 
-class Ppp::Nodes::Node::Statistics::AuthenticationStatistics : public ydk::Entity
+class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics : public ydk::Entity
 {
     public:
         AuthenticationStatistics();
@@ -176,7 +158,7 @@ class Ppp::Nodes::Node::Statistics::AuthenticationStatistics : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -184,26 +166,62 @@ class Ppp::Nodes::Node::Statistics::AuthenticationStatistics : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pap_req_sent; //type: uint64
-        ydk::YLeaf pap_req_rcvd; //type: uint64
-        ydk::YLeaf pap_ack_sent; //type: uint64
-        ydk::YLeaf pap_ack_rcvd; //type: uint64
-        ydk::YLeaf pap_nak_sent; //type: uint64
-        ydk::YLeaf pap_nak_rcvd; //type: uint64
-        ydk::YLeaf chap_chall_sent; //type: uint64
-        ydk::YLeaf chap_chall_rcvd; //type: uint64
-        ydk::YLeaf chap_resp_sent; //type: uint64
-        ydk::YLeaf chap_resp_rcvd; //type: uint64
-        ydk::YLeaf chap_rep_succ_sent; //type: uint64
-        ydk::YLeaf chap_rep_succ_rcvd; //type: uint64
-        ydk::YLeaf chap_rep_fail_sent; //type: uint64
-        ydk::YLeaf chap_rep_fail_rcvd; //type: uint64
-        ydk::YLeaf auth_timeout_count; //type: uint64
+        ydk::YLeaf pap_req_sent; //type: uint16
+        ydk::YLeaf pap_req_rcvd; //type: uint16
+        ydk::YLeaf pap_ack_sent; //type: uint16
+        ydk::YLeaf pap_ack_rcvd; //type: uint16
+        ydk::YLeaf pap_nak_sent; //type: uint16
+        ydk::YLeaf pap_nak_rcvd; //type: uint16
+        ydk::YLeaf chap_chall_sent; //type: uint16
+        ydk::YLeaf chap_chall_rcvd; //type: uint16
+        ydk::YLeaf chap_resp_sent; //type: uint16
+        ydk::YLeaf chap_resp_rcvd; //type: uint16
+        ydk::YLeaf chap_rep_succ_sent; //type: uint16
+        ydk::YLeaf chap_rep_succ_rcvd; //type: uint16
+        ydk::YLeaf chap_rep_fail_sent; //type: uint16
+        ydk::YLeaf chap_rep_fail_rcvd; //type: uint16
+        ydk::YLeaf auth_timeout_count; //type: uint16
 
-}; // Ppp::Nodes::Node::Statistics::AuthenticationStatistics
+}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics
 
 
-class Ppp::Nodes::Node::Statistics::NcpStatisticsArray : public ydk::Entity
+class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics : public ydk::Entity
+{
+    public:
+        LcpStatistics();
+        ~LcpStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conf_req_sent; //type: uint16
+        ydk::YLeaf conf_req_rcvd; //type: uint16
+        ydk::YLeaf conf_ack_sent; //type: uint16
+        ydk::YLeaf conf_ack_rcvd; //type: uint16
+        ydk::YLeaf conf_nak_sent; //type: uint16
+        ydk::YLeaf conf_nak_rcvd; //type: uint16
+        ydk::YLeaf conf_rej_sent; //type: uint16
+        ydk::YLeaf conf_rej_rcvd; //type: uint16
+        ydk::YLeaf echo_req_sent; //type: uint16
+        ydk::YLeaf echo_req_rcvd; //type: uint16
+        ydk::YLeaf echo_rep_sent; //type: uint16
+        ydk::YLeaf echo_rep_rcvd; //type: uint16
+        ydk::YLeaf disc_req_sent; //type: uint16
+        ydk::YLeaf disc_req_rcvd; //type: uint16
+        ydk::YLeaf link_up; //type: uint16
+        ydk::YLeaf link_error; //type: uint16
+
+}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
+
+
+class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray : public ydk::Entity
 {
     public:
         NcpStatisticsArray();
@@ -211,7 +229,7 @@ class Ppp::Nodes::Node::Statistics::NcpStatisticsArray : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -220,22 +238,16 @@ class Ppp::Nodes::Node::Statistics::NcpStatisticsArray : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ncp_identifier; //type: NcpIdent
-        ydk::YLeaf conf_req_sent; //type: uint64
-        ydk::YLeaf conf_req_rcvd; //type: uint64
-        ydk::YLeaf conf_ack_sent; //type: uint64
-        ydk::YLeaf conf_ack_rcvd; //type: uint64
-        ydk::YLeaf conf_nak_sent; //type: uint64
-        ydk::YLeaf conf_nak_rcvd; //type: uint64
-        ydk::YLeaf conf_rej_sent; //type: uint64
-        ydk::YLeaf conf_rej_rcvd; //type: uint64
-        ydk::YLeaf term_req_sent; //type: uint64
-        ydk::YLeaf term_req_rcvd; //type: uint64
-        ydk::YLeaf term_ack_sent; //type: uint64
-        ydk::YLeaf term_ack_rcvd; //type: uint64
-        ydk::YLeaf proto_rej_sent; //type: uint64
-        ydk::YLeaf proto_rej_rcvd; //type: uint64
+        ydk::YLeaf conf_req_sent; //type: uint16
+        ydk::YLeaf conf_req_rcvd; //type: uint16
+        ydk::YLeaf conf_ack_sent; //type: uint16
+        ydk::YLeaf conf_ack_rcvd; //type: uint16
+        ydk::YLeaf conf_nak_sent; //type: uint16
+        ydk::YLeaf conf_nak_rcvd; //type: uint16
+        ydk::YLeaf conf_rej_sent; //type: uint16
+        ydk::YLeaf conf_rej_rcvd; //type: uint16
 
-}; // Ppp::Nodes::Node::Statistics::NcpStatisticsArray
+}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray
 
 
 class Ppp::Nodes::Node::NodeInterfaces : public ydk::Entity
@@ -246,7 +258,7 @@ class Ppp::Nodes::Node::NodeInterfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -256,7 +268,7 @@ class Ppp::Nodes::Node::NodeInterfaces : public ydk::Entity
 
         class NodeInterface; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface> > node_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface> > node_interface;
         
 }; // Ppp::Nodes::Node::NodeInterfaces
 
@@ -269,7 +281,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -310,87 +322,12 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface : public ydk::Entity
         class AuthInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo
         class NcpInfoArray; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo> auth_info;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout> configured_timeout;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo> mp_info;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray> > ncp_info_array;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo> auth_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout> configured_timeout;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo> mp_info;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray> > ncp_info_array;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface
-
-
-class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo : public ydk::Entity
-{
-    public:
-        MpInfo();
-        ~MpInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_mp_bundle; //type: boolean
-        ydk::YLeaf mp_bundle_interface; //type: string
-        ydk::YLeaf is_mp_bundle_member; //type: boolean
-        ydk::YLeaf mp_group; //type: uint32
-        ydk::YLeaf active_links; //type: uint16
-        ydk::YLeaf inactive_links; //type: uint16
-        ydk::YLeaf minimum_active_links; //type: uint16
-        ydk::YLeaf mp_state; //type: PppLcpMpMbrState
-        class MpMemberInfoArray; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray> > mp_member_info_array;
-        
-}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo
-
-
-class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray : public ydk::Entity
-{
-    public:
-        MpMemberInfoArray();
-        ~MpMemberInfoArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf state; //type: PppLcpMpMbrState
-
-}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray
-
-
-class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout : public ydk::Entity
-{
-    public:
-        ConfiguredTimeout();
-        ~ConfiguredTimeout();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minutes; //type: uint32
-        ydk::YLeaf seconds; //type: uint8
-
-}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout
 
 
 class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo : public ydk::Entity
@@ -401,7 +338,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -421,6 +358,81 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo : public ydk::En
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo
 
 
+class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout : public ydk::Entity
+{
+    public:
+        ConfiguredTimeout();
+        ~ConfiguredTimeout();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf seconds; //type: uint8
+
+}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout
+
+
+class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo : public ydk::Entity
+{
+    public:
+        MpInfo();
+        ~MpInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_mp_bundle; //type: boolean
+        ydk::YLeaf mp_bundle_interface; //type: string
+        ydk::YLeaf is_mp_bundle_member; //type: boolean
+        ydk::YLeaf mp_group; //type: uint32
+        ydk::YLeaf active_links; //type: uint16
+        ydk::YLeaf inactive_links; //type: uint16
+        ydk::YLeaf minimum_active_links; //type: uint16
+        ydk::YLeaf mp_state; //type: PppLcpMpMbrState
+        class MpMemberInfoArray; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray> > mp_member_info_array;
+        
+}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo
+
+
+class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray : public ydk::Entity
+{
+    public:
+        MpMemberInfoArray();
+        ~MpMemberInfoArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf state; //type: PppLcpMpMbrState
+
+}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray
+
+
 class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray : public ydk::Entity
 {
     public:
@@ -429,7 +441,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -443,7 +455,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray : public ydk
         ydk::YLeaf ncp_identifier; //type: NcpIdent
         class NcpInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo> ncp_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo> ncp_info;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray
 
@@ -456,7 +468,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -469,9 +481,9 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo : p
         class IpcpiwInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo
         class Ipv6CpInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo> ipcp_info;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo> ipcpiw_info;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo> ipv6cp_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo> ipcp_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo> ipcpiw_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo> ipv6cp_info;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo
 
@@ -484,7 +496,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -503,8 +515,8 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
         class LocalIphcOptions; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions
         class PeerIphcOptions; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions> local_iphc_options;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions> peer_iphc_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions> local_iphc_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions> peer_iphc_options;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
 
@@ -517,7 +529,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -545,7 +557,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -573,7 +585,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -595,7 +607,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -617,7 +629,7 @@ class Ppp::Nodes::Node::SsoAlerts : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -627,7 +639,7 @@ class Ppp::Nodes::Node::SsoAlerts : public ydk::Entity
 
         class SsoAlert; //type: Ppp::Nodes::Node::SsoAlerts::SsoAlert
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert> > sso_alert;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert> > sso_alert;
         
 }; // Ppp::Nodes::Node::SsoAlerts
 
@@ -640,7 +652,7 @@ class Ppp::Nodes::Node::SsoAlerts::SsoAlert : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -654,81 +666,12 @@ class Ppp::Nodes::Node::SsoAlerts::SsoAlert : public ydk::Entity
         class OfPeerAuthError; //type: Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError
         class IpcpError; //type: Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError> ipcp_error;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError> lcp_error;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError> of_peer_auth_error;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError> of_us_auth_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError> ipcp_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError> lcp_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError> of_peer_auth_error;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError> of_us_auth_error;
         
 }; // Ppp::Nodes::Node::SsoAlerts::SsoAlert
-
-
-class Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError : public ydk::Entity
-{
-    public:
-        LcpError();
-        ~LcpError();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_error; //type: boolean
-        ydk::YLeaf error; //type: uint32
-        ydk::YLeaf context; //type: uint32
-
-}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError
-
-
-class Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError : public ydk::Entity
-{
-    public:
-        OfUsAuthError();
-        ~OfUsAuthError();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_error; //type: boolean
-        ydk::YLeaf error; //type: uint32
-        ydk::YLeaf context; //type: uint32
-
-}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError
-
-
-class Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError : public ydk::Entity
-{
-    public:
-        OfPeerAuthError();
-        ~OfPeerAuthError();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_error; //type: boolean
-        ydk::YLeaf error; //type: uint32
-        ydk::YLeaf context; //type: uint32
-
-}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError
 
 
 class Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError : public ydk::Entity
@@ -739,7 +682,7 @@ class Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -754,15 +697,15 @@ class Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError : public ydk::Entity
 }; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError
 
 
-class Ppp::Nodes::Node::NodeInterfaceStatistics : public ydk::Entity
+class Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError : public ydk::Entity
 {
     public:
-        NodeInterfaceStatistics();
-        ~NodeInterfaceStatistics();
+        LcpError();
+        ~LcpError();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -770,22 +713,22 @@ class Ppp::Nodes::Node::NodeInterfaceStatistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NodeInterfaceStatistic; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
+        ydk::YLeaf is_error; //type: boolean
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf context; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic> > node_interface_statistic;
-        
-}; // Ppp::Nodes::Node::NodeInterfaceStatistics
+}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError
 
 
-class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic : public ydk::Entity
+class Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError : public ydk::Entity
 {
     public:
-        NodeInterfaceStatistic();
-        ~NodeInterfaceStatistic();
+        OfPeerAuthError();
+        ~OfPeerAuthError();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -793,27 +736,22 @@ class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_name; //type: string
-        class LcpStatistics; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
-        class AuthenticationStatistics; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics
-        class NcpStatisticsArray; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray
+        ydk::YLeaf is_error; //type: boolean
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf context; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics> authentication_statistics;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics> lcp_statistics;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray> > ncp_statistics_array;
-        
-}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
+}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError
 
 
-class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics : public ydk::Entity
+class Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError : public ydk::Entity
 {
     public:
-        LcpStatistics();
-        ~LcpStatistics();
+        OfUsAuthError();
+        ~OfUsAuthError();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -821,205 +759,11 @@ class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf conf_req_sent; //type: uint16
-        ydk::YLeaf conf_req_rcvd; //type: uint16
-        ydk::YLeaf conf_ack_sent; //type: uint16
-        ydk::YLeaf conf_ack_rcvd; //type: uint16
-        ydk::YLeaf conf_nak_sent; //type: uint16
-        ydk::YLeaf conf_nak_rcvd; //type: uint16
-        ydk::YLeaf conf_rej_sent; //type: uint16
-        ydk::YLeaf conf_rej_rcvd; //type: uint16
-        ydk::YLeaf echo_req_sent; //type: uint16
-        ydk::YLeaf echo_req_rcvd; //type: uint16
-        ydk::YLeaf echo_rep_sent; //type: uint16
-        ydk::YLeaf echo_rep_rcvd; //type: uint16
-        ydk::YLeaf disc_req_sent; //type: uint16
-        ydk::YLeaf disc_req_rcvd; //type: uint16
-        ydk::YLeaf link_up; //type: uint16
-        ydk::YLeaf link_error; //type: uint16
+        ydk::YLeaf is_error; //type: boolean
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf context; //type: uint32
 
-}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics
-
-
-class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics : public ydk::Entity
-{
-    public:
-        AuthenticationStatistics();
-        ~AuthenticationStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pap_req_sent; //type: uint16
-        ydk::YLeaf pap_req_rcvd; //type: uint16
-        ydk::YLeaf pap_ack_sent; //type: uint16
-        ydk::YLeaf pap_ack_rcvd; //type: uint16
-        ydk::YLeaf pap_nak_sent; //type: uint16
-        ydk::YLeaf pap_nak_rcvd; //type: uint16
-        ydk::YLeaf chap_chall_sent; //type: uint16
-        ydk::YLeaf chap_chall_rcvd; //type: uint16
-        ydk::YLeaf chap_resp_sent; //type: uint16
-        ydk::YLeaf chap_resp_rcvd; //type: uint16
-        ydk::YLeaf chap_rep_succ_sent; //type: uint16
-        ydk::YLeaf chap_rep_succ_rcvd; //type: uint16
-        ydk::YLeaf chap_rep_fail_sent; //type: uint16
-        ydk::YLeaf chap_rep_fail_rcvd; //type: uint16
-        ydk::YLeaf auth_timeout_count; //type: uint16
-
-}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics
-
-
-class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray : public ydk::Entity
-{
-    public:
-        NcpStatisticsArray();
-        ~NcpStatisticsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ncp_identifier; //type: NcpIdent
-        ydk::YLeaf conf_req_sent; //type: uint16
-        ydk::YLeaf conf_req_rcvd; //type: uint16
-        ydk::YLeaf conf_ack_sent; //type: uint16
-        ydk::YLeaf conf_ack_rcvd; //type: uint16
-        ydk::YLeaf conf_nak_sent; //type: uint16
-        ydk::YLeaf conf_nak_rcvd; //type: uint16
-        ydk::YLeaf conf_rej_sent; //type: uint16
-        ydk::YLeaf conf_rej_rcvd; //type: uint16
-
-}; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray
-
-
-class Ppp::Nodes::Node::SsoSummary : public ydk::Entity
-{
-    public:
-        SsoSummary();
-        ~SsoSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LcpStates; //type: Ppp::Nodes::Node::SsoSummary::LcpStates
-        class OfUsAuthStates; //type: Ppp::Nodes::Node::SsoSummary::OfUsAuthStates
-        class OfPeerAuthStates; //type: Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates
-        class IpcpStates; //type: Ppp::Nodes::Node::SsoSummary::IpcpStates
-
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::IpcpStates> ipcp_states;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::LcpStates> lcp_states;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates> of_peer_auth_states;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::OfUsAuthStates> of_us_auth_states;
-        
-}; // Ppp::Nodes::Node::SsoSummary
-
-
-class Ppp::Nodes::Node::SsoSummary::LcpStates : public ydk::Entity
-{
-    public:
-        LcpStates();
-        ~LcpStates();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total; //type: uint16
-        ydk::YLeafList count; //type: list of  uint16
-
-}; // Ppp::Nodes::Node::SsoSummary::LcpStates
-
-
-class Ppp::Nodes::Node::SsoSummary::OfUsAuthStates : public ydk::Entity
-{
-    public:
-        OfUsAuthStates();
-        ~OfUsAuthStates();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total; //type: uint16
-        ydk::YLeafList count; //type: list of  uint16
-
-}; // Ppp::Nodes::Node::SsoSummary::OfUsAuthStates
-
-
-class Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates : public ydk::Entity
-{
-    public:
-        OfPeerAuthStates();
-        ~OfPeerAuthStates();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total; //type: uint16
-        ydk::YLeafList count; //type: list of  uint16
-
-}; // Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates
-
-
-class Ppp::Nodes::Node::SsoSummary::IpcpStates : public ydk::Entity
-{
-    public:
-        IpcpStates();
-        ~IpcpStates();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf total; //type: uint16
-        ydk::YLeafList count; //type: list of  uint16
-
-}; // Ppp::Nodes::Node::SsoSummary::IpcpStates
+}; // Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError
 
 
 class Ppp::Nodes::Node::SsoGroups : public ydk::Entity
@@ -1030,7 +774,7 @@ class Ppp::Nodes::Node::SsoGroups : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1040,7 +784,7 @@ class Ppp::Nodes::Node::SsoGroups : public ydk::Entity
 
         class SsoGroup; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup> > sso_group;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup> > sso_group;
         
 }; // Ppp::Nodes::Node::SsoGroups
 
@@ -1053,7 +797,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1064,7 +808,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup : public ydk::Entity
         ydk::YLeaf group_id; //type: uint32
         class SsoStates; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates> sso_states;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates> sso_states;
         
 }; // Ppp::Nodes::Node::SsoGroups::SsoGroup
 
@@ -1077,7 +821,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1087,7 +831,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates : public ydk::Entity
 
         class SsoState; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState> > sso_state;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState> > sso_state;
         
 }; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates
 
@@ -1100,7 +844,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1116,78 +860,12 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState : public ydk::E
         class OfPeerAuthState; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState
         class IpcpState; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState> ipcp_state;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState> lcp_state;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState> of_peer_auth_state;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState> of_us_auth_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState> ipcp_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState> lcp_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState> of_peer_auth_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState> of_us_auth_state;
         
 }; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState
-
-
-class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState : public ydk::Entity
-{
-    public:
-        LcpState();
-        ~LcpState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_running; //type: boolean
-        ydk::YLeaf state; //type: PppSsoFsmState
-
-}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState
-
-
-class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState : public ydk::Entity
-{
-    public:
-        OfUsAuthState();
-        ~OfUsAuthState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_running; //type: boolean
-        ydk::YLeaf state; //type: PppSsoFsmState
-
-}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState
-
-
-class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState : public ydk::Entity
-{
-    public:
-        OfPeerAuthState();
-        ~OfPeerAuthState();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_running; //type: boolean
-        ydk::YLeaf state; //type: PppSsoFsmState
-
-}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState
 
 
 class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState : public ydk::Entity
@@ -1198,7 +876,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1212,6 +890,330 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState : pu
 }; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState
 
 
+class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState : public ydk::Entity
+{
+    public:
+        LcpState();
+        ~LcpState();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_running; //type: boolean
+        ydk::YLeaf state; //type: PppSsoFsmState
+
+}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState
+
+
+class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState : public ydk::Entity
+{
+    public:
+        OfPeerAuthState();
+        ~OfPeerAuthState();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_running; //type: boolean
+        ydk::YLeaf state; //type: PppSsoFsmState
+
+}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState
+
+
+class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState : public ydk::Entity
+{
+    public:
+        OfUsAuthState();
+        ~OfUsAuthState();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_running; //type: boolean
+        ydk::YLeaf state; //type: PppSsoFsmState
+
+}; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState
+
+
+class Ppp::Nodes::Node::SsoSummary : public ydk::Entity
+{
+    public:
+        SsoSummary();
+        ~SsoSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LcpStates; //type: Ppp::Nodes::Node::SsoSummary::LcpStates
+        class OfUsAuthStates; //type: Ppp::Nodes::Node::SsoSummary::OfUsAuthStates
+        class OfPeerAuthStates; //type: Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates
+        class IpcpStates; //type: Ppp::Nodes::Node::SsoSummary::IpcpStates
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::IpcpStates> ipcp_states;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::LcpStates> lcp_states;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates> of_peer_auth_states;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoSummary::OfUsAuthStates> of_us_auth_states;
+        
+}; // Ppp::Nodes::Node::SsoSummary
+
+
+class Ppp::Nodes::Node::SsoSummary::IpcpStates : public ydk::Entity
+{
+    public:
+        IpcpStates();
+        ~IpcpStates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total; //type: uint16
+        ydk::YLeafList count; //type: list of  uint16
+
+}; // Ppp::Nodes::Node::SsoSummary::IpcpStates
+
+
+class Ppp::Nodes::Node::SsoSummary::LcpStates : public ydk::Entity
+{
+    public:
+        LcpStates();
+        ~LcpStates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total; //type: uint16
+        ydk::YLeafList count; //type: list of  uint16
+
+}; // Ppp::Nodes::Node::SsoSummary::LcpStates
+
+
+class Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates : public ydk::Entity
+{
+    public:
+        OfPeerAuthStates();
+        ~OfPeerAuthStates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total; //type: uint16
+        ydk::YLeafList count; //type: list of  uint16
+
+}; // Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates
+
+
+class Ppp::Nodes::Node::SsoSummary::OfUsAuthStates : public ydk::Entity
+{
+    public:
+        OfUsAuthStates();
+        ~OfUsAuthStates();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total; //type: uint16
+        ydk::YLeafList count; //type: list of  uint16
+
+}; // Ppp::Nodes::Node::SsoSummary::OfUsAuthStates
+
+
+class Ppp::Nodes::Node::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LcpStatistics; //type: Ppp::Nodes::Node::Statistics::LcpStatistics
+        class AuthenticationStatistics; //type: Ppp::Nodes::Node::Statistics::AuthenticationStatistics
+        class NcpStatisticsArray; //type: Ppp::Nodes::Node::Statistics::NcpStatisticsArray
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::AuthenticationStatistics> authentication_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::LcpStatistics> lcp_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::NcpStatisticsArray> > ncp_statistics_array;
+        
+}; // Ppp::Nodes::Node::Statistics
+
+
+class Ppp::Nodes::Node::Statistics::AuthenticationStatistics : public ydk::Entity
+{
+    public:
+        AuthenticationStatistics();
+        ~AuthenticationStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pap_req_sent; //type: uint64
+        ydk::YLeaf pap_req_rcvd; //type: uint64
+        ydk::YLeaf pap_ack_sent; //type: uint64
+        ydk::YLeaf pap_ack_rcvd; //type: uint64
+        ydk::YLeaf pap_nak_sent; //type: uint64
+        ydk::YLeaf pap_nak_rcvd; //type: uint64
+        ydk::YLeaf chap_chall_sent; //type: uint64
+        ydk::YLeaf chap_chall_rcvd; //type: uint64
+        ydk::YLeaf chap_resp_sent; //type: uint64
+        ydk::YLeaf chap_resp_rcvd; //type: uint64
+        ydk::YLeaf chap_rep_succ_sent; //type: uint64
+        ydk::YLeaf chap_rep_succ_rcvd; //type: uint64
+        ydk::YLeaf chap_rep_fail_sent; //type: uint64
+        ydk::YLeaf chap_rep_fail_rcvd; //type: uint64
+        ydk::YLeaf auth_timeout_count; //type: uint64
+
+}; // Ppp::Nodes::Node::Statistics::AuthenticationStatistics
+
+
+class Ppp::Nodes::Node::Statistics::LcpStatistics : public ydk::Entity
+{
+    public:
+        LcpStatistics();
+        ~LcpStatistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conf_req_sent; //type: uint64
+        ydk::YLeaf conf_req_rcvd; //type: uint64
+        ydk::YLeaf conf_ack_sent; //type: uint64
+        ydk::YLeaf conf_ack_rcvd; //type: uint64
+        ydk::YLeaf conf_nak_sent; //type: uint64
+        ydk::YLeaf conf_nak_rcvd; //type: uint64
+        ydk::YLeaf conf_rej_sent; //type: uint64
+        ydk::YLeaf conf_rej_rcvd; //type: uint64
+        ydk::YLeaf term_req_sent; //type: uint64
+        ydk::YLeaf term_req_rcvd; //type: uint64
+        ydk::YLeaf term_ack_sent; //type: uint64
+        ydk::YLeaf term_ack_rcvd; //type: uint64
+        ydk::YLeaf code_rej_sent; //type: uint64
+        ydk::YLeaf code_rej_rcvd; //type: uint64
+        ydk::YLeaf proto_rej_sent; //type: uint64
+        ydk::YLeaf proto_rej_rcvd; //type: uint64
+        ydk::YLeaf echo_req_sent; //type: uint64
+        ydk::YLeaf echo_req_rcvd; //type: uint64
+        ydk::YLeaf echo_rep_sent; //type: uint64
+        ydk::YLeaf echo_rep_rcvd; //type: uint64
+        ydk::YLeaf disc_req_sent; //type: uint64
+        ydk::YLeaf disc_req_rcvd; //type: uint64
+        ydk::YLeaf link_up; //type: uint64
+        ydk::YLeaf link_error; //type: uint64
+
+}; // Ppp::Nodes::Node::Statistics::LcpStatistics
+
+
+class Ppp::Nodes::Node::Statistics::NcpStatisticsArray : public ydk::Entity
+{
+    public:
+        NcpStatisticsArray();
+        ~NcpStatisticsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ncp_identifier; //type: NcpIdent
+        ydk::YLeaf conf_req_sent; //type: uint64
+        ydk::YLeaf conf_req_rcvd; //type: uint64
+        ydk::YLeaf conf_ack_sent; //type: uint64
+        ydk::YLeaf conf_ack_rcvd; //type: uint64
+        ydk::YLeaf conf_nak_sent; //type: uint64
+        ydk::YLeaf conf_nak_rcvd; //type: uint64
+        ydk::YLeaf conf_rej_sent; //type: uint64
+        ydk::YLeaf conf_rej_rcvd; //type: uint64
+        ydk::YLeaf term_req_sent; //type: uint64
+        ydk::YLeaf term_req_rcvd; //type: uint64
+        ydk::YLeaf term_ack_sent; //type: uint64
+        ydk::YLeaf term_ack_rcvd; //type: uint64
+        ydk::YLeaf proto_rej_sent; //type: uint64
+        ydk::YLeaf proto_rej_rcvd; //type: uint64
+
+}; // Ppp::Nodes::Node::Statistics::NcpStatisticsArray
+
+
 class Ppp::Nodes::Node::Summary : public ydk::Entity
 {
     public:
@@ -1220,7 +1222,7 @@ class Ppp::Nodes::Node::Summary : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1232,38 +1234,11 @@ class Ppp::Nodes::Node::Summary : public ydk::Entity
         class FsmStates; //type: Ppp::Nodes::Node::Summary::FsmStates
         class LcpAuthPhases; //type: Ppp::Nodes::Node::Summary::LcpAuthPhases
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates> fsm_states;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::Intfs> intfs;
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::LcpAuthPhases> lcp_auth_phases;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates> fsm_states;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::Intfs> intfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::LcpAuthPhases> lcp_auth_phases;
         
 }; // Ppp::Nodes::Node::Summary
-
-
-class Ppp::Nodes::Node::Summary::Intfs : public ydk::Entity
-{
-    public:
-        Intfs();
-        ~Intfs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pos_count; //type: uint32
-        ydk::YLeaf serial_count; //type: uint32
-        ydk::YLeaf pppoe_count; //type: uint32
-        ydk::YLeaf multilink_bundle_count; //type: uint32
-        ydk::YLeaf gcc0_count; //type: uint32
-        ydk::YLeaf gcc1_count; //type: uint32
-        ydk::YLeaf total; //type: uint32
-
-}; // Ppp::Nodes::Node::Summary::Intfs
 
 
 class Ppp::Nodes::Node::Summary::FsmStates : public ydk::Entity
@@ -1274,7 +1249,7 @@ class Ppp::Nodes::Node::Summary::FsmStates : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1285,8 +1260,8 @@ class Ppp::Nodes::Node::Summary::FsmStates : public ydk::Entity
         class LcpfsmStates; //type: Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates
         class NcpfsmStatesArray; //type: Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray
 
-        std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates> lcpfsm_states;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray> > ncpfsm_states_array;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates> lcpfsm_states;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray> > ncpfsm_states_array;
         
 }; // Ppp::Nodes::Node::Summary::FsmStates
 
@@ -1299,7 +1274,7 @@ class Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1321,7 +1296,7 @@ class Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1336,6 +1311,33 @@ class Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray : public ydk::Enti
 }; // Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray
 
 
+class Ppp::Nodes::Node::Summary::Intfs : public ydk::Entity
+{
+    public:
+        Intfs();
+        ~Intfs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pos_count; //type: uint32
+        ydk::YLeaf serial_count; //type: uint32
+        ydk::YLeaf pppoe_count; //type: uint32
+        ydk::YLeaf multilink_bundle_count; //type: uint32
+        ydk::YLeaf gcc0_count; //type: uint32
+        ydk::YLeaf gcc1_count; //type: uint32
+        ydk::YLeaf total; //type: uint32
+
+}; // Ppp::Nodes::Node::Summary::Intfs
+
+
 class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 {
     public:
@@ -1344,7 +1346,7 @@ class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1361,17 +1363,6 @@ class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 
 }; // Ppp::Nodes::Node::Summary::LcpAuthPhases
 
-class PppIphcCompression : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_none;
-        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_vj;
-        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_ietf;
-        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_iphc;
-        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_cisco;
-
-};
-
 class PppSsoFsmState : public ydk::Enum
 {
     public:
@@ -1383,6 +1374,45 @@ class PppSsoFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
         static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
         static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
+
+};
+
+class PppFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
+        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
+        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
+        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
+
+};
+
+class NcpIdent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdpcp;
+        static const ydk::Enum::YLeaf ipcp;
+        static const ydk::Enum::YLeaf ipcpiw;
+        static const ydk::Enum::YLeaf ipv6cp;
+        static const ydk::Enum::YLeaf mplscp;
+        static const ydk::Enum::YLeaf osicp;
+
+};
+
+class PppIphcCompression : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_none;
+        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_vj;
+        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_ietf;
+        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_iphc;
+        static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_cisco;
 
 };
 
@@ -1403,34 +1433,6 @@ class PppLcpMpMbrState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_mcmp_peer_mismatch;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_standby_up;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_active;
-
-};
-
-class NcpIdent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdpcp;
-        static const ydk::Enum::YLeaf ipcp;
-        static const ydk::Enum::YLeaf ipcpiw;
-        static const ydk::Enum::YLeaf ipv6cp;
-        static const ydk::Enum::YLeaf mplscp;
-        static const ydk::Enum::YLeaf osicp;
-
-};
-
-class PppFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
-        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
-        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
-        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
 
 };
 

@@ -17,7 +17,7 @@ Tty::Tty()
 {
     tty_lines->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-cfg";
+    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Tty::~Tty()
@@ -39,26 +39,15 @@ std::string Tty::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tty-server-cfg:tty";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Tty::has_leaf_or_child_of_name(const std::string & name) const
 
 Tty::TtyLines::TtyLines()
 {
-    yang_name = "tty-lines"; yang_parent_name = "tty";
+
+    yang_name = "tty-lines"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Tty::TtyLines::~TtyLines()
@@ -156,33 +146,26 @@ bool Tty::TtyLines::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Tty::TtyLines::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tty-server-cfg:tty/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Tty::TtyLines::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tty-lines";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tty-server-cfg:tty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -245,18 +228,13 @@ Tty::TtyLines::TtyLine::TtyLine()
 	,telnet(std::make_shared<Tty::TtyLines::TtyLine::Telnet>())
 {
     aaa->parent = this;
-
     connection->parent = this;
-
     exec->parent = this;
-
     exec_mode->parent = this;
-
     general->parent = this;
-
     telnet->parent = this;
 
-    yang_name = "tty-line"; yang_parent_name = "tty-lines";
+    yang_name = "tty-line"; yang_parent_name = "tty-lines"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Tty::TtyLines::TtyLine::~TtyLine()
@@ -286,34 +264,27 @@ bool Tty::TtyLines::TtyLine::has_operation() const
 	|| (telnet !=  nullptr && telnet->has_operation());
 }
 
+std::string Tty::TtyLines::TtyLine::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tty-server-cfg:tty/tty-lines/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Tty::TtyLines::TtyLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tty-line" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tty-server-cfg:tty/tty-lines/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -437,212 +408,6 @@ bool Tty::TtyLines::TtyLine::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-Tty::TtyLines::TtyLine::General::General()
-    :
-    absolute_timeout{YType::uint32, "absolute-timeout"},
-    length{YType::uint32, "length"},
-    width{YType::uint32, "width"}
-{
-    yang_name = "general"; yang_parent_name = "tty-line";
-}
-
-Tty::TtyLines::TtyLine::General::~General()
-{
-}
-
-bool Tty::TtyLines::TtyLine::General::has_data() const
-{
-    return absolute_timeout.is_set
-	|| length.is_set
-	|| width.is_set;
-}
-
-bool Tty::TtyLines::TtyLine::General::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(absolute_timeout.yfilter)
-	|| ydk::is_set(length.yfilter)
-	|| ydk::is_set(width.yfilter);
-}
-
-std::string Tty::TtyLines::TtyLine::General::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "general";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'General' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
-    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (width.is_set || is_set(width.yfilter)) leaf_name_data.push_back(width.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Tty::TtyLines::TtyLine::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "absolute-timeout")
-    {
-        absolute_timeout = value;
-        absolute_timeout.value_namespace = name_space;
-        absolute_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "length")
-    {
-        length = value;
-        length.value_namespace = name_space;
-        length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "width")
-    {
-        width = value;
-        width.value_namespace = name_space;
-        width.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tty::TtyLines::TtyLine::General::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "absolute-timeout")
-    {
-        absolute_timeout.yfilter = yfilter;
-    }
-    if(value_path == "length")
-    {
-        length.yfilter = yfilter;
-    }
-    if(value_path == "width")
-    {
-        width.yfilter = yfilter;
-    }
-}
-
-bool Tty::TtyLines::TtyLine::General::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "absolute-timeout" || name == "length" || name == "width")
-        return true;
-    return false;
-}
-
-Tty::TtyLines::TtyLine::Telnet::Telnet()
-    :
-    transparent{YType::empty, "transparent"}
-{
-    yang_name = "telnet"; yang_parent_name = "tty-line";
-}
-
-Tty::TtyLines::TtyLine::Telnet::~Telnet()
-{
-}
-
-bool Tty::TtyLines::TtyLine::Telnet::has_data() const
-{
-    return transparent.is_set;
-}
-
-bool Tty::TtyLines::TtyLine::Telnet::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(transparent.yfilter);
-}
-
-std::string Tty::TtyLines::TtyLine::Telnet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "telnet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Telnet' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (transparent.is_set || is_set(transparent.yfilter)) leaf_name_data.push_back(transparent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Tty::TtyLines::TtyLine::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "transparent")
-    {
-        transparent = value;
-        transparent.value_namespace = name_space;
-        transparent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tty::TtyLines::TtyLine::Telnet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "transparent")
-    {
-        transparent.yfilter = yfilter;
-    }
-}
-
-bool Tty::TtyLines::TtyLine::Telnet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "transparent")
-        return true;
-    return false;
-}
-
 Tty::TtyLines::TtyLine::Aaa::Aaa()
     :
     login_timeout{YType::uint32, "login-timeout"},
@@ -655,14 +420,11 @@ Tty::TtyLines::TtyLine::Aaa::Aaa()
 	,user_groups(std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups>())
 {
     accounting->parent = this;
-
     authentication->parent = this;
-
     authorization->parent = this;
-
     user_groups->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "tty-line";
+    yang_name = "aaa"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::Aaa::~Aaa()
@@ -696,32 +458,18 @@ std::string Tty::TtyLines::TtyLine::Aaa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aaa";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Aaa' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (login_timeout.is_set || is_set(login_timeout.yfilter)) leaf_name_data.push_back(login_timeout.get_name_leafdata());
     if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -837,211 +585,168 @@ bool Tty::TtyLines::TtyLine::Aaa::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroups()
+Tty::TtyLines::TtyLine::Aaa::Accounting::Accounting()
+    :
+    commands{YType::str, "commands"},
+    exec{YType::str, "exec"}
 {
-    yang_name = "user-groups"; yang_parent_name = "aaa";
+
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::TtyLines::TtyLine::Aaa::UserGroups::~UserGroups()
+Tty::TtyLines::TtyLine::Aaa::Accounting::~Accounting()
 {
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_data() const
+bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_data() const
 {
-    for (std::size_t index=0; index<user_group.size(); index++)
-    {
-        if(user_group[index]->has_data())
-            return true;
-    }
-    return false;
+    return commands.is_set
+	|| exec.is_set;
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_operation() const
+bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_operation() const
 {
-    for (std::size_t index=0; index<user_group.size(); index++)
-    {
-        if(user_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(commands.yfilter)
+	|| ydk::is_set(exec.yfilter);
 }
 
-std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::get_segment_path() const
+std::string Tty::TtyLines::TtyLine::Aaa::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user-groups";
-
+    path_buffer << "accounting";
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Accounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UserGroups' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (commands.is_set || is_set(commands.yfilter)) leaf_name_data.push_back(commands.get_name_leafdata());
+    if (exec.is_set || is_set(exec.yfilter)) leaf_name_data.push_back(exec.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "user-group")
-    {
-        for(auto const & c : user_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
-        c->parent = this;
-        user_group.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : user_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::TtyLines::TtyLine::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "commands")
+    {
+        commands = value;
+        commands.value_namespace = name_space;
+        commands.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exec")
+    {
+        exec = value;
+        exec.value_namespace = name_space;
+        exec.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::TtyLines::TtyLine::Aaa::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "commands")
+    {
+        commands.yfilter = yfilter;
+    }
+    if(value_path == "exec")
+    {
+        exec.yfilter = yfilter;
+    }
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "user-group")
+    if(name == "commands" || name == "exec")
         return true;
     return false;
 }
 
-Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::UserGroup()
+Tty::TtyLines::TtyLine::Aaa::Authentication::Authentication()
     :
-    name{YType::str, "name"},
-    category{YType::str, "category"}
+    login{YType::str, "login"}
 {
-    yang_name = "user-group"; yang_parent_name = "user-groups";
+
+    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::~UserGroup()
+Tty::TtyLines::TtyLine::Aaa::Authentication::~Authentication()
 {
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_data() const
+bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_data() const
 {
-    return name.is_set
-	|| category.is_set;
+    return login.is_set;
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_operation() const
+bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(category.yfilter);
+	|| ydk::is_set(login.yfilter);
 }
 
-std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_segment_path() const
+std::string Tty::TtyLines::TtyLine::Aaa::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user-group" <<"[name='" <<name <<"']";
-
+    path_buffer << "authentication";
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Authentication::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UserGroup' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (login.is_set || is_set(login.yfilter)) leaf_name_data.push_back(login.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::TtyLines::TtyLine::Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "login")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "category")
-    {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
+        login = value;
+        login.value_namespace = name_space;
+        login.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::TtyLines::TtyLine::Aaa::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
+    if(value_path == "login")
     {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "category")
-    {
-        category.yfilter = yfilter;
+        login.yfilter = yfilter;
     }
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "category")
+    if(name == "login")
         return true;
     return false;
 }
@@ -1052,7 +757,8 @@ Tty::TtyLines::TtyLine::Aaa::Authorization::Authorization()
     event_manager{YType::str, "event-manager"},
     exec{YType::str, "exec"}
 {
-    yang_name = "authorization"; yang_parent_name = "aaa";
+
+    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::Aaa::Authorization::~Authorization()
@@ -1078,32 +784,18 @@ std::string Tty::TtyLines::TtyLine::Aaa::Authorization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authorization";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Authorization::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authorization' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (commands.is_set || is_set(commands.yfilter)) leaf_name_data.push_back(commands.get_name_leafdata());
     if (event_manager.is_set || is_set(event_manager.yfilter)) leaf_name_data.push_back(event_manager.get_name_leafdata());
     if (exec.is_set || is_set(exec.yfilter)) leaf_name_data.push_back(exec.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1163,404 +855,185 @@ bool Tty::TtyLines::TtyLine::Aaa::Authorization::has_leaf_or_child_of_name(const
     return false;
 }
 
-Tty::TtyLines::TtyLine::Aaa::Authentication::Authentication()
-    :
-    login{YType::str, "login"}
+Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroups()
 {
-    yang_name = "authentication"; yang_parent_name = "aaa";
+
+    yang_name = "user-groups"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::TtyLines::TtyLine::Aaa::Authentication::~Authentication()
+Tty::TtyLines::TtyLine::Aaa::UserGroups::~UserGroups()
 {
 }
 
-bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_data() const
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_data() const
 {
-    return login.is_set;
-}
-
-bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(login.yfilter);
-}
-
-std::string Tty::TtyLines::TtyLine::Aaa::Authentication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<user_group.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Authentication' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
+        if(user_group[index]->has_data())
+            return true;
     }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (login.is_set || is_set(login.yfilter)) leaf_name_data.push_back(login.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Tty::TtyLines::TtyLine::Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "login")
-    {
-        login = value;
-        login.value_namespace = name_space;
-        login.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tty::TtyLines::TtyLine::Aaa::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "login")
-    {
-        login.yfilter = yfilter;
-    }
-}
-
-bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "login")
-        return true;
     return false;
 }
 
-Tty::TtyLines::TtyLine::Aaa::Accounting::Accounting()
-    :
-    commands{YType::str, "commands"},
-    exec{YType::str, "exec"}
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_operation() const
 {
-    yang_name = "accounting"; yang_parent_name = "aaa";
+    for (std::size_t index=0; index<user_group.size(); index++)
+    {
+        if(user_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-Tty::TtyLines::TtyLine::Aaa::Accounting::~Accounting()
-{
-}
-
-bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_data() const
-{
-    return commands.is_set
-	|| exec.is_set;
-}
-
-bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(commands.yfilter)
-	|| ydk::is_set(exec.yfilter);
-}
-
-std::string Tty::TtyLines::TtyLine::Aaa::Accounting::get_segment_path() const
+std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting";
-
+    path_buffer << "user-groups";
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::UserGroups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commands.is_set || is_set(commands.yfilter)) leaf_name_data.push_back(commands.get_name_leafdata());
-    if (exec.is_set || is_set(exec.yfilter)) leaf_name_data.push_back(exec.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Tty::TtyLines::TtyLine::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "commands")
+    if(child_yang_name == "user-group")
     {
-        commands = value;
-        commands.value_namespace = name_space;
-        commands.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exec")
-    {
-        exec = value;
-        exec.value_namespace = name_space;
-        exec.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tty::TtyLines::TtyLine::Aaa::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "commands")
-    {
-        commands.yfilter = yfilter;
-    }
-    if(value_path == "exec")
-    {
-        exec.yfilter = yfilter;
-    }
-}
-
-bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "commands" || name == "exec")
-        return true;
-    return false;
-}
-
-Tty::TtyLines::TtyLine::Exec::Exec()
-    :
-    time_stamp{YType::boolean, "time-stamp"}
-    	,
-    timeout(nullptr) // presence node
-{
-    yang_name = "exec"; yang_parent_name = "tty-line";
-}
-
-Tty::TtyLines::TtyLine::Exec::~Exec()
-{
-}
-
-bool Tty::TtyLines::TtyLine::Exec::has_data() const
-{
-    return time_stamp.is_set
-	|| (timeout !=  nullptr && timeout->has_data());
-}
-
-bool Tty::TtyLines::TtyLine::Exec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_stamp.yfilter)
-	|| (timeout !=  nullptr && timeout->has_operation());
-}
-
-std::string Tty::TtyLines::TtyLine::Exec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exec";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Exec' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "timeout")
-    {
-        if(timeout == nullptr)
+        for(auto const & c : user_group)
         {
-            timeout = std::make_shared<Tty::TtyLines::TtyLine::Exec::Timeout>();
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
         }
-        return timeout;
+        auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
+        c->parent = this;
+        user_group.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(timeout != nullptr)
+    for (auto const & c : user_group)
     {
-        children["timeout"] = timeout;
+        children[c->get_segment_path()] = c;
     }
 
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "time-stamp")
-    {
-        time_stamp = value;
-        time_stamp.value_namespace = name_space;
-        time_stamp.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Tty::TtyLines::TtyLine::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "time-stamp")
-    {
-        time_stamp.yfilter = yfilter;
-    }
 }
 
-bool Tty::TtyLines::TtyLine::Exec::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "timeout" || name == "time-stamp")
+    if(name == "user-group")
         return true;
     return false;
 }
 
-Tty::TtyLines::TtyLine::Exec::Timeout::Timeout()
+Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::UserGroup()
     :
-    minutes{YType::uint32, "minutes"},
-    seconds{YType::uint32, "seconds"}
+    name{YType::str, "name"},
+    category{YType::str, "category"}
 {
-    yang_name = "timeout"; yang_parent_name = "exec";
+
+    yang_name = "user-group"; yang_parent_name = "user-groups"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::TtyLines::TtyLine::Exec::Timeout::~Timeout()
+Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::~UserGroup()
 {
 }
 
-bool Tty::TtyLines::TtyLine::Exec::Timeout::has_data() const
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_data() const
 {
-    return minutes.is_set
-	|| seconds.is_set;
+    return name.is_set
+	|| category.is_set;
 }
 
-bool Tty::TtyLines::TtyLine::Exec::Timeout::has_operation() const
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(minutes.yfilter)
-	|| ydk::is_set(seconds.yfilter);
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(category.yfilter);
 }
 
-std::string Tty::TtyLines::TtyLine::Exec::Timeout::get_segment_path() const
+std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "timeout";
-
+    path_buffer << "user-group" <<"[name='" <<name <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Timeout' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Exec::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "minutes")
+    if(value_path == "name")
     {
-        minutes = value;
-        minutes.value_namespace = name_space;
-        minutes.value_namespace_prefix = name_space_prefix;
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "seconds")
+    if(value_path == "category")
     {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Tty::TtyLines::TtyLine::Exec::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "minutes")
+    if(value_path == "name")
     {
-        minutes.yfilter = yfilter;
+        name.yfilter = yfilter;
     }
-    if(value_path == "seconds")
+    if(value_path == "category")
     {
-        seconds.yfilter = yfilter;
+        category.yfilter = yfilter;
     }
 }
 
-bool Tty::TtyLines::TtyLine::Exec::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "minutes" || name == "seconds")
+    if(name == "name" || name == "category")
         return true;
     return false;
 }
@@ -1581,7 +1054,7 @@ Tty::TtyLines::TtyLine::Connection::Connection()
 {
     transport_input->parent = this;
 
-    yang_name = "connection"; yang_parent_name = "tty-line";
+    yang_name = "connection"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::Connection::~Connection()
@@ -1621,23 +1094,11 @@ std::string Tty::TtyLines::TtyLine::Connection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tty-management-cfg:connection";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connection::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Connection' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (acl_in.is_set || is_set(acl_in.yfilter)) leaf_name_data.push_back(acl_in.get_name_leafdata());
@@ -1648,9 +1109,7 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* anc
     if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
     if (transport_preferred.is_set || is_set(transport_preferred.yfilter)) leaf_name_data.push_back(transport_preferred.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1792,6 +1251,96 @@ bool Tty::TtyLines::TtyLine::Connection::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+Tty::TtyLines::TtyLine::Connection::SessionTimeout::SessionTimeout()
+    :
+    direction{YType::enumeration, "direction"},
+    timeout{YType::uint32, "timeout"}
+{
+
+    yang_name = "session-timeout"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Tty::TtyLines::TtyLine::Connection::SessionTimeout::~SessionTimeout()
+{
+}
+
+bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_data() const
+{
+    return direction.is_set
+	|| timeout.is_set;
+}
+
+bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "timeout")
+        return true;
+    return false;
+}
+
 Tty::TtyLines::TtyLine::Connection::TransportInput::TransportInput()
     :
     none{YType::int32, "none"},
@@ -1799,7 +1348,8 @@ Tty::TtyLines::TtyLine::Connection::TransportInput::TransportInput()
     protocol2{YType::enumeration, "protocol2"},
     select{YType::enumeration, "select"}
 {
-    yang_name = "transport-input"; yang_parent_name = "connection";
+
+    yang_name = "transport-input"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportInput::~TransportInput()
@@ -1827,23 +1377,11 @@ std::string Tty::TtyLines::TtyLine::Connection::TransportInput::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "transport-input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connection::TransportInput::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransportInput' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
@@ -1851,9 +1389,7 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_
     if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
     if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1930,7 +1466,8 @@ Tty::TtyLines::TtyLine::Connection::TransportOutput::TransportOutput()
     protocol2{YType::enumeration, "protocol2"},
     select{YType::enumeration, "select"}
 {
-    yang_name = "transport-output"; yang_parent_name = "connection";
+
+    yang_name = "transport-output"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportOutput::~TransportOutput()
@@ -1958,23 +1495,11 @@ std::string Tty::TtyLines::TtyLine::Connection::TransportOutput::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "transport-output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connection::TransportOutput::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransportOutput' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
@@ -1982,9 +1507,7 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity
     if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
     if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2054,105 +1577,186 @@ bool Tty::TtyLines::TtyLine::Connection::TransportOutput::has_leaf_or_child_of_n
     return false;
 }
 
-Tty::TtyLines::TtyLine::Connection::SessionTimeout::SessionTimeout()
+Tty::TtyLines::TtyLine::Exec::Exec()
     :
-    direction{YType::enumeration, "direction"},
-    timeout{YType::uint32, "timeout"}
+    time_stamp{YType::boolean, "time-stamp"}
+    	,
+    timeout(nullptr) // presence node
 {
-    yang_name = "session-timeout"; yang_parent_name = "connection";
+
+    yang_name = "exec"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::TtyLines::TtyLine::Connection::SessionTimeout::~SessionTimeout()
+Tty::TtyLines::TtyLine::Exec::~Exec()
 {
 }
 
-bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_data() const
+bool Tty::TtyLines::TtyLine::Exec::has_data() const
 {
-    return direction.is_set
-	|| timeout.is_set;
+    return time_stamp.is_set
+	|| (timeout !=  nullptr && timeout->has_data());
 }
 
-bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_operation() const
+bool Tty::TtyLines::TtyLine::Exec::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(timeout.yfilter);
+	|| ydk::is_set(time_stamp.yfilter)
+	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
-std::string Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_segment_path() const
+std::string Tty::TtyLines::TtyLine::Exec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session-timeout";
-
+    path_buffer << "exec";
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Exec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SessionTimeout' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "timeout")
+    {
+        if(timeout == nullptr)
+        {
+            timeout = std::make_shared<Tty::TtyLines::TtyLine::Exec::Timeout>();
+        }
+        return timeout;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(timeout != nullptr)
+    {
+        children["timeout"] = timeout;
+    }
+
+    return children;
+}
+
+void Tty::TtyLines::TtyLine::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-stamp")
+    {
+        time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Tty::TtyLines::TtyLine::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout" || name == "time-stamp")
+        return true;
+    return false;
+}
+
+Tty::TtyLines::TtyLine::Exec::Timeout::Timeout()
+    :
+    minutes{YType::uint32, "minutes"},
+    seconds{YType::uint32, "seconds"}
+{
+
+    yang_name = "timeout"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Tty::TtyLines::TtyLine::Exec::Timeout::~Timeout()
+{
+}
+
+bool Tty::TtyLines::TtyLine::Exec::Timeout::has_data() const
+{
+    return minutes.is_set
+	|| seconds.is_set;
+}
+
+bool Tty::TtyLines::TtyLine::Exec::Timeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
+}
+
+std::string Tty::TtyLines::TtyLine::Exec::Timeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Exec::Timeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::TtyLines::TtyLine::Exec::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "direction")
+    if(value_path == "minutes")
     {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
+        minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "timeout")
+    if(value_path == "seconds")
     {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::TtyLines::TtyLine::Exec::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "direction")
+    if(value_path == "minutes")
     {
-        direction.yfilter = yfilter;
+        minutes.yfilter = yfilter;
     }
-    if(value_path == "timeout")
+    if(value_path == "seconds")
     {
-        timeout.yfilter = yfilter;
+        seconds.yfilter = yfilter;
     }
 }
 
-bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::TtyLines::TtyLine::Exec::Timeout::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "direction" || name == "timeout")
+    if(name == "minutes" || name == "seconds")
         return true;
     return false;
 }
@@ -2161,7 +1765,8 @@ Tty::TtyLines::TtyLine::ExecMode::ExecMode()
     :
     pager{YType::enumeration, "pager"}
 {
-    yang_name = "exec-mode"; yang_parent_name = "tty-line";
+
+    yang_name = "exec-mode"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Tty::TtyLines::TtyLine::ExecMode::~ExecMode()
@@ -2183,30 +1788,16 @@ std::string Tty::TtyLines::TtyLine::ExecMode::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tty-management-cfg:exec-mode";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::ExecMode::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExecMode' in Cisco_IOS_XR_tty_server_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pager.is_set || is_set(pager.yfilter)) leaf_name_data.push_back(pager.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2242,6 +1833,186 @@ void Tty::TtyLines::TtyLine::ExecMode::set_filter(const std::string & value_path
 bool Tty::TtyLines::TtyLine::ExecMode::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pager")
+        return true;
+    return false;
+}
+
+Tty::TtyLines::TtyLine::General::General()
+    :
+    absolute_timeout{YType::uint32, "absolute-timeout"},
+    length{YType::uint32, "length"},
+    width{YType::uint32, "width"}
+{
+
+    yang_name = "general"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Tty::TtyLines::TtyLine::General::~General()
+{
+}
+
+bool Tty::TtyLines::TtyLine::General::has_data() const
+{
+    return absolute_timeout.is_set
+	|| length.is_set
+	|| width.is_set;
+}
+
+bool Tty::TtyLines::TtyLine::General::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(absolute_timeout.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(width.yfilter);
+}
+
+std::string Tty::TtyLines::TtyLine::General::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "general";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::General::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (width.is_set || is_set(width.yfilter)) leaf_name_data.push_back(width.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Tty::TtyLines::TtyLine::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout = value;
+        absolute_timeout.value_namespace = name_space;
+        absolute_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "length")
+    {
+        length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "width")
+    {
+        width = value;
+        width.value_namespace = name_space;
+        width.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Tty::TtyLines::TtyLine::General::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "width")
+    {
+        width.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::General::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "length" || name == "width")
+        return true;
+    return false;
+}
+
+Tty::TtyLines::TtyLine::Telnet::Telnet()
+    :
+    transparent{YType::empty, "transparent"}
+{
+
+    yang_name = "telnet"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Tty::TtyLines::TtyLine::Telnet::~Telnet()
+{
+}
+
+bool Tty::TtyLines::TtyLine::Telnet::has_data() const
+{
+    return transparent.is_set;
+}
+
+bool Tty::TtyLines::TtyLine::Telnet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(transparent.yfilter);
+}
+
+std::string Tty::TtyLines::TtyLine::Telnet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "telnet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Telnet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (transparent.is_set || is_set(transparent.yfilter)) leaf_name_data.push_back(transparent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Tty::TtyLines::TtyLine::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "transparent")
+    {
+        transparent = value;
+        transparent.value_namespace = name_space;
+        transparent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Tty::TtyLines::TtyLine::Telnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transparent")
+    {
+        transparent.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transparent")
         return true;
     return false;
 }

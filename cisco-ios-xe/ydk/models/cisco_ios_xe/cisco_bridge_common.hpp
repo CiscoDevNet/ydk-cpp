@@ -19,7 +19,7 @@ class MacLimitNotificationType : public virtual ydk::Identity
 
 }; // MacLimitNotificationType
 
-class NotifNone : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifNone : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
         NotifNone();
@@ -28,7 +28,7 @@ class NotifNone : public cisco_bridge_common::MacLimitNotificationType, virtual 
 
 }; // NotifNone
 
-class NotifSnmpTrap : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
         NotifSnmpTrap();
@@ -37,7 +37,7 @@ class NotifSnmpTrap : public cisco_bridge_common::MacLimitNotificationType, virt
 
 }; // NotifSnmpTrap
 
-class NotifSyslog : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifSyslog : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
         NotifSyslog();
@@ -46,7 +46,7 @@ class NotifSyslog : public cisco_bridge_common::MacLimitNotificationType, virtua
 
 }; // NotifSyslog
 
-class NotifSyslogAndSnmpTrap : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
         NotifSyslogAndSnmpTrap();
@@ -54,14 +54,6 @@ class NotifSyslogAndSnmpTrap : public cisco_bridge_common::MacLimitNotificationT
 
 
 }; // NotifSyslogAndSnmpTrap
-
-class MacAgingType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inactivity;
-        static const ydk::Enum::YLeaf absolute;
-
-};
 
 class MacLimitAction : public ydk::Enum
 {
@@ -73,12 +65,11 @@ class MacLimitAction : public ydk::Enum
 
 };
 
-class EthTrafficClass : public ydk::Enum
+class MacAgingType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unknown_unicast;
+        static const ydk::Enum::YLeaf inactivity;
+        static const ydk::Enum::YLeaf absolute;
 
 };
 
@@ -88,6 +79,15 @@ class MacSecureAction : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf restrict;
         static const ydk::Enum::YLeaf shutdown;
+
+};
+
+class EthTrafficClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unknown_unicast;
 
 };
 

@@ -21,10 +21,9 @@ Ipv4NetworkGlobal::Ipv4NetworkGlobal()
 	,unnumbered(std::make_shared<Ipv4NetworkGlobal::Unnumbered>())
 {
     qppb->parent = this;
-
     unnumbered->parent = this;
 
-    yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg";
+    yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv4NetworkGlobal::~Ipv4NetworkGlobal()
@@ -54,29 +53,18 @@ std::string Ipv4NetworkGlobal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4NetworkGlobal::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (reassemble_max_packets.is_set || is_set(reassemble_max_packets.yfilter)) leaf_name_data.push_back(reassemble_max_packets.get_name_leafdata());
     if (reassemble_time_out.is_set || is_set(reassemble_time_out.yfilter)) leaf_name_data.push_back(reassemble_time_out.get_name_leafdata());
     if (source_route.is_set || is_set(source_route.yfilter)) leaf_name_data.push_back(source_route.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -189,289 +177,13 @@ bool Ipv4NetworkGlobal::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-Ipv4NetworkGlobal::Unnumbered::Unnumbered()
-    :
-    mpls(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>())
-{
-    mpls->parent = this;
-
-    yang_name = "unnumbered"; yang_parent_name = "ipv4-network-global";
-}
-
-Ipv4NetworkGlobal::Unnumbered::~Unnumbered()
-{
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::has_data() const
-{
-    return (mpls !=  nullptr && mpls->has_data());
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mpls !=  nullptr && mpls->has_operation());
-}
-
-std::string Ipv4NetworkGlobal::Unnumbered::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unnumbered";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv4NetworkGlobal::Unnumbered::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mpls")
-    {
-        if(mpls == nullptr)
-        {
-            mpls = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>();
-        }
-        return mpls;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mpls != nullptr)
-    {
-        children["mpls"] = mpls;
-    }
-
-    return children;
-}
-
-void Ipv4NetworkGlobal::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv4NetworkGlobal::Unnumbered::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mpls")
-        return true;
-    return false;
-}
-
-Ipv4NetworkGlobal::Unnumbered::Mpls::Mpls()
-    :
-    te(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>())
-{
-    te->parent = this;
-
-    yang_name = "mpls"; yang_parent_name = "unnumbered";
-}
-
-Ipv4NetworkGlobal::Unnumbered::Mpls::~Mpls()
-{
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_data() const
-{
-    return (te !=  nullptr && te->has_data());
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_operation() const
-{
-    return is_set(yfilter)
-	|| (te !=  nullptr && te->has_operation());
-}
-
-std::string Ipv4NetworkGlobal::Unnumbered::Mpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mpls";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/unnumbered/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "te")
-    {
-        if(te == nullptr)
-        {
-            te = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>();
-        }
-        return te;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(te != nullptr)
-    {
-        children["te"] = te;
-    }
-
-    return children;
-}
-
-void Ipv4NetworkGlobal::Unnumbered::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ipv4NetworkGlobal::Unnumbered::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "te")
-        return true;
-    return false;
-}
-
-Ipv4NetworkGlobal::Unnumbered::Mpls::Te::Te()
-    :
-    interface{YType::str, "interface"}
-{
-    yang_name = "te"; yang_parent_name = "mpls";
-}
-
-Ipv4NetworkGlobal::Unnumbered::Mpls::Te::~Te()
-{
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_data() const
-{
-    return interface.is_set;
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter);
-}
-
-std::string Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "te";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/unnumbered/mpls/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-}
-
-bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface")
-        return true;
-    return false;
-}
-
 Ipv4NetworkGlobal::Qppb::Qppb()
     :
     destination{YType::enumeration, "destination"},
     source{YType::enumeration, "source"}
 {
-    yang_name = "qppb"; yang_parent_name = "ipv4-network-global";
+
+    yang_name = "qppb"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv4NetworkGlobal::Qppb::~Qppb()
@@ -491,35 +203,28 @@ bool Ipv4NetworkGlobal::Qppb::has_operation() const
 	|| ydk::is_set(source.yfilter);
 }
 
+std::string Ipv4NetworkGlobal::Qppb::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv4NetworkGlobal::Qppb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qppb";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv4NetworkGlobal::Qppb::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Qppb::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
     if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -569,11 +274,269 @@ bool Ipv4NetworkGlobal::Qppb::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
+Ipv4NetworkGlobal::Unnumbered::Unnumbered()
+    :
+    mpls(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>())
+{
+    mpls->parent = this;
+
+    yang_name = "unnumbered"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv4NetworkGlobal::Unnumbered::~Unnumbered()
+{
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::has_data() const
+{
+    return (mpls !=  nullptr && mpls->has_data());
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::has_operation() const
+{
+    return is_set(yfilter)
+	|| (mpls !=  nullptr && mpls->has_operation());
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "unnumbered";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mpls")
+    {
+        if(mpls == nullptr)
+        {
+            mpls = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls>();
+        }
+        return mpls;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(mpls != nullptr)
+    {
+        children["mpls"] = mpls;
+    }
+
+    return children;
+}
+
+void Ipv4NetworkGlobal::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4NetworkGlobal::Unnumbered::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpls")
+        return true;
+    return false;
+}
+
+Ipv4NetworkGlobal::Unnumbered::Mpls::Mpls()
+    :
+    te(std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>())
+{
+    te->parent = this;
+
+    yang_name = "mpls"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv4NetworkGlobal::Unnumbered::Mpls::~Mpls()
+{
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_data() const
+{
+    return (te !=  nullptr && te->has_data());
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_operation() const
+{
+    return is_set(yfilter)
+	|| (te !=  nullptr && te->has_operation());
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::Mpls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/unnumbered/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::Mpls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::Mpls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "te")
+    {
+        if(te == nullptr)
+        {
+            te = std::make_shared<Ipv4NetworkGlobal::Unnumbered::Mpls::Te>();
+        }
+        return te;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(te != nullptr)
+    {
+        children["te"] = te;
+    }
+
+    return children;
+}
+
+void Ipv4NetworkGlobal::Unnumbered::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4NetworkGlobal::Unnumbered::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "te")
+        return true;
+    return false;
+}
+
+Ipv4NetworkGlobal::Unnumbered::Mpls::Te::Te()
+    :
+    interface{YType::str, "interface"}
+{
+
+    yang_name = "te"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ipv4NetworkGlobal::Unnumbered::Mpls::Te::~Te()
+{
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_data() const
+{
+    return interface.is_set;
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter);
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:ipv4-network-global/unnumbered/mpls/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "te";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
 SubscriberPta::SubscriberPta()
     :
     tcp_mss_adjust{YType::uint32, "tcp-mss-adjust"}
 {
-    yang_name = "subscriber-pta"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg";
+
+    yang_name = "subscriber-pta"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SubscriberPta::~SubscriberPta()
@@ -595,27 +558,16 @@ std::string SubscriberPta::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-ma-cfg:subscriber-pta";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberPta::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberPta::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tcp_mss_adjust.is_set || is_set(tcp_mss_adjust.yfilter)) leaf_name_data.push_back(tcp_mss_adjust.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

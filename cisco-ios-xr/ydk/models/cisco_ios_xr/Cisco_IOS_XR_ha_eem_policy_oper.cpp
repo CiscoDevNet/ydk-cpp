@@ -20,16 +20,12 @@ Eem::Eem()
 	,reg_policies(std::make_shared<Eem::RegPolicies>())
 {
     avl_policies->parent = this;
-
     dir_user->parent = this;
-
     env_variables->parent = this;
-
     refresh_time->parent = this;
-
     reg_policies->parent = this;
 
-    yang_name = "eem"; yang_parent_name = "Cisco-IOS-XR-ha-eem-policy-oper";
+    yang_name = "eem"; yang_parent_name = "Cisco-IOS-XR-ha-eem-policy-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Eem::~Eem()
@@ -59,26 +55,15 @@ std::string Eem::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -203,16 +188,240 @@ bool Eem::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Eem::AvlPolicies::AvlPolicies()
+{
+
+    yang_name = "avl-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Eem::AvlPolicies::~AvlPolicies()
+{
+}
+
+bool Eem::AvlPolicies::has_data() const
+{
+    for (std::size_t index=0; index<avl_policy.size(); index++)
+    {
+        if(avl_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Eem::AvlPolicies::has_operation() const
+{
+    for (std::size_t index=0; index<avl_policy.size(); index++)
+    {
+        if(avl_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Eem::AvlPolicies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Eem::AvlPolicies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "avl-policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Eem::AvlPolicies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "avl-policy")
+    {
+        for(auto const & c : avl_policy)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Eem::AvlPolicies::AvlPolicy>();
+        c->parent = this;
+        avl_policy.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : avl_policy)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Eem::AvlPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Eem::AvlPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Eem::AvlPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "avl-policy")
+        return true;
+    return false;
+}
+
+Eem::AvlPolicies::AvlPolicy::AvlPolicy()
+    :
+    name{YType::str, "name"},
+    policy_name{YType::str, "policy-name"},
+    time_created{YType::str, "time-created"},
+    type{YType::str, "type"}
+{
+
+    yang_name = "avl-policy"; yang_parent_name = "avl-policies"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Eem::AvlPolicies::AvlPolicy::~AvlPolicy()
+{
+}
+
+bool Eem::AvlPolicies::AvlPolicy::has_data() const
+{
+    return name.is_set
+	|| policy_name.is_set
+	|| time_created.is_set
+	|| type.is_set;
+}
+
+bool Eem::AvlPolicies::AvlPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(time_created.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string Eem::AvlPolicies::AvlPolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/avl-policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Eem::AvlPolicies::AvlPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "avl-policy" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Eem::AvlPolicies::AvlPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (time_created.is_set || is_set(time_created.yfilter)) leaf_name_data.push_back(time_created.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Eem::AvlPolicies::AvlPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::AvlPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Eem::AvlPolicies::AvlPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-created")
+    {
+        time_created = value;
+        time_created.value_namespace = name_space;
+        time_created.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Eem::AvlPolicies::AvlPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "time-created")
+    {
+        time_created.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Eem::AvlPolicies::AvlPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "policy-name" || name == "time-created" || name == "type")
+        return true;
+    return false;
+}
+
 Eem::DirUser::DirUser()
     :
     library(std::make_shared<Eem::DirUser::Library>())
 	,policy(std::make_shared<Eem::DirUser::Policy>())
 {
     library->parent = this;
-
     policy->parent = this;
 
-    yang_name = "dir-user"; yang_parent_name = "eem";
+    yang_name = "dir-user"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::DirUser::~DirUser()
@@ -232,33 +441,26 @@ bool Eem::DirUser::has_operation() const
 	|| (policy !=  nullptr && policy->has_operation());
 }
 
+std::string Eem::DirUser::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::DirUser::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dir-user";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::DirUser::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::DirUser::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -321,7 +523,8 @@ Eem::DirUser::Library::Library()
     library{YType::str, "library"},
     policy{YType::str, "policy"}
 {
-    yang_name = "library"; yang_parent_name = "dir-user";
+
+    yang_name = "library"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::DirUser::Library::~Library()
@@ -341,35 +544,28 @@ bool Eem::DirUser::Library::has_operation() const
 	|| ydk::is_set(policy.yfilter);
 }
 
+std::string Eem::DirUser::Library::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/dir-user/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::DirUser::Library::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "library";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::DirUser::Library::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::DirUser::Library::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/dir-user/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (library.is_set || is_set(library.yfilter)) leaf_name_data.push_back(library.get_name_leafdata());
     if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -424,7 +620,8 @@ Eem::DirUser::Policy::Policy()
     library{YType::str, "library"},
     policy{YType::str, "policy"}
 {
-    yang_name = "policy"; yang_parent_name = "dir-user";
+
+    yang_name = "policy"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::DirUser::Policy::~Policy()
@@ -444,35 +641,28 @@ bool Eem::DirUser::Policy::has_operation() const
 	|| ydk::is_set(policy.yfilter);
 }
 
+std::string Eem::DirUser::Policy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/dir-user/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::DirUser::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "policy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::DirUser::Policy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::DirUser::Policy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/dir-user/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (library.is_set || is_set(library.yfilter)) leaf_name_data.push_back(library.get_name_leafdata());
     if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -524,7 +714,8 @@ bool Eem::DirUser::Policy::has_leaf_or_child_of_name(const std::string & name) c
 
 Eem::EnvVariables::EnvVariables()
 {
-    yang_name = "env-variables"; yang_parent_name = "eem";
+
+    yang_name = "env-variables"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::EnvVariables::~EnvVariables()
@@ -551,33 +742,26 @@ bool Eem::EnvVariables::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Eem::EnvVariables::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::EnvVariables::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-variables";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::EnvVariables::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::EnvVariables::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -634,7 +818,8 @@ Eem::EnvVariables::EnvVariable::EnvVariable()
     name_xr{YType::str, "name-xr"},
     value_{YType::str, "value"}
 {
-    yang_name = "env-variable"; yang_parent_name = "env-variables";
+
+    yang_name = "env-variable"; yang_parent_name = "env-variables"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::EnvVariables::EnvVariable::~EnvVariable()
@@ -656,36 +841,29 @@ bool Eem::EnvVariables::EnvVariable::has_operation() const
 	|| ydk::is_set(value_.yfilter);
 }
 
+std::string Eem::EnvVariables::EnvVariable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/env-variables/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::EnvVariables::EnvVariable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-variable" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::EnvVariables::EnvVariable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::EnvVariables::EnvVariable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/env-variables/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -749,7 +927,8 @@ Eem::RefreshTime::RefreshTime()
     :
     refreshtime{YType::uint32, "refreshtime"}
 {
-    yang_name = "refresh-time"; yang_parent_name = "eem";
+
+    yang_name = "refresh-time"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::RefreshTime::~RefreshTime()
@@ -767,34 +946,27 @@ bool Eem::RefreshTime::has_operation() const
 	|| ydk::is_set(refreshtime.yfilter);
 }
 
+std::string Eem::RefreshTime::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::RefreshTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "refresh-time";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::RefreshTime::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::RefreshTime::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (refreshtime.is_set || is_set(refreshtime.yfilter)) leaf_name_data.push_back(refreshtime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -836,7 +1008,8 @@ bool Eem::RefreshTime::has_leaf_or_child_of_name(const std::string & name) const
 
 Eem::RegPolicies::RegPolicies()
 {
-    yang_name = "reg-policies"; yang_parent_name = "eem";
+
+    yang_name = "reg-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::RegPolicies::~RegPolicies()
@@ -863,33 +1036,26 @@ bool Eem::RegPolicies::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Eem::RegPolicies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::RegPolicies::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reg-policies";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::RegPolicies::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::RegPolicies::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -953,7 +1119,8 @@ Eem::RegPolicies::RegPolicy::RegPolicy()
     type{YType::str, "type"},
     username{YType::str, "username"}
 {
-    yang_name = "reg-policy"; yang_parent_name = "reg-policies";
+
+    yang_name = "reg-policy"; yang_parent_name = "reg-policies"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Eem::RegPolicies::RegPolicy::~RegPolicy()
@@ -989,27 +1156,22 @@ bool Eem::RegPolicies::RegPolicy::has_operation() const
 	|| ydk::is_set(username.yfilter);
 }
 
+std::string Eem::RegPolicies::RegPolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/reg-policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Eem::RegPolicies::RegPolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reg-policy" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Eem::RegPolicies::RegPolicy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Eem::RegPolicies::RegPolicy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/reg-policies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -1023,9 +1185,7 @@ const EntityPath Eem::RegPolicies::RegPolicy::get_entity_path(Entity* ancestor) 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1151,243 +1311,6 @@ void Eem::RegPolicies::RegPolicy::set_filter(const std::string & value_path, YFi
 bool Eem::RegPolicies::RegPolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "class" || name == "description" || name == "event-type" || name == "persist-time" || name == "policy-name" || name == "time-created" || name == "trap" || name == "type" || name == "username")
-        return true;
-    return false;
-}
-
-Eem::AvlPolicies::AvlPolicies()
-{
-    yang_name = "avl-policies"; yang_parent_name = "eem";
-}
-
-Eem::AvlPolicies::~AvlPolicies()
-{
-}
-
-bool Eem::AvlPolicies::has_data() const
-{
-    for (std::size_t index=0; index<avl_policy.size(); index++)
-    {
-        if(avl_policy[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Eem::AvlPolicies::has_operation() const
-{
-    for (std::size_t index=0; index<avl_policy.size(); index++)
-    {
-        if(avl_policy[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Eem::AvlPolicies::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "avl-policies";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Eem::AvlPolicies::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "avl-policy")
-    {
-        for(auto const & c : avl_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Eem::AvlPolicies::AvlPolicy>();
-        c->parent = this;
-        avl_policy.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : avl_policy)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Eem::AvlPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Eem::AvlPolicies::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Eem::AvlPolicies::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "avl-policy")
-        return true;
-    return false;
-}
-
-Eem::AvlPolicies::AvlPolicy::AvlPolicy()
-    :
-    name{YType::str, "name"},
-    policy_name{YType::str, "policy-name"},
-    time_created{YType::str, "time-created"},
-    type{YType::str, "type"}
-{
-    yang_name = "avl-policy"; yang_parent_name = "avl-policies";
-}
-
-Eem::AvlPolicies::AvlPolicy::~AvlPolicy()
-{
-}
-
-bool Eem::AvlPolicies::AvlPolicy::has_data() const
-{
-    return name.is_set
-	|| policy_name.is_set
-	|| time_created.is_set
-	|| type.is_set;
-}
-
-bool Eem::AvlPolicies::AvlPolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(policy_name.yfilter)
-	|| ydk::is_set(time_created.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Eem::AvlPolicies::AvlPolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "avl-policy" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Eem::AvlPolicies::AvlPolicy::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ha-eem-policy-oper:eem/avl-policies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (time_created.is_set || is_set(time_created.yfilter)) leaf_name_data.push_back(time_created.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Eem::AvlPolicies::AvlPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::AvlPolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Eem::AvlPolicies::AvlPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name = value;
-        policy_name.value_namespace = name_space;
-        policy_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-created")
-    {
-        time_created = value;
-        time_created.value_namespace = name_space;
-        time_created.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Eem::AvlPolicies::AvlPolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "policy-name")
-    {
-        policy_name.yfilter = yfilter;
-    }
-    if(value_path == "time-created")
-    {
-        time_created.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Eem::AvlPolicies::AvlPolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "policy-name" || name == "time-created" || name == "type")
         return true;
     return false;
 }

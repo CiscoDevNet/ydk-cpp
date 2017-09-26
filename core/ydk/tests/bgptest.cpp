@@ -25,7 +25,6 @@
 #include "../src/path_api.hpp"
 #include "config.hpp"
 #include "catch.hpp"
-#include "mock_data.hpp"
 
 const char* m = "\
 <bgp xmlns=\"http://openconfig.net/yang/bgp\">\
@@ -149,10 +148,10 @@ const char* expected_bgp_peer_json = "{\"openconfig-bgp:bgp\":{\"global\":{\"con
 
 TEST_CASE( "bgp" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
 
-    auto & schema = sp.get_root_schema();
+    auto & schema = session.get_root_schema();
 
     auto & bgp = schema.create_datanode("openconfig-bgp:bgp", "");
 
@@ -223,16 +222,17 @@ TEST_CASE( "bgp" )
     create_rpc->get_input_node().create_datanode("entity", xml);
 
     //call create
-    (*create_rpc)(sp);
+    (*create_rpc)(session);
 
 }
 
 TEST_CASE( "bgp_validation" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
 
-    auto & schema = sp.get_root_schema();
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+
+    auto & schema = session.get_root_schema();
 
     auto & bgp = schema.create_datanode("openconfig-bgp:bgp", "");
 
@@ -274,10 +274,11 @@ TEST_CASE( "bgp_validation" )
 
 TEST_CASE( "decode_remove_as" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
 
-    auto & schema = sp.get_root_schema();
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+
+    auto & schema = session.get_root_schema();
 
     ydk::path::Codec s{};
 
@@ -296,12 +297,13 @@ TEST_CASE( "decode_remove_as" )
 
 TEST_CASE( "bits_order" )
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
     ydk::path::Codec s{};
 
-    auto & schema = sp.get_root_schema();
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
 
+    auto & schema = session.get_root_schema();
 
     auto & runner = schema.create_datanode("ydktest-sanity:runner", "");
 
@@ -316,11 +318,13 @@ TEST_CASE( "bits_order" )
 
 TEST_CASE("rpc_output")
 {
-    std::string searchdir{TEST_HOME};
-    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    ydk::path::Repository repo{TEST_HOME};
+
     ydk::path::Codec s{};
 
-    auto & schema = sp.get_root_schema();
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+
+    auto & schema = session.get_root_schema();
 
     auto getc = schema.create_rpc("ietf-netconf:get-config");
     REQUIRE(getc->has_output_node() == true);
@@ -338,8 +342,8 @@ TEST_CASE("rpc_output")
 
 TEST_CASE( "submodule" )
 {//TODO fix issue with submodule
-//    std::string searchdir{TEST_HOME};
-//    mock::MockServiceProvider sp{searchdir, test_openconfig};
+    // ydk::path::Repository repo{TEST_HOME};
+//    mock::MockServiceProvider sp{repo, test_openconfig};
 //    ydk::path::Codec s{};
 //
 //    std::unique_ptr<ydk::path::RootSchemaNode> schema{sp.get_root_schema()};

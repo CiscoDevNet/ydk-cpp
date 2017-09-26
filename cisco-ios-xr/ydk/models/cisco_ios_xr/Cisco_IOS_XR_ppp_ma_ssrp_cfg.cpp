@@ -17,7 +17,7 @@ Ssrp::Ssrp()
 {
     profiles->parent = this;
 
-    yang_name = "ssrp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ssrp-cfg";
+    yang_name = "ssrp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ssrp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ssrp::~Ssrp()
@@ -39,26 +39,15 @@ std::string Ssrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ssrp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ssrp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Ssrp::has_leaf_or_child_of_name(const std::string & name) const
 
 Ssrp::Profiles::Profiles()
 {
-    yang_name = "profiles"; yang_parent_name = "ssrp";
+
+    yang_name = "profiles"; yang_parent_name = "ssrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ssrp::Profiles::~Profiles()
@@ -156,33 +146,26 @@ bool Ssrp::Profiles::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ssrp::Profiles::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ssrp::Profiles::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profiles";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ssrp::Profiles::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ssrp::Profiles::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -239,7 +222,8 @@ Ssrp::Profiles::Profile::Profile()
     max_hops{YType::uint32, "max-hops"},
     peer_ipv4_address{YType::str, "peer-ipv4-address"}
 {
-    yang_name = "profile"; yang_parent_name = "profiles";
+
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ssrp::Profiles::Profile::~Profile()
@@ -261,36 +245,29 @@ bool Ssrp::Profiles::Profile::has_operation() const
 	|| ydk::is_set(peer_ipv4_address.yfilter);
 }
 
+std::string Ssrp::Profiles::Profile::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp/profiles/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ssrp::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ssrp::Profiles::Profile::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ssrp::Profiles::Profile::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp/profiles/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (max_hops.is_set || is_set(max_hops.yfilter)) leaf_name_data.push_back(max_hops.get_name_leafdata());
     if (peer_ipv4_address.is_set || is_set(peer_ipv4_address.yfilter)) leaf_name_data.push_back(peer_ipv4_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

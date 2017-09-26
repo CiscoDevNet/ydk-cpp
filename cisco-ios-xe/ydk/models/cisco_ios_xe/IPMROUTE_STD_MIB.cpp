@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace IPMROUTE_STD_MIB {
 
-IpmrouteStdMib::IpmrouteStdMib()
+IPMROUTESTDMIB::IPMROUTESTDMIB()
     :
-    ipmroute(std::make_shared<IpmrouteStdMib::Ipmroute>())
-	,ipmrouteboundarytable(std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>())
-	,ipmrouteinterfacetable(std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>())
-	,ipmroutenexthoptable(std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>())
-	,ipmroutescopenametable(std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>())
-	,ipmroutetable(std::make_shared<IpmrouteStdMib::Ipmroutetable>())
+    ipmroute(std::make_shared<IPMROUTESTDMIB::Ipmroute>())
+	,ipmrouteboundarytable(std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable>())
+	,ipmrouteinterfacetable(std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable>())
+	,ipmroutenexthoptable(std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable>())
+	,ipmroutescopenametable(std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable>())
+	,ipmroutetable(std::make_shared<IPMROUTESTDMIB::Ipmroutetable>())
 {
     ipmroute->parent = this;
-
     ipmrouteboundarytable->parent = this;
-
     ipmrouteinterfacetable->parent = this;
-
     ipmroutenexthoptable->parent = this;
-
     ipmroutescopenametable->parent = this;
-
     ipmroutetable->parent = this;
 
-    yang_name = "IPMROUTE-STD-MIB"; yang_parent_name = "IPMROUTE-STD-MIB";
+    yang_name = "IPMROUTE-STD-MIB"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-IpmrouteStdMib::~IpmrouteStdMib()
+IPMROUTESTDMIB::~IPMROUTESTDMIB()
 {
 }
 
-bool IpmrouteStdMib::has_data() const
+bool IPMROUTESTDMIB::has_data() const
 {
     return (ipmroute !=  nullptr && ipmroute->has_data())
 	|| (ipmrouteboundarytable !=  nullptr && ipmrouteboundarytable->has_data())
@@ -49,7 +44,7 @@ bool IpmrouteStdMib::has_data() const
 	|| (ipmroutetable !=  nullptr && ipmroutetable->has_data());
 }
 
-bool IpmrouteStdMib::has_operation() const
+bool IPMROUTESTDMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipmroute !=  nullptr && ipmroute->has_operation())
@@ -60,40 +55,29 @@ bool IpmrouteStdMib::has_operation() const
 	|| (ipmroutetable !=  nullptr && ipmroutetable->has_operation());
 }
 
-std::string IpmrouteStdMib::get_segment_path() const
+std::string IPMROUTESTDMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpmrouteStdMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRoute")
     {
         if(ipmroute == nullptr)
         {
-            ipmroute = std::make_shared<IpmrouteStdMib::Ipmroute>();
+            ipmroute = std::make_shared<IPMROUTESTDMIB::Ipmroute>();
         }
         return ipmroute;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     {
         if(ipmrouteboundarytable == nullptr)
         {
-            ipmrouteboundarytable = std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable>();
+            ipmrouteboundarytable = std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable>();
         }
         return ipmrouteboundarytable;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     {
         if(ipmrouteinterfacetable == nullptr)
         {
-            ipmrouteinterfacetable = std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable>();
+            ipmrouteinterfacetable = std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable>();
         }
         return ipmrouteinterfacetable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     {
         if(ipmroutenexthoptable == nullptr)
         {
-            ipmroutenexthoptable = std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable>();
+            ipmroutenexthoptable = std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable>();
         }
         return ipmroutenexthoptable;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     {
         if(ipmroutescopenametable == nullptr)
         {
-            ipmroutescopenametable = std::make_shared<IpmrouteStdMib::Ipmroutescopenametable>();
+            ipmroutescopenametable = std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable>();
         }
         return ipmroutescopenametable;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     {
         if(ipmroutetable == nullptr)
         {
-            ipmroutetable = std::make_shared<IpmrouteStdMib::Ipmroutetable>();
+            ipmroutetable = std::make_shared<IPMROUTESTDMIB::Ipmroutetable>();
         }
         return ipmroutetable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipmroute != nullptr)
@@ -182,115 +166,109 @@ std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::get_children() co
     return children;
 }
 
-void IpmrouteStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpmrouteStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IpmrouteStdMib::clone_ptr() const
+std::shared_ptr<Entity> IPMROUTESTDMIB::clone_ptr() const
 {
-    return std::make_shared<IpmrouteStdMib>();
+    return std::make_shared<IPMROUTESTDMIB>();
 }
 
-std::string IpmrouteStdMib::get_bundle_yang_models_location() const
+std::string IPMROUTESTDMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string IpmrouteStdMib::get_bundle_name() const
+std::string IPMROUTESTDMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function IpmrouteStdMib::get_augment_capabilities_function() const
+augment_capabilities_function IPMROUTESTDMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> IpmrouteStdMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> IPMROUTESTDMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool IpmrouteStdMib::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRoute" || name == "ipMRouteBoundaryTable" || name == "ipMRouteInterfaceTable" || name == "ipMRouteNextHopTable" || name == "ipMRouteScopeNameTable" || name == "ipMRouteTable")
         return true;
     return false;
 }
 
-IpmrouteStdMib::Ipmroute::Ipmroute()
+IPMROUTESTDMIB::Ipmroute::Ipmroute()
     :
     ipmrouteenable{YType::enumeration, "ipMRouteEnable"},
     ipmrouteentrycount{YType::uint32, "ipMRouteEntryCount"}
 {
-    yang_name = "ipMRoute"; yang_parent_name = "IPMROUTE-STD-MIB";
+
+    yang_name = "ipMRoute"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-IpmrouteStdMib::Ipmroute::~Ipmroute()
+IPMROUTESTDMIB::Ipmroute::~Ipmroute()
 {
 }
 
-bool IpmrouteStdMib::Ipmroute::has_data() const
+bool IPMROUTESTDMIB::Ipmroute::has_data() const
 {
     return ipmrouteenable.is_set
 	|| ipmrouteentrycount.is_set;
 }
 
-bool IpmrouteStdMib::Ipmroute::has_operation() const
+bool IPMROUTESTDMIB::Ipmroute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmrouteenable.yfilter)
 	|| ydk::is_set(ipmrouteentrycount.yfilter);
 }
 
-std::string IpmrouteStdMib::Ipmroute::get_segment_path() const
+std::string IPMROUTESTDMIB::Ipmroute::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRoute";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpmrouteStdMib::Ipmroute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipmrouteenable.is_set || is_set(ipmrouteenable.yfilter)) leaf_name_data.push_back(ipmrouteenable.get_name_leafdata());
     if (ipmrouteentrycount.is_set || is_set(ipmrouteentrycount.yfilter)) leaf_name_data.push_back(ipmrouteentrycount.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpmrouteStdMib::Ipmroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::Ipmroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteEnable")
     {
@@ -306,7 +284,7 @@ void IpmrouteStdMib::Ipmroute::set_value(const std::string & value_path, const s
     }
 }
 
-void IpmrouteStdMib::Ipmroute::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::Ipmroute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteEnable")
     {
@@ -318,23 +296,1232 @@ void IpmrouteStdMib::Ipmroute::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool IpmrouteStdMib::Ipmroute::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::Ipmroute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteEnable" || name == "ipMRouteEntryCount")
         return true;
     return false;
 }
 
-IpmrouteStdMib::Ipmroutetable::Ipmroutetable()
+IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundarytable()
 {
-    yang_name = "ipMRouteTable"; yang_parent_name = "IPMROUTE-STD-MIB";
+
+    yang_name = "ipMRouteBoundaryTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-IpmrouteStdMib::Ipmroutetable::~Ipmroutetable()
+IPMROUTESTDMIB::Ipmrouteboundarytable::~Ipmrouteboundarytable()
 {
 }
 
-bool IpmrouteStdMib::Ipmroutetable::has_data() const
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_data() const
+{
+    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    {
+        if(ipmrouteboundaryentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_operation() const
+{
+    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    {
+        if(ipmrouteboundaryentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteboundarytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteboundarytable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteBoundaryTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundarytable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipMRouteBoundaryEntry")
+    {
+        for(auto const & c : ipmrouteboundaryentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry>();
+        c->parent = this;
+        ipmrouteboundaryentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipmrouteboundaryentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmrouteboundarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IPMROUTESTDMIB::Ipmrouteboundarytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteBoundaryEntry")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::Ipmrouteboundaryentry()
+    :
+    ipmrouteboundaryifindex{YType::int32, "ipMRouteBoundaryIfIndex"},
+    ipmrouteboundaryaddress{YType::str, "ipMRouteBoundaryAddress"},
+    ipmrouteboundaryaddressmask{YType::str, "ipMRouteBoundaryAddressMask"},
+    ipmrouteboundarystatus{YType::enumeration, "ipMRouteBoundaryStatus"}
+{
+
+    yang_name = "ipMRouteBoundaryEntry"; yang_parent_name = "ipMRouteBoundaryTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::~Ipmrouteboundaryentry()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_data() const
+{
+    return ipmrouteboundaryifindex.is_set
+	|| ipmrouteboundaryaddress.is_set
+	|| ipmrouteboundaryaddressmask.is_set
+	|| ipmrouteboundarystatus.is_set;
+}
+
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipmrouteboundaryifindex.yfilter)
+	|| ydk::is_set(ipmrouteboundaryaddress.yfilter)
+	|| ydk::is_set(ipmrouteboundaryaddressmask.yfilter)
+	|| ydk::is_set(ipmrouteboundarystatus.yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteBoundaryTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteBoundaryEntry" <<"[ipMRouteBoundaryIfIndex='" <<ipmrouteboundaryifindex <<"']" <<"[ipMRouteBoundaryAddress='" <<ipmrouteboundaryaddress <<"']" <<"[ipMRouteBoundaryAddressMask='" <<ipmrouteboundaryaddressmask <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipmrouteboundaryifindex.is_set || is_set(ipmrouteboundaryifindex.yfilter)) leaf_name_data.push_back(ipmrouteboundaryifindex.get_name_leafdata());
+    if (ipmrouteboundaryaddress.is_set || is_set(ipmrouteboundaryaddress.yfilter)) leaf_name_data.push_back(ipmrouteboundaryaddress.get_name_leafdata());
+    if (ipmrouteboundaryaddressmask.is_set || is_set(ipmrouteboundaryaddressmask.yfilter)) leaf_name_data.push_back(ipmrouteboundaryaddressmask.get_name_leafdata());
+    if (ipmrouteboundarystatus.is_set || is_set(ipmrouteboundarystatus.yfilter)) leaf_name_data.push_back(ipmrouteboundarystatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipMRouteBoundaryIfIndex")
+    {
+        ipmrouteboundaryifindex = value;
+        ipmrouteboundaryifindex.value_namespace = name_space;
+        ipmrouteboundaryifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteBoundaryAddress")
+    {
+        ipmrouteboundaryaddress = value;
+        ipmrouteboundaryaddress.value_namespace = name_space;
+        ipmrouteboundaryaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteBoundaryAddressMask")
+    {
+        ipmrouteboundaryaddressmask = value;
+        ipmrouteboundaryaddressmask.value_namespace = name_space;
+        ipmrouteboundaryaddressmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteBoundaryStatus")
+    {
+        ipmrouteboundarystatus = value;
+        ipmrouteboundarystatus.value_namespace = name_space;
+        ipmrouteboundarystatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipMRouteBoundaryIfIndex")
+    {
+        ipmrouteboundaryifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteBoundaryAddress")
+    {
+        ipmrouteboundaryaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteBoundaryAddressMask")
+    {
+        ipmrouteboundaryaddressmask.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteBoundaryStatus")
+    {
+        ipmrouteboundarystatus.yfilter = yfilter;
+    }
+}
+
+bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteBoundaryIfIndex" || name == "ipMRouteBoundaryAddress" || name == "ipMRouteBoundaryAddressMask" || name == "ipMRouteBoundaryStatus")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfacetable()
+{
+
+    yang_name = "ipMRouteInterfaceTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmrouteinterfacetable::~Ipmrouteinterfacetable()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_data() const
+{
+    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    {
+        if(ipmrouteinterfaceentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_operation() const
+{
+    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    {
+        if(ipmrouteinterfaceentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteInterfaceTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterfacetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipMRouteInterfaceEntry")
+    {
+        for(auto const & c : ipmrouteinterfaceentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry>();
+        c->parent = this;
+        ipmrouteinterfaceentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipmrouteinterfaceentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmrouteinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IPMROUTESTDMIB::Ipmrouteinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteInterfaceEntry")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::Ipmrouteinterfaceentry()
+    :
+    ipmrouteinterfaceifindex{YType::int32, "ipMRouteInterfaceIfIndex"},
+    ciscoipmrouteifhcinmcastpkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCInMcastPkts"},
+    ciscoipmrouteifhcoutmcastpkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCOutMcastPkts"},
+    ciscoipmrouteifinmcastoctets{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastOctets"},
+    ciscoipmrouteifinmcastpkts{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastPkts"},
+    ciscoipmrouteifoutmcastoctets{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastOctets"},
+    ciscoipmrouteifoutmcastpkts{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastPkts"},
+    ipmrouteinterfacehcinmcastoctets{YType::uint64, "ipMRouteInterfaceHCInMcastOctets"},
+    ipmrouteinterfacehcoutmcastoctets{YType::uint64, "ipMRouteInterfaceHCOutMcastOctets"},
+    ipmrouteinterfaceinmcastoctets{YType::uint32, "ipMRouteInterfaceInMcastOctets"},
+    ipmrouteinterfaceoutmcastoctets{YType::uint32, "ipMRouteInterfaceOutMcastOctets"},
+    ipmrouteinterfaceprotocol{YType::enumeration, "ipMRouteInterfaceProtocol"},
+    ipmrouteinterfaceratelimit{YType::int32, "ipMRouteInterfaceRateLimit"},
+    ipmrouteinterfacettl{YType::int32, "ipMRouteInterfaceTtl"}
+{
+
+    yang_name = "ipMRouteInterfaceEntry"; yang_parent_name = "ipMRouteInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::~Ipmrouteinterfaceentry()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_data() const
+{
+    return ipmrouteinterfaceifindex.is_set
+	|| ciscoipmrouteifhcinmcastpkts.is_set
+	|| ciscoipmrouteifhcoutmcastpkts.is_set
+	|| ciscoipmrouteifinmcastoctets.is_set
+	|| ciscoipmrouteifinmcastpkts.is_set
+	|| ciscoipmrouteifoutmcastoctets.is_set
+	|| ciscoipmrouteifoutmcastpkts.is_set
+	|| ipmrouteinterfacehcinmcastoctets.is_set
+	|| ipmrouteinterfacehcoutmcastoctets.is_set
+	|| ipmrouteinterfaceinmcastoctets.is_set
+	|| ipmrouteinterfaceoutmcastoctets.is_set
+	|| ipmrouteinterfaceprotocol.is_set
+	|| ipmrouteinterfaceratelimit.is_set
+	|| ipmrouteinterfacettl.is_set;
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipmrouteinterfaceifindex.yfilter)
+	|| ydk::is_set(ciscoipmrouteifhcinmcastpkts.yfilter)
+	|| ydk::is_set(ciscoipmrouteifhcoutmcastpkts.yfilter)
+	|| ydk::is_set(ciscoipmrouteifinmcastoctets.yfilter)
+	|| ydk::is_set(ciscoipmrouteifinmcastpkts.yfilter)
+	|| ydk::is_set(ciscoipmrouteifoutmcastoctets.yfilter)
+	|| ydk::is_set(ciscoipmrouteifoutmcastpkts.yfilter)
+	|| ydk::is_set(ipmrouteinterfacehcinmcastoctets.yfilter)
+	|| ydk::is_set(ipmrouteinterfacehcoutmcastoctets.yfilter)
+	|| ydk::is_set(ipmrouteinterfaceinmcastoctets.yfilter)
+	|| ydk::is_set(ipmrouteinterfaceoutmcastoctets.yfilter)
+	|| ydk::is_set(ipmrouteinterfaceprotocol.yfilter)
+	|| ydk::is_set(ipmrouteinterfaceratelimit.yfilter)
+	|| ydk::is_set(ipmrouteinterfacettl.yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteInterfaceTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteInterfaceEntry" <<"[ipMRouteInterfaceIfIndex='" <<ipmrouteinterfaceifindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipmrouteinterfaceifindex.is_set || is_set(ipmrouteinterfaceifindex.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceifindex.get_name_leafdata());
+    if (ciscoipmrouteifhcinmcastpkts.is_set || is_set(ciscoipmrouteifhcinmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifhcinmcastpkts.get_name_leafdata());
+    if (ciscoipmrouteifhcoutmcastpkts.is_set || is_set(ciscoipmrouteifhcoutmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifhcoutmcastpkts.get_name_leafdata());
+    if (ciscoipmrouteifinmcastoctets.is_set || is_set(ciscoipmrouteifinmcastoctets.yfilter)) leaf_name_data.push_back(ciscoipmrouteifinmcastoctets.get_name_leafdata());
+    if (ciscoipmrouteifinmcastpkts.is_set || is_set(ciscoipmrouteifinmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifinmcastpkts.get_name_leafdata());
+    if (ciscoipmrouteifoutmcastoctets.is_set || is_set(ciscoipmrouteifoutmcastoctets.yfilter)) leaf_name_data.push_back(ciscoipmrouteifoutmcastoctets.get_name_leafdata());
+    if (ciscoipmrouteifoutmcastpkts.is_set || is_set(ciscoipmrouteifoutmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifoutmcastpkts.get_name_leafdata());
+    if (ipmrouteinterfacehcinmcastoctets.is_set || is_set(ipmrouteinterfacehcinmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfacehcinmcastoctets.get_name_leafdata());
+    if (ipmrouteinterfacehcoutmcastoctets.is_set || is_set(ipmrouteinterfacehcoutmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfacehcoutmcastoctets.get_name_leafdata());
+    if (ipmrouteinterfaceinmcastoctets.is_set || is_set(ipmrouteinterfaceinmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceinmcastoctets.get_name_leafdata());
+    if (ipmrouteinterfaceoutmcastoctets.is_set || is_set(ipmrouteinterfaceoutmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceoutmcastoctets.get_name_leafdata());
+    if (ipmrouteinterfaceprotocol.is_set || is_set(ipmrouteinterfaceprotocol.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceprotocol.get_name_leafdata());
+    if (ipmrouteinterfaceratelimit.is_set || is_set(ipmrouteinterfaceratelimit.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceratelimit.get_name_leafdata());
+    if (ipmrouteinterfacettl.is_set || is_set(ipmrouteinterfacettl.yfilter)) leaf_name_data.push_back(ipmrouteinterfacettl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipMRouteInterfaceIfIndex")
+    {
+        ipmrouteinterfaceifindex = value;
+        ipmrouteinterfaceifindex.value_namespace = name_space;
+        ipmrouteinterfaceifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfHCInMcastPkts")
+    {
+        ciscoipmrouteifhcinmcastpkts = value;
+        ciscoipmrouteifhcinmcastpkts.value_namespace = name_space;
+        ciscoipmrouteifhcinmcastpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfHCOutMcastPkts")
+    {
+        ciscoipmrouteifhcoutmcastpkts = value;
+        ciscoipmrouteifhcoutmcastpkts.value_namespace = name_space;
+        ciscoipmrouteifhcoutmcastpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfInMcastOctets")
+    {
+        ciscoipmrouteifinmcastoctets = value;
+        ciscoipmrouteifinmcastoctets.value_namespace = name_space;
+        ciscoipmrouteifinmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfInMcastPkts")
+    {
+        ciscoipmrouteifinmcastpkts = value;
+        ciscoipmrouteifinmcastpkts.value_namespace = name_space;
+        ciscoipmrouteifinmcastpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfOutMcastOctets")
+    {
+        ciscoipmrouteifoutmcastoctets = value;
+        ciscoipmrouteifoutmcastoctets.value_namespace = name_space;
+        ciscoipmrouteifoutmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteIfOutMcastPkts")
+    {
+        ciscoipmrouteifoutmcastpkts = value;
+        ciscoipmrouteifoutmcastpkts.value_namespace = name_space;
+        ciscoipmrouteifoutmcastpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceHCInMcastOctets")
+    {
+        ipmrouteinterfacehcinmcastoctets = value;
+        ipmrouteinterfacehcinmcastoctets.value_namespace = name_space;
+        ipmrouteinterfacehcinmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceHCOutMcastOctets")
+    {
+        ipmrouteinterfacehcoutmcastoctets = value;
+        ipmrouteinterfacehcoutmcastoctets.value_namespace = name_space;
+        ipmrouteinterfacehcoutmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceInMcastOctets")
+    {
+        ipmrouteinterfaceinmcastoctets = value;
+        ipmrouteinterfaceinmcastoctets.value_namespace = name_space;
+        ipmrouteinterfaceinmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceOutMcastOctets")
+    {
+        ipmrouteinterfaceoutmcastoctets = value;
+        ipmrouteinterfaceoutmcastoctets.value_namespace = name_space;
+        ipmrouteinterfaceoutmcastoctets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceProtocol")
+    {
+        ipmrouteinterfaceprotocol = value;
+        ipmrouteinterfaceprotocol.value_namespace = name_space;
+        ipmrouteinterfaceprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceRateLimit")
+    {
+        ipmrouteinterfaceratelimit = value;
+        ipmrouteinterfaceratelimit.value_namespace = name_space;
+        ipmrouteinterfaceratelimit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteInterfaceTtl")
+    {
+        ipmrouteinterfacettl = value;
+        ipmrouteinterfacettl.value_namespace = name_space;
+        ipmrouteinterfacettl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipMRouteInterfaceIfIndex")
+    {
+        ipmrouteinterfaceifindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfHCInMcastPkts")
+    {
+        ciscoipmrouteifhcinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfHCOutMcastPkts")
+    {
+        ciscoipmrouteifhcoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfInMcastOctets")
+    {
+        ciscoipmrouteifinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfInMcastPkts")
+    {
+        ciscoipmrouteifinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfOutMcastOctets")
+    {
+        ciscoipmrouteifoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteIfOutMcastPkts")
+    {
+        ciscoipmrouteifoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceHCInMcastOctets")
+    {
+        ipmrouteinterfacehcinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceHCOutMcastOctets")
+    {
+        ipmrouteinterfacehcoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceInMcastOctets")
+    {
+        ipmrouteinterfaceinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceOutMcastOctets")
+    {
+        ipmrouteinterfaceoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceProtocol")
+    {
+        ipmrouteinterfaceprotocol.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceRateLimit")
+    {
+        ipmrouteinterfaceratelimit.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteInterfaceTtl")
+    {
+        ipmrouteinterfacettl.yfilter = yfilter;
+    }
+}
+
+bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteInterfaceIfIndex" || name == "ciscoIpMRouteIfHCInMcastPkts" || name == "ciscoIpMRouteIfHCOutMcastPkts" || name == "ciscoIpMRouteIfInMcastOctets" || name == "ciscoIpMRouteIfInMcastPkts" || name == "ciscoIpMRouteIfOutMcastOctets" || name == "ciscoIpMRouteIfOutMcastPkts" || name == "ipMRouteInterfaceHCInMcastOctets" || name == "ipMRouteInterfaceHCOutMcastOctets" || name == "ipMRouteInterfaceInMcastOctets" || name == "ipMRouteInterfaceOutMcastOctets" || name == "ipMRouteInterfaceProtocol" || name == "ipMRouteInterfaceRateLimit" || name == "ipMRouteInterfaceTtl")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthoptable()
+{
+
+    yang_name = "ipMRouteNextHopTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmroutenexthoptable::~Ipmroutenexthoptable()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_data() const
+{
+    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    {
+        if(ipmroutenexthopentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_operation() const
+{
+    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    {
+        if(ipmroutenexthopentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmroutenexthoptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutenexthoptable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteNextHopTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthoptable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipMRouteNextHopEntry")
+    {
+        for(auto const & c : ipmroutenexthopentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry>();
+        c->parent = this;
+        ipmroutenexthopentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipmroutenexthopentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmroutenexthoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IPMROUTESTDMIB::Ipmroutenexthoptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteNextHopEntry")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopentry()
+    :
+    ipmroutenexthopgroup{YType::str, "ipMRouteNextHopGroup"},
+    ipmroutenexthopsource{YType::str, "ipMRouteNextHopSource"},
+    ipmroutenexthopsourcemask{YType::str, "ipMRouteNextHopSourceMask"},
+    ipmroutenexthopifindex{YType::int32, "ipMRouteNextHopIfIndex"},
+    ipmroutenexthopaddress{YType::str, "ipMRouteNextHopAddress"},
+    ciscoipmroutenexthopmachdr{YType::str, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopMacHdr"},
+    ciscoipmroutenexthopoutlimit{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopOutLimit"},
+    ciscoipmroutenexthoppkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopPkts"},
+    ipmroutenexthopclosestmemberhops{YType::int32, "ipMRouteNextHopClosestMemberHops"},
+    ipmroutenexthopexpirytime{YType::uint32, "ipMRouteNextHopExpiryTime"},
+    ipmroutenexthoppkts{YType::uint32, "ipMRouteNextHopPkts"},
+    ipmroutenexthopprotocol{YType::enumeration, "ipMRouteNextHopProtocol"},
+    ipmroutenexthopstate{YType::enumeration, "ipMRouteNextHopState"},
+    ipmroutenexthopuptime{YType::uint32, "ipMRouteNextHopUpTime"}
+{
+
+    yang_name = "ipMRouteNextHopEntry"; yang_parent_name = "ipMRouteNextHopTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::~Ipmroutenexthopentry()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_data() const
+{
+    return ipmroutenexthopgroup.is_set
+	|| ipmroutenexthopsource.is_set
+	|| ipmroutenexthopsourcemask.is_set
+	|| ipmroutenexthopifindex.is_set
+	|| ipmroutenexthopaddress.is_set
+	|| ciscoipmroutenexthopmachdr.is_set
+	|| ciscoipmroutenexthopoutlimit.is_set
+	|| ciscoipmroutenexthoppkts.is_set
+	|| ipmroutenexthopclosestmemberhops.is_set
+	|| ipmroutenexthopexpirytime.is_set
+	|| ipmroutenexthoppkts.is_set
+	|| ipmroutenexthopprotocol.is_set
+	|| ipmroutenexthopstate.is_set
+	|| ipmroutenexthopuptime.is_set;
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipmroutenexthopgroup.yfilter)
+	|| ydk::is_set(ipmroutenexthopsource.yfilter)
+	|| ydk::is_set(ipmroutenexthopsourcemask.yfilter)
+	|| ydk::is_set(ipmroutenexthopifindex.yfilter)
+	|| ydk::is_set(ipmroutenexthopaddress.yfilter)
+	|| ydk::is_set(ciscoipmroutenexthopmachdr.yfilter)
+	|| ydk::is_set(ciscoipmroutenexthopoutlimit.yfilter)
+	|| ydk::is_set(ciscoipmroutenexthoppkts.yfilter)
+	|| ydk::is_set(ipmroutenexthopclosestmemberhops.yfilter)
+	|| ydk::is_set(ipmroutenexthopexpirytime.yfilter)
+	|| ydk::is_set(ipmroutenexthoppkts.yfilter)
+	|| ydk::is_set(ipmroutenexthopprotocol.yfilter)
+	|| ydk::is_set(ipmroutenexthopstate.yfilter)
+	|| ydk::is_set(ipmroutenexthopuptime.yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteNextHopTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteNextHopEntry" <<"[ipMRouteNextHopGroup='" <<ipmroutenexthopgroup <<"']" <<"[ipMRouteNextHopSource='" <<ipmroutenexthopsource <<"']" <<"[ipMRouteNextHopSourceMask='" <<ipmroutenexthopsourcemask <<"']" <<"[ipMRouteNextHopIfIndex='" <<ipmroutenexthopifindex <<"']" <<"[ipMRouteNextHopAddress='" <<ipmroutenexthopaddress <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipmroutenexthopgroup.is_set || is_set(ipmroutenexthopgroup.yfilter)) leaf_name_data.push_back(ipmroutenexthopgroup.get_name_leafdata());
+    if (ipmroutenexthopsource.is_set || is_set(ipmroutenexthopsource.yfilter)) leaf_name_data.push_back(ipmroutenexthopsource.get_name_leafdata());
+    if (ipmroutenexthopsourcemask.is_set || is_set(ipmroutenexthopsourcemask.yfilter)) leaf_name_data.push_back(ipmroutenexthopsourcemask.get_name_leafdata());
+    if (ipmroutenexthopifindex.is_set || is_set(ipmroutenexthopifindex.yfilter)) leaf_name_data.push_back(ipmroutenexthopifindex.get_name_leafdata());
+    if (ipmroutenexthopaddress.is_set || is_set(ipmroutenexthopaddress.yfilter)) leaf_name_data.push_back(ipmroutenexthopaddress.get_name_leafdata());
+    if (ciscoipmroutenexthopmachdr.is_set || is_set(ciscoipmroutenexthopmachdr.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthopmachdr.get_name_leafdata());
+    if (ciscoipmroutenexthopoutlimit.is_set || is_set(ciscoipmroutenexthopoutlimit.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthopoutlimit.get_name_leafdata());
+    if (ciscoipmroutenexthoppkts.is_set || is_set(ciscoipmroutenexthoppkts.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthoppkts.get_name_leafdata());
+    if (ipmroutenexthopclosestmemberhops.is_set || is_set(ipmroutenexthopclosestmemberhops.yfilter)) leaf_name_data.push_back(ipmroutenexthopclosestmemberhops.get_name_leafdata());
+    if (ipmroutenexthopexpirytime.is_set || is_set(ipmroutenexthopexpirytime.yfilter)) leaf_name_data.push_back(ipmroutenexthopexpirytime.get_name_leafdata());
+    if (ipmroutenexthoppkts.is_set || is_set(ipmroutenexthoppkts.yfilter)) leaf_name_data.push_back(ipmroutenexthoppkts.get_name_leafdata());
+    if (ipmroutenexthopprotocol.is_set || is_set(ipmroutenexthopprotocol.yfilter)) leaf_name_data.push_back(ipmroutenexthopprotocol.get_name_leafdata());
+    if (ipmroutenexthopstate.is_set || is_set(ipmroutenexthopstate.yfilter)) leaf_name_data.push_back(ipmroutenexthopstate.get_name_leafdata());
+    if (ipmroutenexthopuptime.is_set || is_set(ipmroutenexthopuptime.yfilter)) leaf_name_data.push_back(ipmroutenexthopuptime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipMRouteNextHopGroup")
+    {
+        ipmroutenexthopgroup = value;
+        ipmroutenexthopgroup.value_namespace = name_space;
+        ipmroutenexthopgroup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopSource")
+    {
+        ipmroutenexthopsource = value;
+        ipmroutenexthopsource.value_namespace = name_space;
+        ipmroutenexthopsource.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopSourceMask")
+    {
+        ipmroutenexthopsourcemask = value;
+        ipmroutenexthopsourcemask.value_namespace = name_space;
+        ipmroutenexthopsourcemask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopIfIndex")
+    {
+        ipmroutenexthopifindex = value;
+        ipmroutenexthopifindex.value_namespace = name_space;
+        ipmroutenexthopifindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopAddress")
+    {
+        ipmroutenexthopaddress = value;
+        ipmroutenexthopaddress.value_namespace = name_space;
+        ipmroutenexthopaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteNextHopMacHdr")
+    {
+        ciscoipmroutenexthopmachdr = value;
+        ciscoipmroutenexthopmachdr.value_namespace = name_space;
+        ciscoipmroutenexthopmachdr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteNextHopOutLimit")
+    {
+        ciscoipmroutenexthopoutlimit = value;
+        ciscoipmroutenexthopoutlimit.value_namespace = name_space;
+        ciscoipmroutenexthopoutlimit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ciscoIpMRouteNextHopPkts")
+    {
+        ciscoipmroutenexthoppkts = value;
+        ciscoipmroutenexthoppkts.value_namespace = name_space;
+        ciscoipmroutenexthoppkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopClosestMemberHops")
+    {
+        ipmroutenexthopclosestmemberhops = value;
+        ipmroutenexthopclosestmemberhops.value_namespace = name_space;
+        ipmroutenexthopclosestmemberhops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopExpiryTime")
+    {
+        ipmroutenexthopexpirytime = value;
+        ipmroutenexthopexpirytime.value_namespace = name_space;
+        ipmroutenexthopexpirytime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopPkts")
+    {
+        ipmroutenexthoppkts = value;
+        ipmroutenexthoppkts.value_namespace = name_space;
+        ipmroutenexthoppkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopProtocol")
+    {
+        ipmroutenexthopprotocol = value;
+        ipmroutenexthopprotocol.value_namespace = name_space;
+        ipmroutenexthopprotocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopState")
+    {
+        ipmroutenexthopstate = value;
+        ipmroutenexthopstate.value_namespace = name_space;
+        ipmroutenexthopstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteNextHopUpTime")
+    {
+        ipmroutenexthopuptime = value;
+        ipmroutenexthopuptime.value_namespace = name_space;
+        ipmroutenexthopuptime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipMRouteNextHopGroup")
+    {
+        ipmroutenexthopgroup.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopSource")
+    {
+        ipmroutenexthopsource.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopSourceMask")
+    {
+        ipmroutenexthopsourcemask.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopIfIndex")
+    {
+        ipmroutenexthopifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopAddress")
+    {
+        ipmroutenexthopaddress.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteNextHopMacHdr")
+    {
+        ciscoipmroutenexthopmachdr.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteNextHopOutLimit")
+    {
+        ciscoipmroutenexthopoutlimit.yfilter = yfilter;
+    }
+    if(value_path == "ciscoIpMRouteNextHopPkts")
+    {
+        ciscoipmroutenexthoppkts.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopClosestMemberHops")
+    {
+        ipmroutenexthopclosestmemberhops.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopExpiryTime")
+    {
+        ipmroutenexthopexpirytime.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopPkts")
+    {
+        ipmroutenexthoppkts.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopProtocol")
+    {
+        ipmroutenexthopprotocol.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopState")
+    {
+        ipmroutenexthopstate.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteNextHopUpTime")
+    {
+        ipmroutenexthopuptime.yfilter = yfilter;
+    }
+}
+
+bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteNextHopGroup" || name == "ipMRouteNextHopSource" || name == "ipMRouteNextHopSourceMask" || name == "ipMRouteNextHopIfIndex" || name == "ipMRouteNextHopAddress" || name == "ciscoIpMRouteNextHopMacHdr" || name == "ciscoIpMRouteNextHopOutLimit" || name == "ciscoIpMRouteNextHopPkts" || name == "ipMRouteNextHopClosestMemberHops" || name == "ipMRouteNextHopExpiryTime" || name == "ipMRouteNextHopPkts" || name == "ipMRouteNextHopProtocol" || name == "ipMRouteNextHopState" || name == "ipMRouteNextHopUpTime")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenametable()
+{
+
+    yang_name = "ipMRouteScopeNameTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmroutescopenametable::~Ipmroutescopenametable()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::has_data() const
+{
+    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    {
+        if(ipmroutescopenameentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::has_operation() const
+{
+    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    {
+        if(ipmroutescopenameentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmroutescopenametable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutescopenametable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteScopeNameTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopenametable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipMRouteScopeNameEntry")
+    {
+        for(auto const & c : ipmroutescopenameentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry>();
+        c->parent = this;
+        ipmroutescopenameentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ipmroutescopenameentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmroutescopenametable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IPMROUTESTDMIB::Ipmroutescopenametable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteScopeNameEntry")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::Ipmroutescopenameentry()
+    :
+    ipmroutescopenameaddress{YType::str, "ipMRouteScopeNameAddress"},
+    ipmroutescopenameaddressmask{YType::str, "ipMRouteScopeNameAddressMask"},
+    ipmroutescopenamelanguage{YType::str, "ipMRouteScopeNameLanguage"},
+    ipmroutescopenamedefault{YType::boolean, "ipMRouteScopeNameDefault"},
+    ipmroutescopenamestatus{YType::enumeration, "ipMRouteScopeNameStatus"},
+    ipmroutescopenamestring{YType::str, "ipMRouteScopeNameString"}
+{
+
+    yang_name = "ipMRouteScopeNameEntry"; yang_parent_name = "ipMRouteScopeNameTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::~Ipmroutescopenameentry()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_data() const
+{
+    return ipmroutescopenameaddress.is_set
+	|| ipmroutescopenameaddressmask.is_set
+	|| ipmroutescopenamelanguage.is_set
+	|| ipmroutescopenamedefault.is_set
+	|| ipmroutescopenamestatus.is_set
+	|| ipmroutescopenamestring.is_set;
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipmroutescopenameaddress.yfilter)
+	|| ydk::is_set(ipmroutescopenameaddressmask.yfilter)
+	|| ydk::is_set(ipmroutescopenamelanguage.yfilter)
+	|| ydk::is_set(ipmroutescopenamedefault.yfilter)
+	|| ydk::is_set(ipmroutescopenamestatus.yfilter)
+	|| ydk::is_set(ipmroutescopenamestring.yfilter);
+}
+
+std::string IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteScopeNameTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipMRouteScopeNameEntry" <<"[ipMRouteScopeNameAddress='" <<ipmroutescopenameaddress <<"']" <<"[ipMRouteScopeNameAddressMask='" <<ipmroutescopenameaddressmask <<"']" <<"[ipMRouteScopeNameLanguage='" <<ipmroutescopenamelanguage <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipmroutescopenameaddress.is_set || is_set(ipmroutescopenameaddress.yfilter)) leaf_name_data.push_back(ipmroutescopenameaddress.get_name_leafdata());
+    if (ipmroutescopenameaddressmask.is_set || is_set(ipmroutescopenameaddressmask.yfilter)) leaf_name_data.push_back(ipmroutescopenameaddressmask.get_name_leafdata());
+    if (ipmroutescopenamelanguage.is_set || is_set(ipmroutescopenamelanguage.yfilter)) leaf_name_data.push_back(ipmroutescopenamelanguage.get_name_leafdata());
+    if (ipmroutescopenamedefault.is_set || is_set(ipmroutescopenamedefault.yfilter)) leaf_name_data.push_back(ipmroutescopenamedefault.get_name_leafdata());
+    if (ipmroutescopenamestatus.is_set || is_set(ipmroutescopenamestatus.yfilter)) leaf_name_data.push_back(ipmroutescopenamestatus.get_name_leafdata());
+    if (ipmroutescopenamestring.is_set || is_set(ipmroutescopenamestring.yfilter)) leaf_name_data.push_back(ipmroutescopenamestring.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipMRouteScopeNameAddress")
+    {
+        ipmroutescopenameaddress = value;
+        ipmroutescopenameaddress.value_namespace = name_space;
+        ipmroutescopenameaddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteScopeNameAddressMask")
+    {
+        ipmroutescopenameaddressmask = value;
+        ipmroutescopenameaddressmask.value_namespace = name_space;
+        ipmroutescopenameaddressmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteScopeNameLanguage")
+    {
+        ipmroutescopenamelanguage = value;
+        ipmroutescopenamelanguage.value_namespace = name_space;
+        ipmroutescopenamelanguage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteScopeNameDefault")
+    {
+        ipmroutescopenamedefault = value;
+        ipmroutescopenamedefault.value_namespace = name_space;
+        ipmroutescopenamedefault.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteScopeNameStatus")
+    {
+        ipmroutescopenamestatus = value;
+        ipmroutescopenamestatus.value_namespace = name_space;
+        ipmroutescopenamestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipMRouteScopeNameString")
+    {
+        ipmroutescopenamestring = value;
+        ipmroutescopenamestring.value_namespace = name_space;
+        ipmroutescopenamestring.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipMRouteScopeNameAddress")
+    {
+        ipmroutescopenameaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteScopeNameAddressMask")
+    {
+        ipmroutescopenameaddressmask.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteScopeNameLanguage")
+    {
+        ipmroutescopenamelanguage.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteScopeNameDefault")
+    {
+        ipmroutescopenamedefault.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteScopeNameStatus")
+    {
+        ipmroutescopenamestatus.yfilter = yfilter;
+    }
+    if(value_path == "ipMRouteScopeNameString")
+    {
+        ipmroutescopenamestring.yfilter = yfilter;
+    }
+}
+
+bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipMRouteScopeNameAddress" || name == "ipMRouteScopeNameAddressMask" || name == "ipMRouteScopeNameLanguage" || name == "ipMRouteScopeNameDefault" || name == "ipMRouteScopeNameStatus" || name == "ipMRouteScopeNameString")
+        return true;
+    return false;
+}
+
+IPMROUTESTDMIB::Ipmroutetable::Ipmroutetable()
+{
+
+    yang_name = "ipMRouteTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IPMROUTESTDMIB::Ipmroutetable::~Ipmroutetable()
+{
+}
+
+bool IPMROUTESTDMIB::Ipmroutetable::has_data() const
 {
     for (std::size_t index=0; index<ipmrouteentry.size(); index++)
     {
@@ -344,7 +1531,7 @@ bool IpmrouteStdMib::Ipmroutetable::has_data() const
     return false;
 }
 
-bool IpmrouteStdMib::Ipmroutetable::has_operation() const
+bool IPMROUTESTDMIB::Ipmroutetable::has_operation() const
 {
     for (std::size_t index=0; index<ipmrouteentry.size(); index++)
     {
@@ -354,37 +1541,30 @@ bool IpmrouteStdMib::Ipmroutetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IpmrouteStdMib::Ipmroutetable::get_segment_path() const
+std::string IPMROUTESTDMIB::Ipmroutetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpmrouteStdMib::Ipmroutetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteEntry")
     {
@@ -396,7 +1576,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const s
                 return c;
             }
         }
-        auto c = std::make_shared<IpmrouteStdMib::Ipmroutetable::Ipmrouteentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry>();
         c->parent = this;
         ipmrouteentry.push_back(c);
         return c;
@@ -405,7 +1585,7 @@ std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ipmrouteentry)
@@ -416,22 +1596,22 @@ std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutetable::ge
     return children;
 }
 
-void IpmrouteStdMib::Ipmroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::Ipmroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IpmrouteStdMib::Ipmroutetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::Ipmroutetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IpmrouteStdMib::Ipmroutetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::Ipmroutetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteEntry")
         return true;
     return false;
 }
 
-IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::Ipmrouteentry()
+IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouteentry()
     :
     ipmroutegroup{YType::str, "ipMRouteGroup"},
     ipmroutesource{YType::str, "ipMRouteSource"},
@@ -471,14 +1651,15 @@ IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::Ipmrouteentry()
     ipmrouteupstreamneighbor{YType::str, "ipMRouteUpstreamNeighbor"},
     ipmrouteuptime{YType::uint32, "ipMRouteUpTime"}
 {
-    yang_name = "ipMRouteEntry"; yang_parent_name = "ipMRouteTable";
+
+    yang_name = "ipMRouteEntry"; yang_parent_name = "ipMRouteTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::~Ipmrouteentry()
+IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::~Ipmrouteentry()
 {
 }
 
-bool IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::has_data() const
+bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_data() const
 {
     return ipmroutegroup.is_set
 	|| ipmroutesource.is_set
@@ -519,7 +1700,7 @@ bool IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::has_data() const
 	|| ipmrouteuptime.is_set;
 }
 
-bool IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::has_operation() const
+bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutegroup.yfilter)
@@ -561,27 +1742,22 @@ bool IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::has_operation() const
 	|| ydk::is_set(ipmrouteuptime.yfilter);
 }
 
-std::string IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::get_segment_path() const
+std::string IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteEntry" <<"[ipMRouteGroup='" <<ipmroutegroup <<"']" <<"[ipMRouteSource='" <<ipmroutesource <<"']" <<"[ipMRouteSourceMask='" <<ipmroutesourcemask <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipmroutegroup.is_set || is_set(ipmroutegroup.yfilter)) leaf_name_data.push_back(ipmroutegroup.get_name_leafdata());
@@ -622,24 +1798,22 @@ const EntityPath IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::get_entity_path(E
     if (ipmrouteupstreamneighbor.is_set || is_set(ipmrouteupstreamneighbor.yfilter)) leaf_name_data.push_back(ipmrouteupstreamneighbor.get_name_leafdata());
     if (ipmrouteuptime.is_set || is_set(ipmrouteuptime.yfilter)) leaf_name_data.push_back(ipmrouteuptime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -865,7 +2039,7 @@ void IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::set_value(const std::string &
     }
 }
 
-void IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -1017,1277 +2191,21 @@ void IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::set_filter(const std::string 
     }
 }
 
-bool IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteGroup" || name == "ipMRouteSource" || name == "ipMRouteSourceMask" || name == "ciscoIpMRouteBps" || name == "ciscoIpMRouteBps2" || name == "ciscoIpMRouteConnectedFlag" || name == "ciscoIpMRouteDifferentInIfPkts" || name == "ciscoIpMRouteInLimit" || name == "ciscoIpMRouteInLimit2" || name == "ciscoIpMRouteJoinFlag" || name == "ciscoIpMRouteLastUsed" || name == "ciscoIpMRouteLocalFlag" || name == "ciscoIpMRouteMetric" || name == "ciscoIpMRouteMetric2" || name == "ciscoIpMRouteMetricPreference" || name == "ciscoIpMRouteMsdpFlag" || name == "ciscoIpMRouteOctets" || name == "ciscoIpMRoutePkts" || name == "ciscoIpMRouteProxyJoinFlag" || name == "ciscoIpMRoutePruneFlag" || name == "ciscoIpMRouteRegisterFlag" || name == "ciscoIpMRouteRpFlag" || name == "ciscoIpMRouteSparseFlag" || name == "ciscoIpMRouteSptFlag" || name == "ipMRouteDifferentInIfPackets" || name == "ipMRouteExpiryTime" || name == "ipMRouteHCOctets" || name == "ipMRouteInIfIndex" || name == "ipMRouteOctets" || name == "ipMRoutePkts" || name == "ipMRouteProtocol" || name == "ipMRouteRtAddress" || name == "ipMRouteRtMask" || name == "ipMRouteRtProto" || name == "ipMRouteRtType" || name == "ipMRouteUpstreamNeighbor" || name == "ipMRouteUpTime")
         return true;
     return false;
 }
 
-IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthoptable()
-{
-    yang_name = "ipMRouteNextHopTable"; yang_parent_name = "IPMROUTE-STD-MIB";
-}
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroute::Ipmrouteenable::enabled {1, "enabled"};
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroute::Ipmrouteenable::disabled {2, "disabled"};
 
-IpmrouteStdMib::Ipmroutenexthoptable::~Ipmroutenexthoptable()
-{
-}
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::pruned {1, "pruned"};
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::forwarding {2, "forwarding"};
 
-bool IpmrouteStdMib::Ipmroutenexthoptable::has_data() const
-{
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
-    {
-        if(ipmroutenexthopentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IpmrouteStdMib::Ipmroutenexthoptable::has_operation() const
-{
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
-    {
-        if(ipmroutenexthopentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmroutenexthoptable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteNextHopTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmroutenexthoptable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutenexthoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipMRouteNextHopEntry")
-    {
-        for(auto const & c : ipmroutenexthopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry>();
-        c->parent = this;
-        ipmroutenexthopentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutenexthoptable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmroutenexthopentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IpmrouteStdMib::Ipmroutenexthoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpmrouteStdMib::Ipmroutenexthoptable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpmrouteStdMib::Ipmroutenexthoptable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteNextHopEntry")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopentry()
-    :
-    ipmroutenexthopgroup{YType::str, "ipMRouteNextHopGroup"},
-    ipmroutenexthopsource{YType::str, "ipMRouteNextHopSource"},
-    ipmroutenexthopsourcemask{YType::str, "ipMRouteNextHopSourceMask"},
-    ipmroutenexthopifindex{YType::int32, "ipMRouteNextHopIfIndex"},
-    ipmroutenexthopaddress{YType::str, "ipMRouteNextHopAddress"},
-    ciscoipmroutenexthopmachdr{YType::str, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopMacHdr"},
-    ciscoipmroutenexthopoutlimit{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopOutLimit"},
-    ciscoipmroutenexthoppkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopPkts"},
-    ipmroutenexthopclosestmemberhops{YType::int32, "ipMRouteNextHopClosestMemberHops"},
-    ipmroutenexthopexpirytime{YType::uint32, "ipMRouteNextHopExpiryTime"},
-    ipmroutenexthoppkts{YType::uint32, "ipMRouteNextHopPkts"},
-    ipmroutenexthopprotocol{YType::enumeration, "ipMRouteNextHopProtocol"},
-    ipmroutenexthopstate{YType::enumeration, "ipMRouteNextHopState"},
-    ipmroutenexthopuptime{YType::uint32, "ipMRouteNextHopUpTime"}
-{
-    yang_name = "ipMRouteNextHopEntry"; yang_parent_name = "ipMRouteNextHopTable";
-}
-
-IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::~Ipmroutenexthopentry()
-{
-}
-
-bool IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::has_data() const
-{
-    return ipmroutenexthopgroup.is_set
-	|| ipmroutenexthopsource.is_set
-	|| ipmroutenexthopsourcemask.is_set
-	|| ipmroutenexthopifindex.is_set
-	|| ipmroutenexthopaddress.is_set
-	|| ciscoipmroutenexthopmachdr.is_set
-	|| ciscoipmroutenexthopoutlimit.is_set
-	|| ciscoipmroutenexthoppkts.is_set
-	|| ipmroutenexthopclosestmemberhops.is_set
-	|| ipmroutenexthopexpirytime.is_set
-	|| ipmroutenexthoppkts.is_set
-	|| ipmroutenexthopprotocol.is_set
-	|| ipmroutenexthopstate.is_set
-	|| ipmroutenexthopuptime.is_set;
-}
-
-bool IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipmroutenexthopgroup.yfilter)
-	|| ydk::is_set(ipmroutenexthopsource.yfilter)
-	|| ydk::is_set(ipmroutenexthopsourcemask.yfilter)
-	|| ydk::is_set(ipmroutenexthopifindex.yfilter)
-	|| ydk::is_set(ipmroutenexthopaddress.yfilter)
-	|| ydk::is_set(ciscoipmroutenexthopmachdr.yfilter)
-	|| ydk::is_set(ciscoipmroutenexthopoutlimit.yfilter)
-	|| ydk::is_set(ciscoipmroutenexthoppkts.yfilter)
-	|| ydk::is_set(ipmroutenexthopclosestmemberhops.yfilter)
-	|| ydk::is_set(ipmroutenexthopexpirytime.yfilter)
-	|| ydk::is_set(ipmroutenexthoppkts.yfilter)
-	|| ydk::is_set(ipmroutenexthopprotocol.yfilter)
-	|| ydk::is_set(ipmroutenexthopstate.yfilter)
-	|| ydk::is_set(ipmroutenexthopuptime.yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteNextHopEntry" <<"[ipMRouteNextHopGroup='" <<ipmroutenexthopgroup <<"']" <<"[ipMRouteNextHopSource='" <<ipmroutenexthopsource <<"']" <<"[ipMRouteNextHopSourceMask='" <<ipmroutenexthopsourcemask <<"']" <<"[ipMRouteNextHopIfIndex='" <<ipmroutenexthopifindex <<"']" <<"[ipMRouteNextHopAddress='" <<ipmroutenexthopaddress <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteNextHopTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipmroutenexthopgroup.is_set || is_set(ipmroutenexthopgroup.yfilter)) leaf_name_data.push_back(ipmroutenexthopgroup.get_name_leafdata());
-    if (ipmroutenexthopsource.is_set || is_set(ipmroutenexthopsource.yfilter)) leaf_name_data.push_back(ipmroutenexthopsource.get_name_leafdata());
-    if (ipmroutenexthopsourcemask.is_set || is_set(ipmroutenexthopsourcemask.yfilter)) leaf_name_data.push_back(ipmroutenexthopsourcemask.get_name_leafdata());
-    if (ipmroutenexthopifindex.is_set || is_set(ipmroutenexthopifindex.yfilter)) leaf_name_data.push_back(ipmroutenexthopifindex.get_name_leafdata());
-    if (ipmroutenexthopaddress.is_set || is_set(ipmroutenexthopaddress.yfilter)) leaf_name_data.push_back(ipmroutenexthopaddress.get_name_leafdata());
-    if (ciscoipmroutenexthopmachdr.is_set || is_set(ciscoipmroutenexthopmachdr.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthopmachdr.get_name_leafdata());
-    if (ciscoipmroutenexthopoutlimit.is_set || is_set(ciscoipmroutenexthopoutlimit.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthopoutlimit.get_name_leafdata());
-    if (ciscoipmroutenexthoppkts.is_set || is_set(ciscoipmroutenexthoppkts.yfilter)) leaf_name_data.push_back(ciscoipmroutenexthoppkts.get_name_leafdata());
-    if (ipmroutenexthopclosestmemberhops.is_set || is_set(ipmroutenexthopclosestmemberhops.yfilter)) leaf_name_data.push_back(ipmroutenexthopclosestmemberhops.get_name_leafdata());
-    if (ipmroutenexthopexpirytime.is_set || is_set(ipmroutenexthopexpirytime.yfilter)) leaf_name_data.push_back(ipmroutenexthopexpirytime.get_name_leafdata());
-    if (ipmroutenexthoppkts.is_set || is_set(ipmroutenexthoppkts.yfilter)) leaf_name_data.push_back(ipmroutenexthoppkts.get_name_leafdata());
-    if (ipmroutenexthopprotocol.is_set || is_set(ipmroutenexthopprotocol.yfilter)) leaf_name_data.push_back(ipmroutenexthopprotocol.get_name_leafdata());
-    if (ipmroutenexthopstate.is_set || is_set(ipmroutenexthopstate.yfilter)) leaf_name_data.push_back(ipmroutenexthopstate.get_name_leafdata());
-    if (ipmroutenexthopuptime.is_set || is_set(ipmroutenexthopuptime.yfilter)) leaf_name_data.push_back(ipmroutenexthopuptime.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipMRouteNextHopGroup")
-    {
-        ipmroutenexthopgroup = value;
-        ipmroutenexthopgroup.value_namespace = name_space;
-        ipmroutenexthopgroup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopSource")
-    {
-        ipmroutenexthopsource = value;
-        ipmroutenexthopsource.value_namespace = name_space;
-        ipmroutenexthopsource.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopSourceMask")
-    {
-        ipmroutenexthopsourcemask = value;
-        ipmroutenexthopsourcemask.value_namespace = name_space;
-        ipmroutenexthopsourcemask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopIfIndex")
-    {
-        ipmroutenexthopifindex = value;
-        ipmroutenexthopifindex.value_namespace = name_space;
-        ipmroutenexthopifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopAddress")
-    {
-        ipmroutenexthopaddress = value;
-        ipmroutenexthopaddress.value_namespace = name_space;
-        ipmroutenexthopaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteNextHopMacHdr")
-    {
-        ciscoipmroutenexthopmachdr = value;
-        ciscoipmroutenexthopmachdr.value_namespace = name_space;
-        ciscoipmroutenexthopmachdr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteNextHopOutLimit")
-    {
-        ciscoipmroutenexthopoutlimit = value;
-        ciscoipmroutenexthopoutlimit.value_namespace = name_space;
-        ciscoipmroutenexthopoutlimit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteNextHopPkts")
-    {
-        ciscoipmroutenexthoppkts = value;
-        ciscoipmroutenexthoppkts.value_namespace = name_space;
-        ciscoipmroutenexthoppkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopClosestMemberHops")
-    {
-        ipmroutenexthopclosestmemberhops = value;
-        ipmroutenexthopclosestmemberhops.value_namespace = name_space;
-        ipmroutenexthopclosestmemberhops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopExpiryTime")
-    {
-        ipmroutenexthopexpirytime = value;
-        ipmroutenexthopexpirytime.value_namespace = name_space;
-        ipmroutenexthopexpirytime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopPkts")
-    {
-        ipmroutenexthoppkts = value;
-        ipmroutenexthoppkts.value_namespace = name_space;
-        ipmroutenexthoppkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopProtocol")
-    {
-        ipmroutenexthopprotocol = value;
-        ipmroutenexthopprotocol.value_namespace = name_space;
-        ipmroutenexthopprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopState")
-    {
-        ipmroutenexthopstate = value;
-        ipmroutenexthopstate.value_namespace = name_space;
-        ipmroutenexthopstate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteNextHopUpTime")
-    {
-        ipmroutenexthopuptime = value;
-        ipmroutenexthopuptime.value_namespace = name_space;
-        ipmroutenexthopuptime.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipMRouteNextHopGroup")
-    {
-        ipmroutenexthopgroup.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopSource")
-    {
-        ipmroutenexthopsource.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopSourceMask")
-    {
-        ipmroutenexthopsourcemask.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopIfIndex")
-    {
-        ipmroutenexthopifindex.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopAddress")
-    {
-        ipmroutenexthopaddress.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteNextHopMacHdr")
-    {
-        ciscoipmroutenexthopmachdr.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteNextHopOutLimit")
-    {
-        ciscoipmroutenexthopoutlimit.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteNextHopPkts")
-    {
-        ciscoipmroutenexthoppkts.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopClosestMemberHops")
-    {
-        ipmroutenexthopclosestmemberhops.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopExpiryTime")
-    {
-        ipmroutenexthopexpirytime.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopPkts")
-    {
-        ipmroutenexthoppkts.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopProtocol")
-    {
-        ipmroutenexthopprotocol.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopState")
-    {
-        ipmroutenexthopstate.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteNextHopUpTime")
-    {
-        ipmroutenexthopuptime.yfilter = yfilter;
-    }
-}
-
-bool IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteNextHopGroup" || name == "ipMRouteNextHopSource" || name == "ipMRouteNextHopSourceMask" || name == "ipMRouteNextHopIfIndex" || name == "ipMRouteNextHopAddress" || name == "ciscoIpMRouteNextHopMacHdr" || name == "ciscoIpMRouteNextHopOutLimit" || name == "ciscoIpMRouteNextHopPkts" || name == "ipMRouteNextHopClosestMemberHops" || name == "ipMRouteNextHopExpiryTime" || name == "ipMRouteNextHopPkts" || name == "ipMRouteNextHopProtocol" || name == "ipMRouteNextHopState" || name == "ipMRouteNextHopUpTime")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfacetable()
-{
-    yang_name = "ipMRouteInterfaceTable"; yang_parent_name = "IPMROUTE-STD-MIB";
-}
-
-IpmrouteStdMib::Ipmrouteinterfacetable::~Ipmrouteinterfacetable()
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::has_data() const
-{
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
-    {
-        if(ipmrouteinterfaceentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::has_operation() const
-{
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
-    {
-        if(ipmrouteinterfaceentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmrouteinterfacetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteInterfaceTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmrouteinterfacetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipMRouteInterfaceEntry")
-    {
-        for(auto const & c : ipmrouteinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry>();
-        c->parent = this;
-        ipmrouteinterfaceentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteinterfacetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmrouteinterfaceentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IpmrouteStdMib::Ipmrouteinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpmrouteStdMib::Ipmrouteinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteInterfaceEntry")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::Ipmrouteinterfaceentry()
-    :
-    ipmrouteinterfaceifindex{YType::int32, "ipMRouteInterfaceIfIndex"},
-    ciscoipmrouteifhcinmcastpkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCInMcastPkts"},
-    ciscoipmrouteifhcoutmcastpkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCOutMcastPkts"},
-    ciscoipmrouteifinmcastoctets{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastOctets"},
-    ciscoipmrouteifinmcastpkts{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfInMcastPkts"},
-    ciscoipmrouteifoutmcastoctets{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastOctets"},
-    ciscoipmrouteifoutmcastpkts{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfOutMcastPkts"},
-    ipmrouteinterfacehcinmcastoctets{YType::uint64, "ipMRouteInterfaceHCInMcastOctets"},
-    ipmrouteinterfacehcoutmcastoctets{YType::uint64, "ipMRouteInterfaceHCOutMcastOctets"},
-    ipmrouteinterfaceinmcastoctets{YType::uint32, "ipMRouteInterfaceInMcastOctets"},
-    ipmrouteinterfaceoutmcastoctets{YType::uint32, "ipMRouteInterfaceOutMcastOctets"},
-    ipmrouteinterfaceprotocol{YType::enumeration, "ipMRouteInterfaceProtocol"},
-    ipmrouteinterfaceratelimit{YType::int32, "ipMRouteInterfaceRateLimit"},
-    ipmrouteinterfacettl{YType::int32, "ipMRouteInterfaceTtl"}
-{
-    yang_name = "ipMRouteInterfaceEntry"; yang_parent_name = "ipMRouteInterfaceTable";
-}
-
-IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::~Ipmrouteinterfaceentry()
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_data() const
-{
-    return ipmrouteinterfaceifindex.is_set
-	|| ciscoipmrouteifhcinmcastpkts.is_set
-	|| ciscoipmrouteifhcoutmcastpkts.is_set
-	|| ciscoipmrouteifinmcastoctets.is_set
-	|| ciscoipmrouteifinmcastpkts.is_set
-	|| ciscoipmrouteifoutmcastoctets.is_set
-	|| ciscoipmrouteifoutmcastpkts.is_set
-	|| ipmrouteinterfacehcinmcastoctets.is_set
-	|| ipmrouteinterfacehcoutmcastoctets.is_set
-	|| ipmrouteinterfaceinmcastoctets.is_set
-	|| ipmrouteinterfaceoutmcastoctets.is_set
-	|| ipmrouteinterfaceprotocol.is_set
-	|| ipmrouteinterfaceratelimit.is_set
-	|| ipmrouteinterfacettl.is_set;
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipmrouteinterfaceifindex.yfilter)
-	|| ydk::is_set(ciscoipmrouteifhcinmcastpkts.yfilter)
-	|| ydk::is_set(ciscoipmrouteifhcoutmcastpkts.yfilter)
-	|| ydk::is_set(ciscoipmrouteifinmcastoctets.yfilter)
-	|| ydk::is_set(ciscoipmrouteifinmcastpkts.yfilter)
-	|| ydk::is_set(ciscoipmrouteifoutmcastoctets.yfilter)
-	|| ydk::is_set(ciscoipmrouteifoutmcastpkts.yfilter)
-	|| ydk::is_set(ipmrouteinterfacehcinmcastoctets.yfilter)
-	|| ydk::is_set(ipmrouteinterfacehcoutmcastoctets.yfilter)
-	|| ydk::is_set(ipmrouteinterfaceinmcastoctets.yfilter)
-	|| ydk::is_set(ipmrouteinterfaceoutmcastoctets.yfilter)
-	|| ydk::is_set(ipmrouteinterfaceprotocol.yfilter)
-	|| ydk::is_set(ipmrouteinterfaceratelimit.yfilter)
-	|| ydk::is_set(ipmrouteinterfacettl.yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteInterfaceEntry" <<"[ipMRouteInterfaceIfIndex='" <<ipmrouteinterfaceifindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteInterfaceTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipmrouteinterfaceifindex.is_set || is_set(ipmrouteinterfaceifindex.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceifindex.get_name_leafdata());
-    if (ciscoipmrouteifhcinmcastpkts.is_set || is_set(ciscoipmrouteifhcinmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifhcinmcastpkts.get_name_leafdata());
-    if (ciscoipmrouteifhcoutmcastpkts.is_set || is_set(ciscoipmrouteifhcoutmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifhcoutmcastpkts.get_name_leafdata());
-    if (ciscoipmrouteifinmcastoctets.is_set || is_set(ciscoipmrouteifinmcastoctets.yfilter)) leaf_name_data.push_back(ciscoipmrouteifinmcastoctets.get_name_leafdata());
-    if (ciscoipmrouteifinmcastpkts.is_set || is_set(ciscoipmrouteifinmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifinmcastpkts.get_name_leafdata());
-    if (ciscoipmrouteifoutmcastoctets.is_set || is_set(ciscoipmrouteifoutmcastoctets.yfilter)) leaf_name_data.push_back(ciscoipmrouteifoutmcastoctets.get_name_leafdata());
-    if (ciscoipmrouteifoutmcastpkts.is_set || is_set(ciscoipmrouteifoutmcastpkts.yfilter)) leaf_name_data.push_back(ciscoipmrouteifoutmcastpkts.get_name_leafdata());
-    if (ipmrouteinterfacehcinmcastoctets.is_set || is_set(ipmrouteinterfacehcinmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfacehcinmcastoctets.get_name_leafdata());
-    if (ipmrouteinterfacehcoutmcastoctets.is_set || is_set(ipmrouteinterfacehcoutmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfacehcoutmcastoctets.get_name_leafdata());
-    if (ipmrouteinterfaceinmcastoctets.is_set || is_set(ipmrouteinterfaceinmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceinmcastoctets.get_name_leafdata());
-    if (ipmrouteinterfaceoutmcastoctets.is_set || is_set(ipmrouteinterfaceoutmcastoctets.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceoutmcastoctets.get_name_leafdata());
-    if (ipmrouteinterfaceprotocol.is_set || is_set(ipmrouteinterfaceprotocol.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceprotocol.get_name_leafdata());
-    if (ipmrouteinterfaceratelimit.is_set || is_set(ipmrouteinterfaceratelimit.yfilter)) leaf_name_data.push_back(ipmrouteinterfaceratelimit.get_name_leafdata());
-    if (ipmrouteinterfacettl.is_set || is_set(ipmrouteinterfacettl.yfilter)) leaf_name_data.push_back(ipmrouteinterfacettl.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipMRouteInterfaceIfIndex")
-    {
-        ipmrouteinterfaceifindex = value;
-        ipmrouteinterfaceifindex.value_namespace = name_space;
-        ipmrouteinterfaceifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfHCInMcastPkts")
-    {
-        ciscoipmrouteifhcinmcastpkts = value;
-        ciscoipmrouteifhcinmcastpkts.value_namespace = name_space;
-        ciscoipmrouteifhcinmcastpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfHCOutMcastPkts")
-    {
-        ciscoipmrouteifhcoutmcastpkts = value;
-        ciscoipmrouteifhcoutmcastpkts.value_namespace = name_space;
-        ciscoipmrouteifhcoutmcastpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfInMcastOctets")
-    {
-        ciscoipmrouteifinmcastoctets = value;
-        ciscoipmrouteifinmcastoctets.value_namespace = name_space;
-        ciscoipmrouteifinmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfInMcastPkts")
-    {
-        ciscoipmrouteifinmcastpkts = value;
-        ciscoipmrouteifinmcastpkts.value_namespace = name_space;
-        ciscoipmrouteifinmcastpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfOutMcastOctets")
-    {
-        ciscoipmrouteifoutmcastoctets = value;
-        ciscoipmrouteifoutmcastoctets.value_namespace = name_space;
-        ciscoipmrouteifoutmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ciscoIpMRouteIfOutMcastPkts")
-    {
-        ciscoipmrouteifoutmcastpkts = value;
-        ciscoipmrouteifoutmcastpkts.value_namespace = name_space;
-        ciscoipmrouteifoutmcastpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceHCInMcastOctets")
-    {
-        ipmrouteinterfacehcinmcastoctets = value;
-        ipmrouteinterfacehcinmcastoctets.value_namespace = name_space;
-        ipmrouteinterfacehcinmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceHCOutMcastOctets")
-    {
-        ipmrouteinterfacehcoutmcastoctets = value;
-        ipmrouteinterfacehcoutmcastoctets.value_namespace = name_space;
-        ipmrouteinterfacehcoutmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceInMcastOctets")
-    {
-        ipmrouteinterfaceinmcastoctets = value;
-        ipmrouteinterfaceinmcastoctets.value_namespace = name_space;
-        ipmrouteinterfaceinmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceOutMcastOctets")
-    {
-        ipmrouteinterfaceoutmcastoctets = value;
-        ipmrouteinterfaceoutmcastoctets.value_namespace = name_space;
-        ipmrouteinterfaceoutmcastoctets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceProtocol")
-    {
-        ipmrouteinterfaceprotocol = value;
-        ipmrouteinterfaceprotocol.value_namespace = name_space;
-        ipmrouteinterfaceprotocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceRateLimit")
-    {
-        ipmrouteinterfaceratelimit = value;
-        ipmrouteinterfaceratelimit.value_namespace = name_space;
-        ipmrouteinterfaceratelimit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteInterfaceTtl")
-    {
-        ipmrouteinterfacettl = value;
-        ipmrouteinterfacettl.value_namespace = name_space;
-        ipmrouteinterfacettl.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipMRouteInterfaceIfIndex")
-    {
-        ipmrouteinterfaceifindex.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfHCInMcastPkts")
-    {
-        ciscoipmrouteifhcinmcastpkts.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfHCOutMcastPkts")
-    {
-        ciscoipmrouteifhcoutmcastpkts.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfInMcastOctets")
-    {
-        ciscoipmrouteifinmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfInMcastPkts")
-    {
-        ciscoipmrouteifinmcastpkts.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfOutMcastOctets")
-    {
-        ciscoipmrouteifoutmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ciscoIpMRouteIfOutMcastPkts")
-    {
-        ciscoipmrouteifoutmcastpkts.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceHCInMcastOctets")
-    {
-        ipmrouteinterfacehcinmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceHCOutMcastOctets")
-    {
-        ipmrouteinterfacehcoutmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceInMcastOctets")
-    {
-        ipmrouteinterfaceinmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceOutMcastOctets")
-    {
-        ipmrouteinterfaceoutmcastoctets.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceProtocol")
-    {
-        ipmrouteinterfaceprotocol.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceRateLimit")
-    {
-        ipmrouteinterfaceratelimit.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteInterfaceTtl")
-    {
-        ipmrouteinterfacettl.yfilter = yfilter;
-    }
-}
-
-bool IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteInterfaceIfIndex" || name == "ciscoIpMRouteIfHCInMcastPkts" || name == "ciscoIpMRouteIfHCOutMcastPkts" || name == "ciscoIpMRouteIfInMcastOctets" || name == "ciscoIpMRouteIfInMcastPkts" || name == "ciscoIpMRouteIfOutMcastOctets" || name == "ciscoIpMRouteIfOutMcastPkts" || name == "ipMRouteInterfaceHCInMcastOctets" || name == "ipMRouteInterfaceHCOutMcastOctets" || name == "ipMRouteInterfaceInMcastOctets" || name == "ipMRouteInterfaceOutMcastOctets" || name == "ipMRouteInterfaceProtocol" || name == "ipMRouteInterfaceRateLimit" || name == "ipMRouteInterfaceTtl")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundarytable()
-{
-    yang_name = "ipMRouteBoundaryTable"; yang_parent_name = "IPMROUTE-STD-MIB";
-}
-
-IpmrouteStdMib::Ipmrouteboundarytable::~Ipmrouteboundarytable()
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::has_data() const
-{
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
-    {
-        if(ipmrouteboundaryentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::has_operation() const
-{
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
-    {
-        if(ipmrouteboundaryentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmrouteboundarytable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteBoundaryTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmrouteboundarytable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteboundarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipMRouteBoundaryEntry")
-    {
-        for(auto const & c : ipmrouteboundaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry>();
-        c->parent = this;
-        ipmrouteboundaryentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteboundarytable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmrouteboundaryentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IpmrouteStdMib::Ipmrouteboundarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpmrouteStdMib::Ipmrouteboundarytable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteBoundaryEntry")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::Ipmrouteboundaryentry()
-    :
-    ipmrouteboundaryifindex{YType::int32, "ipMRouteBoundaryIfIndex"},
-    ipmrouteboundaryaddress{YType::str, "ipMRouteBoundaryAddress"},
-    ipmrouteboundaryaddressmask{YType::str, "ipMRouteBoundaryAddressMask"},
-    ipmrouteboundarystatus{YType::enumeration, "ipMRouteBoundaryStatus"}
-{
-    yang_name = "ipMRouteBoundaryEntry"; yang_parent_name = "ipMRouteBoundaryTable";
-}
-
-IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::~Ipmrouteboundaryentry()
-{
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_data() const
-{
-    return ipmrouteboundaryifindex.is_set
-	|| ipmrouteboundaryaddress.is_set
-	|| ipmrouteboundaryaddressmask.is_set
-	|| ipmrouteboundarystatus.is_set;
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipmrouteboundaryifindex.yfilter)
-	|| ydk::is_set(ipmrouteboundaryaddress.yfilter)
-	|| ydk::is_set(ipmrouteboundaryaddressmask.yfilter)
-	|| ydk::is_set(ipmrouteboundarystatus.yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteBoundaryEntry" <<"[ipMRouteBoundaryIfIndex='" <<ipmrouteboundaryifindex <<"']" <<"[ipMRouteBoundaryAddress='" <<ipmrouteboundaryaddress <<"']" <<"[ipMRouteBoundaryAddressMask='" <<ipmrouteboundaryaddressmask <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteBoundaryTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipmrouteboundaryifindex.is_set || is_set(ipmrouteboundaryifindex.yfilter)) leaf_name_data.push_back(ipmrouteboundaryifindex.get_name_leafdata());
-    if (ipmrouteboundaryaddress.is_set || is_set(ipmrouteboundaryaddress.yfilter)) leaf_name_data.push_back(ipmrouteboundaryaddress.get_name_leafdata());
-    if (ipmrouteboundaryaddressmask.is_set || is_set(ipmrouteboundaryaddressmask.yfilter)) leaf_name_data.push_back(ipmrouteboundaryaddressmask.get_name_leafdata());
-    if (ipmrouteboundarystatus.is_set || is_set(ipmrouteboundarystatus.yfilter)) leaf_name_data.push_back(ipmrouteboundarystatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipMRouteBoundaryIfIndex")
-    {
-        ipmrouteboundaryifindex = value;
-        ipmrouteboundaryifindex.value_namespace = name_space;
-        ipmrouteboundaryifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteBoundaryAddress")
-    {
-        ipmrouteboundaryaddress = value;
-        ipmrouteboundaryaddress.value_namespace = name_space;
-        ipmrouteboundaryaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteBoundaryAddressMask")
-    {
-        ipmrouteboundaryaddressmask = value;
-        ipmrouteboundaryaddressmask.value_namespace = name_space;
-        ipmrouteboundaryaddressmask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteBoundaryStatus")
-    {
-        ipmrouteboundarystatus = value;
-        ipmrouteboundarystatus.value_namespace = name_space;
-        ipmrouteboundarystatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipMRouteBoundaryIfIndex")
-    {
-        ipmrouteboundaryifindex.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteBoundaryAddress")
-    {
-        ipmrouteboundaryaddress.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteBoundaryAddressMask")
-    {
-        ipmrouteboundaryaddressmask.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteBoundaryStatus")
-    {
-        ipmrouteboundarystatus.yfilter = yfilter;
-    }
-}
-
-bool IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteBoundaryIfIndex" || name == "ipMRouteBoundaryAddress" || name == "ipMRouteBoundaryAddressMask" || name == "ipMRouteBoundaryStatus")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenametable()
-{
-    yang_name = "ipMRouteScopeNameTable"; yang_parent_name = "IPMROUTE-STD-MIB";
-}
-
-IpmrouteStdMib::Ipmroutescopenametable::~Ipmroutescopenametable()
-{
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::has_data() const
-{
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
-    {
-        if(ipmroutescopenameentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::has_operation() const
-{
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
-    {
-        if(ipmroutescopenameentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmroutescopenametable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteScopeNameTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmroutescopenametable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutescopenametable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipMRouteScopeNameEntry")
-    {
-        for(auto const & c : ipmroutescopenameentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry>();
-        c->parent = this;
-        ipmroutescopenameentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutescopenametable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipmroutescopenameentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void IpmrouteStdMib::Ipmroutescopenametable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IpmrouteStdMib::Ipmroutescopenametable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteScopeNameEntry")
-        return true;
-    return false;
-}
-
-IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::Ipmroutescopenameentry()
-    :
-    ipmroutescopenameaddress{YType::str, "ipMRouteScopeNameAddress"},
-    ipmroutescopenameaddressmask{YType::str, "ipMRouteScopeNameAddressMask"},
-    ipmroutescopenamelanguage{YType::str, "ipMRouteScopeNameLanguage"},
-    ipmroutescopenamedefault{YType::boolean, "ipMRouteScopeNameDefault"},
-    ipmroutescopenamestatus{YType::enumeration, "ipMRouteScopeNameStatus"},
-    ipmroutescopenamestring{YType::str, "ipMRouteScopeNameString"}
-{
-    yang_name = "ipMRouteScopeNameEntry"; yang_parent_name = "ipMRouteScopeNameTable";
-}
-
-IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::~Ipmroutescopenameentry()
-{
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::has_data() const
-{
-    return ipmroutescopenameaddress.is_set
-	|| ipmroutescopenameaddressmask.is_set
-	|| ipmroutescopenamelanguage.is_set
-	|| ipmroutescopenamedefault.is_set
-	|| ipmroutescopenamestatus.is_set
-	|| ipmroutescopenamestring.is_set;
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipmroutescopenameaddress.yfilter)
-	|| ydk::is_set(ipmroutescopenameaddressmask.yfilter)
-	|| ydk::is_set(ipmroutescopenamelanguage.yfilter)
-	|| ydk::is_set(ipmroutescopenamedefault.yfilter)
-	|| ydk::is_set(ipmroutescopenamestatus.yfilter)
-	|| ydk::is_set(ipmroutescopenamestring.yfilter);
-}
-
-std::string IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipMRouteScopeNameEntry" <<"[ipMRouteScopeNameAddress='" <<ipmroutescopenameaddress <<"']" <<"[ipMRouteScopeNameAddressMask='" <<ipmroutescopenameaddressmask <<"']" <<"[ipMRouteScopeNameLanguage='" <<ipmroutescopenamelanguage <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteScopeNameTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipmroutescopenameaddress.is_set || is_set(ipmroutescopenameaddress.yfilter)) leaf_name_data.push_back(ipmroutescopenameaddress.get_name_leafdata());
-    if (ipmroutescopenameaddressmask.is_set || is_set(ipmroutescopenameaddressmask.yfilter)) leaf_name_data.push_back(ipmroutescopenameaddressmask.get_name_leafdata());
-    if (ipmroutescopenamelanguage.is_set || is_set(ipmroutescopenamelanguage.yfilter)) leaf_name_data.push_back(ipmroutescopenamelanguage.get_name_leafdata());
-    if (ipmroutescopenamedefault.is_set || is_set(ipmroutescopenamedefault.yfilter)) leaf_name_data.push_back(ipmroutescopenamedefault.get_name_leafdata());
-    if (ipmroutescopenamestatus.is_set || is_set(ipmroutescopenamestatus.yfilter)) leaf_name_data.push_back(ipmroutescopenamestatus.get_name_leafdata());
-    if (ipmroutescopenamestring.is_set || is_set(ipmroutescopenamestring.yfilter)) leaf_name_data.push_back(ipmroutescopenamestring.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipMRouteScopeNameAddress")
-    {
-        ipmroutescopenameaddress = value;
-        ipmroutescopenameaddress.value_namespace = name_space;
-        ipmroutescopenameaddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteScopeNameAddressMask")
-    {
-        ipmroutescopenameaddressmask = value;
-        ipmroutescopenameaddressmask.value_namespace = name_space;
-        ipmroutescopenameaddressmask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteScopeNameLanguage")
-    {
-        ipmroutescopenamelanguage = value;
-        ipmroutescopenamelanguage.value_namespace = name_space;
-        ipmroutescopenamelanguage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteScopeNameDefault")
-    {
-        ipmroutescopenamedefault = value;
-        ipmroutescopenamedefault.value_namespace = name_space;
-        ipmroutescopenamedefault.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteScopeNameStatus")
-    {
-        ipmroutescopenamestatus = value;
-        ipmroutescopenamestatus.value_namespace = name_space;
-        ipmroutescopenamestatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipMRouteScopeNameString")
-    {
-        ipmroutescopenamestring = value;
-        ipmroutescopenamestring.value_namespace = name_space;
-        ipmroutescopenamestring.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipMRouteScopeNameAddress")
-    {
-        ipmroutescopenameaddress.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteScopeNameAddressMask")
-    {
-        ipmroutescopenameaddressmask.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteScopeNameLanguage")
-    {
-        ipmroutescopenamelanguage.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteScopeNameDefault")
-    {
-        ipmroutescopenamedefault.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteScopeNameStatus")
-    {
-        ipmroutescopenamestatus.yfilter = yfilter;
-    }
-    if(value_path == "ipMRouteScopeNameString")
-    {
-        ipmroutescopenamestring.yfilter = yfilter;
-    }
-}
-
-bool IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipMRouteScopeNameAddress" || name == "ipMRouteScopeNameAddressMask" || name == "ipMRouteScopeNameLanguage" || name == "ipMRouteScopeNameDefault" || name == "ipMRouteScopeNameStatus" || name == "ipMRouteScopeNameString")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf IpmrouteStdMib::Ipmroute::Ipmrouteenable::enabled {1, "enabled"};
-const Enum::YLeaf IpmrouteStdMib::Ipmroute::Ipmrouteenable::disabled {2, "disabled"};
-
-const Enum::YLeaf IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::unicast {1, "unicast"};
-const Enum::YLeaf IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::multicast {2, "multicast"};
-
-const Enum::YLeaf IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::pruned {1, "pruned"};
-const Enum::YLeaf IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::forwarding {2, "forwarding"};
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::unicast {1, "unicast"};
+const Enum::YLeaf IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::multicast {2, "multicast"};
 
 
 }

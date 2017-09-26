@@ -17,7 +17,7 @@ HardwareModuleNp::HardwareModuleNp()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module-np"; yang_parent_name = "Cisco-IOS-XR-asr9k-np-oper";
+    yang_name = "hardware-module-np"; yang_parent_name = "Cisco-IOS-XR-asr9k-np-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HardwareModuleNp::~HardwareModuleNp()
@@ -39,26 +39,15 @@ std::string HardwareModuleNp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-asr9k-np-oper:hardware-module-np";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool HardwareModuleNp::has_leaf_or_child_of_name(const std::string & name) const
 
 HardwareModuleNp::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "hardware-module-np";
+
+    yang_name = "nodes"; yang_parent_name = "hardware-module-np"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModuleNp::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool HardwareModuleNp::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string HardwareModuleNp::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-np-oper:hardware-module-np/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModuleNp::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-np-oper:hardware-module-np/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ HardwareModuleNp::Nodes::Node::Node()
 {
     nps->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HardwareModuleNp::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool HardwareModuleNp::Nodes::Node::has_operation() const
 	|| (nps !=  nullptr && nps->has_operation());
 }
 
+std::string HardwareModuleNp::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-np-oper:hardware-module-np/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HardwareModuleNp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-np-oper:hardware-module-np/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -344,7 +320,8 @@ bool HardwareModuleNp::Nodes::Node::has_leaf_or_child_of_name(const std::string 
 
 HardwareModuleNp::Nodes::Node::Nps::Nps()
 {
-    yang_name = "nps"; yang_parent_name = "node";
+
+    yang_name = "nps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::~Nps()
@@ -375,29 +352,15 @@ std::string HardwareModuleNp::Nodes::Node::Nps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nps";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Nps' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -458,14 +421,11 @@ HardwareModuleNp::Nodes::Node::Nps::Np::Np()
 	,tcam_summary(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary>())
 {
     chn_load->parent = this;
-
     counters->parent = this;
-
     fast_drop->parent = this;
-
     tcam_summary->parent = this;
 
-    yang_name = "np"; yang_parent_name = "nps";
+    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::~Np()
@@ -495,30 +455,16 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "np" <<"[np-name='" <<np_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Np' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (np_name.is_set || is_set(np_name.yfilter)) leaf_name_data.push_back(np_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -616,7 +562,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::has_leaf_or_child_of_name(const std
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::ChnLoad()
 {
-    yang_name = "chn-load"; yang_parent_name = "np";
+
+    yang_name = "chn-load"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::~ChnLoad()
@@ -647,29 +594,15 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "chn-load";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ChnLoad' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -729,7 +662,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::NpChnLoad()
     peak_guar_rfd_usage{YType::uint32, "peak-guar-rfd-usage"},
     peak_rfd_usage{YType::uint32, "peak-rfd-usage"}
 {
-    yang_name = "np-chn-load"; yang_parent_name = "chn-load";
+
+    yang_name = "np-chn-load"; yang_parent_name = "chn-load"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::~NpChnLoad()
@@ -761,23 +695,11 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "np-chn-load";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpChnLoad' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (avg_guar_rfd_usage.is_set || is_set(avg_guar_rfd_usage.yfilter)) leaf_name_data.push_back(avg_guar_rfd_usage.get_name_leafdata());
@@ -787,9 +709,7 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get
     if (peak_guar_rfd_usage.is_set || is_set(peak_guar_rfd_usage.yfilter)) leaf_name_data.push_back(peak_guar_rfd_usage.get_name_leafdata());
     if (peak_rfd_usage.is_set || is_set(peak_rfd_usage.yfilter)) leaf_name_data.push_back(peak_rfd_usage.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -879,16 +799,423 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_leaf_or_chi
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::Counters::Counters()
+{
+
+    yang_name = "counters"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::Counters::~Counters()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_data() const
+{
+    for (std::size_t index=0; index<np_counter.size(); index++)
+    {
+        if(np_counter[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_operation() const
+{
+    for (std::size_t index=0; index<np_counter.size(); index++)
+    {
+        if(np_counter[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "counters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "np-counter")
+    {
+        for(auto const & c : np_counter)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter>();
+        c->parent = this;
+        np_counter.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : np_counter)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-counter")
+        return true;
+    return false;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::NpCounter()
+    :
+    counter_index{YType::uint32, "counter-index"},
+    counter_name{YType::str, "counter-name"},
+    counter_type{YType::str, "counter-type"},
+    counter_value{YType::uint64, "counter-value"},
+    rate{YType::uint32, "rate"}
+{
+
+    yang_name = "np-counter"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::~NpCounter()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_data() const
+{
+    return counter_index.is_set
+	|| counter_name.is_set
+	|| counter_type.is_set
+	|| counter_value.is_set
+	|| rate.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter_index.yfilter)
+	|| ydk::is_set(counter_name.yfilter)
+	|| ydk::is_set(counter_type.yfilter)
+	|| ydk::is_set(counter_value.yfilter)
+	|| ydk::is_set(rate.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "np-counter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter_index.is_set || is_set(counter_index.yfilter)) leaf_name_data.push_back(counter_index.get_name_leafdata());
+    if (counter_name.is_set || is_set(counter_name.yfilter)) leaf_name_data.push_back(counter_name.get_name_leafdata());
+    if (counter_type.is_set || is_set(counter_type.yfilter)) leaf_name_data.push_back(counter_type.get_name_leafdata());
+    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter-index")
+    {
+        counter_index = value;
+        counter_index.value_namespace = name_space;
+        counter_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counter-name")
+    {
+        counter_name = value;
+        counter_name.value_namespace = name_space;
+        counter_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counter-type")
+    {
+        counter_type = value;
+        counter_type.value_namespace = name_space;
+        counter_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counter-value")
+    {
+        counter_value = value;
+        counter_value.value_namespace = name_space;
+        counter_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter-index")
+    {
+        counter_index.yfilter = yfilter;
+    }
+    if(value_path == "counter-name")
+    {
+        counter_name.yfilter = yfilter;
+    }
+    if(value_path == "counter-type")
+    {
+        counter_type.yfilter = yfilter;
+    }
+    if(value_path == "counter-value")
+    {
+        counter_value.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter-index" || name == "counter-name" || name == "counter-type" || name == "counter-value" || name == "rate")
+        return true;
+    return false;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::FastDrop()
+{
+
+    yang_name = "fast-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::~FastDrop()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_data() const
+{
+    for (std::size_t index=0; index<np_fast_drop.size(); index++)
+    {
+        if(np_fast_drop[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_operation() const
+{
+    for (std::size_t index=0; index<np_fast_drop.size(); index++)
+    {
+        if(np_fast_drop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fast-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "np-fast-drop")
+    {
+        for(auto const & c : np_fast_drop)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop>();
+        c->parent = this;
+        np_fast_drop.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : np_fast_drop)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-fast-drop")
+        return true;
+    return false;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::NpFastDrop()
+    :
+    counter_value{YType::uint64, "counter-value"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "np-fast-drop"; yang_parent_name = "fast-drop"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::~NpFastDrop()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_data() const
+{
+    return counter_value.is_set
+	|| interface_name.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter_value.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "np-fast-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter-value")
+    {
+        counter_value = value;
+        counter_value.value_namespace = name_space;
+        counter_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter-value")
+    {
+        counter_value.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter-value" || name == "interface-name")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamSummary()
     :
     internal_tcam_info(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo>())
 	,tcam_info(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo>())
 {
     internal_tcam_info->parent = this;
-
     tcam_info->parent = this;
 
-    yang_name = "tcam-summary"; yang_parent_name = "np";
+    yang_name = "tcam-summary"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::~TcamSummary()
@@ -912,29 +1239,15 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamSummary' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -998,10 +1311,9 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::InternalT
 	,tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8>())
 {
     tcam_lt_ods2->parent = this;
-
     tcam_lt_ods8->parent = this;
 
-    yang_name = "internal-tcam-info"; yang_parent_name = "tcam-summary";
+    yang_name = "internal-tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::~InternalTcamInfo()
@@ -1035,29 +1347,15 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-tcam-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InternalTcamInfo' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1136,6 +1434,110 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::TcamLtL2()
+    :
+    free_entries{YType::uint32, "free-entries"},
+    partition_id{YType::uint32, "partition-id"},
+    valid_entries{YType::uint32, "valid-entries"}
+{
+
+    yang_name = "tcam-lt-l2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::~TcamLtL2()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_data() const
+{
+    return free_entries.is_set
+	|| partition_id.is_set
+	|| valid_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(partition_id.yfilter)
+	|| ydk::is_set(valid_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcam-lt-l2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
+    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id = value;
+        partition_id.value_namespace = name_space;
+        partition_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries = value;
+        valid_entries.value_namespace = name_space;
+        valid_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id.yfilter = yfilter;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-entries" || name == "partition-id" || name == "valid-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::TcamLtOds2()
     :
     free_entries{YType::uint32, "free-entries"},
@@ -1150,20 +1552,14 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 	,application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry>())
 {
     app_id_acl->parent = this;
-
     app_id_afmon->parent = this;
-
     app_id_ifib->parent = this;
-
     app_id_li->parent = this;
-
     app_id_pbr->parent = this;
-
     app_id_qos->parent = this;
-
     application_edpl_entry->parent = this;
 
-    yang_name = "tcam-lt-ods2"; yang_parent_name = "internal-tcam-info";
+    yang_name = "tcam-lt-ods2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::~TcamLtOds2()
@@ -1201,31 +1597,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-lt-ods2";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtOds2' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
     if (max_entries.is_set || is_set(max_entries.yfilter)) leaf_name_data.push_back(max_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1373,247 +1755,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
-    :
-    num_vmr_ids{YType::uint32, "num-vmr-ids"},
-    total_allocated_entries{YType::uint32, "total-allocated-entries"},
-    total_used_entries{YType::uint32, "total-used-entries"}
-{
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_data() const
-{
-    return num_vmr_ids.is_set
-	|| total_allocated_entries.is_set
-	|| total_used_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter)
-	|| ydk::is_set(total_allocated_entries.yfilter)
-	|| ydk::is_set(total_used_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-ifib";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdIfib' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries = value;
-        total_allocated_entries.value_namespace = name_space;
-        total_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries = value;
-        total_used_entries.value_namespace = name_space;
-        total_used_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
-    :
-    num_vmr_ids{YType::uint32, "num-vmr-ids"},
-    total_allocated_entries{YType::uint32, "total-allocated-entries"},
-    total_used_entries{YType::uint32, "total-used-entries"}
-{
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_data() const
-{
-    return num_vmr_ids.is_set
-	|| total_allocated_entries.is_set
-	|| total_used_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter)
-	|| ydk::is_set(total_allocated_entries.yfilter)
-	|| ydk::is_set(total_used_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-qos";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdQos' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries = value;
-        total_allocated_entries.value_namespace = name_space;
-        total_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries = value;
-        total_used_entries.value_namespace = name_space;
-        total_used_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
-        return true;
-    return false;
-}
-
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::AppIdAcl()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::~AppIdAcl()
@@ -1639,32 +1788,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-acl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAcl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1730,7 +1865,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::~AppIdAfmon()
@@ -1756,32 +1892,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-afmon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAfmon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1841,13 +1963,118 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
+    :
+    num_vmr_ids{YType::uint32, "num-vmr-ids"},
+    total_allocated_entries{YType::uint32, "total-allocated-entries"},
+    total_used_entries{YType::uint32, "total-used-entries"}
+{
+
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_data() const
+{
+    return num_vmr_ids.is_set
+	|| total_allocated_entries.is_set
+	|| total_used_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-ifib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::AppIdLi()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::~AppIdLi()
@@ -1873,32 +2100,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-li";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdLi' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1964,7 +2177,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::~AppIdPbr()
@@ -1990,32 +2204,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-pbr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdPbr' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2075,13 +2275,118 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
+    :
+    num_vmr_ids{YType::uint32, "num-vmr-ids"},
+    total_allocated_entries{YType::uint32, "total-allocated-entries"},
+    total_used_entries{YType::uint32, "total-used-entries"}
+{
+
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_data() const
+{
+    return num_vmr_ids.is_set
+	|| total_allocated_entries.is_set
+	|| total_used_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-qos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::ApplicationEdplEntry()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::~ApplicationEdplEntry()
@@ -2107,32 +2412,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "application-edpl-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ApplicationEdplEntry' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2206,20 +2497,14 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 	,application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry>())
 {
     app_id_acl->parent = this;
-
     app_id_afmon->parent = this;
-
     app_id_ifib->parent = this;
-
     app_id_li->parent = this;
-
     app_id_pbr->parent = this;
-
     app_id_qos->parent = this;
-
     application_edpl_entry->parent = this;
 
-    yang_name = "tcam-lt-ods8"; yang_parent_name = "internal-tcam-info";
+    yang_name = "tcam-lt-ods8"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::~TcamLtOds8()
@@ -2257,31 +2542,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-lt-ods8";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtOds8' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
     if (max_entries.is_set || is_set(max_entries.yfilter)) leaf_name_data.push_back(max_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2429,247 +2700,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
-    :
-    num_vmr_ids{YType::uint32, "num-vmr-ids"},
-    total_allocated_entries{YType::uint32, "total-allocated-entries"},
-    total_used_entries{YType::uint32, "total-used-entries"}
-{
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_data() const
-{
-    return num_vmr_ids.is_set
-	|| total_allocated_entries.is_set
-	|| total_used_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter)
-	|| ydk::is_set(total_allocated_entries.yfilter)
-	|| ydk::is_set(total_used_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-ifib";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdIfib' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries = value;
-        total_allocated_entries.value_namespace = name_space;
-        total_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries = value;
-        total_used_entries.value_namespace = name_space;
-        total_used_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
-    :
-    num_vmr_ids{YType::uint32, "num-vmr-ids"},
-    total_allocated_entries{YType::uint32, "total-allocated-entries"},
-    total_used_entries{YType::uint32, "total-used-entries"}
-{
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_data() const
-{
-    return num_vmr_ids.is_set
-	|| total_allocated_entries.is_set
-	|| total_used_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter)
-	|| ydk::is_set(total_allocated_entries.yfilter)
-	|| ydk::is_set(total_used_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-qos";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdQos' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries = value;
-        total_allocated_entries.value_namespace = name_space;
-        total_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries = value;
-        total_used_entries.value_namespace = name_space;
-        total_used_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-    if(value_path == "total-allocated-entries")
-    {
-        total_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "total-used-entries")
-    {
-        total_used_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
-        return true;
-    return false;
-}
-
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::AppIdAcl()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::~AppIdAcl()
@@ -2695,32 +2733,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-acl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAcl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2786,7 +2810,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::~AppIdAfmon()
@@ -2812,32 +2837,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-afmon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAfmon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2897,13 +2908,118 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
+    :
+    num_vmr_ids{YType::uint32, "num-vmr-ids"},
+    total_allocated_entries{YType::uint32, "total-allocated-entries"},
+    total_used_entries{YType::uint32, "total-used-entries"}
+{
+
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_data() const
+{
+    return num_vmr_ids.is_set
+	|| total_allocated_entries.is_set
+	|| total_used_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-ifib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::AppIdLi()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::~AppIdLi()
@@ -2929,32 +3045,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-li";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdLi' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3020,7 +3122,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::~AppIdPbr()
@@ -3046,32 +3149,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-pbr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdPbr' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3131,13 +3220,118 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
+    :
+    num_vmr_ids{YType::uint32, "num-vmr-ids"},
+    total_allocated_entries{YType::uint32, "total-allocated-entries"},
+    total_used_entries{YType::uint32, "total-used-entries"}
+{
+
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_data() const
+{
+    return num_vmr_ids.is_set
+	|| total_allocated_entries.is_set
+	|| total_used_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-qos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::ApplicationEdplEntry()
     :
     num_vmr_ids{YType::uint32, "num-vmr-ids"},
     total_allocated_entries{YType::uint32, "total-allocated-entries"},
     total_used_entries{YType::uint32, "total-used-entries"}
 {
-    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::~ApplicationEdplEntry()
@@ -3163,32 +3357,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInf
 {
     std::ostringstream path_buffer;
     path_buffer << "application-edpl-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ApplicationEdplEntry' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
     if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
     if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3248,133 +3428,15 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::TcamLtL2()
-    :
-    free_entries{YType::uint32, "free-entries"},
-    partition_id{YType::uint32, "partition-id"},
-    valid_entries{YType::uint32, "valid-entries"}
-{
-    yang_name = "tcam-lt-l2"; yang_parent_name = "internal-tcam-info";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::~TcamLtL2()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_data() const
-{
-    return free_entries.is_set
-	|| partition_id.is_set
-	|| valid_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(free_entries.yfilter)
-	|| ydk::is_set(partition_id.yfilter)
-	|| ydk::is_set(valid_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tcam-lt-l2";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtL2' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
-    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "free-entries")
-    {
-        free_entries = value;
-        free_entries.value_namespace = name_space;
-        free_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "partition-id")
-    {
-        partition_id = value;
-        partition_id.value_namespace = name_space;
-        partition_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid-entries")
-    {
-        valid_entries = value;
-        valid_entries.value_namespace = name_space;
-        valid_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "free-entries")
-    {
-        free_entries.yfilter = yfilter;
-    }
-    if(value_path == "partition-id")
-    {
-        partition_id.yfilter = yfilter;
-    }
-    if(value_path == "valid-entries")
-    {
-        valid_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "free-entries" || name == "partition-id" || name == "valid-entries")
-        return true;
-    return false;
-}
-
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamInfo()
     :
     tcam_lt_ods2(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2>())
 	,tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8>())
 {
     tcam_lt_ods2->parent = this;
-
     tcam_lt_ods8->parent = this;
 
-    yang_name = "tcam-info"; yang_parent_name = "tcam-summary";
+    yang_name = "tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::~TcamInfo()
@@ -3408,29 +3470,15 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamInfo' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3509,6 +3557,124 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_leaf_or_
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::TcamLtL2()
+    :
+    free_entries{YType::uint32, "free-entries"},
+    partition_id{YType::uint32, "partition-id"},
+    priority{YType::uint32, "priority"},
+    valid_entries{YType::uint32, "valid-entries"}
+{
+
+    yang_name = "tcam-lt-l2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::~TcamLtL2()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_data() const
+{
+    return free_entries.is_set
+	|| partition_id.is_set
+	|| priority.is_set
+	|| valid_entries.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(partition_id.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(valid_entries.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcam-lt-l2";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id = value;
+        partition_id.value_namespace = name_space;
+        partition_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries = value;
+        valid_entries.value_namespace = name_space;
+        valid_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-entries" || name == "partition-id" || name == "priority" || name == "valid-entries")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::TcamLtOds2()
     :
     free_entries{YType::uint32, "free-entries"},
@@ -3524,22 +3690,15 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::TcamL
 	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos>())
 {
     acl_common->parent = this;
-
     app_id_acl->parent = this;
-
     app_id_afmon->parent = this;
-
     app_id_edpl->parent = this;
-
     app_id_ifib->parent = this;
-
     app_id_li->parent = this;
-
     app_id_pbr->parent = this;
-
     app_id_qos->parent = this;
 
-    yang_name = "tcam-lt-ods2"; yang_parent_name = "tcam-info";
+    yang_name = "tcam-lt-ods2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::~TcamLtOds2()
@@ -3579,31 +3738,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-lt-ods2";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtOds2' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
     if (reserved_entries.is_set || is_set(reserved_entries.yfilter)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3770,7 +3915,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCo
     allocated_entries{YType::uint32, "allocated-entries"},
     free_entries{YType::uint32, "free-entries"}
 {
-    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::~AclCommon()
@@ -3794,31 +3940,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "acl-common";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AclCommon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allocated_entries.is_set || is_set(allocated_entries.yfilter)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3868,247 +4000,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
-    :
-    num_active_entries{YType::uint32, "num-active-entries"},
-    num_allocated_entries{YType::uint32, "num-allocated-entries"},
-    num_vmr_ids{YType::uint32, "num-vmr-ids"}
-{
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_data() const
-{
-    return num_active_entries.is_set
-	|| num_allocated_entries.is_set
-	|| num_vmr_ids.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_active_entries.yfilter)
-	|| ydk::is_set(num_allocated_entries.yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-ifib";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdIfib' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries = value;
-        num_active_entries.value_namespace = name_space;
-        num_active_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries = value;
-        num_allocated_entries.value_namespace = name_space;
-        num_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
-    :
-    num_active_entries{YType::uint32, "num-active-entries"},
-    num_allocated_entries{YType::uint32, "num-allocated-entries"},
-    num_vmr_ids{YType::uint32, "num-vmr-ids"}
-{
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_data() const
-{
-    return num_active_entries.is_set
-	|| num_allocated_entries.is_set
-	|| num_vmr_ids.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_active_entries.yfilter)
-	|| ydk::is_set(num_allocated_entries.yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-qos";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdQos' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries = value;
-        num_active_entries.value_namespace = name_space;
-        num_active_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries = value;
-        num_allocated_entries.value_namespace = name_space;
-        num_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
-        return true;
-    return false;
-}
-
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::AppIdAcl()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::~AppIdAcl()
@@ -4134,32 +4033,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-acl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAcl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4225,7 +4110,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::~AppIdAfmon()
@@ -4251,32 +4137,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-afmon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAfmon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4336,13 +4208,222 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::AppIdEdpl()
+    :
+    num_active_entries{YType::uint32, "num-active-entries"},
+    num_allocated_entries{YType::uint32, "num-allocated-entries"},
+    num_vmr_ids{YType::uint32, "num-vmr-ids"}
+{
+
+    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::~AppIdEdpl()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_data() const
+{
+    return num_active_entries.is_set
+	|| num_allocated_entries.is_set
+	|| num_vmr_ids.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-edpl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
+    :
+    num_active_entries{YType::uint32, "num-active-entries"},
+    num_allocated_entries{YType::uint32, "num-allocated-entries"},
+    num_vmr_ids{YType::uint32, "num-vmr-ids"}
+{
+
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_data() const
+{
+    return num_active_entries.is_set
+	|| num_allocated_entries.is_set
+	|| num_vmr_ids.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-ifib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::AppIdLi()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::~AppIdLi()
@@ -4368,32 +4449,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-li";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdLi' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4459,7 +4526,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::~AppIdPbr()
@@ -4485,32 +4553,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-pbr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdPbr' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4570,27 +4624,28 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::AppIdEdpl()
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods2";
+
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::~AppIdEdpl()
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
 {
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_data() const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_data() const
 {
     return num_active_entries.is_set
 	|| num_allocated_entries.is_set
 	|| num_vmr_ids.is_set;
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_operation() const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(num_active_entries.yfilter)
@@ -4598,51 +4653,37 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_segment_path() const
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "app-id-edpl";
-
+    path_buffer << "app-id-qos";
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdEdpl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
@@ -4664,7 +4705,7 @@ void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     }
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "num-active-entries")
     {
@@ -4680,7 +4721,7 @@ void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
     }
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
         return true;
@@ -4702,22 +4743,15 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::TcamL
 	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos>())
 {
     acl_common->parent = this;
-
     app_id_acl->parent = this;
-
     app_id_afmon->parent = this;
-
     app_id_edpl->parent = this;
-
     app_id_ifib->parent = this;
-
     app_id_li->parent = this;
-
     app_id_pbr->parent = this;
-
     app_id_qos->parent = this;
 
-    yang_name = "tcam-lt-ods8"; yang_parent_name = "tcam-info";
+    yang_name = "tcam-lt-ods8"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::~TcamLtOds8()
@@ -4757,31 +4791,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-lt-ods8";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtOds8' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
     if (reserved_entries.is_set || is_set(reserved_entries.yfilter)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4948,7 +4968,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCo
     allocated_entries{YType::uint32, "allocated-entries"},
     free_entries{YType::uint32, "free-entries"}
 {
-    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::~AclCommon()
@@ -4972,31 +4993,17 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "acl-common";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AclCommon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (allocated_entries.is_set || is_set(allocated_entries.yfilter)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
     if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5046,247 +5053,14 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
-    :
-    num_active_entries{YType::uint32, "num-active-entries"},
-    num_allocated_entries{YType::uint32, "num-allocated-entries"},
-    num_vmr_ids{YType::uint32, "num-vmr-ids"}
-{
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_data() const
-{
-    return num_active_entries.is_set
-	|| num_allocated_entries.is_set
-	|| num_vmr_ids.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_active_entries.yfilter)
-	|| ydk::is_set(num_allocated_entries.yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-ifib";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdIfib' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries = value;
-        num_active_entries.value_namespace = name_space;
-        num_active_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries = value;
-        num_allocated_entries.value_namespace = name_space;
-        num_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
-    :
-    num_active_entries{YType::uint32, "num-active-entries"},
-    num_allocated_entries{YType::uint32, "num-allocated-entries"},
-    num_vmr_ids{YType::uint32, "num-vmr-ids"}
-{
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_data() const
-{
-    return num_active_entries.is_set
-	|| num_allocated_entries.is_set
-	|| num_vmr_ids.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(num_active_entries.yfilter)
-	|| ydk::is_set(num_allocated_entries.yfilter)
-	|| ydk::is_set(num_vmr_ids.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "app-id-qos";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdQos' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries = value;
-        num_active_entries.value_namespace = name_space;
-        num_active_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries = value;
-        num_allocated_entries.value_namespace = name_space;
-        num_allocated_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids = value;
-        num_vmr_ids.value_namespace = name_space;
-        num_vmr_ids.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "num-active-entries")
-    {
-        num_active_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-allocated-entries")
-    {
-        num_allocated_entries.yfilter = yfilter;
-    }
-    if(value_path == "num-vmr-ids")
-    {
-        num_vmr_ids.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
-        return true;
-    return false;
-}
-
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::AppIdAcl()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::~AppIdAcl()
@@ -5312,32 +5086,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-acl";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAcl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5403,7 +5163,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::~AppIdAfmon()
@@ -5429,32 +5190,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-afmon";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdAfmon' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5514,13 +5261,222 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     return false;
 }
 
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::AppIdEdpl()
+    :
+    num_active_entries{YType::uint32, "num-active-entries"},
+    num_allocated_entries{YType::uint32, "num-allocated-entries"},
+    num_vmr_ids{YType::uint32, "num-vmr-ids"}
+{
+
+    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::~AppIdEdpl()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_data() const
+{
+    return num_active_entries.is_set
+	|| num_allocated_entries.is_set
+	|| num_vmr_ids.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-edpl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
+    :
+    num_active_entries{YType::uint32, "num-active-entries"},
+    num_allocated_entries{YType::uint32, "num-allocated-entries"},
+    num_vmr_ids{YType::uint32, "num-vmr-ids"}
+{
+
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_data() const
+{
+    return num_active_entries.is_set
+	|| num_allocated_entries.is_set
+	|| num_vmr_ids.is_set;
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
+}
+
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app-id-ifib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
+}
+
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::AppIdLi()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::~AppIdLi()
@@ -5546,32 +5502,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-li";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdLi' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5637,7 +5579,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::~AppIdPbr()
@@ -5663,32 +5606,18 @@ std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamL
 {
     std::ostringstream path_buffer;
     path_buffer << "app-id-pbr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdPbr' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5748,27 +5677,28 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     return false;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::AppIdEdpl()
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
     :
     num_active_entries{YType::uint32, "num-active-entries"},
     num_allocated_entries{YType::uint32, "num-allocated-entries"},
     num_vmr_ids{YType::uint32, "num-vmr-ids"}
 {
-    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods8";
+
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::~AppIdEdpl()
+HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
 {
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_data() const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_data() const
 {
     return num_active_entries.is_set
 	|| num_allocated_entries.is_set
 	|| num_vmr_ids.is_set;
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_operation() const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(num_active_entries.yfilter)
@@ -5776,51 +5706,37 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_segment_path() const
+std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "app-id-edpl";
-
+    path_buffer << "app-id-qos";
     return path_buffer.str();
-
 }
 
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AppIdEdpl' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
     if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
     if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
@@ -5842,7 +5758,7 @@ void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     }
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "num-active-entries")
     {
@@ -5858,600 +5774,9 @@ void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
     }
 }
 
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::TcamLtL2()
-    :
-    free_entries{YType::uint32, "free-entries"},
-    partition_id{YType::uint32, "partition-id"},
-    priority{YType::uint32, "priority"},
-    valid_entries{YType::uint32, "valid-entries"}
-{
-    yang_name = "tcam-lt-l2"; yang_parent_name = "tcam-info";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::~TcamLtL2()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_data() const
-{
-    return free_entries.is_set
-	|| partition_id.is_set
-	|| priority.is_set
-	|| valid_entries.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(free_entries.yfilter)
-	|| ydk::is_set(partition_id.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(valid_entries.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tcam-lt-l2";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TcamLtL2' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "free-entries")
-    {
-        free_entries = value;
-        free_entries.value_namespace = name_space;
-        free_entries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "partition-id")
-    {
-        partition_id = value;
-        partition_id.value_namespace = name_space;
-        partition_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid-entries")
-    {
-        valid_entries = value;
-        valid_entries.value_namespace = name_space;
-        valid_entries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "free-entries")
-    {
-        free_entries.yfilter = yfilter;
-    }
-    if(value_path == "partition-id")
-    {
-        partition_id.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "valid-entries")
-    {
-        valid_entries.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "free-entries" || name == "partition-id" || name == "priority" || name == "valid-entries")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::Counters::Counters()
-{
-    yang_name = "counters"; yang_parent_name = "np";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::Counters::~Counters()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_data() const
-{
-    for (std::size_t index=0; index<np_counter.size(); index++)
-    {
-        if(np_counter[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_operation() const
-{
-    for (std::size_t index=0; index<np_counter.size(); index++)
-    {
-        if(np_counter[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "counters";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Counters' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "np-counter")
-    {
-        for(auto const & c : np_counter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter>();
-        c->parent = this;
-        np_counter.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : np_counter)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "np-counter")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::NpCounter()
-    :
-    counter_index{YType::uint32, "counter-index"},
-    counter_name{YType::str, "counter-name"},
-    counter_type{YType::str, "counter-type"},
-    counter_value{YType::uint64, "counter-value"},
-    rate{YType::uint32, "rate"}
-{
-    yang_name = "np-counter"; yang_parent_name = "counters";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::~NpCounter()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_data() const
-{
-    return counter_index.is_set
-	|| counter_name.is_set
-	|| counter_type.is_set
-	|| counter_value.is_set
-	|| rate.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter_index.yfilter)
-	|| ydk::is_set(counter_name.yfilter)
-	|| ydk::is_set(counter_type.yfilter)
-	|| ydk::is_set(counter_value.yfilter)
-	|| ydk::is_set(rate.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "np-counter";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpCounter' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter_index.is_set || is_set(counter_index.yfilter)) leaf_name_data.push_back(counter_index.get_name_leafdata());
-    if (counter_name.is_set || is_set(counter_name.yfilter)) leaf_name_data.push_back(counter_name.get_name_leafdata());
-    if (counter_type.is_set || is_set(counter_type.yfilter)) leaf_name_data.push_back(counter_type.get_name_leafdata());
-    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter-index")
-    {
-        counter_index = value;
-        counter_index.value_namespace = name_space;
-        counter_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counter-name")
-    {
-        counter_name = value;
-        counter_name.value_namespace = name_space;
-        counter_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counter-type")
-    {
-        counter_type = value;
-        counter_type.value_namespace = name_space;
-        counter_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "counter-value")
-    {
-        counter_value = value;
-        counter_value.value_namespace = name_space;
-        counter_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter-index")
-    {
-        counter_index.yfilter = yfilter;
-    }
-    if(value_path == "counter-name")
-    {
-        counter_name.yfilter = yfilter;
-    }
-    if(value_path == "counter-type")
-    {
-        counter_type.yfilter = yfilter;
-    }
-    if(value_path == "counter-value")
-    {
-        counter_value.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter-index" || name == "counter-name" || name == "counter-type" || name == "counter-value" || name == "rate")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::FastDrop()
-{
-    yang_name = "fast-drop"; yang_parent_name = "np";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::~FastDrop()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_data() const
-{
-    for (std::size_t index=0; index<np_fast_drop.size(); index++)
-    {
-        if(np_fast_drop[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_operation() const
-{
-    for (std::size_t index=0; index<np_fast_drop.size(); index++)
-    {
-        if(np_fast_drop[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fast-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FastDrop' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "np-fast-drop")
-    {
-        for(auto const & c : np_fast_drop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop>();
-        c->parent = this;
-        np_fast_drop.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : np_fast_drop)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "np-fast-drop")
-        return true;
-    return false;
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::NpFastDrop()
-    :
-    counter_value{YType::uint64, "counter-value"},
-    interface_name{YType::str, "interface-name"}
-{
-    yang_name = "np-fast-drop"; yang_parent_name = "fast-drop";
-}
-
-HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::~NpFastDrop()
-{
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_data() const
-{
-    return counter_value.is_set
-	|| interface_name.is_set;
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter_value.yfilter)
-	|| ydk::is_set(interface_name.yfilter);
-}
-
-std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "np-fast-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpFastDrop' in Cisco_IOS_XR_asr9k_np_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter-value")
-    {
-        counter_value = value;
-        counter_value.value_namespace = name_space;
-        counter_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter-value")
-    {
-        counter_value.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter-value" || name == "interface-name")
         return true;
     return false;
 }

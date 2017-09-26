@@ -17,7 +17,7 @@ Macsec::Macsec()
 {
     mka->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-oper";
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Macsec::~Macsec()
@@ -39,26 +39,15 @@ std::string Macsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,7 +122,7 @@ Macsec::Mka::Mka()
 {
     interfaces->parent = this;
 
-    yang_name = "mka"; yang_parent_name = "macsec";
+    yang_name = "mka"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Mka::~Mka()
@@ -151,33 +140,26 @@ bool Macsec::Mka::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
+std::string Macsec::Mka::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Mka::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mka";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -223,7 +205,8 @@ bool Macsec::Mka::has_leaf_or_child_of_name(const std::string & name) const
 
 Macsec::Mka::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "mka";
+
+    yang_name = "interfaces"; yang_parent_name = "mka"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Mka::Interfaces::~Interfaces()
@@ -250,33 +233,26 @@ bool Macsec::Mka::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Macsec::Mka::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/mka/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Mka::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/mka/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -335,7 +311,7 @@ Macsec::Mka::Interfaces::Interface::Interface()
 {
     session->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces";
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Macsec::Mka::Interfaces::Interface::~Interface()
@@ -355,34 +331,27 @@ bool Macsec::Mka::Interfaces::Interface::has_operation() const
 	|| (session !=  nullptr && session->has_operation());
 }
 
+std::string Macsec::Mka::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/mka/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Macsec::Mka::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-macsec-mka-oper:macsec/mka/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -442,10 +411,9 @@ Macsec::Mka::Interfaces::Interface::Session::Session()
 	,vp(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp>())
 {
     session_summary->parent = this;
-
     vp->parent = this;
 
-    yang_name = "session"; yang_parent_name = "interface";
+    yang_name = "session"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Mka::Interfaces::Interface::Session::~Session()
@@ -479,29 +447,15 @@ std::string Macsec::Mka::Interfaces::Interface::Session::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Session' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -580,6 +534,1078 @@ bool Macsec::Mka::Interfaces::Interface::Session::has_leaf_or_child_of_name(cons
     return false;
 }
 
+Macsec::Mka::Interfaces::Interface::Session::Ca::Ca()
+    :
+    authentication_mode{YType::str, "authentication-mode"},
+    authenticator{YType::boolean, "authenticator"},
+    ckn{YType::str, "ckn"},
+    first_ca{YType::boolean, "first-ca"},
+    is_key_server{YType::boolean, "is-key-server"},
+    key_chain{YType::str, "key-chain"},
+    my_mi{YType::str, "my-mi"},
+    my_mn{YType::uint32, "my-mn"},
+    num_live_peers{YType::uint32, "num-live-peers"},
+    num_live_peers_responded{YType::uint32, "num-live-peers-responded"},
+    peer_sci{YType::str, "peer-sci"},
+    status{YType::uint32, "status"},
+    status_description{YType::str, "status-description"}
+    	,
+    peers_status(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus>())
+{
+    peers_status->parent = this;
+
+    yang_name = "ca"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::~Ca()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_data() const
+{
+    for (std::size_t index=0; index<dormant_peer.size(); index++)
+    {
+        if(dormant_peer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<live_peer.size(); index++)
+    {
+        if(live_peer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<potential_peer.size(); index++)
+    {
+        if(potential_peer[index]->has_data())
+            return true;
+    }
+    return authentication_mode.is_set
+	|| authenticator.is_set
+	|| ckn.is_set
+	|| first_ca.is_set
+	|| is_key_server.is_set
+	|| key_chain.is_set
+	|| my_mi.is_set
+	|| my_mn.is_set
+	|| num_live_peers.is_set
+	|| num_live_peers_responded.is_set
+	|| peer_sci.is_set
+	|| status.is_set
+	|| status_description.is_set
+	|| (peers_status !=  nullptr && peers_status->has_data());
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_operation() const
+{
+    for (std::size_t index=0; index<dormant_peer.size(); index++)
+    {
+        if(dormant_peer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<live_peer.size(); index++)
+    {
+        if(live_peer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<potential_peer.size(); index++)
+    {
+        if(potential_peer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_mode.yfilter)
+	|| ydk::is_set(authenticator.yfilter)
+	|| ydk::is_set(ckn.yfilter)
+	|| ydk::is_set(first_ca.yfilter)
+	|| ydk::is_set(is_key_server.yfilter)
+	|| ydk::is_set(key_chain.yfilter)
+	|| ydk::is_set(my_mi.yfilter)
+	|| ydk::is_set(my_mn.yfilter)
+	|| ydk::is_set(num_live_peers.yfilter)
+	|| ydk::is_set(num_live_peers_responded.yfilter)
+	|| ydk::is_set(peer_sci.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(status_description.yfilter)
+	|| (peers_status !=  nullptr && peers_status->has_operation());
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ca";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (authentication_mode.is_set || is_set(authentication_mode.yfilter)) leaf_name_data.push_back(authentication_mode.get_name_leafdata());
+    if (authenticator.is_set || is_set(authenticator.yfilter)) leaf_name_data.push_back(authenticator.get_name_leafdata());
+    if (ckn.is_set || is_set(ckn.yfilter)) leaf_name_data.push_back(ckn.get_name_leafdata());
+    if (first_ca.is_set || is_set(first_ca.yfilter)) leaf_name_data.push_back(first_ca.get_name_leafdata());
+    if (is_key_server.is_set || is_set(is_key_server.yfilter)) leaf_name_data.push_back(is_key_server.get_name_leafdata());
+    if (key_chain.is_set || is_set(key_chain.yfilter)) leaf_name_data.push_back(key_chain.get_name_leafdata());
+    if (my_mi.is_set || is_set(my_mi.yfilter)) leaf_name_data.push_back(my_mi.get_name_leafdata());
+    if (my_mn.is_set || is_set(my_mn.yfilter)) leaf_name_data.push_back(my_mn.get_name_leafdata());
+    if (num_live_peers.is_set || is_set(num_live_peers.yfilter)) leaf_name_data.push_back(num_live_peers.get_name_leafdata());
+    if (num_live_peers_responded.is_set || is_set(num_live_peers_responded.yfilter)) leaf_name_data.push_back(num_live_peers_responded.get_name_leafdata());
+    if (peer_sci.is_set || is_set(peer_sci.yfilter)) leaf_name_data.push_back(peer_sci.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (status_description.is_set || is_set(status_description.yfilter)) leaf_name_data.push_back(status_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dormant-peer")
+    {
+        for(auto const & c : dormant_peer)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer>();
+        c->parent = this;
+        dormant_peer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "live-peer")
+    {
+        for(auto const & c : live_peer)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer>();
+        c->parent = this;
+        live_peer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "peers-status")
+    {
+        if(peers_status == nullptr)
+        {
+            peers_status = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus>();
+        }
+        return peers_status;
+    }
+
+    if(child_yang_name == "potential-peer")
+    {
+        for(auto const & c : potential_peer)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer>();
+        c->parent = this;
+        potential_peer.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : dormant_peer)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : live_peer)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(peers_status != nullptr)
+    {
+        children["peers-status"] = peers_status;
+    }
+
+    for (auto const & c : potential_peer)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "authentication-mode")
+    {
+        authentication_mode = value;
+        authentication_mode.value_namespace = name_space;
+        authentication_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authenticator")
+    {
+        authenticator = value;
+        authenticator.value_namespace = name_space;
+        authenticator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ckn")
+    {
+        ckn = value;
+        ckn.value_namespace = name_space;
+        ckn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "first-ca")
+    {
+        first_ca = value;
+        first_ca.value_namespace = name_space;
+        first_ca.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-key-server")
+    {
+        is_key_server = value;
+        is_key_server.value_namespace = name_space;
+        is_key_server.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-chain")
+    {
+        key_chain = value;
+        key_chain.value_namespace = name_space;
+        key_chain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "my-mi")
+    {
+        my_mi = value;
+        my_mi.value_namespace = name_space;
+        my_mi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "my-mn")
+    {
+        my_mn = value;
+        my_mn.value_namespace = name_space;
+        my_mn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-live-peers")
+    {
+        num_live_peers = value;
+        num_live_peers.value_namespace = name_space;
+        num_live_peers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-live-peers-responded")
+    {
+        num_live_peers_responded = value;
+        num_live_peers_responded.value_namespace = name_space;
+        num_live_peers_responded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-sci")
+    {
+        peer_sci = value;
+        peer_sci.value_namespace = name_space;
+        peer_sci.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status-description")
+    {
+        status_description = value;
+        status_description.value_namespace = name_space;
+        status_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-mode")
+    {
+        authentication_mode.yfilter = yfilter;
+    }
+    if(value_path == "authenticator")
+    {
+        authenticator.yfilter = yfilter;
+    }
+    if(value_path == "ckn")
+    {
+        ckn.yfilter = yfilter;
+    }
+    if(value_path == "first-ca")
+    {
+        first_ca.yfilter = yfilter;
+    }
+    if(value_path == "is-key-server")
+    {
+        is_key_server.yfilter = yfilter;
+    }
+    if(value_path == "key-chain")
+    {
+        key_chain.yfilter = yfilter;
+    }
+    if(value_path == "my-mi")
+    {
+        my_mi.yfilter = yfilter;
+    }
+    if(value_path == "my-mn")
+    {
+        my_mn.yfilter = yfilter;
+    }
+    if(value_path == "num-live-peers")
+    {
+        num_live_peers.yfilter = yfilter;
+    }
+    if(value_path == "num-live-peers-responded")
+    {
+        num_live_peers_responded.yfilter = yfilter;
+    }
+    if(value_path == "peer-sci")
+    {
+        peer_sci.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "status-description")
+    {
+        status_description.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dormant-peer" || name == "live-peer" || name == "peers-status" || name == "potential-peer" || name == "authentication-mode" || name == "authenticator" || name == "ckn" || name == "first-ca" || name == "is-key-server" || name == "key-chain" || name == "my-mi" || name == "my-mn" || name == "num-live-peers" || name == "num-live-peers-responded" || name == "peer-sci" || name == "status" || name == "status-description")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::DormantPeer()
+    :
+    mi{YType::str, "mi"},
+    mn{YType::uint32, "mn"},
+    priority{YType::uint32, "priority"},
+    sci{YType::str, "sci"},
+    ssci{YType::uint32, "ssci"}
+{
+
+    yang_name = "dormant-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::~DormantPeer()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_data() const
+{
+    return mi.is_set
+	|| mn.is_set
+	|| priority.is_set
+	|| sci.is_set
+	|| ssci.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mi.yfilter)
+	|| ydk::is_set(mn.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(sci.yfilter)
+	|| ydk::is_set(ssci.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dormant-peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
+    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
+    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mi")
+    {
+        mi = value;
+        mi.value_namespace = name_space;
+        mi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mn")
+    {
+        mn = value;
+        mn.value_namespace = name_space;
+        mn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sci")
+    {
+        sci = value;
+        sci.value_namespace = name_space;
+        sci.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ssci")
+    {
+        ssci = value;
+        ssci.value_namespace = name_space;
+        ssci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mi")
+    {
+        mi.yfilter = yfilter;
+    }
+    if(value_path == "mn")
+    {
+        mn.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "sci")
+    {
+        sci.yfilter = yfilter;
+    }
+    if(value_path == "ssci")
+    {
+        ssci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::LivePeer()
+    :
+    mi{YType::str, "mi"},
+    mn{YType::uint32, "mn"},
+    priority{YType::uint32, "priority"},
+    sci{YType::str, "sci"},
+    ssci{YType::uint32, "ssci"}
+{
+
+    yang_name = "live-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::~LivePeer()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_data() const
+{
+    return mi.is_set
+	|| mn.is_set
+	|| priority.is_set
+	|| sci.is_set
+	|| ssci.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mi.yfilter)
+	|| ydk::is_set(mn.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(sci.yfilter)
+	|| ydk::is_set(ssci.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "live-peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
+    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
+    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mi")
+    {
+        mi = value;
+        mi.value_namespace = name_space;
+        mi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mn")
+    {
+        mn = value;
+        mn.value_namespace = name_space;
+        mn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sci")
+    {
+        sci = value;
+        sci.value_namespace = name_space;
+        sci.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ssci")
+    {
+        ssci = value;
+        ssci.value_namespace = name_space;
+        ssci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mi")
+    {
+        mi.yfilter = yfilter;
+    }
+    if(value_path == "mn")
+    {
+        mn.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "sci")
+    {
+        sci.yfilter = yfilter;
+    }
+    if(value_path == "ssci")
+    {
+        ssci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::PeersStatus()
+    :
+    peer_count{YType::uint32, "peer-count"},
+    tx_mkpdu_timestamp{YType::str, "tx-mkpdu-timestamp"}
+{
+
+    yang_name = "peers-status"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::~PeersStatus()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_data() const
+{
+    for (std::size_t index=0; index<peer.size(); index++)
+    {
+        if(peer[index]->has_data())
+            return true;
+    }
+    return peer_count.is_set
+	|| tx_mkpdu_timestamp.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_operation() const
+{
+    for (std::size_t index=0; index<peer.size(); index++)
+    {
+        if(peer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(peer_count.yfilter)
+	|| ydk::is_set(tx_mkpdu_timestamp.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peers-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (peer_count.is_set || is_set(peer_count.yfilter)) leaf_name_data.push_back(peer_count.get_name_leafdata());
+    if (tx_mkpdu_timestamp.is_set || is_set(tx_mkpdu_timestamp.yfilter)) leaf_name_data.push_back(tx_mkpdu_timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "peer")
+    {
+        for(auto const & c : peer)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer>();
+        c->parent = this;
+        peer.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : peer)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "peer-count")
+    {
+        peer_count = value;
+        peer_count.value_namespace = name_space;
+        peer_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-mkpdu-timestamp")
+    {
+        tx_mkpdu_timestamp = value;
+        tx_mkpdu_timestamp.value_namespace = name_space;
+        tx_mkpdu_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-count")
+    {
+        peer_count.yfilter = yfilter;
+    }
+    if(value_path == "tx-mkpdu-timestamp")
+    {
+        tx_mkpdu_timestamp.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer" || name == "peer-count" || name == "tx-mkpdu-timestamp")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::Peer()
+    :
+    sci{YType::str, "sci"}
+    	,
+    peer_data(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData>())
+{
+    peer_data->parent = this;
+
+    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::~Peer()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::has_data() const
+{
+    return sci.is_set
+	|| (peer_data !=  nullptr && peer_data->has_data());
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sci.yfilter)
+	|| (peer_data !=  nullptr && peer_data->has_operation());
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "peer-data")
+    {
+        if(peer_data == nullptr)
+        {
+            peer_data = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData>();
+        }
+        return peer_data;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_data != nullptr)
+    {
+        children["peer-data"] = peer_data;
+    }
+
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sci")
+    {
+        sci = value;
+        sci.value_namespace = name_space;
+        sci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sci")
+    {
+        sci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-data" || name == "sci")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::PeerData()
+    :
+    icv_check_timestamp{YType::str, "icv-check-timestamp"},
+    icv_status{YType::str, "icv-status"},
+    mi{YType::str, "mi"}
+{
+
+    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::~PeerData()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::has_data() const
+{
+    return icv_check_timestamp.is_set
+	|| icv_status.is_set
+	|| mi.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(icv_check_timestamp.yfilter)
+	|| ydk::is_set(icv_status.yfilter)
+	|| ydk::is_set(mi.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (icv_check_timestamp.is_set || is_set(icv_check_timestamp.yfilter)) leaf_name_data.push_back(icv_check_timestamp.get_name_leafdata());
+    if (icv_status.is_set || is_set(icv_status.yfilter)) leaf_name_data.push_back(icv_status.get_name_leafdata());
+    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "icv-check-timestamp")
+    {
+        icv_check_timestamp = value;
+        icv_check_timestamp.value_namespace = name_space;
+        icv_check_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "icv-status")
+    {
+        icv_status = value;
+        icv_status.value_namespace = name_space;
+        icv_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mi")
+    {
+        mi = value;
+        mi.value_namespace = name_space;
+        mi.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "icv-check-timestamp")
+    {
+        icv_check_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "icv-status")
+    {
+        icv_status.yfilter = yfilter;
+    }
+    if(value_path == "mi")
+    {
+        mi.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icv-check-timestamp" || name == "icv-status" || name == "mi")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::PotentialPeer()
+    :
+    mi{YType::str, "mi"},
+    mn{YType::uint32, "mn"},
+    priority{YType::uint32, "priority"},
+    sci{YType::str, "sci"},
+    ssci{YType::uint32, "ssci"}
+{
+
+    yang_name = "potential-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::~PotentialPeer()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_data() const
+{
+    return mi.is_set
+	|| mn.is_set
+	|| priority.is_set
+	|| sci.is_set
+	|| ssci.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mi.yfilter)
+	|| ydk::is_set(mn.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(sci.yfilter)
+	|| ydk::is_set(ssci.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "potential-peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
+    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
+    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mi")
+    {
+        mi = value;
+        mi.value_namespace = name_space;
+        mi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mn")
+    {
+        mn = value;
+        mn.value_namespace = name_space;
+        mn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sci")
+    {
+        sci = value;
+        sci.value_namespace = name_space;
+        sci.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ssci")
+    {
+        ssci = value;
+        ssci.value_namespace = name_space;
+        ssci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mi")
+    {
+        mi.yfilter = yfilter;
+    }
+    if(value_path == "mn")
+    {
+        mn.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "sci")
+    {
+        sci.yfilter = yfilter;
+    }
+    if(value_path == "ssci")
+    {
+        ssci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+        return true;
+    return false;
+}
+
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::SessionSummary()
     :
     algo_agility{YType::uint32, "algo-agility"},
@@ -601,10 +1627,9 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::SessionSummary()
 	,outer_tag(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag>())
 {
     inner_tag->parent = this;
-
     outer_tag->parent = this;
 
-    yang_name = "session-summary"; yang_parent_name = "session";
+    yang_name = "session-summary"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::~SessionSummary()
@@ -656,23 +1681,11 @@ std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "session-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SessionSummary' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (algo_agility.is_set || is_set(algo_agility.yfilter)) leaf_name_data.push_back(algo_agility.get_name_leafdata());
@@ -690,9 +1703,7 @@ const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::ge
     if (replay_protect.is_set || is_set(replay_protect.yfilter)) leaf_name_data.push_back(replay_protect.get_name_leafdata());
     if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -890,137 +1901,6 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_leaf_or_ch
     return false;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::OuterTag()
-    :
-    cfi{YType::uint8, "cfi"},
-    etype{YType::uint16, "etype"},
-    priority{YType::uint8, "priority"},
-    vlan_id{YType::uint16, "vlan-id"}
-{
-    yang_name = "outer-tag"; yang_parent_name = "session-summary";
-}
-
-Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::~OuterTag()
-{
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_data() const
-{
-    return cfi.is_set
-	|| etype.is_set
-	|| priority.is_set
-	|| vlan_id.is_set;
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cfi.yfilter)
-	|| ydk::is_set(etype.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(vlan_id.yfilter);
-}
-
-std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "outer-tag";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OuterTag' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
-    if (etype.is_set || is_set(etype.yfilter)) leaf_name_data.push_back(etype.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cfi")
-    {
-        cfi = value;
-        cfi.value_namespace = name_space;
-        cfi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "etype")
-    {
-        etype = value;
-        etype.value_namespace = name_space;
-        etype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan-id")
-    {
-        vlan_id = value;
-        vlan_id.value_namespace = name_space;
-        vlan_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cfi")
-    {
-        cfi.yfilter = yfilter;
-    }
-    if(value_path == "etype")
-    {
-        etype.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "vlan-id")
-    {
-        vlan_id.yfilter = yfilter;
-    }
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cfi" || name == "etype" || name == "priority" || name == "vlan-id")
-        return true;
-    return false;
-}
-
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::InnerTag()
     :
     cfi{YType::uint8, "cfi"},
@@ -1028,7 +1908,8 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::InnerTag(
     priority{YType::uint8, "priority"},
     vlan_id{YType::uint16, "vlan-id"}
 {
-    yang_name = "inner-tag"; yang_parent_name = "session-summary";
+
+    yang_name = "inner-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::~InnerTag()
@@ -1056,23 +1937,11 @@ std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTa
 {
     std::ostringstream path_buffer;
     path_buffer << "inner-tag";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InnerTag' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
@@ -1080,9 +1949,7 @@ const EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::In
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1152,6 +2019,124 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_
     return false;
 }
 
+Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::OuterTag()
+    :
+    cfi{YType::uint8, "cfi"},
+    etype{YType::uint16, "etype"},
+    priority{YType::uint8, "priority"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "outer-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::~OuterTag()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_data() const
+{
+    return cfi.is_set
+	|| etype.is_set
+	|| priority.is_set
+	|| vlan_id.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cfi.yfilter)
+	|| ydk::is_set(etype.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "outer-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
+    if (etype.is_set || is_set(etype.yfilter)) leaf_name_data.push_back(etype.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cfi")
+    {
+        cfi = value;
+        cfi.value_namespace = name_space;
+        cfi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "etype")
+    {
+        etype = value;
+        etype.value_namespace = name_space;
+        etype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cfi")
+    {
+        cfi.yfilter = yfilter;
+    }
+    if(value_path == "etype")
+    {
+        etype.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfi" || name == "etype" || name == "priority" || name == "vlan-id")
+        return true;
+    return false;
+}
+
 Macsec::Mka::Interfaces::Interface::Session::Vp::Vp()
     :
     cipher_suite{YType::uint32, "cipher-suite"},
@@ -1172,7 +2157,8 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::Vp()
     virtual_port_id{YType::uint32, "virtual-port-id"},
     wait_time{YType::uint32, "wait-time"}
 {
-    yang_name = "vp"; yang_parent_name = "session";
+
+    yang_name = "vp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::~Vp()
@@ -1181,6 +2167,11 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::~Vp()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_data() const
 {
+    for (std::size_t index=0; index<fallback_keepalive.size(); index++)
+    {
+        if(fallback_keepalive[index]->has_data())
+            return true;
+    }
     return cipher_suite.is_set
 	|| latest_an.is_set
 	|| latest_ki.is_set
@@ -1202,6 +2193,11 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_data() const
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_operation() const
 {
+    for (std::size_t index=0; index<fallback_keepalive.size(); index++)
+    {
+        if(fallback_keepalive[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(cipher_suite.yfilter)
 	|| ydk::is_set(latest_an.yfilter)
@@ -1226,23 +2222,11 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Vp::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "vp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Vp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vp' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
@@ -1263,20 +2247,39 @@ const EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_pat
     if (virtual_port_id.is_set || is_set(virtual_port_id.yfilter)) leaf_name_data.push_back(virtual_port_id.get_name_leafdata());
     if (wait_time.is_set || is_set(wait_time.yfilter)) leaf_name_data.push_back(wait_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "fallback-keepalive")
+    {
+        for(auto const & c : fallback_keepalive)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive>();
+        c->parent = this;
+        fallback_keepalive.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : fallback_keepalive)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
@@ -1460,477 +2463,117 @@ void Macsec::Mka::Interfaces::Interface::Session::Vp::set_filter(const std::stri
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cipher-suite" || name == "latest-an" || name == "latest-ki" || name == "latest-kn" || name == "latest-rx" || name == "latest-tx" || name == "my-sci" || name == "old-an" || name == "old-ki" || name == "old-kn" || name == "old-rx" || name == "old-tx" || name == "retire-time" || name == "ssci" || name == "time-to-sak-rekey" || name == "virtual-port-id" || name == "wait-time")
+    if(name == "fallback-keepalive" || name == "cipher-suite" || name == "latest-an" || name == "latest-ki" || name == "latest-kn" || name == "latest-rx" || name == "latest-tx" || name == "my-sci" || name == "old-an" || name == "old-ki" || name == "old-kn" || name == "old-rx" || name == "old-tx" || name == "retire-time" || name == "ssci" || name == "time-to-sak-rekey" || name == "virtual-port-id" || name == "wait-time")
         return true;
     return false;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::Ca()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::FallbackKeepalive()
     :
-    authentication_mode{YType::str, "authentication-mode"},
-    authenticator{YType::boolean, "authenticator"},
     ckn{YType::str, "ckn"},
-    first_ca{YType::boolean, "first-ca"},
-    is_key_server{YType::boolean, "is-key-server"},
-    key_chain{YType::str, "key-chain"},
-    my_mi{YType::str, "my-mi"},
-    my_mn{YType::uint32, "my-mn"},
-    num_live_peers{YType::uint32, "num-live-peers"},
-    num_live_peers_responded{YType::uint32, "num-live-peers-responded"},
-    peer_sci{YType::str, "peer-sci"},
-    status{YType::uint32, "status"},
-    status_description{YType::str, "status-description"}
+    mi{YType::str, "mi"},
+    mn{YType::uint32, "mn"}
+    	,
+    peers_status(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus>())
 {
-    yang_name = "ca"; yang_parent_name = "session";
+    peers_status->parent = this;
+
+    yang_name = "fallback-keepalive"; yang_parent_name = "vp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::~Ca()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::~FallbackKeepalive()
 {
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_data() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::has_data() const
 {
-    for (std::size_t index=0; index<dormant_peer.size(); index++)
-    {
-        if(dormant_peer[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<live_peer.size(); index++)
-    {
-        if(live_peer[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<potential_peer.size(); index++)
-    {
-        if(potential_peer[index]->has_data())
-            return true;
-    }
-    return authentication_mode.is_set
-	|| authenticator.is_set
-	|| ckn.is_set
-	|| first_ca.is_set
-	|| is_key_server.is_set
-	|| key_chain.is_set
-	|| my_mi.is_set
-	|| my_mn.is_set
-	|| num_live_peers.is_set
-	|| num_live_peers_responded.is_set
-	|| peer_sci.is_set
-	|| status.is_set
-	|| status_description.is_set;
+    return ckn.is_set
+	|| mi.is_set
+	|| mn.is_set
+	|| (peers_status !=  nullptr && peers_status->has_data());
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_operation() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::has_operation() const
 {
-    for (std::size_t index=0; index<dormant_peer.size(); index++)
-    {
-        if(dormant_peer[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<live_peer.size(); index++)
-    {
-        if(live_peer[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<potential_peer.size(); index++)
-    {
-        if(potential_peer[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(authentication_mode.yfilter)
-	|| ydk::is_set(authenticator.yfilter)
 	|| ydk::is_set(ckn.yfilter)
-	|| ydk::is_set(first_ca.yfilter)
-	|| ydk::is_set(is_key_server.yfilter)
-	|| ydk::is_set(key_chain.yfilter)
-	|| ydk::is_set(my_mi.yfilter)
-	|| ydk::is_set(my_mn.yfilter)
-	|| ydk::is_set(num_live_peers.yfilter)
-	|| ydk::is_set(num_live_peers_responded.yfilter)
-	|| ydk::is_set(peer_sci.yfilter)
-	|| ydk::is_set(status.yfilter)
-	|| ydk::is_set(status_description.yfilter);
+	|| ydk::is_set(mi.yfilter)
+	|| ydk::is_set(mn.yfilter)
+	|| (peers_status !=  nullptr && peers_status->has_operation());
 }
 
-std::string Macsec::Mka::Interfaces::Interface::Session::Ca::get_segment_path() const
+std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ca";
-
+    path_buffer << "fallback-keepalive";
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ca' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_mode.is_set || is_set(authentication_mode.yfilter)) leaf_name_data.push_back(authentication_mode.get_name_leafdata());
-    if (authenticator.is_set || is_set(authenticator.yfilter)) leaf_name_data.push_back(authenticator.get_name_leafdata());
     if (ckn.is_set || is_set(ckn.yfilter)) leaf_name_data.push_back(ckn.get_name_leafdata());
-    if (first_ca.is_set || is_set(first_ca.yfilter)) leaf_name_data.push_back(first_ca.get_name_leafdata());
-    if (is_key_server.is_set || is_set(is_key_server.yfilter)) leaf_name_data.push_back(is_key_server.get_name_leafdata());
-    if (key_chain.is_set || is_set(key_chain.yfilter)) leaf_name_data.push_back(key_chain.get_name_leafdata());
-    if (my_mi.is_set || is_set(my_mi.yfilter)) leaf_name_data.push_back(my_mi.get_name_leafdata());
-    if (my_mn.is_set || is_set(my_mn.yfilter)) leaf_name_data.push_back(my_mn.get_name_leafdata());
-    if (num_live_peers.is_set || is_set(num_live_peers.yfilter)) leaf_name_data.push_back(num_live_peers.get_name_leafdata());
-    if (num_live_peers_responded.is_set || is_set(num_live_peers_responded.yfilter)) leaf_name_data.push_back(num_live_peers_responded.get_name_leafdata());
-    if (peer_sci.is_set || is_set(peer_sci.yfilter)) leaf_name_data.push_back(peer_sci.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (status_description.is_set || is_set(status_description.yfilter)) leaf_name_data.push_back(status_description.get_name_leafdata());
+    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
+    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dormant-peer")
+    if(child_yang_name == "peers-status")
     {
-        for(auto const & c : dormant_peer)
+        if(peers_status == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            peers_status = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus>();
         }
-        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer>();
-        c->parent = this;
-        dormant_peer.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "live-peer")
-    {
-        for(auto const & c : live_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer>();
-        c->parent = this;
-        live_peer.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "potential-peer")
-    {
-        for(auto const & c : potential_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer>();
-        c->parent = this;
-        potential_peer.push_back(c);
-        return c;
+        return peers_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dormant_peer)
+    if(peers_status != nullptr)
     {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : live_peer)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : potential_peer)
-    {
-        children[c->get_segment_path()] = c;
+        children["peers-status"] = peers_status;
     }
 
     return children;
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "authentication-mode")
-    {
-        authentication_mode = value;
-        authentication_mode.value_namespace = name_space;
-        authentication_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authenticator")
-    {
-        authenticator = value;
-        authenticator.value_namespace = name_space;
-        authenticator.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ckn")
     {
         ckn = value;
         ckn.value_namespace = name_space;
         ckn.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "first-ca")
+    if(value_path == "mi")
     {
-        first_ca = value;
-        first_ca.value_namespace = name_space;
-        first_ca.value_namespace_prefix = name_space_prefix;
+        mi = value;
+        mi.value_namespace = name_space;
+        mi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-key-server")
+    if(value_path == "mn")
     {
-        is_key_server = value;
-        is_key_server.value_namespace = name_space;
-        is_key_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "key-chain")
-    {
-        key_chain = value;
-        key_chain.value_namespace = name_space;
-        key_chain.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "my-mi")
-    {
-        my_mi = value;
-        my_mi.value_namespace = name_space;
-        my_mi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "my-mn")
-    {
-        my_mn = value;
-        my_mn.value_namespace = name_space;
-        my_mn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-live-peers")
-    {
-        num_live_peers = value;
-        num_live_peers.value_namespace = name_space;
-        num_live_peers.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-live-peers-responded")
-    {
-        num_live_peers_responded = value;
-        num_live_peers_responded.value_namespace = name_space;
-        num_live_peers_responded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peer-sci")
-    {
-        peer_sci = value;
-        peer_sci.value_namespace = name_space;
-        peer_sci.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status-description")
-    {
-        status_description = value;
-        status_description.value_namespace = name_space;
-        status_description.value_namespace_prefix = name_space_prefix;
+        mn = value;
+        mn.value_namespace = name_space;
+        mn.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::set_filter(const std::string & value_path, YFilter yfilter)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "authentication-mode")
-    {
-        authentication_mode.yfilter = yfilter;
-    }
-    if(value_path == "authenticator")
-    {
-        authenticator.yfilter = yfilter;
-    }
     if(value_path == "ckn")
     {
         ckn.yfilter = yfilter;
     }
-    if(value_path == "first-ca")
-    {
-        first_ca.yfilter = yfilter;
-    }
-    if(value_path == "is-key-server")
-    {
-        is_key_server.yfilter = yfilter;
-    }
-    if(value_path == "key-chain")
-    {
-        key_chain.yfilter = yfilter;
-    }
-    if(value_path == "my-mi")
-    {
-        my_mi.yfilter = yfilter;
-    }
-    if(value_path == "my-mn")
-    {
-        my_mn.yfilter = yfilter;
-    }
-    if(value_path == "num-live-peers")
-    {
-        num_live_peers.yfilter = yfilter;
-    }
-    if(value_path == "num-live-peers-responded")
-    {
-        num_live_peers_responded.yfilter = yfilter;
-    }
-    if(value_path == "peer-sci")
-    {
-        peer_sci.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-    if(value_path == "status-description")
-    {
-        status_description.yfilter = yfilter;
-    }
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dormant-peer" || name == "live-peer" || name == "potential-peer" || name == "authentication-mode" || name == "authenticator" || name == "ckn" || name == "first-ca" || name == "is-key-server" || name == "key-chain" || name == "my-mi" || name == "my-mn" || name == "num-live-peers" || name == "num-live-peers-responded" || name == "peer-sci" || name == "status" || name == "status-description")
-        return true;
-    return false;
-}
-
-Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::LivePeer()
-    :
-    mi{YType::str, "mi"},
-    mn{YType::uint32, "mn"},
-    priority{YType::uint32, "priority"},
-    sci{YType::str, "sci"},
-    ssci{YType::uint32, "ssci"}
-{
-    yang_name = "live-peer"; yang_parent_name = "ca";
-}
-
-Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::~LivePeer()
-{
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_data() const
-{
-    return mi.is_set
-	|| mn.is_set
-	|| priority.is_set
-	|| sci.is_set
-	|| ssci.is_set;
-}
-
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mi.yfilter)
-	|| ydk::is_set(mn.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(sci.yfilter)
-	|| ydk::is_set(ssci.yfilter);
-}
-
-std::string Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "live-peer";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LivePeer' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
-    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
-    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mi")
-    {
-        mi = value;
-        mi.value_namespace = name_space;
-        mi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mn")
-    {
-        mn = value;
-        mn.value_namespace = name_space;
-        mn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sci")
-    {
-        sci = value;
-        sci.value_namespace = name_space;
-        sci.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ssci")
-    {
-        ssci = value;
-        ssci.value_namespace = name_space;
-        ssci.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::set_filter(const std::string & value_path, YFilter yfilter)
-{
     if(value_path == "mi")
     {
         mi.yfilter = yfilter;
@@ -1939,313 +2582,331 @@ void Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::set_filter(const
     {
         mn.yfilter = yfilter;
     }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "sci")
-    {
-        sci.yfilter = yfilter;
-    }
-    if(value_path == "ssci")
-    {
-        ssci.yfilter = yfilter;
-    }
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_leaf_or_child_of_name(const std::string & name) const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+    if(name == "peers-status" || name == "ckn" || name == "mi" || name == "mn")
         return true;
     return false;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::PotentialPeer()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::PeersStatus()
     :
-    mi{YType::str, "mi"},
-    mn{YType::uint32, "mn"},
-    priority{YType::uint32, "priority"},
-    sci{YType::str, "sci"},
-    ssci{YType::uint32, "ssci"}
+    peer_count{YType::uint32, "peer-count"},
+    tx_mkpdu_timestamp{YType::str, "tx-mkpdu-timestamp"}
 {
-    yang_name = "potential-peer"; yang_parent_name = "ca";
+
+    yang_name = "peers-status"; yang_parent_name = "fallback-keepalive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::~PotentialPeer()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::~PeersStatus()
 {
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_data() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::has_data() const
 {
-    return mi.is_set
-	|| mn.is_set
-	|| priority.is_set
-	|| sci.is_set
-	|| ssci.is_set;
+    for (std::size_t index=0; index<peer.size(); index++)
+    {
+        if(peer[index]->has_data())
+            return true;
+    }
+    return peer_count.is_set
+	|| tx_mkpdu_timestamp.is_set;
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_operation() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::has_operation() const
 {
+    for (std::size_t index=0; index<peer.size(); index++)
+    {
+        if(peer[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(mi.yfilter)
-	|| ydk::is_set(mn.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(sci.yfilter)
-	|| ydk::is_set(ssci.yfilter);
+	|| ydk::is_set(peer_count.yfilter)
+	|| ydk::is_set(tx_mkpdu_timestamp.yfilter);
 }
 
-std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_segment_path() const
+std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "potential-peer";
-
+    path_buffer << "peers-status";
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PotentialPeer' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
-    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
-    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
+    if (peer_count.is_set || is_set(peer_count.yfilter)) leaf_name_data.push_back(peer_count.get_name_leafdata());
+    if (tx_mkpdu_timestamp.is_set || is_set(tx_mkpdu_timestamp.yfilter)) leaf_name_data.push_back(tx_mkpdu_timestamp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "peer")
+    {
+        for(auto const & c : peer)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer>();
+        c->parent = this;
+        peer.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : peer)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "mi")
+    if(value_path == "peer-count")
     {
-        mi = value;
-        mi.value_namespace = name_space;
-        mi.value_namespace_prefix = name_space_prefix;
+        peer_count = value;
+        peer_count.value_namespace = name_space;
+        peer_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mn")
+    if(value_path == "tx-mkpdu-timestamp")
     {
-        mn = value;
-        mn.value_namespace = name_space;
-        mn.value_namespace_prefix = name_space_prefix;
+        tx_mkpdu_timestamp = value;
+        tx_mkpdu_timestamp.value_namespace = name_space;
+        tx_mkpdu_timestamp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority")
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-count")
     {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
+        peer_count.yfilter = yfilter;
     }
+    if(value_path == "tx-mkpdu-timestamp")
+    {
+        tx_mkpdu_timestamp.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer" || name == "peer-count" || name == "tx-mkpdu-timestamp")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::Peer()
+    :
+    sci{YType::str, "sci"}
+    	,
+    peer_data(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData>())
+{
+    peer_data->parent = this;
+
+    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::~Peer()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::has_data() const
+{
+    return sci.is_set
+	|| (peer_data !=  nullptr && peer_data->has_data());
+}
+
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sci.yfilter)
+	|| (peer_data !=  nullptr && peer_data->has_operation());
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "peer-data")
+    {
+        if(peer_data == nullptr)
+        {
+            peer_data = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData>();
+        }
+        return peer_data;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(peer_data != nullptr)
+    {
+        children["peer-data"] = peer_data;
+    }
+
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
     if(value_path == "sci")
     {
         sci = value;
         sci.value_namespace = name_space;
         sci.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ssci")
-    {
-        ssci = value;
-        ssci.value_namespace = name_space;
-        ssci.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::set_filter(const std::string & value_path, YFilter yfilter)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "mi")
-    {
-        mi.yfilter = yfilter;
-    }
-    if(value_path == "mn")
-    {
-        mn.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
     if(value_path == "sci")
     {
         sci.yfilter = yfilter;
     }
-    if(value_path == "ssci")
-    {
-        ssci.yfilter = yfilter;
-    }
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_leaf_or_child_of_name(const std::string & name) const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+    if(name == "peer-data" || name == "sci")
         return true;
     return false;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::DormantPeer()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::PeerData()
     :
-    mi{YType::str, "mi"},
-    mn{YType::uint32, "mn"},
-    priority{YType::uint32, "priority"},
-    sci{YType::str, "sci"},
-    ssci{YType::uint32, "ssci"}
+    icv_check_timestamp{YType::str, "icv-check-timestamp"},
+    icv_status{YType::str, "icv-status"},
+    mi{YType::str, "mi"}
 {
-    yang_name = "dormant-peer"; yang_parent_name = "ca";
+
+    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::~DormantPeer()
+Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::~PeerData()
 {
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_data() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::has_data() const
 {
-    return mi.is_set
-	|| mn.is_set
-	|| priority.is_set
-	|| sci.is_set
-	|| ssci.is_set;
+    return icv_check_timestamp.is_set
+	|| icv_status.is_set
+	|| mi.is_set;
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_operation() const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(mi.yfilter)
-	|| ydk::is_set(mn.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(sci.yfilter)
-	|| ydk::is_set(ssci.yfilter);
+	|| ydk::is_set(icv_check_timestamp.yfilter)
+	|| ydk::is_set(icv_status.yfilter)
+	|| ydk::is_set(mi.yfilter);
 }
 
-std::string Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_segment_path() const
+std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dormant-peer";
-
+    path_buffer << "peer-data";
     return path_buffer.str();
-
 }
 
-const EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DormantPeer' in Cisco_IOS_XR_crypto_macsec_mka_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (icv_check_timestamp.is_set || is_set(icv_check_timestamp.yfilter)) leaf_name_data.push_back(icv_check_timestamp.get_name_leafdata());
+    if (icv_status.is_set || is_set(icv_status.yfilter)) leaf_name_data.push_back(icv_status.get_name_leafdata());
     if (mi.is_set || is_set(mi.yfilter)) leaf_name_data.push_back(mi.get_name_leafdata());
-    if (mn.is_set || is_set(mn.yfilter)) leaf_name_data.push_back(mn.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (sci.is_set || is_set(sci.yfilter)) leaf_name_data.push_back(sci.get_name_leafdata());
-    if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "icv-check-timestamp")
+    {
+        icv_check_timestamp = value;
+        icv_check_timestamp.value_namespace = name_space;
+        icv_check_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "icv-status")
+    {
+        icv_status = value;
+        icv_status.value_namespace = name_space;
+        icv_status.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mi")
     {
         mi = value;
         mi.value_namespace = name_space;
         mi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mn")
-    {
-        mn = value;
-        mn.value_namespace = name_space;
-        mn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sci")
-    {
-        sci = value;
-        sci.value_namespace = name_space;
-        sci.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ssci")
-    {
-        ssci = value;
-        ssci.value_namespace = name_space;
-        ssci.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::set_filter(const std::string & value_path, YFilter yfilter)
+void Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "icv-check-timestamp")
+    {
+        icv_check_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "icv-status")
+    {
+        icv_status.yfilter = yfilter;
+    }
     if(value_path == "mi")
     {
         mi.yfilter = yfilter;
     }
-    if(value_path == "mn")
-    {
-        mn.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "sci")
-    {
-        sci.yfilter = yfilter;
-    }
-    if(value_path == "ssci")
-    {
-        ssci.yfilter = yfilter;
-    }
 }
 
-bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_leaf_or_child_of_name(const std::string & name) const
+bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mi" || name == "mn" || name == "priority" || name == "sci" || name == "ssci")
+    if(name == "icv-check-timestamp" || name == "icv-status" || name == "mi")
         return true;
     return false;
 }

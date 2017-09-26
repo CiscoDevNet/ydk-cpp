@@ -11,6287 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_iedge4710_oper {
 
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::StateXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "state-xr"; yang_parent_name = "ipv4-address-vrf-summary";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::~StateXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::AddressFamilyXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-vrf-summary";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::~AddressFamilyXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::Pppoe()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummaries()
-{
-    yang_name = "address-family-summaries"; yang_parent_name = "node";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::~AddressFamilySummaries()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_data() const
-{
-    for (std::size_t index=0; index<address_family_summary.size(); index++)
-    {
-        if(address_family_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_operation() const
-{
-    for (std::size_t index=0; index<address_family_summary.size(); index++)
-    {
-        if(address_family_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilySummaries' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family-summary")
-    {
-        for(auto const & c : address_family_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary>();
-        c->parent = this;
-        address_family_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : address_family_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family-summary")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilySummary()
-    :
-    address_family{YType::enumeration, "address-family"}
-    	,
-    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr>())
-	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr>())
-{
-    address_family_xr->parent = this;
-
-    state_xr->parent = this;
-
-    yang_name = "address-family-summary"; yang_parent_name = "address-family-summaries";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::~AddressFamilySummary()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::has_data() const
-{
-    return address_family.is_set
-	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
-	|| (state_xr !=  nullptr && state_xr->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
-	|| (state_xr !=  nullptr && state_xr->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-summary" <<"[address-family='" <<address_family <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilySummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family-xr")
-    {
-        if(address_family_xr == nullptr)
-        {
-            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr>();
-        }
-        return address_family_xr;
-    }
-
-    if(child_yang_name == "state-xr")
-    {
-        if(state_xr == nullptr)
-        {
-            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr>();
-        }
-        return state_xr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_family_xr != nullptr)
-    {
-        children["address-family-xr"] = address_family_xr;
-    }
-
-    if(state_xr != nullptr)
-    {
-        children["state-xr"] = state_xr;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family-xr" || name == "state-xr" || name == "address-family")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::StateXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "state-xr"; yang_parent_name = "address-family-summary";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::~StateXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::AddressFamilyXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "address-family-summary";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::~AddressFamilyXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::Pppoe()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummaries()
-{
-    yang_name = "username-summaries"; yang_parent_name = "node";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::~UsernameSummaries()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_data() const
-{
-    for (std::size_t index=0; index<username_summary.size(); index++)
-    {
-        if(username_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<username_summary.size(); index++)
-    {
-        if(username_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "username-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UsernameSummaries' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "username-summary")
-    {
-        for(auto const & c : username_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary>();
-        c->parent = this;
-        username_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : username_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "username-summary")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::UsernameSummary()
-    :
-    username{YType::str, "username"}
-    	,
-    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>())
-	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>())
-{
-    address_family_xr->parent = this;
-
-    state_xr->parent = this;
-
-    yang_name = "username-summary"; yang_parent_name = "username-summaries";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::~UsernameSummary()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_data() const
-{
-    return username.is_set
-	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
-	|| (state_xr !=  nullptr && state_xr->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
-	|| (state_xr !=  nullptr && state_xr->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "username-summary" <<"[username='" <<username <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UsernameSummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family-xr")
-    {
-        if(address_family_xr == nullptr)
-        {
-            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>();
-        }
-        return address_family_xr;
-    }
-
-    if(child_yang_name == "state-xr")
-    {
-        if(state_xr == nullptr)
-        {
-            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>();
-        }
-        return state_xr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_family_xr != nullptr)
-    {
-        children["address-family-xr"] = address_family_xr;
-    }
-
-    if(state_xr != nullptr)
-    {
-        children["state-xr"] = state_xr;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family-xr" || name == "state-xr" || name == "username")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::StateXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "state-xr"; yang_parent_name = "username-summary";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::~StateXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::AddressFamilyXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "username-summary";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::~AddressFamilyXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::Pppoe()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummaries()
-{
-    yang_name = "access-interface-summaries"; yang_parent_name = "node";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::~AccessInterfaceSummaries()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_data() const
-{
-    for (std::size_t index=0; index<access_interface_summary.size(); index++)
-    {
-        if(access_interface_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<access_interface_summary.size(); index++)
-    {
-        if(access_interface_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-interface-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessInterfaceSummaries' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-interface-summary")
-    {
-        for(auto const & c : access_interface_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary>();
-        c->parent = this;
-        access_interface_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : access_interface_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-interface-summary")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AccessInterfaceSummary()
-    :
-    interface_name{YType::str, "interface-name"}
-    	,
-    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr>())
-	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr>())
-{
-    address_family_xr->parent = this;
-
-    state_xr->parent = this;
-
-    yang_name = "access-interface-summary"; yang_parent_name = "access-interface-summaries";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::~AccessInterfaceSummary()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::has_data() const
-{
-    return interface_name.is_set
-	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
-	|| (state_xr !=  nullptr && state_xr->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
-	|| (state_xr !=  nullptr && state_xr->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-interface-summary" <<"[interface-name='" <<interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessInterfaceSummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family-xr")
-    {
-        if(address_family_xr == nullptr)
-        {
-            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr>();
-        }
-        return address_family_xr;
-    }
-
-    if(child_yang_name == "state-xr")
-    {
-        if(state_xr == nullptr)
-        {
-            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr>();
-        }
-        return state_xr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_family_xr != nullptr)
-    {
-        children["address-family-xr"] = address_family_xr;
-    }
-
-    if(state_xr != nullptr)
-    {
-        children["state-xr"] = state_xr;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family-xr" || name == "state-xr" || name == "interface-name")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::StateXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "state-xr"; yang_parent_name = "access-interface-summary";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::~StateXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::AddressFamilyXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "access-interface-summary";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::~AddressFamilyXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::Pppoe()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummaries()
-{
-    yang_name = "ipv4-address-summaries"; yang_parent_name = "node";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::~Ipv4AddressSummaries()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_data() const
-{
-    for (std::size_t index=0; index<ipv4_address_summary.size(); index++)
-    {
-        if(ipv4_address_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<ipv4_address_summary.size(); index++)
-    {
-        if(ipv4_address_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-address-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4AddressSummaries' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4-address-summary")
-    {
-        for(auto const & c : ipv4_address_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary>();
-        c->parent = this;
-        ipv4_address_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv4_address_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-address-summary")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Ipv4AddressSummary()
-    :
-    address{YType::str, "address"}
-    	,
-    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr>())
-	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr>())
-{
-    address_family_xr->parent = this;
-
-    state_xr->parent = this;
-
-    yang_name = "ipv4-address-summary"; yang_parent_name = "ipv4-address-summaries";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::~Ipv4AddressSummary()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::has_data() const
-{
-    return address.is_set
-	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
-	|| (state_xr !=  nullptr && state_xr->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
-	|| (state_xr !=  nullptr && state_xr->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-address-summary" <<"[address='" <<address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4AddressSummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "address-family-xr")
-    {
-        if(address_family_xr == nullptr)
-        {
-            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr>();
-        }
-        return address_family_xr;
-    }
-
-    if(child_yang_name == "state-xr")
-    {
-        if(state_xr == nullptr)
-        {
-            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr>();
-        }
-        return state_xr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(address_family_xr != nullptr)
-    {
-        children["address-family-xr"] = address_family_xr;
-    }
-
-    if(state_xr != nullptr)
-    {
-        children["state-xr"] = state_xr;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family-xr" || name == "state-xr" || name == "address")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::StateXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "state-xr"; yang_parent_name = "ipv4-address-summary";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::~StateXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
     :
     activated_sessions{YType::uint32, "activated-sessions"},
@@ -6302,7 +21,8 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
     idle_sessions{YType::uint32, "idle-sessions"},
     initialized_sessions{YType::uint32, "initialized-sessions"}
 {
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -6336,23 +56,11 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-subscriber-dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
@@ -6363,9 +71,7 @@ const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4Add
     if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
     if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6475,7 +181,8 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
     idle_sessions{YType::uint32, "idle-sessions"},
     initialized_sessions{YType::uint32, "initialized-sessions"}
 {
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -6509,23 +216,11 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressS
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-subscriber-packet";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
@@ -6536,9 +231,7 @@ const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4Add
     if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
     if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6638,679 +331,217 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
     return false;
 }
 
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::AddressFamilyXr()
+Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::Pppoe()
     :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe>())
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
 {
-    ip_subscriber_dhcp->parent = this;
 
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-summary";
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::~AddressFamilyXr()
+Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::~Pppoe()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_data() const
 {
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
 }
 
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_operation() const
 {
     return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
 }
 
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "address-family-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::Pppoe()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pppoe";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "dual-part-up-sessions")
+    if(value_path == "activated-sessions")
     {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dual-up-sessions")
+    if(value_path == "connected-sessions")
     {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "in-progress-sessions")
+    if(value_path == "connecting-sessions")
     {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv4-only-sessions")
+    if(value_path == "disconnecting-sessions")
     {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv6-only-sessions")
+    if(value_path == "end-sessions")
     {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "lac-sessions")
+    if(value_path == "idle-sessions")
     {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "dual-part-up-sessions")
+    if(value_path == "activated-sessions")
     {
-        dual_part_up_sessions.yfilter = yfilter;
+        activated_sessions.yfilter = yfilter;
     }
-    if(value_path == "dual-up-sessions")
+    if(value_path == "connected-sessions")
     {
-        dual_up_sessions.yfilter = yfilter;
+        connected_sessions.yfilter = yfilter;
     }
-    if(value_path == "in-progress-sessions")
+    if(value_path == "connecting-sessions")
     {
-        in_progress_sessions.yfilter = yfilter;
+        connecting_sessions.yfilter = yfilter;
     }
-    if(value_path == "ipv4-only-sessions")
+    if(value_path == "disconnecting-sessions")
     {
-        ipv4_only_sessions.yfilter = yfilter;
+        disconnecting_sessions.yfilter = yfilter;
     }
-    if(value_path == "ipv6-only-sessions")
+    if(value_path == "end-sessions")
     {
-        ipv6_only_sessions.yfilter = yfilter;
+        end_sessions.yfilter = yfilter;
     }
-    if(value_path == "lac-sessions")
+    if(value_path == "idle-sessions")
     {
-        lac_sessions.yfilter = yfilter;
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
     }
 }
 
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
         return true;
     return false;
 }
 
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummaries()
 {
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
+
+    yang_name = "ipv4-address-vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::~Ipv4AddressVrfSummaries()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_data() const
 {
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<ipv4_address_vrf_summary.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummaries()
-{
-    yang_name = "vrf-summaries"; yang_parent_name = "node";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::~VrfSummaries()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::has_data() const
-{
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
-    {
-        if(vrf_summary[index]->has_data())
+        if(ipv4_address_vrf_summary[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    for (std::size_t index=0; index<ipv4_address_vrf_summary.size(); index++)
     {
-        if(vrf_summary[index]->has_operation())
+        if(ipv4_address_vrf_summary[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-summaries";
-
+    path_buffer << "ipv4-address-vrf-summaries";
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VrfSummaries' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vrf-summary")
+    if(child_yang_name == "ipv4-address-vrf-summary")
     {
-        for(auto const & c : vrf_summary)
+        for(auto const & c : ipv4_address_vrf_summary)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -7318,19 +549,19 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_chil
                 return c;
             }
         }
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary>();
+        auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(c);
+        ipv4_address_vrf_summary.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf_summary)
+    for (auto const & c : ipv4_address_vrf_summary)
     {
         children[c->get_segment_path()] = c;
     }
@@ -7338,92 +569,81 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf-summary")
+    if(name == "ipv4-address-vrf-summary")
         return true;
     return false;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::VrfSummary()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::Ipv4AddressVrfSummary()
     :
+    address{YType::str, "address"},
     vrf_name{YType::str, "vrf-name"}
     	,
-    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>())
-	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>())
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr>())
 {
     address_family_xr->parent = this;
-
     state_xr->parent = this;
 
-    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries";
+    yang_name = "ipv4-address-vrf-summary"; yang_parent_name = "ipv4-address-vrf-summaries"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::~VrfSummary()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::~Ipv4AddressVrfSummary()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::has_data() const
 {
-    return vrf_name.is_set
+    return address.is_set
+	|| vrf_name.is_set
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
 	|| (state_xr !=  nullptr && state_xr->has_data());
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
 	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-summary" <<"[vrf-name='" <<vrf_name <<"']";
-
+    path_buffer << "ipv4-address-vrf-summary";
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VrfSummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-family-xr")
     {
         if(address_family_xr == nullptr)
         {
-            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>();
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr>();
         }
         return address_family_xr;
     }
@@ -7432,7 +652,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSumma
     {
         if(state_xr == nullptr)
         {
-            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>();
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr>();
         }
         return state_xr;
     }
@@ -7440,7 +660,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(address_family_xr != nullptr)
@@ -7456,8 +676,14 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
@@ -7466,48 +692,50 @@ void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::set_value(const
     }
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
     if(value_path == "vrf-name")
     {
         vrf_name.yfilter = yfilter;
     }
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-family-xr" || name == "state-xr" || name == "vrf-name")
+    if(name == "address-family-xr" || name == "state-xr" || name == "address" || name == "vrf-name")
         return true;
     return false;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::StateXr()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::AddressFamilyXr()
     :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>())
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>())
 {
     ip_subscriber_dhcp->parent = this;
-
     ip_subscriber_packet->parent = this;
-
     pppoe->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "vrf-summary";
+    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::~StateXr()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::~AddressFamilyXr()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_data() const
 {
     return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
 	|| (pppoe !=  nullptr && pppoe->has_data());
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(yfilter)
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
@@ -7515,694 +743,29 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_op
 	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-xr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-subscriber-dhcp")
-    {
-        if(ip_subscriber_dhcp == nullptr)
-        {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>();
-        }
-        return ip_subscriber_dhcp;
-    }
-
-    if(child_yang_name == "ip-subscriber-packet")
-    {
-        if(ip_subscriber_packet == nullptr)
-        {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>();
-        }
-        return ip_subscriber_packet;
-    }
-
-    if(child_yang_name == "pppoe")
-    {
-        if(pppoe == nullptr)
-        {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>();
-        }
-        return pppoe;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ip_subscriber_dhcp != nullptr)
-    {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
-    }
-
-    if(ip_subscriber_packet != nullptr)
-    {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
-    }
-
-    if(pppoe != nullptr)
-    {
-        children["pppoe"] = pppoe;
-    }
-
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::Pppoe()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "pppoe"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::~Pppoe()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-dhcp";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
-    :
-    activated_sessions{YType::uint32, "activated-sessions"},
-    connected_sessions{YType::uint32, "connected-sessions"},
-    connecting_sessions{YType::uint32, "connecting-sessions"},
-    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
-    end_sessions{YType::uint32, "end-sessions"},
-    idle_sessions{YType::uint32, "idle-sessions"},
-    initialized_sessions{YType::uint32, "initialized-sessions"}
-{
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_data() const
-{
-    return activated_sessions.is_set
-	|| connected_sessions.is_set
-	|| connecting_sessions.is_set
-	|| disconnecting_sessions.is_set
-	|| end_sessions.is_set
-	|| idle_sessions.is_set
-	|| initialized_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(activated_sessions.yfilter)
-	|| ydk::is_set(connected_sessions.yfilter)
-	|| ydk::is_set(connecting_sessions.yfilter)
-	|| ydk::is_set(disconnecting_sessions.yfilter)
-	|| ydk::is_set(end_sessions.yfilter)
-	|| ydk::is_set(idle_sessions.yfilter)
-	|| ydk::is_set(initialized_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-subscriber-packet";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
-    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
-    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
-    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
-    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
-    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
-    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions = value;
-        activated_sessions.value_namespace = name_space;
-        activated_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions = value;
-        connected_sessions.value_namespace = name_space;
-        connected_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions = value;
-        connecting_sessions.value_namespace = name_space;
-        connecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions = value;
-        disconnecting_sessions.value_namespace = name_space;
-        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions = value;
-        end_sessions.value_namespace = name_space;
-        end_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions = value;
-        idle_sessions.value_namespace = name_space;
-        idle_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions = value;
-        initialized_sessions.value_namespace = name_space;
-        initialized_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activated-sessions")
-    {
-        activated_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connected-sessions")
-    {
-        connected_sessions.yfilter = yfilter;
-    }
-    if(value_path == "connecting-sessions")
-    {
-        connecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "disconnecting-sessions")
-    {
-        disconnecting_sessions.yfilter = yfilter;
-    }
-    if(value_path == "end-sessions")
-    {
-        end_sessions.yfilter = yfilter;
-    }
-    if(value_path == "idle-sessions")
-    {
-        idle_sessions.yfilter = yfilter;
-    }
-    if(value_path == "initialized-sessions")
-    {
-        initialized_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::AddressFamilyXr()
-    :
-    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>())
-	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>())
-{
-    ip_subscriber_dhcp->parent = this;
-
-    ip_subscriber_packet->parent = this;
-
-    pppoe->parent = this;
-
-    yang_name = "address-family-xr"; yang_parent_name = "vrf-summary";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::~AddressFamilyXr()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_data() const
-{
-    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
-	|| (pppoe !=  nullptr && pppoe->has_data());
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
-	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
-	|| (pppoe !=  nullptr && pppoe->has_operation());
-}
-
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address-family-xr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AddressFamilyXr' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-subscriber-dhcp")
     {
         if(ip_subscriber_dhcp == nullptr)
         {
-            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
         }
         return ip_subscriber_dhcp;
     }
@@ -8211,7 +774,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSumma
     {
         if(ip_subscriber_packet == nullptr)
         {
-            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>();
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>();
         }
         return ip_subscriber_packet;
     }
@@ -8220,7 +783,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSumma
     {
         if(pppoe == nullptr)
         {
-            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>();
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>();
         }
         return pppoe;
     }
@@ -8228,7 +791,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ip_subscriber_dhcp != nullptr)
@@ -8249,22 +812,22 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
         return true;
     return false;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::Pppoe()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
     :
     dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
     dual_up_sessions{YType::uint32, "dual-up-sessions"},
@@ -8273,14 +836,15 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Ppp
     ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
     lac_sessions{YType::uint32, "lac-sessions"}
 {
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr";
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
     return dual_part_up_sessions.is_set
 	|| dual_up_sessions.is_set
@@ -8290,7 +854,7 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 	|| lac_sessions.is_set;
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dual_part_up_sessions.yfilter)
@@ -8301,186 +865,15 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 	|| ydk::is_set(lac_sessions.yfilter);
 }
 
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pppoe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Pppoe' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
-    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
-    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
-    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
-    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
-    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions = value;
-        dual_part_up_sessions.value_namespace = name_space;
-        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions = value;
-        dual_up_sessions.value_namespace = name_space;
-        dual_up_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions = value;
-        in_progress_sessions.value_namespace = name_space;
-        in_progress_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions = value;
-        ipv4_only_sessions.value_namespace = name_space;
-        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions = value;
-        ipv6_only_sessions.value_namespace = name_space;
-        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions = value;
-        lac_sessions.value_namespace = name_space;
-        lac_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dual-part-up-sessions")
-    {
-        dual_part_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "dual-up-sessions")
-    {
-        dual_up_sessions.yfilter = yfilter;
-    }
-    if(value_path == "in-progress-sessions")
-    {
-        in_progress_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-only-sessions")
-    {
-        ipv4_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-only-sessions")
-    {
-        ipv6_only_sessions.yfilter = yfilter;
-    }
-    if(value_path == "lac-sessions")
-    {
-        lac_sessions.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
-    :
-    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
-    dual_up_sessions{YType::uint32, "dual-up-sessions"},
-    in_progress_sessions{YType::uint32, "in-progress-sessions"},
-    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
-    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
-    lac_sessions{YType::uint32, "lac-sessions"}
-{
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr";
-}
-
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
-{
-    return dual_part_up_sessions.is_set
-	|| dual_up_sessions.is_set
-	|| in_progress_sessions.is_set
-	|| ipv4_only_sessions.is_set
-	|| ipv6_only_sessions.is_set
-	|| lac_sessions.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dual_part_up_sessions.yfilter)
-	|| ydk::is_set(dual_up_sessions.yfilter)
-	|| ydk::is_set(in_progress_sessions.yfilter)
-	|| ydk::is_set(ipv4_only_sessions.yfilter)
-	|| ydk::is_set(ipv6_only_sessions.yfilter)
-	|| ydk::is_set(lac_sessions.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-subscriber-dhcp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberDhcp' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
@@ -8490,24 +883,22 @@ const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::Add
     if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
     if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-part-up-sessions")
     {
@@ -8547,7 +938,7 @@ void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
     }
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dual-part-up-sessions")
     {
@@ -8575,14 +966,14 @@ void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
     }
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
         return true;
     return false;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
     :
     dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
     dual_up_sessions{YType::uint32, "dual-up-sessions"},
@@ -8591,14 +982,15 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpS
     ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
     lac_sessions{YType::uint32, "lac-sessions"}
 {
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr";
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
     return dual_part_up_sessions.is_set
 	|| dual_up_sessions.is_set
@@ -8608,7 +1000,7 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 	|| lac_sessions.is_set;
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dual_part_up_sessions.yfilter)
@@ -8619,27 +1011,15 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 	|| ydk::is_set(lac_sessions.yfilter);
 }
 
-std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-subscriber-packet";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpSubscriberPacket' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
@@ -8649,24 +1029,22 @@ const EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::Add
     if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
     if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-part-up-sessions")
     {
@@ -8706,7 +1084,7 @@ void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
     }
 }
 
-void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dual-part-up-sessions")
     {
@@ -8734,16 +1112,2115 @@ void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
     }
 }
 
-bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummaries()
+{
+
+    yang_name = "mac-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::~MacSummaries()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::has_data() const
+{
+    for (std::size_t index=0; index<mac_summary.size(); index++)
+    {
+        if(mac_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::has_operation() const
+{
+    for (std::size_t index=0; index<mac_summary.size(); index++)
+    {
+        if(mac_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-summary")
+    {
+        for(auto const & c : mac_summary)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary>();
+        c->parent = this;
+        mac_summary.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mac_summary)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-summary")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::MacSummary()
+    :
+    mac_address{YType::str, "mac-address"}
+    	,
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr>())
+{
+    address_family_xr->parent = this;
+    state_xr->parent = this;
+
+    yang_name = "mac-summary"; yang_parent_name = "mac-summaries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::~MacSummary()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_data() const
+{
+    return mac_address.is_set
+	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
+	|| (state_xr !=  nullptr && state_xr->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-summary" <<"[mac-address='" <<mac_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family-xr")
+    {
+        if(address_family_xr == nullptr)
+        {
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr>();
+        }
+        return address_family_xr;
+    }
+
+    if(child_yang_name == "state-xr")
+    {
+        if(state_xr == nullptr)
+        {
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr>();
+        }
+        return state_xr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
+    {
+        children["address-family-xr"] = address_family_xr;
+    }
+
+    if(state_xr != nullptr)
+    {
+        children["state-xr"] = state_xr;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family-xr" || name == "state-xr" || name == "mac-address")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::AddressFamilyXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "address-family-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::~AddressFamilyXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "mac-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
         return true;
     return false;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Sessions()
 {
-    yang_name = "sessions"; yang_parent_name = "node";
+
+    yang_name = "sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::~Sessions()
@@ -8774,29 +3251,15 @@ std::string Subscriber::Session::Nodes::Node::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sessions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sessions' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8888,12 +3351,10 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Session_()
 	,user_profile_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes>())
 {
     accounting->parent = this;
-
     mobility_attributes->parent = this;
-
     user_profile_attributes->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions";
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::~Session_()
@@ -8995,23 +3456,11 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "session" <<"[session-id='" <<session_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Session_' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
@@ -9048,9 +3497,7 @@ const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entit
     if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9475,7 +3922,8 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_leaf_or_child_of_
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Accounting()
 {
-    yang_name = "accounting"; yang_parent_name = "session";
+
+    yang_name = "accounting"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::~Accounting()
@@ -9506,29 +3954,15 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Accounting' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9597,7 +4031,8 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSess
     sent_interim_update_failures{YType::uint32, "sent-interim-update-failures"},
     sent_interim_updates{YType::uint32, "sent-interim-updates"}
 {
-    yang_name = "accounting-session"; yang_parent_name = "accounting";
+
+    yang_name = "accounting-session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::~AccountingSession()
@@ -9647,23 +4082,11 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Ac
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting-session";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccountingSession' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (accepted_interim_updates.is_set || is_set(accepted_interim_updates.yfilter)) leaf_name_data.push_back(accepted_interim_updates.get_name_leafdata());
@@ -9682,9 +4105,7 @@ const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accountin
     if (sent_interim_update_failures.is_set || is_set(sent_interim_update_failures.yfilter)) leaf_name_data.push_back(sent_interim_update_failures.get_name_leafdata());
     if (sent_interim_updates.is_set || is_set(sent_interim_updates.yfilter)) leaf_name_data.push_back(sent_interim_updates.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9864,6 +4285,340 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Accountin
     return false;
 }
 
+Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::MobilityAttributes()
+    :
+    domain_name{YType::str, "domain-name"},
+    downlink_gre_key{YType::str, "downlink-gre-key"},
+    lease_time{YType::str, "lease-time"},
+    mobility_default_ipv4_gateway{YType::str, "mobility-default-ipv4-gateway"},
+    mobility_dhcp_server{YType::str, "mobility-dhcp-server"},
+    mobility_dns_server{YType::str, "mobility-dns-server"},
+    mobility_ipv4_address{YType::str, "mobility-ipv4-address"},
+    mobility_ipv4_netmask{YType::str, "mobility-ipv4-netmask"},
+    mpc_protocol{YType::boolean, "mpc-protocol"},
+    uplink_gre_key{YType::str, "uplink-gre-key"}
+{
+
+    yang_name = "mobility-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::~MobilityAttributes()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_data() const
+{
+    return domain_name.is_set
+	|| downlink_gre_key.is_set
+	|| lease_time.is_set
+	|| mobility_default_ipv4_gateway.is_set
+	|| mobility_dhcp_server.is_set
+	|| mobility_dns_server.is_set
+	|| mobility_ipv4_address.is_set
+	|| mobility_ipv4_netmask.is_set
+	|| mpc_protocol.is_set
+	|| uplink_gre_key.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(downlink_gre_key.yfilter)
+	|| ydk::is_set(lease_time.yfilter)
+	|| ydk::is_set(mobility_default_ipv4_gateway.yfilter)
+	|| ydk::is_set(mobility_dhcp_server.yfilter)
+	|| ydk::is_set(mobility_dns_server.yfilter)
+	|| ydk::is_set(mobility_ipv4_address.yfilter)
+	|| ydk::is_set(mobility_ipv4_netmask.yfilter)
+	|| ydk::is_set(mpc_protocol.yfilter)
+	|| ydk::is_set(uplink_gre_key.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mobility-attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (downlink_gre_key.is_set || is_set(downlink_gre_key.yfilter)) leaf_name_data.push_back(downlink_gre_key.get_name_leafdata());
+    if (lease_time.is_set || is_set(lease_time.yfilter)) leaf_name_data.push_back(lease_time.get_name_leafdata());
+    if (mobility_default_ipv4_gateway.is_set || is_set(mobility_default_ipv4_gateway.yfilter)) leaf_name_data.push_back(mobility_default_ipv4_gateway.get_name_leafdata());
+    if (mobility_dhcp_server.is_set || is_set(mobility_dhcp_server.yfilter)) leaf_name_data.push_back(mobility_dhcp_server.get_name_leafdata());
+    if (mobility_dns_server.is_set || is_set(mobility_dns_server.yfilter)) leaf_name_data.push_back(mobility_dns_server.get_name_leafdata());
+    if (mobility_ipv4_address.is_set || is_set(mobility_ipv4_address.yfilter)) leaf_name_data.push_back(mobility_ipv4_address.get_name_leafdata());
+    if (mobility_ipv4_netmask.is_set || is_set(mobility_ipv4_netmask.yfilter)) leaf_name_data.push_back(mobility_ipv4_netmask.get_name_leafdata());
+    if (mpc_protocol.is_set || is_set(mpc_protocol.yfilter)) leaf_name_data.push_back(mpc_protocol.get_name_leafdata());
+    if (uplink_gre_key.is_set || is_set(uplink_gre_key.yfilter)) leaf_name_data.push_back(uplink_gre_key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "downlink-gre-key")
+    {
+        downlink_gre_key = value;
+        downlink_gre_key.value_namespace = name_space;
+        downlink_gre_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lease-time")
+    {
+        lease_time = value;
+        lease_time.value_namespace = name_space;
+        lease_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mobility-default-ipv4-gateway")
+    {
+        mobility_default_ipv4_gateway = value;
+        mobility_default_ipv4_gateway.value_namespace = name_space;
+        mobility_default_ipv4_gateway.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mobility-dhcp-server")
+    {
+        mobility_dhcp_server = value;
+        mobility_dhcp_server.value_namespace = name_space;
+        mobility_dhcp_server.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mobility-dns-server")
+    {
+        mobility_dns_server = value;
+        mobility_dns_server.value_namespace = name_space;
+        mobility_dns_server.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mobility-ipv4-address")
+    {
+        mobility_ipv4_address = value;
+        mobility_ipv4_address.value_namespace = name_space;
+        mobility_ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mobility-ipv4-netmask")
+    {
+        mobility_ipv4_netmask = value;
+        mobility_ipv4_netmask.value_namespace = name_space;
+        mobility_ipv4_netmask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpc-protocol")
+    {
+        mpc_protocol = value;
+        mpc_protocol.value_namespace = name_space;
+        mpc_protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uplink-gre-key")
+    {
+        uplink_gre_key = value;
+        uplink_gre_key.value_namespace = name_space;
+        uplink_gre_key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "downlink-gre-key")
+    {
+        downlink_gre_key.yfilter = yfilter;
+    }
+    if(value_path == "lease-time")
+    {
+        lease_time.yfilter = yfilter;
+    }
+    if(value_path == "mobility-default-ipv4-gateway")
+    {
+        mobility_default_ipv4_gateway.yfilter = yfilter;
+    }
+    if(value_path == "mobility-dhcp-server")
+    {
+        mobility_dhcp_server.yfilter = yfilter;
+    }
+    if(value_path == "mobility-dns-server")
+    {
+        mobility_dns_server.yfilter = yfilter;
+    }
+    if(value_path == "mobility-ipv4-address")
+    {
+        mobility_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "mobility-ipv4-netmask")
+    {
+        mobility_ipv4_netmask.yfilter = yfilter;
+    }
+    if(value_path == "mpc-protocol")
+    {
+        mpc_protocol.yfilter = yfilter;
+    }
+    if(value_path == "uplink-gre-key")
+    {
+        uplink_gre_key.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-name" || name == "downlink-gre-key" || name == "lease-time" || name == "mobility-default-ipv4-gateway" || name == "mobility-dhcp-server" || name == "mobility-dns-server" || name == "mobility-ipv4-address" || name == "mobility-ipv4-netmask" || name == "mpc-protocol" || name == "uplink-gre-key")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::SessionChangeOfAuthorization()
+    :
+    coa_reply_attributes{YType::str, "coa-reply-attributes"},
+    coa_request_attributes{YType::str, "coa-request-attributes"},
+    reply_time{YType::str, "reply-time"},
+    request_acked{YType::boolean, "request-acked"},
+    request_time{YType::str, "request-time"}
+{
+
+    yang_name = "session-change-of-authorization"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::~SessionChangeOfAuthorization()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_data() const
+{
+    return coa_reply_attributes.is_set
+	|| coa_request_attributes.is_set
+	|| reply_time.is_set
+	|| request_acked.is_set
+	|| request_time.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(coa_reply_attributes.yfilter)
+	|| ydk::is_set(coa_request_attributes.yfilter)
+	|| ydk::is_set(reply_time.yfilter)
+	|| ydk::is_set(request_acked.yfilter)
+	|| ydk::is_set(request_time.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-change-of-authorization";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (coa_reply_attributes.is_set || is_set(coa_reply_attributes.yfilter)) leaf_name_data.push_back(coa_reply_attributes.get_name_leafdata());
+    if (coa_request_attributes.is_set || is_set(coa_request_attributes.yfilter)) leaf_name_data.push_back(coa_request_attributes.get_name_leafdata());
+    if (reply_time.is_set || is_set(reply_time.yfilter)) leaf_name_data.push_back(reply_time.get_name_leafdata());
+    if (request_acked.is_set || is_set(request_acked.yfilter)) leaf_name_data.push_back(request_acked.get_name_leafdata());
+    if (request_time.is_set || is_set(request_time.yfilter)) leaf_name_data.push_back(request_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "coa-reply-attributes")
+    {
+        coa_reply_attributes = value;
+        coa_reply_attributes.value_namespace = name_space;
+        coa_reply_attributes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "coa-request-attributes")
+    {
+        coa_request_attributes = value;
+        coa_request_attributes.value_namespace = name_space;
+        coa_request_attributes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reply-time")
+    {
+        reply_time = value;
+        reply_time.value_namespace = name_space;
+        reply_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-acked")
+    {
+        request_acked = value;
+        request_acked.value_namespace = name_space;
+        request_acked.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "request-time")
+    {
+        request_time = value;
+        request_time.value_namespace = name_space;
+        request_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "coa-reply-attributes")
+    {
+        coa_reply_attributes.yfilter = yfilter;
+    }
+    if(value_path == "coa-request-attributes")
+    {
+        coa_request_attributes.yfilter = yfilter;
+    }
+    if(value_path == "reply-time")
+    {
+        reply_time.yfilter = yfilter;
+    }
+    if(value_path == "request-acked")
+    {
+        request_acked.yfilter = yfilter;
+    }
+    if(value_path == "request-time")
+    {
+        request_time.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "coa-reply-attributes" || name == "coa-request-attributes" || name == "reply-time" || name == "request-acked" || name == "request-time")
+        return true;
+    return false;
+}
+
 Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::UserProfileAttributes()
     :
     accounting_session_id{YType::str, "accounting-session-id"},
@@ -9916,7 +4671,8 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::Use
     upstream_parameterized_qos_policy{YType::str, "upstream-parameterized-qos-policy"},
     upstream_qos_policy{YType::str, "upstream-qos-policy"}
 {
-    yang_name = "user-profile-attributes"; yang_parent_name = "session";
+
+    yang_name = "user-profile-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::~UserProfileAttributes()
@@ -10034,23 +4790,11 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAtt
 {
     std::ostringstream path_buffer;
     path_buffer << "user-profile-attributes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UserProfileAttributes' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (accounting_session_id.is_set || is_set(accounting_session_id.yfilter)) leaf_name_data.push_back(accounting_session_id.get_name_leafdata());
@@ -10103,9 +4847,7 @@ const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfi
     if (upstream_parameterized_qos_policy.is_set || is_set(upstream_parameterized_qos_policy.yfilter)) leaf_name_data.push_back(upstream_parameterized_qos_policy.get_name_leafdata());
     if (upstream_qos_policy.is_set || is_set(upstream_qos_policy.yfilter)) leaf_name_data.push_back(upstream_qos_policy.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10625,546 +5367,57 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes
     return false;
 }
 
-Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::MobilityAttributes()
-    :
-    domain_name{YType::str, "domain-name"},
-    downlink_gre_key{YType::str, "downlink-gre-key"},
-    lease_time{YType::str, "lease-time"},
-    mobility_default_ipv4_gateway{YType::str, "mobility-default-ipv4-gateway"},
-    mobility_dhcp_server{YType::str, "mobility-dhcp-server"},
-    mobility_dns_server{YType::str, "mobility-dns-server"},
-    mobility_ipv4_address{YType::str, "mobility-ipv4-address"},
-    mobility_ipv4_netmask{YType::str, "mobility-ipv4-netmask"},
-    mpc_protocol{YType::boolean, "mpc-protocol"},
-    uplink_gre_key{YType::str, "uplink-gre-key"}
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummaries()
 {
-    yang_name = "mobility-attributes"; yang_parent_name = "session";
+
+    yang_name = "state-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::~MobilityAttributes()
+Subscriber::Session::Nodes::Node::StateSummaries::~StateSummaries()
 {
 }
 
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_data() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::has_data() const
 {
-    return domain_name.is_set
-	|| downlink_gre_key.is_set
-	|| lease_time.is_set
-	|| mobility_default_ipv4_gateway.is_set
-	|| mobility_dhcp_server.is_set
-	|| mobility_dns_server.is_set
-	|| mobility_ipv4_address.is_set
-	|| mobility_ipv4_netmask.is_set
-	|| mpc_protocol.is_set
-	|| uplink_gre_key.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(domain_name.yfilter)
-	|| ydk::is_set(downlink_gre_key.yfilter)
-	|| ydk::is_set(lease_time.yfilter)
-	|| ydk::is_set(mobility_default_ipv4_gateway.yfilter)
-	|| ydk::is_set(mobility_dhcp_server.yfilter)
-	|| ydk::is_set(mobility_dns_server.yfilter)
-	|| ydk::is_set(mobility_ipv4_address.yfilter)
-	|| ydk::is_set(mobility_ipv4_netmask.yfilter)
-	|| ydk::is_set(mpc_protocol.yfilter)
-	|| ydk::is_set(uplink_gre_key.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mobility-attributes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<state_summary.size(); index++)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MobilityAttributes' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (downlink_gre_key.is_set || is_set(downlink_gre_key.yfilter)) leaf_name_data.push_back(downlink_gre_key.get_name_leafdata());
-    if (lease_time.is_set || is_set(lease_time.yfilter)) leaf_name_data.push_back(lease_time.get_name_leafdata());
-    if (mobility_default_ipv4_gateway.is_set || is_set(mobility_default_ipv4_gateway.yfilter)) leaf_name_data.push_back(mobility_default_ipv4_gateway.get_name_leafdata());
-    if (mobility_dhcp_server.is_set || is_set(mobility_dhcp_server.yfilter)) leaf_name_data.push_back(mobility_dhcp_server.get_name_leafdata());
-    if (mobility_dns_server.is_set || is_set(mobility_dns_server.yfilter)) leaf_name_data.push_back(mobility_dns_server.get_name_leafdata());
-    if (mobility_ipv4_address.is_set || is_set(mobility_ipv4_address.yfilter)) leaf_name_data.push_back(mobility_ipv4_address.get_name_leafdata());
-    if (mobility_ipv4_netmask.is_set || is_set(mobility_ipv4_netmask.yfilter)) leaf_name_data.push_back(mobility_ipv4_netmask.get_name_leafdata());
-    if (mpc_protocol.is_set || is_set(mpc_protocol.yfilter)) leaf_name_data.push_back(mpc_protocol.get_name_leafdata());
-    if (uplink_gre_key.is_set || is_set(uplink_gre_key.yfilter)) leaf_name_data.push_back(uplink_gre_key.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "domain-name")
-    {
-        domain_name = value;
-        domain_name.value_namespace = name_space;
-        domain_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "downlink-gre-key")
-    {
-        downlink_gre_key = value;
-        downlink_gre_key.value_namespace = name_space;
-        downlink_gre_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lease-time")
-    {
-        lease_time = value;
-        lease_time.value_namespace = name_space;
-        lease_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mobility-default-ipv4-gateway")
-    {
-        mobility_default_ipv4_gateway = value;
-        mobility_default_ipv4_gateway.value_namespace = name_space;
-        mobility_default_ipv4_gateway.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mobility-dhcp-server")
-    {
-        mobility_dhcp_server = value;
-        mobility_dhcp_server.value_namespace = name_space;
-        mobility_dhcp_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mobility-dns-server")
-    {
-        mobility_dns_server = value;
-        mobility_dns_server.value_namespace = name_space;
-        mobility_dns_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mobility-ipv4-address")
-    {
-        mobility_ipv4_address = value;
-        mobility_ipv4_address.value_namespace = name_space;
-        mobility_ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mobility-ipv4-netmask")
-    {
-        mobility_ipv4_netmask = value;
-        mobility_ipv4_netmask.value_namespace = name_space;
-        mobility_ipv4_netmask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mpc-protocol")
-    {
-        mpc_protocol = value;
-        mpc_protocol.value_namespace = name_space;
-        mpc_protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uplink-gre-key")
-    {
-        uplink_gre_key = value;
-        uplink_gre_key.value_namespace = name_space;
-        uplink_gre_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "domain-name")
-    {
-        domain_name.yfilter = yfilter;
-    }
-    if(value_path == "downlink-gre-key")
-    {
-        downlink_gre_key.yfilter = yfilter;
-    }
-    if(value_path == "lease-time")
-    {
-        lease_time.yfilter = yfilter;
-    }
-    if(value_path == "mobility-default-ipv4-gateway")
-    {
-        mobility_default_ipv4_gateway.yfilter = yfilter;
-    }
-    if(value_path == "mobility-dhcp-server")
-    {
-        mobility_dhcp_server.yfilter = yfilter;
-    }
-    if(value_path == "mobility-dns-server")
-    {
-        mobility_dns_server.yfilter = yfilter;
-    }
-    if(value_path == "mobility-ipv4-address")
-    {
-        mobility_ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "mobility-ipv4-netmask")
-    {
-        mobility_ipv4_netmask.yfilter = yfilter;
-    }
-    if(value_path == "mpc-protocol")
-    {
-        mpc_protocol.yfilter = yfilter;
-    }
-    if(value_path == "uplink-gre-key")
-    {
-        uplink_gre_key.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "domain-name" || name == "downlink-gre-key" || name == "lease-time" || name == "mobility-default-ipv4-gateway" || name == "mobility-dhcp-server" || name == "mobility-dns-server" || name == "mobility-ipv4-address" || name == "mobility-ipv4-netmask" || name == "mpc-protocol" || name == "uplink-gre-key")
-        return true;
-    return false;
-}
-
-Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::SessionChangeOfAuthorization()
-    :
-    coa_reply_attributes{YType::str, "coa-reply-attributes"},
-    coa_request_attributes{YType::str, "coa-request-attributes"},
-    reply_time{YType::str, "reply-time"},
-    request_acked{YType::boolean, "request-acked"},
-    request_time{YType::str, "request-time"}
-{
-    yang_name = "session-change-of-authorization"; yang_parent_name = "session";
-}
-
-Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::~SessionChangeOfAuthorization()
-{
-}
-
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_data() const
-{
-    return coa_reply_attributes.is_set
-	|| coa_request_attributes.is_set
-	|| reply_time.is_set
-	|| request_acked.is_set
-	|| request_time.is_set;
-}
-
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(coa_reply_attributes.yfilter)
-	|| ydk::is_set(coa_request_attributes.yfilter)
-	|| ydk::is_set(reply_time.yfilter)
-	|| ydk::is_set(request_acked.yfilter)
-	|| ydk::is_set(request_time.yfilter);
-}
-
-std::string Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session-change-of-authorization";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SessionChangeOfAuthorization' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (coa_reply_attributes.is_set || is_set(coa_reply_attributes.yfilter)) leaf_name_data.push_back(coa_reply_attributes.get_name_leafdata());
-    if (coa_request_attributes.is_set || is_set(coa_request_attributes.yfilter)) leaf_name_data.push_back(coa_request_attributes.get_name_leafdata());
-    if (reply_time.is_set || is_set(reply_time.yfilter)) leaf_name_data.push_back(reply_time.get_name_leafdata());
-    if (request_acked.is_set || is_set(request_acked.yfilter)) leaf_name_data.push_back(request_acked.get_name_leafdata());
-    if (request_time.is_set || is_set(request_time.yfilter)) leaf_name_data.push_back(request_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "coa-reply-attributes")
-    {
-        coa_reply_attributes = value;
-        coa_reply_attributes.value_namespace = name_space;
-        coa_reply_attributes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "coa-request-attributes")
-    {
-        coa_request_attributes = value;
-        coa_request_attributes.value_namespace = name_space;
-        coa_request_attributes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reply-time")
-    {
-        reply_time = value;
-        reply_time.value_namespace = name_space;
-        reply_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-acked")
-    {
-        request_acked = value;
-        request_acked.value_namespace = name_space;
-        request_acked.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "request-time")
-    {
-        request_time = value;
-        request_time.value_namespace = name_space;
-        request_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "coa-reply-attributes")
-    {
-        coa_reply_attributes.yfilter = yfilter;
-    }
-    if(value_path == "coa-request-attributes")
-    {
-        coa_request_attributes.yfilter = yfilter;
-    }
-    if(value_path == "reply-time")
-    {
-        reply_time.yfilter = yfilter;
-    }
-    if(value_path == "request-acked")
-    {
-        request_acked.yfilter = yfilter;
-    }
-    if(value_path == "request-time")
-    {
-        request_time.yfilter = yfilter;
-    }
-}
-
-bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "coa-reply-attributes" || name == "coa-request-attributes" || name == "reply-time" || name == "request-acked" || name == "request-time")
-        return true;
-    return false;
-}
-
-IedgeLicenseManager::IedgeLicenseManager()
-    :
-    nodes(std::make_shared<IedgeLicenseManager::Nodes>())
-{
-    nodes->parent = this;
-
-    yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper";
-}
-
-IedgeLicenseManager::~IedgeLicenseManager()
-{
-}
-
-bool IedgeLicenseManager::has_data() const
-{
-    return (nodes !=  nullptr && nodes->has_data());
-}
-
-bool IedgeLicenseManager::has_operation() const
-{
-    return is_set(yfilter)
-	|| (nodes !=  nullptr && nodes->has_operation());
-}
-
-std::string IedgeLicenseManager::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-iedge4710-oper:iedge-license-manager";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "nodes")
-    {
-        if(nodes == nullptr)
-        {
-            nodes = std::make_shared<IedgeLicenseManager::Nodes>();
-        }
-        return nodes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nodes != nullptr)
-    {
-        children["nodes"] = nodes;
-    }
-
-    return children;
-}
-
-void IedgeLicenseManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void IedgeLicenseManager::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> IedgeLicenseManager::clone_ptr() const
-{
-    return std::make_shared<IedgeLicenseManager>();
-}
-
-std::string IedgeLicenseManager::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string IedgeLicenseManager::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function IedgeLicenseManager::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> IedgeLicenseManager::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool IedgeLicenseManager::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nodes")
-        return true;
-    return false;
-}
-
-IedgeLicenseManager::Nodes::Nodes()
-{
-    yang_name = "nodes"; yang_parent_name = "iedge-license-manager";
-}
-
-IedgeLicenseManager::Nodes::~Nodes()
-{
-}
-
-bool IedgeLicenseManager::Nodes::has_data() const
-{
-    for (std::size_t index=0; index<node.size(); index++)
-    {
-        if(node[index]->has_data())
+        if(state_summary[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool IedgeLicenseManager::Nodes::has_operation() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<state_summary.size(); index++)
     {
-        if(node[index]->has_operation())
+        if(state_summary[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string IedgeLicenseManager::Nodes::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::StateSummaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nodes";
-
+    path_buffer << "state-summaries";
     return path_buffer.str();
-
 }
 
-const EntityPath IedgeLicenseManager::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-iedge4710-oper:iedge-license-manager/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IedgeLicenseManager::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "node")
+    if(child_yang_name == "state-summary")
     {
-        for(auto const & c : node)
+        for(auto const & c : state_summary)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -11172,19 +5425,19 @@ std::shared_ptr<Entity> IedgeLicenseManager::Nodes::get_child_by_name(const std:
                 return c;
             }
         }
-        auto c = std::make_shared<IedgeLicenseManager::Nodes::Node>();
+        auto c = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary>();
         c->parent = this;
-        node.push_back(c);
+        state_summary.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : node)
+    for (auto const & c : state_summary)
     {
         children[c->get_segment_path()] = c;
     }
@@ -11192,257 +5445,5240 @@ std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::get_c
     return children;
 }
 
-void IedgeLicenseManager::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::StateSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IedgeLicenseManager::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::StateSummaries::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IedgeLicenseManager::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::StateSummaries::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node")
+    if(name == "state-summary")
         return true;
     return false;
 }
 
-IedgeLicenseManager::Nodes::Node::Node()
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateSummary()
     :
-    nodeid{YType::str, "nodeid"}
+    state{YType::enumeration, "state"}
     	,
-    iedge_license_manager_summary(std::make_shared<IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary>())
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr>())
 {
-    iedge_license_manager_summary->parent = this;
+    address_family_xr->parent = this;
+    state_xr->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "state-summary"; yang_parent_name = "state-summaries"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IedgeLicenseManager::Nodes::Node::~Node()
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::~StateSummary()
 {
 }
 
-bool IedgeLicenseManager::Nodes::Node::has_data() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_data() const
 {
-    return nodeid.is_set
-	|| (iedge_license_manager_summary !=  nullptr && iedge_license_manager_summary->has_data());
+    return state.is_set
+	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
+	|| (state_xr !=  nullptr && state_xr->has_data());
 }
 
-bool IedgeLicenseManager::Nodes::Node::has_operation() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(nodeid.yfilter)
-	|| (iedge_license_manager_summary !=  nullptr && iedge_license_manager_summary->has_operation());
+	|| ydk::is_set(state.yfilter)
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
-std::string IedgeLicenseManager::Nodes::Node::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[nodeid='" <<nodeid <<"']";
-
+    path_buffer << "state-summary" <<"[state='" <<state <<"']";
     return path_buffer.str();
-
 }
 
-const EntityPath IedgeLicenseManager::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-iedge4710-oper:iedge-license-manager/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nodeid.is_set || is_set(nodeid.yfilter)) leaf_name_data.push_back(nodeid.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IedgeLicenseManager::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "iedge-license-manager-summary")
+    if(child_yang_name == "address-family-xr")
     {
-        if(iedge_license_manager_summary == nullptr)
+        if(address_family_xr == nullptr)
         {
-            iedge_license_manager_summary = std::make_shared<IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary>();
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr>();
         }
-        return iedge_license_manager_summary;
+        return address_family_xr;
+    }
+
+    if(child_yang_name == "state-xr")
+    {
+        if(state_xr == nullptr)
+        {
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr>();
+        }
+        return state_xr;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(iedge_license_manager_summary != nullptr)
+    if(address_family_xr != nullptr)
     {
-        children["iedge-license-manager-summary"] = iedge_license_manager_summary;
+        children["address-family-xr"] = address_family_xr;
+    }
+
+    if(state_xr != nullptr)
+    {
+        children["state-xr"] = state_xr;
     }
 
     return children;
 }
 
-void IedgeLicenseManager::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "nodeid")
+    if(value_path == "state")
     {
-        nodeid = value;
-        nodeid.value_namespace = name_space;
-        nodeid.value_namespace_prefix = name_space_prefix;
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IedgeLicenseManager::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "nodeid")
+    if(value_path == "state")
     {
-        nodeid.yfilter = yfilter;
+        state.yfilter = yfilter;
     }
 }
 
-bool IedgeLicenseManager::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "iedge-license-manager-summary" || name == "nodeid")
+    if(name == "address-family-xr" || name == "state-xr" || name == "state")
         return true;
     return false;
 }
 
-IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::IedgeLicenseManagerSummary()
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::AddressFamilyXr()
     :
-    session_count{YType::uint32, "session-count"},
-    session_license_count{YType::uint32, "session-license-count"},
-    session_limit{YType::uint32, "session-limit"},
-    session_threshold{YType::uint32, "session-threshold"}
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe>())
 {
-    yang_name = "iedge-license-manager-summary"; yang_parent_name = "node";
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "address-family-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::~IedgeLicenseManagerSummary()
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::~AddressFamilyXr()
 {
 }
 
-bool IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::has_data() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::has_data() const
 {
-    return session_count.is_set
-	|| session_license_count.is_set
-	|| session_limit.is_set
-	|| session_threshold.is_set;
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
 }
 
-bool IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::has_operation() const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(session_count.yfilter)
-	|| ydk::is_set(session_license_count.yfilter)
-	|| ydk::is_set(session_limit.yfilter)
-	|| ydk::is_set(session_threshold.yfilter);
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
-std::string IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_segment_path() const
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iedge-license-manager-summary";
-
+    path_buffer << "address-family-xr";
     return path_buffer.str();
-
 }
 
-const EntityPath IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IedgeLicenseManagerSummary' in Cisco_IOS_XR_iedge4710_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_count.is_set || is_set(session_count.yfilter)) leaf_name_data.push_back(session_count.get_name_leafdata());
-    if (session_license_count.is_set || is_set(session_license_count.yfilter)) leaf_name_data.push_back(session_license_count.get_name_leafdata());
-    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
-    if (session_threshold.is_set || is_set(session_threshold.yfilter)) leaf_name_data.push_back(session_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "session-count")
+    if(value_path == "dual-part-up-sessions")
     {
-        session_count = value;
-        session_count.value_namespace = name_space;
-        session_count.value_namespace_prefix = name_space_prefix;
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-license-count")
+    if(value_path == "dual-up-sessions")
     {
-        session_license_count = value;
-        session_license_count.value_namespace = name_space;
-        session_license_count.value_namespace_prefix = name_space_prefix;
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-limit")
+    if(value_path == "in-progress-sessions")
     {
-        session_limit = value;
-        session_limit.value_namespace = name_space;
-        session_limit.value_namespace_prefix = name_space_prefix;
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-threshold")
+    if(value_path == "ipv4-only-sessions")
     {
-        session_threshold = value;
-        session_threshold.value_namespace = name_space;
-        session_threshold.value_namespace_prefix = name_space_prefix;
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "session-count")
+    if(value_path == "dual-part-up-sessions")
     {
-        session_count.yfilter = yfilter;
+        dual_part_up_sessions.yfilter = yfilter;
     }
-    if(value_path == "session-license-count")
+    if(value_path == "dual-up-sessions")
     {
-        session_license_count.yfilter = yfilter;
+        dual_up_sessions.yfilter = yfilter;
     }
-    if(value_path == "session-limit")
+    if(value_path == "in-progress-sessions")
     {
-        session_limit.yfilter = yfilter;
+        in_progress_sessions.yfilter = yfilter;
     }
-    if(value_path == "session-threshold")
+    if(value_path == "ipv4-only-sessions")
     {
-        session_threshold.yfilter = yfilter;
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
     }
 }
 
-bool IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-count" || name == "session-license-count" || name == "session-limit" || name == "session-threshold")
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "state-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::Summary()
+    :
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr>())
+{
+    address_family_xr->parent = this;
+    state_xr->parent = this;
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::has_data() const
+{
+    return (address_family_xr !=  nullptr && address_family_xr->has_data())
+	|| (state_xr !=  nullptr && state_xr->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family-xr")
+    {
+        if(address_family_xr == nullptr)
+        {
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr>();
+        }
+        return address_family_xr;
+    }
+
+    if(child_yang_name == "state-xr")
+    {
+        if(state_xr == nullptr)
+        {
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr>();
+        }
+        return state_xr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
+    {
+        children["address-family-xr"] = address_family_xr;
+    }
+
+    if(state_xr != nullptr)
+    {
+        children["state-xr"] = state_xr;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family-xr" || name == "state-xr")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::AddressFamilyXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "address-family-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::~AddressFamilyXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummaries()
+{
+
+    yang_name = "username-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::~UsernameSummaries()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_data() const
+{
+    for (std::size_t index=0; index<username_summary.size(); index++)
+    {
+        if(username_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_operation() const
+{
+    for (std::size_t index=0; index<username_summary.size(); index++)
+    {
+        if(username_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "username-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "username-summary")
+    {
+        for(auto const & c : username_summary)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary>();
+        c->parent = this;
+        username_summary.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : username_summary)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "username-summary")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::UsernameSummary()
+    :
+    username{YType::str, "username"}
+    	,
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>())
+{
+    address_family_xr->parent = this;
+    state_xr->parent = this;
+
+    yang_name = "username-summary"; yang_parent_name = "username-summaries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::~UsernameSummary()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_data() const
+{
+    return username.is_set
+	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
+	|| (state_xr !=  nullptr && state_xr->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "username-summary" <<"[username='" <<username <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family-xr")
+    {
+        if(address_family_xr == nullptr)
+        {
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>();
+        }
+        return address_family_xr;
+    }
+
+    if(child_yang_name == "state-xr")
+    {
+        if(state_xr == nullptr)
+        {
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>();
+        }
+        return state_xr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
+    {
+        children["address-family-xr"] = address_family_xr;
+    }
+
+    if(state_xr != nullptr)
+    {
+        children["state-xr"] = state_xr;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family-xr" || name == "state-xr" || name == "username")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::AddressFamilyXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "address-family-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::~AddressFamilyXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummaries()
+{
+
+    yang_name = "vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::~VrfSummaries()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::has_data() const
+{
+    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    {
+        if(vrf_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::has_operation() const
+{
+    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    {
+        if(vrf_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf-summary")
+    {
+        for(auto const & c : vrf_summary)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary>();
+        c->parent = this;
+        vrf_summary.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : vrf_summary)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-summary")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::VrfSummary()
+    :
+    vrf_name{YType::str, "vrf-name"}
+    	,
+    address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>())
+	,state_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>())
+{
+    address_family_xr->parent = this;
+    state_xr->parent = this;
+
+    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::~VrfSummary()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_data() const
+{
+    return vrf_name.is_set
+	|| (address_family_xr !=  nullptr && address_family_xr->has_data())
+	|| (state_xr !=  nullptr && state_xr->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-summary" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family-xr")
+    {
+        if(address_family_xr == nullptr)
+        {
+            address_family_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>();
+        }
+        return address_family_xr;
+    }
+
+    if(child_yang_name == "state-xr")
+    {
+        if(state_xr == nullptr)
+        {
+            state_xr = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>();
+        }
+        return state_xr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(address_family_xr != nullptr)
+    {
+        children["address-family-xr"] = address_family_xr;
+    }
+
+    if(state_xr != nullptr)
+    {
+        children["state-xr"] = state_xr;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family-xr" || name == "state-xr" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::AddressFamilyXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "address-family-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::~AddressFamilyXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::Pppoe()
+    :
+    dual_part_up_sessions{YType::uint32, "dual-part-up-sessions"},
+    dual_up_sessions{YType::uint32, "dual-up-sessions"},
+    in_progress_sessions{YType::uint32, "in-progress-sessions"},
+    ipv4_only_sessions{YType::uint32, "ipv4-only-sessions"},
+    ipv6_only_sessions{YType::uint32, "ipv6-only-sessions"},
+    lac_sessions{YType::uint32, "lac-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_data() const
+{
+    return dual_part_up_sessions.is_set
+	|| dual_up_sessions.is_set
+	|| in_progress_sessions.is_set
+	|| ipv4_only_sessions.is_set
+	|| ipv6_only_sessions.is_set
+	|| lac_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dual_part_up_sessions.yfilter)
+	|| ydk::is_set(dual_up_sessions.yfilter)
+	|| ydk::is_set(in_progress_sessions.yfilter)
+	|| ydk::is_set(ipv4_only_sessions.yfilter)
+	|| ydk::is_set(ipv6_only_sessions.yfilter)
+	|| ydk::is_set(lac_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dual_part_up_sessions.is_set || is_set(dual_part_up_sessions.yfilter)) leaf_name_data.push_back(dual_part_up_sessions.get_name_leafdata());
+    if (dual_up_sessions.is_set || is_set(dual_up_sessions.yfilter)) leaf_name_data.push_back(dual_up_sessions.get_name_leafdata());
+    if (in_progress_sessions.is_set || is_set(in_progress_sessions.yfilter)) leaf_name_data.push_back(in_progress_sessions.get_name_leafdata());
+    if (ipv4_only_sessions.is_set || is_set(ipv4_only_sessions.yfilter)) leaf_name_data.push_back(ipv4_only_sessions.get_name_leafdata());
+    if (ipv6_only_sessions.is_set || is_set(ipv6_only_sessions.yfilter)) leaf_name_data.push_back(ipv6_only_sessions.get_name_leafdata());
+    if (lac_sessions.is_set || is_set(lac_sessions.yfilter)) leaf_name_data.push_back(lac_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions = value;
+        dual_part_up_sessions.value_namespace = name_space;
+        dual_part_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions = value;
+        dual_up_sessions.value_namespace = name_space;
+        dual_up_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions = value;
+        in_progress_sessions.value_namespace = name_space;
+        in_progress_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions = value;
+        ipv4_only_sessions.value_namespace = name_space;
+        ipv4_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions = value;
+        ipv6_only_sessions.value_namespace = name_space;
+        ipv6_only_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions = value;
+        lac_sessions.value_namespace = name_space;
+        lac_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-part-up-sessions")
+    {
+        dual_part_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "dual-up-sessions")
+    {
+        dual_up_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-progress-sessions")
+    {
+        in_progress_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-only-sessions")
+    {
+        ipv4_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-only-sessions")
+    {
+        ipv6_only_sessions.yfilter = yfilter;
+    }
+    if(value_path == "lac-sessions")
+    {
+        lac_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-part-up-sessions" || name == "dual-up-sessions" || name == "in-progress-sessions" || name == "ipv4-only-sessions" || name == "ipv6-only-sessions" || name == "lac-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::StateXr()
+    :
+    ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>())
+	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>())
+	,pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>())
+{
+    ip_subscriber_dhcp->parent = this;
+    ip_subscriber_packet->parent = this;
+    pppoe->parent = this;
+
+    yang_name = "state-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::~StateXr()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_data() const
+{
+    return (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data())
+	|| (pppoe !=  nullptr && pppoe->has_data());
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip-subscriber-dhcp")
+    {
+        if(ip_subscriber_dhcp == nullptr)
+        {
+            ip_subscriber_dhcp = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>();
+        }
+        return ip_subscriber_dhcp;
+    }
+
+    if(child_yang_name == "ip-subscriber-packet")
+    {
+        if(ip_subscriber_packet == nullptr)
+        {
+            ip_subscriber_packet = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>();
+        }
+        return ip_subscriber_packet;
+    }
+
+    if(child_yang_name == "pppoe")
+    {
+        if(pppoe == nullptr)
+        {
+            pppoe = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>();
+        }
+        return pppoe;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ip_subscriber_dhcp != nullptr)
+    {
+        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+    }
+
+    if(ip_subscriber_packet != nullptr)
+    {
+        children["ip-subscriber-packet"] = ip_subscriber_packet;
+    }
+
+    if(pppoe != nullptr)
+    {
+        children["pppoe"] = pppoe;
+    }
+
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber-dhcp" || name == "ip-subscriber-packet" || name == "pppoe")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::IpSubscriberDhcp()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::IpSubscriberPacket()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-subscriber-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
+        return true;
+    return false;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::Pppoe()
+    :
+    activated_sessions{YType::uint32, "activated-sessions"},
+    connected_sessions{YType::uint32, "connected-sessions"},
+    connecting_sessions{YType::uint32, "connecting-sessions"},
+    disconnecting_sessions{YType::uint32, "disconnecting-sessions"},
+    end_sessions{YType::uint32, "end-sessions"},
+    idle_sessions{YType::uint32, "idle-sessions"},
+    initialized_sessions{YType::uint32, "initialized-sessions"}
+{
+
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::~Pppoe()
+{
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_data() const
+{
+    return activated_sessions.is_set
+	|| connected_sessions.is_set
+	|| connecting_sessions.is_set
+	|| disconnecting_sessions.is_set
+	|| end_sessions.is_set
+	|| idle_sessions.is_set
+	|| initialized_sessions.is_set;
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(activated_sessions.yfilter)
+	|| ydk::is_set(connected_sessions.yfilter)
+	|| ydk::is_set(connecting_sessions.yfilter)
+	|| ydk::is_set(disconnecting_sessions.yfilter)
+	|| ydk::is_set(end_sessions.yfilter)
+	|| ydk::is_set(idle_sessions.yfilter)
+	|| ydk::is_set(initialized_sessions.yfilter);
+}
+
+std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (activated_sessions.is_set || is_set(activated_sessions.yfilter)) leaf_name_data.push_back(activated_sessions.get_name_leafdata());
+    if (connected_sessions.is_set || is_set(connected_sessions.yfilter)) leaf_name_data.push_back(connected_sessions.get_name_leafdata());
+    if (connecting_sessions.is_set || is_set(connecting_sessions.yfilter)) leaf_name_data.push_back(connecting_sessions.get_name_leafdata());
+    if (disconnecting_sessions.is_set || is_set(disconnecting_sessions.yfilter)) leaf_name_data.push_back(disconnecting_sessions.get_name_leafdata());
+    if (end_sessions.is_set || is_set(end_sessions.yfilter)) leaf_name_data.push_back(end_sessions.get_name_leafdata());
+    if (idle_sessions.is_set || is_set(idle_sessions.yfilter)) leaf_name_data.push_back(idle_sessions.get_name_leafdata());
+    if (initialized_sessions.is_set || is_set(initialized_sessions.yfilter)) leaf_name_data.push_back(initialized_sessions.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions = value;
+        activated_sessions.value_namespace = name_space;
+        activated_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions = value;
+        connected_sessions.value_namespace = name_space;
+        connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions = value;
+        connecting_sessions.value_namespace = name_space;
+        connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions = value;
+        disconnecting_sessions.value_namespace = name_space;
+        disconnecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions = value;
+        end_sessions.value_namespace = name_space;
+        end_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions = value;
+        idle_sessions.value_namespace = name_space;
+        idle_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions = value;
+        initialized_sessions.value_namespace = name_space;
+        initialized_sessions.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activated-sessions")
+    {
+        activated_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connected-sessions")
+    {
+        connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "connecting-sessions")
+    {
+        connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting-sessions")
+    {
+        disconnecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "end-sessions")
+    {
+        end_sessions.yfilter = yfilter;
+    }
+    if(value_path == "idle-sessions")
+    {
+        idle_sessions.yfilter = yfilter;
+    }
+    if(value_path == "initialized-sessions")
+    {
+        initialized_sessions.yfilter = yfilter;
+    }
+}
+
+bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activated-sessions" || name == "connected-sessions" || name == "connecting-sessions" || name == "disconnecting-sessions" || name == "end-sessions" || name == "idle-sessions" || name == "initialized-sessions")
         return true;
     return false;
 }

@@ -18,7 +18,8 @@ PatchPanel::PatchPanel()
     password{YType::str, "password"},
     user_name{YType::str, "user-name"}
 {
-    yang_name = "patch-panel"; yang_parent_name = "Cisco-IOS-XR-patch-panel-cfg";
+
+    yang_name = "patch-panel"; yang_parent_name = "Cisco-IOS-XR-patch-panel-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 PatchPanel::~PatchPanel()
@@ -46,20 +47,11 @@ std::string PatchPanel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-patch-panel-cfg:patch-panel";
-
     return path_buffer.str();
-
 }
 
-const EntityPath PatchPanel::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > PatchPanel::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -67,9 +59,7 @@ const EntityPath PatchPanel::get_entity_path(Entity* ancestor) const
     if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

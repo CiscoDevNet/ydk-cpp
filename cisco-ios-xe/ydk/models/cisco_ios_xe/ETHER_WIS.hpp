@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace ETHER_WIS {
 
-class EtherWis : public ydk::Entity
+class ETHERWIS : public ydk::Entity
 {
     public:
-        EtherWis();
-        ~EtherWis();
+        ETHERWIS();
+        ~ETHERWIS();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,20 +31,20 @@ class EtherWis : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Etherwisdevicetable; //type: EtherWis::Etherwisdevicetable
-        class Etherwissectioncurrenttable; //type: EtherWis::Etherwissectioncurrenttable
-        class Etherwispathcurrenttable; //type: EtherWis::Etherwispathcurrenttable
-        class Etherwisfarendpathcurrenttable; //type: EtherWis::Etherwisfarendpathcurrenttable
+        class Etherwisdevicetable; //type: ETHERWIS::Etherwisdevicetable
+        class Etherwissectioncurrenttable; //type: ETHERWIS::Etherwissectioncurrenttable
+        class Etherwispathcurrenttable; //type: ETHERWIS::Etherwispathcurrenttable
+        class Etherwisfarendpathcurrenttable; //type: ETHERWIS::Etherwisfarendpathcurrenttable
 
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable> etherwisdevicetable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable> etherwispathcurrenttable;
-        std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable> etherwissectioncurrenttable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisdevicetable> etherwisdevicetable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable> etherwisfarendpathcurrenttable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwispathcurrenttable> etherwispathcurrenttable;
+        std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwissectioncurrenttable> etherwissectioncurrenttable;
         
-}; // EtherWis
+}; // ETHERWIS
 
 
-class EtherWis::Etherwisdevicetable : public ydk::Entity
+class ETHERWIS::Etherwisdevicetable : public ydk::Entity
 {
     public:
         Etherwisdevicetable();
@@ -52,22 +52,23 @@ class EtherWis::Etherwisdevicetable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Etherwisdeviceentry; //type: EtherWis::Etherwisdevicetable::Etherwisdeviceentry
+        class Etherwisdeviceentry; //type: ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisdevicetable::Etherwisdeviceentry> > etherwisdeviceentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry> > etherwisdeviceentry;
         
-}; // EtherWis::Etherwisdevicetable
+}; // ETHERWIS::Etherwisdevicetable
 
 
-class EtherWis::Etherwisdevicetable::Etherwisdeviceentry : public ydk::Entity
+class ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry : public ydk::Entity
 {
     public:
         Etherwisdeviceentry();
@@ -75,15 +76,16 @@ class EtherWis::Etherwisdevicetable::Etherwisdeviceentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf etherwisdevicetxtestpatternmode; //type: Etherwisdevicetxtestpatternmode
         ydk::YLeaf etherwisdevicerxtestpatternmode; //type: Etherwisdevicerxtestpatternmode
@@ -91,105 +93,10 @@ class EtherWis::Etherwisdevicetable::Etherwisdeviceentry : public ydk::Entity
         class Etherwisdevicetxtestpatternmode;
         class Etherwisdevicerxtestpatternmode;
 
-}; // EtherWis::Etherwisdevicetable::Etherwisdeviceentry
+}; // ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry
 
 
-class EtherWis::Etherwissectioncurrenttable : public ydk::Entity
-{
-    public:
-        Etherwissectioncurrenttable();
-        ~Etherwissectioncurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Etherwissectioncurrententry; //type: EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry
-
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry;
-        
-}; // EtherWis::Etherwissectioncurrenttable
-
-
-class EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry : public ydk::Entity
-{
-    public:
-        Etherwissectioncurrententry();
-        ~Etherwissectioncurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf etherwissectioncurrentj0transmitted; //type: binary
-        ydk::YLeaf etherwissectioncurrentj0received; //type: binary
-
-}; // EtherWis::Etherwissectioncurrenttable::Etherwissectioncurrententry
-
-
-class EtherWis::Etherwispathcurrenttable : public ydk::Entity
-{
-    public:
-        Etherwispathcurrenttable();
-        ~Etherwispathcurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Etherwispathcurrententry; //type: EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry
-
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry> > etherwispathcurrententry;
-        
-}; // EtherWis::Etherwispathcurrenttable
-
-
-class EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry : public ydk::Entity
-{
-    public:
-        Etherwispathcurrententry();
-        ~Etherwispathcurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf etherwispathcurrentstatus; //type: Etherwispathcurrentstatus
-        ydk::YLeaf etherwispathcurrentj1transmitted; //type: binary
-        ydk::YLeaf etherwispathcurrentj1received; //type: binary
-
-}; // EtherWis::Etherwispathcurrenttable::Etherwispathcurrententry
-
-
-class EtherWis::Etherwisfarendpathcurrenttable : public ydk::Entity
+class ETHERWIS::Etherwisfarendpathcurrenttable : public ydk::Entity
 {
     public:
         Etherwisfarendpathcurrenttable();
@@ -197,22 +104,23 @@ class EtherWis::Etherwisfarendpathcurrenttable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Etherwisfarendpathcurrententry; //type: EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
+        class Etherwisfarendpathcurrententry; //type: ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
 
-        std::vector<std::shared_ptr<ETHER_WIS::EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry> > etherwisfarendpathcurrententry;
         
-}; // EtherWis::Etherwisfarendpathcurrenttable
+}; // ETHERWIS::Etherwisfarendpathcurrenttable
 
 
-class EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry : public ydk::Entity
+class ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry : public ydk::Entity
 {
     public:
         Etherwisfarendpathcurrententry();
@@ -220,21 +128,121 @@ class EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf etherwisfarendpathcurrentstatus; //type: Etherwisfarendpathcurrentstatus
 
-}; // EtherWis::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
+}; // ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry
 
-class EtherWis::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode : public ydk::Enum
+
+class ETHERWIS::Etherwispathcurrenttable : public ydk::Entity
+{
+    public:
+        Etherwispathcurrenttable();
+        ~Etherwispathcurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Etherwispathcurrententry; //type: ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry> > etherwispathcurrententry;
+        
+}; // ETHERWIS::Etherwispathcurrenttable
+
+
+class ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry : public ydk::Entity
+{
+    public:
+        Etherwispathcurrententry();
+        ~Etherwispathcurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf etherwispathcurrentstatus; //type: Etherwispathcurrentstatus
+        ydk::YLeaf etherwispathcurrentj1transmitted; //type: binary
+        ydk::YLeaf etherwispathcurrentj1received; //type: binary
+
+}; // ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry
+
+
+class ETHERWIS::Etherwissectioncurrenttable : public ydk::Entity
+{
+    public:
+        Etherwissectioncurrenttable();
+        ~Etherwissectioncurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Etherwissectioncurrententry; //type: ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::ETHER_WIS::ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry> > etherwissectioncurrententry;
+        
+}; // ETHERWIS::Etherwissectioncurrenttable
+
+
+class ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry : public ydk::Entity
+{
+    public:
+        Etherwissectioncurrententry();
+        ~Etherwissectioncurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf etherwissectioncurrentj0transmitted; //type: binary
+        ydk::YLeaf etherwissectioncurrentj0received; //type: binary
+
+}; // ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry
+
+class ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpatternmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -244,7 +252,7 @@ class EtherWis::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicetxtestpa
 
 };
 
-class EtherWis::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicerxtestpatternmode : public ydk::Enum
+class ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::Etherwisdevicerxtestpatternmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

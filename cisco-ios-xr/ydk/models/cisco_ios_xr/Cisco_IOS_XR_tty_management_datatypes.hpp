@@ -10,32 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_datatypes {
 
-class TtyTransportProtocolSelect : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf some;
-
-};
-
-class TtyTransportProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf telnet;
-        static const ydk::Enum::YLeaf ssh;
-
-};
-
-class TtySessionTimeoutDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf in_out;
-
-};
-
 class TtyEscapeChar : public ydk::Enum
 {
     public:
@@ -51,6 +25,32 @@ class TtyPager : public ydk::Enum
         static const ydk::Enum::YLeaf more;
         static const ydk::Enum::YLeaf less;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class TtyTransportProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf ssh;
+
+};
+
+class TtyTransportProtocolSelect : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf some;
+
+};
+
+class TtySessionTimeoutDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf in_out;
 
 };
 

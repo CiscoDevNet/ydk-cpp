@@ -74,36 +74,6 @@ static void create_if_does_not_exist(const std::string & path)
     }
 }
 
-static std::vector<path::Capability>
-get_capability_from_module_name(const std::string& module_name, std::vector<path::Capability>& caps) {
-    std::vector<path::Capability> ret;
-
-    for (auto c: caps) {
-        if (c.module == module_name) {
-            ret.emplace_back(c);
-            break;
-        }
-    }
-
-    return ret;
-}
-
-static std::vector<path::Capability>
-get_module_capabilities_from_namespaces(const std::unordered_set<std::string>& module_names, std::vector<path::Capability>& caps)
-{
-    std::vector<path::Capability> module_caps;
-
-    for (auto &c: caps)
-    {
-        if (module_names.find(c.module) != module_names.end())
-        {
-            module_caps.emplace_back(c);
-        }
-    }
-
-    return module_caps;
-}
-
 namespace path
 {
 
@@ -385,7 +355,7 @@ ydk::path::RepositoryPtr::get_new_ly_modules_from_lookup(ly_ctx* ctx,
 
                 if (m && new_module)
                 {
-                    YLOG_DEBUG("Added new libyang deivation module '{}'", std::string(m->name));
+                    YLOG_DEBUG("Added new libyang deviation module '{}'", std::string(m->name));
                     new_modules.emplace_back(m);
                 }
             }

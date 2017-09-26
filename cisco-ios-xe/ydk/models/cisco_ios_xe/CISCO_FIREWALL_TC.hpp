@@ -10,29 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_FIREWALL_TC {
 
-class Cfwnetworkprotocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf tcp;
-
-};
-
-class Cfwurlfvendorid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf websense;
-        static const ydk::Enum::YLeaf n2h2;
-
-};
-
-class Cfwurlserverstatus : public ydk::Enum
+class CFWUrlServerStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf online;
@@ -41,7 +19,7 @@ class Cfwurlserverstatus : public ydk::Enum
 
 };
 
-class Cfwapplicationprotocol : public ydk::Enum
+class CFWApplicationProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -217,7 +195,7 @@ class Cfwapplicationprotocol : public ydk::Enum
 
 };
 
-class Cfwpolicytargettype : public ydk::Enum
+class CFWPolicyTargetType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
@@ -228,6 +206,28 @@ class Cfwpolicytargettype : public ydk::Enum
         static const ydk::Enum::YLeaf user;
         static const ydk::Enum::YLeaf usergroup;
         static const ydk::Enum::YLeaf context;
+
+};
+
+class CFWNetworkProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf tcp;
+
+};
+
+class CFWUrlfVendorId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf websense;
+        static const ydk::Enum::YLeaf n2h2;
 
 };
 

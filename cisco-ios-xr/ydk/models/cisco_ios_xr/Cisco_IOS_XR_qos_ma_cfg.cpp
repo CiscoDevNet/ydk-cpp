@@ -15,7 +15,8 @@ Qos::Qos()
     :
     fabric_service_policy{YType::str, "fabric-service-policy"}
 {
-    yang_name = "qos"; yang_parent_name = "Cisco-IOS-XR-qos-ma-cfg";
+
+    yang_name = "qos"; yang_parent_name = "Cisco-IOS-XR-qos-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Qos::~Qos()
@@ -37,27 +38,16 @@ std::string Qos::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-qos-ma-cfg:qos";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Qos::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Qos::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fabric_service_policy.is_set || is_set(fabric_service_policy.yfilter)) leaf_name_data.push_back(fabric_service_policy.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

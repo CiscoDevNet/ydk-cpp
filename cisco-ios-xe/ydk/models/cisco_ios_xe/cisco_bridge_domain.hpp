@@ -19,7 +19,7 @@ class BridgeDomainConfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -36,101 +36,11 @@ class BridgeDomainConfig : public ydk::Entity
         class BridgeGroups; //type: BridgeDomainConfig::BridgeGroups
         class BridgeDomains; //type: BridgeDomainConfig::BridgeDomains
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains> bridge_domains;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeGroups> bridge_groups;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::Global> global;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains> bridge_domains;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeGroups> bridge_groups;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::Global> global;
         
 }; // BridgeDomainConfig
-
-
-class BridgeDomainConfig::Global : public ydk::Entity
-{
-    public:
-        Global();
-        ~Global();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf bd_state_notification_enabled; //type: boolean
-        ydk::YLeaf bd_state_notification_rate; //type: uint32
-        class Pbb; //type: BridgeDomainConfig::Global::Pbb
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::Global::Pbb> pbb;
-        
-}; // BridgeDomainConfig::Global
-
-
-class BridgeDomainConfig::Global::Pbb : public ydk::Entity
-{
-    public:
-        Pbb();
-        ~Pbb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf backbone_src_mac; //type: string
-
-}; // BridgeDomainConfig::Global::Pbb
-
-
-class BridgeDomainConfig::BridgeGroups : public ydk::Entity
-{
-    public:
-        BridgeGroups();
-        ~BridgeGroups();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BridgeGroup; //type: BridgeDomainConfig::BridgeGroups::BridgeGroup
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeGroups::BridgeGroup> > bridge_group;
-        
-}; // BridgeDomainConfig::BridgeGroups
-
-
-class BridgeDomainConfig::BridgeGroups::BridgeGroup : public ydk::Entity
-{
-    public:
-        BridgeGroup();
-        ~BridgeGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-
-}; // BridgeDomainConfig::BridgeGroups::BridgeGroup
 
 
 class BridgeDomainConfig::BridgeDomains : public ydk::Entity
@@ -141,17 +51,18 @@ class BridgeDomainConfig::BridgeDomains : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class BridgeDomain; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain> > bridge_domain;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain> > bridge_domain;
         
 }; // BridgeDomainConfig::BridgeDomains
 
@@ -164,16 +75,17 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: string
-        //type: string (refers to cisco_bridge_domain::BridgeDomainConfig::BridgeGroups::BridgeGroup::name)
+        //type: string (refers to cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeGroups::BridgeGroup::name)
         ydk::YLeaf bridge_group;
         ydk::YLeaf enabled; //type: boolean
         ydk::YLeaf bd_status_change_notification; //type: boolean
@@ -188,270 +100,20 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain : public ydk::Entity
         class MldSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping
         class DhcpIpv4Snooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping> dhcp_ipv4_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection> dynamic_arp_inspection; // presence node
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping> igmp_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard> ip_source_guard; // presence node
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac> mac;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members> members;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping> mld_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl> storm_control;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping> dhcp_ipv4_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection> dynamic_arp_inspection; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping> igmp_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard> ip_source_guard; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members> members;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping> mld_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl> storm_control;
                 class FloodingMode;
 
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members : public ydk::Entity
-{
-    public:
-        Members();
-        ~Members();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AcMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember
-        class VfiMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember
-        class AccessPwMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember> access_pw_member;
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember : public ydk::Entity
-{
-    public:
-        AcMember();
-        ~AcMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        class SplitHorizonGroup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup
-        class Mac; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac
-        class IgmpSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
-        class MldSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping
-        class DhcpIpv4Snooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping
-        class Flooding; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding
-        class StormControl; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
-        class DynamicArpInspection; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection
-        class IpSourceGuard; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping> dhcp_ipv4_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection> dynamic_arp_inspection;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding> flooding;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping> igmp_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard> ip_source_guard;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac> mac;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping> mld_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup> split_horizon_group; // presence node
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl> storm_control;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup : public ydk::Entity
-{
-    public:
-        SplitHorizonGroup();
-        ~SplitHorizonGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint16
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac : public ydk::Entity
-{
-    public:
-        Mac();
-        ~Mac();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf learning_enabled; //type: boolean
-        class Limit; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit
-        class Aging; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging
-        class PortDown; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown
-        class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging> aging;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit> limit;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown> port_down;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure> secure;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit : public ydk::Entity
-{
-    public:
-        Limit();
-        ~Limit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf action; //type: MacLimitAction
-        ydk::YLeaf notification; //type: MacLimitNotificationType
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging : public ydk::Entity
-{
-    public:
-        Aging();
-        ~Aging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time; //type: uint32
-        ydk::YLeaf type; //type: MacAgingType
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown : public ydk::Entity
-{
-    public:
-        PortDown();
-        ~PortDown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flush; //type: boolean
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure : public ydk::Entity
-{
-    public:
-        Secure();
-        ~Secure();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf logging; //type: boolean
-        ydk::YLeaf enabled; //type: boolean
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping : public ydk::Entity
-{
-    public:
-        IgmpSnooping();
-        ~IgmpSnooping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile_name; //type: string
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping : public ydk::Entity
-{
-    public:
-        MldSnooping();
-        ~MldSnooping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile_name; //type: string
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping : public ydk::Entity
 {
     public:
         DhcpIpv4Snooping();
@@ -459,7 +121,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -469,80 +131,10 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIp
 
         ydk::YLeaf profile_name; //type: string
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding : public ydk::Entity
-{
-    public:
-        Flooding();
-        ~Flooding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disabled; //type: empty
-        ydk::YLeaf disabled_unknown_unicast; //type: empty
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl : public ydk::Entity
-{
-    public:
-        StormControl();
-        ~StormControl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf action; //type: StormControlAction
-        class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds> > thresholds;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds : public ydk::Entity
-{
-    public:
-        Thresholds();
-        ~Thresholds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf traffic_class; //type: EthTrafficClass
-        ydk::YLeaf value_; //type: uint32
-        ydk::YLeaf unit; //type: Unit
-        class Unit;
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection : public ydk::Entity
 {
     public:
         DynamicArpInspection();
@@ -550,7 +142,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Dynami
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -559,15 +151,14 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Dynami
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: boolean
-        ydk::YLeaf enable; //type: boolean
-        class AddressValidation; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation
+        class AddressValidation; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation> address_validation; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation> address_validation; // presence node
         
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation : public ydk::Entity
 {
     public:
         AddressValidation();
@@ -575,7 +166,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Dynami
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -587,309 +178,10 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Dynami
         ydk::YLeaf src_mac; //type: empty
         ydk::YLeaf ipv4; //type: empty
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard : public ydk::Entity
-{
-    public:
-        IpSourceGuard();
-        ~IpSourceGuard();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf logging; //type: boolean
-        ydk::YLeaf enable; //type: boolean
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember : public ydk::Entity
-{
-    public:
-        VfiMember();
-        ~VfiMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember : public ydk::Entity
-{
-    public:
-        AccessPwMember();
-        ~AccessPwMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AccessPwIfMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember
-        class PwNeighborSpec; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember> > access_pw_if_member;
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec> > pw_neighbor_spec;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember : public ydk::Entity
-{
-    public:
-        AccessPwIfMember();
-        ~AccessPwIfMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec : public ydk::Entity
-{
-    public:
-        PwNeighborSpec();
-        ~PwNeighborSpec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_ip_address; //type: string
-        ydk::YLeaf vc_id; //type: uint32
-        //type: string (refers to cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::name)
-        ydk::YLeaf pw_class_template;
-        ydk::YLeaf encap_type; //type: PwEncapsulationType
-        ydk::YLeaf tag_impose_vlan; //type: uint16
-        ydk::YLeaf source_ipv6; //type: string
-        class StaticLabel; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel
-        class SplitHorizonGroup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup
-        class Mac; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac
-        class IgmpSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping
-        class MldSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping
-        class DhcpIpv4Snooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping
-        class Flooding; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding
-        class StormControl; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl
-        class Backup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup> backup;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping> dhcp_ipv4_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding> flooding;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping> igmp_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac> mac;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping> mld_snooping;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup> split_horizon_group; // presence node
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel> static_label;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl> storm_control;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel : public ydk::Entity
-{
-    public:
-        StaticLabel();
-        ~StaticLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_label; //type: uint32
-        ydk::YLeaf remote_label; //type: uint32
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup : public ydk::Entity
-{
-    public:
-        SplitHorizonGroup();
-        ~SplitHorizonGroup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint16
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac : public ydk::Entity
-{
-    public:
-        Mac();
-        ~Mac();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf learning_enabled; //type: boolean
-        class Limit; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit
-        class Aging; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging
-        class PortDown; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown
-        class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging> aging;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit> limit;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown> port_down;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure> secure;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit : public ydk::Entity
-{
-    public:
-        Limit();
-        ~Limit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf maximum; //type: uint32
-        ydk::YLeaf action; //type: MacLimitAction
-        ydk::YLeaf notification; //type: MacLimitNotificationType
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging : public ydk::Entity
-{
-    public:
-        Aging();
-        ~Aging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time; //type: uint32
-        ydk::YLeaf type; //type: MacAgingType
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown : public ydk::Entity
-{
-    public:
-        PortDown();
-        ~PortDown();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flush; //type: boolean
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure : public ydk::Entity
-{
-    public:
-        Secure();
-        ~Secure();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf logging; //type: boolean
-        ydk::YLeaf enabled; //type: boolean
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping : public ydk::Entity
 {
     public:
         IgmpSnooping();
@@ -897,7 +189,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -906,83 +198,20 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile_name; //type: string
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping : public ydk::Entity
-{
-    public:
-        MldSnooping();
-        ~MldSnooping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile_name; //type: string
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping : public ydk::Entity
-{
-    public:
-        DhcpIpv4Snooping();
-        ~DhcpIpv4Snooping();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf profile_name; //type: string
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding : public ydk::Entity
-{
-    public:
-        Flooding();
-        ~Flooding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf disabled; //type: empty
-        ydk::YLeaf disabled_unknown_unicast; //type: empty
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard : public ydk::Entity
 {
     public:
-        StormControl();
-        ~StormControl();
+        IpSourceGuard();
+        ~IpSourceGuard();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -990,60 +219,9 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf action; //type: StormControlAction
-        class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds
+        ydk::YLeaf logging; //type: boolean
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds> > thresholds;
-        
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds : public ydk::Entity
-{
-    public:
-        Thresholds();
-        ~Thresholds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf traffic_class; //type: EthTrafficClass
-        ydk::YLeaf value_; //type: uint32
-        ydk::YLeaf unit; //type: Unit
-        class Unit;
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds
-
-
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup : public ydk::Entity
-{
-    public:
-        Backup();
-        ~Backup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf neighbor_ip_address; //type: string
-        ydk::YLeaf vc_id; //type: uint32
-        //type: string (refers to cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::name)
-        ydk::YLeaf pw_class_template;
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard
 
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac : public ydk::Entity
@@ -1054,7 +232,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1070,14 +248,58 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac : public ydk::Entity
         class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure
         class Static_; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging> aging;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding> flooding;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit> limit;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown> port_down;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure> secure; // presence node
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging> aging;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding> flooding;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown> port_down;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure> secure; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_> static_;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging : public ydk::Entity
+{
+    public:
+        Aging();
+        ~Aging();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time; //type: uint32
+        ydk::YLeaf type; //type: MacAgingType
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding : public ydk::Entity
+{
+    public:
+        Flooding();
+        ~Flooding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disabled; //type: empty
+        ydk::YLeaf disabled_unknown_unicast; //type: empty
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding
 
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit : public ydk::Entity
@@ -1088,7 +310,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit : public ydk::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1103,28 +325,6 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit : public ydk::
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging : public ydk::Entity
-{
-    public:
-        Aging();
-        ~Aging();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time; //type: uint32
-        ydk::YLeaf type; //type: MacAgingType
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging
-
-
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown : public ydk::Entity
 {
     public:
@@ -1133,7 +333,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1146,28 +346,6 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown : public yd
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding : public ydk::Entity
-{
-    public:
-        Flooding();
-        ~Flooding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disabled; //type: empty
-        ydk::YLeaf disabled_unknown_unicast; //type: empty
-
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding
-
-
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure : public ydk::Entity
 {
     public:
@@ -1176,7 +354,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure : public ydk:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1198,7 +376,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_ : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1208,7 +386,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_ : public ydk
 
         class MacAddresses; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses> > mac_addresses;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses> > mac_addresses;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_
 
@@ -1221,7 +399,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresse
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1235,7 +413,96 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresse
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members : public ydk::Entity
+{
+    public:
+        Members();
+        ~Members();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AcMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember
+        class VfiMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember
+        class AccessPwMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember> access_pw_member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember : public ydk::Entity
+{
+    public:
+        AcMember();
+        ~AcMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        class SplitHorizonGroup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup
+        class Mac; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac
+        class IgmpSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
+        class MldSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping
+        class DhcpIpv4Snooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping
+        class Flooding; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding
+        class StormControl; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
+        class DynamicArpInspection; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection
+        class IpSourceGuard; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard
+
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping> dhcp_ipv4_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection> dynamic_arp_inspection;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding> flooding;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping> igmp_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard> ip_source_guard;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping> mld_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup> split_horizon_group; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl> storm_control;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping : public ydk::Entity
+{
+    public:
+        DhcpIpv4Snooping();
+        ~DhcpIpv4Snooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection : public ydk::Entity
 {
     public:
         DynamicArpInspection();
@@ -1243,7 +510,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1252,14 +519,15 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: boolean
-        class AddressValidation; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation
+        ydk::YLeaf enable; //type: boolean
+        class AddressValidation; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation> address_validation; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation> address_validation; // presence node
         
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation : public ydk::Entity
 {
     public:
         AddressValidation();
@@ -1267,7 +535,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::Add
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1279,10 +547,53 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::Add
         ydk::YLeaf src_mac; //type: empty
         ydk::YLeaf ipv4; //type: empty
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding : public ydk::Entity
+{
+    public:
+        Flooding();
+        ~Flooding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disabled; //type: empty
+        ydk::YLeaf disabled_unknown_unicast; //type: empty
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping : public ydk::Entity
+{
+    public:
+        IgmpSnooping();
+        ~IgmpSnooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard : public ydk::Entity
 {
     public:
         IpSourceGuard();
@@ -1290,7 +601,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1299,8 +610,673 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: boolean
+        ydk::YLeaf enable; //type: boolean
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf learning_enabled; //type: boolean
+        class Limit; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit
+        class Aging; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging
+        class PortDown; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown
+        class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure
+
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging> aging;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown> port_down;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure> secure;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging : public ydk::Entity
+{
+    public:
+        Aging();
+        ~Aging();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time; //type: uint32
+        ydk::YLeaf type; //type: MacAgingType
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit : public ydk::Entity
+{
+    public:
+        Limit();
+        ~Limit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf action; //type: MacLimitAction
+        ydk::YLeaf notification; //type: MacLimitNotificationType
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown : public ydk::Entity
+{
+    public:
+        PortDown();
+        ~PortDown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flush; //type: boolean
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure : public ydk::Entity
+{
+    public:
+        Secure();
+        ~Secure();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf logging; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping : public ydk::Entity
+{
+    public:
+        MldSnooping();
+        ~MldSnooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup : public ydk::Entity
+{
+    public:
+        SplitHorizonGroup();
+        ~SplitHorizonGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl : public ydk::Entity
+{
+    public:
+        StormControl();
+        ~StormControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: StormControlAction
+        class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds> > thresholds;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds : public ydk::Entity
+{
+    public:
+        Thresholds();
+        ~Thresholds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf traffic_class; //type: EthTrafficClass
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: Unit
+        class Unit;
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember : public ydk::Entity
+{
+    public:
+        AccessPwMember();
+        ~AccessPwMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AccessPwIfMember; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember
+        class PwNeighborSpec; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember> > access_pw_if_member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec> > pw_neighbor_spec;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember : public ydk::Entity
+{
+    public:
+        AccessPwIfMember();
+        ~AccessPwIfMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec : public ydk::Entity
+{
+    public:
+        PwNeighborSpec();
+        ~PwNeighborSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_ip_address; //type: string
+        ydk::YLeaf vc_id; //type: uint32
+        //type: string (refers to cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::name)
+        ydk::YLeaf pw_class_template;
+        ydk::YLeaf encap_type; //type: PwEncapsulationType
+        ydk::YLeaf tag_impose_vlan; //type: uint16
+        ydk::YLeaf source_ipv6; //type: string
+        class StaticLabel; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel
+        class SplitHorizonGroup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup
+        class Mac; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac
+        class IgmpSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping
+        class MldSnooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping
+        class DhcpIpv4Snooping; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping
+        class Flooding; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding
+        class StormControl; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl
+        class Backup; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup
+
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup> backup;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping> dhcp_ipv4_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding> flooding;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping> igmp_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping> mld_snooping;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup> split_horizon_group; // presence node
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel> static_label;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl> storm_control;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup : public ydk::Entity
+{
+    public:
+        Backup();
+        ~Backup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_ip_address; //type: string
+        ydk::YLeaf vc_id; //type: uint32
+        //type: string (refers to cisco_ios_xe::cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::name)
+        ydk::YLeaf pw_class_template;
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping : public ydk::Entity
+{
+    public:
+        DhcpIpv4Snooping();
+        ~DhcpIpv4Snooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding : public ydk::Entity
+{
+    public:
+        Flooding();
+        ~Flooding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disabled; //type: empty
+        ydk::YLeaf disabled_unknown_unicast; //type: empty
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping : public ydk::Entity
+{
+    public:
+        IgmpSnooping();
+        ~IgmpSnooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf learning_enabled; //type: boolean
+        class Limit; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit
+        class Aging; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging
+        class PortDown; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown
+        class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure
+
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging> aging;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown> port_down;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure> secure;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging : public ydk::Entity
+{
+    public:
+        Aging();
+        ~Aging();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time; //type: uint32
+        ydk::YLeaf type; //type: MacAgingType
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit : public ydk::Entity
+{
+    public:
+        Limit();
+        ~Limit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf action; //type: MacLimitAction
+        ydk::YLeaf notification; //type: MacLimitNotificationType
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown : public ydk::Entity
+{
+    public:
+        PortDown();
+        ~PortDown();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flush; //type: boolean
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure : public ydk::Entity
+{
+    public:
+        Secure();
+        ~Secure();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf logging; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping : public ydk::Entity
+{
+    public:
+        MldSnooping();
+        ~MldSnooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup : public ydk::Entity
+{
+    public:
+        SplitHorizonGroup();
+        ~SplitHorizonGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint16
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel : public ydk::Entity
+{
+    public:
+        StaticLabel();
+        ~StaticLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf remote_label; //type: uint32
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl : public ydk::Entity
+{
+    public:
+        StormControl();
+        ~StormControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: StormControlAction
+        class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds> > thresholds;
+        
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds : public ydk::Entity
+{
+    public:
+        Thresholds();
+        ~Thresholds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf traffic_class; //type: EthTrafficClass
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: Unit
+        class Unit;
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember : public ydk::Entity
+{
+    public:
+        VfiMember();
+        ~VfiMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember
+
+
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping : public ydk::Entity
+{
+    public:
+        MldSnooping();
+        ~MldSnooping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping
 
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl : public ydk::Entity
@@ -1311,7 +1287,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1322,7 +1298,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl : public ydk
         ydk::YLeaf action; //type: StormControlAction
         class Thresholds; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds> > thresholds;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds> > thresholds;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl
 
@@ -1335,7 +1311,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1351,68 +1327,98 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds 
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping : public ydk::Entity
+class BridgeDomainConfig::BridgeGroups : public ydk::Entity
 {
     public:
-        IgmpSnooping();
-        ~IgmpSnooping();
+        BridgeGroups();
+        ~BridgeGroups();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf profile_name; //type: string
-        ydk::YLeaf disabled; //type: empty
+        class BridgeGroup; //type: BridgeDomainConfig::BridgeGroups::BridgeGroup
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeGroups::BridgeGroup> > bridge_group;
+        
+}; // BridgeDomainConfig::BridgeGroups
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping : public ydk::Entity
+class BridgeDomainConfig::BridgeGroups::BridgeGroup : public ydk::Entity
 {
     public:
-        MldSnooping();
-        ~MldSnooping();
+        BridgeGroup();
+        ~BridgeGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf name; //type: string
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping
+}; // BridgeDomainConfig::BridgeGroups::BridgeGroup
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping : public ydk::Entity
+class BridgeDomainConfig::Global : public ydk::Entity
 {
     public:
-        DhcpIpv4Snooping();
-        ~DhcpIpv4Snooping();
+        Global();
+        ~Global();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf bd_state_notification_enabled; //type: boolean
+        ydk::YLeaf bd_state_notification_rate; //type: uint32
+        class Pbb; //type: BridgeDomainConfig::Global::Pbb
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::Global::Pbb> pbb;
+        
+}; // BridgeDomainConfig::Global
+
+
+class BridgeDomainConfig::Global::Pbb : public ydk::Entity
+{
+    public:
+        Pbb();
+        ~Pbb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf backbone_src_mac; //type: string
+
+}; // BridgeDomainConfig::Global::Pbb
 
 class BridgeDomainState : public ydk::Entity
 {
@@ -1422,7 +1428,7 @@ class BridgeDomainState : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1440,89 +1446,12 @@ class BridgeDomainState : public ydk::Entity
         class BridgeDomains; //type: BridgeDomainState::BridgeDomains
         class MacTable; //type: BridgeDomainState::MacTable
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains> bridge_domains;
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::MacTable> > mac_table;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::ModuleCapabilities> module_capabilities;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::SystemCapabilities> system_capabilities;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains> bridge_domains;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::MacTable> > mac_table;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::ModuleCapabilities> module_capabilities;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::SystemCapabilities> system_capabilities;
         
 }; // BridgeDomainState
-
-
-class BridgeDomainState::SystemCapabilities : public ydk::Entity
-{
-    public:
-        SystemCapabilities();
-        ~SystemCapabilities();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_bd; //type: uint32
-        ydk::YLeaf max_ac_per_bd; //type: uint32
-        ydk::YLeaf max_pw_per_bd; //type: uint32
-        ydk::YLeaf max_vfi_per_bd; //type: uint32
-        ydk::YLeaf max_sh_group_per_bd; //type: uint32
-        ydk::YLeaf max_interflex_if_per_bd; //type: uint32
-
-}; // BridgeDomainState::SystemCapabilities
-
-
-class BridgeDomainState::ModuleCapabilities : public ydk::Entity
-{
-    public:
-        ModuleCapabilities();
-        ~ModuleCapabilities();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Modules; //type: BridgeDomainState::ModuleCapabilities::Modules
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::ModuleCapabilities::Modules> > modules;
-        
-}; // BridgeDomainState::ModuleCapabilities
-
-
-class BridgeDomainState::ModuleCapabilities::Modules : public ydk::Entity
-{
-    public:
-        Modules();
-        ~Modules();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf max_mac_per_bd; //type: uint32
-        ydk::YLeaf max_pdd_edge_bd; //type: uint32
-        ydk::YLeaf max_bd; //type: uint32
-        ydk::YLeaf max_ac_per_bd; //type: uint32
-        ydk::YLeaf max_pw_per_bd; //type: uint32
-        ydk::YLeaf max_vfi_per_bd; //type: uint32
-        ydk::YLeaf max_sh_group_per_bd; //type: uint32
-
-}; // BridgeDomainState::ModuleCapabilities::Modules
 
 
 class BridgeDomainState::BridgeDomains : public ydk::Entity
@@ -1533,17 +1462,18 @@ class BridgeDomainState::BridgeDomains : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class BridgeDomain; //type: BridgeDomainState::BridgeDomains::BridgeDomain
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain> > bridge_domain;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain> > bridge_domain;
         
 }; // BridgeDomainState::BridgeDomains
 
@@ -1556,13 +1486,14 @@ class BridgeDomainState::BridgeDomains::BridgeDomain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: string
         ydk::YLeaf bd_state; //type: BridgeDomainStateType
@@ -1572,7 +1503,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain : public ydk::Entity
         ydk::YLeaf p2mp_pw_disabled; //type: boolean
         class Members; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members> members;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members> members;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain
 
@@ -1585,7 +1516,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1597,9 +1528,9 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members : public ydk::Enti
         class VfiMember; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember
         class AccessPwMember; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember> > access_pw_member;
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember> > ac_member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember> > access_pw_member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember> > vfi_member;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members
 
@@ -1612,7 +1543,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1620,16 +1551,16 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: string (refers to ietf_interfaces::InterfacesState::Interface::name)
+        //type: string (refers to ietf::ietf_interfaces::InterfacesState::Interface::name)
         ydk::YLeaf interface;
         ydk::YLeaf static_mac_count; //type: uint32
         class DaiStats; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats
         class IpsgStats; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats
         class StormControl; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats> dai_stats;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats> ipsg_stats;
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl> storm_control;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats> dai_stats;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats> ipsg_stats;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl> storm_control;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember
 
@@ -1642,7 +1573,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1664,7 +1595,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1686,7 +1617,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1696,7 +1627,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 
         class DropCounter; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter> > drop_counter;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter> > drop_counter;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl
 
@@ -1709,7 +1640,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1724,76 +1655,6 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormCo
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter
 
 
-class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember : public ydk::Entity
-{
-    public:
-        VfiMember();
-        ~VfiMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to ietf_interfaces::InterfacesState::Interface::name)
-        ydk::YLeaf interface;
-        class Flooding; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding
-
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding> flooding;
-        
-}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember
-
-
-class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding : public ydk::Entity
-{
-    public:
-        Flooding();
-        ~Flooding();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Status; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status
-
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status> > status;
-        
-}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding
-
-
-class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status : public ydk::Entity
-{
-    public:
-        Status();
-        ~Status();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf traffic_class; //type: EthTrafficClass
-        ydk::YLeaf enabled; //type: boolean
-
-}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status
-
-
 class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember : public ydk::Entity
 {
     public:
@@ -1802,7 +1663,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1810,13 +1671,13 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: union (refers to cisco_pw::PseudowireState::Pseudowires::vc_peer_address)
+        //type: union (refers to cisco_ios_xe::cisco_pw::PseudowireState::Pseudowires::vc_peer_address)
         ydk::YLeaf vc_peer_address;
-        //type: uint32 (refers to cisco_pw::PseudowireState::Pseudowires::vc_id)
+        //type: uint32 (refers to cisco_ios_xe::cisco_pw::PseudowireState::Pseudowires::vc_id)
         ydk::YLeaf vc_id;
         class Flooding; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding
 
-        std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding> flooding;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding> flooding;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember
 
@@ -1829,7 +1690,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1839,7 +1700,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::F
 
         class Status; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status> > status;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status> > status;
         
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding
 
@@ -1852,7 +1713,7 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1866,6 +1727,76 @@ class BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::F
 }; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status
 
 
+class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember : public ydk::Entity
+{
+    public:
+        VfiMember();
+        ~VfiMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to ietf::ietf_interfaces::InterfacesState::Interface::name)
+        ydk::YLeaf interface;
+        class Flooding; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding
+
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding> flooding;
+        
+}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember
+
+
+class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding : public ydk::Entity
+{
+    public:
+        Flooding();
+        ~Flooding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Status; //type: BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status> > status;
+        
+}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding
+
+
+class BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status : public ydk::Entity
+{
+    public:
+        Status();
+        ~Status();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf traffic_class; //type: EthTrafficClass
+        ydk::YLeaf enabled; //type: boolean
+
+}; // BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status
+
+
 class BridgeDomainState::MacTable : public ydk::Entity
 {
     public:
@@ -1874,18 +1805,19 @@ class BridgeDomainState::MacTable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf bd_id; //type: string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf mac_type; //type: MacType
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf interface;
         ydk::YLeaf secure_mac; //type: boolean
         ydk::YLeaf ntfy_mac; //type: boolean
@@ -1895,6 +1827,86 @@ class BridgeDomainState::MacTable : public ydk::Entity
 
 }; // BridgeDomainState::MacTable
 
+
+class BridgeDomainState::ModuleCapabilities : public ydk::Entity
+{
+    public:
+        ModuleCapabilities();
+        ~ModuleCapabilities();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Modules; //type: BridgeDomainState::ModuleCapabilities::Modules
+
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainState::ModuleCapabilities::Modules> > modules;
+        
+}; // BridgeDomainState::ModuleCapabilities
+
+
+class BridgeDomainState::ModuleCapabilities::Modules : public ydk::Entity
+{
+    public:
+        Modules();
+        ~Modules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf max_mac_per_bd; //type: uint32
+        ydk::YLeaf max_pdd_edge_bd; //type: uint32
+        ydk::YLeaf max_bd; //type: uint32
+        ydk::YLeaf max_ac_per_bd; //type: uint32
+        ydk::YLeaf max_pw_per_bd; //type: uint32
+        ydk::YLeaf max_vfi_per_bd; //type: uint32
+        ydk::YLeaf max_sh_group_per_bd; //type: uint32
+
+}; // BridgeDomainState::ModuleCapabilities::Modules
+
+
+class BridgeDomainState::SystemCapabilities : public ydk::Entity
+{
+    public:
+        SystemCapabilities();
+        ~SystemCapabilities();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf max_bd; //type: uint32
+        ydk::YLeaf max_ac_per_bd; //type: uint32
+        ydk::YLeaf max_pw_per_bd; //type: uint32
+        ydk::YLeaf max_vfi_per_bd; //type: uint32
+        ydk::YLeaf max_sh_group_per_bd; //type: uint32
+        ydk::YLeaf max_interflex_if_per_bd; //type: uint32
+
+}; // BridgeDomainState::SystemCapabilities
+
 class ClearBridgeDomain : public ydk::Entity
 {
     public:
@@ -1903,7 +1915,7 @@ class ClearBridgeDomain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1919,8 +1931,8 @@ class ClearBridgeDomain : public ydk::Entity
         class Input; //type: ClearBridgeDomain::Input
         class Output; //type: ClearBridgeDomain::Output
 
-        std::shared_ptr<cisco_bridge_domain::ClearBridgeDomain::Input> input;
-        std::shared_ptr<cisco_bridge_domain::ClearBridgeDomain::Output> output;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::ClearBridgeDomain::Input> input;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::ClearBridgeDomain::Output> output;
         
 }; // ClearBridgeDomain
 
@@ -1933,13 +1945,14 @@ class ClearBridgeDomain::Input : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf all; //type: empty
         ydk::YLeaf bd_id; //type: string
@@ -1956,13 +1969,14 @@ class ClearBridgeDomain::Output : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf errstr; //type: string
 
@@ -1976,7 +1990,7 @@ class ClearMacAddress : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1992,8 +2006,8 @@ class ClearMacAddress : public ydk::Entity
         class Input; //type: ClearMacAddress::Input
         class Output; //type: ClearMacAddress::Output
 
-        std::shared_ptr<cisco_bridge_domain::ClearMacAddress::Input> input;
-        std::shared_ptr<cisco_bridge_domain::ClearMacAddress::Output> output;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::ClearMacAddress::Input> input;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::ClearMacAddress::Output> output;
         
 }; // ClearMacAddress
 
@@ -2006,20 +2020,21 @@ class ClearMacAddress::Input : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf interface;
         ydk::YLeaf mac_address; //type: string
         class BridgeDomain; //type: ClearMacAddress::Input::BridgeDomain
 
-        std::shared_ptr<cisco_bridge_domain::ClearMacAddress::Input::BridgeDomain> bridge_domain;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::ClearMacAddress::Input::BridgeDomain> bridge_domain;
         
 }; // ClearMacAddress::Input
 
@@ -2032,13 +2047,14 @@ class ClearMacAddress::Input::BridgeDomain : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf bd_id; //type: string
         ydk::YLeaf bg_id; //type: string
@@ -2054,13 +2070,14 @@ class ClearMacAddress::Output : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf errstr; //type: string
 
@@ -2074,7 +2091,7 @@ class CreateParameterizedBridgeDomains : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2090,8 +2107,8 @@ class CreateParameterizedBridgeDomains : public ydk::Entity
         class Input; //type: CreateParameterizedBridgeDomains::Input
         class Output; //type: CreateParameterizedBridgeDomains::Output
 
-        std::shared_ptr<cisco_bridge_domain::CreateParameterizedBridgeDomains::Input> input;
-        std::shared_ptr<cisco_bridge_domain::CreateParameterizedBridgeDomains::Output> output;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::CreateParameterizedBridgeDomains::Input> input;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::CreateParameterizedBridgeDomains::Output> output;
         
 }; // CreateParameterizedBridgeDomains
 
@@ -2104,18 +2121,19 @@ class CreateParameterizedBridgeDomains::Input : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf parameter; //type: Parameter
         class Member; //type: CreateParameterizedBridgeDomains::Input::Member
 
-        std::vector<std::shared_ptr<cisco_bridge_domain::CreateParameterizedBridgeDomains::Input::Member> > member;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::CreateParameterizedBridgeDomains::Input::Member> > member;
                 class Parameter;
 
 }; // CreateParameterizedBridgeDomains::Input
@@ -2129,15 +2147,16 @@ class CreateParameterizedBridgeDomains::Input::Member : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
+        //type: string (refers to ietf::ietf_interfaces::Interfaces::Interface::name)
         ydk::YLeaf interface;
 
 }; // CreateParameterizedBridgeDomains::Input::Member
@@ -2151,13 +2170,14 @@ class CreateParameterizedBridgeDomains::Output : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf errstr; //type: string
 

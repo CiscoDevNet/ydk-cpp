@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_BGP4_MIB {
 
-class CiscoBgp4Mib : public ydk::Entity
+class CISCOBGP4MIB : public ydk::Entity
 {
     public:
-        CiscoBgp4Mib();
-        ~CiscoBgp4Mib();
+        CISCOBGP4MIB();
+        ~CISCOBGP4MIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,30 +32,30 @@ class CiscoBgp4Mib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cbgpglobal; //type: CiscoBgp4Mib::Cbgpglobal
-        class Cbgproutetable; //type: CiscoBgp4Mib::Cbgproutetable
-        class Cbgppeercapstable; //type: CiscoBgp4Mib::Cbgppeercapstable
-        class Cbgppeeraddrfamilytable; //type: CiscoBgp4Mib::Cbgppeeraddrfamilytable
-        class Cbgppeeraddrfamilyprefixtable; //type: CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable
-        class Cbgppeer2Table; //type: CiscoBgp4Mib::Cbgppeer2Table
-        class Cbgppeer2Capstable; //type: CiscoBgp4Mib::Cbgppeer2Capstable
-        class Cbgppeer2Addrfamilytable; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilytable
-        class Cbgppeer2Addrfamilyprefixtable; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable
+        class Cbgpglobal; //type: CISCOBGP4MIB::Cbgpglobal
+        class Cbgproutetable; //type: CISCOBGP4MIB::Cbgproutetable
+        class Cbgppeercapstable; //type: CISCOBGP4MIB::Cbgppeercapstable
+        class Cbgppeeraddrfamilytable; //type: CISCOBGP4MIB::Cbgppeeraddrfamilytable
+        class Cbgppeeraddrfamilyprefixtable; //type: CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable
+        class Cbgppeer2Table; //type: CISCOBGP4MIB::Cbgppeer2Table
+        class Cbgppeer2Capstable; //type: CISCOBGP4MIB::Cbgppeer2Capstable
+        class Cbgppeer2Addrfamilytable; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilytable
+        class Cbgppeer2Addrfamilyprefixtable; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable
 
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgpglobal> cbgpglobal;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable> cbgppeer2addrfamilyprefixtable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable> cbgppeer2addrfamilytable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable> cbgppeer2capstable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table> cbgppeer2table;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable> cbgppeeraddrfamilyprefixtable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable> cbgppeeraddrfamilytable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable> cbgppeercapstable;
-        std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable> cbgproutetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgpglobal> cbgpglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable> cbgppeer2addrfamilyprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilytable> cbgppeer2addrfamilytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Capstable> cbgppeer2capstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table> cbgppeer2table;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable> cbgppeeraddrfamilyprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilytable> cbgppeeraddrfamilytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeercapstable> cbgppeercapstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgproutetable> cbgproutetable;
         
-}; // CiscoBgp4Mib
+}; // CISCOBGP4MIB
 
 
-class CiscoBgp4Mib::Cbgpglobal : public ydk::Entity
+class CISCOBGP4MIB::Cbgpglobal : public ydk::Entity
 {
     public:
         Cbgpglobal();
@@ -63,237 +63,183 @@ class CiscoBgp4Mib::Cbgpglobal : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cbgpnotifsenable; //type: Cbgpnotifsenable
         ydk::YLeaf cbgplocalas; //type: uint32
 
-}; // CiscoBgp4Mib::Cbgpglobal
+}; // CISCOBGP4MIB::Cbgpglobal
 
 
-class CiscoBgp4Mib::Cbgproutetable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable : public ydk::Entity
 {
     public:
-        Cbgproutetable();
-        ~Cbgproutetable();
+        Cbgppeer2Addrfamilyprefixtable();
+        ~Cbgppeer2Addrfamilyprefixtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgprouteentry; //type: CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry
+        class Cbgppeer2Addrfamilyprefixentry; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry> > cbgprouteentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry> > cbgppeer2addrfamilyprefixentry;
         
-}; // CiscoBgp4Mib::Cbgproutetable
+}; // CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable
 
 
-class CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry : public ydk::Entity
 {
     public:
-        Cbgprouteentry();
-        ~Cbgprouteentry();
+        Cbgppeer2Addrfamilyprefixentry();
+        ~Cbgppeer2Addrfamilyprefixentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgprouteafi; //type: Inetaddresstype
-        ydk::YLeaf cbgproutesafi; //type: Cbgpsafi
-        ydk::YLeaf cbgproutepeertype; //type: Inetaddresstype
-        ydk::YLeaf cbgproutepeer; //type: binary
-        ydk::YLeaf cbgprouteaddrprefix; //type: binary
-        ydk::YLeaf cbgprouteaddrprefixlen; //type: uint32
-        ydk::YLeaf cbgprouteorigin; //type: Cbgprouteorigin
-        ydk::YLeaf cbgprouteaspathsegment; //type: binary
-        ydk::YLeaf cbgproutenexthop; //type: binary
-        ydk::YLeaf cbgproutemedpresent; //type: boolean
-        ydk::YLeaf cbgproutemultiexitdisc; //type: uint32
-        ydk::YLeaf cbgproutelocalprefpresent; //type: boolean
-        ydk::YLeaf cbgproutelocalpref; //type: uint32
-        ydk::YLeaf cbgprouteatomicaggregate; //type: Cbgprouteatomicaggregate
-        ydk::YLeaf cbgprouteaggregatoras; //type: uint32
-        ydk::YLeaf cbgprouteaggregatoraddrtype; //type: Inetaddresstype
-        ydk::YLeaf cbgprouteaggregatoraddr; //type: binary
-        ydk::YLeaf cbgproutebest; //type: boolean
-        ydk::YLeaf cbgprouteunknownattr; //type: binary
-        class Cbgprouteorigin;
-        class Cbgprouteatomicaggregate;
+        ydk::YLeaf cbgppeer2type; //type: InetAddressType
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        ydk::YLeaf cbgppeer2remoteaddr;
+        ydk::YLeaf cbgppeer2addrfamilyafi; //type: InetAddressType
+        ydk::YLeaf cbgppeer2addrfamilysafi; //type: CbgpSafi
+        ydk::YLeaf cbgppeer2acceptedprefixes; //type: uint32
+        ydk::YLeaf cbgppeer2deniedprefixes; //type: uint32
+        ydk::YLeaf cbgppeer2prefixadminlimit; //type: uint32
+        ydk::YLeaf cbgppeer2prefixthreshold; //type: uint32
+        ydk::YLeaf cbgppeer2prefixclearthreshold; //type: uint32
+        ydk::YLeaf cbgppeer2advertisedprefixes; //type: uint32
+        ydk::YLeaf cbgppeer2suppressedprefixes; //type: uint32
+        ydk::YLeaf cbgppeer2withdrawnprefixes; //type: uint32
 
-}; // CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry
+}; // CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
 
 
-class CiscoBgp4Mib::Cbgppeercapstable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Addrfamilytable : public ydk::Entity
 {
     public:
-        Cbgppeercapstable();
-        ~Cbgppeercapstable();
+        Cbgppeer2Addrfamilytable();
+        ~Cbgppeer2Addrfamilytable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeercapsentry; //type: CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry
+        class Cbgppeer2Addrfamilyentry; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry> > cbgppeercapsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry> > cbgppeer2addrfamilyentry;
         
-}; // CiscoBgp4Mib::Cbgppeercapstable
+}; // CISCOBGP4MIB::Cbgppeer2Addrfamilytable
 
 
-class CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry : public ydk::Entity
 {
     public:
-        Cbgppeercapsentry();
-        ~Cbgppeercapsentry();
+        Cbgppeer2Addrfamilyentry();
+        ~Cbgppeer2Addrfamilyentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to BGP4_MIB::Bgp4Mib::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
-        ydk::YLeaf bgppeerremoteaddr;
-        ydk::YLeaf cbgppeercapcode; //type: Cbgppeercapcode
-        ydk::YLeaf cbgppeercapindex; //type: uint32
-        ydk::YLeaf cbgppeercapvalue; //type: binary
-        class Cbgppeercapcode;
+        ydk::YLeaf cbgppeer2type; //type: InetAddressType
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        ydk::YLeaf cbgppeer2remoteaddr;
+        ydk::YLeaf cbgppeer2addrfamilyafi; //type: InetAddressType
+        ydk::YLeaf cbgppeer2addrfamilysafi; //type: CbgpSafi
+        ydk::YLeaf cbgppeer2addrfamilyname; //type: string
 
-}; // CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry
+}; // CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
 
 
-class CiscoBgp4Mib::Cbgppeeraddrfamilytable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Capstable : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilytable();
-        ~Cbgppeeraddrfamilytable();
+        Cbgppeer2Capstable();
+        ~Cbgppeer2Capstable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeeraddrfamilyentry; //type: CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
+        class Cbgppeer2Capsentry; //type: CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry> > cbgppeeraddrfamilyentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry> > cbgppeer2capsentry;
         
-}; // CiscoBgp4Mib::Cbgppeeraddrfamilytable
+}; // CISCOBGP4MIB::Cbgppeer2Capstable
 
 
-class CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilyentry();
-        ~Cbgppeeraddrfamilyentry();
+        Cbgppeer2Capsentry();
+        ~Cbgppeer2Capsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to BGP4_MIB::Bgp4Mib::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
-        ydk::YLeaf bgppeerremoteaddr;
-        ydk::YLeaf cbgppeeraddrfamilyafi; //type: Inetaddresstype
-        ydk::YLeaf cbgppeeraddrfamilysafi; //type: Cbgpsafi
-        ydk::YLeaf cbgppeeraddrfamilyname; //type: string
+        ydk::YLeaf cbgppeer2type; //type: InetAddressType
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        ydk::YLeaf cbgppeer2remoteaddr;
+        ydk::YLeaf cbgppeer2capcode; //type: Cbgppeer2Capcode
+        ydk::YLeaf cbgppeer2capindex; //type: uint32
+        ydk::YLeaf cbgppeer2capvalue; //type: binary
+        class Cbgppeer2Capcode;
 
-}; // CiscoBgp4Mib::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
-
-
-class CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable : public ydk::Entity
-{
-    public:
-        Cbgppeeraddrfamilyprefixtable();
-        ~Cbgppeeraddrfamilyprefixtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cbgppeeraddrfamilyprefixentry; //type: CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
-
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry> > cbgppeeraddrfamilyprefixentry;
-        
-}; // CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable
+}; // CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry
 
 
-class CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry : public ydk::Entity
-{
-    public:
-        Cbgppeeraddrfamilyprefixentry();
-        ~Cbgppeeraddrfamilyprefixentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to BGP4_MIB::Bgp4Mib::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
-        ydk::YLeaf bgppeerremoteaddr;
-        ydk::YLeaf cbgppeeraddrfamilyafi; //type: Inetaddresstype
-        ydk::YLeaf cbgppeeraddrfamilysafi; //type: Cbgpsafi
-        ydk::YLeaf cbgppeeracceptedprefixes; //type: uint32
-        ydk::YLeaf cbgppeerdeniedprefixes; //type: uint32
-        ydk::YLeaf cbgppeerprefixadminlimit; //type: uint32
-        ydk::YLeaf cbgppeerprefixthreshold; //type: uint32
-        ydk::YLeaf cbgppeerprefixclearthreshold; //type: uint32
-        ydk::YLeaf cbgppeeradvertisedprefixes; //type: uint32
-        ydk::YLeaf cbgppeersuppressedprefixes; //type: uint32
-        ydk::YLeaf cbgppeerwithdrawnprefixes; //type: uint32
-
-}; // CiscoBgp4Mib::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
-
-
-class CiscoBgp4Mib::Cbgppeer2Table : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Table : public ydk::Entity
 {
     public:
         Cbgppeer2Table();
@@ -301,22 +247,23 @@ class CiscoBgp4Mib::Cbgppeer2Table : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeer2Entry; //type: CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry
+        class Cbgppeer2Entry; //type: CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry> > cbgppeer2entry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry> > cbgppeer2entry;
         
-}; // CiscoBgp4Mib::Cbgppeer2Table
+}; // CISCOBGP4MIB::Cbgppeer2Table
 
 
-class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
 {
     public:
         Cbgppeer2Entry();
@@ -324,15 +271,16 @@ class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgppeer2type; //type: Inetaddresstype
+        ydk::YLeaf cbgppeer2type; //type: InetAddressType
         ydk::YLeaf cbgppeer2remoteaddr; //type: binary
         ydk::YLeaf cbgppeer2state; //type: Cbgppeer2State
         ydk::YLeaf cbgppeer2adminstatus; //type: Cbgppeer2Adminstatus
@@ -365,164 +313,233 @@ class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
         class Cbgppeer2Adminstatus;
         class Cbgppeer2Prevstate;
 
-}; // CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry
+}; // CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry
 
 
-class CiscoBgp4Mib::Cbgppeer2Capstable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable : public ydk::Entity
 {
     public:
-        Cbgppeer2Capstable();
-        ~Cbgppeer2Capstable();
+        Cbgppeeraddrfamilyprefixtable();
+        ~Cbgppeeraddrfamilyprefixtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeer2Capsentry; //type: CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry
+        class Cbgppeeraddrfamilyprefixentry; //type: CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry> > cbgppeer2capsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry> > cbgppeeraddrfamilyprefixentry;
         
-}; // CiscoBgp4Mib::Cbgppeer2Capstable
+}; // CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable
 
 
-class CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry : public ydk::Entity
 {
     public:
-        Cbgppeer2Capsentry();
-        ~Cbgppeer2Capsentry();
+        Cbgppeeraddrfamilyprefixentry();
+        ~Cbgppeeraddrfamilyprefixentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgppeer2type; //type: Inetaddresstype
-        //type: binary (refers to CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
-        ydk::YLeaf cbgppeer2remoteaddr;
-        ydk::YLeaf cbgppeer2capcode; //type: Cbgppeer2Capcode
-        ydk::YLeaf cbgppeer2capindex; //type: uint32
-        ydk::YLeaf cbgppeer2capvalue; //type: binary
-        class Cbgppeer2Capcode;
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        ydk::YLeaf bgppeerremoteaddr;
+        ydk::YLeaf cbgppeeraddrfamilyafi; //type: InetAddressType
+        ydk::YLeaf cbgppeeraddrfamilysafi; //type: CbgpSafi
+        ydk::YLeaf cbgppeeracceptedprefixes; //type: uint32
+        ydk::YLeaf cbgppeerdeniedprefixes; //type: uint32
+        ydk::YLeaf cbgppeerprefixadminlimit; //type: uint32
+        ydk::YLeaf cbgppeerprefixthreshold; //type: uint32
+        ydk::YLeaf cbgppeerprefixclearthreshold; //type: uint32
+        ydk::YLeaf cbgppeeradvertisedprefixes; //type: uint32
+        ydk::YLeaf cbgppeersuppressedprefixes; //type: uint32
+        ydk::YLeaf cbgppeerwithdrawnprefixes; //type: uint32
 
-}; // CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry
+}; // CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
 
 
-class CiscoBgp4Mib::Cbgppeer2Addrfamilytable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeeraddrfamilytable : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilytable();
-        ~Cbgppeer2Addrfamilytable();
+        Cbgppeeraddrfamilytable();
+        ~Cbgppeeraddrfamilytable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeer2Addrfamilyentry; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
+        class Cbgppeeraddrfamilyentry; //type: CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry> > cbgppeer2addrfamilyentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry> > cbgppeeraddrfamilyentry;
         
-}; // CiscoBgp4Mib::Cbgppeer2Addrfamilytable
+}; // CISCOBGP4MIB::Cbgppeeraddrfamilytable
 
 
-class CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyentry();
-        ~Cbgppeer2Addrfamilyentry();
+        Cbgppeeraddrfamilyentry();
+        ~Cbgppeeraddrfamilyentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgppeer2type; //type: Inetaddresstype
-        //type: binary (refers to CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
-        ydk::YLeaf cbgppeer2remoteaddr;
-        ydk::YLeaf cbgppeer2addrfamilyafi; //type: Inetaddresstype
-        ydk::YLeaf cbgppeer2addrfamilysafi; //type: Cbgpsafi
-        ydk::YLeaf cbgppeer2addrfamilyname; //type: string
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        ydk::YLeaf bgppeerremoteaddr;
+        ydk::YLeaf cbgppeeraddrfamilyafi; //type: InetAddressType
+        ydk::YLeaf cbgppeeraddrfamilysafi; //type: CbgpSafi
+        ydk::YLeaf cbgppeeraddrfamilyname; //type: string
 
-}; // CiscoBgp4Mib::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
+}; // CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
 
 
-class CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeercapstable : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyprefixtable();
-        ~Cbgppeer2Addrfamilyprefixtable();
+        Cbgppeercapstable();
+        ~Cbgppeercapstable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cbgppeer2Addrfamilyprefixentry; //type: CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
+        class Cbgppeercapsentry; //type: CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry
 
-        std::vector<std::shared_ptr<CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry> > cbgppeer2addrfamilyprefixentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry> > cbgppeercapsentry;
         
-}; // CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable
+}; // CISCOBGP4MIB::Cbgppeercapstable
 
 
-class CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry : public ydk::Entity
+class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyprefixentry();
-        ~Cbgppeer2Addrfamilyprefixentry();
+        Cbgppeercapsentry();
+        ~Cbgppeercapsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgppeer2type; //type: Inetaddresstype
-        //type: binary (refers to CISCO_BGP4_MIB::CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
-        ydk::YLeaf cbgppeer2remoteaddr;
-        ydk::YLeaf cbgppeer2addrfamilyafi; //type: Inetaddresstype
-        ydk::YLeaf cbgppeer2addrfamilysafi; //type: Cbgpsafi
-        ydk::YLeaf cbgppeer2acceptedprefixes; //type: uint32
-        ydk::YLeaf cbgppeer2deniedprefixes; //type: uint32
-        ydk::YLeaf cbgppeer2prefixadminlimit; //type: uint32
-        ydk::YLeaf cbgppeer2prefixthreshold; //type: uint32
-        ydk::YLeaf cbgppeer2prefixclearthreshold; //type: uint32
-        ydk::YLeaf cbgppeer2advertisedprefixes; //type: uint32
-        ydk::YLeaf cbgppeer2suppressedprefixes; //type: uint32
-        ydk::YLeaf cbgppeer2withdrawnprefixes; //type: uint32
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        ydk::YLeaf bgppeerremoteaddr;
+        ydk::YLeaf cbgppeercapcode; //type: Cbgppeercapcode
+        ydk::YLeaf cbgppeercapindex; //type: uint32
+        ydk::YLeaf cbgppeercapvalue; //type: binary
+        class Cbgppeercapcode;
 
-}; // CiscoBgp4Mib::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
+}; // CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry
 
-class Cbgpsafi : public ydk::Enum
+
+class CISCOBGP4MIB::Cbgproutetable : public ydk::Entity
+{
+    public:
+        Cbgproutetable();
+        ~Cbgproutetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cbgprouteentry; //type: CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry> > cbgprouteentry;
+        
+}; // CISCOBGP4MIB::Cbgproutetable
+
+
+class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry : public ydk::Entity
+{
+    public:
+        Cbgprouteentry();
+        ~Cbgprouteentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cbgprouteafi; //type: InetAddressType
+        ydk::YLeaf cbgproutesafi; //type: CbgpSafi
+        ydk::YLeaf cbgproutepeertype; //type: InetAddressType
+        ydk::YLeaf cbgproutepeer; //type: binary
+        ydk::YLeaf cbgprouteaddrprefix; //type: binary
+        ydk::YLeaf cbgprouteaddrprefixlen; //type: uint32
+        ydk::YLeaf cbgprouteorigin; //type: Cbgprouteorigin
+        ydk::YLeaf cbgprouteaspathsegment; //type: binary
+        ydk::YLeaf cbgproutenexthop; //type: binary
+        ydk::YLeaf cbgproutemedpresent; //type: boolean
+        ydk::YLeaf cbgproutemultiexitdisc; //type: uint32
+        ydk::YLeaf cbgproutelocalprefpresent; //type: boolean
+        ydk::YLeaf cbgproutelocalpref; //type: uint32
+        ydk::YLeaf cbgprouteatomicaggregate; //type: Cbgprouteatomicaggregate
+        ydk::YLeaf cbgprouteaggregatoras; //type: uint32
+        ydk::YLeaf cbgprouteaggregatoraddrtype; //type: InetAddressType
+        ydk::YLeaf cbgprouteaggregatoraddr; //type: binary
+        ydk::YLeaf cbgproutebest; //type: boolean
+        ydk::YLeaf cbgprouteunknownattr; //type: binary
+        class Cbgprouteorigin;
+        class Cbgprouteatomicaggregate;
+
+}; // CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry
+
+class CbgpSafi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
@@ -532,34 +549,19 @@ class Cbgpsafi : public ydk::Enum
 
 };
 
-class CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf egp;
-        static const ydk::Enum::YLeaf incomplete;
-
-};
-
-class CiscoBgp4Mib::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lessSpecificRouteNotSelected;
-        static const ydk::Enum::YLeaf lessSpecificRouteSelected;
-
-};
-
-class CiscoBgp4Mib::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode : public ydk::Enum
+class CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf multiProtocol;
         static const ydk::Enum::YLeaf routeRefresh;
         static const ydk::Enum::YLeaf gracefulRestart;
+        static const ydk::Enum::YLeaf fourByteAs;
+        static const ydk::Enum::YLeaf addPath;
         static const ydk::Enum::YLeaf routeRefreshOld;
 
 };
 
-class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State : public ydk::Enum
+class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;
@@ -571,7 +573,7 @@ class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State : public ydk:
 
 };
 
-class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus : public ydk::Enum
+class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stop;
@@ -579,7 +581,7 @@ class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus : publi
 
 };
 
-class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate : public ydk::Enum
+class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -592,15 +594,30 @@ class CiscoBgp4Mib::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate : public 
 
 };
 
-class CiscoBgp4Mib::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode : public ydk::Enum
+class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf multiProtocol;
         static const ydk::Enum::YLeaf routeRefresh;
         static const ydk::Enum::YLeaf gracefulRestart;
-        static const ydk::Enum::YLeaf fourByteAs;
-        static const ydk::Enum::YLeaf addPath;
         static const ydk::Enum::YLeaf routeRefreshOld;
+
+};
+
+class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf igp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf incomplete;
+
+};
+
+class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessSpecificRouteNotSelected;
+        static const ydk::Enum::YLeaf lessSpecificRouteSelected;
 
 };
 

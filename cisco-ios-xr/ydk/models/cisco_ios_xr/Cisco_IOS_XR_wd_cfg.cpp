@@ -27,7 +27,7 @@ Watchdog::Watchdog()
 {
     threshold_memory->parent = this;
 
-    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-cfg";
+    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Watchdog::~Watchdog()
@@ -67,20 +67,11 @@ std::string Watchdog::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-wd-cfg:watchdog";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Watchdog::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Watchdog::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (monitor_cpuhog_timeout.is_set || is_set(monitor_cpuhog_timeout.yfilter)) leaf_name_data.push_back(monitor_cpuhog_timeout.get_name_leafdata());
@@ -93,9 +84,7 @@ const EntityPath Watchdog::get_entity_path(Entity* ancestor) const
     if (restart_memoryhog_disable.is_set || is_set(restart_memoryhog_disable.yfilter)) leaf_name_data.push_back(restart_memoryhog_disable.get_name_leafdata());
     if (threshold_memory_switchover.is_set || is_set(threshold_memory_switchover.yfilter)) leaf_name_data.push_back(threshold_memory_switchover.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -260,7 +249,8 @@ Watchdog::ThresholdMemory::ThresholdMemory()
     minor{YType::uint32, "minor"},
     severe{YType::uint32, "severe"}
 {
-    yang_name = "threshold-memory"; yang_parent_name = "watchdog";
+
+    yang_name = "threshold-memory"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Watchdog::ThresholdMemory::~ThresholdMemory()
@@ -282,36 +272,29 @@ bool Watchdog::ThresholdMemory::has_operation() const
 	|| ydk::is_set(severe.yfilter);
 }
 
+std::string Watchdog::ThresholdMemory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-wd-cfg:watchdog/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Watchdog::ThresholdMemory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-memory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Watchdog::ThresholdMemory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Watchdog::ThresholdMemory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-wd-cfg:watchdog/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

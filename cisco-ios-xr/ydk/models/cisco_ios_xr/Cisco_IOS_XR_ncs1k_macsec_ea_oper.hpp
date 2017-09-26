@@ -18,7 +18,7 @@ class Ncs1KMacsecOper : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Ncs1KMacsecOper : public ydk::Entity
 
         class Ncs1KMacsecCtrlrNames; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames> ncs1k_macsec_ctrlr_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames> ncs1k_macsec_ctrlr_names;
         
 }; // Ncs1KMacsecOper
 
@@ -46,17 +46,18 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Ncs1KMacsecCtrlrName; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName> > ncs1k_macsec_ctrlr_name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName> > ncs1k_macsec_ctrlr_name;
         
 }; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames
 
@@ -69,18 +70,19 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName : public ydk:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         class Ncs1KStatusInfo; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo> ncs1k_status_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo> ncs1k_status_info;
         
 }; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName
 
@@ -93,7 +95,7 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -107,67 +109,10 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
         class EncryptScStatus; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus
         class DecryptScStatus; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus
 
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus> decrypt_sc_status;
-        std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus> encrypt_sc_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus> decrypt_sc_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus> encrypt_sc_status;
         
 }; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo
-
-
-class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus : public ydk::Entity
-{
-    public:
-        EncryptScStatus();
-        ~EncryptScStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf protection_enabled; //type: boolean
-        ydk::YLeaf secure_channel_id; //type: string
-        ydk::YLeaf confidentiality_offset; //type: uint32
-        ydk::YLeaf cipher_suite; //type: Ncs1KCipherSuit
-        ydk::YLeaf initial_packet_number; //type: uint64
-        ydk::YLeaf secure_tag_length; //type: uint32
-        ydk::YLeaf max_packet_number; //type: uint64
-        ydk::YLeaf recent_packet_number; //type: uint64
-        class ActiveAssociation; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation> > active_association;
-        
-}; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus
-
-
-class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation : public ydk::Entity
-{
-    public:
-        ActiveAssociation();
-        ~ActiveAssociation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf association_number; //type: uint8
-        ydk::YLeaf device_association_number; //type: uint8
-        ydk::YLeaf short_secure_channel_id; //type: uint32
-        ydk::YLeaf programmed_time; //type: string
-        ydk::YLeaf key_crc; //type: string
-        ydk::YLeafList xpn_salt; //type: list of  string
-
-}; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation
 
 
 class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus : public ydk::Entity
@@ -178,7 +123,7 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -187,16 +132,16 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf protection_enabled; //type: boolean
-        ydk::YLeaf secure_channel_id; //type: string
+        ydk::YLeaf secure_channel_id; //type: uint64
         ydk::YLeaf confidentiality_offset; //type: uint32
-        ydk::YLeaf cipher_suite; //type: Ncs1KCipherSuit
+        ydk::YLeaf cipher_suite; //type: Ncs1kCipherSuit
         ydk::YLeaf initial_packet_number; //type: uint64
         ydk::YLeaf secure_tag_length; //type: uint32
         ydk::YLeaf max_packet_number; //type: uint64
         ydk::YLeaf recent_packet_number; //type: uint64
         class ActiveAssociation; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation> > active_association;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation> > active_association;
         
 }; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus
 
@@ -209,7 +154,7 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -226,7 +171,64 @@ class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusI
 
 }; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation
 
-class Ncs1KCipherSuit : public ydk::Enum
+
+class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus : public ydk::Entity
+{
+    public:
+        EncryptScStatus();
+        ~EncryptScStatus();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protection_enabled; //type: boolean
+        ydk::YLeaf secure_channel_id; //type: uint64
+        ydk::YLeaf confidentiality_offset; //type: uint32
+        ydk::YLeaf cipher_suite; //type: Ncs1kCipherSuit
+        ydk::YLeaf initial_packet_number; //type: uint64
+        ydk::YLeaf secure_tag_length; //type: uint32
+        ydk::YLeaf max_packet_number; //type: uint64
+        ydk::YLeaf recent_packet_number; //type: uint64
+        class ActiveAssociation; //type: Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_macsec_ea_oper::Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation> > active_association;
+        
+}; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus
+
+
+class Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation : public ydk::Entity
+{
+    public:
+        ActiveAssociation();
+        ~ActiveAssociation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf association_number; //type: uint8
+        ydk::YLeaf device_association_number; //type: uint8
+        ydk::YLeaf short_secure_channel_id; //type: uint32
+        ydk::YLeaf programmed_time; //type: string
+        ydk::YLeaf key_crc; //type: string
+        ydk::YLeafList xpn_salt; //type: list of  string
+
+}; // Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation
+
+class Ncs1kCipherSuit : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf gcm_aes_256;

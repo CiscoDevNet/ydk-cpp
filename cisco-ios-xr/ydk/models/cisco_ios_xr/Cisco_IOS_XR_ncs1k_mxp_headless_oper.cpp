@@ -17,10 +17,9 @@ HeadlessFuncData::HeadlessFuncData()
 	,otn_port_names(std::make_shared<HeadlessFuncData::OtnPortNames>())
 {
     ethernet_port_names->parent = this;
-
     otn_port_names->parent = this;
 
-    yang_name = "headless-func-data"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-headless-oper";
+    yang_name = "headless-func-data"; yang_parent_name = "Cisco-IOS-XR-ncs1k-mxp-headless-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 HeadlessFuncData::~HeadlessFuncData()
@@ -44,26 +43,15 @@ std::string HeadlessFuncData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HeadlessFuncData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -146,397 +134,10 @@ bool HeadlessFuncData::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-HeadlessFuncData::OtnPortNames::OtnPortNames()
-{
-    yang_name = "otn-port-names"; yang_parent_name = "headless-func-data";
-}
-
-HeadlessFuncData::OtnPortNames::~OtnPortNames()
-{
-}
-
-bool HeadlessFuncData::OtnPortNames::has_data() const
-{
-    for (std::size_t index=0; index<otn_port_name.size(); index++)
-    {
-        if(otn_port_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool HeadlessFuncData::OtnPortNames::has_operation() const
-{
-    for (std::size_t index=0; index<otn_port_name.size(); index++)
-    {
-        if(otn_port_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string HeadlessFuncData::OtnPortNames::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "otn-port-names";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HeadlessFuncData::OtnPortNames::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "otn-port-name")
-    {
-        for(auto const & c : otn_port_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
-        c->parent = this;
-        otn_port_name.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : otn_port_name)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void HeadlessFuncData::OtnPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void HeadlessFuncData::OtnPortNames::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool HeadlessFuncData::OtnPortNames::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "otn-port-name")
-        return true;
-    return false;
-}
-
-HeadlessFuncData::OtnPortNames::OtnPortName::OtnPortName()
-    :
-    name{YType::str, "name"},
-    headless_end_time{YType::str, "headless-end-time"},
-    headless_start_time{YType::str, "headless-start-time"},
-    started_stateful{YType::boolean, "started-stateful"}
-    	,
-    otn_statistics(std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>())
-{
-    otn_statistics->parent = this;
-
-    yang_name = "otn-port-name"; yang_parent_name = "otn-port-names";
-}
-
-HeadlessFuncData::OtnPortNames::OtnPortName::~OtnPortName()
-{
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::has_data() const
-{
-    return name.is_set
-	|| headless_end_time.is_set
-	|| headless_start_time.is_set
-	|| started_stateful.is_set
-	|| (otn_statistics !=  nullptr && otn_statistics->has_data());
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(headless_end_time.yfilter)
-	|| ydk::is_set(headless_start_time.yfilter)
-	|| ydk::is_set(started_stateful.yfilter)
-	|| (otn_statistics !=  nullptr && otn_statistics->has_operation());
-}
-
-std::string HeadlessFuncData::OtnPortNames::OtnPortName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "otn-port-name" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/otn-port-names/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (headless_end_time.is_set || is_set(headless_end_time.yfilter)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
-    if (headless_start_time.is_set || is_set(headless_start_time.yfilter)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
-    if (started_stateful.is_set || is_set(started_stateful.yfilter)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "otn-statistics")
-    {
-        if(otn_statistics == nullptr)
-        {
-            otn_statistics = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>();
-        }
-        return otn_statistics;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(otn_statistics != nullptr)
-    {
-        children["otn-statistics"] = otn_statistics;
-    }
-
-    return children;
-}
-
-void HeadlessFuncData::OtnPortNames::OtnPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "headless-end-time")
-    {
-        headless_end_time = value;
-        headless_end_time.value_namespace = name_space;
-        headless_end_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "headless-start-time")
-    {
-        headless_start_time = value;
-        headless_start_time.value_namespace = name_space;
-        headless_start_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "started-stateful")
-    {
-        started_stateful = value;
-        started_stateful.value_namespace = name_space;
-        started_stateful.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HeadlessFuncData::OtnPortNames::OtnPortName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "headless-end-time")
-    {
-        headless_end_time.yfilter = yfilter;
-    }
-    if(value_path == "headless-start-time")
-    {
-        headless_start_time.yfilter = yfilter;
-    }
-    if(value_path == "started-stateful")
-    {
-        started_stateful.yfilter = yfilter;
-    }
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "otn-statistics" || name == "name" || name == "headless-end-time" || name == "headless-start-time" || name == "started-stateful")
-        return true;
-    return false;
-}
-
-HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::OtnStatistics()
-    :
-    fec_ec{YType::uint64, "fec-ec"},
-    fec_uc{YType::uint64, "fec-uc"},
-    sm_bei{YType::uint64, "sm-bei"},
-    sm_bip{YType::uint64, "sm-bip"}
-{
-    yang_name = "otn-statistics"; yang_parent_name = "otn-port-name";
-}
-
-HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::~OtnStatistics()
-{
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_data() const
-{
-    return fec_ec.is_set
-	|| fec_uc.is_set
-	|| sm_bei.is_set
-	|| sm_bip.is_set;
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fec_ec.yfilter)
-	|| ydk::is_set(fec_uc.yfilter)
-	|| ydk::is_set(sm_bei.yfilter)
-	|| ydk::is_set(sm_bip.yfilter);
-}
-
-std::string HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "otn-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OtnStatistics' in Cisco_IOS_XR_ncs1k_mxp_headless_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fec_ec.is_set || is_set(fec_ec.yfilter)) leaf_name_data.push_back(fec_ec.get_name_leafdata());
-    if (fec_uc.is_set || is_set(fec_uc.yfilter)) leaf_name_data.push_back(fec_uc.get_name_leafdata());
-    if (sm_bei.is_set || is_set(sm_bei.yfilter)) leaf_name_data.push_back(sm_bei.get_name_leafdata());
-    if (sm_bip.is_set || is_set(sm_bip.yfilter)) leaf_name_data.push_back(sm_bip.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fec-ec")
-    {
-        fec_ec = value;
-        fec_ec.value_namespace = name_space;
-        fec_ec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fec-uc")
-    {
-        fec_uc = value;
-        fec_uc.value_namespace = name_space;
-        fec_uc.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sm-bei")
-    {
-        sm_bei = value;
-        sm_bei.value_namespace = name_space;
-        sm_bei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sm-bip")
-    {
-        sm_bip = value;
-        sm_bip.value_namespace = name_space;
-        sm_bip.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fec-ec")
-    {
-        fec_ec.yfilter = yfilter;
-    }
-    if(value_path == "fec-uc")
-    {
-        fec_uc.yfilter = yfilter;
-    }
-    if(value_path == "sm-bei")
-    {
-        sm_bei.yfilter = yfilter;
-    }
-    if(value_path == "sm-bip")
-    {
-        sm_bip.yfilter = yfilter;
-    }
-}
-
-bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fec-ec" || name == "fec-uc" || name == "sm-bei" || name == "sm-bip")
-        return true;
-    return false;
-}
-
 HeadlessFuncData::EthernetPortNames::EthernetPortNames()
 {
-    yang_name = "ethernet-port-names"; yang_parent_name = "headless-func-data";
+
+    yang_name = "ethernet-port-names"; yang_parent_name = "headless-func-data"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HeadlessFuncData::EthernetPortNames::~EthernetPortNames()
@@ -563,33 +164,26 @@ bool HeadlessFuncData::EthernetPortNames::has_operation() const
     return is_set(yfilter);
 }
 
+std::string HeadlessFuncData::EthernetPortNames::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HeadlessFuncData::EthernetPortNames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-port-names";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HeadlessFuncData::EthernetPortNames::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNames::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -651,7 +245,7 @@ HeadlessFuncData::EthernetPortNames::EthernetPortName::EthernetPortName()
 {
     ether_statistics->parent = this;
 
-    yang_name = "ethernet-port-name"; yang_parent_name = "ethernet-port-names";
+    yang_name = "ethernet-port-name"; yang_parent_name = "ethernet-port-names"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 HeadlessFuncData::EthernetPortNames::EthernetPortName::~EthernetPortName()
@@ -677,27 +271,22 @@ bool HeadlessFuncData::EthernetPortNames::EthernetPortName::has_operation() cons
 	|| (ether_statistics !=  nullptr && ether_statistics->has_operation());
 }
 
+std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/ethernet-port-names/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-port-name" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNames::EthernetPortName::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/ethernet-port-names/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -705,9 +294,7 @@ const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_enti
     if (headless_start_time.is_set || is_set(headless_start_time.yfilter)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
     if (started_stateful.is_set || is_set(started_stateful.yfilter)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -826,7 +413,8 @@ HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::EtherSta
     tx_pkts_under_sized{YType::uint64, "tx-pkts-under-sized"},
     tx_total_bytes{YType::uint64, "tx-total-bytes"}
 {
-    yang_name = "ether-statistics"; yang_parent_name = "ethernet-port-name";
+
+    yang_name = "ether-statistics"; yang_parent_name = "ethernet-port-name"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::~EtherStatistics()
@@ -910,23 +498,11 @@ std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatisti
 {
     std::ostringstream path_buffer;
     path_buffer << "ether-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EtherStatistics' in Cisco_IOS_XR_ncs1k_mxp_headless_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rx8021q_pkt.is_set || is_set(rx8021q_pkt.yfilter)) leaf_name_data.push_back(rx8021q_pkt.get_name_leafdata());
@@ -962,9 +538,7 @@ const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherSta
     if (tx_pkts_under_sized.is_set || is_set(tx_pkts_under_sized.yfilter)) leaf_name_data.push_back(tx_pkts_under_sized.get_name_leafdata());
     if (tx_total_bytes.is_set || is_set(tx_total_bytes.yfilter)) leaf_name_data.push_back(tx_total_bytes.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1313,6 +887,481 @@ bool HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::has
         return true;
     return false;
 }
+
+HeadlessFuncData::OtnPortNames::OtnPortNames()
+{
+
+    yang_name = "otn-port-names"; yang_parent_name = "headless-func-data"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HeadlessFuncData::OtnPortNames::~OtnPortNames()
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::has_data() const
+{
+    for (std::size_t index=0; index<otn_port_name.size(); index++)
+    {
+        if(otn_port_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HeadlessFuncData::OtnPortNames::has_operation() const
+{
+    for (std::size_t index=0; index<otn_port_name.size(); index++)
+    {
+        if(otn_port_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HeadlessFuncData::OtnPortNames::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HeadlessFuncData::OtnPortNames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "otn-port-names";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "otn-port-name")
+    {
+        for(auto const & c : otn_port_name)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
+        c->parent = this;
+        otn_port_name.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : otn_port_name)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void HeadlessFuncData::OtnPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HeadlessFuncData::OtnPortNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-port-name")
+        return true;
+    return false;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::OtnPortName()
+    :
+    name{YType::str, "name"},
+    headless_end_time{YType::str, "headless-end-time"},
+    headless_start_time{YType::str, "headless-start-time"},
+    started_stateful{YType::boolean, "started-stateful"}
+    	,
+    otn_statistics(std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>())
+	,prbs_statistics(std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics>())
+{
+    otn_statistics->parent = this;
+    prbs_statistics->parent = this;
+
+    yang_name = "otn-port-name"; yang_parent_name = "otn-port-names"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::~OtnPortName()
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::has_data() const
+{
+    return name.is_set
+	|| headless_end_time.is_set
+	|| headless_start_time.is_set
+	|| started_stateful.is_set
+	|| (otn_statistics !=  nullptr && otn_statistics->has_data())
+	|| (prbs_statistics !=  nullptr && prbs_statistics->has_data());
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(headless_end_time.yfilter)
+	|| ydk::is_set(headless_start_time.yfilter)
+	|| ydk::is_set(started_stateful.yfilter)
+	|| (otn_statistics !=  nullptr && otn_statistics->has_operation())
+	|| (prbs_statistics !=  nullptr && prbs_statistics->has_operation());
+}
+
+std::string HeadlessFuncData::OtnPortNames::OtnPortName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs1k-mxp-headless-oper:headless-func-data/otn-port-names/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HeadlessFuncData::OtnPortNames::OtnPortName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "otn-port-name" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::OtnPortName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (headless_end_time.is_set || is_set(headless_end_time.yfilter)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
+    if (headless_start_time.is_set || is_set(headless_start_time.yfilter)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
+    if (started_stateful.is_set || is_set(started_stateful.yfilter)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "otn-statistics")
+    {
+        if(otn_statistics == nullptr)
+        {
+            otn_statistics = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics>();
+        }
+        return otn_statistics;
+    }
+
+    if(child_yang_name == "prbs-statistics")
+    {
+        if(prbs_statistics == nullptr)
+        {
+            prbs_statistics = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics>();
+        }
+        return prbs_statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(otn_statistics != nullptr)
+    {
+        children["otn-statistics"] = otn_statistics;
+    }
+
+    if(prbs_statistics != nullptr)
+    {
+        children["prbs-statistics"] = prbs_statistics;
+    }
+
+    return children;
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "headless-end-time")
+    {
+        headless_end_time = value;
+        headless_end_time.value_namespace = name_space;
+        headless_end_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "headless-start-time")
+    {
+        headless_start_time = value;
+        headless_start_time.value_namespace = name_space;
+        headless_start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "started-stateful")
+    {
+        started_stateful = value;
+        started_stateful.value_namespace = name_space;
+        started_stateful.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "headless-end-time")
+    {
+        headless_end_time.yfilter = yfilter;
+    }
+    if(value_path == "headless-start-time")
+    {
+        headless_start_time.yfilter = yfilter;
+    }
+    if(value_path == "started-stateful")
+    {
+        started_stateful.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-statistics" || name == "prbs-statistics" || name == "name" || name == "headless-end-time" || name == "headless-start-time" || name == "started-stateful")
+        return true;
+    return false;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::OtnStatistics()
+    :
+    fec_ec{YType::uint64, "fec-ec"},
+    fec_uc{YType::uint64, "fec-uc"},
+    sm_bei{YType::uint64, "sm-bei"},
+    sm_bip{YType::uint64, "sm-bip"}
+{
+
+    yang_name = "otn-statistics"; yang_parent_name = "otn-port-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::~OtnStatistics()
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_data() const
+{
+    return fec_ec.is_set
+	|| fec_uc.is_set
+	|| sm_bei.is_set
+	|| sm_bip.is_set;
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fec_ec.yfilter)
+	|| ydk::is_set(fec_uc.yfilter)
+	|| ydk::is_set(sm_bei.yfilter)
+	|| ydk::is_set(sm_bip.yfilter);
+}
+
+std::string HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "otn-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fec_ec.is_set || is_set(fec_ec.yfilter)) leaf_name_data.push_back(fec_ec.get_name_leafdata());
+    if (fec_uc.is_set || is_set(fec_uc.yfilter)) leaf_name_data.push_back(fec_uc.get_name_leafdata());
+    if (sm_bei.is_set || is_set(sm_bei.yfilter)) leaf_name_data.push_back(sm_bei.get_name_leafdata());
+    if (sm_bip.is_set || is_set(sm_bip.yfilter)) leaf_name_data.push_back(sm_bip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fec-ec")
+    {
+        fec_ec = value;
+        fec_ec.value_namespace = name_space;
+        fec_ec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fec-uc")
+    {
+        fec_uc = value;
+        fec_uc.value_namespace = name_space;
+        fec_uc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sm-bei")
+    {
+        sm_bei = value;
+        sm_bei.value_namespace = name_space;
+        sm_bei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sm-bip")
+    {
+        sm_bip = value;
+        sm_bip.value_namespace = name_space;
+        sm_bip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-ec")
+    {
+        fec_ec.yfilter = yfilter;
+    }
+    if(value_path == "fec-uc")
+    {
+        fec_uc.yfilter = yfilter;
+    }
+    if(value_path == "sm-bei")
+    {
+        sm_bei.yfilter = yfilter;
+    }
+    if(value_path == "sm-bip")
+    {
+        sm_bip.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec-ec" || name == "fec-uc" || name == "sm-bei" || name == "sm-bip")
+        return true;
+    return false;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::PrbsStatistics()
+    :
+    ebc{YType::uint64, "ebc"},
+    sync_status{YType::enumeration, "sync-status"}
+{
+
+    yang_name = "prbs-statistics"; yang_parent_name = "otn-port-name"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::~PrbsStatistics()
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::has_data() const
+{
+    return ebc.is_set
+	|| sync_status.is_set;
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ebc.yfilter)
+	|| ydk::is_set(sync_status.yfilter);
+}
+
+std::string HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prbs-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ebc.is_set || is_set(ebc.yfilter)) leaf_name_data.push_back(ebc.get_name_leafdata());
+    if (sync_status.is_set || is_set(sync_status.yfilter)) leaf_name_data.push_back(sync_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ebc")
+    {
+        ebc = value;
+        ebc.value_namespace = name_space;
+        ebc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sync-status")
+    {
+        sync_status = value;
+        sync_status.value_namespace = name_space;
+        sync_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ebc")
+    {
+        ebc.yfilter = yfilter;
+    }
+    if(value_path == "sync-status")
+    {
+        sync_status.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ebc" || name == "sync-status")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf MxpOtnPrbsStatus::locked {0, "locked"};
+const Enum::YLeaf MxpOtnPrbsStatus::not_locked {1, "not-locked"};
+const Enum::YLeaf MxpOtnPrbsStatus::not_applicable {2, "not-applicable"};
+const Enum::YLeaf MxpOtnPrbsStatus::locked_with_errors {3, "locked-with-errors"};
 
 
 }

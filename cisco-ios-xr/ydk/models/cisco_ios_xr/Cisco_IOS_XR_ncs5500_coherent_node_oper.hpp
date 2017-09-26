@@ -18,7 +18,7 @@ class Coherent : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class Coherent : public ydk::Entity
 
         class Nodes; //type: Coherent::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes> nodes;
         
 }; // Coherent
 
@@ -46,17 +46,18 @@ class Coherent::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: Coherent::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node> > node;
         
 }; // Coherent::Nodes
 
@@ -69,13 +70,14 @@ class Coherent::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         class CoherentTimeStats; //type: Coherent::Nodes::Node::CoherentTimeStats
@@ -83,10 +85,10 @@ class Coherent::Nodes::Node : public ydk::Entity
         class Coherenthealth; //type: Coherent::Nodes::Node::Coherenthealth
         class PortModeAllInfo; //type: Coherent::Nodes::Node::PortModeAllInfo
 
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats> coherent_time_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth> coherenthealth;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Devicemapping> devicemapping;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::PortModeAllInfo> port_mode_all_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats> coherent_time_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth> coherenthealth;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Devicemapping> devicemapping;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::PortModeAllInfo> port_mode_all_info;
         
 }; // Coherent::Nodes::Node
 
@@ -99,7 +101,7 @@ class Coherent::Nodes::Node::CoherentTimeStats : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -119,61 +121,13 @@ class Coherent::Nodes::Node::CoherentTimeStats : public ydk::Entity
         class DspEaBulkUpdate; //type: Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate
         class PortStat; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat
 
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate> dsp_ea_bulk_create;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate> dsp_ea_bulk_update;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate> opts_ea_bulk_create;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate> opts_ea_bulk_update;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat> > port_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate> dsp_ea_bulk_create;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate> dsp_ea_bulk_update;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate> opts_ea_bulk_create;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate> opts_ea_bulk_update;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat> > port_stat;
         
 }; // Coherent::Nodes::Node::CoherentTimeStats
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate : public ydk::Entity
-{
-    public:
-        OptsEaBulkCreate();
-        ~OptsEaBulkCreate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate : public ydk::Entity
-{
-    public:
-        OptsEaBulkUpdate();
-        ~OptsEaBulkUpdate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate
 
 
 class Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate : public ydk::Entity
@@ -184,7 +138,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -208,7 +162,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -224,6 +178,54 @@ class Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate : public ydk::En
 }; // Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate
 
 
+class Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate : public ydk::Entity
+{
+    public:
+        OptsEaBulkCreate();
+        ~OptsEaBulkCreate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
+
+}; // Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate
+
+
+class Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate : public ydk::Entity
+{
+    public:
+        OptsEaBulkUpdate();
+        ~OptsEaBulkUpdate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
+
+}; // Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate
+
+
 class Coherent::Nodes::Node::CoherentTimeStats::PortStat : public ydk::Entity
 {
     public:
@@ -232,7 +234,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -245,7 +247,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat : public ydk::Entity
         ydk::YLeaf tx_power; //type: uint32
         ydk::YLeaf cd_min; //type: uint32
         ydk::YLeaf cd_max; //type: uint32
-        ydk::YLeaf traffic_type; //type: uint32
+        ydk::YLeaf traffic_type; //type: string
         class LaserOnStats; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats
         class LaserOffStats; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats
         class WlOpStats; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats
@@ -254,135 +256,15 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat : public ydk::Entity
         class CdmaxOpStats; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats
         class TraffictypeOpStats; //type: Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats
 
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats> cdmax_op_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats> cdmin_op_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats> laser_off_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats> laser_on_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats> traffictype_op_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats> txpwr_op_stats;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats> wl_op_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats> cdmax_op_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats> cdmin_op_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats> laser_off_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats> laser_on_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats> traffictype_op_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats> txpwr_op_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats> wl_op_stats;
         
 }; // Coherent::Nodes::Node::CoherentTimeStats::PortStat
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats : public ydk::Entity
-{
-    public:
-        LaserOnStats();
-        ~LaserOnStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats : public ydk::Entity
-{
-    public:
-        LaserOffStats();
-        ~LaserOffStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats : public ydk::Entity
-{
-    public:
-        WlOpStats();
-        ~WlOpStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats : public ydk::Entity
-{
-    public:
-        TxpwrOpStats();
-        ~TxpwrOpStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats
-
-
-class Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats : public ydk::Entity
-{
-    public:
-        CdminOpStats();
-        ~CdminOpStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf start; //type: string
-        ydk::YLeaf end; //type: string
-        ydk::YLeaf time_taken; //type: string
-        ydk::YLeaf worst_time; //type: string
-
-}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats
 
 
 class Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats : public ydk::Entity
@@ -393,7 +275,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -409,6 +291,78 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats : public 
 }; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats
 
 
+class Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats : public ydk::Entity
+{
+    public:
+        CdminOpStats();
+        ~CdminOpStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
+
+}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats
+
+
+class Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats : public ydk::Entity
+{
+    public:
+        LaserOffStats();
+        ~LaserOffStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
+
+}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats
+
+
+class Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats : public ydk::Entity
+{
+    public:
+        LaserOnStats();
+        ~LaserOnStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
+
+}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats
+
+
 class Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats : public ydk::Entity
 {
     public:
@@ -417,7 +371,7 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -433,15 +387,15 @@ class Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats : p
 }; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats
 
 
-class Coherent::Nodes::Node::Devicemapping : public ydk::Entity
+class Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats : public ydk::Entity
 {
     public:
-        Devicemapping();
-        ~Devicemapping();
+        TxpwrOpStats();
+        ~TxpwrOpStats();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -449,23 +403,23 @@ class Coherent::Nodes::Node::Devicemapping : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf num_entries; //type: uint32
-        class DevMap; //type: Coherent::Nodes::Node::Devicemapping::DevMap
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Devicemapping::DevMap> > dev_map;
-        
-}; // Coherent::Nodes::Node::Devicemapping
+}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats
 
 
-class Coherent::Nodes::Node::Devicemapping::DevMap : public ydk::Entity
+class Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats : public ydk::Entity
 {
     public:
-        DevMap();
-        ~DevMap();
+        WlOpStats();
+        ~WlOpStats();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -473,11 +427,12 @@ class Coherent::Nodes::Node::Devicemapping::DevMap : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf device_address; //type: uint32
-        ydk::YLeaf ifhandle; //type: uint32
-        ydk::YLeaf intf_name; //type: string
+        ydk::YLeaf start; //type: string
+        ydk::YLeaf end; //type: string
+        ydk::YLeaf time_taken; //type: string
+        ydk::YLeaf worst_time; //type: string
 
-}; // Coherent::Nodes::Node::Devicemapping::DevMap
+}; // Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats
 
 
 class Coherent::Nodes::Node::Coherenthealth : public ydk::Entity
@@ -488,7 +443,7 @@ class Coherent::Nodes::Node::Coherenthealth : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -522,7 +477,7 @@ class Coherent::Nodes::Node::Coherenthealth : public ydk::Entity
         ydk::YLeaf jlink_op; //type: string
         class PortData; //type: Coherent::Nodes::Node::Coherenthealth::PortData
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData> > port_data;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData> > port_data;
         
 }; // Coherent::Nodes::Node::Coherenthealth
 
@@ -535,7 +490,7 @@ class Coherent::Nodes::Node::Coherenthealth::PortData : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -555,18 +510,18 @@ class Coherent::Nodes::Node::Coherenthealth::PortData : public ydk::Entity
         ydk::YLeaf fp_port_idx; //type: uint32
         ydk::YLeaf configured_frequency; //type: uint32
         ydk::YLeaf provisioned_frequency; //type: uint32
-        ydk::YLeaf configured_tx_power; //type: int32
-        ydk::YLeaf provisioned_tx_power; //type: int32
-        ydk::YLeaf configured_cd_min; //type: uint32
-        ydk::YLeaf provisioned_cd_min; //type: uint32
-        ydk::YLeaf configured_cd_max; //type: uint32
-        ydk::YLeaf provisioned_cd_max; //type: uint32
-        ydk::YLeaf configured_traffic_type; //type: uint32
-        ydk::YLeaf provisioned_traffic_type; //type: uint32
-        ydk::YLeaf configured_loopback_mode; //type: uint32
-        ydk::YLeaf provisioned_loopback_mode; //type: uint32
-        ydk::YLeaf expected_ctp2_led_state; //type: int32
-        ydk::YLeaf provisioned_ctp2_led_state; //type: int32
+        ydk::YLeaf configured_tx_power; //type: string
+        ydk::YLeaf provisioned_tx_power; //type: string
+        ydk::YLeaf configured_cd_min; //type: string
+        ydk::YLeaf provisioned_cd_min; //type: string
+        ydk::YLeaf configured_cd_max; //type: string
+        ydk::YLeaf provisioned_cd_max; //type: string
+        ydk::YLeaf configured_traffic_type; //type: string
+        ydk::YLeaf provisioned_traffic_type; //type: string
+        ydk::YLeaf configured_loopback_mode; //type: string
+        ydk::YLeaf provisioned_loopback_mode; //type: string
+        ydk::YLeaf expected_ctp2_led_state; //type: string
+        ydk::YLeaf provisioned_ctp2_led_state; //type: string
         ydk::YLeaf led_op_rc; //type: int32
         ydk::YLeaf laser_op_rc; //type: int32
         ydk::YLeaf wlen_op_rc; //type: int32
@@ -593,8 +548,8 @@ class Coherent::Nodes::Node::Coherenthealth::PortData : public ydk::Entity
         class CtpInfo; //type: Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo
         class InterfaceInfo; //type: Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo
 
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo> ctp_info;
-        std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo> interface_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo> ctp_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo> interface_info;
         
 }; // Coherent::Nodes::Node::Coherenthealth::PortData
 
@@ -607,7 +562,7 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -620,13 +575,13 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo : public ydk::Ent
         ydk::YLeaf serial_number; //type: string
         ydk::YLeaf date_code_number; //type: string
         ydk::YLeaf clei_code_number; //type: string
-        ydk::YLeaf module_hardware_version_number; //type: uint16
-        ydk::YLeaf module_firmware_running_version_number; //type: uint16
-        ydk::YLeaf module_firmware_committed_version_number; //type: uint16
         ydk::YLeaf vendorname; //type: string
         ydk::YLeaf description; //type: string
         ydk::YLeaf pid; //type: string
         ydk::YLeaf vid; //type: string
+        ydk::YLeaf module_hardware_version_number; //type: uint16
+        ydk::YLeaf module_firmware_running_version_number; //type: uint16
+        ydk::YLeaf module_firmware_committed_version_number; //type: uint16
         ydk::YLeaf ctp_type; //type: uint32
 
 }; // Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo
@@ -640,7 +595,7 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -650,7 +605,7 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo : public yd
 
         class EthData; //type: Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData> > eth_data;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData> > eth_data;
         
 }; // Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo
 
@@ -663,7 +618,7 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -672,12 +627,59 @@ class Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ifname; //type: string
-        ydk::YLeaf intf_handle; //type: uint32
-        ydk::YLeaf admin_state; //type: uint32
+        ydk::YLeaf intf_handle; //type: string
+        ydk::YLeaf admin_state; //type: string
         ydk::YLeaf admin_up; //type: boolean
         ydk::YLeaf is_created; //type: boolean
 
 }; // Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData
+
+
+class Coherent::Nodes::Node::Devicemapping : public ydk::Entity
+{
+    public:
+        Devicemapping();
+        ~Devicemapping();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf idx; //type: uint32
+        class DevMap; //type: Coherent::Nodes::Node::Devicemapping::DevMap
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::Devicemapping::DevMap> > dev_map;
+        
+}; // Coherent::Nodes::Node::Devicemapping
+
+
+class Coherent::Nodes::Node::Devicemapping::DevMap : public ydk::Entity
+{
+    public:
+        DevMap();
+        ~DevMap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf device_address; //type: string
+        ydk::YLeaf ifhandle; //type: string
+        ydk::YLeaf intf_name; //type: string
+
+}; // Coherent::Nodes::Node::Devicemapping::DevMap
 
 
 class Coherent::Nodes::Node::PortModeAllInfo : public ydk::Entity
@@ -688,7 +690,7 @@ class Coherent::Nodes::Node::PortModeAllInfo : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -696,10 +698,10 @@ class Coherent::Nodes::Node::PortModeAllInfo : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf num_entries; //type: uint32
+        ydk::YLeaf idx; //type: uint32
         class PortmodeEntry; //type: Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry> > portmode_entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_coherent_node_oper::Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry> > portmode_entry;
         
 }; // Coherent::Nodes::Node::PortModeAllInfo
 
@@ -712,7 +714,7 @@ class Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

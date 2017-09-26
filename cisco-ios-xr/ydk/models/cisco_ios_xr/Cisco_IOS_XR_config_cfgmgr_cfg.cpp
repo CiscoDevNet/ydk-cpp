@@ -15,7 +15,8 @@ Cfgmgr::Cfgmgr()
     :
     mode_exclusive{YType::boolean, "mode-exclusive"}
 {
-    yang_name = "cfgmgr"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-cfg";
+
+    yang_name = "cfgmgr"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Cfgmgr::~Cfgmgr()
@@ -37,27 +38,16 @@ std::string Cfgmgr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-config-cfgmgr-cfg:cfgmgr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cfgmgr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cfgmgr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mode_exclusive.is_set || is_set(mode_exclusive.yfilter)) leaf_name_data.push_back(mode_exclusive.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

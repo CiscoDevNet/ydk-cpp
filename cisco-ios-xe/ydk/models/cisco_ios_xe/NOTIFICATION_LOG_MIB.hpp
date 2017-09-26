@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace NOTIFICATION_LOG_MIB {
 
-class NotificationLogMib : public ydk::Entity
+class NOTIFICATIONLOGMIB : public ydk::Entity
 {
     public:
-        NotificationLogMib();
-        ~NotificationLogMib();
+        NOTIFICATIONLOGMIB();
+        ~NOTIFICATIONLOGMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,22 +32,22 @@ class NotificationLogMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Nlmconfig; //type: NotificationLogMib::Nlmconfig
-        class Nlmstats; //type: NotificationLogMib::Nlmstats
-        class Nlmconfiglogtable; //type: NotificationLogMib::Nlmconfiglogtable
-        class Nlmlogtable; //type: NotificationLogMib::Nlmlogtable
-        class Nlmlogvariabletable; //type: NotificationLogMib::Nlmlogvariabletable
+        class Nlmconfig; //type: NOTIFICATIONLOGMIB::Nlmconfig
+        class Nlmstats; //type: NOTIFICATIONLOGMIB::Nlmstats
+        class Nlmconfiglogtable; //type: NOTIFICATIONLOGMIB::Nlmconfiglogtable
+        class Nlmlogtable; //type: NOTIFICATIONLOGMIB::Nlmlogtable
+        class Nlmlogvariabletable; //type: NOTIFICATIONLOGMIB::Nlmlogvariabletable
 
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfig> nlmconfig;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable> nlmconfiglogtable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable> nlmlogtable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable> nlmlogvariabletable;
-        std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmstats> nlmstats;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfig> nlmconfig;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable> nlmconfiglogtable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable> nlmlogtable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogvariabletable> nlmlogvariabletable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmstats> nlmstats;
         
-}; // NotificationLogMib
+}; // NOTIFICATIONLOGMIB
 
 
-class NotificationLogMib::Nlmconfig : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmconfig : public ydk::Entity
 {
     public:
         Nlmconfig();
@@ -55,43 +55,22 @@ class NotificationLogMib::Nlmconfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf nlmconfigglobalentrylimit; //type: uint32
         ydk::YLeaf nlmconfigglobalageout; //type: uint32
 
-}; // NotificationLogMib::Nlmconfig
+}; // NOTIFICATIONLOGMIB::Nlmconfig
 
 
-class NotificationLogMib::Nlmstats : public ydk::Entity
-{
-    public:
-        Nlmstats();
-        ~Nlmstats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nlmstatsglobalnotificationslogged; //type: uint32
-        ydk::YLeaf nlmstatsglobalnotificationsbumped; //type: uint32
-
-}; // NotificationLogMib::Nlmstats
-
-
-class NotificationLogMib::Nlmconfiglogtable : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmconfiglogtable : public ydk::Entity
 {
     public:
         Nlmconfiglogtable();
@@ -99,22 +78,23 @@ class NotificationLogMib::Nlmconfiglogtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Nlmconfiglogentry; //type: NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry
+        class Nlmconfiglogentry; //type: NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry> > nlmconfiglogentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry> > nlmconfiglogentry;
         
-}; // NotificationLogMib::Nlmconfiglogtable
+}; // NOTIFICATIONLOGMIB::Nlmconfiglogtable
 
 
-class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry : public ydk::Entity
 {
     public:
         Nlmconfiglogentry();
@@ -122,30 +102,31 @@ class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf nlmlogname; //type: string
         ydk::YLeaf nlmconfiglogfiltername; //type: string
         ydk::YLeaf nlmconfiglogentrylimit; //type: uint32
         ydk::YLeaf nlmconfiglogadminstatus; //type: Nlmconfiglogadminstatus
         ydk::YLeaf nlmconfiglogoperstatus; //type: Nlmconfiglogoperstatus
-        ydk::YLeaf nlmconfiglogstoragetype; //type: Storagetype
-        ydk::YLeaf nlmconfiglogentrystatus; //type: Rowstatus
+        ydk::YLeaf nlmconfiglogstoragetype; //type: StorageType
+        ydk::YLeaf nlmconfiglogentrystatus; //type: RowStatus
         ydk::YLeaf nlmstatslognotificationslogged; //type: uint32
         ydk::YLeaf nlmstatslognotificationsbumped; //type: uint32
         class Nlmconfiglogadminstatus;
         class Nlmconfiglogoperstatus;
 
-}; // NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry
+}; // NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry
 
 
-class NotificationLogMib::Nlmlogtable : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmlogtable : public ydk::Entity
 {
     public:
         Nlmlogtable();
@@ -153,22 +134,23 @@ class NotificationLogMib::Nlmlogtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Nlmlogentry; //type: NotificationLogMib::Nlmlogtable::Nlmlogentry
+        class Nlmlogentry; //type: NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable::Nlmlogentry> > nlmlogentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry> > nlmlogentry;
         
-}; // NotificationLogMib::Nlmlogtable
+}; // NOTIFICATIONLOGMIB::Nlmlogtable
 
 
-class NotificationLogMib::Nlmlogtable::Nlmlogentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry : public ydk::Entity
 {
     public:
         Nlmlogentry();
@@ -176,15 +158,16 @@ class NotificationLogMib::Nlmlogtable::Nlmlogentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
+        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
         ydk::YLeaf nlmlogname;
         ydk::YLeaf nlmlogindex; //type: uint32
         ydk::YLeaf nlmlogtime; //type: uint32
@@ -196,10 +179,10 @@ class NotificationLogMib::Nlmlogtable::Nlmlogentry : public ydk::Entity
         ydk::YLeaf nlmlogcontextname; //type: string
         ydk::YLeaf nlmlognotificationid; //type: string
 
-}; // NotificationLogMib::Nlmlogtable::Nlmlogentry
+}; // NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry
 
 
-class NotificationLogMib::Nlmlogvariabletable : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmlogvariabletable : public ydk::Entity
 {
     public:
         Nlmlogvariabletable();
@@ -207,22 +190,23 @@ class NotificationLogMib::Nlmlogvariabletable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Nlmlogvariableentry; //type: NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry
+        class Nlmlogvariableentry; //type: NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry
 
-        std::vector<std::shared_ptr<NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry> > nlmlogvariableentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry> > nlmlogvariableentry;
         
-}; // NotificationLogMib::Nlmlogvariabletable
+}; // NOTIFICATIONLOGMIB::Nlmlogvariabletable
 
 
-class NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry : public ydk::Entity
 {
     public:
         Nlmlogvariableentry();
@@ -230,17 +214,18 @@ class NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry : public ydk:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: string (refers to NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
+        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
         ydk::YLeaf nlmlogname;
-        //type: uint32 (refers to NOTIFICATION_LOG_MIB::NotificationLogMib::Nlmlogtable::Nlmlogentry::nlmlogindex)
+        //type: uint32 (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::nlmlogindex)
         ydk::YLeaf nlmlogindex;
         ydk::YLeaf nlmlogvariableindex; //type: uint32
         ydk::YLeaf nlmlogvariableid; //type: string
@@ -256,9 +241,32 @@ class NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry : public ydk:
         ydk::YLeaf nlmlogvariableopaqueval; //type: binary
         class Nlmlogvariablevaluetype;
 
-}; // NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry
+}; // NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry
 
-class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadminstatus : public ydk::Enum
+
+class NOTIFICATIONLOGMIB::Nlmstats : public ydk::Entity
+{
+    public:
+        Nlmstats();
+        ~Nlmstats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nlmstatsglobalnotificationslogged; //type: uint32
+        ydk::YLeaf nlmstatsglobalnotificationsbumped; //type: uint32
+
+}; // NOTIFICATIONLOGMIB::Nlmstats
+
+class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadminstatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -266,7 +274,7 @@ class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadmi
 
 };
 
-class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus : public ydk::Enum
+class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -275,7 +283,7 @@ class NotificationLogMib::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoper
 
 };
 
-class NotificationLogMib::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype : public ydk::Enum
+class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf counter32;

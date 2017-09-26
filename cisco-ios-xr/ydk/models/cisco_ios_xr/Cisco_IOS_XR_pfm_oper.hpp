@@ -18,7 +18,7 @@ class PlatformFaultManager : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class PlatformFaultManager : public ydk::Entity
         class Exclude; //type: PlatformFaultManager::Exclude
         class Racks; //type: PlatformFaultManager::Racks
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude> exclude;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude> exclude;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks> racks;
         
 }; // PlatformFaultManager
 
@@ -48,17 +48,18 @@ class PlatformFaultManager::Exclude : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class FaultType1S; //type: PlatformFaultManager::Exclude::FaultType1S
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S> fault_type1s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S> fault_type1s;
         
 }; // PlatformFaultManager::Exclude
 
@@ -71,17 +72,18 @@ class PlatformFaultManager::Exclude::FaultType1S : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class FaultType1; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1> > fault_type1;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1> > fault_type1;
         
 }; // PlatformFaultManager::Exclude::FaultType1S
 
@@ -94,20 +96,21 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1 : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf hw_fault_type1; //type: string
         class FaultType2S; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S
         class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S> fault_type2s;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S> fault_type2s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks> racks;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1
 
@@ -120,7 +123,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -130,7 +133,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S : publ
 
         class FaultType2; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2> > fault_type2;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2> > fault_type2;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S
 
@@ -143,7 +146,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -155,8 +158,8 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         class FaultType3S; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S
         class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S> fault_type3s;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S> fault_type3s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks> racks;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2
 
@@ -169,7 +172,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -179,7 +182,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class FaultType3; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3> > fault_type3;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3> > fault_type3;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S
 
@@ -192,7 +195,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -203,7 +206,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf hw_fault_type3; //type: string
         class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks> racks;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3
 
@@ -216,7 +219,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -226,7 +229,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack> > rack;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack> > rack;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks
 
@@ -239,7 +242,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -250,7 +253,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf rack; //type: int32
         class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots> slots;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack
 
@@ -263,7 +266,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -273,7 +276,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot> > slot;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot> > slot;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots
 
@@ -286,7 +289,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -298,8 +301,8 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary
         class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot
 
@@ -312,7 +315,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -336,7 +339,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -346,7 +349,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
@@ -359,7 +362,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -370,7 +373,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf hw_fault_device; //type: string
         class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
@@ -383,7 +386,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -412,7 +415,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -422,7 +425,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack> > rack;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack> > rack;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks
 
@@ -435,7 +438,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -446,7 +449,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf rack; //type: int32
         class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots> slots;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack
 
@@ -459,7 +462,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -469,7 +472,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot> > slot;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot> > slot;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots
 
@@ -482,7 +485,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -494,8 +497,8 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary
         class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot
 
@@ -508,7 +511,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -532,7 +535,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -542,7 +545,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
@@ -555,7 +558,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -566,7 +569,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf hw_fault_device; //type: string
         class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
@@ -579,7 +582,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -608,7 +611,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks : public ydk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -618,7 +621,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks : public ydk
 
         class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack> > rack;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack> > rack;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks
 
@@ -631,7 +634,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -642,7 +645,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack : publ
         ydk::YLeaf rack; //type: int32
         class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots> slots;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack
 
@@ -655,7 +658,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -665,7 +668,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot> > slot;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot> > slot;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
@@ -678,7 +681,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -690,8 +693,8 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary
         class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
 
@@ -704,7 +707,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -728,7 +731,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -738,7 +741,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
@@ -751,7 +754,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -762,7 +765,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         ydk::YLeaf hw_fault_device; //type: string
         class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
         
 }; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
@@ -775,7 +778,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -804,17 +807,18 @@ class PlatformFaultManager::Racks : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Rack; //type: PlatformFaultManager::Racks::Rack
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack> > rack;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack> > rack;
         
 }; // PlatformFaultManager::Racks
 
@@ -827,18 +831,19 @@ class PlatformFaultManager::Racks::Rack : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rack; //type: int32
         class Slots; //type: PlatformFaultManager::Racks::Rack::Slots
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots> slots;
         
 }; // PlatformFaultManager::Racks::Rack
 
@@ -851,7 +856,7 @@ class PlatformFaultManager::Racks::Rack::Slots : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -861,7 +866,7 @@ class PlatformFaultManager::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: PlatformFaultManager::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot> > slot;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot> > slot;
         
 }; // PlatformFaultManager::Racks::Rack::Slots
 
@@ -874,7 +879,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -886,8 +891,8 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot : public ydk::Entity
         class FaultSummary; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary
         class HardwareFaultDevices; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
 }; // PlatformFaultManager::Racks::Rack::Slots::Slot
 
@@ -900,7 +905,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary : public ydk:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -924,7 +929,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -934,7 +939,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices : pub
 
         class HardwareFaultDevice; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
         
 }; // PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
@@ -947,7 +952,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hard
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -958,7 +963,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hard
         ydk::YLeaf hw_fault_device; //type: string
         class HardwareFaultType; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
         
 }; // PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
@@ -971,7 +976,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hard
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

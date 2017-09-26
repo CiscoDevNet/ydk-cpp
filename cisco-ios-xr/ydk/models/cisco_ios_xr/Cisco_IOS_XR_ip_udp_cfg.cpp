@@ -18,7 +18,8 @@ IpUdp::IpUdp()
     directory(nullptr) // presence node
 	,num_thread(nullptr) // presence node
 {
-    yang_name = "ip-udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-cfg";
+
+    yang_name = "ip-udp"; yang_parent_name = "Cisco-IOS-XR-ip-udp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 IpUdp::~IpUdp()
@@ -44,27 +45,16 @@ std::string IpUdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpUdp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpUdp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (receive_q.is_set || is_set(receive_q.yfilter)) leaf_name_data.push_back(receive_q.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -157,116 +147,14 @@ bool IpUdp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-IpUdp::NumThread::NumThread()
-    :
-    udp_in_q_threads{YType::uint32, "udp-in-q-threads"},
-    udp_out_q_threads{YType::uint32, "udp-out-q-threads"}
-{
-    yang_name = "num-thread"; yang_parent_name = "ip-udp";
-}
-
-IpUdp::NumThread::~NumThread()
-{
-}
-
-bool IpUdp::NumThread::has_data() const
-{
-    return udp_in_q_threads.is_set
-	|| udp_out_q_threads.is_set;
-}
-
-bool IpUdp::NumThread::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(udp_in_q_threads.yfilter)
-	|| ydk::is_set(udp_out_q_threads.yfilter);
-}
-
-std::string IpUdp::NumThread::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "num-thread";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath IpUdp::NumThread::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (udp_in_q_threads.is_set || is_set(udp_in_q_threads.yfilter)) leaf_name_data.push_back(udp_in_q_threads.get_name_leafdata());
-    if (udp_out_q_threads.is_set || is_set(udp_out_q_threads.yfilter)) leaf_name_data.push_back(udp_out_q_threads.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> IpUdp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IpUdp::NumThread::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void IpUdp::NumThread::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "udp-in-q-threads")
-    {
-        udp_in_q_threads = value;
-        udp_in_q_threads.value_namespace = name_space;
-        udp_in_q_threads.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "udp-out-q-threads")
-    {
-        udp_out_q_threads = value;
-        udp_out_q_threads.value_namespace = name_space;
-        udp_out_q_threads.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IpUdp::NumThread::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "udp-in-q-threads")
-    {
-        udp_in_q_threads.yfilter = yfilter;
-    }
-    if(value_path == "udp-out-q-threads")
-    {
-        udp_out_q_threads.yfilter = yfilter;
-    }
-}
-
-bool IpUdp::NumThread::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "udp-in-q-threads" || name == "udp-out-q-threads")
-        return true;
-    return false;
-}
-
 IpUdp::Directory::Directory()
     :
     directoryname{YType::str, "directoryname"},
     max_file_size_files{YType::uint32, "max-file-size-files"},
     max_udp_debug_files{YType::uint32, "max-udp-debug-files"}
 {
-    yang_name = "directory"; yang_parent_name = "ip-udp";
+
+    yang_name = "directory"; yang_parent_name = "ip-udp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 IpUdp::Directory::~Directory()
@@ -288,36 +176,29 @@ bool IpUdp::Directory::has_operation() const
 	|| ydk::is_set(max_udp_debug_files.yfilter);
 }
 
+std::string IpUdp::Directory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string IpUdp::Directory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "directory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath IpUdp::Directory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > IpUdp::Directory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (directoryname.is_set || is_set(directoryname.yfilter)) leaf_name_data.push_back(directoryname.get_name_leafdata());
     if (max_file_size_files.is_set || is_set(max_file_size_files.yfilter)) leaf_name_data.push_back(max_file_size_files.get_name_leafdata());
     if (max_udp_debug_files.is_set || is_set(max_udp_debug_files.yfilter)) leaf_name_data.push_back(max_udp_debug_files.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -373,6 +254,103 @@ void IpUdp::Directory::set_filter(const std::string & value_path, YFilter yfilte
 bool IpUdp::Directory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "directoryname" || name == "max-file-size-files" || name == "max-udp-debug-files")
+        return true;
+    return false;
+}
+
+IpUdp::NumThread::NumThread()
+    :
+    udp_in_q_threads{YType::uint32, "udp-in-q-threads"},
+    udp_out_q_threads{YType::uint32, "udp-out-q-threads"}
+{
+
+    yang_name = "num-thread"; yang_parent_name = "ip-udp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+IpUdp::NumThread::~NumThread()
+{
+}
+
+bool IpUdp::NumThread::has_data() const
+{
+    return udp_in_q_threads.is_set
+	|| udp_out_q_threads.is_set;
+}
+
+bool IpUdp::NumThread::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(udp_in_q_threads.yfilter)
+	|| ydk::is_set(udp_out_q_threads.yfilter);
+}
+
+std::string IpUdp::NumThread::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-udp-cfg:ip-udp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string IpUdp::NumThread::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "num-thread";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > IpUdp::NumThread::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (udp_in_q_threads.is_set || is_set(udp_in_q_threads.yfilter)) leaf_name_data.push_back(udp_in_q_threads.get_name_leafdata());
+    if (udp_out_q_threads.is_set || is_set(udp_out_q_threads.yfilter)) leaf_name_data.push_back(udp_out_q_threads.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> IpUdp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IpUdp::NumThread::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IpUdp::NumThread::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "udp-in-q-threads")
+    {
+        udp_in_q_threads = value;
+        udp_in_q_threads.value_namespace = name_space;
+        udp_in_q_threads.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udp-out-q-threads")
+    {
+        udp_out_q_threads = value;
+        udp_out_q_threads.value_namespace = name_space;
+        udp_out_q_threads.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpUdp::NumThread::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "udp-in-q-threads")
+    {
+        udp_in_q_threads.yfilter = yfilter;
+    }
+    if(value_path == "udp-out-q-threads")
+    {
+        udp_out_q_threads.yfilter = yfilter;
+    }
+}
+
+bool IpUdp::NumThread::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp-in-q-threads" || name == "udp-out-q-threads")
         return true;
     return false;
 }

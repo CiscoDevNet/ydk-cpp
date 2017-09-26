@@ -13,11 +13,11 @@ namespace Cisco_IOS_XR_asr9k_asic_errors_oper {
 
 AsicErrorStats::AsicErrorStats()
     :
-    nodes(std::make_shared<AsicErrorStats::Nodes>())
+    racks(std::make_shared<AsicErrorStats::Racks>())
 {
-    nodes->parent = this;
+    racks->parent = this;
 
-    yang_name = "asic-error-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-asic-errors-oper";
+    yang_name = "asic-error-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-asic-errors-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 AsicErrorStats::~AsicErrorStats()
@@ -26,51 +26,40 @@ AsicErrorStats::~AsicErrorStats()
 
 bool AsicErrorStats::has_data() const
 {
-    return (nodes !=  nullptr && nodes->has_data());
+    return (racks !=  nullptr && racks->has_data());
 }
 
 bool AsicErrorStats::has_operation() const
 {
     return is_set(yfilter)
-	|| (nodes !=  nullptr && nodes->has_operation());
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string AsicErrorStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-asr9k-asic-errors-oper:asic-error-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> AsicErrorStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "nodes")
+    if(child_yang_name == "racks")
     {
-        if(nodes == nullptr)
+        if(racks == nullptr)
         {
-            nodes = std::make_shared<AsicErrorStats::Nodes>();
+            racks = std::make_shared<AsicErrorStats::Racks>();
         }
-        return nodes;
+        return racks;
     }
 
     return nullptr;
@@ -79,9 +68,9 @@ std::shared_ptr<Entity> AsicErrorStats::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(nodes != nullptr)
+    if(racks != nullptr)
     {
-        children["nodes"] = nodes;
+        children["racks"] = racks;
     }
 
     return children;
@@ -122,21 +111,224 @@ std::map<std::pair<std::string, std::string>, std::string> AsicErrorStats::get_n
 
 bool AsicErrorStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nodes")
+    if(name == "racks")
         return true;
     return false;
 }
 
-AsicErrorStats::Nodes::Nodes()
+AsicErrorStats::Racks::Racks()
 {
-    yang_name = "nodes"; yang_parent_name = "asic-error-stats";
+
+    yang_name = "racks"; yang_parent_name = "asic-error-stats"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-AsicErrorStats::Nodes::~Nodes()
+AsicErrorStats::Racks::~Racks()
 {
 }
 
-bool AsicErrorStats::Nodes::has_data() const
+bool AsicErrorStats::Racks::has_data() const
+{
+    for (std::size_t index=0; index<rack.size(); index++)
+    {
+        if(rack[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool AsicErrorStats::Racks::has_operation() const
+{
+    for (std::size_t index=0; index<rack.size(); index++)
+    {
+        if(rack[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string AsicErrorStats::Racks::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-asic-errors-oper:asic-error-stats/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AsicErrorStats::Racks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "racks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrorStats::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rack")
+    {
+        for(auto const & c : rack)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<AsicErrorStats::Racks::Rack>();
+        c->parent = this;
+        rack.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rack)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void AsicErrorStats::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AsicErrorStats::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AsicErrorStats::Racks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rack")
+        return true;
+    return false;
+}
+
+AsicErrorStats::Racks::Rack::Rack()
+    :
+    rack{YType::int32, "rack"}
+    	,
+    nodes(std::make_shared<AsicErrorStats::Racks::Rack::Nodes>())
+{
+    nodes->parent = this;
+
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+AsicErrorStats::Racks::Rack::~Rack()
+{
+}
+
+bool AsicErrorStats::Racks::Rack::has_data() const
+{
+    return rack.is_set
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool AsicErrorStats::Racks::Rack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rack.yfilter)
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string AsicErrorStats::Racks::Rack::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-asic-errors-oper:asic-error-stats/racks/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AsicErrorStats::Racks::Rack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<AsicErrorStats::Racks::Rack::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void AsicErrorStats::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rack")
+    {
+        rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AsicErrorStats::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+}
+
+bool AsicErrorStats::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes" || name == "rack")
+        return true;
+    return false;
+}
+
+AsicErrorStats::Racks::Rack::Nodes::Nodes()
+{
+
+    yang_name = "nodes"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+AsicErrorStats::Racks::Rack::Nodes::~Nodes()
+{
+}
+
+bool AsicErrorStats::Racks::Rack::Nodes::has_data() const
 {
     for (std::size_t index=0; index<node.size(); index++)
     {
@@ -146,7 +338,7 @@ bool AsicErrorStats::Nodes::has_data() const
     return false;
 }
 
-bool AsicErrorStats::Nodes::has_operation() const
+bool AsicErrorStats::Racks::Rack::Nodes::has_operation() const
 {
     for (std::size_t index=0; index<node.size(); index++)
     {
@@ -156,37 +348,23 @@ bool AsicErrorStats::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
-std::string AsicErrorStats::Nodes::get_segment_path() const
+std::string AsicErrorStats::Racks::Rack::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-asic-errors-oper:asic-error-stats/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> AsicErrorStats::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -198,7 +376,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::get_child_by_name(const std::stri
                 return c;
             }
         }
-        auto c = std::make_shared<AsicErrorStats::Nodes::Node>();
+        auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
         return c;
@@ -207,7 +385,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : node)
@@ -218,87 +396,73 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::get_childr
     return children;
 }
 
-void AsicErrorStats::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AsicErrorStats::Racks::Rack::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AsicErrorStats::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+void AsicErrorStats::Racks::Rack::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AsicErrorStats::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+bool AsicErrorStats::Racks::Rack::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "node")
         return true;
     return false;
 }
 
-AsicErrorStats::Nodes::Node::Node()
+AsicErrorStats::Racks::Rack::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
     	,
-    counts(std::make_shared<AsicErrorStats::Nodes::Node::Counts>())
+    counts(std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts>())
 {
     counts->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-AsicErrorStats::Nodes::Node::~Node()
+AsicErrorStats::Racks::Rack::Nodes::Node::~Node()
 {
 }
 
-bool AsicErrorStats::Nodes::Node::has_data() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::has_data() const
 {
     return node_name.is_set
 	|| (counts !=  nullptr && counts->has_data());
 }
 
-bool AsicErrorStats::Nodes::Node::has_operation() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
 	|| (counts !=  nullptr && counts->has_operation());
 }
 
-std::string AsicErrorStats::Nodes::Node::get_segment_path() const
+std::string AsicErrorStats::Racks::Rack::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-asr9k-asic-errors-oper:asic-error-stats/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counts")
     {
         if(counts == nullptr)
         {
-            counts = std::make_shared<AsicErrorStats::Nodes::Node::Counts>();
+            counts = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts>();
         }
         return counts;
     }
@@ -306,7 +470,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(counts != nullptr)
@@ -317,7 +481,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::get_
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AsicErrorStats::Racks::Rack::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
@@ -327,7 +491,7 @@ void AsicErrorStats::Nodes::Node::set_value(const std::string & value_path, cons
     }
 }
 
-void AsicErrorStats::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+void AsicErrorStats::Racks::Rack::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "node-name")
     {
@@ -335,23 +499,24 @@ void AsicErrorStats::Nodes::Node::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool AsicErrorStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counts" || name == "node-name")
         return true;
     return false;
 }
 
-AsicErrorStats::Nodes::Node::Counts::Counts()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Counts()
 {
-    yang_name = "counts"; yang_parent_name = "node";
+
+    yang_name = "counts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-AsicErrorStats::Nodes::Node::Counts::~Counts()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::~Counts()
 {
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::has_data() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_data() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -361,7 +526,7 @@ bool AsicErrorStats::Nodes::Node::Counts::has_data() const
     return false;
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::has_operation() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_operation() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -371,37 +536,23 @@ bool AsicErrorStats::Nodes::Node::Counts::has_operation() const
     return is_set(yfilter);
 }
 
-std::string AsicErrorStats::Nodes::Node::Counts::get_segment_path() const
+std::string AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "counts";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::Nodes::Node::Counts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Counts' in Cisco_IOS_XR_asr9k_asic_errors_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "count")
     {
@@ -413,7 +564,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::get_child_by_name(c
                 return c;
             }
         }
-        auto c = std::make_shared<AsicErrorStats::Nodes::Node::Counts::Count>();
+        auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count>();
         c->parent = this;
         count.push_back(c);
         return c;
@@ -422,7 +573,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : count)
@@ -433,33 +584,34 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Coun
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AsicErrorStats::Nodes::Node::Counts::set_filter(const std::string & value_path, YFilter yfilter)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::has_leaf_or_child_of_name(const std::string & name) const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "count")
         return true;
     return false;
 }
 
-AsicErrorStats::Nodes::Node::Counts::Count::Count()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::Count()
     :
     type{YType::str, "type"}
 {
-    yang_name = "count"; yang_parent_name = "counts";
+
+    yang_name = "count"; yang_parent_name = "counts"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-AsicErrorStats::Nodes::Node::Counts::Count::~Count()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::~Count()
 {
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::has_data() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_data() const
 {
     for (std::size_t index=0; index<sum_data.size(); index++)
     {
@@ -469,7 +621,7 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::has_data() const
     return type.is_set;
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::has_operation() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_operation() const
 {
     for (std::size_t index=0; index<sum_data.size(); index++)
     {
@@ -480,38 +632,24 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::has_operation() const
 	|| ydk::is_set(type.yfilter);
 }
 
-std::string AsicErrorStats::Nodes::Node::Counts::Count::get_segment_path() const
+std::string AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "count" <<"[type='" <<type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Count' in Cisco_IOS_XR_asr9k_asic_errors_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sum-data")
     {
@@ -523,7 +661,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::get_child_by
                 return c;
             }
         }
-        auto c = std::make_shared<AsicErrorStats::Nodes::Node::Counts::Count::SumData>();
+        auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData>();
         c->parent = this;
         sum_data.push_back(c);
         return c;
@@ -532,7 +670,7 @@ std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::Count::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sum_data)
@@ -543,7 +681,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Coun
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -553,7 +691,7 @@ void AsicErrorStats::Nodes::Node::Counts::Count::set_value(const std::string & v
     }
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::set_filter(const std::string & value_path, YFilter yfilter)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -561,14 +699,14 @@ void AsicErrorStats::Nodes::Node::Counts::Count::set_filter(const std::string & 
     }
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::has_leaf_or_child_of_name(const std::string & name) const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sum-data" || name == "type")
         return true;
     return false;
 }
 
-AsicErrorStats::Nodes::Node::Counts::Count::SumData::SumData()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::SumData()
     :
     crc_err_count{YType::uint32, "crc-err-count"},
     gen_err_count{YType::uint32, "gen-err-count"},
@@ -580,14 +718,15 @@ AsicErrorStats::Nodes::Node::Counts::Count::SumData::SumData()
     reset_err_count{YType::uint32, "reset-err-count"},
     sbe_err_count{YType::uint32, "sbe-err-count"}
 {
-    yang_name = "sum-data"; yang_parent_name = "count";
+
+    yang_name = "sum-data"; yang_parent_name = "count"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-AsicErrorStats::Nodes::Node::Counts::Count::SumData::~SumData()
+AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::~SumData()
 {
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_data() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_data() const
 {
     for (auto const & leaf : node_key.getYLeafs())
     {
@@ -604,7 +743,7 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_data() const
 	|| sbe_err_count.is_set;
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_operation() const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_operation() const
 {
     for (auto const & leaf : node_key.getYLeafs())
     {
@@ -623,27 +762,15 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_operation() const
 	|| ydk::is_set(sbe_err_count.yfilter);
 }
 
-std::string AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_segment_path() const
+std::string AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sum-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SumData' in Cisco_IOS_XR_asr9k_asic_errors_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (crc_err_count.is_set || is_set(crc_err_count.yfilter)) leaf_name_data.push_back(crc_err_count.get_name_leafdata());
@@ -657,24 +784,22 @@ const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity
 
     auto node_key_name_datas = node_key.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), node_key_name_datas.begin(), node_key_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "crc-err-count")
     {
@@ -730,7 +855,7 @@ void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_value(const std::s
     }
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_filter(const std::string & value_path, YFilter yfilter)
+void AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "crc-err-count")
     {
@@ -770,7 +895,7 @@ void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_filter(const std::
     }
 }
 
-bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_leaf_or_child_of_name(const std::string & name) const
+bool AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "crc-err-count" || name == "gen-err-count" || name == "instance" || name == "mbe-err-count" || name == "node-key" || name == "num-nodes" || name == "par-err-count" || name == "reset-err-count" || name == "sbe-err-count")
         return true;

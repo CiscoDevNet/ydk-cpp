@@ -8,21 +8,24 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XE_native_0.hpp"
+#include "Cisco_IOS_XE_native_168.hpp"
+#include "Cisco_IOS_XE_native_170.hpp"
 #include "Cisco_IOS_XE_native_172.hpp"
+#include "Cisco_IOS_XE_native_95.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Mobile::RedistOptions : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -30,21 +33,26 @@ class Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Mobile::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Odr();
+        ~Odr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -52,22 +60,22 @@ class Native::Arp::AccessList::Deny::Ip::Any : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Deny::Ip::Any::Mac
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Any::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Ip::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr
 
 
-class Native::Arp::AccessList::Deny::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr::RedistOptions : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -75,26 +83,26 @@ class Native::Arp::AccessList::Deny::Ip::Any::Mac : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Deny::Ip::Any::Mac::Host
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Ip::Any::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Ospf();
+        ~Ospf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -102,22 +110,31 @@ class Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf vrf; //type: string
+        class Match; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match
 
-}; // Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match> match;
+                class MetricType;
 
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf
 
-class Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_ : public ydk::Entity
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        Match();
+        ~Match();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -125,20 +142,26 @@ class Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        class Internal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::Internal
+        class External; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::External
+        class NssaExternal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::NssaExternal
 
-}; // Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::External> external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::Internal> internal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::NssaExternal> nssa_external; // presence node
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match
 
 
-class Native::Arp::AccessList::Deny::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::External : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        External();
+        ~External();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -146,22 +169,27 @@ class Native::Arp::AccessList::Deny::Ip::Any::Mac::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::External
 
 
-class Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::Internal : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Internal();
+        ~Internal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -169,21 +197,26 @@ class Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::Internal
 
 
-class Native::Arp::AccessList::Deny::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::NssaExternal : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        NssaExternal();
+        ~NssaExternal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -191,22 +224,27 @@ class Native::Arp::AccessList::Deny::Ip::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress
+        ydk::YLeaf nssa_external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress> > ip_address;
-        
-}; // Native::Arp::AccessList::Deny::Ip::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::NssaExternal
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_ : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        Ospfv3_();
+        ~Ospfv3_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -214,23 +252,30 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class Match; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match> match;
+                class MetricType;
+
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Match();
+        ~Match();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -238,26 +283,26 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_
+        class Internal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::Internal
+        class External; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::External
+        class NssaExternal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::NssaExternal
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::External> external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::Internal> internal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::NssaExternal> nssa_external; // presence node
         
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::External : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        External();
+        ~External();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -265,22 +310,27 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::External
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::Internal : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Internal();
+        ~Internal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -288,20 +338,26 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::Internal
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::NssaExternal : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        NssaExternal();
+        ~NssaExternal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -309,22 +365,27 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_ : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        ydk::YLeaf nssa_external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::NssaExternal
 
 
-class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Rip();
+        ~Rip();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -332,21 +393,23 @@ class Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacA
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: string
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip::RedistOptions
 
-}; // Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip::RedistOptions> redist_options;
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip
 
 
-class Native::Arp::AccessList::Deny::Request : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip::RedistOptions : public ydk::Entity
 {
     public:
-        Request();
-        ~Request();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -354,22 +417,26 @@ class Native::Arp::AccessList::Deny::Request : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Deny::Request::Ip
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip> ip;
-        
-}; // Native::Arp::AccessList::Deny::Request
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_ : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        Static_();
+        ~Static_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -377,26 +444,22 @@ class Native::Arp::AccessList::Deny::Request::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Request::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Deny::Request::Ip::Host
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress> > sender_ip_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Request::Ip
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -404,24 +467,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        NonGlobalVrf();
+        ~NonGlobalVrf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -429,26 +494,47 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf name; //type: string
+        class Application; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application
+        class Bgp; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp
+        class Connected; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected
+        class Eigrp; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp
+        class Isis; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis
+        class IsoIgrp; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp
+        class Lisp; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp
+        class Mobile; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile
+        class Odr; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr
+        class Ospf; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf
+        class Ospfv3_; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_
+        class Rip; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip
+        class Static_; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application> > application;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected> connected; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp> > eigrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis> isis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp> iso_igrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile> mobile; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr> odr; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf> > ospf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_> > ospfv3;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip> > rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_> static_; // presence node
         
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Application();
+        ~Application();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -456,22 +542,23 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf name; //type: string
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application::RedistOptions
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application::RedistOptions> redist_options;
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application::RedistOptions : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -479,20 +566,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -500,22 +593,23 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        ydk::YLeaf as_number; //type: one of uint32, string
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -523,21 +617,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Connected();
+        ~Connected();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -545,22 +644,22 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Deny::Request::Ip::Any::Mac
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected::RedistOptions : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -568,26 +667,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Eigrp();
+        ~Eigrp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -595,22 +694,23 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf as_number; //type: one of uint32, string
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions> redist_options;
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -618,20 +718,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_ : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Isis();
+        ~Isis();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -639,22 +745,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf isis_level_routes; //type: IsisLevelRoutes
+        class IsisArea; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::RedistOptions
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea> > isis_area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::RedistOptions> redist_options;
+                class IsisLevelRoutes;
 
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis
 
-class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        IsisArea();
+        ~IsisArea();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -662,21 +772,25 @@ class Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddre
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf isis_level_routes; //type: IsisLevelRoutes
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::RedistOptions
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::RedistOptions> redist_options;
+                class IsisLevelRoutes;
 
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host : public ydk::Entity
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::RedistOptions : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -684,22 +798,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress> > ip_address;
-        
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::RedistOptions : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -707,23 +825,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        IsoIgrp();
+        ~IsoIgrp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -731,26 +852,25 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_
+        ydk::YLeaf route_map; //type: string
+        class AreaTagRouteMapContainer; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::AreaTagRouteMapContainer
+        class IsoIgrpContainer; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::IsoIgrpContainer
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::AreaTagRouteMapContainer> area_tag_route_map_container;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::IsoIgrpContainer> iso_igrp_container;
         
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::AreaTagRouteMapContainer : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        AreaTagRouteMapContainer();
+        ~AreaTagRouteMapContainer();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -758,22 +878,21 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf area_tag; //type: string
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::AreaTagRouteMapContainer
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::IsoIgrpContainer : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        IsoIgrpContainer();
+        ~IsoIgrpContainer();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -781,20 +900,24 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::IsoIgrpContainer
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        Lisp();
+        ~Lisp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -802,22 +925,22 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_ : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp::RedistOptions
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp
 
 
-class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp::RedistOptions : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -825,21 +948,26 @@ class Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::S
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Response : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile : public ydk::Entity
 {
     public:
-        Response();
-        ~Response();
+        Mobile();
+        ~Mobile();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -847,22 +975,22 @@ class Native::Arp::AccessList::Deny::Response : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Deny::Response::Ip
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Response
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile
 
 
-class Native::Arp::AccessList::Deny::Response::Ip : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile::RedistOptions : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -870,26 +998,26 @@ class Native::Arp::AccessList::Deny::Response::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Response::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Deny::Response::Ip::Host
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress> > sender_ip_address;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        Odr();
+        ~Odr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -897,24 +1025,22 @@ class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr::RedistOptions : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -922,49 +1048,58 @@ class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Ospf();
+        ~Ospf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf vrf; //type: string
+        class Match; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match> match;
+                class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Match();
+        ~Match();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -972,20 +1107,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        class Internal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::Internal
+        class External; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::External
+        class NssaExternal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::NssaExternal
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::External> external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::Internal> internal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::NssaExternal> nssa_external; // presence node
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::External : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        External();
+        ~External();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -993,22 +1134,27 @@ class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        ydk::YLeaf external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::External
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::Internal : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Internal();
+        ~Internal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1016,21 +1162,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::S
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::Internal
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::NssaExternal : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        NssaExternal();
+        ~NssaExternal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1038,22 +1189,27 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Deny::Response::Ip::Any::Mac
+        ydk::YLeaf nssa_external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::NssaExternal
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_ : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Ospfv3_();
+        ~Ospfv3_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1061,26 +1217,30 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class Match; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any::Mac
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match> match;
+                class MetricType;
 
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Match();
+        ~Match();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1088,22 +1248,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        class Internal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::Internal
+        class External; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::External
+        class NssaExternal; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::NssaExternal
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::External> external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::Internal> internal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::NssaExternal> nssa_external; // presence node
+        
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::External : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        External();
+        ~External();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1111,20 +1275,27 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_ : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::External
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::Internal : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Internal();
+        ~Internal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1132,22 +1303,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::Internal
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::NssaExternal : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        NssaExternal();
+        ~NssaExternal();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1155,21 +1330,27 @@ class Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf nssa_external_routes; //type: RedistOspfExternalType
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf tag; //type: uint32
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::NssaExternal
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Rip();
+        ~Rip();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1177,22 +1358,23 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress
+        ydk::YLeaf id; //type: string
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip::RedistOptions
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress> > ip_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip::RedistOptions : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1200,23 +1382,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_ : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Static_();
+        ~Static_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1224,26 +1409,22 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_
+        class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_::RedistOptions
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_::RedistOptions> redist_options;
         
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_::RedistOptions : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        RedistOptions();
+        ~RedistOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1251,22 +1432,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderM
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf metric_type; //type: MetricType
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf subnets; //type: empty
+        ydk::YLeaf route_map; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        class MetricType;
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_::RedistOptions
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::SummaryPrefix : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        SummaryPrefix();
+        ~SummaryPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1274,20 +1459,23 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf nssa_only; //type: empty
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf not_advertise; //type: empty
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::SummaryPrefix
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        Timers();
+        ~Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1295,22 +1483,26 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_ :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        class Lsa; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Lsa
+        class Pacing; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Pacing
+        class Throttle; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Lsa> lsa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Pacing> pacing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle> throttle;
         
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers
 
 
-class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Lsa : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Lsa();
+        ~Lsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1318,21 +1510,20 @@ class Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf arrival; //type: uint32
 
-}; // Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Lsa
 
 
-class Native::Arp::AccessList::Default_ : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Pacing : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Pacing();
+        ~Pacing();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1340,24 +1531,22 @@ class Native::Arp::AccessList::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Permit; //type: Native::Arp::AccessList::Default_::Permit
-        class Deny; //type: Native::Arp::AccessList::Default_::Deny
+        ydk::YLeaf flood; //type: uint32
+        ydk::YLeaf lsa_group; //type: uint32
+        ydk::YLeaf retransmission; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny> deny;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit> permit;
-        
-}; // Native::Arp::AccessList::Default_
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Pacing
 
 
-class Native::Arp::AccessList::Default_::Permit : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle : public ydk::Entity
 {
     public:
-        Permit();
-        ~Permit();
+        Throttle();
+        ~Throttle();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1365,26 +1554,24 @@ class Native::Arp::AccessList::Default_::Permit : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Default_::Permit::Ip
-        class Request; //type: Native::Arp::AccessList::Default_::Permit::Request
-        class Response; //type: Native::Arp::AccessList::Default_::Permit::Response
+        class Lsa; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa
+        class Spf; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Spf
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip> ip;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request> request;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response> response;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa> lsa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Spf> spf;
         
-}; // Native::Arp::AccessList::Default_::Permit
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        Lsa();
+        ~Lsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1392,26 +1579,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host
+        class All; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa::All
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress> > sender_ip_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa::All> all;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa::All : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        All();
+        ~All();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1419,24 +1602,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac
+        ydk::YLeaf delay; //type: uint32
+        ydk::YLeaf min_delay; //type: uint32
+        ydk::YLeaf max_delay; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Lsa::All
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Spf : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Spf();
+        ~Spf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1444,26 +1625,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf delay; //type: uint32
+        ydk::YLeaf min_delay; //type: uint32
+        ydk::YLeaf max_delay; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Timers::Throttle::Spf
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::TrafficShare : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        TrafficShare();
+        ~TrafficShare();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1471,22 +1648,21 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Sende
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf min; //type: empty
+        ydk::YLeaf across_interfaces; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::TrafficShare
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::TtlSecurity : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        TtlSecurity();
+        ~TtlSecurity();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1494,20 +1670,21 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Any :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf all_interfaces; //type: empty
+        ydk::YLeaf hops; //type: uint8
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Any
+}; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::TtlSecurity
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Area();
+        ~Area();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1515,22 +1692,40 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf default_cost; //type: uint32
+        class Authentication; //type: Native::Router::Ospfv3::Area::Authentication
+        class Capability; //type: Native::Router::Ospfv3::Area::Capability
+        class FilterList; //type: Native::Router::Ospfv3::Area::FilterList
+        class Nssa; //type: Native::Router::Ospfv3::Area::Nssa
+        class Ipv4Range; //type: Native::Router::Ospfv3::Area::Ipv4Range
+        class Ipv6Range; //type: Native::Router::Ospfv3::Area::Ipv6Range
+        class ShamLink; //type: Native::Router::Ospfv3::Area::ShamLink
+        class Stub; //type: Native::Router::Ospfv3::Area::Stub
+        class VirtualLink; //type: Native::Router::Ospfv3::Area::VirtualLink
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Authentication> authentication; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Capability> capability;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::FilterList> > filter_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Ipv4Range> ipv4_range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Ipv6Range> ipv6_range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa> nssa; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::ShamLink> > sham_link;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Stub> stub; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink> > virtual_link;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::Area
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::Authentication : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1538,21 +1733,20 @@ class Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf message_digest; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::Authentication
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::Area::Capability : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Capability();
+        ~Capability();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1560,22 +1754,20 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac
+        ydk::YLeaf default_exclusion; //type: empty
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any
+}; // Native::Router::Ospfv3::Area::Capability
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Area::FilterList : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        FilterList();
+        ~FilterList();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1583,26 +1775,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host
+        ydk::YLeaf in_out; //type: InOut
+        ydk::YLeaf prefix; //type: string
+        class InOut;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac
+}; // Native::Router::Ospfv3::Area::FilterList
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::Ipv4Range : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Ipv4Range();
+        ~Ipv4Range();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1610,22 +1798,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::SenderMacAddress 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        class Range; //type: Native::Router::Ospfv3::Area::Ipv4Range::Range
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::SenderMacAddress
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Ipv4Range::Range> > range;
+        
+}; // Native::Router::Ospfv3::Area::Ipv4Range
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::Area::Ipv4Range::Range : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1633,20 +1821,24 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Any_ : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf mask; //type: string
+        ydk::YLeaf advertise; //type: empty
+        ydk::YLeaf not_advertise; //type: empty
+        ydk::YLeaf cost; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Any_
+}; // Native::Router::Ospfv3::Area::Ipv4Range::Range
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area::Ipv6Range : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Ipv6Range();
+        ~Ipv6Range();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1654,22 +1846,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host::SenderMacAddress
+        class Range; //type: Native::Router::Ospfv3::Area::Ipv6Range::Range
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Ipv6Range::Range> > range;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::Area::Ipv6Range
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::Ipv6Range::Range : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1677,21 +1869,23 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host::SenderMacAd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf advertise; //type: empty
+        ydk::YLeaf not_advertise; //type: empty
+        ydk::YLeaf cost; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Any::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::Ipv6Range::Range
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Nssa();
+        ~Nssa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1699,22 +1893,28 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress
+        ydk::YLeaf no_ext_capability; //type: empty
+        ydk::YLeaf no_redistribution; //type: empty
+        ydk::YLeaf no_summary; //type: empty
+        ydk::YLeaf nssa_only; //type: empty
+        class DefaultInformationOriginate; //type: Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate
+        class Translate; //type: Native::Router::Ospfv3::Area::Nssa::Translate
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress> > ip_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate> default_information_originate; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa::Translate> translate;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host
+}; // Native::Router::Ospfv3::Area::Nssa
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        DefaultInformationOriginate();
+        ~DefaultInformationOriginate();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1722,23 +1922,28 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac
+        ydk::YLeaf metric; //type: int32
+        ydk::YLeaf metric_type; //type: uint32
+        ydk::YLeaf no_ext_capability; //type: empty
+        ydk::YLeaf no_redistribution; //type: empty
+        ydk::YLeaf no_summary; //type: empty
+        ydk::YLeaf nssa_only; //type: empty
+        class Translate; //type: Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate> translate;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress
+}; // Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Translate();
+        ~Translate();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1746,26 +1951,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_
+        class Type7; //type: Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate::Type7
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate::Type7> type7;
         
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate::Type7 : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Type7();
+        ~Type7();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1773,22 +1974,21 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Sende
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf always; //type: empty
+        ydk::YLeaf suppress_fa; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::Nssa::DefaultInformationOriginate::Translate::Type7
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa::Translate : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Translate();
+        ~Translate();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1796,20 +1996,22 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Any :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        class Type7; //type: Native::Router::Ospfv3::Area::Nssa::Translate::Type7
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::Nssa::Translate::Type7> type7;
+        
+}; // Native::Router::Ospfv3::Area::Nssa::Translate
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::Area::Nssa::Translate::Type7 : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        Type7();
+        ~Type7();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1817,22 +2019,21 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        ydk::YLeaf always; //type: empty
+        ydk::YLeaf suppress_fa; //type: empty
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::Area::Nssa::Translate::Type7
 
 
-class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::ShamLink : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        ShamLink();
+        ~ShamLink();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1840,21 +2041,25 @@ class Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf dest; //type: string
+        ydk::YLeaf cost; //type: uint16
+        class TtlSecurity; //type: Native::Router::Ospfv3::Area::ShamLink::TtlSecurity
 
-}; // Native::Arp::AccessList::Default_::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::ShamLink::TtlSecurity> ttl_security;
+        
+}; // Native::Router::Ospfv3::Area::ShamLink
 
 
-class Native::Arp::AccessList::Default_::Permit::Request : public ydk::Entity
+class Native::Router::Ospfv3::Area::ShamLink::TtlSecurity : public ydk::Entity
 {
     public:
-        Request();
-        ~Request();
+        TtlSecurity();
+        ~TtlSecurity();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1862,22 +2067,20 @@ class Native::Arp::AccessList::Default_::Permit::Request : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip
+        ydk::YLeaf hops; //type: uint8
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip> ip;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request
+}; // Native::Router::Ospfv3::Area::ShamLink::TtlSecurity
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip : public ydk::Entity
+class Native::Router::Ospfv3::Area::Stub : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        Stub();
+        ~Stub();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1885,26 +2088,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host
+        ydk::YLeaf no_ext_capability; //type: empty
+        ydk::YLeaf no_summary; //type: empty
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress> > sender_ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip
+}; // Native::Router::Ospfv3::Area::Stub
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        VirtualLink();
+        ~VirtualLink();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1912,24 +2110,39 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac
+        ydk::YLeaf id; //type: string
+        class Authentication; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication
+        class HelloInterval; //type: Native::Router::Ospfv3::Area::VirtualLink::HelloInterval
+        class DeadInterval; //type: Native::Router::Ospfv3::Area::VirtualLink::DeadInterval
+        class RetransmitInterval; //type: Native::Router::Ospfv3::Area::VirtualLink::RetransmitInterval
+        class TransmitDelay; //type: Native::Router::Ospfv3::Area::VirtualLink::TransmitDelay
+        class Topology; //type: Native::Router::Ospfv3::Area::VirtualLink::Topology
+        class TtlSecurity; //type: Native::Router::Ospfv3::Area::VirtualLink::TtlSecurity
+        class AuthenticationKey; //type: Native::Router::Ospfv3::Area::VirtualLink::AuthenticationKey
+        class MessageDigestKey; //type: Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::AuthenticationKey> authentication_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::DeadInterval> dead_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::HelloInterval> hello_interval;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey> > message_digest_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::RetransmitInterval> retransmit_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Topology> topology;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::TransmitDelay> transmit_delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::TtlSecurity> ttl_security;
         
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1937,26 +2150,29 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf null; //type: empty
+        class AuthenticationKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::AuthenticationKey
+        class MessageDigestKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey
+        class KeyChain; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain
+        class MessageDigest; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::AuthenticationKey> authentication_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain> key_chain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest> message_digest;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey> > message_digest_key;
         
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::AuthenticationKey : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        AuthenticationKey();
+        ~AuthenticationKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1964,22 +2180,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::AuthenticationKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        KeyChain();
+        ~KeyChain();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -1987,20 +2202,25 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf name; //type: string
+        class AuthenticationKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::AuthenticationKey
+        class MessageDigestKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::AuthenticationKey> authentication_key;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey> > message_digest_key;
+        
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::AuthenticationKey : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        AuthenticationKey();
+        ~AuthenticationKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2008,22 +2228,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::AuthenticationKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        MessageDigestKey();
+        ~MessageDigestKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2031,21 +2250,23 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: uint8
+        class Md5; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::Md5
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::Md5> md5;
+        
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::Md5 : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Md5();
+        ~Md5();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2053,22 +2274,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::Md5
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        MessageDigest();
+        ~MessageDigest();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2076,26 +2296,24 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host
+        class AuthenticationKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::AuthenticationKey
+        class MessageDigestKey; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::AuthenticationKey> authentication_key;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey> > message_digest_key;
         
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::AuthenticationKey : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        AuthenticationKey();
+        ~AuthenticationKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2103,22 +2321,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::SenderMa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::AuthenticationKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        MessageDigestKey();
+        ~MessageDigestKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2126,20 +2343,23 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Any_ : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: uint8
+        class Md5; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::Md5
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Any_
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::Md5> md5;
+        
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::Md5 : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Md5();
+        ~Md5();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2147,22 +2367,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::Md5
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        MessageDigestKey();
+        ~MessageDigestKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2170,21 +2389,23 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: uint8
+        class Md5; //type: Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey::Md5
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey::Md5> md5;
+        
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey::Md5 : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Md5();
+        ~Md5();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2192,22 +2413,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress> > ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host
+}; // Native::Router::Ospfv3::Area::VirtualLink::Authentication::MessageDigestKey::Md5
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::AuthenticationKey : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        AuthenticationKey();
+        ~AuthenticationKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2215,23 +2435,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::AuthenticationKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::DeadInterval : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        DeadInterval();
+        ~DeadInterval();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2239,26 +2457,20 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_
+        ydk::YLeaf dead_interval_value; //type: uint16
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::Area::VirtualLink::DeadInterval
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::HelloInterval : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        HelloInterval();
+        ~HelloInterval();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2266,22 +2478,20 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf hello_interval_value; //type: int32
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::HelloInterval
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        MessageDigestKey();
+        ~MessageDigestKey();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2289,20 +2499,23 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf id; //type: uint8
+        class Md5; //type: Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey::Md5
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey::Md5> md5;
+        
+}; // Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey::Md5 : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        Md5();
+        ~Md5();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2310,22 +2523,21 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        ydk::YLeaf auth_type; //type: uint8
+        ydk::YLeaf auth_key; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::Area::VirtualLink::MessageDigestKey::Md5
 
 
-class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::RetransmitInterval : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        RetransmitInterval();
+        ~RetransmitInterval();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2333,21 +2545,20 @@ class Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::M
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf retransmit_interval_value; //type: uint16
 
-}; // Native::Arp::AccessList::Default_::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::RetransmitInterval
 
 
-class Native::Arp::AccessList::Default_::Permit::Response : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::Topology : public ydk::Entity
 {
     public:
-        Response();
-        ~Response();
+        Topology();
+        ~Topology();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2355,22 +2566,20 @@ class Native::Arp::AccessList::Default_::Permit::Response : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip
+        ydk::YLeaf disable; //type: empty
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip> ip;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response
+}; // Native::Router::Ospfv3::Area::VirtualLink::Topology
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::TransmitDelay : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        TransmitDelay();
+        ~TransmitDelay();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2378,26 +2587,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host
+        ydk::YLeaf transmit_delay_value; //type: uint16
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress> > sender_ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip
+}; // Native::Router::Ospfv3::Area::VirtualLink::TransmitDelay
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::Area::VirtualLink::TtlSecurity : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        TtlSecurity();
+        ~TtlSecurity();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2405,24 +2608,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac
+        ydk::YLeaf hops; //type: uint8
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::Area::VirtualLink::TtlSecurity
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Authentication : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2430,26 +2629,21 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf mode; //type: Mode
+        class Mode;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::Authentication
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::AutoCost : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        AutoCost();
+        ~AutoCost();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2457,22 +2651,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf reference_bandwidth; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::AutoCost
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::Bfd : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Bfd();
+        ~Bfd();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2480,20 +2672,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf all_interfaces; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Any
+}; // Native::Router::Ospfv3::Bfd
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Disable : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Disable();
+        ~Disable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2501,22 +2693,22 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        class PassiveInterface; //type: Native::Router::Ospfv3::Disable::PassiveInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Disable::PassiveInterface> > passive_interface;
         
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::Disable
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Disable::PassiveInterface : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        PassiveInterface();
+        ~PassiveInterface();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2524,21 +2716,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf interface; //type: string
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::Disable::PassiveInterface
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::EventLog : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        EventLog();
+        ~EventLog();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2546,22 +2737,22 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac
+        ydk::YLeaf one_shot; //type: empty
+        ydk::YLeaf pause; //type: empty
+        ydk::YLeaf size; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any
+}; // Native::Router::Ospfv3::EventLog
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::GracefulRestart : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        GracefulRestart();
+        ~GracefulRestart();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2569,26 +2760,23 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host
+        ydk::YLeaf restart_interval; //type: uint16
+        class Helper; //type: Native::Router::Ospfv3::GracefulRestart::Helper
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::GracefulRestart::Helper> helper; // presence node
         
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac
+}; // Native::Router::Ospfv3::GracefulRestart
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::GracefulRestart::Helper : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Helper();
+        ~Helper();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2596,22 +2784,21 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::SenderM
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf strict_lsa_checking; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::GracefulRestart::Helper
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::InterfaceId : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        InterfaceId();
+        ~InterfaceId();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2619,20 +2806,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Any_ : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf snmp_if_index; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Any_
+}; // Native::Router::Ospfv3::InterfaceId
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::LogAdjacencyChanges : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        LogAdjacencyChanges();
+        ~LogAdjacencyChanges();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2640,44 +2827,48 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf detail; //type: empty
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::LogAdjacencyChanges
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Manet : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Manet();
+        ~Manet();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hello; //type: Hello
+        ydk::YLeaf willingness; //type: uint8
+        class Cache; //type: Native::Router::Ospfv3::Manet::Cache
+        class Peering; //type: Native::Router::Ospfv3::Manet::Peering
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Manet::Cache> cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Manet::Peering> peering;
+                class Hello;
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::Manet
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::Manet::Cache : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Cache();
+        ~Cache();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2685,22 +2876,21 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress
+        ydk::YLeaf acknowledgement; //type: uint64
+        ydk::YLeaf update; //type: uint64
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress> > ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host
+}; // Native::Router::Ospfv3::Manet::Cache
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Ospfv3::Manet::Peering : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        Peering();
+        ~Peering();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2708,23 +2898,22 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac
+        class Selective; //type: Native::Router::Ospfv3::Manet::Peering::Selective
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Manet::Peering::Selective> selective;
         
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress
+}; // Native::Router::Ospfv3::Manet::Peering
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Manet::Peering::Selective : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Selective();
+        ~Selective();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2732,26 +2921,22 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf per_interface; //type: empty
+        ydk::YLeaf redundancy; //type: uint8
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac
+}; // Native::Router::Ospfv3::Manet::Peering::Selective
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::MaxLsa : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        MaxLsa();
+        ~MaxLsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2759,22 +2944,25 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf ignore_count; //type: uint32
+        ydk::YLeaf ignore_time; //type: uint32
+        ydk::YLeaf reset_time; //type: uint32
+        ydk::YLeaf warning_only; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::MaxLsa
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::MaxMetric : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        MaxMetric();
+        ~MaxMetric();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2782,20 +2970,22 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        class RouterLsa; //type: Native::Router::Ospfv3::MaxMetric::RouterLsa
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::MaxMetric::RouterLsa> router_lsa; // presence node
+        
+}; // Native::Router::Ospfv3::MaxMetric
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Ospfv3::MaxMetric::RouterLsa : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        RouterLsa();
+        ~RouterLsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2803,22 +2993,27 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        ydk::YLeaf include_stub; //type: empty
+        class ExternalLsa; //type: Native::Router::Ospfv3::MaxMetric::RouterLsa::ExternalLsa
+        class OnStartup; //type: Native::Router::Ospfv3::MaxMetric::RouterLsa::OnStartup
+        class SummaryLsa; //type: Native::Router::Ospfv3::MaxMetric::RouterLsa::SummaryLsa
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::MaxMetric::RouterLsa::ExternalLsa> external_lsa; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::MaxMetric::RouterLsa::OnStartup> on_startup; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::MaxMetric::RouterLsa::SummaryLsa> summary_lsa; // presence node
         
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Ospfv3::MaxMetric::RouterLsa
 
 
-class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::MaxMetric::RouterLsa::ExternalLsa : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        ExternalLsa();
+        ~ExternalLsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2826,21 +3021,20 @@ class Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf metric; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+}; // Native::Router::Ospfv3::MaxMetric::RouterLsa::ExternalLsa
 
 
-class Native::Arp::AccessList::Default_::Deny : public ydk::Entity
+class Native::Router::Ospfv3::MaxMetric::RouterLsa::OnStartup : public ydk::Entity
 {
     public:
-        Deny();
-        ~Deny();
+        OnStartup();
+        ~OnStartup();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2848,26 +3042,21 @@ class Native::Arp::AccessList::Default_::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Arp::AccessList::Default_::Deny::Ip
-        class Request; //type: Native::Arp::AccessList::Default_::Deny::Request
-        class Response; //type: Native::Arp::AccessList::Default_::Deny::Response
+        ydk::YLeaf time; //type: uint32
+        ydk::YLeaf wait_for_bgp; //type: empty
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip> ip;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request> request;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Response> response;
-        
-}; // Native::Arp::AccessList::Default_::Deny
+}; // Native::Router::Ospfv3::MaxMetric::RouterLsa::OnStartup
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip : public ydk::Entity
+class Native::Router::Ospfv3::MaxMetric::RouterLsa::SummaryLsa : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        SummaryLsa();
+        ~SummaryLsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2875,26 +3064,20 @@ class Native::Arp::AccessList::Default_::Deny::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host
+        ydk::YLeaf metric; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress> > sender_ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Ip
+}; // Native::Router::Ospfv3::MaxMetric::RouterLsa::SummaryLsa
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Ospfv3::PassiveInterface : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        PassiveInterface();
+        ~PassiveInterface();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2902,24 +3085,21 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac
+        ydk::YLeaf default_; //type: empty
+        ydk::YLeaf interface; //type: string
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress
+}; // Native::Router::Ospfv3::PassiveInterface
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Ospfv3::QueueDepth : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        QueueDepth();
+        ~QueueDepth();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2927,26 +3107,24 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host
+        class Hello; //type: Native::Router::Ospfv3::QueueDepth::Hello
+        class Update; //type: Native::Router::Ospfv3::QueueDepth::Update
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::QueueDepth::Hello> hello;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::QueueDepth::Update> update;
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac
+}; // Native::Router::Ospfv3::QueueDepth
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::QueueDepth::Hello : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Hello();
+        ~Hello();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2954,22 +3132,21 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::SenderM
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf options; //type: one of uint32, enumeration
+        class Options;
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress
+}; // Native::Router::Ospfv3::QueueDepth::Hello
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Ospfv3::QueueDepth::Update : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Update();
+        ~Update();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2977,20 +3154,21 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Any : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf options; //type: one of uint32, enumeration
+        class Options;
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Any
+}; // Native::Router::Ospfv3::QueueDepth::Update
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Timers : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Timers();
+        ~Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -2998,22 +3176,26 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        class Lsa; //type: Native::Router::Ospfv3::Timers::Lsa
+        class Pacing; //type: Native::Router::Ospfv3::Timers::Pacing
+        class Throttle; //type: Native::Router::Ospfv3::Timers::Throttle
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Lsa> lsa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Pacing> pacing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Throttle> throttle;
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Ospfv3::Timers
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Lsa : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Lsa();
+        ~Lsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3021,21 +3203,20 @@ class Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host::S
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf arrival; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::Timers::Lsa
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Pacing : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Pacing();
+        ~Pacing();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3043,22 +3224,22 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mac; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac
+        ydk::YLeaf flood; //type: uint32
+        ydk::YLeaf lsa_group; //type: uint32
+        ydk::YLeaf retransmission; //type: uint32
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any
+}; // Native::Router::Ospfv3::Timers::Pacing
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Throttle : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        Throttle();
+        ~Throttle();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3066,26 +3247,24 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::SenderMacAddress
-        class Any_; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Any_
-        class Host; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host
+        class Lsa; //type: Native::Router::Ospfv3::Timers::Throttle::Lsa
+        class Spf; //type: Native::Router::Ospfv3::Timers::Throttle::Spf
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Any_> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Throttle::Lsa> lsa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Throttle::Spf> spf;
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac
+}; // Native::Router::Ospfv3::Timers::Throttle
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Throttle::Lsa : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Lsa();
+        ~Lsa();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3093,22 +3272,22 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::SenderMacAddress : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        class All; //type: Native::Router::Ospfv3::Timers::Throttle::Lsa::All
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::Timers::Throttle::Lsa::All> all;
+        
+}; // Native::Router::Ospfv3::Timers::Throttle::Lsa
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Any_ : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Throttle::Lsa::All : public ydk::Entity
 {
     public:
-        Any_();
-        ~Any_();
+        All();
+        ~All();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3116,20 +3295,22 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Any_ : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf delay; //type: uint32
+        ydk::YLeaf min_delay; //type: uint32
+        ydk::YLeaf max_delay; //type: uint32
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Any_
+}; // Native::Router::Ospfv3::Timers::Throttle::Lsa::All
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host : public ydk::Entity
+class Native::Router::Ospfv3::Timers::Throttle::Spf : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        Spf();
+        ~Spf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3137,22 +3318,22 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host::SenderMacAddress
+        ydk::YLeaf delay; //type: uint32
+        ydk::YLeaf min_delay; //type: uint32
+        ydk::YLeaf max_delay; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host
+}; // Native::Router::Ospfv3::Timers::Throttle::Spf
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Ospfv3::TrafficShare : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        TrafficShare();
+        ~TrafficShare();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3160,21 +3341,21 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host::SenderMacAddr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf min; //type: empty
+        ydk::YLeaf across_interfaces; //type: empty
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Any::Mac::Host::SenderMacAddress
+}; // Native::Router::Ospfv3::TrafficShare
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host : public ydk::Entity
+class Native::Router::Ospfv3::TtlSecurity : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        TtlSecurity();
+        ~TtlSecurity();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -3182,365 +3363,770 @@ class Native::Arp::AccessList::Default_::Deny::Ip::Host : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class IpAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress
+        ydk::YLeaf all_interfaces; //type: empty
+        ydk::YLeaf hops; //type: uint8
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress> > ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host
+}; // Native::Router::Ospfv3::TtlSecurity
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress : public ydk::Entity
+class Native::Router::Rip : public ydk::Entity
 {
     public:
-        IpAddress();
-        ~IpAddress();
+        Rip();
+        ~Rip();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf ip_address; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac
+        ydk::YLeaf auto_summary; //type: empty
+        ydk::YLeaf maximum_paths; //type: uint8
+        ydk::YLeaf validate_update_source; //type: boolean
+        ydk::YLeaf default_metric; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf flash_update_threshold; //type: uint8
+        ydk::YLeaf input_queue; //type: uint16
+        ydk::YLeaf output_delay; //type: uint8
+        class Neighbor; //type: Native::Router::Rip::Neighbor
+        class Network; //type: Native::Router::Rip::Network
+        class DefaultInformation; //type: Native::Router::Rip::DefaultInformation
+        class Distance; //type: Native::Router::Rip::Distance
+        class DistributeList; //type: Native::Router::Rip::DistributeList
+        class OffsetList; //type: Native::Router::Rip::OffsetList
+        class Redistribute; //type: Native::Router::Rip::Redistribute
+        class Timers; //type: Native::Router::Rip::Timers
+        class PassiveInterface; //type: Native::Router::Rip::PassiveInterface
+        class Disable; //type: Native::Router::Rip::Disable
+        class TrafficShare; //type: Native::Router::Rip::TrafficShare
+        class AddressFamily; //type: Native::Router::Rip::AddressFamily
+        class Default_; //type: Native::Router::Rip::Default_
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily> address_family;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::DefaultInformation> default_information;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Disable> disable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::DistributeList> distribute_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Neighbor> > neighbor;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Network> > network;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::OffsetList> > offset_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::PassiveInterface> passive_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute> redistribute;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::TrafficShare> traffic_share;
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress
+}; // Native::Router::Rip
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac : public ydk::Entity
+class Native::Router::Rip::AddressFamily : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        AddressFamily();
+        ~AddressFamily();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Any
-        class Host_; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_
+        class Ipv4; //type: Native::Router::Rip::AddressFamily::Ipv4
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4> ipv4;
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac
+}; // Native::Router::Rip::AddressFamily
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4 : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Ipv4();
+        ~Ipv4();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        class Unicast; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast
+        class Vrf; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast> unicast;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf> > vrf;
+        
+}; // Native::Router::Rip::AddressFamily::Ipv4
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Unicast();
+        ~Unicast();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf auto_summary; //type: empty
+        ydk::YLeaf maximum_paths; //type: uint8
+        ydk::YLeaf validate_update_source; //type: boolean
+        ydk::YLeaf default_metric; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf flash_update_threshold; //type: uint8
+        ydk::YLeaf input_queue; //type: uint16
+        ydk::YLeaf output_delay; //type: uint8
+        class Neighbor; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Neighbor
+        class Network; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Network
+        class DefaultInformation; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation
+        class Distance; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance
+        class DistributeList; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList
+        class OffsetList; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::OffsetList
+        class Redistribute; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute
+        class Timers; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Timers
+        class PassiveInterface; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::PassiveInterface
+        class Disable; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable
+        class TrafficShare; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::TrafficShare
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Any
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation> default_information;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable> disable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList> distribute_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Neighbor> > neighbor;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Network> > network;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::OffsetList> > offset_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::PassiveInterface> passive_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute> redistribute;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::TrafficShare> traffic_share;
+        
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_ : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation : public ydk::Entity
 {
     public:
-        Host_();
-        ~Host_();
+        DefaultInformation();
+        ~DefaultInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+        class Originate; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation::Originate
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress> > sender_mac_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation::Originate> originate; // presence node
         
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation
 
 
-class Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation::Originate : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        Originate();
+        ~Originate();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf route_map; //type: string
 
-}; // Native::Arp::AccessList::Default_::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DefaultInformation::Originate
 
 
-class Native::Arp::AccessList::Default_::Deny::Request : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable : public ydk::Entity
 {
     public:
-        Request();
-        ~Request();
+        Disable();
+        ~Disable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ip; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip
+        class PassiveInterface; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip> ip;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface> > passive_interface;
         
-}; // Native::Arp::AccessList::Default_::Deny::Request
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface : public ydk::Entity
 {
     public:
-        Ip();
-        ~Ip();
+        PassiveInterface();
+        ~PassiveInterface();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class SenderIpAddress; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::Host
+        ydk::YLeaf interface; //type: string
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::Any> any;
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress> > sender_ip_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance : public ydk::Entity
 {
     public:
-        SenderIpAddress();
-        ~SenderIpAddress();
+        Distance();
+        ~Distance();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf ip_address_mask; //type: string
-        class Mac; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac
+        ydk::YLeaf distance_leaf; //type: uint8
+        class DistanceList; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance::DistanceList
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac> mac;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance::DistanceList> > distance_list;
         
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance::DistanceList : public ydk::Entity
 {
     public:
-        Mac();
-        ~Mac();
+        DistanceList();
+        ~DistanceList();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
-        class Any; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Any
-        class Host; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host
+        ydk::YLeaf number; //type: uint8
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf mask; //type: string
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Any> any; // presence node
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host> host;
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Distance::DistanceList
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        DistributeList();
+        ~DistributeList();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mac_address_mask; //type: string
-        ydk::YLeaf log; //type: empty
+        class Accesslist; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::Accesslist
+        class AccesslistIfname; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistIfname
+        class AccesslistPrefixGateway; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGateway
+        class AccesslistPrefixGatewayIfname; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGatewayIfname
 
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::Accesslist> > accesslist;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistIfname> > accesslist_ifname;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGateway> > accesslist_prefix_gateway;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGatewayIfname> > accesslist_prefix_gateway_ifname;
+        
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Any : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::Accesslist : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        Accesslist();
+        ~Accesslist();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf in_out; //type: AccessListInOutType
 
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Any
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::Accesslist
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistIfname : public ydk::Entity
 {
     public:
-        Host();
-        ~Host();
+        AccesslistIfname();
+        ~AccesslistIfname();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class SenderMacAddress; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+        ydk::YLeaf in_out; //type: AccessListInOutType
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf interface_routing_id; //type: uint8
+        ydk::YLeaf isis_tag; //type: string
+        ydk::YLeaf vrf; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress> > sender_mac_address;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistIfname
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGateway : public ydk::Entity
 {
     public:
-        SenderMacAddress();
-        ~SenderMacAddress();
+        AccesslistPrefixGateway();
+        ~AccesslistPrefixGateway();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf log; //type: empty
+        ydk::YLeaf in_out; //type: AccessListInOutType
+        ydk::YLeaf prefix_gateway; //type: PrefixGateway
+        ydk::YLeaf name; //type: string
+        class PrefixGateway;
 
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGateway
 
 
-class Native::Arp::AccessList::Default_::Deny::Request::Ip::Any : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGatewayIfname : public ydk::Entity
 {
     public:
-        Any();
-        ~Any();
+        AccesslistPrefixGatewayIfname();
+        ~AccesslistPrefixGatewayIfname();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Mac; //type: Native::Arp::AccessList::Default_::Deny::Request::Ip::Any::Mac
+        ydk::YLeaf in_out; //type: AccessListInOutType
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf prefix_gateway; //type: PrefixGateway
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_routing_id; //type: uint8
+        ydk::YLeaf isis_tag; //type: string
+        ydk::YLeaf vrf; //type: string
+        class PrefixGateway;
 
-        std::shared_ptr<Cisco_IOS_XE_native::Native::Arp::AccessList::Default_::Deny::Request::Ip::Any::Mac> mac;
-        
-}; // Native::Arp::AccessList::Default_::Deny::Request::Ip::Any
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGatewayIfname
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Mobile::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Odr::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::External::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::Internal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospf::Match::NssaExternal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::External::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::Internal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Ospfv3_::Match::NssaExternal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Rip::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Application::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Connected::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisLevelRoutes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::IsisLevelRoutes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::IsisArea::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Isis::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::IsoIgrp::IsoIgrpContainer::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Lisp::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Mobile::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Odr::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::External::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::Internal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospf::Match::NssaExternal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::External::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::Internal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Ospfv3_::Match::NssaExternal::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Rip::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Static_::RedistOptions::MetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+
+};
+
+class Native::Router::Ospfv3::Area::FilterList::InOut : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+
+};
+
+class Native::Router::Ospfv3::Authentication::Mode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deployment;
+        static const ydk::Enum::YLeaf strict;
+
+};
+
+class Native::Router::Ospfv3::Manet::Hello : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class Native::Router::Ospfv3::QueueDepth::Hello::Options : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unlimited;
+
+};
+
+class Native::Router::Ospfv3::QueueDepth::Update::Options : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unlimited;
+
+};
+
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGateway::PrefixGateway : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf prefix;
+        static const ydk::Enum::YLeaf gateway;
+        static const ydk::Enum::YLeaf route_map;
+
+};
+
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf prefix;
+        static const ydk::Enum::YLeaf gateway;
+        static const ydk::Enum::YLeaf route_map;
+
+};
 
 
 }

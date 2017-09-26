@@ -11,908 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_correlator_oper {
 
-Suppression::Suppression()
-    :
-    rule_details(std::make_shared<Suppression::RuleDetails>())
-	,rule_summaries(std::make_shared<Suppression::RuleSummaries>())
-{
-    rule_details->parent = this;
-
-    rule_summaries->parent = this;
-
-    yang_name = "suppression"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper";
-}
-
-Suppression::~Suppression()
-{
-}
-
-bool Suppression::has_data() const
-{
-    return (rule_details !=  nullptr && rule_details->has_data())
-	|| (rule_summaries !=  nullptr && rule_summaries->has_data());
-}
-
-bool Suppression::has_operation() const
-{
-    return is_set(yfilter)
-	|| (rule_details !=  nullptr && rule_details->has_operation())
-	|| (rule_summaries !=  nullptr && rule_summaries->has_operation());
-}
-
-std::string Suppression::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule-details")
-    {
-        if(rule_details == nullptr)
-        {
-            rule_details = std::make_shared<Suppression::RuleDetails>();
-        }
-        return rule_details;
-    }
-
-    if(child_yang_name == "rule-summaries")
-    {
-        if(rule_summaries == nullptr)
-        {
-            rule_summaries = std::make_shared<Suppression::RuleSummaries>();
-        }
-        return rule_summaries;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rule_details != nullptr)
-    {
-        children["rule-details"] = rule_details;
-    }
-
-    if(rule_summaries != nullptr)
-    {
-        children["rule-summaries"] = rule_summaries;
-    }
-
-    return children;
-}
-
-void Suppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Suppression::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> Suppression::clone_ptr() const
-{
-    return std::make_shared<Suppression>();
-}
-
-std::string Suppression::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string Suppression::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function Suppression::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> Suppression::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool Suppression::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-details" || name == "rule-summaries")
-        return true;
-    return false;
-}
-
-Suppression::RuleSummaries::RuleSummaries()
-{
-    yang_name = "rule-summaries"; yang_parent_name = "suppression";
-}
-
-Suppression::RuleSummaries::~RuleSummaries()
-{
-}
-
-bool Suppression::RuleSummaries::has_data() const
-{
-    for (std::size_t index=0; index<rule_summary.size(); index++)
-    {
-        if(rule_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Suppression::RuleSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<rule_summary.size(); index++)
-    {
-        if(rule_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Suppression::RuleSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleSummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule-summary")
-    {
-        for(auto const & c : rule_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
-        c->parent = this;
-        rule_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rule_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Suppression::RuleSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Suppression::RuleSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Suppression::RuleSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-summary")
-        return true;
-    return false;
-}
-
-Suppression::RuleSummaries::RuleSummary::RuleSummary()
-    :
-    rule_name{YType::str, "rule-name"},
-    rule_name_xr{YType::str, "rule-name-xr"},
-    rule_state{YType::enumeration, "rule-state"},
-    suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
-{
-    yang_name = "rule-summary"; yang_parent_name = "rule-summaries";
-}
-
-Suppression::RuleSummaries::RuleSummary::~RuleSummary()
-{
-}
-
-bool Suppression::RuleSummaries::RuleSummary::has_data() const
-{
-    return rule_name.is_set
-	|| rule_name_xr.is_set
-	|| rule_state.is_set
-	|| suppressed_alarms_count.is_set;
-}
-
-bool Suppression::RuleSummaries::RuleSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rule_name.yfilter)
-	|| ydk::is_set(rule_name_xr.yfilter)
-	|| ydk::is_set(rule_state.yfilter)
-	|| ydk::is_set(suppressed_alarms_count.yfilter);
-}
-
-std::string Suppression::RuleSummaries::RuleSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-summary" <<"[rule-name='" <<rule_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleSummaries::RuleSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/rule-summaries/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
-    if (suppressed_alarms_count.is_set || is_set(suppressed_alarms_count.yfilter)) leaf_name_data.push_back(suppressed_alarms_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::RuleSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Suppression::RuleSummaries::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name = value;
-        rule_name.value_namespace = name_space;
-        rule_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr = value;
-        rule_name_xr.value_namespace = name_space;
-        rule_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state = value;
-        rule_state.value_namespace = name_space;
-        rule_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "suppressed-alarms-count")
-    {
-        suppressed_alarms_count = value;
-        suppressed_alarms_count.value_namespace = name_space;
-        suppressed_alarms_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Suppression::RuleSummaries::RuleSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name.yfilter = yfilter;
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state.yfilter = yfilter;
-    }
-    if(value_path == "suppressed-alarms-count")
-    {
-        suppressed_alarms_count.yfilter = yfilter;
-    }
-}
-
-bool Suppression::RuleSummaries::RuleSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-name" || name == "rule-name-xr" || name == "rule-state" || name == "suppressed-alarms-count")
-        return true;
-    return false;
-}
-
-Suppression::RuleDetails::RuleDetails()
-{
-    yang_name = "rule-details"; yang_parent_name = "suppression";
-}
-
-Suppression::RuleDetails::~RuleDetails()
-{
-}
-
-bool Suppression::RuleDetails::has_data() const
-{
-    for (std::size_t index=0; index<rule_detail.size(); index++)
-    {
-        if(rule_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Suppression::RuleDetails::has_operation() const
-{
-    for (std::size_t index=0; index<rule_detail.size(); index++)
-    {
-        if(rule_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Suppression::RuleDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule-detail")
-    {
-        for(auto const & c : rule_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail>();
-        c->parent = this;
-        rule_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rule_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Suppression::RuleDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Suppression::RuleDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Suppression::RuleDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-detail")
-        return true;
-    return false;
-}
-
-Suppression::RuleDetails::RuleDetail::RuleDetail()
-    :
-    rule_name{YType::str, "rule-name"},
-    alarm_severity{YType::enumeration, "alarm-severity"},
-    all_alarms{YType::boolean, "all-alarms"},
-    apply_source{YType::str, "apply-source"}
-    	,
-    rule_summary(std::make_shared<Suppression::RuleDetails::RuleDetail::RuleSummary>())
-{
-    rule_summary->parent = this;
-
-    yang_name = "rule-detail"; yang_parent_name = "rule-details";
-}
-
-Suppression::RuleDetails::RuleDetail::~RuleDetail()
-{
-}
-
-bool Suppression::RuleDetails::RuleDetail::has_data() const
-{
-    for (std::size_t index=0; index<codes.size(); index++)
-    {
-        if(codes[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : apply_source.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return rule_name.is_set
-	|| alarm_severity.is_set
-	|| all_alarms.is_set
-	|| (rule_summary !=  nullptr && rule_summary->has_data());
-}
-
-bool Suppression::RuleDetails::RuleDetail::has_operation() const
-{
-    for (std::size_t index=0; index<codes.size(); index++)
-    {
-        if(codes[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : apply_source.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(rule_name.yfilter)
-	|| ydk::is_set(alarm_severity.yfilter)
-	|| ydk::is_set(all_alarms.yfilter)
-	|| ydk::is_set(apply_source.yfilter)
-	|| (rule_summary !=  nullptr && rule_summary->has_operation());
-}
-
-std::string Suppression::RuleDetails::RuleDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleDetails::RuleDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/rule-details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (alarm_severity.is_set || is_set(alarm_severity.yfilter)) leaf_name_data.push_back(alarm_severity.get_name_leafdata());
-    if (all_alarms.is_set || is_set(all_alarms.yfilter)) leaf_name_data.push_back(all_alarms.get_name_leafdata());
-
-    auto apply_source_name_datas = apply_source.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), apply_source_name_datas.begin(), apply_source_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "codes")
-    {
-        for(auto const & c : codes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
-        c->parent = this;
-        codes.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "rule-summary")
-    {
-        if(rule_summary == nullptr)
-        {
-            rule_summary = std::make_shared<Suppression::RuleDetails::RuleDetail::RuleSummary>();
-        }
-        return rule_summary;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : codes)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    if(rule_summary != nullptr)
-    {
-        children["rule-summary"] = rule_summary;
-    }
-
-    return children;
-}
-
-void Suppression::RuleDetails::RuleDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name = value;
-        rule_name.value_namespace = name_space;
-        rule_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alarm-severity")
-    {
-        alarm_severity = value;
-        alarm_severity.value_namespace = name_space;
-        alarm_severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "all-alarms")
-    {
-        all_alarms = value;
-        all_alarms.value_namespace = name_space;
-        all_alarms.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "apply-source")
-    {
-        apply_source.append(value);
-    }
-}
-
-void Suppression::RuleDetails::RuleDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name.yfilter = yfilter;
-    }
-    if(value_path == "alarm-severity")
-    {
-        alarm_severity.yfilter = yfilter;
-    }
-    if(value_path == "all-alarms")
-    {
-        all_alarms.yfilter = yfilter;
-    }
-    if(value_path == "apply-source")
-    {
-        apply_source.yfilter = yfilter;
-    }
-}
-
-bool Suppression::RuleDetails::RuleDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "codes" || name == "rule-summary" || name == "rule-name" || name == "alarm-severity" || name == "all-alarms" || name == "apply-source")
-        return true;
-    return false;
-}
-
-Suppression::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
-    :
-    rule_name_xr{YType::str, "rule-name-xr"},
-    rule_state{YType::enumeration, "rule-state"},
-    suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
-{
-    yang_name = "rule-summary"; yang_parent_name = "rule-detail";
-}
-
-Suppression::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
-{
-}
-
-bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_data() const
-{
-    return rule_name_xr.is_set
-	|| rule_state.is_set
-	|| suppressed_alarms_count.is_set;
-}
-
-bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rule_name_xr.yfilter)
-	|| ydk::is_set(rule_state.yfilter)
-	|| ydk::is_set(suppressed_alarms_count.yfilter);
-}
-
-std::string Suppression::RuleDetails::RuleDetail::RuleSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleDetails::RuleDetail::RuleSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RuleSummary' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
-    if (suppressed_alarms_count.is_set || is_set(suppressed_alarms_count.yfilter)) leaf_name_data.push_back(suppressed_alarms_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::RuleSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Suppression::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr = value;
-        rule_name_xr.value_namespace = name_space;
-        rule_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state = value;
-        rule_state.value_namespace = name_space;
-        rule_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "suppressed-alarms-count")
-    {
-        suppressed_alarms_count = value;
-        suppressed_alarms_count.value_namespace = name_space;
-        suppressed_alarms_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Suppression::RuleDetails::RuleDetail::RuleSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state.yfilter = yfilter;
-    }
-    if(value_path == "suppressed-alarms-count")
-    {
-        suppressed_alarms_count.yfilter = yfilter;
-    }
-}
-
-bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-name-xr" || name == "rule-state" || name == "suppressed-alarms-count")
-        return true;
-    return false;
-}
-
-Suppression::RuleDetails::RuleDetail::Codes::Codes()
-    :
-    category{YType::str, "category"},
-    code{YType::str, "code"},
-    group{YType::str, "group"}
-{
-    yang_name = "codes"; yang_parent_name = "rule-detail";
-}
-
-Suppression::RuleDetails::RuleDetail::Codes::~Codes()
-{
-}
-
-bool Suppression::RuleDetails::RuleDetail::Codes::has_data() const
-{
-    return category.is_set
-	|| code.is_set
-	|| group.is_set;
-}
-
-bool Suppression::RuleDetails::RuleDetail::Codes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(category.yfilter)
-	|| ydk::is_set(code.yfilter)
-	|| ydk::is_set(group.yfilter);
-}
-
-std::string Suppression::RuleDetails::RuleDetail::Codes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "codes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Suppression::RuleDetails::RuleDetail::Codes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Codes' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::Codes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Suppression::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "category")
-    {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "code")
-    {
-        code = value;
-        code.value_namespace = name_space;
-        code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Suppression::RuleDetails::RuleDetail::Codes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "category")
-    {
-        category.yfilter = yfilter;
-    }
-    if(value_path == "code")
-    {
-        code.yfilter = yfilter;
-    }
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-}
-
-bool Suppression::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category" || name == "code" || name == "group")
-        return true;
-    return false;
-}
-
 Correlator::Correlator()
     :
     alarms(std::make_shared<Correlator::Alarms>())
@@ -924,20 +22,14 @@ Correlator::Correlator()
 	,rules(std::make_shared<Correlator::Rules>())
 {
     alarms->parent = this;
-
     buffer_status->parent = this;
-
     rule_details->parent = this;
-
     rule_set_details->parent = this;
-
     rule_set_summaries->parent = this;
-
     rule_summaries->parent = this;
-
     rules->parent = this;
 
-    yang_name = "correlator"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper";
+    yang_name = "correlator"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Correlator::~Correlator()
@@ -971,26 +63,15 @@ std::string Correlator::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1143,541 +224,10 @@ bool Correlator::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Correlator::Rules::Rules()
-{
-    yang_name = "rules"; yang_parent_name = "correlator";
-}
-
-Correlator::Rules::~Rules()
-{
-}
-
-bool Correlator::Rules::has_data() const
-{
-    for (std::size_t index=0; index<rule.size(); index++)
-    {
-        if(rule[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Correlator::Rules::has_operation() const
-{
-    for (std::size_t index=0; index<rule.size(); index++)
-    {
-        if(rule[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Correlator::Rules::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rules";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::Rules::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule")
-    {
-        for(auto const & c : rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Correlator::Rules::Rule>();
-        c->parent = this;
-        rule.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rule)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Correlator::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Correlator::Rules::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Correlator::Rules::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule")
-        return true;
-    return false;
-}
-
-Correlator::Rules::Rule::Rule()
-    :
-    rule_name{YType::str, "rule-name"},
-    apply_context{YType::str, "apply-context"},
-    apply_location{YType::str, "apply-location"},
-    rule_name_xr{YType::str, "rule-name-xr"},
-    rule_state{YType::enumeration, "rule-state"},
-    timeout{YType::uint32, "timeout"}
-{
-    yang_name = "rule"; yang_parent_name = "rules";
-}
-
-Correlator::Rules::Rule::~Rule()
-{
-}
-
-bool Correlator::Rules::Rule::has_data() const
-{
-    for (std::size_t index=0; index<codes.size(); index++)
-    {
-        if(codes[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : apply_context.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : apply_location.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return rule_name.is_set
-	|| rule_name_xr.is_set
-	|| rule_state.is_set
-	|| timeout.is_set;
-}
-
-bool Correlator::Rules::Rule::has_operation() const
-{
-    for (std::size_t index=0; index<codes.size(); index++)
-    {
-        if(codes[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : apply_context.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : apply_location.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(rule_name.yfilter)
-	|| ydk::is_set(apply_context.yfilter)
-	|| ydk::is_set(apply_location.yfilter)
-	|| ydk::is_set(rule_name_xr.yfilter)
-	|| ydk::is_set(rule_state.yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string Correlator::Rules::Rule::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule" <<"[rule-name='" <<rule_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::Rules::Rule::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rules/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-    auto apply_context_name_datas = apply_context.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), apply_context_name_datas.begin(), apply_context_name_datas.end());
-    auto apply_location_name_datas = apply_location.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), apply_location_name_datas.begin(), apply_location_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "codes")
-    {
-        for(auto const & c : codes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Correlator::Rules::Rule::Codes>();
-        c->parent = this;
-        codes.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : codes)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Correlator::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name = value;
-        rule_name.value_namespace = name_space;
-        rule_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "apply-context")
-    {
-        apply_context.append(value);
-    }
-    if(value_path == "apply-location")
-    {
-        apply_location.append(value);
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr = value;
-        rule_name_xr.value_namespace = name_space;
-        rule_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state = value;
-        rule_state.value_namespace = name_space;
-        rule_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Correlator::Rules::Rule::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rule-name")
-    {
-        rule_name.yfilter = yfilter;
-    }
-    if(value_path == "apply-context")
-    {
-        apply_context.yfilter = yfilter;
-    }
-    if(value_path == "apply-location")
-    {
-        apply_location.yfilter = yfilter;
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool Correlator::Rules::Rule::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "codes" || name == "rule-name" || name == "apply-context" || name == "apply-location" || name == "rule-name-xr" || name == "rule-state" || name == "timeout")
-        return true;
-    return false;
-}
-
-Correlator::Rules::Rule::Codes::Codes()
-    :
-    category{YType::str, "category"},
-    code{YType::str, "code"},
-    group{YType::str, "group"}
-{
-    yang_name = "codes"; yang_parent_name = "rule";
-}
-
-Correlator::Rules::Rule::Codes::~Codes()
-{
-}
-
-bool Correlator::Rules::Rule::Codes::has_data() const
-{
-    return category.is_set
-	|| code.is_set
-	|| group.is_set;
-}
-
-bool Correlator::Rules::Rule::Codes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(category.yfilter)
-	|| ydk::is_set(code.yfilter)
-	|| ydk::is_set(group.yfilter);
-}
-
-std::string Correlator::Rules::Rule::Codes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "codes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::Rules::Rule::Codes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Codes' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::Rules::Rule::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::Codes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Correlator::Rules::Rule::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "category")
-    {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "code")
-    {
-        code = value;
-        code.value_namespace = name_space;
-        code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Correlator::Rules::Rule::Codes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "category")
-    {
-        category.yfilter = yfilter;
-    }
-    if(value_path == "code")
-    {
-        code.yfilter = yfilter;
-    }
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-}
-
-bool Correlator::Rules::Rule::Codes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category" || name == "code" || name == "group")
-        return true;
-    return false;
-}
-
-Correlator::BufferStatus::BufferStatus()
-    :
-    configured_size{YType::uint32, "configured-size"},
-    current_size{YType::uint32, "current-size"}
-{
-    yang_name = "buffer-status"; yang_parent_name = "correlator";
-}
-
-Correlator::BufferStatus::~BufferStatus()
-{
-}
-
-bool Correlator::BufferStatus::has_data() const
-{
-    return configured_size.is_set
-	|| current_size.is_set;
-}
-
-bool Correlator::BufferStatus::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(configured_size.yfilter)
-	|| ydk::is_set(current_size.yfilter);
-}
-
-std::string Correlator::BufferStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "buffer-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::BufferStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (configured_size.is_set || is_set(configured_size.yfilter)) leaf_name_data.push_back(configured_size.get_name_leafdata());
-    if (current_size.is_set || is_set(current_size.yfilter)) leaf_name_data.push_back(current_size.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::BufferStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Correlator::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "configured-size")
-    {
-        configured_size = value;
-        configured_size.value_namespace = name_space;
-        configured_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "current-size")
-    {
-        current_size = value;
-        current_size.value_namespace = name_space;
-        current_size.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Correlator::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "configured-size")
-    {
-        configured_size.yfilter = yfilter;
-    }
-    if(value_path == "current-size")
-    {
-        current_size.yfilter = yfilter;
-    }
-}
-
-bool Correlator::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "configured-size" || name == "current-size")
-        return true;
-    return false;
-}
-
 Correlator::Alarms::Alarms()
 {
-    yang_name = "alarms"; yang_parent_name = "correlator";
+
+    yang_name = "alarms"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::Alarms::~Alarms()
@@ -1704,33 +254,26 @@ bool Correlator::Alarms::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Correlator::Alarms::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::Alarms::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alarms";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::Alarms::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1791,7 +334,7 @@ Correlator::Alarms::Alarm::Alarm()
 {
     alarm_info->parent = this;
 
-    yang_name = "alarm"; yang_parent_name = "alarms";
+    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::Alarms::Alarm::~Alarm()
@@ -1815,36 +358,29 @@ bool Correlator::Alarms::Alarm::has_operation() const
 	|| (alarm_info !=  nullptr && alarm_info->has_operation());
 }
 
+std::string Correlator::Alarms::Alarm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/alarms/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::Alarms::Alarm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm" <<"[alarm-id='" <<alarm_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::Alarms::Alarm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::Alarm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/alarms/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (alarm_id.is_set || is_set(alarm_id.yfilter)) leaf_name_data.push_back(alarm_id.get_name_leafdata());
     if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
     if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1931,7 +467,8 @@ Correlator::Alarms::Alarm::AlarmInfo::AlarmInfo()
     state{YType::enumeration, "state"},
     timestamp{YType::uint64, "timestamp"}
 {
-    yang_name = "alarm-info"; yang_parent_name = "alarm";
+
+    yang_name = "alarm-info"; yang_parent_name = "alarm"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Correlator::Alarms::Alarm::AlarmInfo::~AlarmInfo()
@@ -1971,23 +508,11 @@ std::string Correlator::Alarms::Alarm::AlarmInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::Alarms::Alarm::AlarmInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::Alarm::AlarmInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AlarmInfo' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (additional_text.is_set || is_set(additional_text.yfilter)) leaf_name_data.push_back(additional_text.get_name_leafdata());
@@ -2001,9 +526,7 @@ const EntityPath Correlator::Alarms::Alarm::AlarmInfo::get_entity_path(Entity* a
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2133,589 +656,107 @@ bool Correlator::Alarms::Alarm::AlarmInfo::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-Correlator::RuleSetSummaries::RuleSetSummaries()
-{
-    yang_name = "rule-set-summaries"; yang_parent_name = "correlator";
-}
-
-Correlator::RuleSetSummaries::~RuleSetSummaries()
-{
-}
-
-bool Correlator::RuleSetSummaries::has_data() const
-{
-    for (std::size_t index=0; index<rule_set_summary.size(); index++)
-    {
-        if(rule_set_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Correlator::RuleSetSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<rule_set_summary.size(); index++)
-    {
-        if(rule_set_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Correlator::RuleSetSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-set-summaries";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::RuleSetSummaries::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule-set-summary")
-    {
-        for(auto const & c : rule_set_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
-        c->parent = this;
-        rule_set_summary.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rule_set_summary)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Correlator::RuleSetSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Correlator::RuleSetSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Correlator::RuleSetSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-set-summary")
-        return true;
-    return false;
-}
-
-Correlator::RuleSetSummaries::RuleSetSummary::RuleSetSummary()
+Correlator::BufferStatus::BufferStatus()
     :
-    rule_set_name{YType::str, "rule-set-name"},
-    rule_set_name_xr{YType::str, "rule-set-name-xr"}
+    configured_size{YType::uint32, "configured-size"},
+    current_size{YType::uint32, "current-size"}
 {
-    yang_name = "rule-set-summary"; yang_parent_name = "rule-set-summaries";
+
+    yang_name = "buffer-status"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Correlator::RuleSetSummaries::RuleSetSummary::~RuleSetSummary()
+Correlator::BufferStatus::~BufferStatus()
 {
 }
 
-bool Correlator::RuleSetSummaries::RuleSetSummary::has_data() const
+bool Correlator::BufferStatus::has_data() const
 {
-    return rule_set_name.is_set
-	|| rule_set_name_xr.is_set;
+    return configured_size.is_set
+	|| current_size.is_set;
 }
 
-bool Correlator::RuleSetSummaries::RuleSetSummary::has_operation() const
+bool Correlator::BufferStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(rule_set_name.yfilter)
-	|| ydk::is_set(rule_set_name_xr.yfilter);
+	|| ydk::is_set(configured_size.yfilter)
+	|| ydk::is_set(current_size.yfilter);
 }
 
-std::string Correlator::RuleSetSummaries::RuleSetSummary::get_segment_path() const
+std::string Correlator::BufferStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-set-summary" <<"[rule-set-name='" <<rule_set_name <<"']";
-
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleSetSummaries::RuleSetSummary::get_entity_path(Entity* ancestor) const
+std::string Correlator::BufferStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-set-summaries/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "buffer-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Correlator::BufferStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rule_set_name.is_set || is_set(rule_set_name.yfilter)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
-    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.yfilter)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
+    if (configured_size.is_set || is_set(configured_size.yfilter)) leaf_name_data.push_back(configured_size.get_name_leafdata());
+    if (current_size.is_set || is_set(current_size.yfilter)) leaf_name_data.push_back(current_size.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetSummaries::RuleSetSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Correlator::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::RuleSetSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Correlator::BufferStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Correlator::RuleSetSummaries::RuleSetSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Correlator::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rule-set-name")
+    if(value_path == "configured-size")
     {
-        rule_set_name = value;
-        rule_set_name.value_namespace = name_space;
-        rule_set_name.value_namespace_prefix = name_space_prefix;
+        configured_size = value;
+        configured_size.value_namespace = name_space;
+        configured_size.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rule-set-name-xr")
+    if(value_path == "current-size")
     {
-        rule_set_name_xr = value;
-        rule_set_name_xr.value_namespace = name_space;
-        rule_set_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Correlator::RuleSetSummaries::RuleSetSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rule-set-name")
-    {
-        rule_set_name.yfilter = yfilter;
-    }
-    if(value_path == "rule-set-name-xr")
-    {
-        rule_set_name_xr.yfilter = yfilter;
+        current_size = value;
+        current_size.value_namespace = name_space;
+        current_size.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool Correlator::RuleSetSummaries::RuleSetSummary::has_leaf_or_child_of_name(const std::string & name) const
+void Correlator::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "rule-set-name" || name == "rule-set-name-xr")
-        return true;
-    return false;
-}
-
-Correlator::RuleSetDetails::RuleSetDetails()
-{
-    yang_name = "rule-set-details"; yang_parent_name = "correlator";
-}
-
-Correlator::RuleSetDetails::~RuleSetDetails()
-{
-}
-
-bool Correlator::RuleSetDetails::has_data() const
-{
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    if(value_path == "configured-size")
     {
-        if(rule_set_detail[index]->has_data())
-            return true;
+        configured_size.yfilter = yfilter;
     }
-    return false;
-}
-
-bool Correlator::RuleSetDetails::has_operation() const
-{
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    if(value_path == "current-size")
     {
-        if(rule_set_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Correlator::RuleSetDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-set-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::RuleSetDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rule-set-detail")
-    {
-        for(auto const & c : rule_set_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
-        c->parent = this;
-        rule_set_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rule_set_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Correlator::RuleSetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Correlator::RuleSetDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Correlator::RuleSetDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rule-set-detail")
-        return true;
-    return false;
-}
-
-Correlator::RuleSetDetails::RuleSetDetail::RuleSetDetail()
-    :
-    rule_set_name{YType::str, "rule-set-name"},
-    rule_set_name_xr{YType::str, "rule-set-name-xr"}
-{
-    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details";
-}
-
-Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
-{
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::has_data() const
-{
-    for (std::size_t index=0; index<rules.size(); index++)
-    {
-        if(rules[index]->has_data())
-            return true;
-    }
-    return rule_set_name.is_set
-	|| rule_set_name_xr.is_set;
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::has_operation() const
-{
-    for (std::size_t index=0; index<rules.size(); index++)
-    {
-        if(rules[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(rule_set_name.yfilter)
-	|| ydk::is_set(rule_set_name_xr.yfilter);
-}
-
-std::string Correlator::RuleSetDetails::RuleSetDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rule-set-detail" <<"[rule-set-name='" <<rule_set_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::RuleSetDetails::RuleSetDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-set-details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rule_set_name.is_set || is_set(rule_set_name.yfilter)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
-    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.yfilter)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rules")
-    {
-        for(auto const & c : rules)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
-        c->parent = this;
-        rules.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : rules)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Correlator::RuleSetDetails::RuleSetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rule-set-name")
-    {
-        rule_set_name = value;
-        rule_set_name.value_namespace = name_space;
-        rule_set_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-set-name-xr")
-    {
-        rule_set_name_xr = value;
-        rule_set_name_xr.value_namespace = name_space;
-        rule_set_name_xr.value_namespace_prefix = name_space_prefix;
+        current_size.yfilter = yfilter;
     }
 }
 
-void Correlator::RuleSetDetails::RuleSetDetail::set_filter(const std::string & value_path, YFilter yfilter)
+bool Correlator::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "rule-set-name")
-    {
-        rule_set_name.yfilter = yfilter;
-    }
-    if(value_path == "rule-set-name-xr")
-    {
-        rule_set_name_xr.yfilter = yfilter;
-    }
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rules" || name == "rule-set-name" || name == "rule-set-name-xr")
-        return true;
-    return false;
-}
-
-Correlator::RuleSetDetails::RuleSetDetail::Rules::Rules()
-    :
-    buffered_alarms_count{YType::uint32, "buffered-alarms-count"},
-    rule_name_xr{YType::str, "rule-name-xr"},
-    rule_state{YType::enumeration, "rule-state"},
-    stateful{YType::boolean, "stateful"}
-{
-    yang_name = "rules"; yang_parent_name = "rule-set-detail";
-}
-
-Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
-{
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_data() const
-{
-    return buffered_alarms_count.is_set
-	|| rule_name_xr.is_set
-	|| rule_state.is_set
-	|| stateful.is_set;
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(buffered_alarms_count.yfilter)
-	|| ydk::is_set(rule_name_xr.yfilter)
-	|| ydk::is_set(rule_state.yfilter)
-	|| ydk::is_set(stateful.yfilter);
-}
-
-std::string Correlator::RuleSetDetails::RuleSetDetail::Rules::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rules";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Correlator::RuleSetDetails::RuleSetDetail::Rules::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Rules' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffered_alarms_count.is_set || is_set(buffered_alarms_count.yfilter)) leaf_name_data.push_back(buffered_alarms_count.get_name_leafdata());
-    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
-    if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Correlator::RuleSetDetails::RuleSetDetail::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffered-alarms-count")
-    {
-        buffered_alarms_count = value;
-        buffered_alarms_count.value_namespace = name_space;
-        buffered_alarms_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr = value;
-        rule_name_xr.value_namespace = name_space;
-        rule_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state = value;
-        rule_state.value_namespace = name_space;
-        rule_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stateful")
-    {
-        stateful = value;
-        stateful.value_namespace = name_space;
-        stateful.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Correlator::RuleSetDetails::RuleSetDetail::Rules::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffered-alarms-count")
-    {
-        buffered_alarms_count.yfilter = yfilter;
-    }
-    if(value_path == "rule-name-xr")
-    {
-        rule_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "rule-state")
-    {
-        rule_state.yfilter = yfilter;
-    }
-    if(value_path == "stateful")
-    {
-        stateful.yfilter = yfilter;
-    }
-}
-
-bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "buffered-alarms-count" || name == "rule-name-xr" || name == "rule-state" || name == "stateful")
+    if(name == "configured-size" || name == "current-size")
         return true;
     return false;
 }
 
 Correlator::RuleDetails::RuleDetails()
 {
-    yang_name = "rule-details"; yang_parent_name = "correlator";
+
+    yang_name = "rule-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::RuleDetails::~RuleDetails()
@@ -2742,33 +783,26 @@ bool Correlator::RuleDetails::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Correlator::RuleDetails::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::RuleDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleDetails::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2835,7 +869,7 @@ Correlator::RuleDetails::RuleDetail::RuleDetail()
 {
     rule_summary->parent = this;
 
-    yang_name = "rule-detail"; yang_parent_name = "rule-details";
+    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::RuleDetails::RuleDetail::~RuleDetail()
@@ -2899,27 +933,22 @@ bool Correlator::RuleDetails::RuleDetail::has_operation() const
 	|| (rule_summary !=  nullptr && rule_summary->has_operation());
 }
 
+std::string Correlator::RuleDetails::RuleDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-details/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::RuleDetails::RuleDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleDetails::RuleDetail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDetail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
@@ -2934,9 +963,7 @@ const EntityPath Correlator::RuleDetails::RuleDetail::get_entity_path(Entity* an
     leaf_name_data.insert(leaf_name_data.end(), apply_context_name_datas.begin(), apply_context_name_datas.end());
     auto apply_location_name_datas = apply_location.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), apply_location_name_datas.begin(), apply_location_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3087,6 +1114,110 @@ bool Correlator::RuleDetails::RuleDetail::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
+Correlator::RuleDetails::RuleDetail::Codes::Codes()
+    :
+    category{YType::str, "category"},
+    code{YType::str, "code"},
+    group{YType::str, "group"}
+{
+
+    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Correlator::RuleDetails::RuleDetail::Codes::~Codes()
+{
+}
+
+bool Correlator::RuleDetails::RuleDetail::Codes::has_data() const
+{
+    return category.is_set
+	|| code.is_set
+	|| group.is_set;
+}
+
+bool Correlator::RuleDetails::RuleDetail::Codes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(code.yfilter)
+	|| ydk::is_set(group.yfilter);
+}
+
+std::string Correlator::RuleDetails::RuleDetail::Codes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "codes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDetail::Codes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::Codes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Correlator::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "category")
+    {
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "code")
+    {
+        code = value;
+        code.value_namespace = name_space;
+        code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Correlator::RuleDetails::RuleDetail::Codes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "code")
+    {
+        code.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+}
+
+bool Correlator::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "category" || name == "code" || name == "group")
+        return true;
+    return false;
+}
+
 Correlator::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
     :
     buffered_alarms_count{YType::uint32, "buffered-alarms-count"},
@@ -3094,7 +1225,8 @@ Correlator::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
     rule_state{YType::enumeration, "rule-state"},
     stateful{YType::boolean, "stateful"}
 {
-    yang_name = "rule-summary"; yang_parent_name = "rule-detail";
+
+    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Correlator::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
@@ -3122,23 +1254,11 @@ std::string Correlator::RuleDetails::RuleDetail::RuleSummary::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-summary";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleDetails::RuleDetail::RuleSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDetail::RuleSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RuleSummary' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (buffered_alarms_count.is_set || is_set(buffered_alarms_count.yfilter)) leaf_name_data.push_back(buffered_alarms_count.get_name_leafdata());
@@ -3146,9 +1266,7 @@ const EntityPath Correlator::RuleDetails::RuleDetail::RuleSummary::get_entity_pa
     if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
     if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3218,126 +1336,553 @@ bool Correlator::RuleDetails::RuleDetail::RuleSummary::has_leaf_or_child_of_name
     return false;
 }
 
-Correlator::RuleDetails::RuleDetail::Codes::Codes()
-    :
-    category{YType::str, "category"},
-    code{YType::str, "code"},
-    group{YType::str, "group"}
+Correlator::RuleSetDetails::RuleSetDetails()
 {
-    yang_name = "codes"; yang_parent_name = "rule-detail";
+
+    yang_name = "rule-set-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Correlator::RuleDetails::RuleDetail::Codes::~Codes()
+Correlator::RuleSetDetails::~RuleSetDetails()
 {
 }
 
-bool Correlator::RuleDetails::RuleDetail::Codes::has_data() const
+bool Correlator::RuleSetDetails::has_data() const
 {
-    return category.is_set
-	|| code.is_set
-	|| group.is_set;
+    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    {
+        if(rule_set_detail[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Correlator::RuleDetails::RuleDetail::Codes::has_operation() const
+bool Correlator::RuleSetDetails::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(category.yfilter)
-	|| ydk::is_set(code.yfilter)
-	|| ydk::is_set(group.yfilter);
+    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    {
+        if(rule_set_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string Correlator::RuleDetails::RuleDetail::Codes::get_segment_path() const
+std::string Correlator::RuleSetDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "codes";
-
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleDetails::RuleDetail::Codes::get_entity_path(Entity* ancestor) const
+std::string Correlator::RuleSetDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Codes' in Cisco_IOS_XR_infra_correlator_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "rule-set-details";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule-set-detail")
+    {
+        for(auto const & c : rule_set_detail)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
+        c->parent = this;
+        rule_set_detail.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rule_set_detail)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Correlator::RuleSetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Correlator::RuleSetDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Correlator::RuleSetDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-set-detail")
+        return true;
+    return false;
+}
+
+Correlator::RuleSetDetails::RuleSetDetail::RuleSetDetail()
+    :
+    rule_set_name{YType::str, "rule-set-name"},
+    rule_set_name_xr{YType::str, "rule-set-name-xr"}
+{
+
+    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
+{
+}
+
+bool Correlator::RuleSetDetails::RuleSetDetail::has_data() const
+{
+    for (std::size_t index=0; index<rules.size(); index++)
+    {
+        if(rules[index]->has_data())
+            return true;
+    }
+    return rule_set_name.is_set
+	|| rule_set_name_xr.is_set;
+}
+
+bool Correlator::RuleSetDetails::RuleSetDetail::has_operation() const
+{
+    for (std::size_t index=0; index<rules.size(); index++)
+    {
+        if(rules[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(rule_set_name.yfilter)
+	|| ydk::is_set(rule_set_name_xr.yfilter);
+}
+
+std::string Correlator::RuleSetDetails::RuleSetDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-set-details/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Correlator::RuleSetDetails::RuleSetDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-set-detail" <<"[rule-set-name='" <<rule_set_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::RuleSetDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_set_name.is_set || is_set(rule_set_name.yfilter)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
+    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.yfilter)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rules")
+    {
+        for(auto const & c : rules)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
+        c->parent = this;
+        rules.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rules)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Correlator::RuleSetDetails::RuleSetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-set-name")
+    {
+        rule_set_name = value;
+        rule_set_name.value_namespace = name_space;
+        rule_set_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-set-name-xr")
+    {
+        rule_set_name_xr = value;
+        rule_set_name_xr.value_namespace = name_space;
+        rule_set_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Correlator::RuleSetDetails::RuleSetDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-set-name")
+    {
+        rule_set_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-set-name-xr")
+    {
+        rule_set_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Correlator::RuleSetDetails::RuleSetDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rules" || name == "rule-set-name" || name == "rule-set-name-xr")
+        return true;
+    return false;
+}
+
+Correlator::RuleSetDetails::RuleSetDetail::Rules::Rules()
+    :
+    buffered_alarms_count{YType::uint32, "buffered-alarms-count"},
+    rule_name_xr{YType::str, "rule-name-xr"},
+    rule_state{YType::enumeration, "rule-state"},
+    stateful{YType::boolean, "stateful"}
+{
+
+    yang_name = "rules"; yang_parent_name = "rule-set-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
+{
+}
+
+bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_data() const
+{
+    return buffered_alarms_count.is_set
+	|| rule_name_xr.is_set
+	|| rule_state.is_set
+	|| stateful.is_set;
+}
+
+bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(buffered_alarms_count.yfilter)
+	|| ydk::is_set(rule_name_xr.yfilter)
+	|| ydk::is_set(rule_state.yfilter)
+	|| ydk::is_set(stateful.yfilter);
+}
+
+std::string Correlator::RuleSetDetails::RuleSetDetail::Rules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rules";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::RuleSetDetail::Rules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (buffered_alarms_count.is_set || is_set(buffered_alarms_count.yfilter)) leaf_name_data.push_back(buffered_alarms_count.get_name_leafdata());
+    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::Codes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Correlator::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Correlator::RuleSetDetails::RuleSetDetail::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "category")
+    if(value_path == "buffered-alarms-count")
     {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
+        buffered_alarms_count = value;
+        buffered_alarms_count.value_namespace = name_space;
+        buffered_alarms_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "code")
+    if(value_path == "rule-name-xr")
     {
-        code = value;
-        code.value_namespace = name_space;
-        code.value_namespace_prefix = name_space_prefix;
+        rule_name_xr = value;
+        rule_name_xr.value_namespace = name_space;
+        rule_name_xr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "group")
+    if(value_path == "rule-state")
     {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
+        rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stateful")
+    {
+        stateful = value;
+        stateful.value_namespace = name_space;
+        stateful.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Correlator::RuleDetails::RuleDetail::Codes::set_filter(const std::string & value_path, YFilter yfilter)
+void Correlator::RuleSetDetails::RuleSetDetail::Rules::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "category")
+    if(value_path == "buffered-alarms-count")
     {
-        category.yfilter = yfilter;
+        buffered_alarms_count.yfilter = yfilter;
     }
-    if(value_path == "code")
+    if(value_path == "rule-name-xr")
     {
-        code.yfilter = yfilter;
+        rule_name_xr.yfilter = yfilter;
     }
-    if(value_path == "group")
+    if(value_path == "rule-state")
     {
-        group.yfilter = yfilter;
+        rule_state.yfilter = yfilter;
+    }
+    if(value_path == "stateful")
+    {
+        stateful.yfilter = yfilter;
     }
 }
 
-bool Correlator::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(const std::string & name) const
+bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "category" || name == "code" || name == "group")
+    if(name == "buffered-alarms-count" || name == "rule-name-xr" || name == "rule-state" || name == "stateful")
+        return true;
+    return false;
+}
+
+Correlator::RuleSetSummaries::RuleSetSummaries()
+{
+
+    yang_name = "rule-set-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Correlator::RuleSetSummaries::~RuleSetSummaries()
+{
+}
+
+bool Correlator::RuleSetSummaries::has_data() const
+{
+    for (std::size_t index=0; index<rule_set_summary.size(); index++)
+    {
+        if(rule_set_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Correlator::RuleSetSummaries::has_operation() const
+{
+    for (std::size_t index=0; index<rule_set_summary.size(); index++)
+    {
+        if(rule_set_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Correlator::RuleSetSummaries::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Correlator::RuleSetSummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-set-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetSummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule-set-summary")
+    {
+        for(auto const & c : rule_set_summary)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
+        c->parent = this;
+        rule_set_summary.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rule_set_summary)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Correlator::RuleSetSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Correlator::RuleSetSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Correlator::RuleSetSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-set-summary")
+        return true;
+    return false;
+}
+
+Correlator::RuleSetSummaries::RuleSetSummary::RuleSetSummary()
+    :
+    rule_set_name{YType::str, "rule-set-name"},
+    rule_set_name_xr{YType::str, "rule-set-name-xr"}
+{
+
+    yang_name = "rule-set-summary"; yang_parent_name = "rule-set-summaries"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Correlator::RuleSetSummaries::RuleSetSummary::~RuleSetSummary()
+{
+}
+
+bool Correlator::RuleSetSummaries::RuleSetSummary::has_data() const
+{
+    return rule_set_name.is_set
+	|| rule_set_name_xr.is_set;
+}
+
+bool Correlator::RuleSetSummaries::RuleSetSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule_set_name.yfilter)
+	|| ydk::is_set(rule_set_name_xr.yfilter);
+}
+
+std::string Correlator::RuleSetSummaries::RuleSetSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-set-summaries/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Correlator::RuleSetSummaries::RuleSetSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-set-summary" <<"[rule-set-name='" <<rule_set_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetSummaries::RuleSetSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_set_name.is_set || is_set(rule_set_name.yfilter)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
+    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.yfilter)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::RuleSetSummaries::RuleSetSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::RuleSetSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Correlator::RuleSetSummaries::RuleSetSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-set-name")
+    {
+        rule_set_name = value;
+        rule_set_name.value_namespace = name_space;
+        rule_set_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-set-name-xr")
+    {
+        rule_set_name_xr = value;
+        rule_set_name_xr.value_namespace = name_space;
+        rule_set_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Correlator::RuleSetSummaries::RuleSetSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-set-name")
+    {
+        rule_set_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-set-name-xr")
+    {
+        rule_set_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Correlator::RuleSetSummaries::RuleSetSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-set-name" || name == "rule-set-name-xr")
         return true;
     return false;
 }
 
 Correlator::RuleSummaries::RuleSummaries()
 {
-    yang_name = "rule-summaries"; yang_parent_name = "correlator";
+
+    yang_name = "rule-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::RuleSummaries::~RuleSummaries()
@@ -3364,33 +1909,26 @@ bool Correlator::RuleSummaries::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Correlator::RuleSummaries::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::RuleSummaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-summaries";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleSummaries::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSummaries::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3449,7 +1987,8 @@ Correlator::RuleSummaries::RuleSummary::RuleSummary()
     rule_state{YType::enumeration, "rule-state"},
     stateful{YType::boolean, "stateful"}
 {
-    yang_name = "rule-summary"; yang_parent_name = "rule-summaries";
+
+    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Correlator::RuleSummaries::RuleSummary::~RuleSummary()
@@ -3475,27 +2014,22 @@ bool Correlator::RuleSummaries::RuleSummary::has_operation() const
 	|| ydk::is_set(stateful.yfilter);
 }
 
+std::string Correlator::RuleSummaries::RuleSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-summaries/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Correlator::RuleSummaries::RuleSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-summary" <<"[rule-name='" <<rule_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Correlator::RuleSummaries::RuleSummary::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Correlator::RuleSummaries::RuleSummary::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rule-summaries/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
@@ -3504,9 +2038,7 @@ const EntityPath Correlator::RuleSummaries::RuleSummary::get_entity_path(Entity*
     if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
     if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3586,13 +2118,1252 @@ bool Correlator::RuleSummaries::RuleSummary::has_leaf_or_child_of_name(const std
     return false;
 }
 
+Correlator::Rules::Rules()
+{
+
+    yang_name = "rules"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Correlator::Rules::~Rules()
+{
+}
+
+bool Correlator::Rules::has_data() const
+{
+    for (std::size_t index=0; index<rule.size(); index++)
+    {
+        if(rule[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Correlator::Rules::has_operation() const
+{
+    for (std::size_t index=0; index<rule.size(); index++)
+    {
+        if(rule[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Correlator::Rules::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Correlator::Rules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rules";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::Rules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule")
+    {
+        for(auto const & c : rule)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Correlator::Rules::Rule>();
+        c->parent = this;
+        rule.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rule)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Correlator::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Correlator::Rules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Correlator::Rules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule")
+        return true;
+    return false;
+}
+
+Correlator::Rules::Rule::Rule()
+    :
+    rule_name{YType::str, "rule-name"},
+    apply_context{YType::str, "apply-context"},
+    apply_location{YType::str, "apply-location"},
+    rule_name_xr{YType::str, "rule-name-xr"},
+    rule_state{YType::enumeration, "rule-state"},
+    timeout{YType::uint32, "timeout"}
+{
+
+    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Correlator::Rules::Rule::~Rule()
+{
+}
+
+bool Correlator::Rules::Rule::has_data() const
+{
+    for (std::size_t index=0; index<codes.size(); index++)
+    {
+        if(codes[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : apply_context.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : apply_location.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return rule_name.is_set
+	|| rule_name_xr.is_set
+	|| rule_state.is_set
+	|| timeout.is_set;
+}
+
+bool Correlator::Rules::Rule::has_operation() const
+{
+    for (std::size_t index=0; index<codes.size(); index++)
+    {
+        if(codes[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : apply_context.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : apply_location.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(apply_context.yfilter)
+	|| ydk::is_set(apply_location.yfilter)
+	|| ydk::is_set(rule_name_xr.yfilter)
+	|| ydk::is_set(rule_state.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string Correlator::Rules::Rule::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:correlator/rules/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Correlator::Rules::Rule::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule" <<"[rule-name='" <<rule_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::Rules::Rule::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    auto apply_context_name_datas = apply_context.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), apply_context_name_datas.begin(), apply_context_name_datas.end());
+    auto apply_location_name_datas = apply_location.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), apply_location_name_datas.begin(), apply_location_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "codes")
+    {
+        for(auto const & c : codes)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Correlator::Rules::Rule::Codes>();
+        c->parent = this;
+        codes.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : codes)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Correlator::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "apply-context")
+    {
+        apply_context.append(value);
+    }
+    if(value_path == "apply-location")
+    {
+        apply_location.append(value);
+    }
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr = value;
+        rule_name_xr.value_namespace = name_space;
+        rule_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Correlator::Rules::Rule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "apply-context")
+    {
+        apply_context.yfilter = yfilter;
+    }
+    if(value_path == "apply-location")
+    {
+        apply_location.yfilter = yfilter;
+    }
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Correlator::Rules::Rule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "codes" || name == "rule-name" || name == "apply-context" || name == "apply-location" || name == "rule-name-xr" || name == "rule-state" || name == "timeout")
+        return true;
+    return false;
+}
+
+Correlator::Rules::Rule::Codes::Codes()
+    :
+    category{YType::str, "category"},
+    code{YType::str, "code"},
+    group{YType::str, "group"}
+{
+
+    yang_name = "codes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Correlator::Rules::Rule::Codes::~Codes()
+{
+}
+
+bool Correlator::Rules::Rule::Codes::has_data() const
+{
+    return category.is_set
+	|| code.is_set
+	|| group.is_set;
+}
+
+bool Correlator::Rules::Rule::Codes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(code.yfilter)
+	|| ydk::is_set(group.yfilter);
+}
+
+std::string Correlator::Rules::Rule::Codes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "codes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Correlator::Rules::Rule::Codes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Correlator::Rules::Rule::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::Codes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Correlator::Rules::Rule::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "category")
+    {
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "code")
+    {
+        code = value;
+        code.value_namespace = name_space;
+        code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Correlator::Rules::Rule::Codes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "code")
+    {
+        code.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+}
+
+bool Correlator::Rules::Rule::Codes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "category" || name == "code" || name == "group")
+        return true;
+    return false;
+}
+
+Suppression::Suppression()
+    :
+    rule_details(std::make_shared<Suppression::RuleDetails>())
+	,rule_summaries(std::make_shared<Suppression::RuleSummaries>())
+{
+    rule_details->parent = this;
+    rule_summaries->parent = this;
+
+    yang_name = "suppression"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+Suppression::~Suppression()
+{
+}
+
+bool Suppression::has_data() const
+{
+    return (rule_details !=  nullptr && rule_details->has_data())
+	|| (rule_summaries !=  nullptr && rule_summaries->has_data());
+}
+
+bool Suppression::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rule_details !=  nullptr && rule_details->has_operation())
+	|| (rule_summaries !=  nullptr && rule_summaries->has_operation());
+}
+
+std::string Suppression::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule-details")
+    {
+        if(rule_details == nullptr)
+        {
+            rule_details = std::make_shared<Suppression::RuleDetails>();
+        }
+        return rule_details;
+    }
+
+    if(child_yang_name == "rule-summaries")
+    {
+        if(rule_summaries == nullptr)
+        {
+            rule_summaries = std::make_shared<Suppression::RuleSummaries>();
+        }
+        return rule_summaries;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rule_details != nullptr)
+    {
+        children["rule-details"] = rule_details;
+    }
+
+    if(rule_summaries != nullptr)
+    {
+        children["rule-summaries"] = rule_summaries;
+    }
+
+    return children;
+}
+
+void Suppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Suppression::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Suppression::clone_ptr() const
+{
+    return std::make_shared<Suppression>();
+}
+
+std::string Suppression::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string Suppression::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function Suppression::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Suppression::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Suppression::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-details" || name == "rule-summaries")
+        return true;
+    return false;
+}
+
+Suppression::RuleDetails::RuleDetails()
+{
+
+    yang_name = "rule-details"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Suppression::RuleDetails::~RuleDetails()
+{
+}
+
+bool Suppression::RuleDetails::has_data() const
+{
+    for (std::size_t index=0; index<rule_detail.size(); index++)
+    {
+        if(rule_detail[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Suppression::RuleDetails::has_operation() const
+{
+    for (std::size_t index=0; index<rule_detail.size(); index++)
+    {
+        if(rule_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Suppression::RuleDetails::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Suppression::RuleDetails::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule-detail")
+    {
+        for(auto const & c : rule_detail)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail>();
+        c->parent = this;
+        rule_detail.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rule_detail)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Suppression::RuleDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Suppression::RuleDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Suppression::RuleDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-detail")
+        return true;
+    return false;
+}
+
+Suppression::RuleDetails::RuleDetail::RuleDetail()
+    :
+    rule_name{YType::str, "rule-name"},
+    alarm_severity{YType::enumeration, "alarm-severity"},
+    all_alarms{YType::boolean, "all-alarms"},
+    apply_source{YType::str, "apply-source"}
+    	,
+    rule_summary(std::make_shared<Suppression::RuleDetails::RuleDetail::RuleSummary>())
+{
+    rule_summary->parent = this;
+
+    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Suppression::RuleDetails::RuleDetail::~RuleDetail()
+{
+}
+
+bool Suppression::RuleDetails::RuleDetail::has_data() const
+{
+    for (std::size_t index=0; index<codes.size(); index++)
+    {
+        if(codes[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : apply_source.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return rule_name.is_set
+	|| alarm_severity.is_set
+	|| all_alarms.is_set
+	|| (rule_summary !=  nullptr && rule_summary->has_data());
+}
+
+bool Suppression::RuleDetails::RuleDetail::has_operation() const
+{
+    for (std::size_t index=0; index<codes.size(); index++)
+    {
+        if(codes[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : apply_source.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(alarm_severity.yfilter)
+	|| ydk::is_set(all_alarms.yfilter)
+	|| ydk::is_set(apply_source.yfilter)
+	|| (rule_summary !=  nullptr && rule_summary->has_operation());
+}
+
+std::string Suppression::RuleDetails::RuleDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/rule-details/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Suppression::RuleDetails::RuleDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (alarm_severity.is_set || is_set(alarm_severity.yfilter)) leaf_name_data.push_back(alarm_severity.get_name_leafdata());
+    if (all_alarms.is_set || is_set(all_alarms.yfilter)) leaf_name_data.push_back(all_alarms.get_name_leafdata());
+
+    auto apply_source_name_datas = apply_source.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), apply_source_name_datas.begin(), apply_source_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "codes")
+    {
+        for(auto const & c : codes)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
+        c->parent = this;
+        codes.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "rule-summary")
+    {
+        if(rule_summary == nullptr)
+        {
+            rule_summary = std::make_shared<Suppression::RuleDetails::RuleDetail::RuleSummary>();
+        }
+        return rule_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : codes)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(rule_summary != nullptr)
+    {
+        children["rule-summary"] = rule_summary;
+    }
+
+    return children;
+}
+
+void Suppression::RuleDetails::RuleDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alarm-severity")
+    {
+        alarm_severity = value;
+        alarm_severity.value_namespace = name_space;
+        alarm_severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "all-alarms")
+    {
+        all_alarms = value;
+        all_alarms.value_namespace = name_space;
+        all_alarms.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "apply-source")
+    {
+        apply_source.append(value);
+    }
+}
+
+void Suppression::RuleDetails::RuleDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "alarm-severity")
+    {
+        alarm_severity.yfilter = yfilter;
+    }
+    if(value_path == "all-alarms")
+    {
+        all_alarms.yfilter = yfilter;
+    }
+    if(value_path == "apply-source")
+    {
+        apply_source.yfilter = yfilter;
+    }
+}
+
+bool Suppression::RuleDetails::RuleDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "codes" || name == "rule-summary" || name == "rule-name" || name == "alarm-severity" || name == "all-alarms" || name == "apply-source")
+        return true;
+    return false;
+}
+
+Suppression::RuleDetails::RuleDetail::Codes::Codes()
+    :
+    category{YType::str, "category"},
+    code{YType::str, "code"},
+    group{YType::str, "group"}
+{
+
+    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Suppression::RuleDetails::RuleDetail::Codes::~Codes()
+{
+}
+
+bool Suppression::RuleDetails::RuleDetail::Codes::has_data() const
+{
+    return category.is_set
+	|| code.is_set
+	|| group.is_set;
+}
+
+bool Suppression::RuleDetails::RuleDetail::Codes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(code.yfilter)
+	|| ydk::is_set(group.yfilter);
+}
+
+std::string Suppression::RuleDetails::RuleDetail::Codes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "codes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDetail::Codes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::Codes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Suppression::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "category")
+    {
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "code")
+    {
+        code = value;
+        code.value_namespace = name_space;
+        code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Suppression::RuleDetails::RuleDetail::Codes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "code")
+    {
+        code.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+}
+
+bool Suppression::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "category" || name == "code" || name == "group")
+        return true;
+    return false;
+}
+
+Suppression::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
+    :
+    rule_name_xr{YType::str, "rule-name-xr"},
+    rule_state{YType::enumeration, "rule-state"},
+    suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
+{
+
+    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Suppression::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
+{
+}
+
+bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_data() const
+{
+    return rule_name_xr.is_set
+	|| rule_state.is_set
+	|| suppressed_alarms_count.is_set;
+}
+
+bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule_name_xr.yfilter)
+	|| ydk::is_set(rule_state.yfilter)
+	|| ydk::is_set(suppressed_alarms_count.yfilter);
+}
+
+std::string Suppression::RuleDetails::RuleDetail::RuleSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDetail::RuleSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (suppressed_alarms_count.is_set || is_set(suppressed_alarms_count.yfilter)) leaf_name_data.push_back(suppressed_alarms_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::RuleSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Suppression::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr = value;
+        rule_name_xr.value_namespace = name_space;
+        rule_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppressed-alarms-count")
+    {
+        suppressed_alarms_count = value;
+        suppressed_alarms_count.value_namespace = name_space;
+        suppressed_alarms_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Suppression::RuleDetails::RuleDetail::RuleSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state.yfilter = yfilter;
+    }
+    if(value_path == "suppressed-alarms-count")
+    {
+        suppressed_alarms_count.yfilter = yfilter;
+    }
+}
+
+bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-name-xr" || name == "rule-state" || name == "suppressed-alarms-count")
+        return true;
+    return false;
+}
+
+Suppression::RuleSummaries::RuleSummaries()
+{
+
+    yang_name = "rule-summaries"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Suppression::RuleSummaries::~RuleSummaries()
+{
+}
+
+bool Suppression::RuleSummaries::has_data() const
+{
+    for (std::size_t index=0; index<rule_summary.size(); index++)
+    {
+        if(rule_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Suppression::RuleSummaries::has_operation() const
+{
+    for (std::size_t index=0; index<rule_summary.size(); index++)
+    {
+        if(rule_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Suppression::RuleSummaries::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Suppression::RuleSummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleSummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rule-summary")
+    {
+        for(auto const & c : rule_summary)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
+        c->parent = this;
+        rule_summary.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rule_summary)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Suppression::RuleSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Suppression::RuleSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Suppression::RuleSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-summary")
+        return true;
+    return false;
+}
+
+Suppression::RuleSummaries::RuleSummary::RuleSummary()
+    :
+    rule_name{YType::str, "rule-name"},
+    rule_name_xr{YType::str, "rule-name-xr"},
+    rule_state{YType::enumeration, "rule-state"},
+    suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
+{
+
+    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Suppression::RuleSummaries::RuleSummary::~RuleSummary()
+{
+}
+
+bool Suppression::RuleSummaries::RuleSummary::has_data() const
+{
+    return rule_name.is_set
+	|| rule_name_xr.is_set
+	|| rule_state.is_set
+	|| suppressed_alarms_count.is_set;
+}
+
+bool Suppression::RuleSummaries::RuleSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(rule_name_xr.yfilter)
+	|| ydk::is_set(rule_state.yfilter)
+	|| ydk::is_set(suppressed_alarms_count.yfilter);
+}
+
+std::string Suppression::RuleSummaries::RuleSummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-correlator-oper:suppression/rule-summaries/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Suppression::RuleSummaries::RuleSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rule-summary" <<"[rule-name='" <<rule_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Suppression::RuleSummaries::RuleSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (rule_name_xr.is_set || is_set(rule_name_xr.yfilter)) leaf_name_data.push_back(rule_name_xr.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (suppressed_alarms_count.is_set || is_set(suppressed_alarms_count.yfilter)) leaf_name_data.push_back(suppressed_alarms_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Suppression::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::RuleSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Suppression::RuleSummaries::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr = value;
+        rule_name_xr.value_namespace = name_space;
+        rule_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppressed-alarms-count")
+    {
+        suppressed_alarms_count = value;
+        suppressed_alarms_count.value_namespace = name_space;
+        suppressed_alarms_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Suppression::RuleSummaries::RuleSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-name-xr")
+    {
+        rule_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state.yfilter = yfilter;
+    }
+    if(value_path == "suppressed-alarms-count")
+    {
+        suppressed_alarms_count.yfilter = yfilter;
+    }
+}
+
+bool Suppression::RuleSummaries::RuleSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-name" || name == "rule-name-xr" || name == "rule-state" || name == "suppressed-alarms-count")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf AlAlarmBistate::not_available {0, "not-available"};
 const Enum::YLeaf AlAlarmBistate::active {1, "active"};
 const Enum::YLeaf AlAlarmBistate::clear {2, "clear"};
-
-const Enum::YLeaf AcRuleState::rule_unapplied {0, "rule-unapplied"};
-const Enum::YLeaf AcRuleState::rule_applied {1, "rule-applied"};
-const Enum::YLeaf AcRuleState::rule_applied_all {2, "rule-applied-all"};
 
 const Enum::YLeaf AlAlarmSeverity::unknown {-1, "unknown"};
 const Enum::YLeaf AlAlarmSeverity::emergency {0, "emergency"};
@@ -3603,6 +3374,10 @@ const Enum::YLeaf AlAlarmSeverity::warning {4, "warning"};
 const Enum::YLeaf AlAlarmSeverity::notice {5, "notice"};
 const Enum::YLeaf AlAlarmSeverity::informational {6, "informational"};
 const Enum::YLeaf AlAlarmSeverity::debugging {7, "debugging"};
+
+const Enum::YLeaf AcRuleState::rule_unapplied {0, "rule-unapplied"};
+const Enum::YLeaf AcRuleState::rule_applied {1, "rule-applied"};
+const Enum::YLeaf AcRuleState::rule_applied_all {2, "rule-applied-all"};
 
 
 }

@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace IANA_ADDRESS_FAMILY_NUMBERS_MIB {
 
-class Addressfamilynumbers : public ydk::Enum
+class AddressFamilyNumbers : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

@@ -10,11 +10,10 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_atm_vcm_cfg {
 
-class AtmPvcTestMode : public ydk::Enum
+class AtmVpiBitsMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf loop;
-        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf twelve;
 
 };
 
@@ -25,10 +24,11 @@ class AtmPvpTestMode : public ydk::Enum
 
 };
 
-class AtmVpiBitsMode : public ydk::Enum
+class AtmPvcTestMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf twelve;
+        static const ydk::Enum::YLeaf loop;
+        static const ydk::Enum::YLeaf reserved;
 
 };
 

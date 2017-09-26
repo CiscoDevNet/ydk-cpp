@@ -19,7 +19,7 @@ Ipv6Neighbor::Ipv6Neighbor()
 {
     neighbors->parent = this;
 
-    yang_name = "ipv6-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-cfg";
+    yang_name = "ipv6-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv6Neighbor::~Ipv6Neighbor()
@@ -43,27 +43,16 @@ std::string Ipv6Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Neighbor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Neighbor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (scavenge_timeout.is_set || is_set(scavenge_timeout.yfilter)) leaf_name_data.push_back(scavenge_timeout.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -144,7 +133,8 @@ bool Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 
 Ipv6Neighbor::Neighbors::Neighbors()
 {
-    yang_name = "neighbors"; yang_parent_name = "ipv6-neighbor";
+
+    yang_name = "neighbors"; yang_parent_name = "ipv6-neighbor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Neighbor::Neighbors::~Neighbors()
@@ -171,33 +161,26 @@ bool Ipv6Neighbor::Neighbors::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv6Neighbor::Neighbors::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Neighbor::Neighbors::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbors";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Neighbor::Neighbors::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Neighbor::Neighbors::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -256,7 +239,8 @@ Ipv6Neighbor::Neighbors::Neighbor::Neighbor()
     mac_address{YType::str, "mac-address"},
     zone{YType::str, "zone"}
 {
-    yang_name = "neighbor"; yang_parent_name = "neighbors";
+
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Neighbor::Neighbors::Neighbor::~Neighbor()
@@ -282,27 +266,22 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_operation() const
 	|| ydk::is_set(zone.yfilter);
 }
 
+std::string Ipv6Neighbor::Neighbors::Neighbor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor/neighbors/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Neighbor::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Neighbor::Neighbors::Neighbor::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Neighbor::Neighbors::Neighbor::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-nd-cfg:ipv6-neighbor/neighbors/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
@@ -311,9 +290,7 @@ const EntityPath Ipv6Neighbor::Neighbors::Neighbor::get_entity_path(Entity* ance
     if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (zone.is_set || is_set(zone.yfilter)) leaf_name_data.push_back(zone.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -393,25 +370,25 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-const Enum::YLeaf Ipv6NdMonth::january {0, "january"};
-const Enum::YLeaf Ipv6NdMonth::february {1, "february"};
-const Enum::YLeaf Ipv6NdMonth::march {2, "march"};
-const Enum::YLeaf Ipv6NdMonth::april {3, "april"};
-const Enum::YLeaf Ipv6NdMonth::may {4, "may"};
-const Enum::YLeaf Ipv6NdMonth::june {5, "june"};
-const Enum::YLeaf Ipv6NdMonth::july {6, "july"};
-const Enum::YLeaf Ipv6NdMonth::august {7, "august"};
-const Enum::YLeaf Ipv6NdMonth::september {8, "september"};
-const Enum::YLeaf Ipv6NdMonth::october {9, "october"};
-const Enum::YLeaf Ipv6NdMonth::november {10, "november"};
-const Enum::YLeaf Ipv6NdMonth::december {11, "december"};
-
-const Enum::YLeaf Ipv6SrpEncapsulation::srpa {5, "srpa"};
-const Enum::YLeaf Ipv6SrpEncapsulation::srpb {6, "srpb"};
+const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
+const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
 
 const Enum::YLeaf Ipv6NdRouterPref::high {1, "high"};
 const Enum::YLeaf Ipv6NdRouterPref::medium {2, "medium"};
 const Enum::YLeaf Ipv6NdRouterPref::low {3, "low"};
+
+const Enum::YLeaf Ipv6ndMonth::january {0, "january"};
+const Enum::YLeaf Ipv6ndMonth::february {1, "february"};
+const Enum::YLeaf Ipv6ndMonth::march {2, "march"};
+const Enum::YLeaf Ipv6ndMonth::april {3, "april"};
+const Enum::YLeaf Ipv6ndMonth::may {4, "may"};
+const Enum::YLeaf Ipv6ndMonth::june {5, "june"};
+const Enum::YLeaf Ipv6ndMonth::july {6, "july"};
+const Enum::YLeaf Ipv6ndMonth::august {7, "august"};
+const Enum::YLeaf Ipv6ndMonth::september {8, "september"};
+const Enum::YLeaf Ipv6ndMonth::october {9, "october"};
+const Enum::YLeaf Ipv6ndMonth::november {10, "november"};
+const Enum::YLeaf Ipv6ndMonth::december {11, "december"};
 
 
 }

@@ -11,7 +11,6 @@
 #include <iostream>
 #include <memory>
 #include "../src/path_api.hpp"
-#include "../src/netconf_provider.hpp"
 
 
 void print_paths(ydk::path::SchemaNode & sn)
@@ -24,10 +23,8 @@ void print_paths(ydk::path::SchemaNode & sn)
 void test_bgp_create()
 {
     ydk::path::Repository repo{};
-
-    ydk::NetconfServiceProvider sp{repo,"127.0.0.1", "admin", "admin",  2022};
-
-    ydk::path::RootSchemaNode& schema = sp.get_root_schema();
+    ydk::path::NetconfSession session{repo,"127.0.0.1", "admin", "admin",  12022};
+    ydk::path::RootSchemaNode& schema = session.get_root_schema();
     print_paths(schema);
 
     auto & bgp = schema.create_datanode("openconfig-bgp:bgp", "");
@@ -94,10 +91,10 @@ void test_bgp_create()
     create_rpc->get_input_node().create_datanode("entity", xml);
 
     // call create
-    (*create_rpc)(sp);
+    (*create_rpc)(session);
 }
 
-//void test_read(ydk::ServiceProvider *sp, ydk::SchemaNode* schema)
+//void test_read(ydk::path::Session *session, ydk::SchemaNode* schema)
 //{
 //   const char *bgp_xml = "\
 //         <bgp xmlns=\"http://openconfig.net/yang/bgp\">\

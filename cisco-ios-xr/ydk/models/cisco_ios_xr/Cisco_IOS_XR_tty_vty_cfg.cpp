@@ -17,7 +17,7 @@ Vty::Vty()
 {
     vty_pools->parent = this;
 
-    yang_name = "vty"; yang_parent_name = "Cisco-IOS-XR-tty-vty-cfg";
+    yang_name = "vty"; yang_parent_name = "Cisco-IOS-XR-tty-vty-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Vty::~Vty()
@@ -39,26 +39,15 @@ std::string Vty::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tty-vty-cfg:vty";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vty::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vty::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Vty::has_leaf_or_child_of_name(const std::string & name) const
 
 Vty::VtyPools::VtyPools()
 {
-    yang_name = "vty-pools"; yang_parent_name = "vty";
+
+    yang_name = "vty-pools"; yang_parent_name = "vty"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vty::VtyPools::~VtyPools()
@@ -156,33 +146,26 @@ bool Vty::VtyPools::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Vty::VtyPools::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tty-vty-cfg:vty/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vty::VtyPools::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vty-pools";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vty::VtyPools::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vty::VtyPools::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tty-vty-cfg:vty/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,8 @@ Vty::VtyPools::VtyPool::VtyPool()
     line_template{YType::str, "line-template"},
     none{YType::str, "none"}
 {
-    yang_name = "vty-pool"; yang_parent_name = "vty-pools";
+
+    yang_name = "vty-pool"; yang_parent_name = "vty-pools"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vty::VtyPools::VtyPool::~VtyPool()
@@ -267,27 +251,22 @@ bool Vty::VtyPools::VtyPool::has_operation() const
 	|| ydk::is_set(none.yfilter);
 }
 
+std::string Vty::VtyPools::VtyPool::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tty-vty-cfg:vty/vty-pools/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vty::VtyPools::VtyPool::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vty-pool" <<"[pool-name='" <<pool_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vty::VtyPools::VtyPool::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vty::VtyPools::VtyPool::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-tty-vty-cfg:vty/vty-pools/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
@@ -296,9 +275,7 @@ const EntityPath Vty::VtyPools::VtyPool::get_entity_path(Entity* ancestor) const
     if (line_template.is_set || is_set(line_template.yfilter)) leaf_name_data.push_back(line_template.get_name_leafdata());
     if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

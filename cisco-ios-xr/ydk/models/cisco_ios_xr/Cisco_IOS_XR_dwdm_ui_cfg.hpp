@@ -10,37 +10,18 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dwdm_ui_cfg {
 
-class DwdmAdminState : public ydk::Enum
+class Fec : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf out_of_service;
-        static const ydk::Enum::YLeaf in_service;
-        static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf in_service_config_allowed;
-
-};
-
-class OduAlarm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf oci;
-        static const ydk::Enum::YLeaf odu_ais;
-        static const ydk::Enum::YLeaf lck;
-        static const ydk::Enum::YLeaf odu_bdi;
-        static const ydk::Enum::YLeaf odu_sf;
-        static const ydk::Enum::YLeaf odu_sd;
-        static const ydk::Enum::YLeaf plm;
-        static const ydk::Enum::YLeaf odu_tim;
-
-};
-
-class WaveChannelNum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf channel_wavelength;
-        static const ydk::Enum::YLeaf channel_frequency;
-        static const ydk::Enum::YLeaf Y_100mhz_frequency;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf enhanced;
+        static const ydk::Enum::YLeaf high_gain_hd;
+        static const ydk::Enum::YLeaf long_haul_hd;
+        static const ydk::Enum::YLeaf high_gain_sd;
+        static const ydk::Enum::YLeaf long_haul_sd;
+        static const ydk::Enum::YLeaf ci_bch;
+        static const ydk::Enum::YLeaf high_gain_multivendor_hd;
 
 };
 
@@ -51,6 +32,25 @@ class PrbsMode : public ydk::Enum
         static const ydk::Enum::YLeaf sink;
         static const ydk::Enum::YLeaf source_sink;
         static const ydk::Enum::YLeaf invalid;
+
+};
+
+class Efec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf i__DOT__4;
+        static const ydk::Enum::YLeaf i__DOT__7;
+
+};
+
+class WaveChannelNum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf channel_wavelength;
+        static const ydk::Enum::YLeaf channel_frequency;
+        static const ydk::Enum::YLeaf Y_100mhz_frequency;
 
 };
 
@@ -71,12 +71,13 @@ class OtuAlarm : public ydk::Enum
 
 };
 
-class Efec : public ydk::Enum
+class DwdmAdminState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf i__DOT__4;
-        static const ydk::Enum::YLeaf i__DOT__7;
+        static const ydk::Enum::YLeaf out_of_service;
+        static const ydk::Enum::YLeaf in_service;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf in_service_config_allowed;
 
 };
 
@@ -91,12 +92,33 @@ class PrbsPattern : public ydk::Enum
 
 };
 
-class DwdmLoopback : public ydk::Enum
+class OduThreshold : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf odu_sd;
+        static const ydk::Enum::YLeaf odu_sf;
+
+};
+
+class Framing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf opu1e;
+        static const ydk::Enum::YLeaf opu2e;
+
+};
+
+class OduAlarm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf oci;
+        static const ydk::Enum::YLeaf odu_ais;
+        static const ydk::Enum::YLeaf lck;
+        static const ydk::Enum::YLeaf odu_bdi;
+        static const ydk::Enum::YLeaf odu_sf;
+        static const ydk::Enum::YLeaf odu_sd;
+        static const ydk::Enum::YLeaf plm;
+        static const ydk::Enum::YLeaf odu_tim;
 
 };
 
@@ -110,26 +132,19 @@ class OtuThreshold : public ydk::Enum
 
 };
 
-class Fec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf enhanced;
-        static const ydk::Enum::YLeaf high_gain_hd;
-        static const ydk::Enum::YLeaf long_haul_hd;
-        static const ydk::Enum::YLeaf high_gain_sd;
-        static const ydk::Enum::YLeaf long_haul_sd;
-        static const ydk::Enum::YLeaf ci_bch;
-        static const ydk::Enum::YLeaf high_gain_multivendor_hd;
-
-};
-
 class ExpectedTti : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf expected_tti_ascii;
         static const ydk::Enum::YLeaf expected_tti_hex;
+
+};
+
+class TxTti : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tx_tti_ascii;
+        static const ydk::Enum::YLeaf tx_tti_hex;
 
 };
 
@@ -141,27 +156,12 @@ class Proactive : public ydk::Enum
 
 };
 
-class Framing : public ydk::Enum
+class DwdmLoopback : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf opu1e;
-        static const ydk::Enum::YLeaf opu2e;
-
-};
-
-class OduThreshold : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf odu_sd;
-        static const ydk::Enum::YLeaf odu_sf;
-
-};
-
-class TxTti : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tx_tti_ascii;
-        static const ydk::Enum::YLeaf tx_tti_hex;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
 
 };
 

@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace SONET_MIB {
 
-class SonetMib : public ydk::Entity
+class SONETMIB : public ydk::Entity
 {
     public:
-        SonetMib();
-        ~SonetMib();
+        SONETMIB();
+        ~SONETMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,44 +31,461 @@ class SonetMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Sonetmedium; //type: SonetMib::Sonetmedium
-        class Sonetmediumtable; //type: SonetMib::Sonetmediumtable
-        class Sonetsectioncurrenttable; //type: SonetMib::Sonetsectioncurrenttable
-        class Sonetsectionintervaltable; //type: SonetMib::Sonetsectionintervaltable
-        class Sonetlinecurrenttable; //type: SonetMib::Sonetlinecurrenttable
-        class Sonetlineintervaltable; //type: SonetMib::Sonetlineintervaltable
-        class Sonetfarendlinecurrenttable; //type: SonetMib::Sonetfarendlinecurrenttable
-        class Sonetfarendlineintervaltable; //type: SonetMib::Sonetfarendlineintervaltable
-        class Sonetpathcurrenttable; //type: SonetMib::Sonetpathcurrenttable
-        class Sonetpathintervaltable; //type: SonetMib::Sonetpathintervaltable
-        class Sonetfarendpathcurrenttable; //type: SonetMib::Sonetfarendpathcurrenttable
-        class Sonetfarendpathintervaltable; //type: SonetMib::Sonetfarendpathintervaltable
-        class Sonetvtcurrenttable; //type: SonetMib::Sonetvtcurrenttable
-        class Sonetvtintervaltable; //type: SonetMib::Sonetvtintervaltable
-        class Sonetfarendvtcurrenttable; //type: SonetMib::Sonetfarendvtcurrenttable
-        class Sonetfarendvtintervaltable; //type: SonetMib::Sonetfarendvtintervaltable
+        class Sonetmedium; //type: SONETMIB::Sonetmedium
+        class Sonetmediumtable; //type: SONETMIB::Sonetmediumtable
+        class Sonetsectioncurrenttable; //type: SONETMIB::Sonetsectioncurrenttable
+        class Sonetsectionintervaltable; //type: SONETMIB::Sonetsectionintervaltable
+        class Sonetlinecurrenttable; //type: SONETMIB::Sonetlinecurrenttable
+        class Sonetlineintervaltable; //type: SONETMIB::Sonetlineintervaltable
+        class Sonetfarendlinecurrenttable; //type: SONETMIB::Sonetfarendlinecurrenttable
+        class Sonetfarendlineintervaltable; //type: SONETMIB::Sonetfarendlineintervaltable
+        class Sonetpathcurrenttable; //type: SONETMIB::Sonetpathcurrenttable
+        class Sonetpathintervaltable; //type: SONETMIB::Sonetpathintervaltable
+        class Sonetfarendpathcurrenttable; //type: SONETMIB::Sonetfarendpathcurrenttable
+        class Sonetfarendpathintervaltable; //type: SONETMIB::Sonetfarendpathintervaltable
+        class Sonetvtcurrenttable; //type: SONETMIB::Sonetvtcurrenttable
+        class Sonetvtintervaltable; //type: SONETMIB::Sonetvtintervaltable
+        class Sonetfarendvtcurrenttable; //type: SONETMIB::Sonetfarendvtcurrenttable
+        class Sonetfarendvtintervaltable; //type: SONETMIB::Sonetfarendvtintervaltable
 
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable> sonetfarendlinecurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable> sonetfarendlineintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable> sonetfarendpathcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable> sonetfarendpathintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable> sonetfarendvtcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable> sonetfarendvtintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable> sonetlinecurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable> sonetlineintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetmedium> sonetmedium;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable> sonetmediumtable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable> sonetpathcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable> sonetpathintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable> sonetsectioncurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable> sonetsectionintervaltable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable> sonetvtcurrenttable;
-        std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable> sonetvtintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendlinecurrenttable> sonetfarendlinecurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendlineintervaltable> sonetfarendlineintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendpathcurrenttable> sonetfarendpathcurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendpathintervaltable> sonetfarendpathintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendvtcurrenttable> sonetfarendvtcurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendvtintervaltable> sonetfarendvtintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetlinecurrenttable> sonetlinecurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetlineintervaltable> sonetlineintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetmedium> sonetmedium;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetmediumtable> sonetmediumtable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetpathcurrenttable> sonetpathcurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetpathintervaltable> sonetpathintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetsectioncurrenttable> sonetsectioncurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetsectionintervaltable> sonetsectionintervaltable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetvtcurrenttable> sonetvtcurrenttable;
+        std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetvtintervaltable> sonetvtintervaltable;
         
-}; // SonetMib
+}; // SONETMIB
 
 
-class SonetMib::Sonetmedium : public ydk::Entity
+class SONETMIB::Sonetfarendlinecurrenttable : public ydk::Entity
+{
+    public:
+        Sonetfarendlinecurrenttable();
+        ~Sonetfarendlinecurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendlinecurrententry; //type: SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry> > sonetfarendlinecurrententry;
+        
+}; // SONETMIB::Sonetfarendlinecurrenttable
+
+
+class SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry : public ydk::Entity
+{
+    public:
+        Sonetfarendlinecurrententry();
+        ~Sonetfarendlinecurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendlinecurrentess; //type: uint32
+        ydk::YLeaf sonetfarendlinecurrentsess; //type: uint32
+        ydk::YLeaf sonetfarendlinecurrentcvs; //type: uint32
+        ydk::YLeaf sonetfarendlinecurrentuass; //type: uint32
+
+}; // SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry
+
+
+class SONETMIB::Sonetfarendlineintervaltable : public ydk::Entity
+{
+    public:
+        Sonetfarendlineintervaltable();
+        ~Sonetfarendlineintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendlineintervalentry; //type: SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry> > sonetfarendlineintervalentry;
+        
+}; // SONETMIB::Sonetfarendlineintervaltable
+
+
+class SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry : public ydk::Entity
+{
+    public:
+        Sonetfarendlineintervalentry();
+        ~Sonetfarendlineintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendlineintervalnumber; //type: int32
+        ydk::YLeaf sonetfarendlineintervaless; //type: uint32
+        ydk::YLeaf sonetfarendlineintervalsess; //type: uint32
+        ydk::YLeaf sonetfarendlineintervalcvs; //type: uint32
+        ydk::YLeaf sonetfarendlineintervaluass; //type: uint32
+        ydk::YLeaf sonetfarendlineintervalvaliddata; //type: boolean
+
+}; // SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry
+
+
+class SONETMIB::Sonetfarendpathcurrenttable : public ydk::Entity
+{
+    public:
+        Sonetfarendpathcurrenttable();
+        ~Sonetfarendpathcurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendpathcurrententry; //type: SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry> > sonetfarendpathcurrententry;
+        
+}; // SONETMIB::Sonetfarendpathcurrenttable
+
+
+class SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry : public ydk::Entity
+{
+    public:
+        Sonetfarendpathcurrententry();
+        ~Sonetfarendpathcurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendpathcurrentess; //type: uint32
+        ydk::YLeaf sonetfarendpathcurrentsess; //type: uint32
+        ydk::YLeaf sonetfarendpathcurrentcvs; //type: uint32
+        ydk::YLeaf sonetfarendpathcurrentuass; //type: uint32
+
+}; // SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry
+
+
+class SONETMIB::Sonetfarendpathintervaltable : public ydk::Entity
+{
+    public:
+        Sonetfarendpathintervaltable();
+        ~Sonetfarendpathintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendpathintervalentry; //type: SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry> > sonetfarendpathintervalentry;
+        
+}; // SONETMIB::Sonetfarendpathintervaltable
+
+
+class SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry : public ydk::Entity
+{
+    public:
+        Sonetfarendpathintervalentry();
+        ~Sonetfarendpathintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendpathintervalnumber; //type: int32
+        ydk::YLeaf sonetfarendpathintervaless; //type: uint32
+        ydk::YLeaf sonetfarendpathintervalsess; //type: uint32
+        ydk::YLeaf sonetfarendpathintervalcvs; //type: uint32
+        ydk::YLeaf sonetfarendpathintervaluass; //type: uint32
+        ydk::YLeaf sonetfarendpathintervalvaliddata; //type: boolean
+
+}; // SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry
+
+
+class SONETMIB::Sonetfarendvtcurrenttable : public ydk::Entity
+{
+    public:
+        Sonetfarendvtcurrenttable();
+        ~Sonetfarendvtcurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendvtcurrententry; //type: SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry> > sonetfarendvtcurrententry;
+        
+}; // SONETMIB::Sonetfarendvtcurrenttable
+
+
+class SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry : public ydk::Entity
+{
+    public:
+        Sonetfarendvtcurrententry();
+        ~Sonetfarendvtcurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendvtcurrentess; //type: uint32
+        ydk::YLeaf sonetfarendvtcurrentsess; //type: uint32
+        ydk::YLeaf sonetfarendvtcurrentcvs; //type: uint32
+        ydk::YLeaf sonetfarendvtcurrentuass; //type: uint32
+
+}; // SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry
+
+
+class SONETMIB::Sonetfarendvtintervaltable : public ydk::Entity
+{
+    public:
+        Sonetfarendvtintervaltable();
+        ~Sonetfarendvtintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetfarendvtintervalentry; //type: SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry> > sonetfarendvtintervalentry;
+        
+}; // SONETMIB::Sonetfarendvtintervaltable
+
+
+class SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry : public ydk::Entity
+{
+    public:
+        Sonetfarendvtintervalentry();
+        ~Sonetfarendvtintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetfarendvtintervalnumber; //type: int32
+        ydk::YLeaf sonetfarendvtintervaless; //type: uint32
+        ydk::YLeaf sonetfarendvtintervalsess; //type: uint32
+        ydk::YLeaf sonetfarendvtintervalcvs; //type: uint32
+        ydk::YLeaf sonetfarendvtintervaluass; //type: uint32
+        ydk::YLeaf sonetfarendvtintervalvaliddata; //type: boolean
+
+}; // SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry
+
+
+class SONETMIB::Sonetlinecurrenttable : public ydk::Entity
+{
+    public:
+        Sonetlinecurrenttable();
+        ~Sonetlinecurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetlinecurrententry; //type: SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry> > sonetlinecurrententry;
+        
+}; // SONETMIB::Sonetlinecurrenttable
+
+
+class SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry : public ydk::Entity
+{
+    public:
+        Sonetlinecurrententry();
+        ~Sonetlinecurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetlinecurrentstatus; //type: int32
+        ydk::YLeaf sonetlinecurrentess; //type: uint32
+        ydk::YLeaf sonetlinecurrentsess; //type: uint32
+        ydk::YLeaf sonetlinecurrentcvs; //type: uint32
+        ydk::YLeaf sonetlinecurrentuass; //type: uint32
+
+}; // SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry
+
+
+class SONETMIB::Sonetlineintervaltable : public ydk::Entity
+{
+    public:
+        Sonetlineintervaltable();
+        ~Sonetlineintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sonetlineintervalentry; //type: SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry> > sonetlineintervalentry;
+        
+}; // SONETMIB::Sonetlineintervaltable
+
+
+class SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry : public ydk::Entity
+{
+    public:
+        Sonetlineintervalentry();
+        ~Sonetlineintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf sonetlineintervalnumber; //type: int32
+        ydk::YLeaf sonetlineintervaless; //type: uint32
+        ydk::YLeaf sonetlineintervalsess; //type: uint32
+        ydk::YLeaf sonetlineintervalcvs; //type: uint32
+        ydk::YLeaf sonetlineintervaluass; //type: uint32
+        ydk::YLeaf sonetlineintervalvaliddata; //type: boolean
+
+}; // SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry
+
+
+class SONETMIB::Sonetmedium : public ydk::Entity
 {
     public:
         Sonetmedium();
@@ -76,21 +493,22 @@ class SonetMib::Sonetmedium : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf sonetsesthresholdset; //type: Sonetsesthresholdset
         class Sonetsesthresholdset;
 
-}; // SonetMib::Sonetmedium
+}; // SONETMIB::Sonetmedium
 
 
-class SonetMib::Sonetmediumtable : public ydk::Entity
+class SONETMIB::Sonetmediumtable : public ydk::Entity
 {
     public:
         Sonetmediumtable();
@@ -98,22 +516,23 @@ class SonetMib::Sonetmediumtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetmediumentry; //type: SonetMib::Sonetmediumtable::Sonetmediumentry
+        class Sonetmediumentry; //type: SONETMIB::Sonetmediumtable::Sonetmediumentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetmediumtable::Sonetmediumentry> > sonetmediumentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetmediumtable::Sonetmediumentry> > sonetmediumentry;
         
-}; // SonetMib::Sonetmediumtable
+}; // SONETMIB::Sonetmediumtable
 
 
-class SonetMib::Sonetmediumtable::Sonetmediumentry : public ydk::Entity
+class SONETMIB::Sonetmediumtable::Sonetmediumentry : public ydk::Entity
 {
     public:
         Sonetmediumentry();
@@ -121,15 +540,16 @@ class SonetMib::Sonetmediumtable::Sonetmediumentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf sonetmediumtype; //type: Sonetmediumtype
         ydk::YLeaf sonetmediumtimeelapsed; //type: int32
@@ -143,312 +563,10 @@ class SonetMib::Sonetmediumtable::Sonetmediumentry : public ydk::Entity
         class Sonetmediumlinecoding;
         class Sonetmediumlinetype;
 
-}; // SonetMib::Sonetmediumtable::Sonetmediumentry
+}; // SONETMIB::Sonetmediumtable::Sonetmediumentry
 
 
-class SonetMib::Sonetsectioncurrenttable : public ydk::Entity
-{
-    public:
-        Sonetsectioncurrenttable();
-        ~Sonetsectioncurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetsectioncurrententry; //type: SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry> > sonetsectioncurrententry;
-        
-}; // SonetMib::Sonetsectioncurrenttable
-
-
-class SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry : public ydk::Entity
-{
-    public:
-        Sonetsectioncurrententry();
-        ~Sonetsectioncurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetsectioncurrentstatus; //type: int32
-        ydk::YLeaf sonetsectioncurrentess; //type: uint32
-        ydk::YLeaf sonetsectioncurrentsess; //type: uint32
-        ydk::YLeaf sonetsectioncurrentsefss; //type: uint32
-        ydk::YLeaf sonetsectioncurrentcvs; //type: uint32
-
-}; // SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry
-
-
-class SonetMib::Sonetsectionintervaltable : public ydk::Entity
-{
-    public:
-        Sonetsectionintervaltable();
-        ~Sonetsectionintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetsectionintervalentry; //type: SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry> > sonetsectionintervalentry;
-        
-}; // SonetMib::Sonetsectionintervaltable
-
-
-class SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry : public ydk::Entity
-{
-    public:
-        Sonetsectionintervalentry();
-        ~Sonetsectionintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetsectionintervalnumber; //type: int32
-        ydk::YLeaf sonetsectionintervaless; //type: uint32
-        ydk::YLeaf sonetsectionintervalsess; //type: uint32
-        ydk::YLeaf sonetsectionintervalsefss; //type: uint32
-        ydk::YLeaf sonetsectionintervalcvs; //type: uint32
-        ydk::YLeaf sonetsectionintervalvaliddata; //type: boolean
-
-}; // SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry
-
-
-class SonetMib::Sonetlinecurrenttable : public ydk::Entity
-{
-    public:
-        Sonetlinecurrenttable();
-        ~Sonetlinecurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetlinecurrententry; //type: SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry> > sonetlinecurrententry;
-        
-}; // SonetMib::Sonetlinecurrenttable
-
-
-class SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry : public ydk::Entity
-{
-    public:
-        Sonetlinecurrententry();
-        ~Sonetlinecurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetlinecurrentstatus; //type: int32
-        ydk::YLeaf sonetlinecurrentess; //type: uint32
-        ydk::YLeaf sonetlinecurrentsess; //type: uint32
-        ydk::YLeaf sonetlinecurrentcvs; //type: uint32
-        ydk::YLeaf sonetlinecurrentuass; //type: uint32
-
-}; // SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry
-
-
-class SonetMib::Sonetlineintervaltable : public ydk::Entity
-{
-    public:
-        Sonetlineintervaltable();
-        ~Sonetlineintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetlineintervalentry; //type: SonetMib::Sonetlineintervaltable::Sonetlineintervalentry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetlineintervaltable::Sonetlineintervalentry> > sonetlineintervalentry;
-        
-}; // SonetMib::Sonetlineintervaltable
-
-
-class SonetMib::Sonetlineintervaltable::Sonetlineintervalentry : public ydk::Entity
-{
-    public:
-        Sonetlineintervalentry();
-        ~Sonetlineintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetlineintervalnumber; //type: int32
-        ydk::YLeaf sonetlineintervaless; //type: uint32
-        ydk::YLeaf sonetlineintervalsess; //type: uint32
-        ydk::YLeaf sonetlineintervalcvs; //type: uint32
-        ydk::YLeaf sonetlineintervaluass; //type: uint32
-        ydk::YLeaf sonetlineintervalvaliddata; //type: boolean
-
-}; // SonetMib::Sonetlineintervaltable::Sonetlineintervalentry
-
-
-class SonetMib::Sonetfarendlinecurrenttable : public ydk::Entity
-{
-    public:
-        Sonetfarendlinecurrenttable();
-        ~Sonetfarendlinecurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetfarendlinecurrententry; //type: SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry> > sonetfarendlinecurrententry;
-        
-}; // SonetMib::Sonetfarendlinecurrenttable
-
-
-class SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry : public ydk::Entity
-{
-    public:
-        Sonetfarendlinecurrententry();
-        ~Sonetfarendlinecurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendlinecurrentess; //type: uint32
-        ydk::YLeaf sonetfarendlinecurrentsess; //type: uint32
-        ydk::YLeaf sonetfarendlinecurrentcvs; //type: uint32
-        ydk::YLeaf sonetfarendlinecurrentuass; //type: uint32
-
-}; // SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry
-
-
-class SonetMib::Sonetfarendlineintervaltable : public ydk::Entity
-{
-    public:
-        Sonetfarendlineintervaltable();
-        ~Sonetfarendlineintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetfarendlineintervalentry; //type: SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry> > sonetfarendlineintervalentry;
-        
-}; // SonetMib::Sonetfarendlineintervaltable
-
-
-class SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry : public ydk::Entity
-{
-    public:
-        Sonetfarendlineintervalentry();
-        ~Sonetfarendlineintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendlineintervalnumber; //type: int32
-        ydk::YLeaf sonetfarendlineintervaless; //type: uint32
-        ydk::YLeaf sonetfarendlineintervalsess; //type: uint32
-        ydk::YLeaf sonetfarendlineintervalcvs; //type: uint32
-        ydk::YLeaf sonetfarendlineintervaluass; //type: uint32
-        ydk::YLeaf sonetfarendlineintervalvaliddata; //type: boolean
-
-}; // SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry
-
-
-class SonetMib::Sonetpathcurrenttable : public ydk::Entity
+class SONETMIB::Sonetpathcurrenttable : public ydk::Entity
 {
     public:
         Sonetpathcurrenttable();
@@ -456,22 +574,23 @@ class SonetMib::Sonetpathcurrenttable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetpathcurrententry; //type: SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry
+        class Sonetpathcurrententry; //type: SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry> > sonetpathcurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry> > sonetpathcurrententry;
         
-}; // SonetMib::Sonetpathcurrenttable
+}; // SONETMIB::Sonetpathcurrenttable
 
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry : public ydk::Entity
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry : public ydk::Entity
 {
     public:
         Sonetpathcurrententry();
@@ -479,15 +598,16 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry : public ydk::Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf sonetpathcurrentwidth; //type: Sonetpathcurrentwidth
         ydk::YLeaf sonetpathcurrentstatus; //type: int32
@@ -505,10 +625,10 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry : public ydk::Entit
         class Cspsignallingtransportmode;
         class Csptributarygroupingtype;
 
-}; // SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry
+}; // SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry
 
 
-class SonetMib::Sonetpathintervaltable : public ydk::Entity
+class SONETMIB::Sonetpathintervaltable : public ydk::Entity
 {
     public:
         Sonetpathintervaltable();
@@ -516,22 +636,23 @@ class SonetMib::Sonetpathintervaltable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetpathintervalentry; //type: SonetMib::Sonetpathintervaltable::Sonetpathintervalentry
+        class Sonetpathintervalentry; //type: SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetpathintervaltable::Sonetpathintervalentry> > sonetpathintervalentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry> > sonetpathintervalentry;
         
-}; // SonetMib::Sonetpathintervaltable
+}; // SONETMIB::Sonetpathintervaltable
 
 
-class SonetMib::Sonetpathintervaltable::Sonetpathintervalentry : public ydk::Entity
+class SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry : public ydk::Entity
 {
     public:
         Sonetpathintervalentry();
@@ -539,15 +660,16 @@ class SonetMib::Sonetpathintervaltable::Sonetpathintervalentry : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf sonetpathintervalnumber; //type: int32
         ydk::YLeaf sonetpathintervaless; //type: uint32
@@ -556,110 +678,115 @@ class SonetMib::Sonetpathintervaltable::Sonetpathintervalentry : public ydk::Ent
         ydk::YLeaf sonetpathintervaluass; //type: uint32
         ydk::YLeaf sonetpathintervalvaliddata; //type: boolean
 
-}; // SonetMib::Sonetpathintervaltable::Sonetpathintervalentry
+}; // SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry
 
 
-class SonetMib::Sonetfarendpathcurrenttable : public ydk::Entity
+class SONETMIB::Sonetsectioncurrenttable : public ydk::Entity
 {
     public:
-        Sonetfarendpathcurrenttable();
-        ~Sonetfarendpathcurrenttable();
+        Sonetsectioncurrenttable();
+        ~Sonetsectioncurrenttable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetfarendpathcurrententry; //type: SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry
+        class Sonetsectioncurrententry; //type: SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry> > sonetfarendpathcurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry> > sonetsectioncurrententry;
         
-}; // SonetMib::Sonetfarendpathcurrenttable
+}; // SONETMIB::Sonetsectioncurrenttable
 
 
-class SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry : public ydk::Entity
+class SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry : public ydk::Entity
 {
     public:
-        Sonetfarendpathcurrententry();
-        ~Sonetfarendpathcurrententry();
+        Sonetsectioncurrententry();
+        ~Sonetsectioncurrententry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendpathcurrentess; //type: uint32
-        ydk::YLeaf sonetfarendpathcurrentsess; //type: uint32
-        ydk::YLeaf sonetfarendpathcurrentcvs; //type: uint32
-        ydk::YLeaf sonetfarendpathcurrentuass; //type: uint32
+        ydk::YLeaf sonetsectioncurrentstatus; //type: int32
+        ydk::YLeaf sonetsectioncurrentess; //type: uint32
+        ydk::YLeaf sonetsectioncurrentsess; //type: uint32
+        ydk::YLeaf sonetsectioncurrentsefss; //type: uint32
+        ydk::YLeaf sonetsectioncurrentcvs; //type: uint32
 
-}; // SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry
+}; // SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry
 
 
-class SonetMib::Sonetfarendpathintervaltable : public ydk::Entity
+class SONETMIB::Sonetsectionintervaltable : public ydk::Entity
 {
     public:
-        Sonetfarendpathintervaltable();
-        ~Sonetfarendpathintervaltable();
+        Sonetsectionintervaltable();
+        ~Sonetsectionintervaltable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetfarendpathintervalentry; //type: SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry
+        class Sonetsectionintervalentry; //type: SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry> > sonetfarendpathintervalentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry> > sonetsectionintervalentry;
         
-}; // SonetMib::Sonetfarendpathintervaltable
+}; // SONETMIB::Sonetsectionintervaltable
 
 
-class SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry : public ydk::Entity
+class SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry : public ydk::Entity
 {
     public:
-        Sonetfarendpathintervalentry();
-        ~Sonetfarendpathintervalentry();
+        Sonetsectionintervalentry();
+        ~Sonetsectionintervalentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendpathintervalnumber; //type: int32
-        ydk::YLeaf sonetfarendpathintervaless; //type: uint32
-        ydk::YLeaf sonetfarendpathintervalsess; //type: uint32
-        ydk::YLeaf sonetfarendpathintervalcvs; //type: uint32
-        ydk::YLeaf sonetfarendpathintervaluass; //type: uint32
-        ydk::YLeaf sonetfarendpathintervalvaliddata; //type: boolean
+        ydk::YLeaf sonetsectionintervalnumber; //type: int32
+        ydk::YLeaf sonetsectionintervaless; //type: uint32
+        ydk::YLeaf sonetsectionintervalsess; //type: uint32
+        ydk::YLeaf sonetsectionintervalsefss; //type: uint32
+        ydk::YLeaf sonetsectionintervalcvs; //type: uint32
+        ydk::YLeaf sonetsectionintervalvaliddata; //type: boolean
 
-}; // SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry
+}; // SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry
 
 
-class SonetMib::Sonetvtcurrenttable : public ydk::Entity
+class SONETMIB::Sonetvtcurrenttable : public ydk::Entity
 {
     public:
         Sonetvtcurrenttable();
@@ -667,22 +794,23 @@ class SonetMib::Sonetvtcurrenttable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetvtcurrententry; //type: SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry
+        class Sonetvtcurrententry; //type: SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry> > sonetvtcurrententry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry> > sonetvtcurrententry;
         
-}; // SonetMib::Sonetvtcurrenttable
+}; // SONETMIB::Sonetvtcurrenttable
 
 
-class SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry : public ydk::Entity
+class SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry : public ydk::Entity
 {
     public:
         Sonetvtcurrententry();
@@ -690,15 +818,16 @@ class SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf sonetvtcurrentwidth; //type: Sonetvtcurrentwidth
         ydk::YLeaf sonetvtcurrentstatus; //type: int32
@@ -708,10 +837,10 @@ class SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry : public ydk::Entity
         ydk::YLeaf sonetvtcurrentuass; //type: uint32
         class Sonetvtcurrentwidth;
 
-}; // SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry
+}; // SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry
 
 
-class SonetMib::Sonetvtintervaltable : public ydk::Entity
+class SONETMIB::Sonetvtintervaltable : public ydk::Entity
 {
     public:
         Sonetvtintervaltable();
@@ -719,22 +848,23 @@ class SonetMib::Sonetvtintervaltable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Sonetvtintervalentry; //type: SonetMib::Sonetvtintervaltable::Sonetvtintervalentry
+        class Sonetvtintervalentry; //type: SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry
 
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetvtintervaltable::Sonetvtintervalentry> > sonetvtintervalentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SONET_MIB::SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry> > sonetvtintervalentry;
         
-}; // SonetMib::Sonetvtintervaltable
+}; // SONETMIB::Sonetvtintervaltable
 
 
-class SonetMib::Sonetvtintervaltable::Sonetvtintervalentry : public ydk::Entity
+class SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry : public ydk::Entity
 {
     public:
         Sonetvtintervalentry();
@@ -742,15 +872,16 @@ class SonetMib::Sonetvtintervaltable::Sonetvtintervalentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf sonetvtintervalnumber; //type: int32
         ydk::YLeaf sonetvtintervaless; //type: uint32
@@ -759,109 +890,9 @@ class SonetMib::Sonetvtintervaltable::Sonetvtintervalentry : public ydk::Entity
         ydk::YLeaf sonetvtintervaluass; //type: uint32
         ydk::YLeaf sonetvtintervalvaliddata; //type: boolean
 
-}; // SonetMib::Sonetvtintervaltable::Sonetvtintervalentry
+}; // SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry
 
-
-class SonetMib::Sonetfarendvtcurrenttable : public ydk::Entity
-{
-    public:
-        Sonetfarendvtcurrenttable();
-        ~Sonetfarendvtcurrenttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetfarendvtcurrententry; //type: SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry> > sonetfarendvtcurrententry;
-        
-}; // SonetMib::Sonetfarendvtcurrenttable
-
-
-class SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry : public ydk::Entity
-{
-    public:
-        Sonetfarendvtcurrententry();
-        ~Sonetfarendvtcurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendvtcurrentess; //type: uint32
-        ydk::YLeaf sonetfarendvtcurrentsess; //type: uint32
-        ydk::YLeaf sonetfarendvtcurrentcvs; //type: uint32
-        ydk::YLeaf sonetfarendvtcurrentuass; //type: uint32
-
-}; // SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry
-
-
-class SonetMib::Sonetfarendvtintervaltable : public ydk::Entity
-{
-    public:
-        Sonetfarendvtintervaltable();
-        ~Sonetfarendvtintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sonetfarendvtintervalentry; //type: SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry
-
-        std::vector<std::shared_ptr<SONET_MIB::SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry> > sonetfarendvtintervalentry;
-        
-}; // SonetMib::Sonetfarendvtintervaltable
-
-
-class SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry : public ydk::Entity
-{
-    public:
-        Sonetfarendvtintervalentry();
-        ~Sonetfarendvtintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf sonetfarendvtintervalnumber; //type: int32
-        ydk::YLeaf sonetfarendvtintervaless; //type: uint32
-        ydk::YLeaf sonetfarendvtintervalsess; //type: uint32
-        ydk::YLeaf sonetfarendvtintervalcvs; //type: uint32
-        ydk::YLeaf sonetfarendvtintervaluass; //type: uint32
-        ydk::YLeaf sonetfarendvtintervalvaliddata; //type: boolean
-
-}; // SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry
-
-class SonetMib::Sonetmedium::Sonetsesthresholdset : public ydk::Enum
+class SONETMIB::Sonetmedium::Sonetsesthresholdset : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -872,7 +903,7 @@ class SonetMib::Sonetmedium::Sonetsesthresholdset : public ydk::Enum
 
 };
 
-class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumtype : public ydk::Enum
+class SONETMIB::Sonetmediumtable::Sonetmediumentry::Sonetmediumtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sonet;
@@ -880,7 +911,7 @@ class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumtype : public ydk
 
 };
 
-class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding : public ydk::Enum
+class SONETMIB::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sonetMediumOther;
@@ -891,7 +922,7 @@ class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding : publ
 
 };
 
-class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype : public ydk::Enum
+class SONETMIB::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sonetOther;
@@ -903,7 +934,7 @@ class SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype : public
 
 };
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth : public ydk::Enum
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sts1;
@@ -916,7 +947,7 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwi
 
 };
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload : public ydk::Enum
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unequipped;
@@ -931,7 +962,7 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayloa
 
 };
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarymappingtype : public ydk::Enum
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarymappingtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf asynchronous;
@@ -939,7 +970,7 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarymappin
 
 };
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtransportmode : public ydk::Enum
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtransportmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -948,7 +979,7 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtrans
 
 };
 
-class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupingtype : public ydk::Enum
+class SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupingtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -957,7 +988,7 @@ class SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupi
 
 };
 
-class SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth : public ydk::Enum
+class SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf vtWidth15VC11;

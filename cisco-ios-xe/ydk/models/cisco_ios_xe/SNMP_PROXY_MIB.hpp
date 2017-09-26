@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace SNMP_PROXY_MIB {
 
-class SnmpProxyMib : public ydk::Entity
+class SNMPPROXYMIB : public ydk::Entity
 {
     public:
-        SnmpProxyMib();
-        ~SnmpProxyMib();
+        SNMPPROXYMIB();
+        ~SNMPPROXYMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,14 +32,14 @@ class SnmpProxyMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Snmpproxytable; //type: SnmpProxyMib::Snmpproxytable
+        class Snmpproxytable; //type: SNMPPROXYMIB::Snmpproxytable
 
-        std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable> snmpproxytable;
+        std::shared_ptr<cisco_ios_xe::SNMP_PROXY_MIB::SNMPPROXYMIB::Snmpproxytable> snmpproxytable;
         
-}; // SnmpProxyMib
+}; // SNMPPROXYMIB
 
 
-class SnmpProxyMib::Snmpproxytable : public ydk::Entity
+class SNMPPROXYMIB::Snmpproxytable : public ydk::Entity
 {
     public:
         Snmpproxytable();
@@ -47,22 +47,23 @@ class SnmpProxyMib::Snmpproxytable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Snmpproxyentry; //type: SnmpProxyMib::Snmpproxytable::Snmpproxyentry
+        class Snmpproxyentry; //type: SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry
 
-        std::vector<std::shared_ptr<SNMP_PROXY_MIB::SnmpProxyMib::Snmpproxytable::Snmpproxyentry> > snmpproxyentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::SNMP_PROXY_MIB::SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry> > snmpproxyentry;
         
-}; // SnmpProxyMib::Snmpproxytable
+}; // SNMPPROXYMIB::Snmpproxytable
 
 
-class SnmpProxyMib::Snmpproxytable::Snmpproxyentry : public ydk::Entity
+class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry : public ydk::Entity
 {
     public:
         Snmpproxyentry();
@@ -70,13 +71,14 @@ class SnmpProxyMib::Snmpproxytable::Snmpproxyentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf snmpproxyname; //type: string
         ydk::YLeaf snmpproxytype; //type: Snmpproxytype
@@ -85,13 +87,13 @@ class SnmpProxyMib::Snmpproxytable::Snmpproxyentry : public ydk::Entity
         ydk::YLeaf snmpproxytargetparamsin; //type: string
         ydk::YLeaf snmpproxysingletargetout; //type: string
         ydk::YLeaf snmpproxymultipletargetout; //type: string
-        ydk::YLeaf snmpproxystoragetype; //type: Storagetype
-        ydk::YLeaf snmpproxyrowstatus; //type: Rowstatus
+        ydk::YLeaf snmpproxystoragetype; //type: StorageType
+        ydk::YLeaf snmpproxyrowstatus; //type: RowStatus
         class Snmpproxytype;
 
-}; // SnmpProxyMib::Snmpproxytable::Snmpproxyentry
+}; // SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry
 
-class SnmpProxyMib::Snmpproxytable::Snmpproxyentry::Snmpproxytype : public ydk::Enum
+class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf read;

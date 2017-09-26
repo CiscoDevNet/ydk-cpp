@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_TDM_MIB {
 
-class CiscoIetfPwTdmMib : public ydk::Entity
+class CISCOIETFPWTDMMIB : public ydk::Entity
 {
     public:
-        CiscoIetfPwTdmMib();
-        ~CiscoIetfPwTdmMib();
+        CISCOIETFPWTDMMIB();
+        ~CISCOIETFPWTDMMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,101 +32,24 @@ class CiscoIetfPwTdmMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpwctdmobjects; //type: CiscoIetfPwTdmMib::Cpwctdmobjects
-        class Cpwctdmtable; //type: CiscoIetfPwTdmMib::Cpwctdmtable
-        class Cpwctdmcfgtable; //type: CiscoIetfPwTdmMib::Cpwctdmcfgtable
-        class Cpwctdmperfcurrenttable; //type: CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable
-        class Cpwctdmperfintervaltable; //type: CiscoIetfPwTdmMib::Cpwctdmperfintervaltable
-        class Cpwctdmperf1Dayintervaltable; //type: CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable
+        class Cpwctdmobjects; //type: CISCOIETFPWTDMMIB::Cpwctdmobjects
+        class Cpwctdmtable; //type: CISCOIETFPWTDMMIB::Cpwctdmtable
+        class Cpwctdmcfgtable; //type: CISCOIETFPWTDMMIB::Cpwctdmcfgtable
+        class Cpwctdmperfcurrenttable; //type: CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable
+        class Cpwctdmperfintervaltable; //type: CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable
+        class Cpwctdmperf1Dayintervaltable; //type: CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable
 
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable> cpwctdmcfgtable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmobjects> cpwctdmobjects;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable> cpwctdmperf1dayintervaltable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable> cpwctdmperfcurrenttable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable> cpwctdmperfintervaltable;
-        std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable> cpwctdmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmcfgtable> cpwctdmcfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmobjects> cpwctdmobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable> cpwctdmperf1dayintervaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable> cpwctdmperfcurrenttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable> cpwctdmperfintervaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmtable> cpwctdmtable;
         
-}; // CiscoIetfPwTdmMib
+}; // CISCOIETFPWTDMMIB
 
 
-class CiscoIetfPwTdmMib::Cpwctdmobjects : public ydk::Entity
-{
-    public:
-        Cpwctdmobjects();
-        ~Cpwctdmobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf cpwctdmcfgindexnext; //type: uint32
-
-}; // CiscoIetfPwTdmMib::Cpwctdmobjects
-
-
-class CiscoIetfPwTdmMib::Cpwctdmtable : public ydk::Entity
-{
-    public:
-        Cpwctdmtable();
-        ~Cpwctdmtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwctdmentry; //type: CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry> > cpwctdmentry;
-        
-}; // CiscoIetfPwTdmMib::Cpwctdmtable
-
-
-class CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry : public ydk::Entity
-{
-    public:
-        Cpwctdmentry();
-        ~Cpwctdmentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwctdmrate; //type: int32
-        ydk::YLeaf cpwctdmifindex; //type: int32
-        ydk::YLeaf cpwcgentdmcfgindex; //type: uint32
-        ydk::YLeaf cpwcreltdmcfgindex; //type: uint32
-        ydk::YLeaf cpwctdmconfigerror; //type: Cpwctdmconfigerror
-        ydk::YLeaf cpwctdmtimeelapsed; //type: int32
-        ydk::YLeaf cpwctdmvalidintervals; //type: int32
-        ydk::YLeaf cpwctdmvaliddayintervals; //type: int32
-        ydk::YLeaf cpwctdmcurrentindications; //type: Cpwctdmcurrentindications
-        ydk::YLeaf cpwctdmlatchedindications; //type: Cpwctdmlatchedindications
-        ydk::YLeaf cpwctdmlastestimestamp; //type: uint32
-
-}; // CiscoIetfPwTdmMib::Cpwctdmtable::Cpwctdmentry
-
-
-class CiscoIetfPwTdmMib::Cpwctdmcfgtable : public ydk::Entity
+class CISCOIETFPWTDMMIB::Cpwctdmcfgtable : public ydk::Entity
 {
     public:
         Cpwctdmcfgtable();
@@ -134,22 +57,23 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cpwctdmcfgentry; //type: CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry
+        class Cpwctdmcfgentry; //type: CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry> > cpwctdmcfgentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry> > cpwctdmcfgentry;
         
-}; // CiscoIetfPwTdmMib::Cpwctdmcfgtable
+}; // CISCOIETFPWTDMMIB::Cpwctdmcfgtable
 
 
-class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
 {
     public:
         Cpwctdmcfgentry();
@@ -157,13 +81,14 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf cpwctdmcfgindex; //type: uint32
         ydk::YLeaf cpwctdmcfgconferr; //type: Cpwctdmcfgconferr
@@ -182,127 +107,38 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
         ydk::YLeaf cpwctdmcfgclearalarmthreshold; //type: uint32
         ydk::YLeaf cpwctdmcfgmissingpktstoses; //type: uint32
         ydk::YLeaf cpwctdmcfgtimestampmode; //type: Cpwctdmcfgtimestampmode
-        ydk::YLeaf cpwctdmcfgstoragetype; //type: Storagetype
-        ydk::YLeaf cpwctdmcfgrowstatus; //type: Rowstatus
+        ydk::YLeaf cpwctdmcfgstoragetype; //type: StorageType
+        ydk::YLeaf cpwctdmcfgrowstatus; //type: RowStatus
         class Cpwctdmcfgpayloadsuppression;
         class Cpwctdmcfgpktreplacepolicy;
         class Cpwctdmcfgtimestampmode;
 
-}; // CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry
+}; // CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry
 
 
-class CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable : public ydk::Entity
+class CISCOIETFPWTDMMIB::Cpwctdmobjects : public ydk::Entity
 {
     public:
-        Cpwctdmperfcurrenttable();
-        ~Cpwctdmperfcurrenttable();
+        Cpwctdmobjects();
+        ~Cpwctdmobjects();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cpwctdmperfcurrententry; //type: CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+        ydk::YLeaf cpwctdmcfgindexnext; //type: uint32
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry> > cpwctdmperfcurrententry;
-        
-}; // CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable
-
-
-class CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry : public ydk::Entity
-{
-    public:
-        Cpwctdmperfcurrententry();
-        ~Cpwctdmperfcurrententry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwctdmperfcurrentmissingpkts; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentpktsreorder; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentjtrbfrunderruns; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentmisorderdropped; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentmalformedpkt; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentess; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentsess; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentuass; //type: uint32
-        ydk::YLeaf cpwctdmperfcurrentfc; //type: uint32
-
-}; // CiscoIetfPwTdmMib::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+}; // CISCOIETFPWTDMMIB::Cpwctdmobjects
 
 
-class CiscoIetfPwTdmMib::Cpwctdmperfintervaltable : public ydk::Entity
-{
-    public:
-        Cpwctdmperfintervaltable();
-        ~Cpwctdmperfintervaltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Cpwctdmperfintervalentry; //type: CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
-
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry> > cpwctdmperfintervalentry;
-        
-}; // CiscoIetfPwTdmMib::Cpwctdmperfintervaltable
-
-
-class CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry : public ydk::Entity
-{
-    public:
-        Cpwctdmperfintervalentry();
-        ~Cpwctdmperfintervalentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
-        ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwctdmperfintervalnumber; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalvaliddata; //type: boolean
-        ydk::YLeaf cpwctdmperfintervalduration; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalmissingpkts; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalpktsreorder; //type: uint32
-        ydk::YLeaf cpwctdmperfintervaljtrbfrunderruns; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalmisorderdropped; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalmalformedpkt; //type: uint32
-        ydk::YLeaf cpwctdmperfintervaless; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalsess; //type: uint32
-        ydk::YLeaf cpwctdmperfintervaluass; //type: uint32
-        ydk::YLeaf cpwctdmperfintervalfc; //type: uint32
-
-}; // CiscoIetfPwTdmMib::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
-
-
-class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable : public ydk::Entity
+class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable : public ydk::Entity
 {
     public:
         Cpwctdmperf1Dayintervaltable();
@@ -310,22 +146,23 @@ class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Cpwctdmperf1Dayintervalentry; //type: CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
+        class Cpwctdmperf1Dayintervalentry; //type: CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
 
-        std::vector<std::shared_ptr<CISCO_IETF_PW_TDM_MIB::CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry> > cpwctdmperf1dayintervalentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry> > cpwctdmperf1dayintervalentry;
         
-}; // CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable
+}; // CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable
 
 
-class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry : public ydk::Entity
 {
     public:
         Cpwctdmperf1Dayintervalentry();
@@ -333,15 +170,16 @@ class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to CISCO_IETF_PW_MIB::CiscoIetfPwMib::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwctdmperf1dayintervalnumber; //type: uint32
         ydk::YLeaf cpwctdmperf1dayintervalvaliddata; //type: boolean
@@ -356,9 +194,182 @@ class CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalen
         ydk::YLeaf cpwctdmperf1dayintervaluass; //type: uint32
         ydk::YLeaf cpwctdmperf1dayintervalfc; //type: uint32
 
-}; // CiscoIetfPwTdmMib::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
+}; // CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
 
-class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpayloadsuppression : public ydk::Enum
+
+class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable : public ydk::Entity
+{
+    public:
+        Cpwctdmperfcurrenttable();
+        ~Cpwctdmperfcurrenttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwctdmperfcurrententry; //type: CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry> > cpwctdmperfcurrententry;
+        
+}; // CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable
+
+
+class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry : public ydk::Entity
+{
+    public:
+        Cpwctdmperfcurrententry();
+        ~Cpwctdmperfcurrententry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwctdmperfcurrentmissingpkts; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentpktsreorder; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentjtrbfrunderruns; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentmisorderdropped; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentmalformedpkt; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentess; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentsess; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentuass; //type: uint32
+        ydk::YLeaf cpwctdmperfcurrentfc; //type: uint32
+
+}; // CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+
+
+class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable : public ydk::Entity
+{
+    public:
+        Cpwctdmperfintervaltable();
+        ~Cpwctdmperfintervaltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwctdmperfintervalentry; //type: CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry> > cpwctdmperfintervalentry;
+        
+}; // CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable
+
+
+class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry : public ydk::Entity
+{
+    public:
+        Cpwctdmperfintervalentry();
+        ~Cpwctdmperfintervalentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwctdmperfintervalnumber; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalvaliddata; //type: boolean
+        ydk::YLeaf cpwctdmperfintervalduration; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalmissingpkts; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalpktsreorder; //type: uint32
+        ydk::YLeaf cpwctdmperfintervaljtrbfrunderruns; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalmisorderdropped; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalmalformedpkt; //type: uint32
+        ydk::YLeaf cpwctdmperfintervaless; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalsess; //type: uint32
+        ydk::YLeaf cpwctdmperfintervaluass; //type: uint32
+        ydk::YLeaf cpwctdmperfintervalfc; //type: uint32
+
+}; // CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
+
+
+class CISCOIETFPWTDMMIB::Cpwctdmtable : public ydk::Entity
+{
+    public:
+        Cpwctdmtable();
+        ~Cpwctdmtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cpwctdmentry; //type: CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry> > cpwctdmentry;
+        
+}; // CISCOIETFPWTDMMIB::Cpwctdmtable
+
+
+class CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry : public ydk::Entity
+{
+    public:
+        Cpwctdmentry();
+        ~Cpwctdmentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        ydk::YLeaf cpwvcindex;
+        ydk::YLeaf cpwctdmrate; //type: int32
+        ydk::YLeaf cpwctdmifindex; //type: int32
+        ydk::YLeaf cpwcgentdmcfgindex; //type: uint32
+        ydk::YLeaf cpwcreltdmcfgindex; //type: uint32
+        ydk::YLeaf cpwctdmconfigerror; //type: Cpwctdmconfigerror
+        ydk::YLeaf cpwctdmtimeelapsed; //type: int32
+        ydk::YLeaf cpwctdmvalidintervals; //type: int32
+        ydk::YLeaf cpwctdmvaliddayintervals; //type: int32
+        ydk::YLeaf cpwctdmcurrentindications; //type: Cpwctdmcurrentindications
+        ydk::YLeaf cpwctdmlatchedindications; //type: Cpwctdmlatchedindications
+        ydk::YLeaf cpwctdmlastestimestamp; //type: uint32
+
+}; // CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry
+
+class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpayloadsuppression : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -366,7 +377,7 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpayloadsupp
 
 };
 
-class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpktreplacepolicy : public ydk::Enum
+class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpktreplacepolicy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ais;
@@ -374,7 +385,7 @@ class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpktreplacep
 
 };
 
-class CiscoIetfPwTdmMib::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgtimestampmode : public ydk::Enum
+class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgtimestampmode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;

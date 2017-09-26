@@ -16,7 +16,8 @@ Lacp::Lacp()
     system_mac{YType::str, "system-mac"},
     system_priority{YType::uint32, "system-priority"}
 {
-    yang_name = "lacp"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-cfg";
+
+    yang_name = "lacp"; yang_parent_name = "Cisco-IOS-XR-bundlemgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Lacp::~Lacp()
@@ -40,28 +41,17 @@ std::string Lacp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-bundlemgr-cfg:lacp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lacp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lacp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
     if (system_priority.is_set || is_set(system_priority.yfilter)) leaf_name_data.push_back(system_priority.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -139,30 +129,10 @@ bool Lacp::has_leaf_or_child_of_name(const std::string & name) const
 const Enum::YLeaf MlacpMaximizeParameter::links {1, "links"};
 const Enum::YLeaf MlacpMaximizeParameter::bandwidth {2, "bandwidth"};
 
-const Enum::YLeaf BundleMinimumBandwidthRange::none {0, "none"};
-const Enum::YLeaf BundleMinimumBandwidthRange::kbps {1, "kbps"};
-const Enum::YLeaf BundleMinimumBandwidthRange::mbps {2, "mbps"};
-const Enum::YLeaf BundleMinimumBandwidthRange::gbps {3, "gbps"};
-
-const Enum::YLeaf BundleMaximumActiveLinksMode::default_ {0, "default"};
-const Enum::YLeaf BundleMaximumActiveLinksMode::hot_standby {1, "hot-standby"};
+const Enum::YLeaf PeriodShortEnum::true_ {1, "true"};
 
 const Enum::YLeaf BundleCiscoExtTypes::lon_signaling_off {0, "lon-signaling-off"};
 const Enum::YLeaf BundleCiscoExtTypes::lon_signaling_on {1, "lon-signaling-on"};
-
-const Enum::YLeaf ChurnLogging::actor {1, "actor"};
-const Enum::YLeaf ChurnLogging::partner {2, "partner"};
-const Enum::YLeaf ChurnLogging::both {3, "both"};
-
-const Enum::YLeaf BundlePeriod::true_ {1, "true"};
-
-const Enum::YLeaf PeriodShortEnum::true_ {1, "true"};
-
-const Enum::YLeaf BundleLoadBalance::default_ {0, "default"};
-const Enum::YLeaf BundleLoadBalance::efp_auto {1, "efp-auto"};
-const Enum::YLeaf BundleLoadBalance::efp_value {2, "efp-value"};
-const Enum::YLeaf BundleLoadBalance::source_ip {3, "source-ip"};
-const Enum::YLeaf BundleLoadBalance::destination_ip {4, "destination-ip"};
 
 const Enum::YLeaf BundleMode::on {0, "on"};
 const Enum::YLeaf BundleMode::active {1, "active"};
@@ -172,6 +142,19 @@ const Enum::YLeaf BfdMode::no_cfg {0, "no-cfg"};
 const Enum::YLeaf BfdMode::cisco {1, "cisco"};
 const Enum::YLeaf BfdMode::ietf {2, "ietf"};
 
+const Enum::YLeaf BundlePeriod::true_ {1, "true"};
+
+const Enum::YLeaf BundleLoadBalance::default_ {0, "default"};
+const Enum::YLeaf BundleLoadBalance::efp_auto {1, "efp-auto"};
+const Enum::YLeaf BundleLoadBalance::efp_value {2, "efp-value"};
+const Enum::YLeaf BundleLoadBalance::source_ip {3, "source-ip"};
+const Enum::YLeaf BundleLoadBalance::destination_ip {4, "destination-ip"};
+
+const Enum::YLeaf BundleMinimumBandwidthRange::none {0, "none"};
+const Enum::YLeaf BundleMinimumBandwidthRange::kbps {1, "kbps"};
+const Enum::YLeaf BundleMinimumBandwidthRange::mbps {2, "mbps"};
+const Enum::YLeaf BundleMinimumBandwidthRange::gbps {3, "gbps"};
+
 const Enum::YLeaf MlacpSwitchover::brute_force {1, "brute-force"};
 const Enum::YLeaf MlacpSwitchover::revertive {2, "revertive"};
 
@@ -179,6 +162,13 @@ const Enum::YLeaf BundlePortActivity::on {1, "on"};
 const Enum::YLeaf BundlePortActivity::active {2, "active"};
 const Enum::YLeaf BundlePortActivity::passive {3, "passive"};
 const Enum::YLeaf BundlePortActivity::inherit {4, "inherit"};
+
+const Enum::YLeaf ChurnLogging::actor {1, "actor"};
+const Enum::YLeaf ChurnLogging::partner {2, "partner"};
+const Enum::YLeaf ChurnLogging::both {3, "both"};
+
+const Enum::YLeaf BundleMaximumActiveLinksMode::default_ {0, "default"};
+const Enum::YLeaf BundleMaximumActiveLinksMode::hot_standby {1, "hot-standby"};
 
 
 }

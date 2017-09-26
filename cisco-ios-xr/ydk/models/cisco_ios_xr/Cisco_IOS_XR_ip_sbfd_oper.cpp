@@ -17,7 +17,7 @@ Sbfd::Sbfd()
 {
     target_identifier->parent = this;
 
-    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-oper";
+    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Sbfd::~Sbfd()
@@ -39,26 +39,15 @@ std::string Sbfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -133,10 +122,9 @@ Sbfd::TargetIdentifier::TargetIdentifier()
 	,remote_vrfs(std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs>())
 {
     local_vrfs->parent = this;
-
     remote_vrfs->parent = this;
 
-    yang_name = "target-identifier"; yang_parent_name = "sbfd";
+    yang_name = "target-identifier"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sbfd::TargetIdentifier::~TargetIdentifier()
@@ -156,33 +144,26 @@ bool Sbfd::TargetIdentifier::has_operation() const
 	|| (remote_vrfs !=  nullptr && remote_vrfs->has_operation());
 }
 
+std::string Sbfd::TargetIdentifier::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sbfd::TargetIdentifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target-identifier";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::TargetIdentifier::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -240,9 +221,384 @@ bool Sbfd::TargetIdentifier::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
+Sbfd::TargetIdentifier::LocalVrfs::LocalVrfs()
+{
+
+    yang_name = "local-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sbfd::TargetIdentifier::LocalVrfs::~LocalVrfs()
+{
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::has_data() const
+{
+    for (std::size_t index=0; index<local_vrf.size(); index++)
+    {
+        if(local_vrf[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::has_operation() const
+{
+    for (std::size_t index=0; index<local_vrf.size(); index++)
+    {
+        if(local_vrf[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sbfd::TargetIdentifier::LocalVrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sbfd::TargetIdentifier::LocalVrfs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-vrfs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::LocalVrfs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-vrf")
+    {
+        for(auto const & c : local_vrf)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf>();
+        c->parent = this;
+        local_vrf.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : local_vrf)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-vrf")
+        return true;
+    return false;
+}
+
+Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalVrf()
+    :
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "local-vrf"; yang_parent_name = "local-vrfs"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::~LocalVrf()
+{
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_data() const
+{
+    for (std::size_t index=0; index<local_discriminator.size(); index++)
+    {
+        if(local_discriminator[index]->has_data())
+            return true;
+    }
+    return vrf_name.is_set;
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_operation() const
+{
+    for (std::size_t index=0; index<local_discriminator.size(); index++)
+    {
+        if(local_discriminator[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/local-vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-discriminator")
+    {
+        for(auto const & c : local_discriminator)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator>();
+        c->parent = this;
+        local_discriminator.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : local_discriminator)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-discriminator" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::LocalDiscriminator()
+    :
+    discr{YType::uint32, "discr"},
+    discr_src{YType::str, "discr-src"},
+    flags{YType::str, "flags"},
+    local_discriminator{YType::int32, "local-discriminator"},
+    status{YType::str, "status"},
+    vrf_name{YType::str, "vrf-name"},
+    vrf_name_xr{YType::str, "vrf-name-xr"}
+{
+
+    yang_name = "local-discriminator"; yang_parent_name = "local-vrf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::~LocalDiscriminator()
+{
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_data() const
+{
+    return discr.is_set
+	|| discr_src.is_set
+	|| flags.is_set
+	|| local_discriminator.is_set
+	|| status.is_set
+	|| vrf_name.is_set
+	|| vrf_name_xr.is_set;
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(discr.yfilter)
+	|| ydk::is_set(discr_src.yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter);
+}
+
+std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-discriminator";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (discr.is_set || is_set(discr.yfilter)) leaf_name_data.push_back(discr.get_name_leafdata());
+    if (discr_src.is_set || is_set(discr_src.yfilter)) leaf_name_data.push_back(discr_src.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "discr")
+    {
+        discr = value;
+        discr.value_namespace = name_space;
+        discr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "discr-src")
+    {
+        discr_src = value;
+        discr_src.value_namespace = name_space;
+        discr_src.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discr")
+    {
+        discr.yfilter = yfilter;
+    }
+    if(value_path == "discr-src")
+    {
+        discr_src.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discr" || name == "discr-src" || name == "flags" || name == "local-discriminator" || name == "status" || name == "vrf-name" || name == "vrf-name-xr")
+        return true;
+    return false;
+}
+
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrfs()
 {
-    yang_name = "remote-vrfs"; yang_parent_name = "target-identifier";
+
+    yang_name = "remote-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::~RemoteVrfs()
@@ -269,33 +625,26 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Sbfd::TargetIdentifier::RemoteVrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sbfd::TargetIdentifier::RemoteVrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::RemoteVrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -350,7 +699,8 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteVrf()
     :
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "remote-vrf"; yang_parent_name = "remote-vrfs";
+
+    yang_name = "remote-vrf"; yang_parent_name = "remote-vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::~RemoteVrf()
@@ -378,34 +728,27 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/remote-vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/remote-vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -481,7 +824,7 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::RemoteDiscri
 {
     ip_address->parent = this;
 
-    yang_name = "remote-discriminator"; yang_parent_name = "remote-vrf";
+    yang_name = "remote-discriminator"; yang_parent_name = "remote-vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::~RemoteDiscriminator()
@@ -519,23 +862,11 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-discriminator";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RemoteDiscriminator' in Cisco_IOS_XR_ip_sbfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -547,9 +878,7 @@ const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscrimina
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -680,7 +1009,8 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::I
     ipv4{YType::str, "ipv4"},
     ipv6{YType::str, "ipv6"}
 {
-    yang_name = "ip-address"; yang_parent_name = "remote-discriminator";
+
+    yang_name = "ip-address"; yang_parent_name = "remote-discriminator"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::~IpAddress()
@@ -708,23 +1038,11 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-address";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IpAddress' in Cisco_IOS_XR_ip_sbfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
@@ -732,9 +1050,7 @@ const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscrimina
     if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
     if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -800,405 +1116,6 @@ void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddre
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::LocalVrfs()
-{
-    yang_name = "local-vrfs"; yang_parent_name = "target-identifier";
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::~LocalVrfs()
-{
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::has_data() const
-{
-    for (std::size_t index=0; index<local_vrf.size(); index++)
-    {
-        if(local_vrf[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::has_operation() const
-{
-    for (std::size_t index=0; index<local_vrf.size(); index++)
-    {
-        if(local_vrf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Sbfd::TargetIdentifier::LocalVrfs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-vrfs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sbfd::TargetIdentifier::LocalVrfs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-vrf")
-    {
-        for(auto const & c : local_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf>();
-        c->parent = this;
-        local_vrf.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : local_vrf)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-vrf")
-        return true;
-    return false;
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalVrf()
-    :
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "local-vrf"; yang_parent_name = "local-vrfs";
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::~LocalVrf()
-{
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_data() const
-{
-    for (std::size_t index=0; index<local_discriminator.size(); index++)
-    {
-        if(local_discriminator[index]->has_data())
-            return true;
-    }
-    return vrf_name.is_set;
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_operation() const
-{
-    for (std::size_t index=0; index<local_discriminator.size(); index++)
-    {
-        if(local_discriminator[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-sbfd-oper:sbfd/target-identifier/local-vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-discriminator")
-    {
-        for(auto const & c : local_discriminator)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator>();
-        c->parent = this;
-        local_discriminator.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : local_discriminator)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-discriminator" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::LocalDiscriminator()
-    :
-    discr{YType::uint32, "discr"},
-    discr_src{YType::str, "discr-src"},
-    flags{YType::str, "flags"},
-    local_discriminator{YType::int32, "local-discriminator"},
-    status{YType::str, "status"},
-    vrf_name{YType::str, "vrf-name"},
-    vrf_name_xr{YType::str, "vrf-name-xr"}
-{
-    yang_name = "local-discriminator"; yang_parent_name = "local-vrf";
-}
-
-Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::~LocalDiscriminator()
-{
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_data() const
-{
-    return discr.is_set
-	|| discr_src.is_set
-	|| flags.is_set
-	|| local_discriminator.is_set
-	|| status.is_set
-	|| vrf_name.is_set
-	|| vrf_name_xr.is_set;
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(discr.yfilter)
-	|| ydk::is_set(discr_src.yfilter)
-	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(local_discriminator.yfilter)
-	|| ydk::is_set(status.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(vrf_name_xr.yfilter);
-}
-
-std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-discriminator";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LocalDiscriminator' in Cisco_IOS_XR_ip_sbfd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (discr.is_set || is_set(discr.yfilter)) leaf_name_data.push_back(discr.get_name_leafdata());
-    if (discr_src.is_set || is_set(discr_src.yfilter)) leaf_name_data.push_back(discr_src.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "discr")
-    {
-        discr = value;
-        discr.value_namespace = name_space;
-        discr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "discr-src")
-    {
-        discr_src = value;
-        discr_src.value_namespace = name_space;
-        discr_src.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-discriminator")
-    {
-        local_discriminator = value;
-        local_discriminator.value_namespace = name_space;
-        local_discriminator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name-xr")
-    {
-        vrf_name_xr = value;
-        vrf_name_xr.value_namespace = name_space;
-        vrf_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "discr")
-    {
-        discr.yfilter = yfilter;
-    }
-    if(value_path == "discr-src")
-    {
-        discr_src.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
-    if(value_path == "local-discriminator")
-    {
-        local_discriminator.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name-xr")
-    {
-        vrf_name_xr.yfilter = yfilter;
-    }
-}
-
-bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "discr" || name == "discr-src" || name == "flags" || name == "local-discriminator" || name == "status" || name == "vrf-name" || name == "vrf-name-xr")
         return true;
     return false;
 }

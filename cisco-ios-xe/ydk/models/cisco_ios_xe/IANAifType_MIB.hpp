@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace IANAifType_MIB {
 
-class Ianaiftype : public ydk::Enum
+class IANAifType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -300,7 +300,7 @@ class Ianaiftype : public ydk::Enum
 
 };
 
-class Ianatunneltype : public ydk::Enum
+class IANAtunnelType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

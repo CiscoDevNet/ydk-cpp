@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace EXPRESSION_MIB {
 
-ExpressionMib::ExpressionMib()
+EXPRESSIONMIB::EXPRESSIONMIB()
     :
-    expexpressiontable(std::make_shared<ExpressionMib::Expexpressiontable>())
-	,expnames(std::make_shared<ExpressionMib::Expnames>())
-	,expnametable(std::make_shared<ExpressionMib::Expnametable>())
-	,expobjecttable(std::make_shared<ExpressionMib::Expobjecttable>())
-	,expresource(std::make_shared<ExpressionMib::Expresource>())
-	,expvaluetable(std::make_shared<ExpressionMib::Expvaluetable>())
+    expexpressiontable(std::make_shared<EXPRESSIONMIB::Expexpressiontable>())
+	,expnames(std::make_shared<EXPRESSIONMIB::Expnames>())
+	,expnametable(std::make_shared<EXPRESSIONMIB::Expnametable>())
+	,expobjecttable(std::make_shared<EXPRESSIONMIB::Expobjecttable>())
+	,expresource(std::make_shared<EXPRESSIONMIB::Expresource>())
+	,expvaluetable(std::make_shared<EXPRESSIONMIB::Expvaluetable>())
 {
     expexpressiontable->parent = this;
-
     expnames->parent = this;
-
     expnametable->parent = this;
-
     expobjecttable->parent = this;
-
     expresource->parent = this;
-
     expvaluetable->parent = this;
 
-    yang_name = "EXPRESSION-MIB"; yang_parent_name = "EXPRESSION-MIB";
+    yang_name = "EXPRESSION-MIB"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-ExpressionMib::~ExpressionMib()
+EXPRESSIONMIB::~EXPRESSIONMIB()
 {
 }
 
-bool ExpressionMib::has_data() const
+bool EXPRESSIONMIB::has_data() const
 {
     return (expexpressiontable !=  nullptr && expexpressiontable->has_data())
 	|| (expnames !=  nullptr && expnames->has_data())
@@ -49,7 +44,7 @@ bool ExpressionMib::has_data() const
 	|| (expvaluetable !=  nullptr && expvaluetable->has_data());
 }
 
-bool ExpressionMib::has_operation() const
+bool EXPRESSIONMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (expexpressiontable !=  nullptr && expexpressiontable->has_operation())
@@ -60,40 +55,29 @@ bool ExpressionMib::has_operation() const
 	|| (expvaluetable !=  nullptr && expvaluetable->has_operation());
 }
 
-std::string ExpressionMib::get_segment_path() const
+std::string EXPRESSIONMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expExpressionTable")
     {
         if(expexpressiontable == nullptr)
         {
-            expexpressiontable = std::make_shared<ExpressionMib::Expexpressiontable>();
+            expexpressiontable = std::make_shared<EXPRESSIONMIB::Expexpressiontable>();
         }
         return expexpressiontable;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     {
         if(expnames == nullptr)
         {
-            expnames = std::make_shared<ExpressionMib::Expnames>();
+            expnames = std::make_shared<EXPRESSIONMIB::Expnames>();
         }
         return expnames;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     {
         if(expnametable == nullptr)
         {
-            expnametable = std::make_shared<ExpressionMib::Expnametable>();
+            expnametable = std::make_shared<EXPRESSIONMIB::Expnametable>();
         }
         return expnametable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     {
         if(expobjecttable == nullptr)
         {
-            expobjecttable = std::make_shared<ExpressionMib::Expobjecttable>();
+            expobjecttable = std::make_shared<EXPRESSIONMIB::Expobjecttable>();
         }
         return expobjecttable;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     {
         if(expresource == nullptr)
         {
-            expresource = std::make_shared<ExpressionMib::Expresource>();
+            expresource = std::make_shared<EXPRESSIONMIB::Expresource>();
         }
         return expresource;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     {
         if(expvaluetable == nullptr)
         {
-            expvaluetable = std::make_shared<ExpressionMib::Expvaluetable>();
+            expvaluetable = std::make_shared<EXPRESSIONMIB::Expvaluetable>();
         }
         return expvaluetable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> ExpressionMib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(expexpressiontable != nullptr)
@@ -182,527 +166,57 @@ std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::get_children() con
     return children;
 }
 
-void ExpressionMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ExpressionMib::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ExpressionMib::clone_ptr() const
+std::shared_ptr<Entity> EXPRESSIONMIB::clone_ptr() const
 {
-    return std::make_shared<ExpressionMib>();
+    return std::make_shared<EXPRESSIONMIB>();
 }
 
-std::string ExpressionMib::get_bundle_yang_models_location() const
+std::string EXPRESSIONMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string ExpressionMib::get_bundle_name() const
+std::string EXPRESSIONMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function ExpressionMib::get_augment_capabilities_function() const
+augment_capabilities_function EXPRESSIONMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> ExpressionMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> EXPRESSIONMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool ExpressionMib::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionTable" || name == "expNames" || name == "expNameTable" || name == "expObjectTable" || name == "expResource" || name == "expValueTable")
         return true;
     return false;
 }
 
-ExpressionMib::Expresource::Expresource()
-    :
-    expresourcedeltaminimum{YType::int32, "expResourceDeltaMinimum"},
-    expresourcedeltawildcardinstancemaximum{YType::uint32, "expResourceDeltaWildcardInstanceMaximum"},
-    expresourcedeltawildcardinstanceresourcelacks{YType::uint32, "expResourceDeltaWildcardInstanceResourceLacks"},
-    expresourcedeltawildcardinstances{YType::uint32, "expResourceDeltaWildcardInstances"},
-    expresourcedeltawildcardinstanceshigh{YType::uint32, "expResourceDeltaWildcardInstancesHigh"}
+EXPRESSIONMIB::Expexpressiontable::Expexpressiontable()
 {
-    yang_name = "expResource"; yang_parent_name = "EXPRESSION-MIB";
+
+    yang_name = "expExpressionTable"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expresource::~Expresource()
+EXPRESSIONMIB::Expexpressiontable::~Expexpressiontable()
 {
 }
 
-bool ExpressionMib::Expresource::has_data() const
-{
-    return expresourcedeltaminimum.is_set
-	|| expresourcedeltawildcardinstancemaximum.is_set
-	|| expresourcedeltawildcardinstanceresourcelacks.is_set
-	|| expresourcedeltawildcardinstances.is_set
-	|| expresourcedeltawildcardinstanceshigh.is_set;
-}
-
-bool ExpressionMib::Expresource::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(expresourcedeltaminimum.yfilter)
-	|| ydk::is_set(expresourcedeltawildcardinstancemaximum.yfilter)
-	|| ydk::is_set(expresourcedeltawildcardinstanceresourcelacks.yfilter)
-	|| ydk::is_set(expresourcedeltawildcardinstances.yfilter)
-	|| ydk::is_set(expresourcedeltawildcardinstanceshigh.yfilter);
-}
-
-std::string ExpressionMib::Expresource::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "expResource";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ExpressionMib::Expresource::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (expresourcedeltaminimum.is_set || is_set(expresourcedeltaminimum.yfilter)) leaf_name_data.push_back(expresourcedeltaminimum.get_name_leafdata());
-    if (expresourcedeltawildcardinstancemaximum.is_set || is_set(expresourcedeltawildcardinstancemaximum.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstancemaximum.get_name_leafdata());
-    if (expresourcedeltawildcardinstanceresourcelacks.is_set || is_set(expresourcedeltawildcardinstanceresourcelacks.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstanceresourcelacks.get_name_leafdata());
-    if (expresourcedeltawildcardinstances.is_set || is_set(expresourcedeltawildcardinstances.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstances.get_name_leafdata());
-    if (expresourcedeltawildcardinstanceshigh.is_set || is_set(expresourcedeltawildcardinstanceshigh.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstanceshigh.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ExpressionMib::Expresource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expresource::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ExpressionMib::Expresource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "expResourceDeltaMinimum")
-    {
-        expresourcedeltaminimum = value;
-        expresourcedeltaminimum.value_namespace = name_space;
-        expresourcedeltaminimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expResourceDeltaWildcardInstanceMaximum")
-    {
-        expresourcedeltawildcardinstancemaximum = value;
-        expresourcedeltawildcardinstancemaximum.value_namespace = name_space;
-        expresourcedeltawildcardinstancemaximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expResourceDeltaWildcardInstanceResourceLacks")
-    {
-        expresourcedeltawildcardinstanceresourcelacks = value;
-        expresourcedeltawildcardinstanceresourcelacks.value_namespace = name_space;
-        expresourcedeltawildcardinstanceresourcelacks.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expResourceDeltaWildcardInstances")
-    {
-        expresourcedeltawildcardinstances = value;
-        expresourcedeltawildcardinstances.value_namespace = name_space;
-        expresourcedeltawildcardinstances.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expResourceDeltaWildcardInstancesHigh")
-    {
-        expresourcedeltawildcardinstanceshigh = value;
-        expresourcedeltawildcardinstanceshigh.value_namespace = name_space;
-        expresourcedeltawildcardinstanceshigh.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ExpressionMib::Expresource::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "expResourceDeltaMinimum")
-    {
-        expresourcedeltaminimum.yfilter = yfilter;
-    }
-    if(value_path == "expResourceDeltaWildcardInstanceMaximum")
-    {
-        expresourcedeltawildcardinstancemaximum.yfilter = yfilter;
-    }
-    if(value_path == "expResourceDeltaWildcardInstanceResourceLacks")
-    {
-        expresourcedeltawildcardinstanceresourcelacks.yfilter = yfilter;
-    }
-    if(value_path == "expResourceDeltaWildcardInstances")
-    {
-        expresourcedeltawildcardinstances.yfilter = yfilter;
-    }
-    if(value_path == "expResourceDeltaWildcardInstancesHigh")
-    {
-        expresourcedeltawildcardinstanceshigh.yfilter = yfilter;
-    }
-}
-
-bool ExpressionMib::Expresource::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "expResourceDeltaMinimum" || name == "expResourceDeltaWildcardInstanceMaximum" || name == "expResourceDeltaWildcardInstanceResourceLacks" || name == "expResourceDeltaWildcardInstances" || name == "expResourceDeltaWildcardInstancesHigh")
-        return true;
-    return false;
-}
-
-ExpressionMib::Expnames::Expnames()
-    :
-    expnamehighestindex{YType::uint32, "expNameHighestIndex"},
-    expnamelastchange{YType::uint32, "expNameLastChange"}
-{
-    yang_name = "expNames"; yang_parent_name = "EXPRESSION-MIB";
-}
-
-ExpressionMib::Expnames::~Expnames()
-{
-}
-
-bool ExpressionMib::Expnames::has_data() const
-{
-    return expnamehighestindex.is_set
-	|| expnamelastchange.is_set;
-}
-
-bool ExpressionMib::Expnames::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(expnamehighestindex.yfilter)
-	|| ydk::is_set(expnamelastchange.yfilter);
-}
-
-std::string ExpressionMib::Expnames::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "expNames";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ExpressionMib::Expnames::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (expnamehighestindex.is_set || is_set(expnamehighestindex.yfilter)) leaf_name_data.push_back(expnamehighestindex.get_name_leafdata());
-    if (expnamelastchange.is_set || is_set(expnamelastchange.yfilter)) leaf_name_data.push_back(expnamelastchange.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ExpressionMib::Expnames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expnames::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ExpressionMib::Expnames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "expNameHighestIndex")
-    {
-        expnamehighestindex = value;
-        expnamehighestindex.value_namespace = name_space;
-        expnamehighestindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expNameLastChange")
-    {
-        expnamelastchange = value;
-        expnamelastchange.value_namespace = name_space;
-        expnamelastchange.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ExpressionMib::Expnames::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "expNameHighestIndex")
-    {
-        expnamehighestindex.yfilter = yfilter;
-    }
-    if(value_path == "expNameLastChange")
-    {
-        expnamelastchange.yfilter = yfilter;
-    }
-}
-
-bool ExpressionMib::Expnames::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "expNameHighestIndex" || name == "expNameLastChange")
-        return true;
-    return false;
-}
-
-ExpressionMib::Expnametable::Expnametable()
-{
-    yang_name = "expNameTable"; yang_parent_name = "EXPRESSION-MIB";
-}
-
-ExpressionMib::Expnametable::~Expnametable()
-{
-}
-
-bool ExpressionMib::Expnametable::has_data() const
-{
-    for (std::size_t index=0; index<expnameentry.size(); index++)
-    {
-        if(expnameentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ExpressionMib::Expnametable::has_operation() const
-{
-    for (std::size_t index=0; index<expnameentry.size(); index++)
-    {
-        if(expnameentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ExpressionMib::Expnametable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "expNameTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ExpressionMib::Expnametable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ExpressionMib::Expnametable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "expNameEntry")
-    {
-        for(auto const & c : expnameentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ExpressionMib::Expnametable::Expnameentry>();
-        c->parent = this;
-        expnameentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expnametable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : expnameentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void ExpressionMib::Expnametable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ExpressionMib::Expnametable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ExpressionMib::Expnametable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "expNameEntry")
-        return true;
-    return false;
-}
-
-ExpressionMib::Expnametable::Expnameentry::Expnameentry()
-    :
-    expname{YType::str, "expName"},
-    expexpressionindex{YType::uint32, "expExpressionIndex"},
-    expnamestatus{YType::enumeration, "expNameStatus"}
-{
-    yang_name = "expNameEntry"; yang_parent_name = "expNameTable";
-}
-
-ExpressionMib::Expnametable::Expnameentry::~Expnameentry()
-{
-}
-
-bool ExpressionMib::Expnametable::Expnameentry::has_data() const
-{
-    return expname.is_set
-	|| expexpressionindex.is_set
-	|| expnamestatus.is_set;
-}
-
-bool ExpressionMib::Expnametable::Expnameentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(expname.yfilter)
-	|| ydk::is_set(expexpressionindex.yfilter)
-	|| ydk::is_set(expnamestatus.yfilter);
-}
-
-std::string ExpressionMib::Expnametable::Expnameentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "expNameEntry" <<"[expName='" <<expname <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath ExpressionMib::Expnametable::Expnameentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expNameTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (expname.is_set || is_set(expname.yfilter)) leaf_name_data.push_back(expname.get_name_leafdata());
-    if (expexpressionindex.is_set || is_set(expexpressionindex.yfilter)) leaf_name_data.push_back(expexpressionindex.get_name_leafdata());
-    if (expnamestatus.is_set || is_set(expnamestatus.yfilter)) leaf_name_data.push_back(expnamestatus.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> ExpressionMib::Expnametable::Expnameentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expnametable::Expnameentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void ExpressionMib::Expnametable::Expnameentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "expName")
-    {
-        expname = value;
-        expname.value_namespace = name_space;
-        expname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expExpressionIndex")
-    {
-        expexpressionindex = value;
-        expexpressionindex.value_namespace = name_space;
-        expexpressionindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expNameStatus")
-    {
-        expnamestatus = value;
-        expnamestatus.value_namespace = name_space;
-        expnamestatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ExpressionMib::Expnametable::Expnameentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "expName")
-    {
-        expname.yfilter = yfilter;
-    }
-    if(value_path == "expExpressionIndex")
-    {
-        expexpressionindex.yfilter = yfilter;
-    }
-    if(value_path == "expNameStatus")
-    {
-        expnamestatus.yfilter = yfilter;
-    }
-}
-
-bool ExpressionMib::Expnametable::Expnameentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "expName" || name == "expExpressionIndex" || name == "expNameStatus")
-        return true;
-    return false;
-}
-
-ExpressionMib::Expexpressiontable::Expexpressiontable()
-{
-    yang_name = "expExpressionTable"; yang_parent_name = "EXPRESSION-MIB";
-}
-
-ExpressionMib::Expexpressiontable::~Expexpressiontable()
-{
-}
-
-bool ExpressionMib::Expexpressiontable::has_data() const
+bool EXPRESSIONMIB::Expexpressiontable::has_data() const
 {
     for (std::size_t index=0; index<expexpressionentry.size(); index++)
     {
@@ -712,7 +226,7 @@ bool ExpressionMib::Expexpressiontable::has_data() const
     return false;
 }
 
-bool ExpressionMib::Expexpressiontable::has_operation() const
+bool EXPRESSIONMIB::Expexpressiontable::has_operation() const
 {
     for (std::size_t index=0; index<expexpressionentry.size(); index++)
     {
@@ -722,37 +236,30 @@ bool ExpressionMib::Expexpressiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ExpressionMib::Expexpressiontable::get_segment_path() const
+std::string EXPRESSIONMIB::Expexpressiontable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expexpressiontable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expExpressionTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expexpressiontable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expexpressiontable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expexpressiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expExpressionEntry")
     {
@@ -764,7 +271,7 @@ std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<ExpressionMib::Expexpressiontable::Expexpressionentry>();
+        auto c = std::make_shared<EXPRESSIONMIB::Expexpressiontable::Expexpressionentry>();
         c->parent = this;
         expexpressionentry.push_back(c);
         return c;
@@ -773,7 +280,7 @@ std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expexpressiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expexpressiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : expexpressionentry)
@@ -784,22 +291,22 @@ std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expexpressiontable
     return children;
 }
 
-void ExpressionMib::Expexpressiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expexpressiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ExpressionMib::Expexpressiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expexpressiontable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ExpressionMib::Expexpressiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expexpressiontable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionEntry")
         return true;
     return false;
 }
 
-ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionentry()
+EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionentry()
     :
     expexpressionindex{YType::str, "expExpressionIndex"},
     expexpression{YType::str, "expExpression"},
@@ -815,14 +322,15 @@ ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionentry()
     expexpressionprefix{YType::str, "expExpressionPrefix"},
     expexpressionvaluetype{YType::enumeration, "expExpressionValueType"}
 {
-    yang_name = "expExpressionEntry"; yang_parent_name = "expExpressionTable";
+
+    yang_name = "expExpressionEntry"; yang_parent_name = "expExpressionTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expexpressiontable::Expexpressionentry::~Expexpressionentry()
+EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::~Expexpressionentry()
 {
 }
 
-bool ExpressionMib::Expexpressiontable::Expexpressionentry::has_data() const
+bool EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_data() const
 {
     return expexpressionindex.is_set
 	|| expexpression.is_set
@@ -839,7 +347,7 @@ bool ExpressionMib::Expexpressiontable::Expexpressionentry::has_data() const
 	|| expexpressionvaluetype.is_set;
 }
 
-bool ExpressionMib::Expexpressiontable::Expexpressionentry::has_operation() const
+bool EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionindex.yfilter)
@@ -857,27 +365,22 @@ bool ExpressionMib::Expexpressiontable::Expexpressionentry::has_operation() cons
 	|| ydk::is_set(expexpressionvaluetype.yfilter);
 }
 
-std::string ExpressionMib::Expexpressiontable::Expexpressionentry::get_segment_path() const
+std::string EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expExpressionTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expExpressionEntry" <<"[expExpressionIndex='" <<expexpressionindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expexpressiontable::Expexpressionentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expExpressionTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (expexpressionindex.is_set || is_set(expexpressionindex.yfilter)) leaf_name_data.push_back(expexpressionindex.get_name_leafdata());
@@ -894,24 +397,22 @@ const EntityPath ExpressionMib::Expexpressiontable::Expexpressionentry::get_enti
     if (expexpressionprefix.is_set || is_set(expexpressionprefix.yfilter)) leaf_name_data.push_back(expexpressionprefix.get_name_leafdata());
     if (expexpressionvaluetype.is_set || is_set(expexpressionvaluetype.yfilter)) leaf_name_data.push_back(expexpressionvaluetype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expexpressiontable::Expexpressionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expexpressiontable::Expexpressionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ExpressionMib::Expexpressiontable::Expexpressionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -993,7 +494,7 @@ void ExpressionMib::Expexpressiontable::Expexpressionentry::set_value(const std:
     }
 }
 
-void ExpressionMib::Expexpressiontable::Expexpressionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -1049,23 +550,332 @@ void ExpressionMib::Expexpressiontable::Expexpressionentry::set_filter(const std
     }
 }
 
-bool ExpressionMib::Expexpressiontable::Expexpressionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionIndex" || name == "expExpression" || name == "expExpressionComment" || name == "expExpressionDeltaInterval" || name == "expExpressionError" || name == "expExpressionErrorIndex" || name == "expExpressionErrors" || name == "expExpressionErrorTime" || name == "expExpressionInstance" || name == "expExpressionName" || name == "expExpressionOwner" || name == "expExpressionPrefix" || name == "expExpressionValueType")
         return true;
     return false;
 }
 
-ExpressionMib::Expobjecttable::Expobjecttable()
+EXPRESSIONMIB::Expnames::Expnames()
+    :
+    expnamehighestindex{YType::uint32, "expNameHighestIndex"},
+    expnamelastchange{YType::uint32, "expNameLastChange"}
 {
-    yang_name = "expObjectTable"; yang_parent_name = "EXPRESSION-MIB";
+
+    yang_name = "expNames"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expobjecttable::~Expobjecttable()
+EXPRESSIONMIB::Expnames::~Expnames()
 {
 }
 
-bool ExpressionMib::Expobjecttable::has_data() const
+bool EXPRESSIONMIB::Expnames::has_data() const
+{
+    return expnamehighestindex.is_set
+	|| expnamelastchange.is_set;
+}
+
+bool EXPRESSIONMIB::Expnames::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(expnamehighestindex.yfilter)
+	|| ydk::is_set(expnamelastchange.yfilter);
+}
+
+std::string EXPRESSIONMIB::Expnames::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expnames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "expNames";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expnames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (expnamehighestindex.is_set || is_set(expnamehighestindex.yfilter)) leaf_name_data.push_back(expnamehighestindex.get_name_leafdata());
+    if (expnamelastchange.is_set || is_set(expnamelastchange.yfilter)) leaf_name_data.push_back(expnamelastchange.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EXPRESSIONMIB::Expnames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expnames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EXPRESSIONMIB::Expnames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "expNameHighestIndex")
+    {
+        expnamehighestindex = value;
+        expnamehighestindex.value_namespace = name_space;
+        expnamehighestindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expNameLastChange")
+    {
+        expnamelastchange = value;
+        expnamelastchange.value_namespace = name_space;
+        expnamelastchange.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EXPRESSIONMIB::Expnames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "expNameHighestIndex")
+    {
+        expnamehighestindex.yfilter = yfilter;
+    }
+    if(value_path == "expNameLastChange")
+    {
+        expnamelastchange.yfilter = yfilter;
+    }
+}
+
+bool EXPRESSIONMIB::Expnames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "expNameHighestIndex" || name == "expNameLastChange")
+        return true;
+    return false;
+}
+
+EXPRESSIONMIB::Expnametable::Expnametable()
+{
+
+    yang_name = "expNameTable"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EXPRESSIONMIB::Expnametable::~Expnametable()
+{
+}
+
+bool EXPRESSIONMIB::Expnametable::has_data() const
+{
+    for (std::size_t index=0; index<expnameentry.size(); index++)
+    {
+        if(expnameentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool EXPRESSIONMIB::Expnametable::has_operation() const
+{
+    for (std::size_t index=0; index<expnameentry.size(); index++)
+    {
+        if(expnameentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string EXPRESSIONMIB::Expnametable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expnametable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "expNameTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expnametable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EXPRESSIONMIB::Expnametable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "expNameEntry")
+    {
+        for(auto const & c : expnameentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<EXPRESSIONMIB::Expnametable::Expnameentry>();
+        c->parent = this;
+        expnameentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expnametable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : expnameentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void EXPRESSIONMIB::Expnametable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EXPRESSIONMIB::Expnametable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EXPRESSIONMIB::Expnametable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "expNameEntry")
+        return true;
+    return false;
+}
+
+EXPRESSIONMIB::Expnametable::Expnameentry::Expnameentry()
+    :
+    expname{YType::str, "expName"},
+    expexpressionindex{YType::uint32, "expExpressionIndex"},
+    expnamestatus{YType::enumeration, "expNameStatus"}
+{
+
+    yang_name = "expNameEntry"; yang_parent_name = "expNameTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EXPRESSIONMIB::Expnametable::Expnameentry::~Expnameentry()
+{
+}
+
+bool EXPRESSIONMIB::Expnametable::Expnameentry::has_data() const
+{
+    return expname.is_set
+	|| expexpressionindex.is_set
+	|| expnamestatus.is_set;
+}
+
+bool EXPRESSIONMIB::Expnametable::Expnameentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(expname.yfilter)
+	|| ydk::is_set(expexpressionindex.yfilter)
+	|| ydk::is_set(expnamestatus.yfilter);
+}
+
+std::string EXPRESSIONMIB::Expnametable::Expnameentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expNameTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expnametable::Expnameentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "expNameEntry" <<"[expName='" <<expname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expnametable::Expnameentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (expname.is_set || is_set(expname.yfilter)) leaf_name_data.push_back(expname.get_name_leafdata());
+    if (expexpressionindex.is_set || is_set(expexpressionindex.yfilter)) leaf_name_data.push_back(expexpressionindex.get_name_leafdata());
+    if (expnamestatus.is_set || is_set(expnamestatus.yfilter)) leaf_name_data.push_back(expnamestatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EXPRESSIONMIB::Expnametable::Expnameentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expnametable::Expnameentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EXPRESSIONMIB::Expnametable::Expnameentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "expName")
+    {
+        expname = value;
+        expname.value_namespace = name_space;
+        expname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expExpressionIndex")
+    {
+        expexpressionindex = value;
+        expexpressionindex.value_namespace = name_space;
+        expexpressionindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expNameStatus")
+    {
+        expnamestatus = value;
+        expnamestatus.value_namespace = name_space;
+        expnamestatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EXPRESSIONMIB::Expnametable::Expnameentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "expName")
+    {
+        expname.yfilter = yfilter;
+    }
+    if(value_path == "expExpressionIndex")
+    {
+        expexpressionindex.yfilter = yfilter;
+    }
+    if(value_path == "expNameStatus")
+    {
+        expnamestatus.yfilter = yfilter;
+    }
+}
+
+bool EXPRESSIONMIB::Expnametable::Expnameentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "expName" || name == "expExpressionIndex" || name == "expNameStatus")
+        return true;
+    return false;
+}
+
+EXPRESSIONMIB::Expobjecttable::Expobjecttable()
+{
+
+    yang_name = "expObjectTable"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EXPRESSIONMIB::Expobjecttable::~Expobjecttable()
+{
+}
+
+bool EXPRESSIONMIB::Expobjecttable::has_data() const
 {
     for (std::size_t index=0; index<expobjectentry.size(); index++)
     {
@@ -1075,7 +885,7 @@ bool ExpressionMib::Expobjecttable::has_data() const
     return false;
 }
 
-bool ExpressionMib::Expobjecttable::has_operation() const
+bool EXPRESSIONMIB::Expobjecttable::has_operation() const
 {
     for (std::size_t index=0; index<expobjectentry.size(); index++)
     {
@@ -1085,37 +895,30 @@ bool ExpressionMib::Expobjecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ExpressionMib::Expobjecttable::get_segment_path() const
+std::string EXPRESSIONMIB::Expobjecttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expobjecttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expObjectTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expobjecttable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expobjecttable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expObjectEntry")
     {
@@ -1127,7 +930,7 @@ std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const s
                 return c;
             }
         }
-        auto c = std::make_shared<ExpressionMib::Expobjecttable::Expobjectentry>();
+        auto c = std::make_shared<EXPRESSIONMIB::Expobjecttable::Expobjectentry>();
         c->parent = this;
         expobjectentry.push_back(c);
         return c;
@@ -1136,7 +939,7 @@ std::shared_ptr<Entity> ExpressionMib::Expobjecttable::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expobjecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : expobjectentry)
@@ -1147,22 +950,22 @@ std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expobjecttable::ge
     return children;
 }
 
-void ExpressionMib::Expobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ExpressionMib::Expobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ExpressionMib::Expobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expobjecttable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expObjectEntry")
         return true;
     return false;
 }
 
-ExpressionMib::Expobjecttable::Expobjectentry::Expobjectentry()
+EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectentry()
     :
     expexpressionindex{YType::str, "expExpressionIndex"},
     expobjectindex{YType::uint32, "expObjectIndex"},
@@ -1176,14 +979,15 @@ ExpressionMib::Expobjecttable::Expobjectentry::Expobjectentry()
     expobjectsampletype{YType::enumeration, "expObjectSampleType"},
     expobjectstatus{YType::enumeration, "expObjectStatus"}
 {
-    yang_name = "expObjectEntry"; yang_parent_name = "expObjectTable";
+
+    yang_name = "expObjectEntry"; yang_parent_name = "expObjectTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expobjecttable::Expobjectentry::~Expobjectentry()
+EXPRESSIONMIB::Expobjecttable::Expobjectentry::~Expobjectentry()
 {
 }
 
-bool ExpressionMib::Expobjecttable::Expobjectentry::has_data() const
+bool EXPRESSIONMIB::Expobjecttable::Expobjectentry::has_data() const
 {
     return expexpressionindex.is_set
 	|| expobjectindex.is_set
@@ -1198,7 +1002,7 @@ bool ExpressionMib::Expobjecttable::Expobjectentry::has_data() const
 	|| expobjectstatus.is_set;
 }
 
-bool ExpressionMib::Expobjecttable::Expobjectentry::has_operation() const
+bool EXPRESSIONMIB::Expobjecttable::Expobjectentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionindex.yfilter)
@@ -1214,27 +1018,22 @@ bool ExpressionMib::Expobjecttable::Expobjectentry::has_operation() const
 	|| ydk::is_set(expobjectstatus.yfilter);
 }
 
-std::string ExpressionMib::Expobjecttable::Expobjectentry::get_segment_path() const
+std::string EXPRESSIONMIB::Expobjecttable::Expobjectentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expObjectTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expobjecttable::Expobjectentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expObjectEntry" <<"[expExpressionIndex='" <<expexpressionindex <<"']" <<"[expObjectIndex='" <<expobjectindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expobjecttable::Expobjectentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expobjecttable::Expobjectentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expObjectTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (expexpressionindex.is_set || is_set(expexpressionindex.yfilter)) leaf_name_data.push_back(expexpressionindex.get_name_leafdata());
@@ -1249,24 +1048,22 @@ const EntityPath ExpressionMib::Expobjecttable::Expobjectentry::get_entity_path(
     if (expobjectsampletype.is_set || is_set(expobjectsampletype.yfilter)) leaf_name_data.push_back(expobjectsampletype.get_name_leafdata());
     if (expobjectstatus.is_set || is_set(expobjectstatus.yfilter)) leaf_name_data.push_back(expobjectstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expobjecttable::Expobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expobjecttable::Expobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expobjecttable::Expobjectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expobjecttable::Expobjectentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ExpressionMib::Expobjecttable::Expobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expobjecttable::Expobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -1336,7 +1133,7 @@ void ExpressionMib::Expobjecttable::Expobjectentry::set_value(const std::string 
     }
 }
 
-void ExpressionMib::Expobjecttable::Expobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expobjecttable::Expobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -1384,23 +1181,163 @@ void ExpressionMib::Expobjecttable::Expobjectentry::set_filter(const std::string
     }
 }
 
-bool ExpressionMib::Expobjecttable::Expobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expobjecttable::Expobjectentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionIndex" || name == "expObjectIndex" || name == "expObjectConditional" || name == "expObjectConditionalWildcard" || name == "expObjectDeltaDiscontinuityID" || name == "expObjectDiscontinuityIDType" || name == "expObjectDiscontinuityIDWildcard" || name == "expObjectID" || name == "expObjectIDWildcard" || name == "expObjectSampleType" || name == "expObjectStatus")
         return true;
     return false;
 }
 
-ExpressionMib::Expvaluetable::Expvaluetable()
+EXPRESSIONMIB::Expresource::Expresource()
+    :
+    expresourcedeltaminimum{YType::int32, "expResourceDeltaMinimum"},
+    expresourcedeltawildcardinstancemaximum{YType::uint32, "expResourceDeltaWildcardInstanceMaximum"},
+    expresourcedeltawildcardinstanceresourcelacks{YType::uint32, "expResourceDeltaWildcardInstanceResourceLacks"},
+    expresourcedeltawildcardinstances{YType::uint32, "expResourceDeltaWildcardInstances"},
+    expresourcedeltawildcardinstanceshigh{YType::uint32, "expResourceDeltaWildcardInstancesHigh"}
 {
-    yang_name = "expValueTable"; yang_parent_name = "EXPRESSION-MIB";
+
+    yang_name = "expResource"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expvaluetable::~Expvaluetable()
+EXPRESSIONMIB::Expresource::~Expresource()
 {
 }
 
-bool ExpressionMib::Expvaluetable::has_data() const
+bool EXPRESSIONMIB::Expresource::has_data() const
+{
+    return expresourcedeltaminimum.is_set
+	|| expresourcedeltawildcardinstancemaximum.is_set
+	|| expresourcedeltawildcardinstanceresourcelacks.is_set
+	|| expresourcedeltawildcardinstances.is_set
+	|| expresourcedeltawildcardinstanceshigh.is_set;
+}
+
+bool EXPRESSIONMIB::Expresource::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(expresourcedeltaminimum.yfilter)
+	|| ydk::is_set(expresourcedeltawildcardinstancemaximum.yfilter)
+	|| ydk::is_set(expresourcedeltawildcardinstanceresourcelacks.yfilter)
+	|| ydk::is_set(expresourcedeltawildcardinstances.yfilter)
+	|| ydk::is_set(expresourcedeltawildcardinstanceshigh.yfilter);
+}
+
+std::string EXPRESSIONMIB::Expresource::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expresource::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "expResource";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expresource::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (expresourcedeltaminimum.is_set || is_set(expresourcedeltaminimum.yfilter)) leaf_name_data.push_back(expresourcedeltaminimum.get_name_leafdata());
+    if (expresourcedeltawildcardinstancemaximum.is_set || is_set(expresourcedeltawildcardinstancemaximum.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstancemaximum.get_name_leafdata());
+    if (expresourcedeltawildcardinstanceresourcelacks.is_set || is_set(expresourcedeltawildcardinstanceresourcelacks.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstanceresourcelacks.get_name_leafdata());
+    if (expresourcedeltawildcardinstances.is_set || is_set(expresourcedeltawildcardinstances.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstances.get_name_leafdata());
+    if (expresourcedeltawildcardinstanceshigh.is_set || is_set(expresourcedeltawildcardinstanceshigh.yfilter)) leaf_name_data.push_back(expresourcedeltawildcardinstanceshigh.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EXPRESSIONMIB::Expresource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expresource::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EXPRESSIONMIB::Expresource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "expResourceDeltaMinimum")
+    {
+        expresourcedeltaminimum = value;
+        expresourcedeltaminimum.value_namespace = name_space;
+        expresourcedeltaminimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expResourceDeltaWildcardInstanceMaximum")
+    {
+        expresourcedeltawildcardinstancemaximum = value;
+        expresourcedeltawildcardinstancemaximum.value_namespace = name_space;
+        expresourcedeltawildcardinstancemaximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expResourceDeltaWildcardInstanceResourceLacks")
+    {
+        expresourcedeltawildcardinstanceresourcelacks = value;
+        expresourcedeltawildcardinstanceresourcelacks.value_namespace = name_space;
+        expresourcedeltawildcardinstanceresourcelacks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expResourceDeltaWildcardInstances")
+    {
+        expresourcedeltawildcardinstances = value;
+        expresourcedeltawildcardinstances.value_namespace = name_space;
+        expresourcedeltawildcardinstances.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expResourceDeltaWildcardInstancesHigh")
+    {
+        expresourcedeltawildcardinstanceshigh = value;
+        expresourcedeltawildcardinstanceshigh.value_namespace = name_space;
+        expresourcedeltawildcardinstanceshigh.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EXPRESSIONMIB::Expresource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "expResourceDeltaMinimum")
+    {
+        expresourcedeltaminimum.yfilter = yfilter;
+    }
+    if(value_path == "expResourceDeltaWildcardInstanceMaximum")
+    {
+        expresourcedeltawildcardinstancemaximum.yfilter = yfilter;
+    }
+    if(value_path == "expResourceDeltaWildcardInstanceResourceLacks")
+    {
+        expresourcedeltawildcardinstanceresourcelacks.yfilter = yfilter;
+    }
+    if(value_path == "expResourceDeltaWildcardInstances")
+    {
+        expresourcedeltawildcardinstances.yfilter = yfilter;
+    }
+    if(value_path == "expResourceDeltaWildcardInstancesHigh")
+    {
+        expresourcedeltawildcardinstanceshigh.yfilter = yfilter;
+    }
+}
+
+bool EXPRESSIONMIB::Expresource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "expResourceDeltaMinimum" || name == "expResourceDeltaWildcardInstanceMaximum" || name == "expResourceDeltaWildcardInstanceResourceLacks" || name == "expResourceDeltaWildcardInstances" || name == "expResourceDeltaWildcardInstancesHigh")
+        return true;
+    return false;
+}
+
+EXPRESSIONMIB::Expvaluetable::Expvaluetable()
+{
+
+    yang_name = "expValueTable"; yang_parent_name = "EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EXPRESSIONMIB::Expvaluetable::~Expvaluetable()
+{
+}
+
+bool EXPRESSIONMIB::Expvaluetable::has_data() const
 {
     for (std::size_t index=0; index<expvalueentry.size(); index++)
     {
@@ -1410,7 +1347,7 @@ bool ExpressionMib::Expvaluetable::has_data() const
     return false;
 }
 
-bool ExpressionMib::Expvaluetable::has_operation() const
+bool EXPRESSIONMIB::Expvaluetable::has_operation() const
 {
     for (std::size_t index=0; index<expvalueentry.size(); index++)
     {
@@ -1420,37 +1357,30 @@ bool ExpressionMib::Expvaluetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string ExpressionMib::Expvaluetable::get_segment_path() const
+std::string EXPRESSIONMIB::Expvaluetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expvaluetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expValueTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expvaluetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expvaluetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expvaluetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expValueEntry")
     {
@@ -1462,7 +1392,7 @@ std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const st
                 return c;
             }
         }
-        auto c = std::make_shared<ExpressionMib::Expvaluetable::Expvalueentry>();
+        auto c = std::make_shared<EXPRESSIONMIB::Expvaluetable::Expvalueentry>();
         c->parent = this;
         expvalueentry.push_back(c);
         return c;
@@ -1471,7 +1401,7 @@ std::shared_ptr<Entity> ExpressionMib::Expvaluetable::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expvaluetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : expvalueentry)
@@ -1482,22 +1412,22 @@ std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expvaluetable::get
     return children;
 }
 
-void ExpressionMib::Expvaluetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expvaluetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ExpressionMib::Expvaluetable::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expvaluetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ExpressionMib::Expvaluetable::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expvaluetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expValueEntry")
         return true;
     return false;
 }
 
-ExpressionMib::Expvaluetable::Expvalueentry::Expvalueentry()
+EXPRESSIONMIB::Expvaluetable::Expvalueentry::Expvalueentry()
     :
     expexpressionindex{YType::str, "expExpressionIndex"},
     expvalueinstance{YType::str, "expValueInstance"},
@@ -1509,14 +1439,15 @@ ExpressionMib::Expvaluetable::Expvalueentry::Expvalueentry()
     expvalueoidval{YType::str, "expValueOidVal"},
     expvalueunsigned32val{YType::uint32, "expValueUnsigned32Val"}
 {
-    yang_name = "expValueEntry"; yang_parent_name = "expValueTable";
+
+    yang_name = "expValueEntry"; yang_parent_name = "expValueTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ExpressionMib::Expvaluetable::Expvalueentry::~Expvalueentry()
+EXPRESSIONMIB::Expvaluetable::Expvalueentry::~Expvalueentry()
 {
 }
 
-bool ExpressionMib::Expvaluetable::Expvalueentry::has_data() const
+bool EXPRESSIONMIB::Expvaluetable::Expvalueentry::has_data() const
 {
     return expexpressionindex.is_set
 	|| expvalueinstance.is_set
@@ -1529,7 +1460,7 @@ bool ExpressionMib::Expvaluetable::Expvalueentry::has_data() const
 	|| expvalueunsigned32val.is_set;
 }
 
-bool ExpressionMib::Expvaluetable::Expvalueentry::has_operation() const
+bool EXPRESSIONMIB::Expvaluetable::Expvalueentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionindex.yfilter)
@@ -1543,27 +1474,22 @@ bool ExpressionMib::Expvaluetable::Expvalueentry::has_operation() const
 	|| ydk::is_set(expvalueunsigned32val.yfilter);
 }
 
-std::string ExpressionMib::Expvaluetable::Expvalueentry::get_segment_path() const
+std::string EXPRESSIONMIB::Expvaluetable::Expvalueentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expValueTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EXPRESSIONMIB::Expvaluetable::Expvalueentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expValueEntry" <<"[expExpressionIndex='" <<expexpressionindex <<"']" <<"[expValueInstance='" <<expvalueinstance <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ExpressionMib::Expvaluetable::Expvalueentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EXPRESSIONMIB::Expvaluetable::Expvalueentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "EXPRESSION-MIB:EXPRESSION-MIB/expValueTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (expexpressionindex.is_set || is_set(expexpressionindex.yfilter)) leaf_name_data.push_back(expexpressionindex.get_name_leafdata());
@@ -1576,24 +1502,22 @@ const EntityPath ExpressionMib::Expvaluetable::Expvalueentry::get_entity_path(En
     if (expvalueoidval.is_set || is_set(expvalueoidval.yfilter)) leaf_name_data.push_back(expvalueoidval.get_name_leafdata());
     if (expvalueunsigned32val.is_set || is_set(expvalueunsigned32val.yfilter)) leaf_name_data.push_back(expvalueunsigned32val.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ExpressionMib::Expvaluetable::Expvalueentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EXPRESSIONMIB::Expvaluetable::Expvalueentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExpressionMib::Expvaluetable::Expvalueentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EXPRESSIONMIB::Expvaluetable::Expvalueentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ExpressionMib::Expvaluetable::Expvalueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EXPRESSIONMIB::Expvaluetable::Expvalueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -1651,7 +1575,7 @@ void ExpressionMib::Expvaluetable::Expvalueentry::set_value(const std::string & 
     }
 }
 
-void ExpressionMib::Expvaluetable::Expvalueentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EXPRESSIONMIB::Expvaluetable::Expvalueentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionIndex")
     {
@@ -1691,39 +1615,39 @@ void ExpressionMib::Expvaluetable::Expvalueentry::set_filter(const std::string &
     }
 }
 
-bool ExpressionMib::Expvaluetable::Expvalueentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EXPRESSIONMIB::Expvaluetable::Expvalueentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionIndex" || name == "expValueInstance" || name == "expValueCounter32Val" || name == "expValueCounter64Val" || name == "expValueInteger32Val" || name == "expValueIpAddressVal" || name == "expValueOctetStringVal" || name == "expValueOidVal" || name == "expValueUnsigned32Val")
         return true;
     return false;
 }
 
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter32 {1, "counter32"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::unsignedOrGauge32 {2, "unsignedOrGauge32"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::timeTicks {3, "timeTicks"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::integer32 {4, "integer32"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::ipAddress {5, "ipAddress"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::octetString {6, "octetString"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::objectId {7, "objectId"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter64 {8, "counter64"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter32 {1, "counter32"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::unsignedOrGauge32 {2, "unsignedOrGauge32"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::timeTicks {3, "timeTicks"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::integer32 {4, "integer32"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::ipAddress {5, "ipAddress"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::octetString {6, "octetString"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::objectId {7, "objectId"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter64 {8, "counter64"};
 
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::invalidSyntax {1, "invalidSyntax"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::undefinedObjectIndex {2, "undefinedObjectIndex"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::unrecognizedOperator {3, "unrecognizedOperator"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::unrecognizedFunction {4, "unrecognizedFunction"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::invalidOperandType {5, "invalidOperandType"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::unmatchedParenthesis {6, "unmatchedParenthesis"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::tooManyWildcardValues {7, "tooManyWildcardValues"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::recursion {8, "recursion"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::deltaTooShort {9, "deltaTooShort"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::resourceUnavailable {10, "resourceUnavailable"};
-const Enum::YLeaf ExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionerror::divideByZero {11, "divideByZero"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::invalidSyntax {1, "invalidSyntax"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::undefinedObjectIndex {2, "undefinedObjectIndex"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::unrecognizedOperator {3, "unrecognizedOperator"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::unrecognizedFunction {4, "unrecognizedFunction"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::invalidOperandType {5, "invalidOperandType"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::unmatchedParenthesis {6, "unmatchedParenthesis"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::tooManyWildcardValues {7, "tooManyWildcardValues"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::recursion {8, "recursion"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::deltaTooShort {9, "deltaTooShort"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::resourceUnavailable {10, "resourceUnavailable"};
+const Enum::YLeaf EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror::divideByZero {11, "divideByZero"};
 
-const Enum::YLeaf ExpressionMib::Expobjecttable::Expobjectentry::Expobjectsampletype::absoluteValue {1, "absoluteValue"};
-const Enum::YLeaf ExpressionMib::Expobjecttable::Expobjectentry::Expobjectsampletype::deltaValue {2, "deltaValue"};
+const Enum::YLeaf EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype::absoluteValue {1, "absoluteValue"};
+const Enum::YLeaf EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype::deltaValue {2, "deltaValue"};
 
-const Enum::YLeaf ExpressionMib::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeTicks {1, "timeTicks"};
-const Enum::YLeaf ExpressionMib::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeStamp {2, "timeStamp"};
+const Enum::YLeaf EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeTicks {1, "timeTicks"};
+const Enum::YLeaf EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeStamp {2, "timeStamp"};
 
 
 }

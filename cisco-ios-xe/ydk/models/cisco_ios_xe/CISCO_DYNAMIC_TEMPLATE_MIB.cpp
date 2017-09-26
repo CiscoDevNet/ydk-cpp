@@ -11,47 +11,38 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_MIB {
 
-CiscoDynamicTemplateMib::CiscoDynamicTemplateMib()
+CISCODYNAMICTEMPLATEMIB::CISCODYNAMICTEMPLATEMIB()
     :
-    cdtethernettemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>())
-	,cdtiftemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>())
-	,cdtppppeeripaddrpooltable(std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>())
-	,cdtppptemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>())
-	,cdtsrvtemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>())
-	,cdttemplateassociationtable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>())
-	,cdttemplatecommontable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>())
-	,cdttemplatetable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>())
-	,cdttemplatetargettable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>())
-	,cdttemplateusagetable(std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>())
+    cdtethernettemplatetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable>())
+	,cdtiftemplatetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable>())
+	,cdtppppeeripaddrpooltable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable>())
+	,cdtppptemplatetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable>())
+	,cdtsrvtemplatetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable>())
+	,cdttemplateassociationtable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable>())
+	,cdttemplatecommontable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable>())
+	,cdttemplatetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetable>())
+	,cdttemplatetargettable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable>())
+	,cdttemplateusagetable(std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable>())
 {
     cdtethernettemplatetable->parent = this;
-
     cdtiftemplatetable->parent = this;
-
     cdtppppeeripaddrpooltable->parent = this;
-
     cdtppptemplatetable->parent = this;
-
     cdtsrvtemplatetable->parent = this;
-
     cdttemplateassociationtable->parent = this;
-
     cdttemplatecommontable->parent = this;
-
     cdttemplatetable->parent = this;
-
     cdttemplatetargettable->parent = this;
-
     cdttemplateusagetable->parent = this;
 
-    yang_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
+    yang_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::~CiscoDynamicTemplateMib()
+CISCODYNAMICTEMPLATEMIB::~CISCODYNAMICTEMPLATEMIB()
 {
 }
 
-bool CiscoDynamicTemplateMib::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::has_data() const
 {
     return (cdtethernettemplatetable !=  nullptr && cdtethernettemplatetable->has_data())
 	|| (cdtiftemplatetable !=  nullptr && cdtiftemplatetable->has_data())
@@ -65,7 +56,7 @@ bool CiscoDynamicTemplateMib::has_data() const
 	|| (cdttemplateusagetable !=  nullptr && cdttemplateusagetable->has_data());
 }
 
-bool CiscoDynamicTemplateMib::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cdtethernettemplatetable !=  nullptr && cdtethernettemplatetable->has_operation())
@@ -80,40 +71,29 @@ bool CiscoDynamicTemplateMib::has_operation() const
 	|| (cdttemplateusagetable !=  nullptr && cdttemplateusagetable->has_operation());
 }
 
-std::string CiscoDynamicTemplateMib::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtEthernetTemplateTable")
     {
         if(cdtethernettemplatetable == nullptr)
         {
-            cdtethernettemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable>();
+            cdtethernettemplatetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable>();
         }
         return cdtethernettemplatetable;
     }
@@ -122,7 +102,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdtiftemplatetable == nullptr)
         {
-            cdtiftemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable>();
+            cdtiftemplatetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable>();
         }
         return cdtiftemplatetable;
     }
@@ -131,7 +111,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdtppppeeripaddrpooltable == nullptr)
         {
-            cdtppppeeripaddrpooltable = std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable>();
+            cdtppppeeripaddrpooltable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable>();
         }
         return cdtppppeeripaddrpooltable;
     }
@@ -140,7 +120,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdtppptemplatetable == nullptr)
         {
-            cdtppptemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable>();
+            cdtppptemplatetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable>();
         }
         return cdtppptemplatetable;
     }
@@ -149,7 +129,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdtsrvtemplatetable == nullptr)
         {
-            cdtsrvtemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable>();
+            cdtsrvtemplatetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable>();
         }
         return cdtsrvtemplatetable;
     }
@@ -158,7 +138,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdttemplateassociationtable == nullptr)
         {
-            cdttemplateassociationtable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable>();
+            cdttemplateassociationtable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable>();
         }
         return cdttemplateassociationtable;
     }
@@ -167,7 +147,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdttemplatecommontable == nullptr)
         {
-            cdttemplatecommontable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable>();
+            cdttemplatecommontable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable>();
         }
         return cdttemplatecommontable;
     }
@@ -176,7 +156,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdttemplatetable == nullptr)
         {
-            cdttemplatetable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable>();
+            cdttemplatetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetable>();
         }
         return cdttemplatetable;
     }
@@ -185,7 +165,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdttemplatetargettable == nullptr)
         {
-            cdttemplatetargettable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable>();
+            cdttemplatetargettable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable>();
         }
         return cdttemplatetargettable;
     }
@@ -194,7 +174,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     {
         if(cdttemplateusagetable == nullptr)
         {
-            cdttemplateusagetable = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable>();
+            cdttemplateusagetable = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable>();
         }
         return cdttemplateusagetable;
     }
@@ -202,7 +182,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cdtethernettemplatetable != nullptr)
@@ -258,110 +238,104 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::get_chil
     return children;
 }
 
-void CiscoDynamicTemplateMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDynamicTemplateMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::clone_ptr() const
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoDynamicTemplateMib>();
+    return std::make_shared<CISCODYNAMICTEMPLATEMIB>();
 }
 
-std::string CiscoDynamicTemplateMib::get_bundle_yang_models_location() const
+std::string CISCODYNAMICTEMPLATEMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoDynamicTemplateMib::get_bundle_name() const
+std::string CISCODYNAMICTEMPLATEMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoDynamicTemplateMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCODYNAMICTEMPLATEMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoDynamicTemplateMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCODYNAMICTEMPLATEMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoDynamicTemplateMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtEthernetTemplateTable" || name == "cdtIfTemplateTable" || name == "cdtPppPeerIpAddrPoolTable" || name == "cdtPppTemplateTable" || name == "cdtSrvTemplateTable" || name == "cdtTemplateAssociationTable" || name == "cdtTemplateCommonTable" || name == "cdtTemplateTable" || name == "cdtTemplateTargetTable" || name == "cdtTemplateUsageTable")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplatetable()
+CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplatetable()
 {
-    yang_name = "cdtTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
+
+    yang_name = "cdtEthernetTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdttemplatetable::~Cdttemplatetable()
+CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::~Cdtethernettemplatetable()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::has_data() const
 {
-    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
     {
-        if(cdttemplateentry[index]->has_data())
+        if(cdtethernettemplateentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
     {
-        if(cdttemplateentry[index]->has_operation())
+        if(cdtethernettemplateentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdttemplatetable::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateTable";
-
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatetable::get_entity_path(Entity* ancestor) const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cdtEthernetTemplateTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cdtTemplateEntry")
+    if(child_yang_name == "cdtEthernetTemplateEntry")
     {
-        for(auto const & c : cdttemplateentry)
+        for(auto const & c : cdtethernettemplateentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -369,19 +343,19 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::get_child_by_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry>();
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry>();
         c->parent = this;
-        cdttemplateentry.push_back(c);
+        cdtethernettemplateentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateentry)
+    for (auto const & c : cdtethernettemplateentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -389,106 +363,100 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttempl
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdttemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDynamicTemplateMib::Cdttemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cdtTemplateEntry")
+    if(name == "cdtEthernetTemplateEntry")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::Cdtethernettemplateentry()
     :
     cdttemplatename{YType::str, "cdtTemplateName"},
-    cdttemplatesrc{YType::enumeration, "cdtTemplateSrc"},
-    cdttemplatestatus{YType::enumeration, "cdtTemplateStatus"},
-    cdttemplatestorage{YType::enumeration, "cdtTemplateStorage"},
-    cdttemplatetype{YType::enumeration, "cdtTemplateType"},
-    cdttemplateusagecount{YType::uint32, "cdtTemplateUsageCount"}
+    cdtethernetbridgedomain{YType::str, "cdtEthernetBridgeDomain"},
+    cdtethernetipv4pointtopoint{YType::boolean, "cdtEthernetIpv4PointToPoint"},
+    cdtethernetmacaddr{YType::str, "cdtEthernetMacAddr"},
+    cdtethernetpppoeenable{YType::boolean, "cdtEthernetPppoeEnable"},
+    cdtethernetvalid{YType::bits, "cdtEthernetValid"}
 {
-    yang_name = "cdtTemplateEntry"; yang_parent_name = "cdtTemplateTable";
+
+    yang_name = "cdtEthernetTemplateEntry"; yang_parent_name = "cdtEthernetTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::~Cdttemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::~Cdtethernettemplateentry()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::has_data() const
 {
     return cdttemplatename.is_set
-	|| cdttemplatesrc.is_set
-	|| cdttemplatestatus.is_set
-	|| cdttemplatestorage.is_set
-	|| cdttemplatetype.is_set
-	|| cdttemplateusagecount.is_set;
+	|| cdtethernetbridgedomain.is_set
+	|| cdtethernetipv4pointtopoint.is_set
+	|| cdtethernetmacaddr.is_set
+	|| cdtethernetpppoeenable.is_set
+	|| cdtethernetvalid.is_set;
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdttemplatename.yfilter)
-	|| ydk::is_set(cdttemplatesrc.yfilter)
-	|| ydk::is_set(cdttemplatestatus.yfilter)
-	|| ydk::is_set(cdttemplatestorage.yfilter)
-	|| ydk::is_set(cdttemplatetype.yfilter)
-	|| ydk::is_set(cdttemplateusagecount.yfilter);
+	|| ydk::is_set(cdtethernetbridgedomain.yfilter)
+	|| ydk::is_set(cdtethernetipv4pointtopoint.yfilter)
+	|| ydk::is_set(cdtethernetmacaddr.yfilter)
+	|| ydk::is_set(cdtethernetpppoeenable.yfilter)
+	|| ydk::is_set(cdtethernetvalid.yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtEthernetTemplateTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::get_entity_path(Entity* ancestor) const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cdtEthernetTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
-    if (cdttemplatesrc.is_set || is_set(cdttemplatesrc.yfilter)) leaf_name_data.push_back(cdttemplatesrc.get_name_leafdata());
-    if (cdttemplatestatus.is_set || is_set(cdttemplatestatus.yfilter)) leaf_name_data.push_back(cdttemplatestatus.get_name_leafdata());
-    if (cdttemplatestorage.is_set || is_set(cdttemplatestorage.yfilter)) leaf_name_data.push_back(cdttemplatestorage.get_name_leafdata());
-    if (cdttemplatetype.is_set || is_set(cdttemplatetype.yfilter)) leaf_name_data.push_back(cdttemplatetype.get_name_leafdata());
-    if (cdttemplateusagecount.is_set || is_set(cdttemplateusagecount.yfilter)) leaf_name_data.push_back(cdttemplateusagecount.get_name_leafdata());
+    if (cdtethernetbridgedomain.is_set || is_set(cdtethernetbridgedomain.yfilter)) leaf_name_data.push_back(cdtethernetbridgedomain.get_name_leafdata());
+    if (cdtethernetipv4pointtopoint.is_set || is_set(cdtethernetipv4pointtopoint.yfilter)) leaf_name_data.push_back(cdtethernetipv4pointtopoint.get_name_leafdata());
+    if (cdtethernetmacaddr.is_set || is_set(cdtethernetmacaddr.yfilter)) leaf_name_data.push_back(cdtethernetmacaddr.get_name_leafdata());
+    if (cdtethernetpppoeenable.is_set || is_set(cdtethernetpppoeenable.yfilter)) leaf_name_data.push_back(cdtethernetpppoeenable.get_name_leafdata());
+    if (cdtethernetvalid.is_set || is_set(cdtethernetvalid.yfilter)) leaf_name_data.push_back(cdtethernetvalid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -496,1183 +464,82 @@ void CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::set_value(cons
         cdttemplatename.value_namespace = name_space;
         cdttemplatename.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cdtTemplateSrc")
+    if(value_path == "cdtEthernetBridgeDomain")
     {
-        cdttemplatesrc = value;
-        cdttemplatesrc.value_namespace = name_space;
-        cdttemplatesrc.value_namespace_prefix = name_space_prefix;
+        cdtethernetbridgedomain = value;
+        cdtethernetbridgedomain.value_namespace = name_space;
+        cdtethernetbridgedomain.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cdtTemplateStatus")
+    if(value_path == "cdtEthernetIpv4PointToPoint")
     {
-        cdttemplatestatus = value;
-        cdttemplatestatus.value_namespace = name_space;
-        cdttemplatestatus.value_namespace_prefix = name_space_prefix;
+        cdtethernetipv4pointtopoint = value;
+        cdtethernetipv4pointtopoint.value_namespace = name_space;
+        cdtethernetipv4pointtopoint.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cdtTemplateStorage")
+    if(value_path == "cdtEthernetMacAddr")
     {
-        cdttemplatestorage = value;
-        cdttemplatestorage.value_namespace = name_space;
-        cdttemplatestorage.value_namespace_prefix = name_space_prefix;
+        cdtethernetmacaddr = value;
+        cdtethernetmacaddr.value_namespace = name_space;
+        cdtethernetmacaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cdtTemplateType")
+    if(value_path == "cdtEthernetPppoeEnable")
     {
-        cdttemplatetype = value;
-        cdttemplatetype.value_namespace = name_space;
-        cdttemplatetype.value_namespace_prefix = name_space_prefix;
+        cdtethernetpppoeenable = value;
+        cdtethernetpppoeenable.value_namespace = name_space;
+        cdtethernetpppoeenable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cdtTemplateUsageCount")
+    if(value_path == "cdtEthernetValid")
     {
-        cdttemplateusagecount = value;
-        cdttemplateusagecount.value_namespace = name_space;
-        cdttemplateusagecount.value_namespace_prefix = name_space_prefix;
+        cdtethernetvalid[value] = true;
     }
 }
 
-void CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdtTemplateName")
     {
         cdttemplatename.yfilter = yfilter;
     }
-    if(value_path == "cdtTemplateSrc")
+    if(value_path == "cdtEthernetBridgeDomain")
     {
-        cdttemplatesrc.yfilter = yfilter;
+        cdtethernetbridgedomain.yfilter = yfilter;
     }
-    if(value_path == "cdtTemplateStatus")
+    if(value_path == "cdtEthernetIpv4PointToPoint")
     {
-        cdttemplatestatus.yfilter = yfilter;
+        cdtethernetipv4pointtopoint.yfilter = yfilter;
     }
-    if(value_path == "cdtTemplateStorage")
+    if(value_path == "cdtEthernetMacAddr")
     {
-        cdttemplatestorage.yfilter = yfilter;
+        cdtethernetmacaddr.yfilter = yfilter;
     }
-    if(value_path == "cdtTemplateType")
+    if(value_path == "cdtEthernetPppoeEnable")
     {
-        cdttemplatetype.yfilter = yfilter;
+        cdtethernetpppoeenable.yfilter = yfilter;
     }
-    if(value_path == "cdtTemplateUsageCount")
+    if(value_path == "cdtEthernetValid")
     {
-        cdttemplateusagecount.yfilter = yfilter;
+        cdtethernetvalid.yfilter = yfilter;
     }
 }
 
-bool CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cdtTemplateName" || name == "cdtTemplateSrc" || name == "cdtTemplateStatus" || name == "cdtTemplateStorage" || name == "cdtTemplateType" || name == "cdtTemplateUsageCount")
+    if(name == "cdtTemplateName" || name == "cdtEthernetBridgeDomain" || name == "cdtEthernetIpv4PointToPoint" || name == "cdtEthernetMacAddr" || name == "cdtEthernetPppoeEnable" || name == "cdtEthernetValid")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargettable()
+CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplatetable()
 {
-    yang_name = "cdtTemplateTargetTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdttemplatetargettable::~Cdttemplatetargettable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_data() const
-{
-    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
-    {
-        if(cdttemplatetargetentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_operation() const
-{
-    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
-    {
-        if(cdttemplatetargetentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplatetargettable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateTargetTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatetargettable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtTemplateTargetEntry")
-    {
-        for(auto const & c : cdttemplatetargetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry>();
-        c->parent = this;
-        cdttemplatetargetentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetargettable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplatetargetentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatetargettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatetargettable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateTargetEntry")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::Cdttemplatetargetentry()
-    :
-    cdttemplatetargettype{YType::enumeration, "cdtTemplateTargetType"},
-    cdttemplatetargetid{YType::str, "cdtTemplateTargetId"},
-    cdttemplatetargetstatus{YType::enumeration, "cdtTemplateTargetStatus"},
-    cdttemplatetargetstorage{YType::enumeration, "cdtTemplateTargetStorage"}
-{
-    yang_name = "cdtTemplateTargetEntry"; yang_parent_name = "cdtTemplateTargetTable";
-}
-
-CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::~Cdttemplatetargetentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::has_data() const
-{
-    return cdttemplatetargettype.is_set
-	|| cdttemplatetargetid.is_set
-	|| cdttemplatetargetstatus.is_set
-	|| cdttemplatetargetstorage.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatetargettype.yfilter)
-	|| ydk::is_set(cdttemplatetargetid.yfilter)
-	|| ydk::is_set(cdttemplatetargetstatus.yfilter)
-	|| ydk::is_set(cdttemplatetargetstorage.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateTargetEntry" <<"[cdtTemplateTargetType='" <<cdttemplatetargettype <<"']" <<"[cdtTemplateTargetId='" <<cdttemplatetargetid <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateTargetTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatetargettype.is_set || is_set(cdttemplatetargettype.yfilter)) leaf_name_data.push_back(cdttemplatetargettype.get_name_leafdata());
-    if (cdttemplatetargetid.is_set || is_set(cdttemplatetargetid.yfilter)) leaf_name_data.push_back(cdttemplatetargetid.get_name_leafdata());
-    if (cdttemplatetargetstatus.is_set || is_set(cdttemplatetargetstatus.yfilter)) leaf_name_data.push_back(cdttemplatetargetstatus.get_name_leafdata());
-    if (cdttemplatetargetstorage.is_set || is_set(cdttemplatetargetstorage.yfilter)) leaf_name_data.push_back(cdttemplatetargetstorage.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateTargetType")
-    {
-        cdttemplatetargettype = value;
-        cdttemplatetargettype.value_namespace = name_space;
-        cdttemplatetargettype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateTargetId")
-    {
-        cdttemplatetargetid = value;
-        cdttemplatetargetid.value_namespace = name_space;
-        cdttemplatetargetid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateTargetStatus")
-    {
-        cdttemplatetargetstatus = value;
-        cdttemplatetargetstatus.value_namespace = name_space;
-        cdttemplatetargetstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateTargetStorage")
-    {
-        cdttemplatetargetstorage = value;
-        cdttemplatetargetstorage.value_namespace = name_space;
-        cdttemplatetargetstorage.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateTargetType")
-    {
-        cdttemplatetargettype.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateTargetId")
-    {
-        cdttemplatetargetid.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateTargetStatus")
-    {
-        cdttemplatetargetstatus.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateTargetStorage")
-    {
-        cdttemplatetargetstorage.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateTargetType" || name == "cdtTemplateTargetId" || name == "cdtTemplateTargetStatus" || name == "cdtTemplateTargetStorage")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationtable()
-{
-    yang_name = "cdtTemplateAssociationTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdttemplateassociationtable::~Cdttemplateassociationtable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_data() const
-{
-    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
-    {
-        if(cdttemplateassociationentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_operation() const
-{
-    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
-    {
-        if(cdttemplateassociationentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplateassociationtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateAssociationTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplateassociationtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateassociationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtTemplateAssociationEntry")
-    {
-        for(auto const & c : cdttemplateassociationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry>();
-        c->parent = this;
-        cdttemplateassociationentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateassociationtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateassociationentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateassociationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateassociationtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateAssociationEntry")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::Cdttemplateassociationentry()
-    :
-    cdttemplatetargettype{YType::enumeration, "cdtTemplateTargetType"},
-    cdttemplatetargetid{YType::str, "cdtTemplateTargetId"},
-    cdttemplateassociationname{YType::str, "cdtTemplateAssociationName"},
-    cdttemplateassociationprecedence{YType::uint32, "cdtTemplateAssociationPrecedence"}
-{
-    yang_name = "cdtTemplateAssociationEntry"; yang_parent_name = "cdtTemplateAssociationTable";
-}
-
-CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::~Cdttemplateassociationentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::has_data() const
-{
-    return cdttemplatetargettype.is_set
-	|| cdttemplatetargetid.is_set
-	|| cdttemplateassociationname.is_set
-	|| cdttemplateassociationprecedence.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatetargettype.yfilter)
-	|| ydk::is_set(cdttemplatetargetid.yfilter)
-	|| ydk::is_set(cdttemplateassociationname.yfilter)
-	|| ydk::is_set(cdttemplateassociationprecedence.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateAssociationEntry" <<"[cdtTemplateTargetType='" <<cdttemplatetargettype <<"']" <<"[cdtTemplateTargetId='" <<cdttemplatetargetid <<"']" <<"[cdtTemplateAssociationName='" <<cdttemplateassociationname <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateAssociationTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatetargettype.is_set || is_set(cdttemplatetargettype.yfilter)) leaf_name_data.push_back(cdttemplatetargettype.get_name_leafdata());
-    if (cdttemplatetargetid.is_set || is_set(cdttemplatetargetid.yfilter)) leaf_name_data.push_back(cdttemplatetargetid.get_name_leafdata());
-    if (cdttemplateassociationname.is_set || is_set(cdttemplateassociationname.yfilter)) leaf_name_data.push_back(cdttemplateassociationname.get_name_leafdata());
-    if (cdttemplateassociationprecedence.is_set || is_set(cdttemplateassociationprecedence.yfilter)) leaf_name_data.push_back(cdttemplateassociationprecedence.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateTargetType")
-    {
-        cdttemplatetargettype = value;
-        cdttemplatetargettype.value_namespace = name_space;
-        cdttemplatetargettype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateTargetId")
-    {
-        cdttemplatetargetid = value;
-        cdttemplatetargetid.value_namespace = name_space;
-        cdttemplatetargetid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateAssociationName")
-    {
-        cdttemplateassociationname = value;
-        cdttemplateassociationname.value_namespace = name_space;
-        cdttemplateassociationname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateAssociationPrecedence")
-    {
-        cdttemplateassociationprecedence = value;
-        cdttemplateassociationprecedence.value_namespace = name_space;
-        cdttemplateassociationprecedence.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateTargetType")
-    {
-        cdttemplatetargettype.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateTargetId")
-    {
-        cdttemplatetargetid.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateAssociationName")
-    {
-        cdttemplateassociationname.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateAssociationPrecedence")
-    {
-        cdttemplateassociationprecedence.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateTargetType" || name == "cdtTemplateTargetId" || name == "cdtTemplateAssociationName" || name == "cdtTemplateAssociationPrecedence")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusagetable()
-{
-    yang_name = "cdtTemplateUsageTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdttemplateusagetable::~Cdttemplateusagetable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_data() const
-{
-    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
-    {
-        if(cdttemplateusageentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_operation() const
-{
-    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
-    {
-        if(cdttemplateusageentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplateusagetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateUsageTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplateusagetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtTemplateUsageEntry")
-    {
-        for(auto const & c : cdttemplateusageentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry>();
-        c->parent = this;
-        cdttemplateusageentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateusagetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplateusageentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateusagetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateusagetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateUsageEntry")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::Cdttemplateusageentry()
-    :
-    cdttemplatename{YType::str, "cdtTemplateName"},
-    cdttemplateusagetargettype{YType::enumeration, "cdtTemplateUsageTargetType"},
-    cdttemplateusagetargetid{YType::str, "cdtTemplateUsageTargetId"}
-{
-    yang_name = "cdtTemplateUsageEntry"; yang_parent_name = "cdtTemplateUsageTable";
-}
-
-CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::~Cdttemplateusageentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::has_data() const
-{
-    return cdttemplatename.is_set
-	|| cdttemplateusagetargettype.is_set
-	|| cdttemplateusagetargetid.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatename.yfilter)
-	|| ydk::is_set(cdttemplateusagetargettype.yfilter)
-	|| ydk::is_set(cdttemplateusagetargetid.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateUsageEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']" <<"[cdtTemplateUsageTargetType='" <<cdttemplateusagetargettype <<"']" <<"[cdtTemplateUsageTargetId='" <<cdttemplateusagetargetid <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateUsageTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
-    if (cdttemplateusagetargettype.is_set || is_set(cdttemplateusagetargettype.yfilter)) leaf_name_data.push_back(cdttemplateusagetargettype.get_name_leafdata());
-    if (cdttemplateusagetargetid.is_set || is_set(cdttemplateusagetargetid.yfilter)) leaf_name_data.push_back(cdttemplateusagetargetid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename = value;
-        cdttemplatename.value_namespace = name_space;
-        cdttemplatename.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateUsageTargetType")
-    {
-        cdttemplateusagetargettype = value;
-        cdttemplateusagetargettype.value_namespace = name_space;
-        cdttemplateusagetargettype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtTemplateUsageTargetId")
-    {
-        cdttemplateusagetargetid = value;
-        cdttemplateusagetargetid.value_namespace = name_space;
-        cdttemplateusagetargetid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateUsageTargetType")
-    {
-        cdttemplateusagetargettype.yfilter = yfilter;
-    }
-    if(value_path == "cdtTemplateUsageTargetId")
-    {
-        cdttemplateusagetargetid.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateName" || name == "cdtTemplateUsageTargetType" || name == "cdtTemplateUsageTargetId")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommontable()
-{
-    yang_name = "cdtTemplateCommonTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdttemplatecommontable::~Cdttemplatecommontable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_data() const
-{
-    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
-    {
-        if(cdttemplatecommonentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_operation() const
-{
-    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
-    {
-        if(cdttemplatecommonentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplatecommontable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateCommonTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatecommontable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtTemplateCommonEntry")
-    {
-        for(auto const & c : cdttemplatecommonentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry>();
-        c->parent = this;
-        cdttemplatecommonentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatecommontable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdttemplatecommonentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatecommontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatecommontable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateCommonEntry")
-        return true;
-    return false;
-}
 
-CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::Cdttemplatecommonentry()
-    :
-    cdttemplatename{YType::str, "cdtTemplateName"},
-    cdtcommonaddrpool{YType::str, "cdtCommonAddrPool"},
-    cdtcommondescr{YType::str, "cdtCommonDescr"},
-    cdtcommonipv4accessgroup{YType::str, "cdtCommonIpv4AccessGroup"},
-    cdtcommonipv4unreachables{YType::boolean, "cdtCommonIpv4Unreachables"},
-    cdtcommonipv6accessgroup{YType::str, "cdtCommonIpv6AccessGroup"},
-    cdtcommonipv6unreachables{YType::boolean, "cdtCommonIpv6Unreachables"},
-    cdtcommonkeepaliveint{YType::uint32, "cdtCommonKeepaliveInt"},
-    cdtcommonkeepaliveretries{YType::uint32, "cdtCommonKeepaliveRetries"},
-    cdtcommonsrvacct{YType::str, "cdtCommonSrvAcct"},
-    cdtcommonsrvnetflow{YType::str, "cdtCommonSrvNetflow"},
-    cdtcommonsrvqos{YType::str, "cdtCommonSrvQos"},
-    cdtcommonsrvredirect{YType::str, "cdtCommonSrvRedirect"},
-    cdtcommonsrvsubcontrol{YType::str, "cdtCommonSrvSubControl"},
-    cdtcommonvalid{YType::bits, "cdtCommonValid"},
-    cdtcommonvrf{YType::str, "cdtCommonVrf"}
-{
-    yang_name = "cdtTemplateCommonEntry"; yang_parent_name = "cdtTemplateCommonTable";
-}
-
-CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::~Cdttemplatecommonentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::has_data() const
-{
-    return cdttemplatename.is_set
-	|| cdtcommonaddrpool.is_set
-	|| cdtcommondescr.is_set
-	|| cdtcommonipv4accessgroup.is_set
-	|| cdtcommonipv4unreachables.is_set
-	|| cdtcommonipv6accessgroup.is_set
-	|| cdtcommonipv6unreachables.is_set
-	|| cdtcommonkeepaliveint.is_set
-	|| cdtcommonkeepaliveretries.is_set
-	|| cdtcommonsrvacct.is_set
-	|| cdtcommonsrvnetflow.is_set
-	|| cdtcommonsrvqos.is_set
-	|| cdtcommonsrvredirect.is_set
-	|| cdtcommonsrvsubcontrol.is_set
-	|| cdtcommonvalid.is_set
-	|| cdtcommonvrf.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatename.yfilter)
-	|| ydk::is_set(cdtcommonaddrpool.yfilter)
-	|| ydk::is_set(cdtcommondescr.yfilter)
-	|| ydk::is_set(cdtcommonipv4accessgroup.yfilter)
-	|| ydk::is_set(cdtcommonipv4unreachables.yfilter)
-	|| ydk::is_set(cdtcommonipv6accessgroup.yfilter)
-	|| ydk::is_set(cdtcommonipv6unreachables.yfilter)
-	|| ydk::is_set(cdtcommonkeepaliveint.yfilter)
-	|| ydk::is_set(cdtcommonkeepaliveretries.yfilter)
-	|| ydk::is_set(cdtcommonsrvacct.yfilter)
-	|| ydk::is_set(cdtcommonsrvnetflow.yfilter)
-	|| ydk::is_set(cdtcommonsrvqos.yfilter)
-	|| ydk::is_set(cdtcommonsrvredirect.yfilter)
-	|| ydk::is_set(cdtcommonsrvsubcontrol.yfilter)
-	|| ydk::is_set(cdtcommonvalid.yfilter)
-	|| ydk::is_set(cdtcommonvrf.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtTemplateCommonEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateCommonTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
-    if (cdtcommonaddrpool.is_set || is_set(cdtcommonaddrpool.yfilter)) leaf_name_data.push_back(cdtcommonaddrpool.get_name_leafdata());
-    if (cdtcommondescr.is_set || is_set(cdtcommondescr.yfilter)) leaf_name_data.push_back(cdtcommondescr.get_name_leafdata());
-    if (cdtcommonipv4accessgroup.is_set || is_set(cdtcommonipv4accessgroup.yfilter)) leaf_name_data.push_back(cdtcommonipv4accessgroup.get_name_leafdata());
-    if (cdtcommonipv4unreachables.is_set || is_set(cdtcommonipv4unreachables.yfilter)) leaf_name_data.push_back(cdtcommonipv4unreachables.get_name_leafdata());
-    if (cdtcommonipv6accessgroup.is_set || is_set(cdtcommonipv6accessgroup.yfilter)) leaf_name_data.push_back(cdtcommonipv6accessgroup.get_name_leafdata());
-    if (cdtcommonipv6unreachables.is_set || is_set(cdtcommonipv6unreachables.yfilter)) leaf_name_data.push_back(cdtcommonipv6unreachables.get_name_leafdata());
-    if (cdtcommonkeepaliveint.is_set || is_set(cdtcommonkeepaliveint.yfilter)) leaf_name_data.push_back(cdtcommonkeepaliveint.get_name_leafdata());
-    if (cdtcommonkeepaliveretries.is_set || is_set(cdtcommonkeepaliveretries.yfilter)) leaf_name_data.push_back(cdtcommonkeepaliveretries.get_name_leafdata());
-    if (cdtcommonsrvacct.is_set || is_set(cdtcommonsrvacct.yfilter)) leaf_name_data.push_back(cdtcommonsrvacct.get_name_leafdata());
-    if (cdtcommonsrvnetflow.is_set || is_set(cdtcommonsrvnetflow.yfilter)) leaf_name_data.push_back(cdtcommonsrvnetflow.get_name_leafdata());
-    if (cdtcommonsrvqos.is_set || is_set(cdtcommonsrvqos.yfilter)) leaf_name_data.push_back(cdtcommonsrvqos.get_name_leafdata());
-    if (cdtcommonsrvredirect.is_set || is_set(cdtcommonsrvredirect.yfilter)) leaf_name_data.push_back(cdtcommonsrvredirect.get_name_leafdata());
-    if (cdtcommonsrvsubcontrol.is_set || is_set(cdtcommonsrvsubcontrol.yfilter)) leaf_name_data.push_back(cdtcommonsrvsubcontrol.get_name_leafdata());
-    if (cdtcommonvalid.is_set || is_set(cdtcommonvalid.yfilter)) leaf_name_data.push_back(cdtcommonvalid.get_name_leafdata());
-    if (cdtcommonvrf.is_set || is_set(cdtcommonvrf.yfilter)) leaf_name_data.push_back(cdtcommonvrf.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename = value;
-        cdttemplatename.value_namespace = name_space;
-        cdttemplatename.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonAddrPool")
-    {
-        cdtcommonaddrpool = value;
-        cdtcommonaddrpool.value_namespace = name_space;
-        cdtcommonaddrpool.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonDescr")
-    {
-        cdtcommondescr = value;
-        cdtcommondescr.value_namespace = name_space;
-        cdtcommondescr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonIpv4AccessGroup")
-    {
-        cdtcommonipv4accessgroup = value;
-        cdtcommonipv4accessgroup.value_namespace = name_space;
-        cdtcommonipv4accessgroup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonIpv4Unreachables")
-    {
-        cdtcommonipv4unreachables = value;
-        cdtcommonipv4unreachables.value_namespace = name_space;
-        cdtcommonipv4unreachables.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonIpv6AccessGroup")
-    {
-        cdtcommonipv6accessgroup = value;
-        cdtcommonipv6accessgroup.value_namespace = name_space;
-        cdtcommonipv6accessgroup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonIpv6Unreachables")
-    {
-        cdtcommonipv6unreachables = value;
-        cdtcommonipv6unreachables.value_namespace = name_space;
-        cdtcommonipv6unreachables.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonKeepaliveInt")
-    {
-        cdtcommonkeepaliveint = value;
-        cdtcommonkeepaliveint.value_namespace = name_space;
-        cdtcommonkeepaliveint.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonKeepaliveRetries")
-    {
-        cdtcommonkeepaliveretries = value;
-        cdtcommonkeepaliveretries.value_namespace = name_space;
-        cdtcommonkeepaliveretries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonSrvAcct")
-    {
-        cdtcommonsrvacct = value;
-        cdtcommonsrvacct.value_namespace = name_space;
-        cdtcommonsrvacct.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonSrvNetflow")
-    {
-        cdtcommonsrvnetflow = value;
-        cdtcommonsrvnetflow.value_namespace = name_space;
-        cdtcommonsrvnetflow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonSrvQos")
-    {
-        cdtcommonsrvqos = value;
-        cdtcommonsrvqos.value_namespace = name_space;
-        cdtcommonsrvqos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonSrvRedirect")
-    {
-        cdtcommonsrvredirect = value;
-        cdtcommonsrvredirect.value_namespace = name_space;
-        cdtcommonsrvredirect.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonSrvSubControl")
-    {
-        cdtcommonsrvsubcontrol = value;
-        cdtcommonsrvsubcontrol.value_namespace = name_space;
-        cdtcommonsrvsubcontrol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtCommonValid")
-    {
-        cdtcommonvalid[value] = true;
-    }
-    if(value_path == "cdtCommonVrf")
-    {
-        cdtcommonvrf = value;
-        cdtcommonvrf.value_namespace = name_space;
-        cdtcommonvrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonAddrPool")
-    {
-        cdtcommonaddrpool.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonDescr")
-    {
-        cdtcommondescr.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonIpv4AccessGroup")
-    {
-        cdtcommonipv4accessgroup.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonIpv4Unreachables")
-    {
-        cdtcommonipv4unreachables.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonIpv6AccessGroup")
-    {
-        cdtcommonipv6accessgroup.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonIpv6Unreachables")
-    {
-        cdtcommonipv6unreachables.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonKeepaliveInt")
-    {
-        cdtcommonkeepaliveint.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonKeepaliveRetries")
-    {
-        cdtcommonkeepaliveretries.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonSrvAcct")
-    {
-        cdtcommonsrvacct.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonSrvNetflow")
-    {
-        cdtcommonsrvnetflow.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonSrvQos")
-    {
-        cdtcommonsrvqos.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonSrvRedirect")
-    {
-        cdtcommonsrvredirect.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonSrvSubControl")
-    {
-        cdtcommonsrvsubcontrol.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonValid")
-    {
-        cdtcommonvalid.yfilter = yfilter;
-    }
-    if(value_path == "cdtCommonVrf")
-    {
-        cdtcommonvrf.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateName" || name == "cdtCommonAddrPool" || name == "cdtCommonDescr" || name == "cdtCommonIpv4AccessGroup" || name == "cdtCommonIpv4Unreachables" || name == "cdtCommonIpv6AccessGroup" || name == "cdtCommonIpv6Unreachables" || name == "cdtCommonKeepaliveInt" || name == "cdtCommonKeepaliveRetries" || name == "cdtCommonSrvAcct" || name == "cdtCommonSrvNetflow" || name == "cdtCommonSrvQos" || name == "cdtCommonSrvRedirect" || name == "cdtCommonSrvSubControl" || name == "cdtCommonValid" || name == "cdtCommonVrf")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplatetable()
-{
-    yang_name = "cdtIfTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
+    yang_name = "cdtIfTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtiftemplatetable::~Cdtiftemplatetable()
+CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::~Cdtiftemplatetable()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::has_data() const
 {
     for (std::size_t index=0; index<cdtiftemplateentry.size(); index++)
     {
@@ -1682,7 +549,7 @@ bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_data() const
     return false;
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::has_operation() const
 {
     for (std::size_t index=0; index<cdtiftemplateentry.size(); index++)
     {
@@ -1692,37 +559,30 @@ bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtiftemplatetable::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtIfTemplateTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtiftemplatetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtIfTemplateEntry")
     {
@@ -1734,7 +594,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry>();
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry>();
         c->parent = this;
         cdtiftemplateentry.push_back(c);
         return c;
@@ -1743,7 +603,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtiftemplatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdtiftemplateentry)
@@ -1754,22 +614,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtiftem
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtiftemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDynamicTemplateMib::Cdtiftemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtIfTemplateEntry")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtiftemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtiftemplateentry()
     :
     cdttemplatename{YType::str, "cdtTemplateName"},
     cdtifcdpenable{YType::boolean, "cdtIfCdpEnable"},
@@ -1803,14 +663,15 @@ CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtiftemplateen
     cdtifmtu{YType::uint32, "cdtIfMtu"},
     cdtifvalid{YType::bits, "cdtIfValid"}
 {
-    yang_name = "cdtIfTemplateEntry"; yang_parent_name = "cdtIfTemplateTable";
+
+    yang_name = "cdtIfTemplateEntry"; yang_parent_name = "cdtIfTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::~Cdtiftemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::~Cdtiftemplateentry()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::has_data() const
 {
     return cdttemplatename.is_set
 	|| cdtifcdpenable.is_set
@@ -1845,7 +706,7 @@ bool CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::has_data()
 	|| cdtifvalid.is_set;
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdttemplatename.yfilter)
@@ -1881,27 +742,22 @@ bool CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::has_operat
 	|| ydk::is_set(cdtifvalid.yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtIfTemplateTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtIfTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtIfTemplateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
@@ -1936,24 +792,22 @@ const EntityPath CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry
     if (cdtifmtu.is_set || is_set(cdtifmtu.yfilter)) leaf_name_data.push_back(cdtifmtu.get_name_leafdata());
     if (cdtifvalid.is_set || is_set(cdtifvalid.yfilter)) leaf_name_data.push_back(cdtifvalid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -2135,7 +989,7 @@ void CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::set_value(
     }
 }
 
-void CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -2263,23 +1117,263 @@ void CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::set_filter
     }
 }
 
-bool CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtTemplateName" || name == "cdtIfCdpEnable" || name == "cdtIfFlowMonitor" || name == "cdtIfIpv4Mtu" || name == "cdtIfIpv4SubEnable" || name == "cdtIfIpv4TcpMssAdjust" || name == "cdtIfIpv4Unnumbered" || name == "cdtIfIpv4VerifyUniRpf" || name == "cdtIfIpv4VerifyUniRpfAcl" || name == "cdtIfIpv4VerifyUniRpfOpts" || name == "cdtIfIpv6Enable" || name == "cdtIfIpv6NdDadAttempts" || name == "cdtIfIpv6NdNsInterval" || name == "cdtIfIpv6NdOpts" || name == "cdtIfIpv6NdPreferredLife" || name == "cdtIfIpv6NdPrefix" || name == "cdtIfIpv6NdPrefixLength" || name == "cdtIfIpv6NdRaIntervalMax" || name == "cdtIfIpv6NdRaIntervalMin" || name == "cdtIfIpv6NdRaIntervalUnits" || name == "cdtIfIpv6NdRaLife" || name == "cdtIfIpv6NdReachableTime" || name == "cdtIfIpv6NdRouterPreference" || name == "cdtIfIpv6NdValidLife" || name == "cdtIfIpv6SubEnable" || name == "cdtIfIpv6TcpMssAdjust" || name == "cdtIfIpv6VerifyUniRpf" || name == "cdtIfIpv6VerifyUniRpfAcl" || name == "cdtIfIpv6VerifyUniRpfOpts" || name == "cdtIfMtu" || name == "cdtIfValid")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplatetable()
+CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpooltable()
 {
-    yang_name = "cdtPppTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
+
+    yang_name = "cdtPppPeerIpAddrPoolTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtppptemplatetable::~Cdtppptemplatetable()
+CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::~Cdtppppeeripaddrpooltable()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::has_data() const
+{
+    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
+    {
+        if(cdtppppeeripaddrpoolentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::has_operation() const
+{
+    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
+    {
+        if(cdtppppeeripaddrpoolentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtPppPeerIpAddrPoolTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtPppPeerIpAddrPoolEntry")
+    {
+        for(auto const & c : cdtppppeeripaddrpoolentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry>();
+        c->parent = this;
+        cdtppppeeripaddrpoolentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdtppppeeripaddrpoolentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtPppPeerIpAddrPoolEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::Cdtppppeeripaddrpoolentry()
+    :
+    cdttemplatename{YType::str, "cdtTemplateName"},
+    cdtppppeeripaddrpoolpriority{YType::uint32, "cdtPppPeerIpAddrPoolPriority"},
+    cdtppppeeripaddrpoolname{YType::str, "cdtPppPeerIpAddrPoolName"},
+    cdtppppeeripaddrpoolstatus{YType::enumeration, "cdtPppPeerIpAddrPoolStatus"},
+    cdtppppeeripaddrpoolstorage{YType::enumeration, "cdtPppPeerIpAddrPoolStorage"}
+{
+
+    yang_name = "cdtPppPeerIpAddrPoolEntry"; yang_parent_name = "cdtPppPeerIpAddrPoolTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::~Cdtppppeeripaddrpoolentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_data() const
+{
+    return cdttemplatename.is_set
+	|| cdtppppeeripaddrpoolpriority.is_set
+	|| cdtppppeeripaddrpoolname.is_set
+	|| cdtppppeeripaddrpoolstatus.is_set
+	|| cdtppppeeripaddrpoolstorage.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatename.yfilter)
+	|| ydk::is_set(cdtppppeeripaddrpoolpriority.yfilter)
+	|| ydk::is_set(cdtppppeeripaddrpoolname.yfilter)
+	|| ydk::is_set(cdtppppeeripaddrpoolstatus.yfilter)
+	|| ydk::is_set(cdtppppeeripaddrpoolstorage.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtPppPeerIpAddrPoolTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtPppPeerIpAddrPoolEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']" <<"[cdtPppPeerIpAddrPoolPriority='" <<cdtppppeeripaddrpoolpriority <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
+    if (cdtppppeeripaddrpoolpriority.is_set || is_set(cdtppppeeripaddrpoolpriority.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolpriority.get_name_leafdata());
+    if (cdtppppeeripaddrpoolname.is_set || is_set(cdtppppeeripaddrpoolname.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolname.get_name_leafdata());
+    if (cdtppppeeripaddrpoolstatus.is_set || is_set(cdtppppeeripaddrpoolstatus.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolstatus.get_name_leafdata());
+    if (cdtppppeeripaddrpoolstorage.is_set || is_set(cdtppppeeripaddrpoolstorage.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolstorage.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename = value;
+        cdttemplatename.value_namespace = name_space;
+        cdttemplatename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolPriority")
+    {
+        cdtppppeeripaddrpoolpriority = value;
+        cdtppppeeripaddrpoolpriority.value_namespace = name_space;
+        cdtppppeeripaddrpoolpriority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolName")
+    {
+        cdtppppeeripaddrpoolname = value;
+        cdtppppeeripaddrpoolname.value_namespace = name_space;
+        cdtppppeeripaddrpoolname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolStatus")
+    {
+        cdtppppeeripaddrpoolstatus = value;
+        cdtppppeeripaddrpoolstatus.value_namespace = name_space;
+        cdtppppeeripaddrpoolstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolStorage")
+    {
+        cdtppppeeripaddrpoolstorage = value;
+        cdtppppeeripaddrpoolstorage.value_namespace = name_space;
+        cdtppppeeripaddrpoolstorage.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename.yfilter = yfilter;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolPriority")
+    {
+        cdtppppeeripaddrpoolpriority.yfilter = yfilter;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolName")
+    {
+        cdtppppeeripaddrpoolname.yfilter = yfilter;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolStatus")
+    {
+        cdtppppeeripaddrpoolstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdtPppPeerIpAddrPoolStorage")
+    {
+        cdtppppeeripaddrpoolstorage.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateName" || name == "cdtPppPeerIpAddrPoolPriority" || name == "cdtPppPeerIpAddrPoolName" || name == "cdtPppPeerIpAddrPoolStatus" || name == "cdtPppPeerIpAddrPoolStorage")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplatetable()
+{
+
+    yang_name = "cdtPppTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::~Cdtppptemplatetable()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::has_data() const
 {
     for (std::size_t index=0; index<cdtppptemplateentry.size(); index++)
     {
@@ -2289,7 +1383,7 @@ bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_data() const
     return false;
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::has_operation() const
 {
     for (std::size_t index=0; index<cdtppptemplateentry.size(); index++)
     {
@@ -2299,37 +1393,30 @@ bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtppptemplatetable::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtPppTemplateTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtppptemplatetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtPppTemplateEntry")
     {
@@ -2341,7 +1428,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry>();
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry>();
         c->parent = this;
         cdtppptemplateentry.push_back(c);
         return c;
@@ -2350,7 +1437,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppptemplatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdtppptemplateentry)
@@ -2361,22 +1448,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtpppte
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtppptemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDynamicTemplateMib::Cdtppptemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtPppTemplateEntry")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppptemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppptemplateentry()
     :
     cdttemplatename{YType::str, "cdtTemplateName"},
     cdtpppaccounting{YType::boolean, "cdtPppAccounting"},
@@ -2419,14 +1506,15 @@ CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppptemplat
     cdtppptimeoutretry{YType::uint32, "cdtPppTimeoutRetry"},
     cdtpppvalid{YType::bits, "cdtPppValid"}
 {
-    yang_name = "cdtPppTemplateEntry"; yang_parent_name = "cdtPppTemplateTable";
+
+    yang_name = "cdtPppTemplateEntry"; yang_parent_name = "cdtPppTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::~Cdtppptemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::~Cdtppptemplateentry()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::has_data() const
 {
     return cdttemplatename.is_set
 	|| cdtpppaccounting.is_set
@@ -2470,7 +1558,7 @@ bool CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::has_data
 	|| cdtpppvalid.is_set;
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdttemplatename.yfilter)
@@ -2515,27 +1603,22 @@ bool CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::has_oper
 	|| ydk::is_set(cdtpppvalid.yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtPppTemplateTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtPppTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtPppTemplateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
@@ -2579,24 +1662,22 @@ const EntityPath CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateent
     if (cdtppptimeoutretry.is_set || is_set(cdtppptimeoutretry.yfilter)) leaf_name_data.push_back(cdtppptimeoutretry.get_name_leafdata());
     if (cdtpppvalid.is_set || is_set(cdtpppvalid.yfilter)) leaf_name_data.push_back(cdtpppvalid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -2824,7 +1905,7 @@ void CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::set_valu
     }
 }
 
-void CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -2988,537 +2069,24 @@ void CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::set_filt
     }
 }
 
-bool CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtTemplateName" || name == "cdtPppAccounting" || name == "cdtPppAuthentication" || name == "cdtPppAuthenticationMethods" || name == "cdtPppAuthorization" || name == "cdtPppChapHostname" || name == "cdtPppChapOpts" || name == "cdtPppChapPassword" || name == "cdtPppEapIdentity" || name == "cdtPppEapOpts" || name == "cdtPppEapPassword" || name == "cdtPppIpcpAddrOption" || name == "cdtPppIpcpDnsOption" || name == "cdtPppIpcpDnsPrimary" || name == "cdtPppIpcpDnsSecondary" || name == "cdtPppIpcpMask" || name == "cdtPppIpcpMaskOption" || name == "cdtPppIpcpWinsOption" || name == "cdtPppIpcpWinsPrimary" || name == "cdtPppIpcpWinsSecondary" || name == "cdtPppLoopbackIgnore" || name == "cdtPppMaxBadAuth" || name == "cdtPppMaxConfigure" || name == "cdtPppMaxFailure" || name == "cdtPppMaxTerminate" || name == "cdtPppMsChapV1Hostname" || name == "cdtPppMsChapV1Opts" || name == "cdtPppMsChapV1Password" || name == "cdtPppMsChapV2Hostname" || name == "cdtPppMsChapV2Opts" || name == "cdtPppMsChapV2Password" || name == "cdtPppPapOpts" || name == "cdtPppPapPassword" || name == "cdtPppPapUsername" || name == "cdtPppPeerDefIpAddr" || name == "cdtPppPeerDefIpAddrOpts" || name == "cdtPppPeerDefIpAddrSrc" || name == "cdtPppTimeoutAuthentication" || name == "cdtPppTimeoutRetry" || name == "cdtPppValid")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpooltable()
+CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplatetable()
 {
-    yang_name = "cdtPppPeerIpAddrPoolTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
+
+    yang_name = "cdtSrvTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::~Cdtppppeeripaddrpooltable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_data() const
-{
-    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
-    {
-        if(cdtppppeeripaddrpoolentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_operation() const
-{
-    for (std::size_t index=0; index<cdtppppeeripaddrpoolentry.size(); index++)
-    {
-        if(cdtppppeeripaddrpoolentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtPppPeerIpAddrPoolTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtPppPeerIpAddrPoolEntry")
-    {
-        for(auto const & c : cdtppppeeripaddrpoolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry>();
-        c->parent = this;
-        cdtppppeeripaddrpoolentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtppppeeripaddrpoolentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::~Cdtsrvtemplatetable()
 {
 }
 
-void CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtPppPeerIpAddrPoolEntry")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::Cdtppppeeripaddrpoolentry()
-    :
-    cdttemplatename{YType::str, "cdtTemplateName"},
-    cdtppppeeripaddrpoolpriority{YType::uint32, "cdtPppPeerIpAddrPoolPriority"},
-    cdtppppeeripaddrpoolname{YType::str, "cdtPppPeerIpAddrPoolName"},
-    cdtppppeeripaddrpoolstatus{YType::enumeration, "cdtPppPeerIpAddrPoolStatus"},
-    cdtppppeeripaddrpoolstorage{YType::enumeration, "cdtPppPeerIpAddrPoolStorage"}
-{
-    yang_name = "cdtPppPeerIpAddrPoolEntry"; yang_parent_name = "cdtPppPeerIpAddrPoolTable";
-}
-
-CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::~Cdtppppeeripaddrpoolentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_data() const
-{
-    return cdttemplatename.is_set
-	|| cdtppppeeripaddrpoolpriority.is_set
-	|| cdtppppeeripaddrpoolname.is_set
-	|| cdtppppeeripaddrpoolstatus.is_set
-	|| cdtppppeeripaddrpoolstorage.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatename.yfilter)
-	|| ydk::is_set(cdtppppeeripaddrpoolpriority.yfilter)
-	|| ydk::is_set(cdtppppeeripaddrpoolname.yfilter)
-	|| ydk::is_set(cdtppppeeripaddrpoolstatus.yfilter)
-	|| ydk::is_set(cdtppppeeripaddrpoolstorage.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtPppPeerIpAddrPoolEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']" <<"[cdtPppPeerIpAddrPoolPriority='" <<cdtppppeeripaddrpoolpriority <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtPppPeerIpAddrPoolTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
-    if (cdtppppeeripaddrpoolpriority.is_set || is_set(cdtppppeeripaddrpoolpriority.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolpriority.get_name_leafdata());
-    if (cdtppppeeripaddrpoolname.is_set || is_set(cdtppppeeripaddrpoolname.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolname.get_name_leafdata());
-    if (cdtppppeeripaddrpoolstatus.is_set || is_set(cdtppppeeripaddrpoolstatus.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolstatus.get_name_leafdata());
-    if (cdtppppeeripaddrpoolstorage.is_set || is_set(cdtppppeeripaddrpoolstorage.yfilter)) leaf_name_data.push_back(cdtppppeeripaddrpoolstorage.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename = value;
-        cdttemplatename.value_namespace = name_space;
-        cdttemplatename.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolPriority")
-    {
-        cdtppppeeripaddrpoolpriority = value;
-        cdtppppeeripaddrpoolpriority.value_namespace = name_space;
-        cdtppppeeripaddrpoolpriority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolName")
-    {
-        cdtppppeeripaddrpoolname = value;
-        cdtppppeeripaddrpoolname.value_namespace = name_space;
-        cdtppppeeripaddrpoolname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolStatus")
-    {
-        cdtppppeeripaddrpoolstatus = value;
-        cdtppppeeripaddrpoolstatus.value_namespace = name_space;
-        cdtppppeeripaddrpoolstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolStorage")
-    {
-        cdtppppeeripaddrpoolstorage = value;
-        cdtppppeeripaddrpoolstorage.value_namespace = name_space;
-        cdtppppeeripaddrpoolstorage.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename.yfilter = yfilter;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolPriority")
-    {
-        cdtppppeeripaddrpoolpriority.yfilter = yfilter;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolName")
-    {
-        cdtppppeeripaddrpoolname.yfilter = yfilter;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolStatus")
-    {
-        cdtppppeeripaddrpoolstatus.yfilter = yfilter;
-    }
-    if(value_path == "cdtPppPeerIpAddrPoolStorage")
-    {
-        cdtppppeeripaddrpoolstorage.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateName" || name == "cdtPppPeerIpAddrPoolPriority" || name == "cdtPppPeerIpAddrPoolName" || name == "cdtPppPeerIpAddrPoolStatus" || name == "cdtPppPeerIpAddrPoolStorage")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplatetable()
-{
-    yang_name = "cdtEthernetTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdtethernettemplatetable::~Cdtethernettemplatetable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_data() const
-{
-    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
-    {
-        if(cdtethernettemplateentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_operation() const
-{
-    for (std::size_t index=0; index<cdtethernettemplateentry.size(); index++)
-    {
-        if(cdtethernettemplateentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtEthernetTemplateTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cdtEthernetTemplateEntry")
-    {
-        for(auto const & c : cdtethernettemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry>();
-        c->parent = this;
-        cdtethernettemplateentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtethernettemplatetable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdtethernettemplateentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdtethernettemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoDynamicTemplateMib::Cdtethernettemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtEthernetTemplateEntry")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::Cdtethernettemplateentry()
-    :
-    cdttemplatename{YType::str, "cdtTemplateName"},
-    cdtethernetbridgedomain{YType::str, "cdtEthernetBridgeDomain"},
-    cdtethernetipv4pointtopoint{YType::boolean, "cdtEthernetIpv4PointToPoint"},
-    cdtethernetmacaddr{YType::str, "cdtEthernetMacAddr"},
-    cdtethernetpppoeenable{YType::boolean, "cdtEthernetPppoeEnable"},
-    cdtethernetvalid{YType::bits, "cdtEthernetValid"}
-{
-    yang_name = "cdtEthernetTemplateEntry"; yang_parent_name = "cdtEthernetTemplateTable";
-}
-
-CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::~Cdtethernettemplateentry()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::has_data() const
-{
-    return cdttemplatename.is_set
-	|| cdtethernetbridgedomain.is_set
-	|| cdtethernetipv4pointtopoint.is_set
-	|| cdtethernetmacaddr.is_set
-	|| cdtethernetpppoeenable.is_set
-	|| cdtethernetvalid.is_set;
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cdttemplatename.yfilter)
-	|| ydk::is_set(cdtethernetbridgedomain.yfilter)
-	|| ydk::is_set(cdtethernetipv4pointtopoint.yfilter)
-	|| ydk::is_set(cdtethernetmacaddr.yfilter)
-	|| ydk::is_set(cdtethernetpppoeenable.yfilter)
-	|| ydk::is_set(cdtethernetvalid.yfilter);
-}
-
-std::string CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdtEthernetTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtEthernetTemplateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
-    if (cdtethernetbridgedomain.is_set || is_set(cdtethernetbridgedomain.yfilter)) leaf_name_data.push_back(cdtethernetbridgedomain.get_name_leafdata());
-    if (cdtethernetipv4pointtopoint.is_set || is_set(cdtethernetipv4pointtopoint.yfilter)) leaf_name_data.push_back(cdtethernetipv4pointtopoint.get_name_leafdata());
-    if (cdtethernetmacaddr.is_set || is_set(cdtethernetmacaddr.yfilter)) leaf_name_data.push_back(cdtethernetmacaddr.get_name_leafdata());
-    if (cdtethernetpppoeenable.is_set || is_set(cdtethernetpppoeenable.yfilter)) leaf_name_data.push_back(cdtethernetpppoeenable.get_name_leafdata());
-    if (cdtethernetvalid.is_set || is_set(cdtethernetvalid.yfilter)) leaf_name_data.push_back(cdtethernetvalid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename = value;
-        cdttemplatename.value_namespace = name_space;
-        cdttemplatename.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtEthernetBridgeDomain")
-    {
-        cdtethernetbridgedomain = value;
-        cdtethernetbridgedomain.value_namespace = name_space;
-        cdtethernetbridgedomain.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtEthernetIpv4PointToPoint")
-    {
-        cdtethernetipv4pointtopoint = value;
-        cdtethernetipv4pointtopoint.value_namespace = name_space;
-        cdtethernetipv4pointtopoint.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtEthernetMacAddr")
-    {
-        cdtethernetmacaddr = value;
-        cdtethernetmacaddr.value_namespace = name_space;
-        cdtethernetmacaddr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtEthernetPppoeEnable")
-    {
-        cdtethernetpppoeenable = value;
-        cdtethernetpppoeenable.value_namespace = name_space;
-        cdtethernetpppoeenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdtEthernetValid")
-    {
-        cdtethernetvalid[value] = true;
-    }
-}
-
-void CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cdtTemplateName")
-    {
-        cdttemplatename.yfilter = yfilter;
-    }
-    if(value_path == "cdtEthernetBridgeDomain")
-    {
-        cdtethernetbridgedomain.yfilter = yfilter;
-    }
-    if(value_path == "cdtEthernetIpv4PointToPoint")
-    {
-        cdtethernetipv4pointtopoint.yfilter = yfilter;
-    }
-    if(value_path == "cdtEthernetMacAddr")
-    {
-        cdtethernetmacaddr.yfilter = yfilter;
-    }
-    if(value_path == "cdtEthernetPppoeEnable")
-    {
-        cdtethernetpppoeenable.yfilter = yfilter;
-    }
-    if(value_path == "cdtEthernetValid")
-    {
-        cdtethernetvalid.yfilter = yfilter;
-    }
-}
-
-bool CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cdtTemplateName" || name == "cdtEthernetBridgeDomain" || name == "cdtEthernetIpv4PointToPoint" || name == "cdtEthernetMacAddr" || name == "cdtEthernetPppoeEnable" || name == "cdtEthernetValid")
-        return true;
-    return false;
-}
-
-CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplatetable()
-{
-    yang_name = "cdtSrvTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB";
-}
-
-CiscoDynamicTemplateMib::Cdtsrvtemplatetable::~Cdtsrvtemplatetable()
-{
-}
-
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::has_data() const
 {
     for (std::size_t index=0; index<cdtsrvtemplateentry.size(); index++)
     {
@@ -3528,7 +2096,7 @@ bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_data() const
     return false;
 }
 
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::has_operation() const
 {
     for (std::size_t index=0; index<cdtsrvtemplateentry.size(); index++)
     {
@@ -3538,37 +2106,30 @@ bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtSrvTemplateTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtSrvTemplateEntry")
     {
@@ -3580,7 +2141,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry>();
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry>();
         c->parent = this;
         cdtsrvtemplateentry.push_back(c);
         return c;
@@ -3589,7 +2150,7 @@ std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cdtsrvtemplateentry)
@@ -3600,22 +2161,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtsrvte
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtSrvTemplateEntry")
         return true;
     return false;
 }
 
-CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvtemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvtemplateentry()
     :
     cdttemplatename{YType::str, "cdtTemplateName"},
     cdtsrvmulticast{YType::boolean, "cdtSrvMulticast"},
@@ -3625,14 +2186,15 @@ CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvtemplat
     cdtsrvvalid{YType::bits, "cdtSrvValid"},
     cdtsrvvpdngroup{YType::str, "cdtSrvVpdnGroup"}
 {
-    yang_name = "cdtSrvTemplateEntry"; yang_parent_name = "cdtSrvTemplateTable";
+
+    yang_name = "cdtSrvTemplateEntry"; yang_parent_name = "cdtSrvTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::~Cdtsrvtemplateentry()
+CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::~Cdtsrvtemplateentry()
 {
 }
 
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_data() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_data() const
 {
     return cdttemplatename.is_set
 	|| cdtsrvmulticast.is_set
@@ -3643,7 +2205,7 @@ bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_data
 	|| cdtsrvvpdngroup.is_set;
 }
 
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_operation() const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdttemplatename.yfilter)
@@ -3655,27 +2217,22 @@ bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_oper
 	|| ydk::is_set(cdtsrvvpdngroup.yfilter);
 }
 
-std::string CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_segment_path() const
+std::string CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtSrvTemplateTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdtSrvTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtSrvTemplateTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
@@ -3686,24 +2243,22 @@ const EntityPath CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateent
     if (cdtsrvvalid.is_set || is_set(cdtsrvvalid.yfilter)) leaf_name_data.push_back(cdtsrvvalid.get_name_leafdata());
     if (cdtsrvvpdngroup.is_set || is_set(cdtsrvvpdngroup.yfilter)) leaf_name_data.push_back(cdtsrvvpdngroup.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -3747,7 +2302,7 @@ void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_valu
     }
 }
 
-void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdtTemplateName")
     {
@@ -3779,56 +2334,1361 @@ void CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::set_filt
     }
 }
 
-bool CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdtTemplateName" || name == "cdtSrvMulticast" || name == "cdtSrvNetworkSrv" || name == "cdtSrvSgSrvGroup" || name == "cdtSrvSgSrvType" || name == "cdtSrvValid" || name == "cdtSrvVpdnGroup")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::derived {2, "derived"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::local {3, "local"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::aaaUserProfile {4, "aaaUserProfile"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::aaaServiceProfile {5, "aaaServiceProfile"};
+CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationtable()
+{
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits::seconds {1, "seconds"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits::milliseconds {2, "milliseconds"};
+    yang_name = "cdtTemplateAssociationTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::high {1, "high"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::medium {2, "medium"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::low {3, "low"};
+CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::~Cdttemplateassociationtable()
+{
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::accept {2, "accept"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::required {3, "required"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::unique {4, "unique"};
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::has_data() const
+{
+    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
+    {
+        if(cdttemplateassociationentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::accept {2, "accept"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::request {3, "request"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::reject {4, "reject"};
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::has_operation() const
+{
+    for (std::size_t index=0; index<cdttemplateassociationentry.size(); index++)
+    {
+        if(cdttemplateassociationentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::accept {2, "accept"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::request {3, "request"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::reject {4, "reject"};
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::request {2, "request"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::reject {3, "reject"};
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateAssociationTable";
+    return path_buffer.str();
+}
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::static_ {1, "static"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::pool {2, "pool"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::dhcp {3, "dhcp"};
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::other {1, "other"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::none {2, "none"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::local {3, "local"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::vpdn {4, "vpdn"};
 
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype::primary {1, "primary"};
-const Enum::YLeaf CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype::secondary {2, "secondary"};
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtTemplateAssociationEntry")
+    {
+        for(auto const & c : cdttemplateassociationentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry>();
+        c->parent = this;
+        cdttemplateassociationentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdttemplateassociationentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateAssociationEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::Cdttemplateassociationentry()
+    :
+    cdttemplatetargettype{YType::enumeration, "cdtTemplateTargetType"},
+    cdttemplatetargetid{YType::str, "cdtTemplateTargetId"},
+    cdttemplateassociationname{YType::str, "cdtTemplateAssociationName"},
+    cdttemplateassociationprecedence{YType::uint32, "cdtTemplateAssociationPrecedence"}
+{
+
+    yang_name = "cdtTemplateAssociationEntry"; yang_parent_name = "cdtTemplateAssociationTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::~Cdttemplateassociationentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::has_data() const
+{
+    return cdttemplatetargettype.is_set
+	|| cdttemplatetargetid.is_set
+	|| cdttemplateassociationname.is_set
+	|| cdttemplateassociationprecedence.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatetargettype.yfilter)
+	|| ydk::is_set(cdttemplatetargetid.yfilter)
+	|| ydk::is_set(cdttemplateassociationname.yfilter)
+	|| ydk::is_set(cdttemplateassociationprecedence.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateAssociationTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateAssociationEntry" <<"[cdtTemplateTargetType='" <<cdttemplatetargettype <<"']" <<"[cdtTemplateTargetId='" <<cdttemplatetargetid <<"']" <<"[cdtTemplateAssociationName='" <<cdttemplateassociationname <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatetargettype.is_set || is_set(cdttemplatetargettype.yfilter)) leaf_name_data.push_back(cdttemplatetargettype.get_name_leafdata());
+    if (cdttemplatetargetid.is_set || is_set(cdttemplatetargetid.yfilter)) leaf_name_data.push_back(cdttemplatetargetid.get_name_leafdata());
+    if (cdttemplateassociationname.is_set || is_set(cdttemplateassociationname.yfilter)) leaf_name_data.push_back(cdttemplateassociationname.get_name_leafdata());
+    if (cdttemplateassociationprecedence.is_set || is_set(cdttemplateassociationprecedence.yfilter)) leaf_name_data.push_back(cdttemplateassociationprecedence.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateTargetType")
+    {
+        cdttemplatetargettype = value;
+        cdttemplatetargettype.value_namespace = name_space;
+        cdttemplatetargettype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateTargetId")
+    {
+        cdttemplatetargetid = value;
+        cdttemplatetargetid.value_namespace = name_space;
+        cdttemplatetargetid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateAssociationName")
+    {
+        cdttemplateassociationname = value;
+        cdttemplateassociationname.value_namespace = name_space;
+        cdttemplateassociationname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateAssociationPrecedence")
+    {
+        cdttemplateassociationprecedence = value;
+        cdttemplateassociationprecedence.value_namespace = name_space;
+        cdttemplateassociationprecedence.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateTargetType")
+    {
+        cdttemplatetargettype.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateTargetId")
+    {
+        cdttemplatetargetid.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateAssociationName")
+    {
+        cdttemplateassociationname.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateAssociationPrecedence")
+    {
+        cdttemplateassociationprecedence.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateTargetType" || name == "cdtTemplateTargetId" || name == "cdtTemplateAssociationName" || name == "cdtTemplateAssociationPrecedence")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommontable()
+{
+
+    yang_name = "cdtTemplateCommonTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::~Cdttemplatecommontable()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::has_data() const
+{
+    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
+    {
+        if(cdttemplatecommonentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::has_operation() const
+{
+    for (std::size_t index=0; index<cdttemplatecommonentry.size(); index++)
+    {
+        if(cdttemplatecommonentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateCommonTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtTemplateCommonEntry")
+    {
+        for(auto const & c : cdttemplatecommonentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry>();
+        c->parent = this;
+        cdttemplatecommonentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdttemplatecommonentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateCommonEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::Cdttemplatecommonentry()
+    :
+    cdttemplatename{YType::str, "cdtTemplateName"},
+    cdtcommonaddrpool{YType::str, "cdtCommonAddrPool"},
+    cdtcommondescr{YType::str, "cdtCommonDescr"},
+    cdtcommonipv4accessgroup{YType::str, "cdtCommonIpv4AccessGroup"},
+    cdtcommonipv4unreachables{YType::boolean, "cdtCommonIpv4Unreachables"},
+    cdtcommonipv6accessgroup{YType::str, "cdtCommonIpv6AccessGroup"},
+    cdtcommonipv6unreachables{YType::boolean, "cdtCommonIpv6Unreachables"},
+    cdtcommonkeepaliveint{YType::uint32, "cdtCommonKeepaliveInt"},
+    cdtcommonkeepaliveretries{YType::uint32, "cdtCommonKeepaliveRetries"},
+    cdtcommonsrvacct{YType::str, "cdtCommonSrvAcct"},
+    cdtcommonsrvnetflow{YType::str, "cdtCommonSrvNetflow"},
+    cdtcommonsrvqos{YType::str, "cdtCommonSrvQos"},
+    cdtcommonsrvredirect{YType::str, "cdtCommonSrvRedirect"},
+    cdtcommonsrvsubcontrol{YType::str, "cdtCommonSrvSubControl"},
+    cdtcommonvalid{YType::bits, "cdtCommonValid"},
+    cdtcommonvrf{YType::str, "cdtCommonVrf"}
+{
+
+    yang_name = "cdtTemplateCommonEntry"; yang_parent_name = "cdtTemplateCommonTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::~Cdttemplatecommonentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::has_data() const
+{
+    return cdttemplatename.is_set
+	|| cdtcommonaddrpool.is_set
+	|| cdtcommondescr.is_set
+	|| cdtcommonipv4accessgroup.is_set
+	|| cdtcommonipv4unreachables.is_set
+	|| cdtcommonipv6accessgroup.is_set
+	|| cdtcommonipv6unreachables.is_set
+	|| cdtcommonkeepaliveint.is_set
+	|| cdtcommonkeepaliveretries.is_set
+	|| cdtcommonsrvacct.is_set
+	|| cdtcommonsrvnetflow.is_set
+	|| cdtcommonsrvqos.is_set
+	|| cdtcommonsrvredirect.is_set
+	|| cdtcommonsrvsubcontrol.is_set
+	|| cdtcommonvalid.is_set
+	|| cdtcommonvrf.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatename.yfilter)
+	|| ydk::is_set(cdtcommonaddrpool.yfilter)
+	|| ydk::is_set(cdtcommondescr.yfilter)
+	|| ydk::is_set(cdtcommonipv4accessgroup.yfilter)
+	|| ydk::is_set(cdtcommonipv4unreachables.yfilter)
+	|| ydk::is_set(cdtcommonipv6accessgroup.yfilter)
+	|| ydk::is_set(cdtcommonipv6unreachables.yfilter)
+	|| ydk::is_set(cdtcommonkeepaliveint.yfilter)
+	|| ydk::is_set(cdtcommonkeepaliveretries.yfilter)
+	|| ydk::is_set(cdtcommonsrvacct.yfilter)
+	|| ydk::is_set(cdtcommonsrvnetflow.yfilter)
+	|| ydk::is_set(cdtcommonsrvqos.yfilter)
+	|| ydk::is_set(cdtcommonsrvredirect.yfilter)
+	|| ydk::is_set(cdtcommonsrvsubcontrol.yfilter)
+	|| ydk::is_set(cdtcommonvalid.yfilter)
+	|| ydk::is_set(cdtcommonvrf.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateCommonTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateCommonEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
+    if (cdtcommonaddrpool.is_set || is_set(cdtcommonaddrpool.yfilter)) leaf_name_data.push_back(cdtcommonaddrpool.get_name_leafdata());
+    if (cdtcommondescr.is_set || is_set(cdtcommondescr.yfilter)) leaf_name_data.push_back(cdtcommondescr.get_name_leafdata());
+    if (cdtcommonipv4accessgroup.is_set || is_set(cdtcommonipv4accessgroup.yfilter)) leaf_name_data.push_back(cdtcommonipv4accessgroup.get_name_leafdata());
+    if (cdtcommonipv4unreachables.is_set || is_set(cdtcommonipv4unreachables.yfilter)) leaf_name_data.push_back(cdtcommonipv4unreachables.get_name_leafdata());
+    if (cdtcommonipv6accessgroup.is_set || is_set(cdtcommonipv6accessgroup.yfilter)) leaf_name_data.push_back(cdtcommonipv6accessgroup.get_name_leafdata());
+    if (cdtcommonipv6unreachables.is_set || is_set(cdtcommonipv6unreachables.yfilter)) leaf_name_data.push_back(cdtcommonipv6unreachables.get_name_leafdata());
+    if (cdtcommonkeepaliveint.is_set || is_set(cdtcommonkeepaliveint.yfilter)) leaf_name_data.push_back(cdtcommonkeepaliveint.get_name_leafdata());
+    if (cdtcommonkeepaliveretries.is_set || is_set(cdtcommonkeepaliveretries.yfilter)) leaf_name_data.push_back(cdtcommonkeepaliveretries.get_name_leafdata());
+    if (cdtcommonsrvacct.is_set || is_set(cdtcommonsrvacct.yfilter)) leaf_name_data.push_back(cdtcommonsrvacct.get_name_leafdata());
+    if (cdtcommonsrvnetflow.is_set || is_set(cdtcommonsrvnetflow.yfilter)) leaf_name_data.push_back(cdtcommonsrvnetflow.get_name_leafdata());
+    if (cdtcommonsrvqos.is_set || is_set(cdtcommonsrvqos.yfilter)) leaf_name_data.push_back(cdtcommonsrvqos.get_name_leafdata());
+    if (cdtcommonsrvredirect.is_set || is_set(cdtcommonsrvredirect.yfilter)) leaf_name_data.push_back(cdtcommonsrvredirect.get_name_leafdata());
+    if (cdtcommonsrvsubcontrol.is_set || is_set(cdtcommonsrvsubcontrol.yfilter)) leaf_name_data.push_back(cdtcommonsrvsubcontrol.get_name_leafdata());
+    if (cdtcommonvalid.is_set || is_set(cdtcommonvalid.yfilter)) leaf_name_data.push_back(cdtcommonvalid.get_name_leafdata());
+    if (cdtcommonvrf.is_set || is_set(cdtcommonvrf.yfilter)) leaf_name_data.push_back(cdtcommonvrf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename = value;
+        cdttemplatename.value_namespace = name_space;
+        cdttemplatename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonAddrPool")
+    {
+        cdtcommonaddrpool = value;
+        cdtcommonaddrpool.value_namespace = name_space;
+        cdtcommonaddrpool.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonDescr")
+    {
+        cdtcommondescr = value;
+        cdtcommondescr.value_namespace = name_space;
+        cdtcommondescr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonIpv4AccessGroup")
+    {
+        cdtcommonipv4accessgroup = value;
+        cdtcommonipv4accessgroup.value_namespace = name_space;
+        cdtcommonipv4accessgroup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonIpv4Unreachables")
+    {
+        cdtcommonipv4unreachables = value;
+        cdtcommonipv4unreachables.value_namespace = name_space;
+        cdtcommonipv4unreachables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonIpv6AccessGroup")
+    {
+        cdtcommonipv6accessgroup = value;
+        cdtcommonipv6accessgroup.value_namespace = name_space;
+        cdtcommonipv6accessgroup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonIpv6Unreachables")
+    {
+        cdtcommonipv6unreachables = value;
+        cdtcommonipv6unreachables.value_namespace = name_space;
+        cdtcommonipv6unreachables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonKeepaliveInt")
+    {
+        cdtcommonkeepaliveint = value;
+        cdtcommonkeepaliveint.value_namespace = name_space;
+        cdtcommonkeepaliveint.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonKeepaliveRetries")
+    {
+        cdtcommonkeepaliveretries = value;
+        cdtcommonkeepaliveretries.value_namespace = name_space;
+        cdtcommonkeepaliveretries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonSrvAcct")
+    {
+        cdtcommonsrvacct = value;
+        cdtcommonsrvacct.value_namespace = name_space;
+        cdtcommonsrvacct.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonSrvNetflow")
+    {
+        cdtcommonsrvnetflow = value;
+        cdtcommonsrvnetflow.value_namespace = name_space;
+        cdtcommonsrvnetflow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonSrvQos")
+    {
+        cdtcommonsrvqos = value;
+        cdtcommonsrvqos.value_namespace = name_space;
+        cdtcommonsrvqos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonSrvRedirect")
+    {
+        cdtcommonsrvredirect = value;
+        cdtcommonsrvredirect.value_namespace = name_space;
+        cdtcommonsrvredirect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonSrvSubControl")
+    {
+        cdtcommonsrvsubcontrol = value;
+        cdtcommonsrvsubcontrol.value_namespace = name_space;
+        cdtcommonsrvsubcontrol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtCommonValid")
+    {
+        cdtcommonvalid[value] = true;
+    }
+    if(value_path == "cdtCommonVrf")
+    {
+        cdtcommonvrf = value;
+        cdtcommonvrf.value_namespace = name_space;
+        cdtcommonvrf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonAddrPool")
+    {
+        cdtcommonaddrpool.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonDescr")
+    {
+        cdtcommondescr.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonIpv4AccessGroup")
+    {
+        cdtcommonipv4accessgroup.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonIpv4Unreachables")
+    {
+        cdtcommonipv4unreachables.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonIpv6AccessGroup")
+    {
+        cdtcommonipv6accessgroup.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonIpv6Unreachables")
+    {
+        cdtcommonipv6unreachables.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonKeepaliveInt")
+    {
+        cdtcommonkeepaliveint.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonKeepaliveRetries")
+    {
+        cdtcommonkeepaliveretries.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonSrvAcct")
+    {
+        cdtcommonsrvacct.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonSrvNetflow")
+    {
+        cdtcommonsrvnetflow.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonSrvQos")
+    {
+        cdtcommonsrvqos.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonSrvRedirect")
+    {
+        cdtcommonsrvredirect.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonSrvSubControl")
+    {
+        cdtcommonsrvsubcontrol.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonValid")
+    {
+        cdtcommonvalid.yfilter = yfilter;
+    }
+    if(value_path == "cdtCommonVrf")
+    {
+        cdtcommonvrf.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateName" || name == "cdtCommonAddrPool" || name == "cdtCommonDescr" || name == "cdtCommonIpv4AccessGroup" || name == "cdtCommonIpv4Unreachables" || name == "cdtCommonIpv6AccessGroup" || name == "cdtCommonIpv6Unreachables" || name == "cdtCommonKeepaliveInt" || name == "cdtCommonKeepaliveRetries" || name == "cdtCommonSrvAcct" || name == "cdtCommonSrvNetflow" || name == "cdtCommonSrvQos" || name == "cdtCommonSrvRedirect" || name == "cdtCommonSrvSubControl" || name == "cdtCommonValid" || name == "cdtCommonVrf")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplatetable()
+{
+
+    yang_name = "cdtTemplateTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::~Cdttemplatetable()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::has_data() const
+{
+    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    {
+        if(cdttemplateentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::has_operation() const
+{
+    for (std::size_t index=0; index<cdttemplateentry.size(); index++)
+    {
+        if(cdttemplateentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtTemplateEntry")
+    {
+        for(auto const & c : cdttemplateentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry>();
+        c->parent = this;
+        cdttemplateentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdttemplateentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplateentry()
+    :
+    cdttemplatename{YType::str, "cdtTemplateName"},
+    cdttemplatesrc{YType::enumeration, "cdtTemplateSrc"},
+    cdttemplatestatus{YType::enumeration, "cdtTemplateStatus"},
+    cdttemplatestorage{YType::enumeration, "cdtTemplateStorage"},
+    cdttemplatetype{YType::enumeration, "cdtTemplateType"},
+    cdttemplateusagecount{YType::uint32, "cdtTemplateUsageCount"}
+{
+
+    yang_name = "cdtTemplateEntry"; yang_parent_name = "cdtTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::~Cdttemplateentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::has_data() const
+{
+    return cdttemplatename.is_set
+	|| cdttemplatesrc.is_set
+	|| cdttemplatestatus.is_set
+	|| cdttemplatestorage.is_set
+	|| cdttemplatetype.is_set
+	|| cdttemplateusagecount.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatename.yfilter)
+	|| ydk::is_set(cdttemplatesrc.yfilter)
+	|| ydk::is_set(cdttemplatestatus.yfilter)
+	|| ydk::is_set(cdttemplatestorage.yfilter)
+	|| ydk::is_set(cdttemplatetype.yfilter)
+	|| ydk::is_set(cdttemplateusagecount.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
+    if (cdttemplatesrc.is_set || is_set(cdttemplatesrc.yfilter)) leaf_name_data.push_back(cdttemplatesrc.get_name_leafdata());
+    if (cdttemplatestatus.is_set || is_set(cdttemplatestatus.yfilter)) leaf_name_data.push_back(cdttemplatestatus.get_name_leafdata());
+    if (cdttemplatestorage.is_set || is_set(cdttemplatestorage.yfilter)) leaf_name_data.push_back(cdttemplatestorage.get_name_leafdata());
+    if (cdttemplatetype.is_set || is_set(cdttemplatetype.yfilter)) leaf_name_data.push_back(cdttemplatetype.get_name_leafdata());
+    if (cdttemplateusagecount.is_set || is_set(cdttemplateusagecount.yfilter)) leaf_name_data.push_back(cdttemplateusagecount.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename = value;
+        cdttemplatename.value_namespace = name_space;
+        cdttemplatename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateSrc")
+    {
+        cdttemplatesrc = value;
+        cdttemplatesrc.value_namespace = name_space;
+        cdttemplatesrc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateStatus")
+    {
+        cdttemplatestatus = value;
+        cdttemplatestatus.value_namespace = name_space;
+        cdttemplatestatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateStorage")
+    {
+        cdttemplatestorage = value;
+        cdttemplatestorage.value_namespace = name_space;
+        cdttemplatestorage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateType")
+    {
+        cdttemplatetype = value;
+        cdttemplatetype.value_namespace = name_space;
+        cdttemplatetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateUsageCount")
+    {
+        cdttemplateusagecount = value;
+        cdttemplateusagecount.value_namespace = name_space;
+        cdttemplateusagecount.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateSrc")
+    {
+        cdttemplatesrc.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateStatus")
+    {
+        cdttemplatestatus.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateStorage")
+    {
+        cdttemplatestorage.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateType")
+    {
+        cdttemplatetype.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateUsageCount")
+    {
+        cdttemplateusagecount.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateName" || name == "cdtTemplateSrc" || name == "cdtTemplateStatus" || name == "cdtTemplateStorage" || name == "cdtTemplateType" || name == "cdtTemplateUsageCount")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargettable()
+{
+
+    yang_name = "cdtTemplateTargetTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::~Cdttemplatetargettable()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::has_data() const
+{
+    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
+    {
+        if(cdttemplatetargetentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::has_operation() const
+{
+    for (std::size_t index=0; index<cdttemplatetargetentry.size(); index++)
+    {
+        if(cdttemplatetargetentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateTargetTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtTemplateTargetEntry")
+    {
+        for(auto const & c : cdttemplatetargetentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry>();
+        c->parent = this;
+        cdttemplatetargetentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdttemplatetargetentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateTargetEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::Cdttemplatetargetentry()
+    :
+    cdttemplatetargettype{YType::enumeration, "cdtTemplateTargetType"},
+    cdttemplatetargetid{YType::str, "cdtTemplateTargetId"},
+    cdttemplatetargetstatus{YType::enumeration, "cdtTemplateTargetStatus"},
+    cdttemplatetargetstorage{YType::enumeration, "cdtTemplateTargetStorage"}
+{
+
+    yang_name = "cdtTemplateTargetEntry"; yang_parent_name = "cdtTemplateTargetTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::~Cdttemplatetargetentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::has_data() const
+{
+    return cdttemplatetargettype.is_set
+	|| cdttemplatetargetid.is_set
+	|| cdttemplatetargetstatus.is_set
+	|| cdttemplatetargetstorage.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatetargettype.yfilter)
+	|| ydk::is_set(cdttemplatetargetid.yfilter)
+	|| ydk::is_set(cdttemplatetargetstatus.yfilter)
+	|| ydk::is_set(cdttemplatetargetstorage.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateTargetTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateTargetEntry" <<"[cdtTemplateTargetType='" <<cdttemplatetargettype <<"']" <<"[cdtTemplateTargetId='" <<cdttemplatetargetid <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatetargettype.is_set || is_set(cdttemplatetargettype.yfilter)) leaf_name_data.push_back(cdttemplatetargettype.get_name_leafdata());
+    if (cdttemplatetargetid.is_set || is_set(cdttemplatetargetid.yfilter)) leaf_name_data.push_back(cdttemplatetargetid.get_name_leafdata());
+    if (cdttemplatetargetstatus.is_set || is_set(cdttemplatetargetstatus.yfilter)) leaf_name_data.push_back(cdttemplatetargetstatus.get_name_leafdata());
+    if (cdttemplatetargetstorage.is_set || is_set(cdttemplatetargetstorage.yfilter)) leaf_name_data.push_back(cdttemplatetargetstorage.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateTargetType")
+    {
+        cdttemplatetargettype = value;
+        cdttemplatetargettype.value_namespace = name_space;
+        cdttemplatetargettype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateTargetId")
+    {
+        cdttemplatetargetid = value;
+        cdttemplatetargetid.value_namespace = name_space;
+        cdttemplatetargetid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateTargetStatus")
+    {
+        cdttemplatetargetstatus = value;
+        cdttemplatetargetstatus.value_namespace = name_space;
+        cdttemplatetargetstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateTargetStorage")
+    {
+        cdttemplatetargetstorage = value;
+        cdttemplatetargetstorage.value_namespace = name_space;
+        cdttemplatetargetstorage.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateTargetType")
+    {
+        cdttemplatetargettype.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateTargetId")
+    {
+        cdttemplatetargetid.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateTargetStatus")
+    {
+        cdttemplatetargetstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateTargetStorage")
+    {
+        cdttemplatetargetstorage.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateTargetType" || name == "cdtTemplateTargetId" || name == "cdtTemplateTargetStatus" || name == "cdtTemplateTargetStorage")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusagetable()
+{
+
+    yang_name = "cdtTemplateUsageTable"; yang_parent_name = "CISCO-DYNAMIC-TEMPLATE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::~Cdttemplateusagetable()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::has_data() const
+{
+    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
+    {
+        if(cdttemplateusageentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::has_operation() const
+{
+    for (std::size_t index=0; index<cdttemplateusageentry.size(); index++)
+    {
+        if(cdttemplateusageentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateUsageTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cdtTemplateUsageEntry")
+    {
+        for(auto const & c : cdttemplateusageentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry>();
+        c->parent = this;
+        cdttemplateusageentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : cdttemplateusageentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateUsageEntry")
+        return true;
+    return false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::Cdttemplateusageentry()
+    :
+    cdttemplatename{YType::str, "cdtTemplateName"},
+    cdttemplateusagetargettype{YType::enumeration, "cdtTemplateUsageTargetType"},
+    cdttemplateusagetargetid{YType::str, "cdtTemplateUsageTargetId"}
+{
+
+    yang_name = "cdtTemplateUsageEntry"; yang_parent_name = "cdtTemplateUsageTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::~Cdttemplateusageentry()
+{
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::has_data() const
+{
+    return cdttemplatename.is_set
+	|| cdttemplateusagetargettype.is_set
+	|| cdttemplateusagetargetid.is_set;
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cdttemplatename.yfilter)
+	|| ydk::is_set(cdttemplateusagetargettype.yfilter)
+	|| ydk::is_set(cdttemplateusagetargetid.yfilter);
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-DYNAMIC-TEMPLATE-MIB:CISCO-DYNAMIC-TEMPLATE-MIB/cdtTemplateUsageTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdtTemplateUsageEntry" <<"[cdtTemplateName='" <<cdttemplatename <<"']" <<"[cdtTemplateUsageTargetType='" <<cdttemplateusagetargettype <<"']" <<"[cdtTemplateUsageTargetId='" <<cdttemplateusagetargetid <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cdttemplatename.is_set || is_set(cdttemplatename.yfilter)) leaf_name_data.push_back(cdttemplatename.get_name_leafdata());
+    if (cdttemplateusagetargettype.is_set || is_set(cdttemplateusagetargettype.yfilter)) leaf_name_data.push_back(cdttemplateusagetargettype.get_name_leafdata());
+    if (cdttemplateusagetargetid.is_set || is_set(cdttemplateusagetargetid.yfilter)) leaf_name_data.push_back(cdttemplateusagetargetid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename = value;
+        cdttemplatename.value_namespace = name_space;
+        cdttemplatename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateUsageTargetType")
+    {
+        cdttemplateusagetargettype = value;
+        cdttemplateusagetargettype.value_namespace = name_space;
+        cdttemplateusagetargettype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdtTemplateUsageTargetId")
+    {
+        cdttemplateusagetargetid = value;
+        cdttemplateusagetargetid.value_namespace = name_space;
+        cdttemplateusagetargetid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdtTemplateName")
+    {
+        cdttemplatename.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateUsageTargetType")
+    {
+        cdttemplateusagetargettype.yfilter = yfilter;
+    }
+    if(value_path == "cdtTemplateUsageTargetId")
+    {
+        cdttemplateusagetargetid.yfilter = yfilter;
+    }
+}
+
+bool CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdtTemplateName" || name == "cdtTemplateUsageTargetType" || name == "cdtTemplateUsageTargetId")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits::seconds {1, "seconds"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits::milliseconds {2, "milliseconds"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::high {1, "high"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::medium {2, "medium"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference::low {3, "low"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::accept {2, "accept"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::required {3, "required"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption::unique {4, "unique"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::accept {2, "accept"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::request {3, "request"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption::reject {4, "reject"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::accept {2, "accept"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::request {3, "request"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption::reject {4, "reject"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::request {2, "request"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption::reject {3, "reject"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::static_ {1, "static"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::pool {2, "pool"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc::dhcp {3, "dhcp"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::none {2, "none"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::local {3, "local"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv::vpdn {4, "vpdn"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype::primary {1, "primary"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype::secondary {2, "secondary"};
+
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::other {1, "other"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::derived {2, "derived"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::local {3, "local"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::aaaUserProfile {4, "aaaUserProfile"};
+const Enum::YLeaf CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc::aaaServiceProfile {5, "aaaServiceProfile"};
 
 
 }

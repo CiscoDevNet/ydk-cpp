@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace RFC1315_MIB {
 
-class Rfc1315Mib : public ydk::Entity
+class RFC1315MIB : public ydk::Entity
 {
     public:
-        Rfc1315Mib();
-        ~Rfc1315Mib();
+        RFC1315MIB();
+        ~RFC1315MIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,20 +31,20 @@ class Rfc1315Mib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class FrameRelayGlobals; //type: Rfc1315Mib::FrameRelayGlobals
-        class Frdlcmitable; //type: Rfc1315Mib::Frdlcmitable
-        class Frcircuittable; //type: Rfc1315Mib::Frcircuittable
-        class Frerrtable; //type: Rfc1315Mib::Frerrtable
+        class FrameRelayGlobals; //type: RFC1315MIB::FrameRelayGlobals
+        class Frdlcmitable; //type: RFC1315MIB::Frdlcmitable
+        class Frcircuittable; //type: RFC1315MIB::Frcircuittable
+        class Frerrtable; //type: RFC1315MIB::Frerrtable
 
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::FrameRelayGlobals> frame_relay_globals;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable> frcircuittable;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable> frdlcmitable;
-        std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable> frerrtable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::FrameRelayGlobals> frame_relay_globals;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frcircuittable> frcircuittable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frdlcmitable> frdlcmitable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frerrtable> frerrtable;
         
-}; // Rfc1315Mib
+}; // RFC1315MIB
 
 
-class Rfc1315Mib::FrameRelayGlobals : public ydk::Entity
+class RFC1315MIB::FrameRelayGlobals : public ydk::Entity
 {
     public:
         FrameRelayGlobals();
@@ -52,78 +52,22 @@ class Rfc1315Mib::FrameRelayGlobals : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf frtrapstate; //type: Frtrapstate
         class Frtrapstate;
 
-}; // Rfc1315Mib::FrameRelayGlobals
+}; // RFC1315MIB::FrameRelayGlobals
 
 
-class Rfc1315Mib::Frdlcmitable : public ydk::Entity
-{
-    public:
-        Frdlcmitable();
-        ~Frdlcmitable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Frdlcmientry; //type: Rfc1315Mib::Frdlcmitable::Frdlcmientry
-
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frdlcmitable::Frdlcmientry> > frdlcmientry;
-        
-}; // Rfc1315Mib::Frdlcmitable
-
-
-class Rfc1315Mib::Frdlcmitable::Frdlcmientry : public ydk::Entity
-{
-    public:
-        Frdlcmientry();
-        ~Frdlcmientry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf frdlcmiifindex; //type: int32
-        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
-        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
-        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
-        ydk::YLeaf frdlcmipollinginterval; //type: int32
-        ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
-        ydk::YLeaf frdlcmierrorthreshold; //type: int32
-        ydk::YLeaf frdlcmimonitoredevents; //type: int32
-        ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
-        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
-        class Frdlcmistate;
-        class Frdlcmiaddress;
-        class Frdlcmiaddresslen;
-        class Frdlcmimulticast;
-
-}; // Rfc1315Mib::Frdlcmitable::Frdlcmientry
-
-
-class Rfc1315Mib::Frcircuittable : public ydk::Entity
+class RFC1315MIB::Frcircuittable : public ydk::Entity
 {
     public:
         Frcircuittable();
@@ -131,22 +75,23 @@ class Rfc1315Mib::Frcircuittable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Frcircuitentry; //type: Rfc1315Mib::Frcircuittable::Frcircuitentry
+        class Frcircuitentry; //type: RFC1315MIB::Frcircuittable::Frcircuitentry
 
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frcircuittable::Frcircuitentry> > frcircuitentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frcircuittable::Frcircuitentry> > frcircuitentry;
         
-}; // Rfc1315Mib::Frcircuittable
+}; // RFC1315MIB::Frcircuittable
 
 
-class Rfc1315Mib::Frcircuittable::Frcircuitentry : public ydk::Entity
+class RFC1315MIB::Frcircuittable::Frcircuitentry : public ydk::Entity
 {
     public:
         Frcircuitentry();
@@ -154,13 +99,14 @@ class Rfc1315Mib::Frcircuittable::Frcircuitentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf frcircuitifindex; //type: int32
         ydk::YLeaf frcircuitdlci; //type: int32
@@ -178,10 +124,69 @@ class Rfc1315Mib::Frcircuittable::Frcircuitentry : public ydk::Entity
         ydk::YLeaf frcircuitthroughput; //type: int32
         class Frcircuitstate;
 
-}; // Rfc1315Mib::Frcircuittable::Frcircuitentry
+}; // RFC1315MIB::Frcircuittable::Frcircuitentry
 
 
-class Rfc1315Mib::Frerrtable : public ydk::Entity
+class RFC1315MIB::Frdlcmitable : public ydk::Entity
+{
+    public:
+        Frdlcmitable();
+        ~Frdlcmitable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Frdlcmientry; //type: RFC1315MIB::Frdlcmitable::Frdlcmientry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        
+}; // RFC1315MIB::Frdlcmitable
+
+
+class RFC1315MIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
+{
+    public:
+        Frdlcmientry();
+        ~Frdlcmientry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf frdlcmiifindex; //type: int32
+        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
+        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
+        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
+        ydk::YLeaf frdlcmipollinginterval; //type: int32
+        ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
+        ydk::YLeaf frdlcmierrorthreshold; //type: int32
+        ydk::YLeaf frdlcmimonitoredevents; //type: int32
+        ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
+        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
+        class Frdlcmistate;
+        class Frdlcmiaddress;
+        class Frdlcmiaddresslen;
+        class Frdlcmimulticast;
+
+}; // RFC1315MIB::Frdlcmitable::Frdlcmientry
+
+
+class RFC1315MIB::Frerrtable : public ydk::Entity
 {
     public:
         Frerrtable();
@@ -189,22 +194,23 @@ class Rfc1315Mib::Frerrtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Frerrentry; //type: Rfc1315Mib::Frerrtable::Frerrentry
+        class Frerrentry; //type: RFC1315MIB::Frerrtable::Frerrentry
 
-        std::vector<std::shared_ptr<RFC1315_MIB::Rfc1315Mib::Frerrtable::Frerrentry> > frerrentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frerrtable::Frerrentry> > frerrentry;
         
-}; // Rfc1315Mib::Frerrtable
+}; // RFC1315MIB::Frerrtable
 
 
-class Rfc1315Mib::Frerrtable::Frerrentry : public ydk::Entity
+class RFC1315MIB::Frerrtable::Frerrentry : public ydk::Entity
 {
     public:
         Frerrentry();
@@ -212,13 +218,14 @@ class Rfc1315Mib::Frerrtable::Frerrentry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf frerrifindex; //type: int32
         ydk::YLeaf frerrtype; //type: Frerrtype
@@ -226,9 +233,9 @@ class Rfc1315Mib::Frerrtable::Frerrentry : public ydk::Entity
         ydk::YLeaf frerrtime; //type: uint32
         class Frerrtype;
 
-}; // Rfc1315Mib::Frerrtable::Frerrentry
+}; // RFC1315MIB::Frerrtable::Frerrentry
 
-class Rfc1315Mib::FrameRelayGlobals::Frtrapstate : public ydk::Enum
+class RFC1315MIB::FrameRelayGlobals::Frtrapstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -236,7 +243,16 @@ class Rfc1315Mib::FrameRelayGlobals::Frtrapstate : public ydk::Enum
 
 };
 
-class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
+class RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf inactive;
+
+};
+
+class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noLmiConfigured;
@@ -246,7 +262,7 @@ class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
 
 };
 
-class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
+class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf q921;
@@ -256,7 +272,7 @@ class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
 
 };
 
-class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::Enum
+class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf two_octets;
@@ -265,7 +281,7 @@ class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::En
 
 };
 
-class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enum
+class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nonBroadcast;
@@ -273,16 +289,7 @@ class Rfc1315Mib::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enu
 
 };
 
-class Rfc1315Mib::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf inactive;
-
-};
-
-class Rfc1315Mib::Frerrtable::Frerrentry::Frerrtype : public ydk::Enum
+class RFC1315MIB::Frerrtable::Frerrentry::Frerrtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknownError;

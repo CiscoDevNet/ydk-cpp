@@ -15,7 +15,8 @@ ModulesState::ModulesState()
     :
     module_set_id{YType::str, "module-set-id"}
 {
-    yang_name = "modules-state"; yang_parent_name = "ietf-yang-library";
+
+    yang_name = "modules-state"; yang_parent_name = "ietf-yang-library"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 ModulesState::~ModulesState()
@@ -47,27 +48,16 @@ std::string ModulesState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-yang-library:modules-state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ModulesState::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ModulesState::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (module_set_id.is_set || is_set(module_set_id.yfilter)) leaf_name_data.push_back(module_set_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -162,7 +152,8 @@ ModulesState::Module::Module()
     namespace_{YType::str, "namespace"},
     schema{YType::str, "schema"}
 {
-    yang_name = "module"; yang_parent_name = "modules-state";
+
+    yang_name = "module"; yang_parent_name = "modules-state"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 ModulesState::Module::~Module()
@@ -219,27 +210,22 @@ bool ModulesState::Module::has_operation() const
 	|| ydk::is_set(schema.yfilter);
 }
 
+std::string ModulesState::Module::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-yang-library:modules-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string ModulesState::Module::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "module" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ModulesState::Module::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ModulesState::Module::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "ietf-yang-library:modules-state/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -250,9 +236,7 @@ const EntityPath ModulesState::Module::get_entity_path(Entity* ancestor) const
 
     auto feature_name_datas = feature.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), feature_name_datas.begin(), feature_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -387,7 +371,8 @@ ModulesState::Module::Deviation::Deviation()
     name{YType::str, "name"},
     revision{YType::str, "revision"}
 {
-    yang_name = "deviation"; yang_parent_name = "module";
+
+    yang_name = "deviation"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ModulesState::Module::Deviation::~Deviation()
@@ -411,31 +396,17 @@ std::string ModulesState::Module::Deviation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "deviation" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ModulesState::Module::Deviation::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ModulesState::Module::Deviation::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Deviation' in ietf_yang_library cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -491,7 +462,8 @@ ModulesState::Module::Submodule::Submodule()
     revision{YType::str, "revision"},
     schema{YType::str, "schema"}
 {
-    yang_name = "submodule"; yang_parent_name = "module";
+
+    yang_name = "submodule"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 ModulesState::Module::Submodule::~Submodule()
@@ -517,32 +489,18 @@ std::string ModulesState::Module::Submodule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "submodule" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath ModulesState::Module::Submodule::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > ModulesState::Module::Submodule::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Submodule' in ietf_yang_library cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
     if (schema.is_set || is_set(schema.yfilter)) leaf_name_data.push_back(schema.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

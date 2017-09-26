@@ -18,7 +18,7 @@ class Sam : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -38,97 +38,124 @@ class Sam : public ydk::Entity
         class CertificateRevocations; //type: Sam::CertificateRevocations
         class CertificateRevocationListSummary; //type: Sam::CertificateRevocationListSummary
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocationListSummary> certificate_revocation_list_summary;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations> certificate_revocations;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices> devices;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents> log_contents;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages> packages;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::SystemInformation> system_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocationListSummary> certificate_revocation_list_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations> certificate_revocations;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices> devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents> log_contents;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Packages> packages;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::SystemInformation> system_information;
         
 }; // Sam
 
 
-class Sam::SystemInformation : public ydk::Entity
+class Sam::CertificateRevocationListSummary : public ydk::Entity
 {
     public:
-        SystemInformation();
-        ~SystemInformation();
+        CertificateRevocationListSummary();
+        ~CertificateRevocationListSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf is_running; //type: boolean
-        ydk::YLeaf prompt_interval; //type: uint32
-        ydk::YLeaf is_default_response; //type: boolean
+        ydk::YLeaf crl_index; //type: uint16
+        ydk::YLeaf updates; //type: string
+        class Issuer; //type: Sam::CertificateRevocationListSummary::Issuer
 
-}; // Sam::SystemInformation
-
-
-class Sam::LogContents : public ydk::Entity
-{
-    public:
-        LogContents();
-        ~LogContents();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class LogContent; //type: Sam::LogContents::LogContent
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent> > log_content;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocationListSummary::Issuer> issuer;
         
-}; // Sam::LogContents
+}; // Sam::CertificateRevocationListSummary
 
 
-class Sam::LogContents::LogContent : public ydk::Entity
+class Sam::CertificateRevocationListSummary::Issuer : public ydk::Entity
 {
     public:
-        LogContent();
-        ~LogContent();
+        Issuer();
+        ~Issuer();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf number_of_lines; //type: int32
-        ydk::YLeaf total_entries; //type: uint32
-        ydk::YLeaf entries_shown; //type: uint32
-        class Logs; //type: Sam::LogContents::LogContent::Logs
+        ydk::YLeaf common_name; //type: string
+        ydk::YLeaf organization; //type: string
+        ydk::YLeaf country; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent::Logs> > logs;
+}; // Sam::CertificateRevocationListSummary::Issuer
+
+
+class Sam::CertificateRevocations : public ydk::Entity
+{
+    public:
+        CertificateRevocations();
+        ~CertificateRevocations();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class CertificateRevocation; //type: Sam::CertificateRevocations::CertificateRevocation
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation> > certificate_revocation;
         
-}; // Sam::LogContents::LogContent
+}; // Sam::CertificateRevocations
 
 
-class Sam::LogContents::LogContent::Logs : public ydk::Entity
+class Sam::CertificateRevocations::CertificateRevocation : public ydk::Entity
 {
     public:
-        Logs();
-        ~Logs();
+        CertificateRevocation();
+        ~CertificateRevocation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf crl_index; //type: int32
+        class CertificateRevocationListDetail; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail> certificate_revocation_list_detail;
+        
+}; // Sam::CertificateRevocations::CertificateRevocation
+
+
+class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail : public ydk::Entity
+{
+    public:
+        CertificateRevocationListDetail();
+        ~CertificateRevocationListDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -136,19 +163,36 @@ class Sam::LogContents::LogContent::Logs : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf time; //type: string
-        ydk::YLeaf code; //type: LogCode
-        ydk::YLeaf target_device; //type: string
-        ydk::YLeaf index_; //type: uint32
-        ydk::YLeaf error; //type: LogError
-        ydk::YLeaf issuer; //type: CertificateIssuer
-        ydk::YLeaf serial_no; //type: string
-        ydk::YLeaf sam_table_index; //type: uint32
-        ydk::YLeaf update_time; //type: string
-        ydk::YLeaf source_device; //type: string
-        ydk::YLeaf table; //type: LogTables
+        ydk::YLeaf crl_index; //type: uint16
+        ydk::YLeaf updates; //type: string
+        class Issuer; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
 
-}; // Sam::LogContents::LogContent::Logs
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer> issuer;
+        
+}; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
+
+
+class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer : public ydk::Entity
+{
+    public:
+        Issuer();
+        ~Issuer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf common_name; //type: string
+        ydk::YLeaf organization; //type: string
+        ydk::YLeaf country; //type: string
+
+}; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
 
 
 class Sam::Devices : public ydk::Entity
@@ -159,17 +203,18 @@ class Sam::Devices : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Device; //type: Sam::Devices::Device
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device> > device;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device> > device;
         
 }; // Sam::Devices
 
@@ -182,18 +227,19 @@ class Sam::Devices::Device : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf device_name; //type: string
         class Certificate; //type: Sam::Devices::Device::Certificate
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate> certificate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate> certificate;
         
 }; // Sam::Devices::Device
 
@@ -206,7 +252,7 @@ class Sam::Devices::Device::Certificate : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -217,8 +263,8 @@ class Sam::Devices::Device::Certificate : public ydk::Entity
         class Brief; //type: Sam::Devices::Device::Certificate::Brief
         class CertificateIndexes; //type: Sam::Devices::Device::Certificate::CertificateIndexes
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief> brief;
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes> certificate_indexes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief> brief;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes> certificate_indexes;
         
 }; // Sam::Devices::Device::Certificate
 
@@ -231,7 +277,7 @@ class Sam::Devices::Device::Certificate::Brief : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -243,7 +289,7 @@ class Sam::Devices::Device::Certificate::Brief : public ydk::Entity
         ydk::YLeaf certificate_index; //type: uint16
         class CertificateFlags; //type: Sam::Devices::Device::Certificate::Brief::CertificateFlags
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief::CertificateFlags> certificate_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::Brief::CertificateFlags> certificate_flags;
         
 }; // Sam::Devices::Device::Certificate::Brief
 
@@ -256,7 +302,7 @@ class Sam::Devices::Device::Certificate::Brief::CertificateFlags : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -280,7 +326,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -290,7 +336,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes : public ydk::Entity
 
         class CertificateIndex; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex> > certificate_index;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex> > certificate_index;
         
 }; // Sam::Devices::Device::Certificate::CertificateIndexes
 
@@ -303,7 +349,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -314,7 +360,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex : 
         ydk::YLeaf index_; //type: int32
         class Detail; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail> detail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail> detail;
         
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex
 
@@ -327,7 +373,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -339,7 +385,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
         ydk::YLeaf certificate_index; //type: uint16
         class CertificateFlags; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags> certificate_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags> certificate_flags;
         
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail
 
@@ -352,7 +398,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -368,6 +414,88 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::D
 }; // Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags
 
 
+class Sam::LogContents : public ydk::Entity
+{
+    public:
+        LogContents();
+        ~LogContents();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class LogContent; //type: Sam::LogContents::LogContent
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent> > log_content;
+        
+}; // Sam::LogContents
+
+
+class Sam::LogContents::LogContent : public ydk::Entity
+{
+    public:
+        LogContent();
+        ~LogContent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf number_of_lines; //type: int32
+        ydk::YLeaf total_entries; //type: uint32
+        ydk::YLeaf entries_shown; //type: uint32
+        class Logs; //type: Sam::LogContents::LogContent::Logs
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent::Logs> > logs;
+        
+}; // Sam::LogContents::LogContent
+
+
+class Sam::LogContents::LogContent::Logs : public ydk::Entity
+{
+    public:
+        Logs();
+        ~Logs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time; //type: string
+        ydk::YLeaf code; //type: LogCode
+        ydk::YLeaf target_device; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf error; //type: LogError
+        ydk::YLeaf issuer; //type: CertificateIssuer
+        ydk::YLeaf serial_no; //type: string
+        ydk::YLeaf sam_table_index; //type: uint32
+        ydk::YLeaf update_time; //type: string
+        ydk::YLeaf source_device; //type: string
+        ydk::YLeaf table; //type: LogTables
+
+}; // Sam::LogContents::LogContent::Logs
+
+
 class Sam::Packages : public ydk::Entity
 {
     public:
@@ -376,17 +504,18 @@ class Sam::Packages : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Package; //type: Sam::Packages::Package
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package> > package;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package> > package;
         
 }; // Sam::Packages
 
@@ -399,20 +528,21 @@ class Sam::Packages::Package : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf package_name; //type: string
         ydk::YLeaf location; //type: string
         ydk::YLeaf certificate_index; //type: uint16
         class CertificateFlags; //type: Sam::Packages::Package::CertificateFlags
 
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package::CertificateFlags> certificate_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package::CertificateFlags> certificate_flags;
         
 }; // Sam::Packages::Package
 
@@ -425,7 +555,7 @@ class Sam::Packages::Package::CertificateFlags : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -441,162 +571,44 @@ class Sam::Packages::Package::CertificateFlags : public ydk::Entity
 }; // Sam::Packages::Package::CertificateFlags
 
 
-class Sam::CertificateRevocations : public ydk::Entity
+class Sam::SystemInformation : public ydk::Entity
 {
     public:
-        CertificateRevocations();
-        ~CertificateRevocations();
+        SystemInformation();
+        ~SystemInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class CertificateRevocation; //type: Sam::CertificateRevocations::CertificateRevocation
+        ydk::YLeaf is_running; //type: boolean
+        ydk::YLeaf prompt_interval; //type: uint32
+        ydk::YLeaf is_default_response; //type: boolean
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation> > certificate_revocation;
-        
-}; // Sam::CertificateRevocations
-
-
-class Sam::CertificateRevocations::CertificateRevocation : public ydk::Entity
-{
-    public:
-        CertificateRevocation();
-        ~CertificateRevocation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf crl_index; //type: int32
-        class CertificateRevocationListDetail; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
-
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail> certificate_revocation_list_detail;
-        
-}; // Sam::CertificateRevocations::CertificateRevocation
-
-
-class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail : public ydk::Entity
-{
-    public:
-        CertificateRevocationListDetail();
-        ~CertificateRevocationListDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf crl_index; //type: uint16
-        ydk::YLeaf updates; //type: string
-        class Issuer; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
-
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer> issuer;
-        
-}; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
-
-
-class Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer : public ydk::Entity
-{
-    public:
-        Issuer();
-        ~Issuer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf common_name; //type: string
-        ydk::YLeaf organization; //type: string
-        ydk::YLeaf country; //type: string
-
-}; // Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer
-
-
-class Sam::CertificateRevocationListSummary : public ydk::Entity
-{
-    public:
-        CertificateRevocationListSummary();
-        ~CertificateRevocationListSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf crl_index; //type: uint16
-        ydk::YLeaf updates; //type: string
-        class Issuer; //type: Sam::CertificateRevocationListSummary::Issuer
-
-        std::shared_ptr<Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocationListSummary::Issuer> issuer;
-        
-}; // Sam::CertificateRevocationListSummary
-
-
-class Sam::CertificateRevocationListSummary::Issuer : public ydk::Entity
-{
-    public:
-        Issuer();
-        ~Issuer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf common_name; //type: string
-        ydk::YLeaf organization; //type: string
-        ydk::YLeaf country; //type: string
-
-}; // Sam::CertificateRevocationListSummary::Issuer
-
-class LogError : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf log_message_error;
-        static const ydk::Enum::YLeaf get_issuer_name_failed;
-
-};
+}; // Sam::SystemInformation
 
 class CertificateIssuer : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
+
+};
+
+class LogTables : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unkown;
+        static const ydk::Enum::YLeaf memory_digest_table;
+        static const ydk::Enum::YLeaf system_database_digest;
+        static const ydk::Enum::YLeaf sam_tables;
 
 };
 
@@ -627,13 +639,12 @@ class LogCode : public ydk::Enum
 
 };
 
-class LogTables : public ydk::Enum
+class LogError : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unkown;
-        static const ydk::Enum::YLeaf memory_digest_table;
-        static const ydk::Enum::YLeaf system_database_digest;
-        static const ydk::Enum::YLeaf sam_tables;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf log_message_error;
+        static const ydk::Enum::YLeaf get_issuer_name_failed;
 
 };
 

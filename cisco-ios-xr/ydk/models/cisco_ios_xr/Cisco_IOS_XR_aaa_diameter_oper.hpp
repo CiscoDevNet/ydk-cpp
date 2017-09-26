@@ -10,12 +10,29 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_diameter_oper {
 
-class WhoInitiatedDisconnect : public ydk::Enum
+class SecurityTypeValue : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf host;
-        static const ydk::Enum::YLeaf peer;
+        static const ydk::Enum::YLeaf security_type_none;
+        static const ydk::Enum::YLeaf type;
+        static const ydk::Enum::YLeaf ipsec;
+
+};
+
+class ProtocolTypeValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protocol_none;
+        static const ydk::Enum::YLeaf tcp;
+
+};
+
+class DisconnectCause : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reboot;
+        static const ydk::Enum::YLeaf busy;
+        static const ydk::Enum::YLeaf do_not_wait_to_talk;
 
 };
 
@@ -32,15 +49,6 @@ class PeerStateValue : public ydk::Enum
 
 };
 
-class DisconnectCause : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reboot;
-        static const ydk::Enum::YLeaf busy;
-        static const ydk::Enum::YLeaf do_not_wait_to_talk;
-
-};
-
 class Peer : public ydk::Enum
 {
     public:
@@ -49,20 +57,12 @@ class Peer : public ydk::Enum
 
 };
 
-class ProtocolTypeValue : public ydk::Enum
+class WhoInitiatedDisconnect : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf protocol_none;
-        static const ydk::Enum::YLeaf tcp;
-
-};
-
-class SecurityTypeValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf security_type_none;
-        static const ydk::Enum::YLeaf type;
-        static const ydk::Enum::YLeaf ipsec;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf host;
+        static const ydk::Enum::YLeaf peer;
 
 };
 

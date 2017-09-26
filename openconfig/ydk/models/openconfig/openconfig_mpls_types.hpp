@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_mpls_types {
 
-class PathSetupProtocol : public virtual ydk::Identity
-{
-    public:
-        PathSetupProtocol();
-        ~PathSetupProtocol();
-
-
-}; // PathSetupProtocol
-
 class LspOperStatus : public virtual ydk::Identity
 {
     public:
@@ -28,15 +19,6 @@ class LspOperStatus : public virtual ydk::Identity
 
 }; // LspOperStatus
 
-class TunnelType_ : public virtual ydk::Identity
-{
-    public:
-        TunnelType_();
-        ~TunnelType_();
-
-
-}; // TunnelType_
-
 class LspRole : public virtual ydk::Identity
 {
     public:
@@ -45,6 +27,24 @@ class LspRole : public virtual ydk::Identity
 
 
 }; // LspRole
+
+class NullLabelType : public virtual ydk::Identity
+{
+    public:
+        NullLabelType();
+        ~NullLabelType();
+
+
+}; // NullLabelType
+
+class PathSetupProtocol : public virtual ydk::Identity
+{
+    public:
+        PathSetupProtocol();
+        ~PathSetupProtocol();
+
+
+}; // PathSetupProtocol
 
 class ProtectionType : public virtual ydk::Identity
 {
@@ -64,34 +64,79 @@ class TunnelAdminStatus : public virtual ydk::Identity
 
 }; // TunnelAdminStatus
 
-class NullLabelType : public virtual ydk::Identity
+class TunnelType : public virtual ydk::Identity
 {
     public:
-        NullLabelType();
-        ~NullLabelType();
+        TunnelType();
+        ~TunnelType();
 
 
-}; // NullLabelType
+}; // TunnelType
 
-class Admin_Down : public openconfig_mpls_types::TunnelAdminStatus, virtual ydk::Identity
+class ADMINDOWN : public openconfig::openconfig_mpls_types::TunnelAdminStatus, virtual ydk::Identity
 {
     public:
-        Admin_Down();
-        ~Admin_Down();
+        ADMINDOWN();
+        ~ADMINDOWN();
 
 
-}; // Admin_Down
+}; // ADMINDOWN
 
-class Admin_Up : public openconfig_mpls_types::TunnelAdminStatus, virtual ydk::Identity
+class ADMINUP : public openconfig::openconfig_mpls_types::TunnelAdminStatus, virtual ydk::Identity
 {
     public:
-        Admin_Up();
-        ~Admin_Up();
+        ADMINUP();
+        ~ADMINUP();
 
 
-}; // Admin_Up
+}; // ADMINUP
 
-class LinkNodeProtectionRequested : public openconfig_mpls_types::ProtectionType, virtual ydk::Identity
+class DOWN : public openconfig::openconfig_mpls_types::LspOperStatus, virtual ydk::Identity
+{
+    public:
+        DOWN();
+        ~DOWN();
+
+
+}; // DOWN
+
+class EGRESS : public openconfig::openconfig_mpls_types::LspRole, virtual ydk::Identity
+{
+    public:
+        EGRESS();
+        ~EGRESS();
+
+
+}; // EGRESS
+
+class EXPLICIT_ : public openconfig::openconfig_mpls_types::NullLabelType, virtual ydk::Identity
+{
+    public:
+        EXPLICIT_();
+        ~EXPLICIT_();
+
+
+}; // EXPLICIT_
+
+class IMPLICIT : public openconfig::openconfig_mpls_types::NullLabelType, virtual ydk::Identity
+{
+    public:
+        IMPLICIT();
+        ~IMPLICIT();
+
+
+}; // IMPLICIT
+
+class INGRESS : public openconfig::openconfig_mpls_types::LspRole, virtual ydk::Identity
+{
+    public:
+        INGRESS();
+        ~INGRESS();
+
+
+}; // INGRESS
+
+class LinkNodeProtectionRequested : public openconfig::openconfig_mpls_types::ProtectionType, virtual ydk::Identity
 {
     public:
         LinkNodeProtectionRequested();
@@ -100,16 +145,7 @@ class LinkNodeProtectionRequested : public openconfig_mpls_types::ProtectionType
 
 }; // LinkNodeProtectionRequested
 
-class Ingress : public openconfig_mpls_types::LspRole, virtual ydk::Identity
-{
-    public:
-        Ingress();
-        ~Ingress();
-
-
-}; // Ingress
-
-class LinkProtectionRequested : public openconfig_mpls_types::ProtectionType, virtual ydk::Identity
+class LinkProtectionRequested : public openconfig::openconfig_mpls_types::ProtectionType, virtual ydk::Identity
 {
     public:
         LinkProtectionRequested();
@@ -118,88 +154,16 @@ class LinkProtectionRequested : public openconfig_mpls_types::ProtectionType, vi
 
 }; // LinkProtectionRequested
 
-class Implicit : public openconfig_mpls_types::NullLabelType, virtual ydk::Identity
+class P2MP : public openconfig::openconfig_mpls_types::TunnelType, virtual ydk::Identity
 {
     public:
-        Implicit();
-        ~Implicit();
+        P2MP();
+        ~P2MP();
 
 
-}; // Implicit
+}; // P2MP
 
-class Explicit_ : public openconfig_mpls_types::NullLabelType, virtual ydk::Identity
-{
-    public:
-        Explicit_();
-        ~Explicit_();
-
-
-}; // Explicit_
-
-class Transit : public openconfig_mpls_types::LspRole, virtual ydk::Identity
-{
-    public:
-        Transit();
-        ~Transit();
-
-
-}; // Transit
-
-class Egress : public openconfig_mpls_types::LspRole, virtual ydk::Identity
-{
-    public:
-        Egress();
-        ~Egress();
-
-
-}; // Egress
-
-class PathSetupSr : public openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
-{
-    public:
-        PathSetupSr();
-        ~PathSetupSr();
-
-
-}; // PathSetupSr
-
-class Up : public openconfig_mpls_types::LspOperStatus, virtual ydk::Identity
-{
-    public:
-        Up();
-        ~Up();
-
-
-}; // Up
-
-class P2Mp : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
-{
-    public:
-        P2Mp();
-        ~P2Mp();
-
-
-}; // P2Mp
-
-class PathSetupRsvp : public openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
-{
-    public:
-        PathSetupRsvp();
-        ~PathSetupRsvp();
-
-
-}; // PathSetupRsvp
-
-class Unprotected : public openconfig_mpls_types::ProtectionType, virtual ydk::Identity
-{
-    public:
-        Unprotected();
-        ~Unprotected();
-
-
-}; // Unprotected
-
-class P2P : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
+class P2P : public openconfig::openconfig_mpls_types::TunnelType, virtual ydk::Identity
 {
     public:
         P2P();
@@ -208,7 +172,7 @@ class P2P : public openconfig_mpls_types::TunnelType_, virtual ydk::Identity
 
 }; // P2P
 
-class PathSetupLdp : public openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
+class PathSetupLdp : public openconfig::openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
 {
     public:
         PathSetupLdp();
@@ -217,23 +181,50 @@ class PathSetupLdp : public openconfig_mpls_types::PathSetupProtocol, virtual yd
 
 }; // PathSetupLdp
 
-class Down : public openconfig_mpls_types::LspOperStatus, virtual ydk::Identity
+class PathSetupRsvp : public openconfig::openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
 {
     public:
-        Down();
-        ~Down();
+        PathSetupRsvp();
+        ~PathSetupRsvp();
 
 
-}; // Down
+}; // PathSetupRsvp
 
-class TunnelType : public ydk::Enum
+class PathSetupSr : public openconfig::openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
 {
     public:
-        static const ydk::Enum::YLeaf P2P;
-        static const ydk::Enum::YLeaf P2MP;
-        static const ydk::Enum::YLeaf MP2MP;
+        PathSetupSr();
+        ~PathSetupSr();
 
-};
+
+}; // PathSetupSr
+
+class TRANSIT : public openconfig::openconfig_mpls_types::LspRole, virtual ydk::Identity
+{
+    public:
+        TRANSIT();
+        ~TRANSIT();
+
+
+}; // TRANSIT
+
+class UP : public openconfig::openconfig_mpls_types::LspOperStatus, virtual ydk::Identity
+{
+    public:
+        UP();
+        ~UP();
+
+
+}; // UP
+
+class Unprotected : public openconfig::openconfig_mpls_types::ProtectionType, virtual ydk::Identity
+{
+    public:
+        Unprotected();
+        ~Unprotected();
+
+
+}; // Unprotected
 
 class MplsLabel : public ydk::Enum
 {
@@ -243,6 +234,15 @@ class MplsLabel : public ydk::Enum
         static const ydk::Enum::YLeaf IPV6_EXPLICIT_NULL;
         static const ydk::Enum::YLeaf IMPLICIT_NULL;
         static const ydk::Enum::YLeaf ENTROPY_LABEL_INDICATOR;
+
+};
+
+class TunnelType_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf P2P;
+        static const ydk::Enum::YLeaf P2MP;
+        static const ydk::Enum::YLeaf MP2MP;
 
 };
 

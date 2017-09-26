@@ -10,15 +10,15 @@
 namespace cisco_ios_xe {
 namespace TOKEN_RING_RMON_MIB {
 
-class TokenRingRmonMib : public ydk::Entity
+class TOKENRINGRMONMIB : public ydk::Entity
 {
     public:
-        TokenRingRmonMib();
-        ~TokenRingRmonMib();
+        TOKENRINGRMONMIB();
+        ~TOKENRINGRMONMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -31,168 +31,380 @@ class TokenRingRmonMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Tokenringmlstatstable; //type: TokenRingRmonMib::Tokenringmlstatstable
-        class Tokenringpstatstable; //type: TokenRingRmonMib::Tokenringpstatstable
-        class Tokenringmlhistorytable; //type: TokenRingRmonMib::Tokenringmlhistorytable
-        class Tokenringphistorytable; //type: TokenRingRmonMib::Tokenringphistorytable
-        class Ringstationcontroltable; //type: TokenRingRmonMib::Ringstationcontroltable
-        class Ringstationtable; //type: TokenRingRmonMib::Ringstationtable
-        class Ringstationordertable; //type: TokenRingRmonMib::Ringstationordertable
-        class Ringstationconfigcontroltable; //type: TokenRingRmonMib::Ringstationconfigcontroltable
-        class Ringstationconfigtable; //type: TokenRingRmonMib::Ringstationconfigtable
-        class Sourceroutingstatstable; //type: TokenRingRmonMib::Sourceroutingstatstable
+        class Tokenringmlstatstable; //type: TOKENRINGRMONMIB::Tokenringmlstatstable
+        class Tokenringpstatstable; //type: TOKENRINGRMONMIB::Tokenringpstatstable
+        class Tokenringmlhistorytable; //type: TOKENRINGRMONMIB::Tokenringmlhistorytable
+        class Tokenringphistorytable; //type: TOKENRINGRMONMIB::Tokenringphistorytable
+        class Ringstationcontroltable; //type: TOKENRINGRMONMIB::Ringstationcontroltable
+        class Ringstationtable; //type: TOKENRINGRMONMIB::Ringstationtable
+        class Ringstationordertable; //type: TOKENRINGRMONMIB::Ringstationordertable
+        class Ringstationconfigcontroltable; //type: TOKENRINGRMONMIB::Ringstationconfigcontroltable
+        class Ringstationconfigtable; //type: TOKENRINGRMONMIB::Ringstationconfigtable
+        class Sourceroutingstatstable; //type: TOKENRINGRMONMIB::Sourceroutingstatstable
 
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable> ringstationconfigcontroltable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable> ringstationconfigtable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable> ringstationcontroltable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable> ringstationordertable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable> ringstationtable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable> sourceroutingstatstable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable> tokenringmlhistorytable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable> tokenringmlstatstable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable> tokenringphistorytable;
-        std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable> tokenringpstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigcontroltable> ringstationconfigcontroltable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigtable> ringstationconfigtable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationcontroltable> ringstationcontroltable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationordertable> ringstationordertable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationtable> ringstationtable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Sourceroutingstatstable> sourceroutingstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlhistorytable> tokenringmlhistorytable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlstatstable> tokenringmlstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringphistorytable> tokenringphistorytable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringpstatstable> tokenringpstatstable;
         
-}; // TokenRingRmonMib
+}; // TOKENRINGRMONMIB
 
 
-class TokenRingRmonMib::Tokenringmlstatstable : public ydk::Entity
+class TOKENRINGRMONMIB::Ringstationconfigcontroltable : public ydk::Entity
 {
     public:
-        Tokenringmlstatstable();
-        ~Tokenringmlstatstable();
+        Ringstationconfigcontroltable();
+        ~Ringstationconfigcontroltable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Tokenringmlstatsentry; //type: TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry
+        class Ringstationconfigcontrolentry; //type: TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry> > tokenringmlstatsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry> > ringstationconfigcontrolentry;
         
-}; // TokenRingRmonMib::Tokenringmlstatstable
+}; // TOKENRINGRMONMIB::Ringstationconfigcontroltable
 
 
-class TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry : public ydk::Entity
+class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry : public ydk::Entity
 {
     public:
-        Tokenringmlstatsentry();
-        ~Tokenringmlstatsentry();
+        Ringstationconfigcontrolentry();
+        ~Ringstationconfigcontrolentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf tokenringmlstatsindex; //type: int32
-        ydk::YLeaf tokenringmlstatsdatasource; //type: string
-        ydk::YLeaf tokenringmlstatsdropevents; //type: uint32
-        ydk::YLeaf tokenringmlstatsmacoctets; //type: uint32
-        ydk::YLeaf tokenringmlstatsmacpkts; //type: uint32
-        ydk::YLeaf tokenringmlstatsringpurgeevents; //type: uint32
-        ydk::YLeaf tokenringmlstatsringpurgepkts; //type: uint32
-        ydk::YLeaf tokenringmlstatsbeaconevents; //type: uint32
-        ydk::YLeaf tokenringmlstatsbeacontime; //type: int32
-        ydk::YLeaf tokenringmlstatsbeaconpkts; //type: uint32
-        ydk::YLeaf tokenringmlstatsclaimtokenevents; //type: uint32
-        ydk::YLeaf tokenringmlstatsclaimtokenpkts; //type: uint32
-        ydk::YLeaf tokenringmlstatsnaunchanges; //type: uint32
-        ydk::YLeaf tokenringmlstatslineerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsinternalerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsbursterrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsacerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsaborterrors; //type: uint32
-        ydk::YLeaf tokenringmlstatslostframeerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatscongestionerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsframecopiederrors; //type: uint32
-        ydk::YLeaf tokenringmlstatsfrequencyerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatstokenerrors; //type: uint32
-        ydk::YLeaf tokenringmlstatssofterrorreports; //type: uint32
-        ydk::YLeaf tokenringmlstatsringpollevents; //type: uint32
-        ydk::YLeaf tokenringmlstatsowner; //type: string
-        ydk::YLeaf tokenringmlstatsstatus; //type: Entrystatus
-        ydk::YLeaf tokenringmlstatsdroppedframes; //type: uint32
-        ydk::YLeaf tokenringmlstatscreatetime; //type: uint32
+        ydk::YLeaf ringstationconfigcontrolifindex; //type: int32
+        ydk::YLeaf ringstationconfigcontrolmacaddress; //type: binary
+        ydk::YLeaf ringstationconfigcontrolremove; //type: Ringstationconfigcontrolremove
+        ydk::YLeaf ringstationconfigcontrolupdatestats; //type: Ringstationconfigcontrolupdatestats
+        class Ringstationconfigcontrolremove;
+        class Ringstationconfigcontrolupdatestats;
 
-}; // TokenRingRmonMib::Tokenringmlstatstable::Tokenringmlstatsentry
+}; // TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
 
 
-class TokenRingRmonMib::Tokenringpstatstable : public ydk::Entity
+class TOKENRINGRMONMIB::Ringstationconfigtable : public ydk::Entity
 {
     public:
-        Tokenringpstatstable();
-        ~Tokenringpstatstable();
+        Ringstationconfigtable();
+        ~Ringstationconfigtable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Tokenringpstatsentry; //type: TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry
+        class Ringstationconfigentry; //type: TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry> > tokenringpstatsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry> > ringstationconfigentry;
         
-}; // TokenRingRmonMib::Tokenringpstatstable
+}; // TOKENRINGRMONMIB::Ringstationconfigtable
 
 
-class TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry : public ydk::Entity
+class TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry : public ydk::Entity
 {
     public:
-        Tokenringpstatsentry();
-        ~Tokenringpstatsentry();
+        Ringstationconfigentry();
+        ~Ringstationconfigentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf tokenringpstatsindex; //type: int32
-        ydk::YLeaf tokenringpstatsdatasource; //type: string
-        ydk::YLeaf tokenringpstatsdropevents; //type: uint32
-        ydk::YLeaf tokenringpstatsdataoctets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts; //type: uint32
-        ydk::YLeaf tokenringpstatsdatabroadcastpkts; //type: uint32
-        ydk::YLeaf tokenringpstatsdatamulticastpkts; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts18to63octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts64to127octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts128to255octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts256to511octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts512to1023octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts1024to2047octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts2048to4095octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts4096to8191octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapkts8192to18000octets; //type: uint32
-        ydk::YLeaf tokenringpstatsdatapktsgreaterthan18000octets; //type: uint32
-        ydk::YLeaf tokenringpstatsowner; //type: string
-        ydk::YLeaf tokenringpstatsstatus; //type: Entrystatus
-        ydk::YLeaf tokenringpstatsdroppedframes; //type: uint32
-        ydk::YLeaf tokenringpstatscreatetime; //type: uint32
+        ydk::YLeaf ringstationconfigifindex; //type: int32
+        ydk::YLeaf ringstationconfigmacaddress; //type: binary
+        ydk::YLeaf ringstationconfigupdatetime; //type: uint32
+        ydk::YLeaf ringstationconfiglocation; //type: binary
+        ydk::YLeaf ringstationconfigmicrocode; //type: binary
+        ydk::YLeaf ringstationconfiggroupaddress; //type: binary
+        ydk::YLeaf ringstationconfigfunctionaladdress; //type: binary
 
-}; // TokenRingRmonMib::Tokenringpstatstable::Tokenringpstatsentry
+}; // TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry
 
 
-class TokenRingRmonMib::Tokenringmlhistorytable : public ydk::Entity
+class TOKENRINGRMONMIB::Ringstationcontroltable : public ydk::Entity
+{
+    public:
+        Ringstationcontroltable();
+        ~Ringstationcontroltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ringstationcontrolentry; //type: TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry> > ringstationcontrolentry;
+        
+}; // TOKENRINGRMONMIB::Ringstationcontroltable
+
+
+class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry : public ydk::Entity
+{
+    public:
+        Ringstationcontrolentry();
+        ~Ringstationcontrolentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ringstationcontrolifindex; //type: int32
+        ydk::YLeaf ringstationcontroltablesize; //type: int32
+        ydk::YLeaf ringstationcontrolactivestations; //type: int32
+        ydk::YLeaf ringstationcontrolringstate; //type: Ringstationcontrolringstate
+        ydk::YLeaf ringstationcontrolbeaconsender; //type: binary
+        ydk::YLeaf ringstationcontrolbeaconnaun; //type: binary
+        ydk::YLeaf ringstationcontrolactivemonitor; //type: binary
+        ydk::YLeaf ringstationcontrolorderchanges; //type: uint32
+        ydk::YLeaf ringstationcontrolowner; //type: string
+        ydk::YLeaf ringstationcontrolstatus; //type: EntryStatus
+        ydk::YLeaf ringstationcontroldroppedframes; //type: uint32
+        ydk::YLeaf ringstationcontrolcreatetime; //type: uint32
+        class Ringstationcontrolringstate;
+
+}; // TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry
+
+
+class TOKENRINGRMONMIB::Ringstationordertable : public ydk::Entity
+{
+    public:
+        Ringstationordertable();
+        ~Ringstationordertable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ringstationorderentry; //type: TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry> > ringstationorderentry;
+        
+}; // TOKENRINGRMONMIB::Ringstationordertable
+
+
+class TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry : public ydk::Entity
+{
+    public:
+        Ringstationorderentry();
+        ~Ringstationorderentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ringstationorderifindex; //type: int32
+        ydk::YLeaf ringstationorderorderindex; //type: int32
+        ydk::YLeaf ringstationordermacaddress; //type: binary
+
+}; // TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry
+
+
+class TOKENRINGRMONMIB::Ringstationtable : public ydk::Entity
+{
+    public:
+        Ringstationtable();
+        ~Ringstationtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ringstationentry; //type: TOKENRINGRMONMIB::Ringstationtable::Ringstationentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationtable::Ringstationentry> > ringstationentry;
+        
+}; // TOKENRINGRMONMIB::Ringstationtable
+
+
+class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry : public ydk::Entity
+{
+    public:
+        Ringstationentry();
+        ~Ringstationentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ringstationifindex; //type: int32
+        ydk::YLeaf ringstationmacaddress; //type: binary
+        ydk::YLeaf ringstationlastnaun; //type: binary
+        ydk::YLeaf ringstationstationstatus; //type: Ringstationstationstatus
+        ydk::YLeaf ringstationlastentertime; //type: uint32
+        ydk::YLeaf ringstationlastexittime; //type: uint32
+        ydk::YLeaf ringstationduplicateaddresses; //type: uint32
+        ydk::YLeaf ringstationinlineerrors; //type: uint32
+        ydk::YLeaf ringstationoutlineerrors; //type: uint32
+        ydk::YLeaf ringstationinternalerrors; //type: uint32
+        ydk::YLeaf ringstationinbursterrors; //type: uint32
+        ydk::YLeaf ringstationoutbursterrors; //type: uint32
+        ydk::YLeaf ringstationacerrors; //type: uint32
+        ydk::YLeaf ringstationaborterrors; //type: uint32
+        ydk::YLeaf ringstationlostframeerrors; //type: uint32
+        ydk::YLeaf ringstationcongestionerrors; //type: uint32
+        ydk::YLeaf ringstationframecopiederrors; //type: uint32
+        ydk::YLeaf ringstationfrequencyerrors; //type: uint32
+        ydk::YLeaf ringstationtokenerrors; //type: uint32
+        ydk::YLeaf ringstationinbeaconerrors; //type: uint32
+        ydk::YLeaf ringstationoutbeaconerrors; //type: uint32
+        ydk::YLeaf ringstationinsertions; //type: uint32
+        class Ringstationstationstatus;
+
+}; // TOKENRINGRMONMIB::Ringstationtable::Ringstationentry
+
+
+class TOKENRINGRMONMIB::Sourceroutingstatstable : public ydk::Entity
+{
+    public:
+        Sourceroutingstatstable();
+        ~Sourceroutingstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Sourceroutingstatsentry; //type: TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry> > sourceroutingstatsentry;
+        
+}; // TOKENRINGRMONMIB::Sourceroutingstatstable
+
+
+class TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry : public ydk::Entity
+{
+    public:
+        Sourceroutingstatsentry();
+        ~Sourceroutingstatsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf sourceroutingstatsifindex; //type: int32
+        ydk::YLeaf sourceroutingstatsringnumber; //type: int32
+        ydk::YLeaf sourceroutingstatsinframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsoutframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsthroughframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsallroutesbroadcastframes; //type: uint32
+        ydk::YLeaf sourceroutingstatssingleroutebroadcastframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsinoctets; //type: uint32
+        ydk::YLeaf sourceroutingstatsoutoctets; //type: uint32
+        ydk::YLeaf sourceroutingstatsthroughoctets; //type: uint32
+        ydk::YLeaf sourceroutingstatsallroutesbroadcastoctets; //type: uint32
+        ydk::YLeaf sourceroutingstatssingleroutesbroadcastoctets; //type: uint32
+        ydk::YLeaf sourceroutingstatslocalllcframes; //type: uint32
+        ydk::YLeaf sourceroutingstats1hopframes; //type: uint32
+        ydk::YLeaf sourceroutingstats2hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats3hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats4hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats5hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats6hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats7hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstats8hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsmorethan8hopsframes; //type: uint32
+        ydk::YLeaf sourceroutingstatsowner; //type: string
+        ydk::YLeaf sourceroutingstatsstatus; //type: EntryStatus
+        ydk::YLeaf sourceroutingstatsdroppedframes; //type: uint32
+        ydk::YLeaf sourceroutingstatscreatetime; //type: uint32
+
+}; // TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry
+
+
+class TOKENRINGRMONMIB::Tokenringmlhistorytable : public ydk::Entity
 {
     public:
         Tokenringmlhistorytable();
@@ -200,22 +412,23 @@ class TokenRingRmonMib::Tokenringmlhistorytable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Tokenringmlhistoryentry; //type: TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry
+        class Tokenringmlhistoryentry; //type: TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry> > tokenringmlhistoryentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry> > tokenringmlhistoryentry;
         
-}; // TokenRingRmonMib::Tokenringmlhistorytable
+}; // TOKENRINGRMONMIB::Tokenringmlhistorytable
 
 
-class TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry : public ydk::Entity
+class TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry : public ydk::Entity
 {
     public:
         Tokenringmlhistoryentry();
@@ -223,13 +436,14 @@ class TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf tokenringmlhistoryindex; //type: int32
         ydk::YLeaf tokenringmlhistorysampleindex; //type: int32
@@ -259,10 +473,84 @@ class TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry : publi
         ydk::YLeaf tokenringmlhistoryringpollevents; //type: uint32
         ydk::YLeaf tokenringmlhistoryactivestations; //type: int32
 
-}; // TokenRingRmonMib::Tokenringmlhistorytable::Tokenringmlhistoryentry
+}; // TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry
 
 
-class TokenRingRmonMib::Tokenringphistorytable : public ydk::Entity
+class TOKENRINGRMONMIB::Tokenringmlstatstable : public ydk::Entity
+{
+    public:
+        Tokenringmlstatstable();
+        ~Tokenringmlstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Tokenringmlstatsentry; //type: TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry> > tokenringmlstatsentry;
+        
+}; // TOKENRINGRMONMIB::Tokenringmlstatstable
+
+
+class TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry : public ydk::Entity
+{
+    public:
+        Tokenringmlstatsentry();
+        ~Tokenringmlstatsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tokenringmlstatsindex; //type: int32
+        ydk::YLeaf tokenringmlstatsdatasource; //type: string
+        ydk::YLeaf tokenringmlstatsdropevents; //type: uint32
+        ydk::YLeaf tokenringmlstatsmacoctets; //type: uint32
+        ydk::YLeaf tokenringmlstatsmacpkts; //type: uint32
+        ydk::YLeaf tokenringmlstatsringpurgeevents; //type: uint32
+        ydk::YLeaf tokenringmlstatsringpurgepkts; //type: uint32
+        ydk::YLeaf tokenringmlstatsbeaconevents; //type: uint32
+        ydk::YLeaf tokenringmlstatsbeacontime; //type: int32
+        ydk::YLeaf tokenringmlstatsbeaconpkts; //type: uint32
+        ydk::YLeaf tokenringmlstatsclaimtokenevents; //type: uint32
+        ydk::YLeaf tokenringmlstatsclaimtokenpkts; //type: uint32
+        ydk::YLeaf tokenringmlstatsnaunchanges; //type: uint32
+        ydk::YLeaf tokenringmlstatslineerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsinternalerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsbursterrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsacerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsaborterrors; //type: uint32
+        ydk::YLeaf tokenringmlstatslostframeerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatscongestionerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsframecopiederrors; //type: uint32
+        ydk::YLeaf tokenringmlstatsfrequencyerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatstokenerrors; //type: uint32
+        ydk::YLeaf tokenringmlstatssofterrorreports; //type: uint32
+        ydk::YLeaf tokenringmlstatsringpollevents; //type: uint32
+        ydk::YLeaf tokenringmlstatsowner; //type: string
+        ydk::YLeaf tokenringmlstatsstatus; //type: EntryStatus
+        ydk::YLeaf tokenringmlstatsdroppedframes; //type: uint32
+        ydk::YLeaf tokenringmlstatscreatetime; //type: uint32
+
+}; // TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry
+
+
+class TOKENRINGRMONMIB::Tokenringphistorytable : public ydk::Entity
 {
     public:
         Tokenringphistorytable();
@@ -270,22 +558,23 @@ class TokenRingRmonMib::Tokenringphistorytable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Tokenringphistoryentry; //type: TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry
+        class Tokenringphistoryentry; //type: TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry> > tokenringphistoryentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry> > tokenringphistoryentry;
         
-}; // TokenRingRmonMib::Tokenringphistorytable
+}; // TOKENRINGRMONMIB::Tokenringphistorytable
 
 
-class TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry : public ydk::Entity
+class TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry : public ydk::Entity
 {
     public:
         Tokenringphistoryentry();
@@ -293,13 +582,14 @@ class TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf tokenringphistoryindex; //type: int32
         ydk::YLeaf tokenringphistorysampleindex; //type: int32
@@ -320,345 +610,75 @@ class TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry : public 
         ydk::YLeaf tokenringphistorydatapkts8192to18000octets; //type: uint32
         ydk::YLeaf tokenringphistorydatapktsgreaterthan18000octets; //type: uint32
 
-}; // TokenRingRmonMib::Tokenringphistorytable::Tokenringphistoryentry
+}; // TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry
 
 
-class TokenRingRmonMib::Ringstationcontroltable : public ydk::Entity
+class TOKENRINGRMONMIB::Tokenringpstatstable : public ydk::Entity
 {
     public:
-        Ringstationcontroltable();
-        ~Ringstationcontroltable();
+        Tokenringpstatstable();
+        ~Tokenringpstatstable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Ringstationcontrolentry; //type: TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry
+        class Tokenringpstatsentry; //type: TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry
 
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry> > ringstationcontrolentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry> > tokenringpstatsentry;
         
-}; // TokenRingRmonMib::Ringstationcontroltable
+}; // TOKENRINGRMONMIB::Tokenringpstatstable
 
 
-class TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry : public ydk::Entity
+class TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry : public ydk::Entity
 {
     public:
-        Ringstationcontrolentry();
-        ~Ringstationcontrolentry();
+        Tokenringpstatsentry();
+        ~Tokenringpstatsentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf ringstationcontrolifindex; //type: int32
-        ydk::YLeaf ringstationcontroltablesize; //type: int32
-        ydk::YLeaf ringstationcontrolactivestations; //type: int32
-        ydk::YLeaf ringstationcontrolringstate; //type: Ringstationcontrolringstate
-        ydk::YLeaf ringstationcontrolbeaconsender; //type: binary
-        ydk::YLeaf ringstationcontrolbeaconnaun; //type: binary
-        ydk::YLeaf ringstationcontrolactivemonitor; //type: binary
-        ydk::YLeaf ringstationcontrolorderchanges; //type: uint32
-        ydk::YLeaf ringstationcontrolowner; //type: string
-        ydk::YLeaf ringstationcontrolstatus; //type: Entrystatus
-        ydk::YLeaf ringstationcontroldroppedframes; //type: uint32
-        ydk::YLeaf ringstationcontrolcreatetime; //type: uint32
-        class Ringstationcontrolringstate;
+        ydk::YLeaf tokenringpstatsindex; //type: int32
+        ydk::YLeaf tokenringpstatsdatasource; //type: string
+        ydk::YLeaf tokenringpstatsdropevents; //type: uint32
+        ydk::YLeaf tokenringpstatsdataoctets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts; //type: uint32
+        ydk::YLeaf tokenringpstatsdatabroadcastpkts; //type: uint32
+        ydk::YLeaf tokenringpstatsdatamulticastpkts; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts18to63octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts64to127octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts128to255octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts256to511octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts512to1023octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts1024to2047octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts2048to4095octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts4096to8191octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapkts8192to18000octets; //type: uint32
+        ydk::YLeaf tokenringpstatsdatapktsgreaterthan18000octets; //type: uint32
+        ydk::YLeaf tokenringpstatsowner; //type: string
+        ydk::YLeaf tokenringpstatsstatus; //type: EntryStatus
+        ydk::YLeaf tokenringpstatsdroppedframes; //type: uint32
+        ydk::YLeaf tokenringpstatscreatetime; //type: uint32
 
-}; // TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry
+}; // TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry
 
-
-class TokenRingRmonMib::Ringstationtable : public ydk::Entity
-{
-    public:
-        Ringstationtable();
-        ~Ringstationtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ringstationentry; //type: TokenRingRmonMib::Ringstationtable::Ringstationentry
-
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationtable::Ringstationentry> > ringstationentry;
-        
-}; // TokenRingRmonMib::Ringstationtable
-
-
-class TokenRingRmonMib::Ringstationtable::Ringstationentry : public ydk::Entity
-{
-    public:
-        Ringstationentry();
-        ~Ringstationentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ringstationifindex; //type: int32
-        ydk::YLeaf ringstationmacaddress; //type: binary
-        ydk::YLeaf ringstationlastnaun; //type: binary
-        ydk::YLeaf ringstationstationstatus; //type: Ringstationstationstatus
-        ydk::YLeaf ringstationlastentertime; //type: uint32
-        ydk::YLeaf ringstationlastexittime; //type: uint32
-        ydk::YLeaf ringstationduplicateaddresses; //type: uint32
-        ydk::YLeaf ringstationinlineerrors; //type: uint32
-        ydk::YLeaf ringstationoutlineerrors; //type: uint32
-        ydk::YLeaf ringstationinternalerrors; //type: uint32
-        ydk::YLeaf ringstationinbursterrors; //type: uint32
-        ydk::YLeaf ringstationoutbursterrors; //type: uint32
-        ydk::YLeaf ringstationacerrors; //type: uint32
-        ydk::YLeaf ringstationaborterrors; //type: uint32
-        ydk::YLeaf ringstationlostframeerrors; //type: uint32
-        ydk::YLeaf ringstationcongestionerrors; //type: uint32
-        ydk::YLeaf ringstationframecopiederrors; //type: uint32
-        ydk::YLeaf ringstationfrequencyerrors; //type: uint32
-        ydk::YLeaf ringstationtokenerrors; //type: uint32
-        ydk::YLeaf ringstationinbeaconerrors; //type: uint32
-        ydk::YLeaf ringstationoutbeaconerrors; //type: uint32
-        ydk::YLeaf ringstationinsertions; //type: uint32
-        class Ringstationstationstatus;
-
-}; // TokenRingRmonMib::Ringstationtable::Ringstationentry
-
-
-class TokenRingRmonMib::Ringstationordertable : public ydk::Entity
-{
-    public:
-        Ringstationordertable();
-        ~Ringstationordertable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ringstationorderentry; //type: TokenRingRmonMib::Ringstationordertable::Ringstationorderentry
-
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationordertable::Ringstationorderentry> > ringstationorderentry;
-        
-}; // TokenRingRmonMib::Ringstationordertable
-
-
-class TokenRingRmonMib::Ringstationordertable::Ringstationorderentry : public ydk::Entity
-{
-    public:
-        Ringstationorderentry();
-        ~Ringstationorderentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ringstationorderifindex; //type: int32
-        ydk::YLeaf ringstationorderorderindex; //type: int32
-        ydk::YLeaf ringstationordermacaddress; //type: binary
-
-}; // TokenRingRmonMib::Ringstationordertable::Ringstationorderentry
-
-
-class TokenRingRmonMib::Ringstationconfigcontroltable : public ydk::Entity
-{
-    public:
-        Ringstationconfigcontroltable();
-        ~Ringstationconfigcontroltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ringstationconfigcontrolentry; //type: TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
-
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry> > ringstationconfigcontrolentry;
-        
-}; // TokenRingRmonMib::Ringstationconfigcontroltable
-
-
-class TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry : public ydk::Entity
-{
-    public:
-        Ringstationconfigcontrolentry();
-        ~Ringstationconfigcontrolentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ringstationconfigcontrolifindex; //type: int32
-        ydk::YLeaf ringstationconfigcontrolmacaddress; //type: binary
-        ydk::YLeaf ringstationconfigcontrolremove; //type: Ringstationconfigcontrolremove
-        ydk::YLeaf ringstationconfigcontrolupdatestats; //type: Ringstationconfigcontrolupdatestats
-        class Ringstationconfigcontrolremove;
-        class Ringstationconfigcontrolupdatestats;
-
-}; // TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
-
-
-class TokenRingRmonMib::Ringstationconfigtable : public ydk::Entity
-{
-    public:
-        Ringstationconfigtable();
-        ~Ringstationconfigtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Ringstationconfigentry; //type: TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry
-
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry> > ringstationconfigentry;
-        
-}; // TokenRingRmonMib::Ringstationconfigtable
-
-
-class TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry : public ydk::Entity
-{
-    public:
-        Ringstationconfigentry();
-        ~Ringstationconfigentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ringstationconfigifindex; //type: int32
-        ydk::YLeaf ringstationconfigmacaddress; //type: binary
-        ydk::YLeaf ringstationconfigupdatetime; //type: uint32
-        ydk::YLeaf ringstationconfiglocation; //type: binary
-        ydk::YLeaf ringstationconfigmicrocode; //type: binary
-        ydk::YLeaf ringstationconfiggroupaddress; //type: binary
-        ydk::YLeaf ringstationconfigfunctionaladdress; //type: binary
-
-}; // TokenRingRmonMib::Ringstationconfigtable::Ringstationconfigentry
-
-
-class TokenRingRmonMib::Sourceroutingstatstable : public ydk::Entity
-{
-    public:
-        Sourceroutingstatstable();
-        ~Sourceroutingstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Sourceroutingstatsentry; //type: TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry
-
-        std::vector<std::shared_ptr<TOKEN_RING_RMON_MIB::TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry> > sourceroutingstatsentry;
-        
-}; // TokenRingRmonMib::Sourceroutingstatstable
-
-
-class TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry : public ydk::Entity
-{
-    public:
-        Sourceroutingstatsentry();
-        ~Sourceroutingstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sourceroutingstatsifindex; //type: int32
-        ydk::YLeaf sourceroutingstatsringnumber; //type: int32
-        ydk::YLeaf sourceroutingstatsinframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsoutframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsthroughframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsallroutesbroadcastframes; //type: uint32
-        ydk::YLeaf sourceroutingstatssingleroutebroadcastframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsinoctets; //type: uint32
-        ydk::YLeaf sourceroutingstatsoutoctets; //type: uint32
-        ydk::YLeaf sourceroutingstatsthroughoctets; //type: uint32
-        ydk::YLeaf sourceroutingstatsallroutesbroadcastoctets; //type: uint32
-        ydk::YLeaf sourceroutingstatssingleroutesbroadcastoctets; //type: uint32
-        ydk::YLeaf sourceroutingstatslocalllcframes; //type: uint32
-        ydk::YLeaf sourceroutingstats1hopframes; //type: uint32
-        ydk::YLeaf sourceroutingstats2hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats3hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats4hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats5hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats6hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats7hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstats8hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsmorethan8hopsframes; //type: uint32
-        ydk::YLeaf sourceroutingstatsowner; //type: string
-        ydk::YLeaf sourceroutingstatsstatus; //type: Entrystatus
-        ydk::YLeaf sourceroutingstatsdroppedframes; //type: uint32
-        ydk::YLeaf sourceroutingstatscreatetime; //type: uint32
-
-}; // TokenRingRmonMib::Sourceroutingstatstable::Sourceroutingstatsentry
-
-class Entrystatus : public ydk::Enum
+class EntryStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf valid;
@@ -668,7 +688,23 @@ class Entrystatus : public ydk::Enum
 
 };
 
-class TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate : public ydk::Enum
+class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolremove : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stable;
+        static const ydk::Enum::YLeaf removing;
+
+};
+
+class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolupdatestats : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stable;
+        static const ydk::Enum::YLeaf updating;
+
+};
+
+class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normalOperation;
@@ -681,28 +717,12 @@ class TokenRingRmonMib::Ringstationcontroltable::Ringstationcontrolentry::Ringst
 
 };
 
-class TokenRingRmonMib::Ringstationtable::Ringstationentry::Ringstationstationstatus : public ydk::Enum
+class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationstatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf inactive;
         static const ydk::Enum::YLeaf forcedRemoval;
-
-};
-
-class TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolremove : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stable;
-        static const ydk::Enum::YLeaf removing;
-
-};
-
-class TokenRingRmonMib::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolupdatestats : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stable;
-        static const ydk::Enum::YLeaf updating;
 
 };
 

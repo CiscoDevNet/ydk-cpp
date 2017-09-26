@@ -21,18 +21,13 @@ EtherLinkOam::EtherLinkOam()
 	,stats_interfaces(std::make_shared<EtherLinkOam::StatsInterfaces>())
 {
     discovery_info_interfaces->parent = this;
-
     event_log_entry_interfaces->parent = this;
-
     interface_state_interfaces->parent = this;
-
     nodes->parent = this;
-
     running_config_interfaces->parent = this;
-
     stats_interfaces->parent = this;
 
-    yang_name = "ether-link-oam"; yang_parent_name = "Cisco-IOS-XR-ethernet-link-oam-oper";
+    yang_name = "ether-link-oam"; yang_parent_name = "Cisco-IOS-XR-ethernet-link-oam-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 EtherLinkOam::~EtherLinkOam()
@@ -64,26 +59,15 @@ std::string EtherLinkOam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -224,7 +208,8 @@ bool EtherLinkOam::has_leaf_or_child_of_name(const std::string & name) const
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterfaces()
 {
-    yang_name = "discovery-info-interfaces"; yang_parent_name = "ether-link-oam";
+
+    yang_name = "discovery-info-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::~DiscoveryInfoInterfaces()
@@ -251,33 +236,26 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EtherLinkOam::DiscoveryInfoInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::DiscoveryInfoInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discovery-info-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::DiscoveryInfoInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -381,7 +359,8 @@ EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::DiscoveryInfoInte
     remote_vendor_oui{YType::str, "remote-vendor-oui"},
     remote_vendor_oui_valid{YType::boolean, "remote-vendor-oui-valid"}
 {
-    yang_name = "discovery-info-interface"; yang_parent_name = "discovery-info-interfaces";
+
+    yang_name = "discovery-info-interface"; yang_parent_name = "discovery-info-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::~DiscoveryInfoInterface()
@@ -497,27 +476,22 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_operatio
 	|| ydk::is_set(remote_vendor_oui_valid.yfilter);
 }
 
+std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/discovery-info-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discovery-info-interface" <<"[member-interface='" <<member_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/discovery-info-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
@@ -571,9 +545,7 @@ const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::
     if (remote_vendor_oui.is_set || is_set(remote_vendor_oui.yfilter)) leaf_name_data.push_back(remote_vendor_oui.get_name_leafdata());
     if (remote_vendor_oui_valid.is_set || is_set(remote_vendor_oui_valid.yfilter)) leaf_name_data.push_back(remote_vendor_oui_valid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1103,9 +1075,647 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_leaf_or_
     return false;
 }
 
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterfaces()
+{
+
+    yang_name = "event-log-entry-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::~EventLogEntryInterfaces()
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
+    {
+        if(event_log_entry_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
+    {
+        if(event_log_entry_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event-log-entry-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "event-log-entry-interface")
+    {
+        for(auto const & c : event_log_entry_interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
+        c->parent = this;
+        event_log_entry_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : event_log_entry_interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-interface")
+        return true;
+    return false;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInterface()
+    :
+    member_interface{YType::str, "member-interface"}
+    	,
+    event_log_entry_indexes(std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>())
+{
+    event_log_entry_indexes->parent = this;
+
+    yang_name = "event-log-entry-interface"; yang_parent_name = "event-log-entry-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::~EventLogEntryInterface()
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_data() const
+{
+    return member_interface.is_set
+	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_data());
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_operation());
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/event-log-entry-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event-log-entry-interface" <<"[member-interface='" <<member_interface <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "event-log-entry-indexes")
+    {
+        if(event_log_entry_indexes == nullptr)
+        {
+            event_log_entry_indexes = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>();
+        }
+        return event_log_entry_indexes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(event_log_entry_indexes != nullptr)
+    {
+        children["event-log-entry-indexes"] = event_log_entry_indexes;
+    }
+
+    return children;
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-indexes" || name == "member-interface")
+        return true;
+    return false;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndexes()
+{
+
+    yang_name = "event-log-entry-indexes"; yang_parent_name = "event-log-entry-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::~EventLogEntryIndexes()
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_data() const
+{
+    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
+    {
+        if(event_log_entry_index[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_operation() const
+{
+    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
+    {
+        if(event_log_entry_index[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event-log-entry-indexes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "event-log-entry-index")
+    {
+        for(auto const & c : event_log_entry_index)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
+        c->parent = this;
+        event_log_entry_index.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : event_log_entry_index)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-index")
+        return true;
+    return false;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::EventLogEntryIndex()
+    :
+    event_log_entry_index{YType::str, "event-log-entry-index"},
+    action_taken{YType::enumeration, "action-taken"},
+    event_total{YType::uint32, "event-total"},
+    handle{YType::str, "handle"},
+    index_{YType::uint32, "index"},
+    local_high_threshold{YType::uint64, "local-high-threshold"},
+    local_high_threshold_config_units{YType::uint64, "local-high-threshold-config-units"},
+    location{YType::enumeration, "location"},
+    oui{YType::str, "oui"},
+    running_total{YType::uint64, "running-total"},
+    threshold{YType::uint64, "threshold"},
+    threshold_config_units{YType::uint64, "threshold-config-units"},
+    threshold_units{YType::uint8, "threshold-units"},
+    timestamp{YType::uint64, "timestamp"},
+    type{YType::enumeration, "type"},
+    value_{YType::uint64, "value"},
+    value_config_units{YType::uint64, "value-config-units"},
+    window{YType::uint64, "window"},
+    window_config_units{YType::uint64, "window-config-units"},
+    window_units{YType::uint8, "window-units"}
+{
+
+    yang_name = "event-log-entry-index"; yang_parent_name = "event-log-entry-indexes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::~EventLogEntryIndex()
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_data() const
+{
+    return event_log_entry_index.is_set
+	|| action_taken.is_set
+	|| event_total.is_set
+	|| handle.is_set
+	|| index_.is_set
+	|| local_high_threshold.is_set
+	|| local_high_threshold_config_units.is_set
+	|| location.is_set
+	|| oui.is_set
+	|| running_total.is_set
+	|| threshold.is_set
+	|| threshold_config_units.is_set
+	|| threshold_units.is_set
+	|| timestamp.is_set
+	|| type.is_set
+	|| value_.is_set
+	|| value_config_units.is_set
+	|| window.is_set
+	|| window_config_units.is_set
+	|| window_units.is_set;
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(event_log_entry_index.yfilter)
+	|| ydk::is_set(action_taken.yfilter)
+	|| ydk::is_set(event_total.yfilter)
+	|| ydk::is_set(handle.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(local_high_threshold.yfilter)
+	|| ydk::is_set(local_high_threshold_config_units.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(oui.yfilter)
+	|| ydk::is_set(running_total.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(threshold_config_units.yfilter)
+	|| ydk::is_set(threshold_units.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(value_config_units.yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| ydk::is_set(window_config_units.yfilter)
+	|| ydk::is_set(window_units.yfilter);
+}
+
+std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event-log-entry-index" <<"[event-log-entry-index='" <<event_log_entry_index <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (event_log_entry_index.is_set || is_set(event_log_entry_index.yfilter)) leaf_name_data.push_back(event_log_entry_index.get_name_leafdata());
+    if (action_taken.is_set || is_set(action_taken.yfilter)) leaf_name_data.push_back(action_taken.get_name_leafdata());
+    if (event_total.is_set || is_set(event_total.yfilter)) leaf_name_data.push_back(event_total.get_name_leafdata());
+    if (handle.is_set || is_set(handle.yfilter)) leaf_name_data.push_back(handle.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (local_high_threshold.is_set || is_set(local_high_threshold.yfilter)) leaf_name_data.push_back(local_high_threshold.get_name_leafdata());
+    if (local_high_threshold_config_units.is_set || is_set(local_high_threshold_config_units.yfilter)) leaf_name_data.push_back(local_high_threshold_config_units.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+    if (running_total.is_set || is_set(running_total.yfilter)) leaf_name_data.push_back(running_total.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (threshold_config_units.is_set || is_set(threshold_config_units.yfilter)) leaf_name_data.push_back(threshold_config_units.get_name_leafdata());
+    if (threshold_units.is_set || is_set(threshold_units.yfilter)) leaf_name_data.push_back(threshold_units.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (value_config_units.is_set || is_set(value_config_units.yfilter)) leaf_name_data.push_back(value_config_units.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (window_config_units.is_set || is_set(window_config_units.yfilter)) leaf_name_data.push_back(window_config_units.get_name_leafdata());
+    if (window_units.is_set || is_set(window_units.yfilter)) leaf_name_data.push_back(window_units.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "event-log-entry-index")
+    {
+        event_log_entry_index = value;
+        event_log_entry_index.value_namespace = name_space;
+        event_log_entry_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "action-taken")
+    {
+        action_taken = value;
+        action_taken.value_namespace = name_space;
+        action_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "event-total")
+    {
+        event_total = value;
+        event_total.value_namespace = name_space;
+        event_total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "handle")
+    {
+        handle = value;
+        handle.value_namespace = name_space;
+        handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-high-threshold")
+    {
+        local_high_threshold = value;
+        local_high_threshold.value_namespace = name_space;
+        local_high_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-high-threshold-config-units")
+    {
+        local_high_threshold_config_units = value;
+        local_high_threshold_config_units.value_namespace = name_space;
+        local_high_threshold_config_units.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oui")
+    {
+        oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running-total")
+    {
+        running_total = value;
+        running_total.value_namespace = name_space;
+        running_total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-config-units")
+    {
+        threshold_config_units = value;
+        threshold_config_units.value_namespace = name_space;
+        threshold_config_units.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-units")
+    {
+        threshold_units = value;
+        threshold_units.value_namespace = name_space;
+        threshold_units.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value-config-units")
+    {
+        value_config_units = value;
+        value_config_units.value_namespace = name_space;
+        value_config_units.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "window-config-units")
+    {
+        window_config_units = value;
+        window_config_units.value_namespace = name_space;
+        window_config_units.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "window-units")
+    {
+        window_units = value;
+        window_units.value_namespace = name_space;
+        window_units.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-log-entry-index")
+    {
+        event_log_entry_index.yfilter = yfilter;
+    }
+    if(value_path == "action-taken")
+    {
+        action_taken.yfilter = yfilter;
+    }
+    if(value_path == "event-total")
+    {
+        event_total.yfilter = yfilter;
+    }
+    if(value_path == "handle")
+    {
+        handle.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "local-high-threshold")
+    {
+        local_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "local-high-threshold-config-units")
+    {
+        local_high_threshold_config_units.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "oui")
+    {
+        oui.yfilter = yfilter;
+    }
+    if(value_path == "running-total")
+    {
+        running_total.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "threshold-config-units")
+    {
+        threshold_config_units.yfilter = yfilter;
+    }
+    if(value_path == "threshold-units")
+    {
+        threshold_units.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "value-config-units")
+    {
+        value_config_units.yfilter = yfilter;
+    }
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+    if(value_path == "window-config-units")
+    {
+        window_config_units.yfilter = yfilter;
+    }
+    if(value_path == "window-units")
+    {
+        window_units.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-index" || name == "action-taken" || name == "event-total" || name == "handle" || name == "index" || name == "local-high-threshold" || name == "local-high-threshold-config-units" || name == "location" || name == "oui" || name == "running-total" || name == "threshold" || name == "threshold-config-units" || name == "threshold-units" || name == "timestamp" || name == "type" || name == "value" || name == "value-config-units" || name == "window" || name == "window-config-units" || name == "window-units")
+        return true;
+    return false;
+}
+
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterfaces()
 {
-    yang_name = "interface-state-interfaces"; yang_parent_name = "ether-link-oam";
+
+    yang_name = "interface-state-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::~InterfaceStateInterfaces()
@@ -1132,33 +1742,26 @@ bool EtherLinkOam::InterfaceStateInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EtherLinkOam::InterfaceStateInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::InterfaceStateInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-state-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::InterfaceStateInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1222,10 +1825,9 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::InterfaceStateI
 	,errors(std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors>())
 {
     efd_triggers->parent = this;
-
     errors->parent = this;
 
-    yang_name = "interface-state-interface"; yang_parent_name = "interface-state-interfaces";
+    yang_name = "interface-state-interface"; yang_parent_name = "interface-state-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::~InterfaceStateInterface()
@@ -1257,27 +1859,22 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_operat
 	|| (errors !=  nullptr && errors->has_operation());
 }
 
+std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/interface-state-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-state-interface" <<"[member-interface='" <<member_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/interface-state-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
@@ -1287,9 +1884,7 @@ const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
     if (remote_mwd_key_present.is_set || is_set(remote_mwd_key_present.yfilter)) leaf_name_data.push_back(remote_mwd_key_present.get_name_leafdata());
     if (rx_fault.is_set || is_set(rx_fault.yfilter)) leaf_name_data.push_back(rx_fault.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1407,6 +2002,138 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_leaf_o
     return false;
 }
 
+EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::EfdTriggers()
+    :
+    capabilities_conflict{YType::boolean, "capabilities-conflict"},
+    discovery_timed_out{YType::boolean, "discovery-timed-out"},
+    link_fault_received{YType::boolean, "link-fault-received"},
+    session_down{YType::boolean, "session-down"},
+    wiring_conflict{YType::boolean, "wiring-conflict"}
+{
+
+    yang_name = "efd-triggers"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::~EfdTriggers()
+{
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_data() const
+{
+    return capabilities_conflict.is_set
+	|| discovery_timed_out.is_set
+	|| link_fault_received.is_set
+	|| session_down.is_set
+	|| wiring_conflict.is_set;
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(capabilities_conflict.yfilter)
+	|| ydk::is_set(discovery_timed_out.yfilter)
+	|| ydk::is_set(link_fault_received.yfilter)
+	|| ydk::is_set(session_down.yfilter)
+	|| ydk::is_set(wiring_conflict.yfilter);
+}
+
+std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "efd-triggers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (capabilities_conflict.is_set || is_set(capabilities_conflict.yfilter)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
+    if (discovery_timed_out.is_set || is_set(discovery_timed_out.yfilter)) leaf_name_data.push_back(discovery_timed_out.get_name_leafdata());
+    if (link_fault_received.is_set || is_set(link_fault_received.yfilter)) leaf_name_data.push_back(link_fault_received.get_name_leafdata());
+    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
+    if (wiring_conflict.is_set || is_set(wiring_conflict.yfilter)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "capabilities-conflict")
+    {
+        capabilities_conflict = value;
+        capabilities_conflict.value_namespace = name_space;
+        capabilities_conflict.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "discovery-timed-out")
+    {
+        discovery_timed_out = value;
+        discovery_timed_out.value_namespace = name_space;
+        discovery_timed_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-fault-received")
+    {
+        link_fault_received = value;
+        link_fault_received.value_namespace = name_space;
+        link_fault_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-down")
+    {
+        session_down = value;
+        session_down.value_namespace = name_space;
+        session_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wiring-conflict")
+    {
+        wiring_conflict = value;
+        wiring_conflict.value_namespace = name_space;
+        wiring_conflict.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capabilities-conflict")
+    {
+        capabilities_conflict.yfilter = yfilter;
+    }
+    if(value_path == "discovery-timed-out")
+    {
+        discovery_timed_out.yfilter = yfilter;
+    }
+    if(value_path == "link-fault-received")
+    {
+        link_fault_received.yfilter = yfilter;
+    }
+    if(value_path == "session-down")
+    {
+        session_down.yfilter = yfilter;
+    }
+    if(value_path == "wiring-conflict")
+    {
+        wiring_conflict.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities-conflict" || name == "discovery-timed-out" || name == "link-fault-received" || name == "session-down" || name == "wiring-conflict")
+        return true;
+    return false;
+}
+
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::Errors()
     :
     caps_add_error_code{YType::uint32, "caps-add-error-code"},
@@ -1420,7 +2147,8 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::Errors(
     spio_error_code{YType::uint32, "spio-error-code"},
     spio_reason{YType::str, "spio-reason"}
 {
-    yang_name = "errors"; yang_parent_name = "interface-state-interface";
+
+    yang_name = "errors"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::~Errors()
@@ -1460,23 +2188,11 @@ std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Err
 {
     std::ostringstream path_buffer;
     path_buffer << "errors";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Errors' in Cisco_IOS_XR_ethernet_link_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (caps_add_error_code.is_set || is_set(caps_add_error_code.yfilter)) leaf_name_data.push_back(caps_add_error_code.get_name_leafdata());
@@ -1490,9 +2206,7 @@ const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
     if (spio_error_code.is_set || is_set(spio_error_code.yfilter)) leaf_name_data.push_back(spio_error_code.get_name_leafdata());
     if (spio_reason.is_set || is_set(spio_reason.yfilter)) leaf_name_data.push_back(spio_reason.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1622,154 +2336,582 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::ha
     return false;
 }
 
-EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::EfdTriggers()
-    :
-    capabilities_conflict{YType::boolean, "capabilities-conflict"},
-    discovery_timed_out{YType::boolean, "discovery-timed-out"},
-    link_fault_received{YType::boolean, "link-fault-received"},
-    session_down{YType::boolean, "session-down"},
-    wiring_conflict{YType::boolean, "wiring-conflict"}
+EtherLinkOam::Nodes::Nodes()
 {
-    yang_name = "efd-triggers"; yang_parent_name = "interface-state-interface";
+
+    yang_name = "nodes"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::~EfdTriggers()
+EtherLinkOam::Nodes::~Nodes()
 {
 }
 
-bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_data() const
+bool EtherLinkOam::Nodes::has_data() const
 {
-    return capabilities_conflict.is_set
-	|| discovery_timed_out.is_set
-	|| link_fault_received.is_set
-	|| session_down.is_set
-	|| wiring_conflict.is_set;
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_operation() const
+bool EtherLinkOam::Nodes::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(capabilities_conflict.yfilter)
-	|| ydk::is_set(discovery_timed_out.yfilter)
-	|| ydk::is_set(link_fault_received.yfilter)
-	|| ydk::is_set(session_down.yfilter)
-	|| ydk::is_set(wiring_conflict.yfilter);
+    for (std::size_t index=0; index<node.size(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_segment_path() const
+std::string EtherLinkOam::Nodes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "efd-triggers";
-
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_entity_path(Entity* ancestor) const
+std::string EtherLinkOam::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EfdTriggers' in Cisco_IOS_XR_ethernet_link_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (capabilities_conflict.is_set || is_set(capabilities_conflict.yfilter)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
-    if (discovery_timed_out.is_set || is_set(discovery_timed_out.yfilter)) leaf_name_data.push_back(discovery_timed_out.get_name_leafdata());
-    if (link_fault_received.is_set || is_set(link_fault_received.yfilter)) leaf_name_data.push_back(link_fault_received.get_name_leafdata());
-    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
-    if (wiring_conflict.is_set || is_set(wiring_conflict.yfilter)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        for(auto const & c : node)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<EtherLinkOam::Nodes::Node>();
+        c->parent = this;
+        node.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : node)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void EtherLinkOam::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EtherLinkOam::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+EtherLinkOam::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"}
+    	,
+    summary(std::make_shared<EtherLinkOam::Nodes::Node::Summary>())
+{
+    summary->parent = this;
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+EtherLinkOam::Nodes::Node::~Node()
+{
+}
+
+bool EtherLinkOam::Nodes::Node::has_data() const
+{
+    return node_name.is_set
+	|| (summary !=  nullptr && summary->has_data());
+}
+
+bool EtherLinkOam::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| (summary !=  nullptr && summary->has_operation());
+}
+
+std::string EtherLinkOam::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string EtherLinkOam::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "summary")
+    {
+        if(summary == nullptr)
+        {
+            summary = std::make_shared<EtherLinkOam::Nodes::Node::Summary>();
+        }
+        return summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(summary != nullptr)
+    {
+        children["summary"] = summary;
+    }
+
+    return children;
+}
+
+void EtherLinkOam::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EtherLinkOam::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary" || name == "node-name")
+        return true;
+    return false;
+}
+
+EtherLinkOam::Nodes::Node::Summary::Summary()
+    :
+    active_send{YType::uint32, "active-send"},
+    evaluating{YType::uint32, "evaluating"},
+    events{YType::uint64, "events"},
+    interfaces{YType::uint32, "interfaces"},
+    local_accept{YType::uint32, "local-accept"},
+    local_events{YType::uint64, "local-events"},
+    local_frame{YType::uint64, "local-frame"},
+    local_frame_period{YType::uint64, "local-frame-period"},
+    local_frame_seconds{YType::uint64, "local-frame-seconds"},
+    local_reject{YType::uint32, "local-reject"},
+    local_symbol_period{YType::uint64, "local-symbol-period"},
+    loopback_mode{YType::uint32, "loopback-mode"},
+    miswired_connections{YType::uint32, "miswired-connections"},
+    operational{YType::uint32, "operational"},
+    passive_wait{YType::uint32, "passive-wait"},
+    port_down{YType::uint32, "port-down"},
+    remote_events{YType::uint64, "remote-events"},
+    remote_frame{YType::uint64, "remote-frame"},
+    remote_frame_period{YType::uint64, "remote-frame-period"},
+    remote_frame_seconds{YType::uint64, "remote-frame-seconds"},
+    remote_reject{YType::uint32, "remote-reject"},
+    remote_symbol_period{YType::uint64, "remote-symbol-period"}
+{
+
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EtherLinkOam::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool EtherLinkOam::Nodes::Node::Summary::has_data() const
+{
+    return active_send.is_set
+	|| evaluating.is_set
+	|| events.is_set
+	|| interfaces.is_set
+	|| local_accept.is_set
+	|| local_events.is_set
+	|| local_frame.is_set
+	|| local_frame_period.is_set
+	|| local_frame_seconds.is_set
+	|| local_reject.is_set
+	|| local_symbol_period.is_set
+	|| loopback_mode.is_set
+	|| miswired_connections.is_set
+	|| operational.is_set
+	|| passive_wait.is_set
+	|| port_down.is_set
+	|| remote_events.is_set
+	|| remote_frame.is_set
+	|| remote_frame_period.is_set
+	|| remote_frame_seconds.is_set
+	|| remote_reject.is_set
+	|| remote_symbol_period.is_set;
+}
+
+bool EtherLinkOam::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(active_send.yfilter)
+	|| ydk::is_set(evaluating.yfilter)
+	|| ydk::is_set(events.yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(local_accept.yfilter)
+	|| ydk::is_set(local_events.yfilter)
+	|| ydk::is_set(local_frame.yfilter)
+	|| ydk::is_set(local_frame_period.yfilter)
+	|| ydk::is_set(local_frame_seconds.yfilter)
+	|| ydk::is_set(local_reject.yfilter)
+	|| ydk::is_set(local_symbol_period.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(miswired_connections.yfilter)
+	|| ydk::is_set(operational.yfilter)
+	|| ydk::is_set(passive_wait.yfilter)
+	|| ydk::is_set(port_down.yfilter)
+	|| ydk::is_set(remote_events.yfilter)
+	|| ydk::is_set(remote_frame.yfilter)
+	|| ydk::is_set(remote_frame_period.yfilter)
+	|| ydk::is_set(remote_frame_seconds.yfilter)
+	|| ydk::is_set(remote_reject.yfilter)
+	|| ydk::is_set(remote_symbol_period.yfilter);
+}
+
+std::string EtherLinkOam::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::Node::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (active_send.is_set || is_set(active_send.yfilter)) leaf_name_data.push_back(active_send.get_name_leafdata());
+    if (evaluating.is_set || is_set(evaluating.yfilter)) leaf_name_data.push_back(evaluating.get_name_leafdata());
+    if (events.is_set || is_set(events.yfilter)) leaf_name_data.push_back(events.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (local_accept.is_set || is_set(local_accept.yfilter)) leaf_name_data.push_back(local_accept.get_name_leafdata());
+    if (local_events.is_set || is_set(local_events.yfilter)) leaf_name_data.push_back(local_events.get_name_leafdata());
+    if (local_frame.is_set || is_set(local_frame.yfilter)) leaf_name_data.push_back(local_frame.get_name_leafdata());
+    if (local_frame_period.is_set || is_set(local_frame_period.yfilter)) leaf_name_data.push_back(local_frame_period.get_name_leafdata());
+    if (local_frame_seconds.is_set || is_set(local_frame_seconds.yfilter)) leaf_name_data.push_back(local_frame_seconds.get_name_leafdata());
+    if (local_reject.is_set || is_set(local_reject.yfilter)) leaf_name_data.push_back(local_reject.get_name_leafdata());
+    if (local_symbol_period.is_set || is_set(local_symbol_period.yfilter)) leaf_name_data.push_back(local_symbol_period.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (miswired_connections.is_set || is_set(miswired_connections.yfilter)) leaf_name_data.push_back(miswired_connections.get_name_leafdata());
+    if (operational.is_set || is_set(operational.yfilter)) leaf_name_data.push_back(operational.get_name_leafdata());
+    if (passive_wait.is_set || is_set(passive_wait.yfilter)) leaf_name_data.push_back(passive_wait.get_name_leafdata());
+    if (port_down.is_set || is_set(port_down.yfilter)) leaf_name_data.push_back(port_down.get_name_leafdata());
+    if (remote_events.is_set || is_set(remote_events.yfilter)) leaf_name_data.push_back(remote_events.get_name_leafdata());
+    if (remote_frame.is_set || is_set(remote_frame.yfilter)) leaf_name_data.push_back(remote_frame.get_name_leafdata());
+    if (remote_frame_period.is_set || is_set(remote_frame_period.yfilter)) leaf_name_data.push_back(remote_frame_period.get_name_leafdata());
+    if (remote_frame_seconds.is_set || is_set(remote_frame_seconds.yfilter)) leaf_name_data.push_back(remote_frame_seconds.get_name_leafdata());
+    if (remote_reject.is_set || is_set(remote_reject.yfilter)) leaf_name_data.push_back(remote_reject.get_name_leafdata());
+    if (remote_symbol_period.is_set || is_set(remote_symbol_period.yfilter)) leaf_name_data.push_back(remote_symbol_period.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLinkOam::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "capabilities-conflict")
+    if(value_path == "active-send")
     {
-        capabilities_conflict = value;
-        capabilities_conflict.value_namespace = name_space;
-        capabilities_conflict.value_namespace_prefix = name_space_prefix;
+        active_send = value;
+        active_send.value_namespace = name_space;
+        active_send.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "discovery-timed-out")
+    if(value_path == "evaluating")
     {
-        discovery_timed_out = value;
-        discovery_timed_out.value_namespace = name_space;
-        discovery_timed_out.value_namespace_prefix = name_space_prefix;
+        evaluating = value;
+        evaluating.value_namespace = name_space;
+        evaluating.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "link-fault-received")
+    if(value_path == "events")
     {
-        link_fault_received = value;
-        link_fault_received.value_namespace = name_space;
-        link_fault_received.value_namespace_prefix = name_space_prefix;
+        events = value;
+        events.value_namespace = name_space;
+        events.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-down")
+    if(value_path == "interfaces")
     {
-        session_down = value;
-        session_down.value_namespace = name_space;
-        session_down.value_namespace_prefix = name_space_prefix;
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "wiring-conflict")
+    if(value_path == "local-accept")
     {
-        wiring_conflict = value;
-        wiring_conflict.value_namespace = name_space;
-        wiring_conflict.value_namespace_prefix = name_space_prefix;
+        local_accept = value;
+        local_accept.value_namespace = name_space;
+        local_accept.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-events")
+    {
+        local_events = value;
+        local_events.value_namespace = name_space;
+        local_events.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-frame")
+    {
+        local_frame = value;
+        local_frame.value_namespace = name_space;
+        local_frame.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-frame-period")
+    {
+        local_frame_period = value;
+        local_frame_period.value_namespace = name_space;
+        local_frame_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-frame-seconds")
+    {
+        local_frame_seconds = value;
+        local_frame_seconds.value_namespace = name_space;
+        local_frame_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-reject")
+    {
+        local_reject = value;
+        local_reject.value_namespace = name_space;
+        local_reject.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-symbol-period")
+    {
+        local_symbol_period = value;
+        local_symbol_period.value_namespace = name_space;
+        local_symbol_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "miswired-connections")
+    {
+        miswired_connections = value;
+        miswired_connections.value_namespace = name_space;
+        miswired_connections.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operational")
+    {
+        operational = value;
+        operational.value_namespace = name_space;
+        operational.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "passive-wait")
+    {
+        passive_wait = value;
+        passive_wait.value_namespace = name_space;
+        passive_wait.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-down")
+    {
+        port_down = value;
+        port_down.value_namespace = name_space;
+        port_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-events")
+    {
+        remote_events = value;
+        remote_events.value_namespace = name_space;
+        remote_events.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-frame")
+    {
+        remote_frame = value;
+        remote_frame.value_namespace = name_space;
+        remote_frame.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-frame-period")
+    {
+        remote_frame_period = value;
+        remote_frame_period.value_namespace = name_space;
+        remote_frame_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-frame-seconds")
+    {
+        remote_frame_seconds = value;
+        remote_frame_seconds.value_namespace = name_space;
+        remote_frame_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-reject")
+    {
+        remote_reject = value;
+        remote_reject.value_namespace = name_space;
+        remote_reject.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-symbol-period")
+    {
+        remote_symbol_period = value;
+        remote_symbol_period.value_namespace = name_space;
+        remote_symbol_period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLinkOam::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "capabilities-conflict")
+    if(value_path == "active-send")
     {
-        capabilities_conflict.yfilter = yfilter;
+        active_send.yfilter = yfilter;
     }
-    if(value_path == "discovery-timed-out")
+    if(value_path == "evaluating")
     {
-        discovery_timed_out.yfilter = yfilter;
+        evaluating.yfilter = yfilter;
     }
-    if(value_path == "link-fault-received")
+    if(value_path == "events")
     {
-        link_fault_received.yfilter = yfilter;
+        events.yfilter = yfilter;
     }
-    if(value_path == "session-down")
+    if(value_path == "interfaces")
     {
-        session_down.yfilter = yfilter;
+        interfaces.yfilter = yfilter;
     }
-    if(value_path == "wiring-conflict")
+    if(value_path == "local-accept")
     {
-        wiring_conflict.yfilter = yfilter;
+        local_accept.yfilter = yfilter;
+    }
+    if(value_path == "local-events")
+    {
+        local_events.yfilter = yfilter;
+    }
+    if(value_path == "local-frame")
+    {
+        local_frame.yfilter = yfilter;
+    }
+    if(value_path == "local-frame-period")
+    {
+        local_frame_period.yfilter = yfilter;
+    }
+    if(value_path == "local-frame-seconds")
+    {
+        local_frame_seconds.yfilter = yfilter;
+    }
+    if(value_path == "local-reject")
+    {
+        local_reject.yfilter = yfilter;
+    }
+    if(value_path == "local-symbol-period")
+    {
+        local_symbol_period.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "miswired-connections")
+    {
+        miswired_connections.yfilter = yfilter;
+    }
+    if(value_path == "operational")
+    {
+        operational.yfilter = yfilter;
+    }
+    if(value_path == "passive-wait")
+    {
+        passive_wait.yfilter = yfilter;
+    }
+    if(value_path == "port-down")
+    {
+        port_down.yfilter = yfilter;
+    }
+    if(value_path == "remote-events")
+    {
+        remote_events.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame")
+    {
+        remote_frame.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame-period")
+    {
+        remote_frame_period.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame-seconds")
+    {
+        remote_frame_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remote-reject")
+    {
+        remote_reject.yfilter = yfilter;
+    }
+    if(value_path == "remote-symbol-period")
+    {
+        remote_symbol_period.yfilter = yfilter;
     }
 }
 
-bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLinkOam::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capabilities-conflict" || name == "discovery-timed-out" || name == "link-fault-received" || name == "session-down" || name == "wiring-conflict")
+    if(name == "active-send" || name == "evaluating" || name == "events" || name == "interfaces" || name == "local-accept" || name == "local-events" || name == "local-frame" || name == "local-frame-period" || name == "local-frame-seconds" || name == "local-reject" || name == "local-symbol-period" || name == "loopback-mode" || name == "miswired-connections" || name == "operational" || name == "passive-wait" || name == "port-down" || name == "remote-events" || name == "remote-frame" || name == "remote-frame-period" || name == "remote-frame-seconds" || name == "remote-reject" || name == "remote-symbol-period")
         return true;
     return false;
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterfaces()
 {
-    yang_name = "running-config-interfaces"; yang_parent_name = "ether-link-oam";
+
+    yang_name = "running-config-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::RunningConfigInterfaces::~RunningConfigInterfaces()
@@ -1796,33 +2938,26 @@ bool EtherLinkOam::RunningConfigInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EtherLinkOam::RunningConfigInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::RunningConfigInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "running-config-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::RunningConfigInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::RunningConfigInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1955,7 +3090,8 @@ EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::RunningConfigInte
     wiring_conflict_action{YType::enumeration, "wiring-conflict-action"},
     wiring_conflict_action_overridden{YType::boolean, "wiring-conflict-action-overridden"}
 {
-    yang_name = "running-config-interface"; yang_parent_name = "running-config-interfaces";
+
+    yang_name = "running-config-interface"; yang_parent_name = "running-config-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::~RunningConfigInterface()
@@ -2129,27 +3265,22 @@ bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_operatio
 	|| ydk::is_set(wiring_conflict_action_overridden.yfilter);
 }
 
+std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/running-config-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "running-config-interface" <<"[member-interface='" <<member_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/running-config-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
@@ -2232,9 +3363,7 @@ const EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::
     if (wiring_conflict_action.is_set || is_set(wiring_conflict_action.yfilter)) leaf_name_data.push_back(wiring_conflict_action.get_name_leafdata());
     if (wiring_conflict_action_overridden.is_set || is_set(wiring_conflict_action_overridden.yfilter)) leaf_name_data.push_back(wiring_conflict_action_overridden.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3054,1283 +4183,10 @@ bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_leaf_or_
     return false;
 }
 
-EtherLinkOam::Nodes::Nodes()
-{
-    yang_name = "nodes"; yang_parent_name = "ether-link-oam";
-}
-
-EtherLinkOam::Nodes::~Nodes()
-{
-}
-
-bool EtherLinkOam::Nodes::has_data() const
-{
-    for (std::size_t index=0; index<node.size(); index++)
-    {
-        if(node[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool EtherLinkOam::Nodes::has_operation() const
-{
-    for (std::size_t index=0; index<node.size(); index++)
-    {
-        if(node[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string EtherLinkOam::Nodes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nodes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::Nodes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "node")
-    {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<EtherLinkOam::Nodes::Node>();
-        c->parent = this;
-        node.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : node)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void EtherLinkOam::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EtherLinkOam::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EtherLinkOam::Nodes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "node")
-        return true;
-    return false;
-}
-
-EtherLinkOam::Nodes::Node::Node()
-    :
-    node_name{YType::str, "node-name"}
-    	,
-    summary(std::make_shared<EtherLinkOam::Nodes::Node::Summary>())
-{
-    summary->parent = this;
-
-    yang_name = "node"; yang_parent_name = "nodes";
-}
-
-EtherLinkOam::Nodes::Node::~Node()
-{
-}
-
-bool EtherLinkOam::Nodes::Node::has_data() const
-{
-    return node_name.is_set
-	|| (summary !=  nullptr && summary->has_data());
-}
-
-bool EtherLinkOam::Nodes::Node::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_name.yfilter)
-	|| (summary !=  nullptr && summary->has_operation());
-}
-
-std::string EtherLinkOam::Nodes::Node::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::Nodes::Node::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "summary")
-    {
-        if(summary == nullptr)
-        {
-            summary = std::make_shared<EtherLinkOam::Nodes::Node::Summary>();
-        }
-        return summary;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(summary != nullptr)
-    {
-        children["summary"] = summary;
-    }
-
-    return children;
-}
-
-void EtherLinkOam::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-name")
-    {
-        node_name = value;
-        node_name.value_namespace = name_space;
-        node_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EtherLinkOam::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-name")
-    {
-        node_name.yfilter = yfilter;
-    }
-}
-
-bool EtherLinkOam::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "summary" || name == "node-name")
-        return true;
-    return false;
-}
-
-EtherLinkOam::Nodes::Node::Summary::Summary()
-    :
-    active_send{YType::uint32, "active-send"},
-    evaluating{YType::uint32, "evaluating"},
-    events{YType::uint64, "events"},
-    interfaces{YType::uint32, "interfaces"},
-    local_accept{YType::uint32, "local-accept"},
-    local_events{YType::uint64, "local-events"},
-    local_frame{YType::uint64, "local-frame"},
-    local_frame_period{YType::uint64, "local-frame-period"},
-    local_frame_seconds{YType::uint64, "local-frame-seconds"},
-    local_reject{YType::uint32, "local-reject"},
-    local_symbol_period{YType::uint64, "local-symbol-period"},
-    loopback_mode{YType::uint32, "loopback-mode"},
-    miswired_connections{YType::uint32, "miswired-connections"},
-    operational{YType::uint32, "operational"},
-    passive_wait{YType::uint32, "passive-wait"},
-    port_down{YType::uint32, "port-down"},
-    remote_events{YType::uint64, "remote-events"},
-    remote_frame{YType::uint64, "remote-frame"},
-    remote_frame_period{YType::uint64, "remote-frame-period"},
-    remote_frame_seconds{YType::uint64, "remote-frame-seconds"},
-    remote_reject{YType::uint32, "remote-reject"},
-    remote_symbol_period{YType::uint64, "remote-symbol-period"}
-{
-    yang_name = "summary"; yang_parent_name = "node";
-}
-
-EtherLinkOam::Nodes::Node::Summary::~Summary()
-{
-}
-
-bool EtherLinkOam::Nodes::Node::Summary::has_data() const
-{
-    return active_send.is_set
-	|| evaluating.is_set
-	|| events.is_set
-	|| interfaces.is_set
-	|| local_accept.is_set
-	|| local_events.is_set
-	|| local_frame.is_set
-	|| local_frame_period.is_set
-	|| local_frame_seconds.is_set
-	|| local_reject.is_set
-	|| local_symbol_period.is_set
-	|| loopback_mode.is_set
-	|| miswired_connections.is_set
-	|| operational.is_set
-	|| passive_wait.is_set
-	|| port_down.is_set
-	|| remote_events.is_set
-	|| remote_frame.is_set
-	|| remote_frame_period.is_set
-	|| remote_frame_seconds.is_set
-	|| remote_reject.is_set
-	|| remote_symbol_period.is_set;
-}
-
-bool EtherLinkOam::Nodes::Node::Summary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(active_send.yfilter)
-	|| ydk::is_set(evaluating.yfilter)
-	|| ydk::is_set(events.yfilter)
-	|| ydk::is_set(interfaces.yfilter)
-	|| ydk::is_set(local_accept.yfilter)
-	|| ydk::is_set(local_events.yfilter)
-	|| ydk::is_set(local_frame.yfilter)
-	|| ydk::is_set(local_frame_period.yfilter)
-	|| ydk::is_set(local_frame_seconds.yfilter)
-	|| ydk::is_set(local_reject.yfilter)
-	|| ydk::is_set(local_symbol_period.yfilter)
-	|| ydk::is_set(loopback_mode.yfilter)
-	|| ydk::is_set(miswired_connections.yfilter)
-	|| ydk::is_set(operational.yfilter)
-	|| ydk::is_set(passive_wait.yfilter)
-	|| ydk::is_set(port_down.yfilter)
-	|| ydk::is_set(remote_events.yfilter)
-	|| ydk::is_set(remote_frame.yfilter)
-	|| ydk::is_set(remote_frame_period.yfilter)
-	|| ydk::is_set(remote_frame_seconds.yfilter)
-	|| ydk::is_set(remote_reject.yfilter)
-	|| ydk::is_set(remote_symbol_period.yfilter);
-}
-
-std::string EtherLinkOam::Nodes::Node::Summary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_ethernet_link_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (active_send.is_set || is_set(active_send.yfilter)) leaf_name_data.push_back(active_send.get_name_leafdata());
-    if (evaluating.is_set || is_set(evaluating.yfilter)) leaf_name_data.push_back(evaluating.get_name_leafdata());
-    if (events.is_set || is_set(events.yfilter)) leaf_name_data.push_back(events.get_name_leafdata());
-    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
-    if (local_accept.is_set || is_set(local_accept.yfilter)) leaf_name_data.push_back(local_accept.get_name_leafdata());
-    if (local_events.is_set || is_set(local_events.yfilter)) leaf_name_data.push_back(local_events.get_name_leafdata());
-    if (local_frame.is_set || is_set(local_frame.yfilter)) leaf_name_data.push_back(local_frame.get_name_leafdata());
-    if (local_frame_period.is_set || is_set(local_frame_period.yfilter)) leaf_name_data.push_back(local_frame_period.get_name_leafdata());
-    if (local_frame_seconds.is_set || is_set(local_frame_seconds.yfilter)) leaf_name_data.push_back(local_frame_seconds.get_name_leafdata());
-    if (local_reject.is_set || is_set(local_reject.yfilter)) leaf_name_data.push_back(local_reject.get_name_leafdata());
-    if (local_symbol_period.is_set || is_set(local_symbol_period.yfilter)) leaf_name_data.push_back(local_symbol_period.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (miswired_connections.is_set || is_set(miswired_connections.yfilter)) leaf_name_data.push_back(miswired_connections.get_name_leafdata());
-    if (operational.is_set || is_set(operational.yfilter)) leaf_name_data.push_back(operational.get_name_leafdata());
-    if (passive_wait.is_set || is_set(passive_wait.yfilter)) leaf_name_data.push_back(passive_wait.get_name_leafdata());
-    if (port_down.is_set || is_set(port_down.yfilter)) leaf_name_data.push_back(port_down.get_name_leafdata());
-    if (remote_events.is_set || is_set(remote_events.yfilter)) leaf_name_data.push_back(remote_events.get_name_leafdata());
-    if (remote_frame.is_set || is_set(remote_frame.yfilter)) leaf_name_data.push_back(remote_frame.get_name_leafdata());
-    if (remote_frame_period.is_set || is_set(remote_frame_period.yfilter)) leaf_name_data.push_back(remote_frame_period.get_name_leafdata());
-    if (remote_frame_seconds.is_set || is_set(remote_frame_seconds.yfilter)) leaf_name_data.push_back(remote_frame_seconds.get_name_leafdata());
-    if (remote_reject.is_set || is_set(remote_reject.yfilter)) leaf_name_data.push_back(remote_reject.get_name_leafdata());
-    if (remote_symbol_period.is_set || is_set(remote_symbol_period.yfilter)) leaf_name_data.push_back(remote_symbol_period.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::Summary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void EtherLinkOam::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "active-send")
-    {
-        active_send = value;
-        active_send.value_namespace = name_space;
-        active_send.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "evaluating")
-    {
-        evaluating = value;
-        evaluating.value_namespace = name_space;
-        evaluating.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "events")
-    {
-        events = value;
-        events.value_namespace = name_space;
-        events.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interfaces")
-    {
-        interfaces = value;
-        interfaces.value_namespace = name_space;
-        interfaces.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-accept")
-    {
-        local_accept = value;
-        local_accept.value_namespace = name_space;
-        local_accept.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-events")
-    {
-        local_events = value;
-        local_events.value_namespace = name_space;
-        local_events.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-frame")
-    {
-        local_frame = value;
-        local_frame.value_namespace = name_space;
-        local_frame.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-frame-period")
-    {
-        local_frame_period = value;
-        local_frame_period.value_namespace = name_space;
-        local_frame_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-frame-seconds")
-    {
-        local_frame_seconds = value;
-        local_frame_seconds.value_namespace = name_space;
-        local_frame_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-reject")
-    {
-        local_reject = value;
-        local_reject.value_namespace = name_space;
-        local_reject.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-symbol-period")
-    {
-        local_symbol_period = value;
-        local_symbol_period.value_namespace = name_space;
-        local_symbol_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "loopback-mode")
-    {
-        loopback_mode = value;
-        loopback_mode.value_namespace = name_space;
-        loopback_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "miswired-connections")
-    {
-        miswired_connections = value;
-        miswired_connections.value_namespace = name_space;
-        miswired_connections.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operational")
-    {
-        operational = value;
-        operational.value_namespace = name_space;
-        operational.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "passive-wait")
-    {
-        passive_wait = value;
-        passive_wait.value_namespace = name_space;
-        passive_wait.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port-down")
-    {
-        port_down = value;
-        port_down.value_namespace = name_space;
-        port_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-events")
-    {
-        remote_events = value;
-        remote_events.value_namespace = name_space;
-        remote_events.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-frame")
-    {
-        remote_frame = value;
-        remote_frame.value_namespace = name_space;
-        remote_frame.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-frame-period")
-    {
-        remote_frame_period = value;
-        remote_frame_period.value_namespace = name_space;
-        remote_frame_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-frame-seconds")
-    {
-        remote_frame_seconds = value;
-        remote_frame_seconds.value_namespace = name_space;
-        remote_frame_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-reject")
-    {
-        remote_reject = value;
-        remote_reject.value_namespace = name_space;
-        remote_reject.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-symbol-period")
-    {
-        remote_symbol_period = value;
-        remote_symbol_period.value_namespace = name_space;
-        remote_symbol_period.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EtherLinkOam::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "active-send")
-    {
-        active_send.yfilter = yfilter;
-    }
-    if(value_path == "evaluating")
-    {
-        evaluating.yfilter = yfilter;
-    }
-    if(value_path == "events")
-    {
-        events.yfilter = yfilter;
-    }
-    if(value_path == "interfaces")
-    {
-        interfaces.yfilter = yfilter;
-    }
-    if(value_path == "local-accept")
-    {
-        local_accept.yfilter = yfilter;
-    }
-    if(value_path == "local-events")
-    {
-        local_events.yfilter = yfilter;
-    }
-    if(value_path == "local-frame")
-    {
-        local_frame.yfilter = yfilter;
-    }
-    if(value_path == "local-frame-period")
-    {
-        local_frame_period.yfilter = yfilter;
-    }
-    if(value_path == "local-frame-seconds")
-    {
-        local_frame_seconds.yfilter = yfilter;
-    }
-    if(value_path == "local-reject")
-    {
-        local_reject.yfilter = yfilter;
-    }
-    if(value_path == "local-symbol-period")
-    {
-        local_symbol_period.yfilter = yfilter;
-    }
-    if(value_path == "loopback-mode")
-    {
-        loopback_mode.yfilter = yfilter;
-    }
-    if(value_path == "miswired-connections")
-    {
-        miswired_connections.yfilter = yfilter;
-    }
-    if(value_path == "operational")
-    {
-        operational.yfilter = yfilter;
-    }
-    if(value_path == "passive-wait")
-    {
-        passive_wait.yfilter = yfilter;
-    }
-    if(value_path == "port-down")
-    {
-        port_down.yfilter = yfilter;
-    }
-    if(value_path == "remote-events")
-    {
-        remote_events.yfilter = yfilter;
-    }
-    if(value_path == "remote-frame")
-    {
-        remote_frame.yfilter = yfilter;
-    }
-    if(value_path == "remote-frame-period")
-    {
-        remote_frame_period.yfilter = yfilter;
-    }
-    if(value_path == "remote-frame-seconds")
-    {
-        remote_frame_seconds.yfilter = yfilter;
-    }
-    if(value_path == "remote-reject")
-    {
-        remote_reject.yfilter = yfilter;
-    }
-    if(value_path == "remote-symbol-period")
-    {
-        remote_symbol_period.yfilter = yfilter;
-    }
-}
-
-bool EtherLinkOam::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-send" || name == "evaluating" || name == "events" || name == "interfaces" || name == "local-accept" || name == "local-events" || name == "local-frame" || name == "local-frame-period" || name == "local-frame-seconds" || name == "local-reject" || name == "local-symbol-period" || name == "loopback-mode" || name == "miswired-connections" || name == "operational" || name == "passive-wait" || name == "port-down" || name == "remote-events" || name == "remote-frame" || name == "remote-frame-period" || name == "remote-frame-seconds" || name == "remote-reject" || name == "remote-symbol-period")
-        return true;
-    return false;
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterfaces()
-{
-    yang_name = "event-log-entry-interfaces"; yang_parent_name = "ether-link-oam";
-}
-
-EtherLinkOam::EventLogEntryInterfaces::~EventLogEntryInterfaces()
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
-    {
-        if(event_log_entry_interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::has_operation() const
-{
-    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
-    {
-        if(event_log_entry_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string EtherLinkOam::EventLogEntryInterfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::EventLogEntryInterfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "event-log-entry-interface")
-    {
-        for(auto const & c : event_log_entry_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
-        c->parent = this;
-        event_log_entry_interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : event_log_entry_interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "event-log-entry-interface")
-        return true;
-    return false;
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInterface()
-    :
-    member_interface{YType::str, "member-interface"}
-    	,
-    event_log_entry_indexes(std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>())
-{
-    event_log_entry_indexes->parent = this;
-
-    yang_name = "event-log-entry-interface"; yang_parent_name = "event-log-entry-interfaces";
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::~EventLogEntryInterface()
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_data() const
-{
-    return member_interface.is_set
-	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_data());
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(member_interface.yfilter)
-	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_operation());
-}
-
-std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-interface" <<"[member-interface='" <<member_interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/event-log-entry-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "event-log-entry-indexes")
-    {
-        if(event_log_entry_indexes == nullptr)
-        {
-            event_log_entry_indexes = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>();
-        }
-        return event_log_entry_indexes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(event_log_entry_indexes != nullptr)
-    {
-        children["event-log-entry-indexes"] = event_log_entry_indexes;
-    }
-
-    return children;
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "member-interface")
-    {
-        member_interface = value;
-        member_interface.value_namespace = name_space;
-        member_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "member-interface")
-    {
-        member_interface.yfilter = yfilter;
-    }
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "event-log-entry-indexes" || name == "member-interface")
-        return true;
-    return false;
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndexes()
-{
-    yang_name = "event-log-entry-indexes"; yang_parent_name = "event-log-entry-interface";
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::~EventLogEntryIndexes()
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_data() const
-{
-    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
-    {
-        if(event_log_entry_index[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_operation() const
-{
-    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
-    {
-        if(event_log_entry_index[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-indexes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EventLogEntryIndexes' in Cisco_IOS_XR_ethernet_link_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "event-log-entry-index")
-    {
-        for(auto const & c : event_log_entry_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
-        c->parent = this;
-        event_log_entry_index.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : event_log_entry_index)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "event-log-entry-index")
-        return true;
-    return false;
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::EventLogEntryIndex()
-    :
-    event_log_entry_index{YType::str, "event-log-entry-index"},
-    action_taken{YType::enumeration, "action-taken"},
-    event_total{YType::uint32, "event-total"},
-    handle{YType::str, "handle"},
-    index_{YType::uint32, "index"},
-    local_high_threshold{YType::uint64, "local-high-threshold"},
-    local_high_threshold_config_units{YType::uint64, "local-high-threshold-config-units"},
-    location{YType::enumeration, "location"},
-    oui{YType::str, "oui"},
-    running_total{YType::uint64, "running-total"},
-    threshold{YType::uint64, "threshold"},
-    threshold_config_units{YType::uint64, "threshold-config-units"},
-    threshold_units{YType::uint8, "threshold-units"},
-    timestamp{YType::uint64, "timestamp"},
-    type{YType::enumeration, "type"},
-    value_{YType::uint64, "value"},
-    value_config_units{YType::uint64, "value-config-units"},
-    window{YType::uint64, "window"},
-    window_config_units{YType::uint64, "window-config-units"},
-    window_units{YType::uint8, "window-units"}
-{
-    yang_name = "event-log-entry-index"; yang_parent_name = "event-log-entry-indexes";
-}
-
-EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::~EventLogEntryIndex()
-{
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_data() const
-{
-    return event_log_entry_index.is_set
-	|| action_taken.is_set
-	|| event_total.is_set
-	|| handle.is_set
-	|| index_.is_set
-	|| local_high_threshold.is_set
-	|| local_high_threshold_config_units.is_set
-	|| location.is_set
-	|| oui.is_set
-	|| running_total.is_set
-	|| threshold.is_set
-	|| threshold_config_units.is_set
-	|| threshold_units.is_set
-	|| timestamp.is_set
-	|| type.is_set
-	|| value_.is_set
-	|| value_config_units.is_set
-	|| window.is_set
-	|| window_config_units.is_set
-	|| window_units.is_set;
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(event_log_entry_index.yfilter)
-	|| ydk::is_set(action_taken.yfilter)
-	|| ydk::is_set(event_total.yfilter)
-	|| ydk::is_set(handle.yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(local_high_threshold.yfilter)
-	|| ydk::is_set(local_high_threshold_config_units.yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| ydk::is_set(oui.yfilter)
-	|| ydk::is_set(running_total.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(threshold_config_units.yfilter)
-	|| ydk::is_set(threshold_units.yfilter)
-	|| ydk::is_set(timestamp.yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(value_.yfilter)
-	|| ydk::is_set(value_config_units.yfilter)
-	|| ydk::is_set(window.yfilter)
-	|| ydk::is_set(window_config_units.yfilter)
-	|| ydk::is_set(window_units.yfilter);
-}
-
-std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-index" <<"[event-log-entry-index='" <<event_log_entry_index <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EventLogEntryIndex' in Cisco_IOS_XR_ethernet_link_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (event_log_entry_index.is_set || is_set(event_log_entry_index.yfilter)) leaf_name_data.push_back(event_log_entry_index.get_name_leafdata());
-    if (action_taken.is_set || is_set(action_taken.yfilter)) leaf_name_data.push_back(action_taken.get_name_leafdata());
-    if (event_total.is_set || is_set(event_total.yfilter)) leaf_name_data.push_back(event_total.get_name_leafdata());
-    if (handle.is_set || is_set(handle.yfilter)) leaf_name_data.push_back(handle.get_name_leafdata());
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (local_high_threshold.is_set || is_set(local_high_threshold.yfilter)) leaf_name_data.push_back(local_high_threshold.get_name_leafdata());
-    if (local_high_threshold_config_units.is_set || is_set(local_high_threshold_config_units.yfilter)) leaf_name_data.push_back(local_high_threshold_config_units.get_name_leafdata());
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
-    if (running_total.is_set || is_set(running_total.yfilter)) leaf_name_data.push_back(running_total.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (threshold_config_units.is_set || is_set(threshold_config_units.yfilter)) leaf_name_data.push_back(threshold_config_units.get_name_leafdata());
-    if (threshold_units.is_set || is_set(threshold_units.yfilter)) leaf_name_data.push_back(threshold_units.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-    if (value_config_units.is_set || is_set(value_config_units.yfilter)) leaf_name_data.push_back(value_config_units.get_name_leafdata());
-    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
-    if (window_config_units.is_set || is_set(window_config_units.yfilter)) leaf_name_data.push_back(window_config_units.get_name_leafdata());
-    if (window_units.is_set || is_set(window_units.yfilter)) leaf_name_data.push_back(window_units.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "event-log-entry-index")
-    {
-        event_log_entry_index = value;
-        event_log_entry_index.value_namespace = name_space;
-        event_log_entry_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "action-taken")
-    {
-        action_taken = value;
-        action_taken.value_namespace = name_space;
-        action_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "event-total")
-    {
-        event_total = value;
-        event_total.value_namespace = name_space;
-        event_total.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "handle")
-    {
-        handle = value;
-        handle.value_namespace = name_space;
-        handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-high-threshold")
-    {
-        local_high_threshold = value;
-        local_high_threshold.value_namespace = name_space;
-        local_high_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-high-threshold-config-units")
-    {
-        local_high_threshold_config_units = value;
-        local_high_threshold_config_units.value_namespace = name_space;
-        local_high_threshold_config_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oui")
-    {
-        oui = value;
-        oui.value_namespace = name_space;
-        oui.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "running-total")
-    {
-        running_total = value;
-        running_total.value_namespace = name_space;
-        running_total.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-config-units")
-    {
-        threshold_config_units = value;
-        threshold_config_units.value_namespace = name_space;
-        threshold_config_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-units")
-    {
-        threshold_units = value;
-        threshold_units.value_namespace = name_space;
-        threshold_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp = value;
-        timestamp.value_namespace = name_space;
-        timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value-config-units")
-    {
-        value_config_units = value;
-        value_config_units.value_namespace = name_space;
-        value_config_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "window")
-    {
-        window = value;
-        window.value_namespace = name_space;
-        window.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "window-config-units")
-    {
-        window_config_units = value;
-        window_config_units.value_namespace = name_space;
-        window_config_units.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "window-units")
-    {
-        window_units = value;
-        window_units.value_namespace = name_space;
-        window_units.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "event-log-entry-index")
-    {
-        event_log_entry_index.yfilter = yfilter;
-    }
-    if(value_path == "action-taken")
-    {
-        action_taken.yfilter = yfilter;
-    }
-    if(value_path == "event-total")
-    {
-        event_total.yfilter = yfilter;
-    }
-    if(value_path == "handle")
-    {
-        handle.yfilter = yfilter;
-    }
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "local-high-threshold")
-    {
-        local_high_threshold.yfilter = yfilter;
-    }
-    if(value_path == "local-high-threshold-config-units")
-    {
-        local_high_threshold_config_units.yfilter = yfilter;
-    }
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-    if(value_path == "oui")
-    {
-        oui.yfilter = yfilter;
-    }
-    if(value_path == "running-total")
-    {
-        running_total.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "threshold-config-units")
-    {
-        threshold_config_units.yfilter = yfilter;
-    }
-    if(value_path == "threshold-units")
-    {
-        threshold_units.yfilter = yfilter;
-    }
-    if(value_path == "timestamp")
-    {
-        timestamp.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-    if(value_path == "value-config-units")
-    {
-        value_config_units.yfilter = yfilter;
-    }
-    if(value_path == "window")
-    {
-        window.yfilter = yfilter;
-    }
-    if(value_path == "window-config-units")
-    {
-        window_config_units.yfilter = yfilter;
-    }
-    if(value_path == "window-units")
-    {
-        window_units.yfilter = yfilter;
-    }
-}
-
-bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "event-log-entry-index" || name == "action-taken" || name == "event-total" || name == "handle" || name == "index" || name == "local-high-threshold" || name == "local-high-threshold-config-units" || name == "location" || name == "oui" || name == "running-total" || name == "threshold" || name == "threshold-config-units" || name == "threshold-units" || name == "timestamp" || name == "type" || name == "value" || name == "value-config-units" || name == "window" || name == "window-config-units" || name == "window-units")
-        return true;
-    return false;
-}
-
 EtherLinkOam::StatsInterfaces::StatsInterfaces()
 {
-    yang_name = "stats-interfaces"; yang_parent_name = "ether-link-oam";
+
+    yang_name = "stats-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::StatsInterfaces::~StatsInterfaces()
@@ -4357,33 +4213,26 @@ bool EtherLinkOam::StatsInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string EtherLinkOam::StatsInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::StatsInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats-interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::StatsInterfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::StatsInterfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4464,7 +4313,8 @@ EtherLinkOam::StatsInterfaces::StatsInterface::StatsInterface()
     variable_response_rx{YType::uint32, "variable-response-rx"},
     variable_response_tx{YType::uint32, "variable-response-tx"}
 {
-    yang_name = "stats-interface"; yang_parent_name = "stats-interfaces";
+
+    yang_name = "stats-interface"; yang_parent_name = "stats-interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 EtherLinkOam::StatsInterfaces::StatsInterface::~StatsInterface()
@@ -4534,27 +4384,22 @@ bool EtherLinkOam::StatsInterfaces::StatsInterface::has_operation() const
 	|| ydk::is_set(variable_response_tx.yfilter);
 }
 
+std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/stats-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stats-interface" <<"[member-interface='" <<member_interface <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > EtherLinkOam::StatsInterfaces::StatsInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-link-oam-oper:ether-link-oam/stats-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
@@ -4585,9 +4430,7 @@ const EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(
     if (variable_response_rx.is_set || is_set(variable_response_rx.yfilter)) leaf_name_data.push_back(variable_response_rx.get_name_leafdata());
     if (variable_response_tx.is_set || is_set(variable_response_tx.yfilter)) leaf_name_data.push_back(variable_response_tx.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4887,13 +4730,6 @@ bool EtherLinkOam::StatsInterfaces::StatsInterface::has_leaf_or_child_of_name(co
     return false;
 }
 
-const Enum::YLeaf LoopbackStatus::none {1, "none"};
-const Enum::YLeaf LoopbackStatus::initiating {2, "initiating"};
-const Enum::YLeaf LoopbackStatus::master_loopback {3, "master-loopback"};
-const Enum::YLeaf LoopbackStatus::terminating {4, "terminating"};
-const Enum::YLeaf LoopbackStatus::local_loopback {5, "local-loopback"};
-const Enum::YLeaf LoopbackStatus::unknown {6, "unknown"};
-
 const Enum::YLeaf OperationalState::disabled {1, "disabled"};
 const Enum::YLeaf OperationalState::link_fault {2, "link-fault"};
 const Enum::YLeaf OperationalState::passive_wait {3, "passive-wait"};
@@ -4904,6 +4740,14 @@ const Enum::YLeaf OperationalState::peering_locally_rejected {7, "peering-locall
 const Enum::YLeaf OperationalState::peering_remotely_rejected {8, "peering-remotely-rejected"};
 const Enum::YLeaf OperationalState::operational {9, "operational"};
 const Enum::YLeaf OperationalState::operational_half_duplex {10, "operational-half-duplex"};
+
+const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
+const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
+
+const Enum::YLeaf Action::no_action {1, "no-action"};
+const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
+const Enum::YLeaf Action::log {3, "log"};
+const Enum::YLeaf Action::efd {4, "efd"};
 
 const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
 const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
@@ -4925,13 +4769,12 @@ const Enum::YLeaf Log::log_type_link_fault {256, "log-type-link-fault"};
 const Enum::YLeaf Log::log_type_dying_gasp {257, "log-type-dying-gasp"};
 const Enum::YLeaf Log::log_type_critical_event {258, "log-type-critical-event"};
 
-const Enum::YLeaf Action::no_action {1, "no-action"};
-const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
-const Enum::YLeaf Action::log {3, "log"};
-const Enum::YLeaf Action::efd {4, "efd"};
-
-const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
-const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
+const Enum::YLeaf LoopbackStatus::none {1, "none"};
+const Enum::YLeaf LoopbackStatus::initiating {2, "initiating"};
+const Enum::YLeaf LoopbackStatus::master_loopback {3, "master-loopback"};
+const Enum::YLeaf LoopbackStatus::terminating {4, "terminating"};
+const Enum::YLeaf LoopbackStatus::local_loopback {5, "local-loopback"};
+const Enum::YLeaf LoopbackStatus::unknown {6, "unknown"};
 
 
 }

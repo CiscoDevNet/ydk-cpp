@@ -11,29 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_EMBEDDED_EVENT_MGR_MIB {
 
-CiscoEmbeddedEventMgrMib::CiscoEmbeddedEventMgrMib()
+CISCOEMBEDDEDEVENTMGRMIB::CISCOEMBEDDEDEVENTMGRMIB()
     :
-    ceemeventmaptable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>())
-	,ceemhistory(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>())
-	,ceemhistoryeventtable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>())
-	,ceemregisteredpolicytable(std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>())
+    ceemeventmaptable(std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable>())
+	,ceemhistory(std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory>())
+	,ceemhistoryeventtable(std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable>())
+	,ceemregisteredpolicytable(std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable>())
 {
     ceemeventmaptable->parent = this;
-
     ceemhistory->parent = this;
-
     ceemhistoryeventtable->parent = this;
-
     ceemregisteredpolicytable->parent = this;
 
-    yang_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
+    yang_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::~CiscoEmbeddedEventMgrMib()
+CISCOEMBEDDEDEVENTMGRMIB::~CISCOEMBEDDEDEVENTMGRMIB()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::has_data() const
 {
     return (ceemeventmaptable !=  nullptr && ceemeventmaptable->has_data())
 	|| (ceemhistory !=  nullptr && ceemhistory->has_data())
@@ -41,7 +38,7 @@ bool CiscoEmbeddedEventMgrMib::has_data() const
 	|| (ceemregisteredpolicytable !=  nullptr && ceemregisteredpolicytable->has_data());
 }
 
-bool CiscoEmbeddedEventMgrMib::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ceemeventmaptable !=  nullptr && ceemeventmaptable->has_operation())
@@ -50,40 +47,29 @@ bool CiscoEmbeddedEventMgrMib::has_operation() const
 	|| (ceemregisteredpolicytable !=  nullptr && ceemregisteredpolicytable->has_operation());
 }
 
-std::string CiscoEmbeddedEventMgrMib::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemEventMapTable")
     {
         if(ceemeventmaptable == nullptr)
         {
-            ceemeventmaptable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable>();
+            ceemeventmaptable = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable>();
         }
         return ceemeventmaptable;
     }
@@ -92,7 +78,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
     {
         if(ceemhistory == nullptr)
         {
-            ceemhistory = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistory>();
+            ceemhistory = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory>();
         }
         return ceemhistory;
     }
@@ -101,7 +87,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
     {
         if(ceemhistoryeventtable == nullptr)
         {
-            ceemhistoryeventtable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable>();
+            ceemhistoryeventtable = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable>();
         }
         return ceemhistoryeventtable;
     }
@@ -110,7 +96,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
     {
         if(ceemregisteredpolicytable == nullptr)
         {
-            ceemregisteredpolicytable = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable>();
+            ceemregisteredpolicytable = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable>();
         }
         return ceemregisteredpolicytable;
     }
@@ -118,7 +104,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ceemeventmaptable != nullptr)
@@ -144,159 +130,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::get_chi
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEmbeddedEventMgrMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoEmbeddedEventMgrMib>();
+    return std::make_shared<CISCOEMBEDDEDEVENTMGRMIB>();
 }
 
-std::string CiscoEmbeddedEventMgrMib::get_bundle_yang_models_location() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoEmbeddedEventMgrMib::get_bundle_name() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoEmbeddedEventMgrMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOEMBEDDEDEVENTMGRMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoEmbeddedEventMgrMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOEMBEDDEDEVENTMGRMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoEmbeddedEventMgrMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemEventMapTable" || name == "ceemHistory" || name == "ceemHistoryEventTable" || name == "ceemRegisteredPolicyTable")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistory::Ceemhistory()
-    :
-    ceemhistorylastevententry{YType::uint32, "ceemHistoryLastEventEntry"},
-    ceemhistorymaxevententries{YType::int32, "ceemHistoryMaxEventEntries"}
+CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmaptable()
 {
-    yang_name = "ceemHistory"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
+
+    yang_name = "ceemEventMapTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistory::~Ceemhistory()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::~Ceemeventmaptable()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistory::has_data() const
-{
-    return ceemhistorylastevententry.is_set
-	|| ceemhistorymaxevententries.is_set;
-}
-
-bool CiscoEmbeddedEventMgrMib::Ceemhistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ceemhistorylastevententry.yfilter)
-	|| ydk::is_set(ceemhistorymaxevententries.yfilter);
-}
-
-std::string CiscoEmbeddedEventMgrMib::Ceemhistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ceemHistory";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemhistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ceemhistorylastevententry.is_set || is_set(ceemhistorylastevententry.yfilter)) leaf_name_data.push_back(ceemhistorylastevententry.get_name_leafdata());
-    if (ceemhistorymaxevententries.is_set || is_set(ceemhistorymaxevententries.yfilter)) leaf_name_data.push_back(ceemhistorymaxevententries.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemhistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoEmbeddedEventMgrMib::Ceemhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ceemHistoryLastEventEntry")
-    {
-        ceemhistorylastevententry = value;
-        ceemhistorylastevententry.value_namespace = name_space;
-        ceemhistorylastevententry.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceemHistoryMaxEventEntries")
-    {
-        ceemhistorymaxevententries = value;
-        ceemhistorymaxevententries.value_namespace = name_space;
-        ceemhistorymaxevententries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoEmbeddedEventMgrMib::Ceemhistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ceemHistoryLastEventEntry")
-    {
-        ceemhistorylastevententry.yfilter = yfilter;
-    }
-    if(value_path == "ceemHistoryMaxEventEntries")
-    {
-        ceemhistorymaxevententries.yfilter = yfilter;
-    }
-}
-
-bool CiscoEmbeddedEventMgrMib::Ceemhistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ceemHistoryLastEventEntry" || name == "ceemHistoryMaxEventEntries")
-        return true;
-    return false;
-}
-
-CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmaptable()
-{
-    yang_name = "ceemEventMapTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
-}
-
-CiscoEmbeddedEventMgrMib::Ceemeventmaptable::~Ceemeventmaptable()
-{
-}
-
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::has_data() const
 {
     for (std::size_t index=0; index<ceemeventmapentry.size(); index++)
     {
@@ -306,7 +190,7 @@ bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_data() const
     return false;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::has_operation() const
 {
     for (std::size_t index=0; index<ceemeventmapentry.size(); index++)
     {
@@ -316,37 +200,30 @@ bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemEventMapTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemEventMapEntry")
     {
@@ -358,7 +235,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_b
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry>();
+        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry>();
         c->parent = this;
         ceemeventmapentry.push_back(c);
         return c;
@@ -367,7 +244,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ceemeventmapentry)
@@ -378,42 +255,43 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemeve
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemEventMapEntry")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::Ceemeventmapentry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::Ceemeventmapentry()
     :
     ceemeventindex{YType::uint32, "ceemEventIndex"},
     ceemeventdescrtext{YType::str, "ceemEventDescrText"},
     ceemeventname{YType::str, "ceemEventName"}
 {
-    yang_name = "ceemEventMapEntry"; yang_parent_name = "ceemEventMapTable";
+
+    yang_name = "ceemEventMapEntry"; yang_parent_name = "ceemEventMapTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::~Ceemeventmapentry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::~Ceemeventmapentry()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::has_data() const
 {
     return ceemeventindex.is_set
 	|| ceemeventdescrtext.is_set
 	|| ceemeventname.is_set;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceemeventindex.yfilter)
@@ -421,51 +299,44 @@ bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::has_operati
 	|| ydk::is_set(ceemeventname.yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemEventMapTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemEventMapEntry" <<"[ceemEventIndex='" <<ceemeventindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemEventMapTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ceemeventindex.is_set || is_set(ceemeventindex.yfilter)) leaf_name_data.push_back(ceemeventindex.get_name_leafdata());
     if (ceemeventdescrtext.is_set || is_set(ceemeventdescrtext.yfilter)) leaf_name_data.push_back(ceemeventdescrtext.get_name_leafdata());
     if (ceemeventname.is_set || is_set(ceemeventname.yfilter)) leaf_name_data.push_back(ceemeventname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceemEventIndex")
     {
@@ -487,7 +358,7 @@ void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::set_value(c
     }
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceemEventIndex")
     {
@@ -503,23 +374,121 @@ void CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::set_filter(
     }
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemeventmaptable::Ceemeventmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemEventIndex" || name == "ceemEventDescrText" || name == "ceemEventName")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryeventtable()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::Ceemhistory()
+    :
+    ceemhistorylastevententry{YType::uint32, "ceemHistoryLastEventEntry"},
+    ceemhistorymaxevententries{YType::int32, "ceemHistoryMaxEventEntries"}
 {
-    yang_name = "ceemHistoryEventTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
+
+    yang_name = "ceemHistory"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::~Ceemhistoryeventtable()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::~Ceemhistory()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::has_data() const
+{
+    return ceemhistorylastevententry.is_set
+	|| ceemhistorymaxevententries.is_set;
+}
+
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ceemhistorylastevententry.yfilter)
+	|| ydk::is_set(ceemhistorymaxevententries.yfilter);
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ceemHistory";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ceemhistorylastevententry.is_set || is_set(ceemhistorylastevententry.yfilter)) leaf_name_data.push_back(ceemhistorylastevententry.get_name_leafdata());
+    if (ceemhistorymaxevententries.is_set || is_set(ceemhistorymaxevententries.yfilter)) leaf_name_data.push_back(ceemhistorymaxevententries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ceemHistoryLastEventEntry")
+    {
+        ceemhistorylastevententry = value;
+        ceemhistorylastevententry.value_namespace = name_space;
+        ceemhistorylastevententry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceemHistoryMaxEventEntries")
+    {
+        ceemhistorymaxevententries = value;
+        ceemhistorymaxevententries.value_namespace = name_space;
+        ceemhistorymaxevententries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceemHistoryLastEventEntry")
+    {
+        ceemhistorylastevententry.yfilter = yfilter;
+    }
+    if(value_path == "ceemHistoryMaxEventEntries")
+    {
+        ceemhistorymaxevententries.yfilter = yfilter;
+    }
+}
+
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceemHistoryLastEventEntry" || name == "ceemHistoryMaxEventEntries")
+        return true;
+    return false;
+}
+
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryeventtable()
+{
+
+    yang_name = "ceemHistoryEventTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::~Ceemhistoryeventtable()
+{
+}
+
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::has_data() const
 {
     for (std::size_t index=0; index<ceemhistoryevententry.size(); index++)
     {
@@ -529,7 +498,7 @@ bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_data() const
     return false;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::has_operation() const
 {
     for (std::size_t index=0; index<ceemhistoryevententry.size(); index++)
     {
@@ -539,37 +508,30 @@ bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemHistoryEventTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemHistoryEventEntry")
     {
@@ -581,7 +543,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_chi
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry>();
+        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry>();
         c->parent = this;
         ceemhistoryevententry.push_back(c);
         return c;
@@ -590,7 +552,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ceemhistoryevententry)
@@ -601,22 +563,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemhis
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemHistoryEventEntry")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::Ceemhistoryevententry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::Ceemhistoryevententry()
     :
     ceemhistoryeventindex{YType::uint32, "ceemHistoryEventIndex"},
     ceemhistoryeventtype1{YType::uint32, "ceemHistoryEventType1"},
@@ -635,14 +597,15 @@ CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::Ceemhist
     ceemhistorypolicypath{YType::str, "ceemHistoryPolicyPath"},
     ceemhistorypolicystrdata{YType::str, "ceemHistoryPolicyStrData"}
 {
-    yang_name = "ceemHistoryEventEntry"; yang_parent_name = "ceemHistoryEventTable";
+
+    yang_name = "ceemHistoryEventEntry"; yang_parent_name = "ceemHistoryEventTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::~Ceemhistoryevententry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::~Ceemhistoryevententry()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::has_data() const
 {
     return ceemhistoryeventindex.is_set
 	|| ceemhistoryeventtype1.is_set
@@ -662,7 +625,7 @@ bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::has
 	|| ceemhistorypolicystrdata.is_set;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceemhistoryeventindex.yfilter)
@@ -683,27 +646,22 @@ bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::has
 	|| ydk::is_set(ceemhistorypolicystrdata.yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemHistoryEventTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemHistoryEventEntry" <<"[ceemHistoryEventIndex='" <<ceemhistoryeventindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemHistoryEventTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ceemhistoryeventindex.is_set || is_set(ceemhistoryeventindex.yfilter)) leaf_name_data.push_back(ceemhistoryeventindex.get_name_leafdata());
@@ -723,24 +681,22 @@ const EntityPath CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryeve
     if (ceemhistorypolicypath.is_set || is_set(ceemhistorypolicypath.yfilter)) leaf_name_data.push_back(ceemhistorypolicypath.get_name_leafdata());
     if (ceemhistorypolicystrdata.is_set || is_set(ceemhistorypolicystrdata.yfilter)) leaf_name_data.push_back(ceemhistorypolicystrdata.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceemHistoryEventIndex")
     {
@@ -840,7 +796,7 @@ void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::set
     }
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceemHistoryEventIndex")
     {
@@ -908,23 +864,24 @@ void CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::set
     }
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemhistoryeventtable::Ceemhistoryevententry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemHistoryEventIndex" || name == "ceemHistoryEventType1" || name == "ceemHistoryEventType2" || name == "ceemHistoryEventType3" || name == "ceemHistoryEventType4" || name == "ceemHistoryEventType5" || name == "ceemHistoryEventType6" || name == "ceemHistoryEventType7" || name == "ceemHistoryEventType8" || name == "ceemHistoryNotifyType" || name == "ceemHistoryPolicyExitStatus" || name == "ceemHistoryPolicyIntData1" || name == "ceemHistoryPolicyIntData2" || name == "ceemHistoryPolicyName" || name == "ceemHistoryPolicyPath" || name == "ceemHistoryPolicyStrData")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicytable()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicytable()
 {
-    yang_name = "ceemRegisteredPolicyTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB";
+
+    yang_name = "ceemRegisteredPolicyTable"; yang_parent_name = "CISCO-EMBEDDED-EVENT-MGR-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::~Ceemregisteredpolicytable()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::~Ceemregisteredpolicytable()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::has_data() const
 {
     for (std::size_t index=0; index<ceemregisteredpolicyentry.size(); index++)
     {
@@ -934,7 +891,7 @@ bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_data() const
     return false;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::has_operation() const
 {
     for (std::size_t index=0; index<ceemregisteredpolicyentry.size(); index++)
     {
@@ -944,37 +901,30 @@ bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemRegisteredPolicyTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemRegisteredPolicyEntry")
     {
@@ -986,7 +936,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry>();
+        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry>();
         c->parent = this;
         ceemregisteredpolicyentry.push_back(c);
         return c;
@@ -995,7 +945,7 @@ std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ceemregisteredpolicyentry)
@@ -1006,22 +956,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemreg
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemRegisteredPolicyEntry")
         return true;
     return false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicyentry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicyentry()
     :
     ceemregisteredpolicyindex{YType::uint32, "ceemRegisteredPolicyIndex"},
     ceemregisteredpolicyenabledtime{YType::str, "ceemRegisteredPolicyEnabledTime"},
@@ -1041,14 +991,15 @@ CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::
     ceemregisteredpolicystatus{YType::enumeration, "ceemRegisteredPolicyStatus"},
     ceemregisteredpolicytype{YType::enumeration, "ceemRegisteredPolicyType"}
 {
-    yang_name = "ceemRegisteredPolicyEntry"; yang_parent_name = "ceemRegisteredPolicyTable";
+
+    yang_name = "ceemRegisteredPolicyEntry"; yang_parent_name = "ceemRegisteredPolicyTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::~Ceemregisteredpolicyentry()
+CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::~Ceemregisteredpolicyentry()
 {
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_data() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_data() const
 {
     return ceemregisteredpolicyindex.is_set
 	|| ceemregisteredpolicyenabledtime.is_set
@@ -1069,7 +1020,7 @@ bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyen
 	|| ceemregisteredpolicytype.is_set;
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_operation() const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceemregisteredpolicyindex.yfilter)
@@ -1091,27 +1042,22 @@ bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyen
 	|| ydk::is_set(ceemregisteredpolicytype.yfilter);
 }
 
-std::string CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_segment_path() const
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemRegisteredPolicyTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceemRegisteredPolicyEntry" <<"[ceemRegisteredPolicyIndex='" <<ceemregisteredpolicyindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-EMBEDDED-EVENT-MGR-MIB:CISCO-EMBEDDED-EVENT-MGR-MIB/ceemRegisteredPolicyTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ceemregisteredpolicyindex.is_set || is_set(ceemregisteredpolicyindex.yfilter)) leaf_name_data.push_back(ceemregisteredpolicyindex.get_name_leafdata());
@@ -1132,24 +1078,22 @@ const EntityPath CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregist
     if (ceemregisteredpolicystatus.is_set || is_set(ceemregisteredpolicystatus.yfilter)) leaf_name_data.push_back(ceemregisteredpolicystatus.get_name_leafdata());
     if (ceemregisteredpolicytype.is_set || is_set(ceemregisteredpolicytype.yfilter)) leaf_name_data.push_back(ceemregisteredpolicytype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceemRegisteredPolicyIndex")
     {
@@ -1255,7 +1199,7 @@ void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyen
     }
 }
 
-void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ceemRegisteredPolicyIndex")
     {
@@ -1327,21 +1271,21 @@ void CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyen
     }
 }
 
-bool CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceemRegisteredPolicyIndex" || name == "ceemRegisteredPolicyEnabledTime" || name == "ceemRegisteredPolicyEventType1" || name == "ceemRegisteredPolicyEventType2" || name == "ceemRegisteredPolicyEventType3" || name == "ceemRegisteredPolicyEventType4" || name == "ceemRegisteredPolicyEventType5" || name == "ceemRegisteredPolicyEventType6" || name == "ceemRegisteredPolicyEventType7" || name == "ceemRegisteredPolicyEventType8" || name == "ceemRegisteredPolicyName" || name == "ceemRegisteredPolicyNotifFlag" || name == "ceemRegisteredPolicyRegTime" || name == "ceemRegisteredPolicyRunCount" || name == "ceemRegisteredPolicyRunTime" || name == "ceemRegisteredPolicyStatus" || name == "ceemRegisteredPolicyType")
         return true;
     return false;
 }
 
-const Enum::YLeaf Notifysource::server {1, "server"};
-const Enum::YLeaf Notifysource::policy {2, "policy"};
+const Enum::YLeaf NotifySource::server {1, "server"};
+const Enum::YLeaf NotifySource::policy {2, "policy"};
 
-const Enum::YLeaf CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicystatus::enabled {1, "enabled"};
-const Enum::YLeaf CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicystatus::disabled {2, "disabled"};
+const Enum::YLeaf CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicystatus::enabled {1, "enabled"};
+const Enum::YLeaf CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicystatus::disabled {2, "disabled"};
 
-const Enum::YLeaf CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicytype::user {1, "user"};
-const Enum::YLeaf CiscoEmbeddedEventMgrMib::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicytype::system {2, "system"};
+const Enum::YLeaf CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicytype::user {1, "user"};
+const Enum::YLeaf CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicytype::system {2, "system"};
 
 
 }

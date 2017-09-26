@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_RTTMON_MIB {
 
-class CiscoRttmonMib : public ydk::Entity
+class CISCORTTMONMIB : public ydk::Entity
 {
     public:
-        CiscoRttmonMib();
-        ~CiscoRttmonMib();
+        CISCORTTMONMIB();
+        ~CISCORTTMONMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,60 +32,60 @@ class CiscoRttmonMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Rttmonappl; //type: CiscoRttmonMib::Rttmonappl
-        class Rttmonapplsupportedrtttypestable; //type: CiscoRttmonMib::Rttmonapplsupportedrtttypestable
-        class Rttmonapplsupportedprotocolstable; //type: CiscoRttmonMib::Rttmonapplsupportedprotocolstable
-        class Rttmonapplpreconfigedtable; //type: CiscoRttmonMib::Rttmonapplpreconfigedtable
-        class Rttmonapplauthtable; //type: CiscoRttmonMib::Rttmonapplauthtable
-        class Rttmonctrladmintable; //type: CiscoRttmonMib::Rttmonctrladmintable
-        class Rttmonechoadmintable; //type: CiscoRttmonMib::Rttmonechoadmintable
-        class Rttmonfileioadmintable; //type: CiscoRttmonMib::Rttmonfileioadmintable
-        class Rttmonscriptadmintable; //type: CiscoRttmonMib::Rttmonscriptadmintable
-        class Rttmonreacttriggeradmintable; //type: CiscoRttmonMib::Rttmonreacttriggeradmintable
-        class Rttmonechopathadmintable; //type: CiscoRttmonMib::Rttmonechopathadmintable
-        class Rttmongrpscheduleadmintable; //type: CiscoRttmonMib::Rttmongrpscheduleadmintable
-        class Rttmplsvpnmonctrltable; //type: CiscoRttmonMib::Rttmplsvpnmonctrltable
-        class Rttmonreacttable; //type: CiscoRttmonMib::Rttmonreacttable
-        class Rttmongeneratedopertable; //type: CiscoRttmonMib::Rttmongeneratedopertable
-        class Rttmonstatscapturetable; //type: CiscoRttmonMib::Rttmonstatscapturetable
-        class Rttmonstatscollecttable; //type: CiscoRttmonMib::Rttmonstatscollecttable
-        class Rttmonstatstotalstable; //type: CiscoRttmonMib::Rttmonstatstotalstable
-        class Rttmonhttpstatstable; //type: CiscoRttmonMib::Rttmonhttpstatstable
-        class Rttmonjitterstatstable; //type: CiscoRttmonMib::Rttmonjitterstatstable
-        class Rttmonlpdgrpstatstable; //type: CiscoRttmonMib::Rttmonlpdgrpstatstable
-        class Rttmonhistorycollectiontable; //type: CiscoRttmonMib::Rttmonhistorycollectiontable
-        class Rttmonlatesthttpopertable; //type: CiscoRttmonMib::Rttmonlatesthttpopertable
-        class Rttmonlatestjitteropertable; //type: CiscoRttmonMib::Rttmonlatestjitteropertable
+        class Rttmonappl; //type: CISCORTTMONMIB::Rttmonappl
+        class Rttmonapplsupportedrtttypestable; //type: CISCORTTMONMIB::Rttmonapplsupportedrtttypestable
+        class Rttmonapplsupportedprotocolstable; //type: CISCORTTMONMIB::Rttmonapplsupportedprotocolstable
+        class Rttmonapplpreconfigedtable; //type: CISCORTTMONMIB::Rttmonapplpreconfigedtable
+        class Rttmonapplauthtable; //type: CISCORTTMONMIB::Rttmonapplauthtable
+        class Rttmonctrladmintable; //type: CISCORTTMONMIB::Rttmonctrladmintable
+        class Rttmonechoadmintable; //type: CISCORTTMONMIB::Rttmonechoadmintable
+        class Rttmonfileioadmintable; //type: CISCORTTMONMIB::Rttmonfileioadmintable
+        class Rttmonscriptadmintable; //type: CISCORTTMONMIB::Rttmonscriptadmintable
+        class Rttmonreacttriggeradmintable; //type: CISCORTTMONMIB::Rttmonreacttriggeradmintable
+        class Rttmonechopathadmintable; //type: CISCORTTMONMIB::Rttmonechopathadmintable
+        class Rttmongrpscheduleadmintable; //type: CISCORTTMONMIB::Rttmongrpscheduleadmintable
+        class Rttmplsvpnmonctrltable; //type: CISCORTTMONMIB::Rttmplsvpnmonctrltable
+        class Rttmonreacttable; //type: CISCORTTMONMIB::Rttmonreacttable
+        class Rttmongeneratedopertable; //type: CISCORTTMONMIB::Rttmongeneratedopertable
+        class Rttmonstatscapturetable; //type: CISCORTTMONMIB::Rttmonstatscapturetable
+        class Rttmonstatscollecttable; //type: CISCORTTMONMIB::Rttmonstatscollecttable
+        class Rttmonstatstotalstable; //type: CISCORTTMONMIB::Rttmonstatstotalstable
+        class Rttmonhttpstatstable; //type: CISCORTTMONMIB::Rttmonhttpstatstable
+        class Rttmonjitterstatstable; //type: CISCORTTMONMIB::Rttmonjitterstatstable
+        class Rttmonlpdgrpstatstable; //type: CISCORTTMONMIB::Rttmonlpdgrpstatstable
+        class Rttmonhistorycollectiontable; //type: CISCORTTMONMIB::Rttmonhistorycollectiontable
+        class Rttmonlatesthttpopertable; //type: CISCORTTMONMIB::Rttmonlatesthttpopertable
+        class Rttmonlatestjitteropertable; //type: CISCORTTMONMIB::Rttmonlatestjitteropertable
 
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonappl> rttmonappl;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplauthtable> rttmonapplauthtable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplpreconfigedtable> rttmonapplpreconfigedtable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplsupportedprotocolstable> rttmonapplsupportedprotocolstable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplsupportedrtttypestable> rttmonapplsupportedrtttypestable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable> rttmonctrladmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonechoadmintable> rttmonechoadmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonechopathadmintable> rttmonechopathadmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonfileioadmintable> rttmonfileioadmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmongeneratedopertable> rttmongeneratedopertable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmongrpscheduleadmintable> rttmongrpscheduleadmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonhistorycollectiontable> rttmonhistorycollectiontable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonhttpstatstable> rttmonhttpstatstable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonjitterstatstable> rttmonjitterstatstable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlatesthttpopertable> rttmonlatesthttpopertable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlatestjitteropertable> rttmonlatestjitteropertable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlpdgrpstatstable> rttmonlpdgrpstatstable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonreacttable> rttmonreacttable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonreacttriggeradmintable> rttmonreacttriggeradmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonscriptadmintable> rttmonscriptadmintable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable> rttmonstatscapturetable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscollecttable> rttmonstatscollecttable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatstotalstable> rttmonstatstotalstable;
-        std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmplsvpnmonctrltable> rttmplsvpnmonctrltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonappl> rttmonappl;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplauthtable> rttmonapplauthtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplpreconfigedtable> rttmonapplpreconfigedtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplsupportedprotocolstable> rttmonapplsupportedprotocolstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplsupportedrtttypestable> rttmonapplsupportedrtttypestable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable> rttmonctrladmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonechoadmintable> rttmonechoadmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonechopathadmintable> rttmonechopathadmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonfileioadmintable> rttmonfileioadmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmongeneratedopertable> rttmongeneratedopertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmongrpscheduleadmintable> rttmongrpscheduleadmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonhistorycollectiontable> rttmonhistorycollectiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonhttpstatstable> rttmonhttpstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonjitterstatstable> rttmonjitterstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlatesthttpopertable> rttmonlatesthttpopertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlatestjitteropertable> rttmonlatestjitteropertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlpdgrpstatstable> rttmonlpdgrpstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonreacttable> rttmonreacttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonreacttriggeradmintable> rttmonreacttriggeradmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonscriptadmintable> rttmonscriptadmintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable> rttmonstatscapturetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscollecttable> rttmonstatscollecttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatstotalstable> rttmonstatstotalstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmplsvpnmonctrltable> rttmplsvpnmonctrltable;
         
-}; // CiscoRttmonMib
+}; // CISCORTTMONMIB
 
 
-class CiscoRttmonMib::Rttmonappl : public ydk::Entity
+class CISCORTTMONMIB::Rttmonappl : public ydk::Entity
 {
     public:
         Rttmonappl();
@@ -93,167 +93,31 @@ class CiscoRttmonMib::Rttmonappl : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rttmonapplversion; //type: string
         ydk::YLeaf rttmonapplmaxpacketdatasize; //type: int32
         ydk::YLeaf rttmonappltimeoflastset; //type: uint32
         ydk::YLeaf rttmonapplnumctrladminentry; //type: int32
-        ydk::YLeaf rttmonapplreset; //type: Rttreset
-        ydk::YLeaf rttmonapplpreconfigedreset; //type: Rttreset
+        ydk::YLeaf rttmonapplreset; //type: RttReset
+        ydk::YLeaf rttmonapplpreconfigedreset; //type: RttReset
         ydk::YLeaf rttmonapplprobecapacity; //type: int32
         ydk::YLeaf rttmonapplfreememlowwatermark; //type: int32
         ydk::YLeaf rttmonappllatestseterror; //type: string
         ydk::YLeaf rttmonapplresponder; //type: boolean
         ydk::YLeaf rttmonappllpdgrpstatsreset; //type: int32
 
-}; // CiscoRttmonMib::Rttmonappl
+}; // CISCORTTMONMIB::Rttmonappl
 
 
-class CiscoRttmonMib::Rttmonapplsupportedrtttypestable : public ydk::Entity
-{
-    public:
-        Rttmonapplsupportedrtttypestable();
-        ~Rttmonapplsupportedrtttypestable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonapplsupportedrtttypesentry; //type: CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry> > rttmonapplsupportedrtttypesentry;
-        
-}; // CiscoRttmonMib::Rttmonapplsupportedrtttypestable
-
-
-class CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry : public ydk::Entity
-{
-    public:
-        Rttmonapplsupportedrtttypesentry();
-        ~Rttmonapplsupportedrtttypesentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rttmonapplsupportedrtttypes; //type: Rttmonrtttype
-        ydk::YLeaf rttmonapplsupportedrtttypesvalid; //type: boolean
-
-}; // CiscoRttmonMib::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry
-
-
-class CiscoRttmonMib::Rttmonapplsupportedprotocolstable : public ydk::Entity
-{
-    public:
-        Rttmonapplsupportedprotocolstable();
-        ~Rttmonapplsupportedprotocolstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonapplsupportedprotocolsentry; //type: CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry> > rttmonapplsupportedprotocolsentry;
-        
-}; // CiscoRttmonMib::Rttmonapplsupportedprotocolstable
-
-
-class CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry : public ydk::Entity
-{
-    public:
-        Rttmonapplsupportedprotocolsentry();
-        ~Rttmonapplsupportedprotocolsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rttmonapplsupportedprotocols; //type: Rttmonprotocol
-        ydk::YLeaf rttmonapplsupportedprotocolsvalid; //type: boolean
-
-}; // CiscoRttmonMib::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry
-
-
-class CiscoRttmonMib::Rttmonapplpreconfigedtable : public ydk::Entity
-{
-    public:
-        Rttmonapplpreconfigedtable();
-        ~Rttmonapplpreconfigedtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonapplpreconfigedentry; //type: CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry> > rttmonapplpreconfigedentry;
-        
-}; // CiscoRttmonMib::Rttmonapplpreconfigedtable
-
-
-class CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry : public ydk::Entity
-{
-    public:
-        Rttmonapplpreconfigedentry();
-        ~Rttmonapplpreconfigedentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rttmonapplpreconfigedtype; //type: Rttmonapplpreconfigedtype
-        ydk::YLeaf rttmonapplpreconfigedname; //type: string
-        ydk::YLeaf rttmonapplpreconfigedvalid; //type: boolean
-        class Rttmonapplpreconfigedtype;
-
-}; // CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry
-
-
-class CiscoRttmonMib::Rttmonapplauthtable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonapplauthtable : public ydk::Entity
 {
     public:
         Rttmonapplauthtable();
@@ -261,22 +125,23 @@ class CiscoRttmonMib::Rttmonapplauthtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonapplauthentry; //type: CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry
+        class Rttmonapplauthentry; //type: CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry> > rttmonapplauthentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry> > rttmonapplauthentry;
         
-}; // CiscoRttmonMib::Rttmonapplauthtable
+}; // CISCORTTMONMIB::Rttmonapplauthtable
 
 
-class CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry : public ydk::Entity
 {
     public:
         Rttmonapplauthentry();
@@ -284,13 +149,14 @@ class CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry : public ydk::Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rttmonapplauthindex; //type: int32
         ydk::YLeaf rttmonapplauthkeychain; //type: string
@@ -299,12 +165,155 @@ class CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry : public ydk::Ent
         ydk::YLeaf rttmonapplauthkeystring3; //type: string
         ydk::YLeaf rttmonapplauthkeystring4; //type: string
         ydk::YLeaf rttmonapplauthkeystring5; //type: string
-        ydk::YLeaf rttmonapplauthstatus; //type: Rowstatus
+        ydk::YLeaf rttmonapplauthstatus; //type: RowStatus
 
-}; // CiscoRttmonMib::Rttmonapplauthtable::Rttmonapplauthentry
+}; // CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry
 
 
-class CiscoRttmonMib::Rttmonctrladmintable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonapplpreconfigedtable : public ydk::Entity
+{
+    public:
+        Rttmonapplpreconfigedtable();
+        ~Rttmonapplpreconfigedtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonapplpreconfigedentry; //type: CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry> > rttmonapplpreconfigedentry;
+        
+}; // CISCORTTMONMIB::Rttmonapplpreconfigedtable
+
+
+class CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry : public ydk::Entity
+{
+    public:
+        Rttmonapplpreconfigedentry();
+        ~Rttmonapplpreconfigedentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rttmonapplpreconfigedtype; //type: Rttmonapplpreconfigedtype
+        ydk::YLeaf rttmonapplpreconfigedname; //type: string
+        ydk::YLeaf rttmonapplpreconfigedvalid; //type: boolean
+        class Rttmonapplpreconfigedtype;
+
+}; // CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry
+
+
+class CISCORTTMONMIB::Rttmonapplsupportedprotocolstable : public ydk::Entity
+{
+    public:
+        Rttmonapplsupportedprotocolstable();
+        ~Rttmonapplsupportedprotocolstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonapplsupportedprotocolsentry; //type: CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry> > rttmonapplsupportedprotocolsentry;
+        
+}; // CISCORTTMONMIB::Rttmonapplsupportedprotocolstable
+
+
+class CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry : public ydk::Entity
+{
+    public:
+        Rttmonapplsupportedprotocolsentry();
+        ~Rttmonapplsupportedprotocolsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rttmonapplsupportedprotocols; //type: RttMonProtocol
+        ydk::YLeaf rttmonapplsupportedprotocolsvalid; //type: boolean
+
+}; // CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry
+
+
+class CISCORTTMONMIB::Rttmonapplsupportedrtttypestable : public ydk::Entity
+{
+    public:
+        Rttmonapplsupportedrtttypestable();
+        ~Rttmonapplsupportedrtttypestable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonapplsupportedrtttypesentry; //type: CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry> > rttmonapplsupportedrtttypesentry;
+        
+}; // CISCORTTMONMIB::Rttmonapplsupportedrtttypestable
+
+
+class CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry : public ydk::Entity
+{
+    public:
+        Rttmonapplsupportedrtttypesentry();
+        ~Rttmonapplsupportedrtttypesentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rttmonapplsupportedrtttypes; //type: RttMonRttType
+        ydk::YLeaf rttmonapplsupportedrtttypesvalid; //type: boolean
+
+}; // CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry
+
+
+class CISCORTTMONMIB::Rttmonctrladmintable : public ydk::Entity
 {
     public:
         Rttmonctrladmintable();
@@ -312,22 +321,23 @@ class CiscoRttmonMib::Rttmonctrladmintable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonctrladminentry; //type: CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry
+        class Rttmonctrladminentry; //type: CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry> > rttmonctrladminentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry> > rttmonctrladminentry;
         
-}; // CiscoRttmonMib::Rttmonctrladmintable
+}; // CISCORTTMONMIB::Rttmonctrladmintable
 
 
-class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry : public ydk::Entity
 {
     public:
         Rttmonctrladminentry();
@@ -335,23 +345,24 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf rttmonctrladminindex; //type: int32
         ydk::YLeaf rttmonctrladminowner; //type: binary
         ydk::YLeaf rttmonctrladmintag; //type: string
-        ydk::YLeaf rttmonctrladminrtttype; //type: Rttmonrtttype
+        ydk::YLeaf rttmonctrladminrtttype; //type: RttMonRttType
         ydk::YLeaf rttmonctrladminthreshold; //type: int32
         ydk::YLeaf rttmonctrladminfrequency; //type: int32
         ydk::YLeaf rttmonctrladmintimeout; //type: int32
         ydk::YLeaf rttmonctrladminverifydata; //type: boolean
-        ydk::YLeaf rttmonctrladminstatus; //type: Rowstatus
+        ydk::YLeaf rttmonctrladminstatus; //type: RowStatus
         ydk::YLeaf rttmonctrladminnvgen; //type: boolean
         ydk::YLeaf rttmonctrladmingroupname; //type: string
         ydk::YLeaf rttmonscheduleadminrttlife; //type: int32
@@ -388,7 +399,7 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry : public ydk::E
         ydk::YLeaf rttmonctrloperstate; //type: Rttmonctrloperstate
         ydk::YLeaf rttmonctrloperverifyerroroccurred; //type: boolean
         ydk::YLeaf rttmonlatestrttopercompletiontime; //type: uint32
-        ydk::YLeaf rttmonlatestrttopersense; //type: Rttresponsesense
+        ydk::YLeaf rttmonlatestrttopersense; //type: RttResponseSense
         ydk::YLeaf rttmonlatestrttoperapplspecificsense; //type: int32
         ydk::YLeaf rttmonlatestrttopersensedescription; //type: string
         ydk::YLeaf rttmonlatestrttopertime; //type: uint32
@@ -398,10 +409,10 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry : public ydk::E
         class Rttmonhistoryadminfilter;
         class Rttmonctrloperstate;
 
-}; // CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry
+}; // CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry
 
 
-class CiscoRttmonMib::Rttmonechoadmintable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonechoadmintable : public ydk::Entity
 {
     public:
         Rttmonechoadmintable();
@@ -409,22 +420,23 @@ class CiscoRttmonMib::Rttmonechoadmintable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonechoadminentry; //type: CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry
+        class Rttmonechoadminentry; //type: CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry> > rttmonechoadminentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry> > rttmonechoadminentry;
         
-}; // CiscoRttmonMib::Rttmonechoadmintable
+}; // CISCORTTMONMIB::Rttmonechoadmintable
 
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::Entity
 {
     public:
         Rttmonechoadminentry();
@@ -432,17 +444,18 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonechoadminprotocol; //type: Rttmonprotocol
+        ydk::YLeaf rttmonechoadminprotocol; //type: RttMonProtocol
         ydk::YLeaf rttmonechoadmintargetaddress; //type: binary
         ydk::YLeaf rttmonechoadminpktdatarequestsize; //type: int32
         ydk::YLeaf rttmonechoadminpktdataresponsesize; //type: int32
@@ -454,7 +467,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::E
         ydk::YLeaf rttmonechoadminlsrenable; //type: boolean
         ydk::YLeaf rttmonechoadmintargetaddressstring; //type: string
         ydk::YLeaf rttmonechoadminnameserver; //type: binary
-        ydk::YLeaf rttmonechoadminoperation; //type: Rttmonoperation
+        ydk::YLeaf rttmonechoadminoperation; //type: RttMonOperation
         ydk::YLeaf rttmonechoadminhttpversion; //type: string
         ydk::YLeaf rttmonechoadminurl; //type: string
         ydk::YLeaf rttmonechoadmincache; //type: boolean
@@ -466,16 +479,16 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::E
         ydk::YLeaf rttmonechoadminstring3; //type: string
         ydk::YLeaf rttmonechoadminstring4; //type: string
         ydk::YLeaf rttmonechoadminstring5; //type: string
-        ydk::YLeaf rttmonechoadminmode; //type: Rttmonoperation
+        ydk::YLeaf rttmonechoadminmode; //type: RttMonOperation
         ydk::YLeaf rttmonechoadminvrfname; //type: binary
-        ydk::YLeaf rttmonechoadmincodectype; //type: Rttmoncodectype
+        ydk::YLeaf rttmonechoadmincodectype; //type: RttMonCodecType
         ydk::YLeaf rttmonechoadmincodecinterval; //type: int32
         ydk::YLeaf rttmonechoadmincodecpayload; //type: int32
         ydk::YLeaf rttmonechoadmincodecnumpackets; //type: int32
         ydk::YLeaf rttmonechoadminicpifadvfactor; //type: int32
         ydk::YLeaf rttmonechoadminlspfectype; //type: Rttmonechoadminlspfectype
         ydk::YLeaf rttmonechoadminlspselector; //type: binary
-        ydk::YLeaf rttmonechoadminlspreplymode; //type: Rttmonlsppingreplymode
+        ydk::YLeaf rttmonechoadminlspreplymode; //type: RttMonLSPPingReplyMode
         ydk::YLeaf rttmonechoadminlspttl; //type: int32
         ydk::YLeaf rttmonechoadminlspexp; //type: int32
         ydk::YLeaf rttmonechoadminprecision; //type: Rttmonechoadminprecision
@@ -484,7 +497,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::E
         ydk::YLeaf rttmonechoadminowntpsynctolpct; //type: int32
         ydk::YLeaf rttmonechoadminowntpsynctoltype; //type: Rttmonechoadminowntpsynctoltype
         ydk::YLeaf rttmonechoadmincallednumber; //type: string
-        ydk::YLeaf rttmonechoadmindetectpoint; //type: Rttmonoperation
+        ydk::YLeaf rttmonechoadmindetectpoint; //type: RttMonOperation
         ydk::YLeaf rttmonechoadmingkregistration; //type: boolean
         ydk::YLeaf rttmonechoadminsourcevoiceport; //type: string
         ydk::YLeaf rttmonechoadmincallduration; //type: int32
@@ -524,156 +537,10 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry : public ydk::E
         class Rttmonechoadminowntpsynctoltype;
         class Rttmonechoadminreservedsp;
 
-}; // CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry
+}; // CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry
 
 
-class CiscoRttmonMib::Rttmonfileioadmintable : public ydk::Entity
-{
-    public:
-        Rttmonfileioadmintable();
-        ~Rttmonfileioadmintable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonfileioadminentry; //type: CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry> > rttmonfileioadminentry;
-        
-}; // CiscoRttmonMib::Rttmonfileioadmintable
-
-
-class CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry : public ydk::Entity
-{
-    public:
-        Rttmonfileioadminentry();
-        ~Rttmonfileioadminentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonfileioadminfilepath; //type: string
-        ydk::YLeaf rttmonfileioadminsize; //type: Rttmonfileioadminsize
-        ydk::YLeaf rttmonfileioadminaction; //type: Rttmonfileioadminaction
-        class Rttmonfileioadminsize;
-        class Rttmonfileioadminaction;
-
-}; // CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry
-
-
-class CiscoRttmonMib::Rttmonscriptadmintable : public ydk::Entity
-{
-    public:
-        Rttmonscriptadmintable();
-        ~Rttmonscriptadmintable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonscriptadminentry; //type: CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry> > rttmonscriptadminentry;
-        
-}; // CiscoRttmonMib::Rttmonscriptadmintable
-
-
-class CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry : public ydk::Entity
-{
-    public:
-        Rttmonscriptadminentry();
-        ~Rttmonscriptadminentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonscriptadminname; //type: string
-        ydk::YLeaf rttmonscriptadmincmdlineparams; //type: string
-
-}; // CiscoRttmonMib::Rttmonscriptadmintable::Rttmonscriptadminentry
-
-
-class CiscoRttmonMib::Rttmonreacttriggeradmintable : public ydk::Entity
-{
-    public:
-        Rttmonreacttriggeradmintable();
-        ~Rttmonreacttriggeradmintable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonreacttriggeradminentry; //type: CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry> > rttmonreacttriggeradminentry;
-        
-}; // CiscoRttmonMib::Rttmonreacttriggeradmintable
-
-
-class CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry : public ydk::Entity
-{
-    public:
-        Rttmonreacttriggeradminentry();
-        ~Rttmonreacttriggeradminentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonreacttriggeradminrttmonctrladminindex; //type: int32
-        ydk::YLeaf rttmonreacttriggeradminstatus; //type: Rowstatus
-        ydk::YLeaf rttmonreacttriggeroperstate; //type: Rttmonreacttriggeroperstate
-        class Rttmonreacttriggeroperstate;
-
-}; // CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry
-
-
-class CiscoRttmonMib::Rttmonechopathadmintable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonechopathadmintable : public ydk::Entity
 {
     public:
         Rttmonechopathadmintable();
@@ -681,22 +548,23 @@ class CiscoRttmonMib::Rttmonechopathadmintable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonechopathadminentry; //type: CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry
+        class Rttmonechopathadminentry; //type: CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry> > rttmonechopathadminentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry> > rttmonechopathadminentry;
         
-}; // CiscoRttmonMib::Rttmonechopathadmintable
+}; // CISCORTTMONMIB::Rttmonechopathadmintable
 
 
-class CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry : public ydk::Entity
 {
     public:
         Rttmonechopathadminentry();
@@ -704,227 +572,76 @@ class CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
         ydk::YLeaf rttmonechopathadminhopindex; //type: int32
         ydk::YLeaf rttmonechopathadminhopaddress; //type: binary
 
-}; // CiscoRttmonMib::Rttmonechopathadmintable::Rttmonechopathadminentry
+}; // CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry
 
 
-class CiscoRttmonMib::Rttmongrpscheduleadmintable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonfileioadmintable : public ydk::Entity
 {
     public:
-        Rttmongrpscheduleadmintable();
-        ~Rttmongrpscheduleadmintable();
+        Rttmonfileioadmintable();
+        ~Rttmonfileioadmintable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmongrpscheduleadminentry; //type: CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry
+        class Rttmonfileioadminentry; //type: CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry> > rttmongrpscheduleadminentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry> > rttmonfileioadminentry;
         
-}; // CiscoRttmonMib::Rttmongrpscheduleadmintable
+}; // CISCORTTMONMIB::Rttmonfileioadmintable
 
 
-class CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry : public ydk::Entity
 {
     public:
-        Rttmongrpscheduleadminentry();
-        ~Rttmongrpscheduleadminentry();
+        Rttmonfileioadminentry();
+        ~Rttmonfileioadminentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf rttmongrpscheduleadminindex; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminprobes; //type: string
-        ydk::YLeaf rttmongrpscheduleadminperiod; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminfrequency; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminlife; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminageout; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminstatus; //type: Rowstatus
-        ydk::YLeaf rttmongrpscheduleadminfreqmax; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminfreqmin; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminstarttime; //type: int32
-        ydk::YLeaf rttmongrpscheduleadminadd; //type: boolean
-        ydk::YLeaf rttmongrpscheduleadmindelete; //type: boolean
-        ydk::YLeaf rttmongrpscheduleadminreset; //type: boolean
-
-}; // CiscoRttmonMib::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry
-
-
-class CiscoRttmonMib::Rttmplsvpnmonctrltable : public ydk::Entity
-{
-    public:
-        Rttmplsvpnmonctrltable();
-        ~Rttmplsvpnmonctrltable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmplsvpnmonctrlentry; //type: CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry> > rttmplsvpnmonctrlentry;
-        
-}; // CiscoRttmonMib::Rttmplsvpnmonctrltable
-
-
-class CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry : public ydk::Entity
-{
-    public:
-        Rttmplsvpnmonctrlentry();
-        ~Rttmplsvpnmonctrlentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rttmplsvpnmonctrlindex; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrlrtttype; //type: Rttmplsvpnmonrtttype
-        ydk::YLeaf rttmplsvpnmonctrlvrfname; //type: binary
-        ydk::YLeaf rttmplsvpnmonctrltag; //type: string
-        ydk::YLeaf rttmplsvpnmonctrlthreshold; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrltimeout; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrlscaninterval; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrldelscanfactor; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrlexp; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrlrequestsize; //type: int32
-        ydk::YLeaf rttmplsvpnmonctrlverifydata; //type: boolean
-        ydk::YLeaf rttmplsvpnmonctrlstoragetype; //type: Storagetype
-        ydk::YLeaf rttmplsvpnmonctrlprobelist; //type: string
-        ydk::YLeaf rttmplsvpnmonctrlstatus; //type: Rowstatus
-        ydk::YLeaf rttmplsvpnmonctrllpd; //type: boolean
-        ydk::YLeaf rttmplsvpnmonctrllpdgrplist; //type: string
-        ydk::YLeaf rttmplsvpnmonctrllpdcomptime; //type: int32
-        ydk::YLeaf rttmplsvpnmontypeinterval; //type: int32
-        ydk::YLeaf rttmplsvpnmontypenumpackets; //type: int32
-        ydk::YLeaf rttmplsvpnmontypedestport; //type: int32
-        ydk::YLeaf rttmplsvpnmontypesecfreqtype; //type: Rttmplsvpnmontypesecfreqtype
-        ydk::YLeaf rttmplsvpnmontypesecfreqvalue; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelspselector; //type: binary
-        ydk::YLeaf rttmplsvpnmontypelspreplymode; //type: Rttmonlsppingreplymode
-        ydk::YLeaf rttmplsvpnmontypelspttl; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelspreplydscp; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdmaxsessions; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdsesstimeout; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdechotimeout; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdechointerval; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdechonullshim; //type: boolean
-        ydk::YLeaf rttmplsvpnmontypelpdscanperiod; //type: int32
-        ydk::YLeaf rttmplsvpnmontypelpdstathours; //type: int32
-        ydk::YLeaf rttmplsvpnmonschedulerttstarttime; //type: uint32
-        ydk::YLeaf rttmplsvpnmonscheduleperiod; //type: int32
-        ydk::YLeaf rttmplsvpnmonschedulefrequency; //type: int32
-        ydk::YLeaf rttmplsvpnmonreactconnectionenable; //type: boolean
-        ydk::YLeaf rttmplsvpnmonreacttimeoutenable; //type: boolean
-        ydk::YLeaf rttmplsvpnmonreactthresholdtype; //type: Rttmplsvpnmonreactthresholdtype
-        ydk::YLeaf rttmplsvpnmonreactthresholdcount; //type: int32
-        ydk::YLeaf rttmplsvpnmonreactactiontype; //type: Rttmplsvpnmonreactactiontype
-        ydk::YLeaf rttmplsvpnmonreactlpdnotifytype; //type: Rttmplsvpnmonreactlpdnotifytype
-        ydk::YLeaf rttmplsvpnmonreactlpdretrycount; //type: int32
-        class Rttmplsvpnmontypesecfreqtype;
-        class Rttmplsvpnmonreactthresholdtype;
-        class Rttmplsvpnmonreactactiontype;
-        class Rttmplsvpnmonreactlpdnotifytype;
-
-}; // CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry
-
-
-class CiscoRttmonMib::Rttmonreacttable : public ydk::Entity
-{
-    public:
-        Rttmonreacttable();
-        ~Rttmonreacttable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonreactentry; //type: CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry> > rttmonreactentry;
-        
-}; // CiscoRttmonMib::Rttmonreacttable
-
-
-class CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry : public ydk::Entity
-{
-    public:
-        Rttmonreactentry();
-        ~Rttmonreactentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonreactconfigindex; //type: int32
-        ydk::YLeaf rttmonreactvar; //type: Rttmonreactvar
-        ydk::YLeaf rttmonreactthresholdtype; //type: Rttmonreactthresholdtype
-        ydk::YLeaf rttmonreactactiontype; //type: Rttmonreactactiontype
-        ydk::YLeaf rttmonreactthresholdrising; //type: int32
-        ydk::YLeaf rttmonreactthresholdfalling; //type: int32
-        ydk::YLeaf rttmonreactthresholdcountx; //type: int32
-        ydk::YLeaf rttmonreactthresholdcounty; //type: int32
-        ydk::YLeaf rttmonreactvalue; //type: int32
-        ydk::YLeaf rttmonreactoccurred; //type: boolean
-        ydk::YLeaf rttmonreactstatus; //type: Rowstatus
-        class Rttmonreactthresholdtype;
-        class Rttmonreactactiontype;
+        ydk::YLeaf rttmonfileioadminfilepath; //type: string
+        ydk::YLeaf rttmonfileioadminsize; //type: Rttmonfileioadminsize
+        ydk::YLeaf rttmonfileioadminaction; //type: Rttmonfileioadminaction
+        class Rttmonfileioadminsize;
+        class Rttmonfileioadminaction;
 
-}; // CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry
+}; // CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry
 
 
-class CiscoRttmonMib::Rttmongeneratedopertable : public ydk::Entity
+class CISCORTTMONMIB::Rttmongeneratedopertable : public ydk::Entity
 {
     public:
         Rttmongeneratedopertable();
@@ -932,22 +649,23 @@ class CiscoRttmonMib::Rttmongeneratedopertable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmongeneratedoperentry; //type: CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry
+        class Rttmongeneratedoperentry; //type: CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry> > rttmongeneratedoperentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry> > rttmongeneratedoperentry;
         
-}; // CiscoRttmonMib::Rttmongeneratedopertable
+}; // CISCORTTMONMIB::Rttmongeneratedopertable
 
 
-class CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry : public ydk::Entity
 {
     public:
         Rttmongeneratedoperentry();
@@ -955,192 +673,139 @@ class CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmongeneratedoperrespipaddrtype; //type: Inetaddresstype
+        ydk::YLeaf rttmongeneratedoperrespipaddrtype; //type: InetAddressType
         ydk::YLeaf rttmongeneratedoperrespipaddr; //type: binary
         ydk::YLeaf rttmongeneratedoperctrladminindex; //type: uint32
 
-}; // CiscoRttmonMib::Rttmongeneratedopertable::Rttmongeneratedoperentry
+}; // CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry
 
 
-class CiscoRttmonMib::Rttmonstatscapturetable : public ydk::Entity
+class CISCORTTMONMIB::Rttmongrpscheduleadmintable : public ydk::Entity
 {
     public:
-        Rttmonstatscapturetable();
-        ~Rttmonstatscapturetable();
+        Rttmongrpscheduleadmintable();
+        ~Rttmongrpscheduleadmintable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonstatscaptureentry; //type: CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry
+        class Rttmongrpscheduleadminentry; //type: CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry> > rttmonstatscaptureentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry> > rttmongrpscheduleadminentry;
         
-}; // CiscoRttmonMib::Rttmonstatscapturetable
+}; // CISCORTTMONMIB::Rttmongrpscheduleadmintable
 
 
-class CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry : public ydk::Entity
 {
     public:
-        Rttmonstatscaptureentry();
-        ~Rttmonstatscaptureentry();
+        Rttmongrpscheduleadminentry();
+        ~Rttmongrpscheduleadminentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonstatscapturestarttimeindex; //type: uint32
-        ydk::YLeaf rttmonstatscapturepathindex; //type: int32
-        ydk::YLeaf rttmonstatscapturehopindex; //type: int32
-        ydk::YLeaf rttmonstatscapturedistindex; //type: int32
-        ydk::YLeaf rttmonstatscapturecompletions; //type: int32
-        ydk::YLeaf rttmonstatscaptureoverthresholds; //type: int32
-        ydk::YLeaf rttmonstatscapturesumcompletiontime; //type: uint32
-        ydk::YLeaf rttmonstatscapturesumcompletiontime2low; //type: uint32
-        ydk::YLeaf rttmonstatscapturesumcompletiontime2high; //type: uint32
-        ydk::YLeaf rttmonstatscapturecompletiontimemax; //type: uint32
-        ydk::YLeaf rttmonstatscapturecompletiontimemin; //type: uint32
+        ydk::YLeaf rttmongrpscheduleadminindex; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminprobes; //type: string
+        ydk::YLeaf rttmongrpscheduleadminperiod; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminfrequency; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminlife; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminageout; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminstatus; //type: RowStatus
+        ydk::YLeaf rttmongrpscheduleadminfreqmax; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminfreqmin; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminstarttime; //type: int32
+        ydk::YLeaf rttmongrpscheduleadminadd; //type: boolean
+        ydk::YLeaf rttmongrpscheduleadmindelete; //type: boolean
+        ydk::YLeaf rttmongrpscheduleadminreset; //type: boolean
 
-}; // CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry
+}; // CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry
 
 
-class CiscoRttmonMib::Rttmonstatscollecttable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonhistorycollectiontable : public ydk::Entity
 {
     public:
-        Rttmonstatscollecttable();
-        ~Rttmonstatscollecttable();
+        Rttmonhistorycollectiontable();
+        ~Rttmonhistorycollectiontable();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonstatscollectentry; //type: CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry
+        class Rttmonhistorycollectionentry; //type: CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry> > rttmonstatscollectentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry> > rttmonhistorycollectionentry;
         
-}; // CiscoRttmonMib::Rttmonstatscollecttable
+}; // CISCORTTMONMIB::Rttmonhistorycollectiontable
 
 
-class CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry : public ydk::Entity
 {
     public:
-        Rttmonstatscollectentry();
-        ~Rttmonstatscollectentry();
+        Rttmonhistorycollectionentry();
+        ~Rttmonhistorycollectionentry();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
-        //type: uint32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturestarttimeindex)
-        ydk::YLeaf rttmonstatscapturestarttimeindex;
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturepathindex)
-        ydk::YLeaf rttmonstatscapturepathindex;
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturehopindex)
-        ydk::YLeaf rttmonstatscapturehopindex;
-        ydk::YLeaf rttmonstatscollectnumdisconnects; //type: int32
-        ydk::YLeaf rttmonstatscollecttimeouts; //type: int32
-        ydk::YLeaf rttmonstatscollectbusies; //type: int32
-        ydk::YLeaf rttmonstatscollectnoconnections; //type: int32
-        ydk::YLeaf rttmonstatscollectdrops; //type: int32
-        ydk::YLeaf rttmonstatscollectsequenceerrors; //type: int32
-        ydk::YLeaf rttmonstatscollectverifyerrors; //type: int32
-        ydk::YLeaf rttmonstatscollectaddress; //type: binary
-        ydk::YLeaf rttmoncontrolenableerrors; //type: int32
-        ydk::YLeaf rttmonstatsretrieveerrors; //type: int32
-        ydk::YLeaf rttmonstatscollectctrlenerrors; //type: int32
-        ydk::YLeaf rttmonstatscollectretrieveerrors; //type: int32
+        ydk::YLeaf rttmonhistorycollectionlifeindex; //type: int32
+        ydk::YLeaf rttmonhistorycollectionbucketindex; //type: int32
+        ydk::YLeaf rttmonhistorycollectionsampleindex; //type: int32
+        ydk::YLeaf rttmonhistorycollectionsampletime; //type: uint32
+        ydk::YLeaf rttmonhistorycollectionaddress; //type: binary
+        ydk::YLeaf rttmonhistorycollectioncompletiontime; //type: uint32
+        ydk::YLeaf rttmonhistorycollectionsense; //type: RttResponseSense
+        ydk::YLeaf rttmonhistorycollectionapplspecificsense; //type: int32
+        ydk::YLeaf rttmonhistorycollectionsensedescription; //type: string
 
-}; // CiscoRttmonMib::Rttmonstatscollecttable::Rttmonstatscollectentry
+}; // CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry
 
 
-class CiscoRttmonMib::Rttmonstatstotalstable : public ydk::Entity
-{
-    public:
-        Rttmonstatstotalstable();
-        ~Rttmonstatstotalstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonstatstotalsentry; //type: CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry> > rttmonstatstotalsentry;
-        
-}; // CiscoRttmonMib::Rttmonstatstotalstable
-
-
-class CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry : public ydk::Entity
-{
-    public:
-        Rttmonstatstotalsentry();
-        ~Rttmonstatstotalsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        //type: uint32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturestarttimeindex)
-        ydk::YLeaf rttmonstatscapturestarttimeindex;
-        ydk::YLeaf rttmonstatstotalselapsedtime; //type: int32
-        ydk::YLeaf rttmonstatstotalsinitiations; //type: int32
-
-}; // CiscoRttmonMib::Rttmonstatstotalstable::Rttmonstatstotalsentry
-
-
-class CiscoRttmonMib::Rttmonhttpstatstable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonhttpstatstable : public ydk::Entity
 {
     public:
         Rttmonhttpstatstable();
@@ -1148,22 +813,23 @@ class CiscoRttmonMib::Rttmonhttpstatstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonhttpstatsentry; //type: CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry
+        class Rttmonhttpstatsentry; //type: CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry> > rttmonhttpstatsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry> > rttmonhttpstatsentry;
         
-}; // CiscoRttmonMib::Rttmonhttpstatstable
+}; // CISCORTTMONMIB::Rttmonhttpstatstable
 
 
-class CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry : public ydk::Entity
 {
     public:
         Rttmonhttpstatsentry();
@@ -1171,15 +837,16 @@ class CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
         ydk::YLeaf rttmonhttpstatsstarttimeindex; //type: uint32
         ydk::YLeaf rttmonhttpstatscompletions; //type: uint32
@@ -1201,10 +868,10 @@ class CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry : public ydk::E
         ydk::YLeaf rttmonhttpstatserror; //type: uint32
         ydk::YLeaf rttmonhttpstatsbusies; //type: uint32
 
-}; // CiscoRttmonMib::Rttmonhttpstatstable::Rttmonhttpstatsentry
+}; // CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry
 
 
-class CiscoRttmonMib::Rttmonjitterstatstable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonjitterstatstable : public ydk::Entity
 {
     public:
         Rttmonjitterstatstable();
@@ -1212,22 +879,23 @@ class CiscoRttmonMib::Rttmonjitterstatstable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonjitterstatsentry; //type: CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry
+        class Rttmonjitterstatsentry; //type: CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry> > rttmonjitterstatsentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry> > rttmonjitterstatsentry;
         
-}; // CiscoRttmonMib::Rttmonjitterstatstable
+}; // CISCORTTMONMIB::Rttmonjitterstatstable
 
 
-class CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry : public ydk::Entity
 {
     public:
         Rttmonjitterstatsentry();
@@ -1235,15 +903,16 @@ class CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry : public yd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
         ydk::YLeaf rttmonjitterstatsstarttimeindex; //type: uint32
         ydk::YLeaf rttmonjitterstatscompletions; //type: uint32
@@ -1314,127 +983,10 @@ class CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry : public yd
         ydk::YLeaf rttmonjitterstatsowsumsdhigh; //type: uint32
         ydk::YLeaf rttmonjitterstatsowsumdshigh; //type: uint32
 
-}; // CiscoRttmonMib::Rttmonjitterstatstable::Rttmonjitterstatsentry
+}; // CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry
 
 
-class CiscoRttmonMib::Rttmonlpdgrpstatstable : public ydk::Entity
-{
-    public:
-        Rttmonlpdgrpstatstable();
-        ~Rttmonlpdgrpstatstable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonlpdgrpstatsentry; //type: CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry> > rttmonlpdgrpstatsentry;
-        
-}; // CiscoRttmonMib::Rttmonlpdgrpstatstable
-
-
-class CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry : public ydk::Entity
-{
-    public:
-        Rttmonlpdgrpstatsentry();
-        ~Rttmonlpdgrpstatsentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf rttmonlpdgrpstatsgroupindex; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsstarttimeindex; //type: uint32
-        ydk::YLeaf rttmonlpdgrpstatstargetpe; //type: binary
-        ydk::YLeaf rttmonlpdgrpstatsnumofpass; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsnumoffail; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsnumoftimeout; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsavgrtt; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsminrtt; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsmaxrtt; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsminnumpaths; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsmaxnumpaths; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatslpdstarttime; //type: uint32
-        ydk::YLeaf rttmonlpdgrpstatslpdfailoccurred; //type: boolean
-        ydk::YLeaf rttmonlpdgrpstatslpdfailcause; //type: Rttmplsvpnmonlpdfailuresense
-        ydk::YLeaf rttmonlpdgrpstatslpdcomptime; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatsgroupstatus; //type: Rttmplsvpnmonlpdgrpstatus
-        ydk::YLeaf rttmonlpdgrpstatsgroupprobeindex; //type: int32
-        ydk::YLeaf rttmonlpdgrpstatspathids; //type: string
-        ydk::YLeaf rttmonlpdgrpstatsprobestatus; //type: string
-        ydk::YLeaf rttmonlpdgrpstatsresettime; //type: uint32
-
-}; // CiscoRttmonMib::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry
-
-
-class CiscoRttmonMib::Rttmonhistorycollectiontable : public ydk::Entity
-{
-    public:
-        Rttmonhistorycollectiontable();
-        ~Rttmonhistorycollectiontable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Rttmonhistorycollectionentry; //type: CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry
-
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry> > rttmonhistorycollectionentry;
-        
-}; // CiscoRttmonMib::Rttmonhistorycollectiontable
-
-
-class CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry : public ydk::Entity
-{
-    public:
-        Rttmonhistorycollectionentry();
-        ~Rttmonhistorycollectionentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
-        ydk::YLeaf rttmonctrladminindex;
-        ydk::YLeaf rttmonhistorycollectionlifeindex; //type: int32
-        ydk::YLeaf rttmonhistorycollectionbucketindex; //type: int32
-        ydk::YLeaf rttmonhistorycollectionsampleindex; //type: int32
-        ydk::YLeaf rttmonhistorycollectionsampletime; //type: uint32
-        ydk::YLeaf rttmonhistorycollectionaddress; //type: binary
-        ydk::YLeaf rttmonhistorycollectioncompletiontime; //type: uint32
-        ydk::YLeaf rttmonhistorycollectionsense; //type: Rttresponsesense
-        ydk::YLeaf rttmonhistorycollectionapplspecificsense; //type: int32
-        ydk::YLeaf rttmonhistorycollectionsensedescription; //type: string
-
-}; // CiscoRttmonMib::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry
-
-
-class CiscoRttmonMib::Rttmonlatesthttpopertable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonlatesthttpopertable : public ydk::Entity
 {
     public:
         Rttmonlatesthttpopertable();
@@ -1442,22 +994,23 @@ class CiscoRttmonMib::Rttmonlatesthttpopertable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonlatesthttpoperentry; //type: CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry
+        class Rttmonlatesthttpoperentry; //type: CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry> > rttmonlatesthttpoperentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry> > rttmonlatesthttpoperentry;
         
-}; // CiscoRttmonMib::Rttmonlatesthttpopertable
+}; // CISCORTTMONMIB::Rttmonlatesthttpopertable
 
 
-class CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry : public ydk::Entity
 {
     public:
         Rttmonlatesthttpoperentry();
@@ -1465,28 +1018,29 @@ class CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
         ydk::YLeaf rttmonlatesthttpoperrtt; //type: uint32
         ydk::YLeaf rttmonlatesthttpoperdnsrtt; //type: uint32
         ydk::YLeaf rttmonlatesthttpopertcpconnectrtt; //type: uint32
         ydk::YLeaf rttmonlatesthttpopertransactionrtt; //type: uint32
         ydk::YLeaf rttmonlatesthttpopermessagebodyoctets; //type: uint32
-        ydk::YLeaf rttmonlatesthttpopersense; //type: Rttresponsesense
+        ydk::YLeaf rttmonlatesthttpopersense; //type: RttResponseSense
         ydk::YLeaf rttmonlatesthttperrorsensedescription; //type: string
 
-}; // CiscoRttmonMib::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry
+}; // CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry
 
 
-class CiscoRttmonMib::Rttmonlatestjitteropertable : public ydk::Entity
+class CISCORTTMONMIB::Rttmonlatestjitteropertable : public ydk::Entity
 {
     public:
         Rttmonlatestjitteropertable();
@@ -1494,22 +1048,23 @@ class CiscoRttmonMib::Rttmonlatestjitteropertable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Rttmonlatestjitteroperentry; //type: CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry
+        class Rttmonlatestjitteroperentry; //type: CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry
 
-        std::vector<std::shared_ptr<CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry> > rttmonlatestjitteroperentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry> > rttmonlatestjitteroperentry;
         
-}; // CiscoRttmonMib::Rttmonlatestjitteropertable
+}; // CISCORTTMONMIB::Rttmonlatestjitteropertable
 
 
-class CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry : public ydk::Entity
+class CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry : public ydk::Entity
 {
     public:
         Rttmonlatestjitteroperentry();
@@ -1517,15 +1072,16 @@ class CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        //type: int32 (refers to CISCO_RTTMON_MIB::CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
         ydk::YLeaf rttmonctrladminindex;
         ydk::YLeaf rttmonlatestjitteropernumofrtt; //type: uint32
         ydk::YLeaf rttmonlatestjitteroperrttsum; //type: uint32
@@ -1557,7 +1113,7 @@ class CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry :
         ydk::YLeaf rttmonlatestjitteroperpacketoutofsequence; //type: uint32
         ydk::YLeaf rttmonlatestjitteroperpacketmia; //type: uint32
         ydk::YLeaf rttmonlatestjitteroperpacketlatearrival; //type: uint32
-        ydk::YLeaf rttmonlatestjitteropersense; //type: Rttresponsesense
+        ydk::YLeaf rttmonlatestjitteropersense; //type: RttResponseSense
         ydk::YLeaf rttmonlatestjittererrorsensedescription; //type: string
         ydk::YLeaf rttmonlatestjitteroperowsumsd; //type: uint32
         ydk::YLeaf rttmonlatestjitteroperowsum2sd; //type: uint32
@@ -1587,9 +1143,500 @@ class CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry :
         ydk::YLeaf rttmonlatestjitteroperowsum2dshigh; //type: uint32
         class Rttmonlatestjitteroperntpstate;
 
-}; // CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry
+}; // CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry
 
-class CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype : public ydk::Enum
+
+class CISCORTTMONMIB::Rttmonlpdgrpstatstable : public ydk::Entity
+{
+    public:
+        Rttmonlpdgrpstatstable();
+        ~Rttmonlpdgrpstatstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonlpdgrpstatsentry; //type: CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry> > rttmonlpdgrpstatsentry;
+        
+}; // CISCORTTMONMIB::Rttmonlpdgrpstatstable
+
+
+class CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry : public ydk::Entity
+{
+    public:
+        Rttmonlpdgrpstatsentry();
+        ~Rttmonlpdgrpstatsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rttmonlpdgrpstatsgroupindex; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsstarttimeindex; //type: uint32
+        ydk::YLeaf rttmonlpdgrpstatstargetpe; //type: binary
+        ydk::YLeaf rttmonlpdgrpstatsnumofpass; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsnumoffail; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsnumoftimeout; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsavgrtt; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsminrtt; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsmaxrtt; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsminnumpaths; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsmaxnumpaths; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatslpdstarttime; //type: uint32
+        ydk::YLeaf rttmonlpdgrpstatslpdfailoccurred; //type: boolean
+        ydk::YLeaf rttmonlpdgrpstatslpdfailcause; //type: RttMplsVpnMonLpdFailureSense
+        ydk::YLeaf rttmonlpdgrpstatslpdcomptime; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatsgroupstatus; //type: RttMplsVpnMonLpdGrpStatus
+        ydk::YLeaf rttmonlpdgrpstatsgroupprobeindex; //type: int32
+        ydk::YLeaf rttmonlpdgrpstatspathids; //type: string
+        ydk::YLeaf rttmonlpdgrpstatsprobestatus; //type: string
+        ydk::YLeaf rttmonlpdgrpstatsresettime; //type: uint32
+
+}; // CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry
+
+
+class CISCORTTMONMIB::Rttmonreacttable : public ydk::Entity
+{
+    public:
+        Rttmonreacttable();
+        ~Rttmonreacttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonreactentry; //type: CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry> > rttmonreactentry;
+        
+}; // CISCORTTMONMIB::Rttmonreacttable
+
+
+class CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry : public ydk::Entity
+{
+    public:
+        Rttmonreactentry();
+        ~Rttmonreactentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        ydk::YLeaf rttmonreactconfigindex; //type: int32
+        ydk::YLeaf rttmonreactvar; //type: RttMonReactVar
+        ydk::YLeaf rttmonreactthresholdtype; //type: Rttmonreactthresholdtype
+        ydk::YLeaf rttmonreactactiontype; //type: Rttmonreactactiontype
+        ydk::YLeaf rttmonreactthresholdrising; //type: int32
+        ydk::YLeaf rttmonreactthresholdfalling; //type: int32
+        ydk::YLeaf rttmonreactthresholdcountx; //type: int32
+        ydk::YLeaf rttmonreactthresholdcounty; //type: int32
+        ydk::YLeaf rttmonreactvalue; //type: int32
+        ydk::YLeaf rttmonreactoccurred; //type: boolean
+        ydk::YLeaf rttmonreactstatus; //type: RowStatus
+        class Rttmonreactthresholdtype;
+        class Rttmonreactactiontype;
+
+}; // CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry
+
+
+class CISCORTTMONMIB::Rttmonreacttriggeradmintable : public ydk::Entity
+{
+    public:
+        Rttmonreacttriggeradmintable();
+        ~Rttmonreacttriggeradmintable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonreacttriggeradminentry; //type: CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry> > rttmonreacttriggeradminentry;
+        
+}; // CISCORTTMONMIB::Rttmonreacttriggeradmintable
+
+
+class CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry : public ydk::Entity
+{
+    public:
+        Rttmonreacttriggeradminentry();
+        ~Rttmonreacttriggeradminentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        ydk::YLeaf rttmonreacttriggeradminrttmonctrladminindex; //type: int32
+        ydk::YLeaf rttmonreacttriggeradminstatus; //type: RowStatus
+        ydk::YLeaf rttmonreacttriggeroperstate; //type: Rttmonreacttriggeroperstate
+        class Rttmonreacttriggeroperstate;
+
+}; // CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry
+
+
+class CISCORTTMONMIB::Rttmonscriptadmintable : public ydk::Entity
+{
+    public:
+        Rttmonscriptadmintable();
+        ~Rttmonscriptadmintable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonscriptadminentry; //type: CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry> > rttmonscriptadminentry;
+        
+}; // CISCORTTMONMIB::Rttmonscriptadmintable
+
+
+class CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry : public ydk::Entity
+{
+    public:
+        Rttmonscriptadminentry();
+        ~Rttmonscriptadminentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        ydk::YLeaf rttmonscriptadminname; //type: string
+        ydk::YLeaf rttmonscriptadmincmdlineparams; //type: string
+
+}; // CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry
+
+
+class CISCORTTMONMIB::Rttmonstatscapturetable : public ydk::Entity
+{
+    public:
+        Rttmonstatscapturetable();
+        ~Rttmonstatscapturetable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonstatscaptureentry; //type: CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry> > rttmonstatscaptureentry;
+        
+}; // CISCORTTMONMIB::Rttmonstatscapturetable
+
+
+class CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry : public ydk::Entity
+{
+    public:
+        Rttmonstatscaptureentry();
+        ~Rttmonstatscaptureentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        ydk::YLeaf rttmonstatscapturestarttimeindex; //type: uint32
+        ydk::YLeaf rttmonstatscapturepathindex; //type: int32
+        ydk::YLeaf rttmonstatscapturehopindex; //type: int32
+        ydk::YLeaf rttmonstatscapturedistindex; //type: int32
+        ydk::YLeaf rttmonstatscapturecompletions; //type: int32
+        ydk::YLeaf rttmonstatscaptureoverthresholds; //type: int32
+        ydk::YLeaf rttmonstatscapturesumcompletiontime; //type: uint32
+        ydk::YLeaf rttmonstatscapturesumcompletiontime2low; //type: uint32
+        ydk::YLeaf rttmonstatscapturesumcompletiontime2high; //type: uint32
+        ydk::YLeaf rttmonstatscapturecompletiontimemax; //type: uint32
+        ydk::YLeaf rttmonstatscapturecompletiontimemin; //type: uint32
+
+}; // CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry
+
+
+class CISCORTTMONMIB::Rttmonstatscollecttable : public ydk::Entity
+{
+    public:
+        Rttmonstatscollecttable();
+        ~Rttmonstatscollecttable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonstatscollectentry; //type: CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry> > rttmonstatscollectentry;
+        
+}; // CISCORTTMONMIB::Rttmonstatscollecttable
+
+
+class CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry : public ydk::Entity
+{
+    public:
+        Rttmonstatscollectentry();
+        ~Rttmonstatscollectentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturestarttimeindex)
+        ydk::YLeaf rttmonstatscapturestarttimeindex;
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturepathindex)
+        ydk::YLeaf rttmonstatscapturepathindex;
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturehopindex)
+        ydk::YLeaf rttmonstatscapturehopindex;
+        ydk::YLeaf rttmonstatscollectnumdisconnects; //type: int32
+        ydk::YLeaf rttmonstatscollecttimeouts; //type: int32
+        ydk::YLeaf rttmonstatscollectbusies; //type: int32
+        ydk::YLeaf rttmonstatscollectnoconnections; //type: int32
+        ydk::YLeaf rttmonstatscollectdrops; //type: int32
+        ydk::YLeaf rttmonstatscollectsequenceerrors; //type: int32
+        ydk::YLeaf rttmonstatscollectverifyerrors; //type: int32
+        ydk::YLeaf rttmonstatscollectaddress; //type: binary
+        ydk::YLeaf rttmoncontrolenableerrors; //type: int32
+        ydk::YLeaf rttmonstatsretrieveerrors; //type: int32
+        ydk::YLeaf rttmonstatscollectctrlenerrors; //type: int32
+        ydk::YLeaf rttmonstatscollectretrieveerrors; //type: int32
+
+}; // CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry
+
+
+class CISCORTTMONMIB::Rttmonstatstotalstable : public ydk::Entity
+{
+    public:
+        Rttmonstatstotalstable();
+        ~Rttmonstatstotalstable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmonstatstotalsentry; //type: CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry> > rttmonstatstotalsentry;
+        
+}; // CISCORTTMONMIB::Rttmonstatstotalstable
+
+
+class CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry : public ydk::Entity
+{
+    public:
+        Rttmonstatstotalsentry();
+        ~Rttmonstatstotalsentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::rttmonctrladminindex)
+        ydk::YLeaf rttmonctrladminindex;
+        //type: uint32 (refers to cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::rttmonstatscapturestarttimeindex)
+        ydk::YLeaf rttmonstatscapturestarttimeindex;
+        ydk::YLeaf rttmonstatstotalselapsedtime; //type: int32
+        ydk::YLeaf rttmonstatstotalsinitiations; //type: int32
+
+}; // CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry
+
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable : public ydk::Entity
+{
+    public:
+        Rttmplsvpnmonctrltable();
+        ~Rttmplsvpnmonctrltable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Rttmplsvpnmonctrlentry; //type: CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_RTTMON_MIB::CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry> > rttmplsvpnmonctrlentry;
+        
+}; // CISCORTTMONMIB::Rttmplsvpnmonctrltable
+
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry : public ydk::Entity
+{
+    public:
+        Rttmplsvpnmonctrlentry();
+        ~Rttmplsvpnmonctrlentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rttmplsvpnmonctrlindex; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrlrtttype; //type: RttMplsVpnMonRttType
+        ydk::YLeaf rttmplsvpnmonctrlvrfname; //type: binary
+        ydk::YLeaf rttmplsvpnmonctrltag; //type: string
+        ydk::YLeaf rttmplsvpnmonctrlthreshold; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrltimeout; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrlscaninterval; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrldelscanfactor; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrlexp; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrlrequestsize; //type: int32
+        ydk::YLeaf rttmplsvpnmonctrlverifydata; //type: boolean
+        ydk::YLeaf rttmplsvpnmonctrlstoragetype; //type: StorageType
+        ydk::YLeaf rttmplsvpnmonctrlprobelist; //type: string
+        ydk::YLeaf rttmplsvpnmonctrlstatus; //type: RowStatus
+        ydk::YLeaf rttmplsvpnmonctrllpd; //type: boolean
+        ydk::YLeaf rttmplsvpnmonctrllpdgrplist; //type: string
+        ydk::YLeaf rttmplsvpnmonctrllpdcomptime; //type: int32
+        ydk::YLeaf rttmplsvpnmontypeinterval; //type: int32
+        ydk::YLeaf rttmplsvpnmontypenumpackets; //type: int32
+        ydk::YLeaf rttmplsvpnmontypedestport; //type: int32
+        ydk::YLeaf rttmplsvpnmontypesecfreqtype; //type: Rttmplsvpnmontypesecfreqtype
+        ydk::YLeaf rttmplsvpnmontypesecfreqvalue; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelspselector; //type: binary
+        ydk::YLeaf rttmplsvpnmontypelspreplymode; //type: RttMonLSPPingReplyMode
+        ydk::YLeaf rttmplsvpnmontypelspttl; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelspreplydscp; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdmaxsessions; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdsesstimeout; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdechotimeout; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdechointerval; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdechonullshim; //type: boolean
+        ydk::YLeaf rttmplsvpnmontypelpdscanperiod; //type: int32
+        ydk::YLeaf rttmplsvpnmontypelpdstathours; //type: int32
+        ydk::YLeaf rttmplsvpnmonschedulerttstarttime; //type: uint32
+        ydk::YLeaf rttmplsvpnmonscheduleperiod; //type: int32
+        ydk::YLeaf rttmplsvpnmonschedulefrequency; //type: int32
+        ydk::YLeaf rttmplsvpnmonreactconnectionenable; //type: boolean
+        ydk::YLeaf rttmplsvpnmonreacttimeoutenable; //type: boolean
+        ydk::YLeaf rttmplsvpnmonreactthresholdtype; //type: Rttmplsvpnmonreactthresholdtype
+        ydk::YLeaf rttmplsvpnmonreactthresholdcount; //type: int32
+        ydk::YLeaf rttmplsvpnmonreactactiontype; //type: Rttmplsvpnmonreactactiontype
+        ydk::YLeaf rttmplsvpnmonreactlpdnotifytype; //type: Rttmplsvpnmonreactlpdnotifytype
+        ydk::YLeaf rttmplsvpnmonreactlpdretrycount; //type: int32
+        class Rttmplsvpnmontypesecfreqtype;
+        class Rttmplsvpnmonreactthresholdtype;
+        class Rttmplsvpnmonreactactiontype;
+        class Rttmplsvpnmonreactlpdnotifytype;
+
+}; // CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry
+
+class CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rttmonapplpreconfigedtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf filePath;
@@ -1597,7 +1644,7 @@ class CiscoRttmonMib::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::Rt
 
 };
 
-class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminthresholdtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
@@ -1608,7 +1655,7 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadm
 
 };
 
-class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadminactiontype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1622,7 +1669,7 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonreactadm
 
 };
 
-class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter : public ydk::Enum
+class CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistoryadminfilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1632,7 +1679,7 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonhistorya
 
 };
 
-class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate : public ydk::Enum
+class CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloperstate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf reset;
@@ -1645,14 +1692,14 @@ class CiscoRttmonMib::Rttmonctrladmintable::Rttmonctrladminentry::Rttmonctrloper
 
 };
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminlspfectype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminlspfectype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ldpIpv4Prefix;
 
 };
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision : public ydk::Enum
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprecision : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf milliseconds;
@@ -1660,7 +1707,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadmi
 
 };
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority : public ydk::Enum
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminprobepakpriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
@@ -1668,7 +1715,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadmi
 
 };
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminowntpsynctoltype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf percent;
@@ -1676,7 +1723,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadmi
 
 };
 
-class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp : public ydk::Enum
+class CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadminreservedsp : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf be;
@@ -1685,7 +1732,7 @@ class CiscoRttmonMib::Rttmonechoadmintable::Rttmonechoadminentry::Rttmonechoadmi
 
 };
 
-class CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize : public ydk::Enum
+class CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminsize : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf n256;
@@ -1696,7 +1743,7 @@ class CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfile
 
 };
 
-class CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction : public ydk::Enum
+class CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfileioadminaction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf write;
@@ -1705,52 +1752,15 @@ class CiscoRttmonMib::Rttmonfileioadmintable::Rttmonfileioadminentry::Rttmonfile
 
 };
 
-class CiscoRttmonMib::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate : public ydk::Enum
+class CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf sync;
+        static const ydk::Enum::YLeaf outOfSync;
 
 };
 
-class CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf connectionLoss;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf consecutive;
-
-};
-
-class CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf trapOnly;
-
-};
-
-class CiscoRttmonMib::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf lpdPathDiscovery;
-        static const ydk::Enum::YLeaf lpdGroupStatus;
-        static const ydk::Enum::YLeaf lpdAll;
-
-};
-
-class CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdtype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
@@ -1761,7 +1771,7 @@ class CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactthresholdty
 
 };
 
-class CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype : public ydk::Enum
+class CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1771,11 +1781,48 @@ class CiscoRttmonMib::Rttmonreacttable::Rttmonreactentry::Rttmonreactactiontype 
 
 };
 
-class CiscoRttmonMib::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::Rttmonlatestjitteroperntpstate : public ydk::Enum
+class CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::Rttmonreacttriggeroperstate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf sync;
-        static const ydk::Enum::YLeaf outOfSync;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf pending;
+
+};
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmontypesecfreqtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf connectionLoss;
+        static const ydk::Enum::YLeaf both;
+
+};
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactthresholdtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf consecutive;
+
+};
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactactiontype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf trapOnly;
+
+};
+
+class CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::Rttmplsvpnmonreactlpdnotifytype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf lpdPathDiscovery;
+        static const ydk::Enum::YLeaf lpdGroupStatus;
+        static const ydk::Enum::YLeaf lpdAll;
 
 };
 

@@ -14,11 +14,14 @@ namespace Cisco_IOS_XR_aaa_protocol_radius_cfg {
 const Enum::YLeaf AaaSelectKey::server_key {1, "server-key"};
 const Enum::YLeaf AaaSelectKey::session_key {2, "session-key"};
 
-const Enum::YLeaf AaaConfig::false_ {0, "false"};
-const Enum::YLeaf AaaConfig::true_ {1, "true"};
-
 const Enum::YLeaf AaaAction::accept {1, "accept"};
 const Enum::YLeaf AaaAction::reject {2, "reject"};
+
+const Enum::YLeaf AaaDirection::inbound {0, "inbound"};
+const Enum::YLeaf AaaDirection::outbound {1, "outbound"};
+
+const Enum::YLeaf AaaConfig::false_ {0, "false"};
+const Enum::YLeaf AaaConfig::true_ {1, "true"};
 
 const Enum::YLeaf AaaDscpValue::af11 {10, "af11"};
 const Enum::YLeaf AaaDscpValue::af12 {12, "af12"};
@@ -45,9 +48,6 @@ const Enum::YLeaf AaaDscpValue::ef {46, "ef"};
 const Enum::YLeaf AaaAuthentication::all {101, "all"};
 const Enum::YLeaf AaaAuthentication::any {102, "any"};
 const Enum::YLeaf AaaAuthentication::session_key {103, "session-key"};
-
-const Enum::YLeaf AaaDirection::inbound {0, "inbound"};
-const Enum::YLeaf AaaDirection::outbound {1, "outbound"};
 
 
 }

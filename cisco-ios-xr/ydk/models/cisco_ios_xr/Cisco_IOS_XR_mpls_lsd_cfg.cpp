@@ -22,12 +22,10 @@ MplsLsd::MplsLsd()
 	,label_databases(std::make_shared<MplsLsd::LabelDatabases>())
 {
     ipv4->parent = this;
-
     ipv6->parent = this;
-
     label_databases->parent = this;
 
-    yang_name = "mpls-lsd"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-cfg";
+    yang_name = "mpls-lsd"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MplsLsd::~MplsLsd()
@@ -59,29 +57,18 @@ std::string MplsLsd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsLsd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (app_reg_delay_disable.is_set || is_set(app_reg_delay_disable.yfilter)) leaf_name_data.push_back(app_reg_delay_disable.get_name_leafdata());
     if (mpls_entropy_label.is_set || is_set(mpls_entropy_label.yfilter)) leaf_name_data.push_back(mpls_entropy_label.get_name_leafdata());
     if (mpls_ip_ttl_propagate_disable.is_set || is_set(mpls_ip_ttl_propagate_disable.yfilter)) leaf_name_data.push_back(mpls_ip_ttl_propagate_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -208,100 +195,12 @@ bool MplsLsd::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-MplsLsd::Ipv6::Ipv6()
-    :
-    ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
-{
-    yang_name = "ipv6"; yang_parent_name = "mpls-lsd";
-}
-
-MplsLsd::Ipv6::~Ipv6()
-{
-}
-
-bool MplsLsd::Ipv6::has_data() const
-{
-    return ttl_expiration_pop.is_set;
-}
-
-bool MplsLsd::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ttl_expiration_pop.yfilter);
-}
-
-std::string MplsLsd::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsd::Ipv6::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.yfilter)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsLsd::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ttl-expiration-pop")
-    {
-        ttl_expiration_pop = value;
-        ttl_expiration_pop.value_namespace = name_space;
-        ttl_expiration_pop.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLsd::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ttl-expiration-pop")
-    {
-        ttl_expiration_pop.yfilter = yfilter;
-    }
-}
-
-bool MplsLsd::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ttl-expiration-pop")
-        return true;
-    return false;
-}
-
 MplsLsd::Ipv4::Ipv4()
     :
     ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
 {
-    yang_name = "ipv4"; yang_parent_name = "mpls-lsd";
+
+    yang_name = "ipv4"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsLsd::Ipv4::~Ipv4()
@@ -319,34 +218,27 @@ bool MplsLsd::Ipv4::has_operation() const
 	|| ydk::is_set(ttl_expiration_pop.yfilter);
 }
 
+std::string MplsLsd::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsLsd::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsd::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsLsd::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.yfilter)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -386,9 +278,93 @@ bool MplsLsd::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+MplsLsd::Ipv6::Ipv6()
+    :
+    ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsLsd::Ipv6::~Ipv6()
+{
+}
+
+bool MplsLsd::Ipv6::has_data() const
+{
+    return ttl_expiration_pop.is_set;
+}
+
+bool MplsLsd::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ttl_expiration_pop.yfilter);
+}
+
+std::string MplsLsd::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLsd::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLsd::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.yfilter)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsLsd::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ttl-expiration-pop")
+    {
+        ttl_expiration_pop = value;
+        ttl_expiration_pop.value_namespace = name_space;
+        ttl_expiration_pop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLsd::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ttl-expiration-pop")
+    {
+        ttl_expiration_pop.yfilter = yfilter;
+    }
+}
+
+bool MplsLsd::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ttl-expiration-pop")
+        return true;
+    return false;
+}
+
 MplsLsd::LabelDatabases::LabelDatabases()
 {
-    yang_name = "label-databases"; yang_parent_name = "mpls-lsd";
+
+    yang_name = "label-databases"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsLsd::LabelDatabases::~LabelDatabases()
@@ -415,33 +391,26 @@ bool MplsLsd::LabelDatabases::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MplsLsd::LabelDatabases::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsLsd::LabelDatabases::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "label-databases";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsd::LabelDatabases::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -500,7 +469,7 @@ MplsLsd::LabelDatabases::LabelDatabase::LabelDatabase()
 {
     label_range->parent = this;
 
-    yang_name = "label-database"; yang_parent_name = "label-databases";
+    yang_name = "label-database"; yang_parent_name = "label-databases"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::~LabelDatabase()
@@ -520,34 +489,27 @@ bool MplsLsd::LabelDatabases::LabelDatabase::has_operation() const
 	|| (label_range !=  nullptr && label_range->has_operation());
 }
 
+std::string MplsLsd::LabelDatabases::LabelDatabase::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/label-databases/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsLsd::LabelDatabases::LabelDatabase::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "label-database" <<"[label-database-id='" <<label_database_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsd::LabelDatabases::LabelDatabase::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::LabelDatabase::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-lsd-cfg:mpls-lsd/label-databases/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (label_database_id.is_set || is_set(label_database_id.yfilter)) leaf_name_data.push_back(label_database_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -608,7 +570,8 @@ MplsLsd::LabelDatabases::LabelDatabase::LabelRange::LabelRange()
     min_static_value{YType::uint32, "min-static-value"},
     minvalue{YType::uint32, "minvalue"}
 {
-    yang_name = "label-range"; yang_parent_name = "label-database";
+
+    yang_name = "label-range"; yang_parent_name = "label-database"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::LabelRange::~LabelRange()
@@ -636,23 +599,11 @@ std::string MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "label-range";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LabelRange' in Cisco_IOS_XR_mpls_lsd_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_static_value.is_set || is_set(max_static_value.yfilter)) leaf_name_data.push_back(max_static_value.get_name_leafdata());
@@ -660,9 +611,7 @@ const EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_
     if (min_static_value.is_set || is_set(min_static_value.yfilter)) leaf_name_data.push_back(min_static_value.get_name_leafdata());
     if (minvalue.is_set || is_set(minvalue.yfilter)) leaf_name_data.push_back(minvalue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

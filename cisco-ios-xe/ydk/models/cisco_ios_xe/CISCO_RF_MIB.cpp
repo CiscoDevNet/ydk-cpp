@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_RF_MIB {
 
-CiscoRfMib::CiscoRfMib()
+CISCORFMIB::CISCORFMIB()
     :
-    crfcfg(std::make_shared<CiscoRfMib::Crfcfg>())
-	,crfhistory(std::make_shared<CiscoRfMib::Crfhistory>())
-	,crfhistoryswitchovertable(std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>())
-	,crfstatus(std::make_shared<CiscoRfMib::Crfstatus>())
-	,crfstatusrfclienttable(std::make_shared<CiscoRfMib::Crfstatusrfclienttable>())
-	,crfstatusrfmodecapstable(std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>())
+    crfcfg(std::make_shared<CISCORFMIB::Crfcfg>())
+	,crfhistory(std::make_shared<CISCORFMIB::Crfhistory>())
+	,crfhistoryswitchovertable(std::make_shared<CISCORFMIB::Crfhistoryswitchovertable>())
+	,crfstatus(std::make_shared<CISCORFMIB::Crfstatus>())
+	,crfstatusrfclienttable(std::make_shared<CISCORFMIB::Crfstatusrfclienttable>())
+	,crfstatusrfmodecapstable(std::make_shared<CISCORFMIB::Crfstatusrfmodecapstable>())
 {
     crfcfg->parent = this;
-
     crfhistory->parent = this;
-
     crfhistoryswitchovertable->parent = this;
-
     crfstatus->parent = this;
-
     crfstatusrfclienttable->parent = this;
-
     crfstatusrfmodecapstable->parent = this;
 
-    yang_name = "CISCO-RF-MIB"; yang_parent_name = "CISCO-RF-MIB";
+    yang_name = "CISCO-RF-MIB"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoRfMib::~CiscoRfMib()
+CISCORFMIB::~CISCORFMIB()
 {
 }
 
-bool CiscoRfMib::has_data() const
+bool CISCORFMIB::has_data() const
 {
     return (crfcfg !=  nullptr && crfcfg->has_data())
 	|| (crfhistory !=  nullptr && crfhistory->has_data())
@@ -49,7 +44,7 @@ bool CiscoRfMib::has_data() const
 	|| (crfstatusrfmodecapstable !=  nullptr && crfstatusrfmodecapstable->has_data());
 }
 
-bool CiscoRfMib::has_operation() const
+bool CISCORFMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (crfcfg !=  nullptr && crfcfg->has_operation())
@@ -60,40 +55,29 @@ bool CiscoRfMib::has_operation() const
 	|| (crfstatusrfmodecapstable !=  nullptr && crfstatusrfmodecapstable->has_operation());
 }
 
-std::string CiscoRfMib::get_segment_path() const
+std::string CISCORFMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFCfg")
     {
         if(crfcfg == nullptr)
         {
-            crfcfg = std::make_shared<CiscoRfMib::Crfcfg>();
+            crfcfg = std::make_shared<CISCORFMIB::Crfcfg>();
         }
         return crfcfg;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     {
         if(crfhistory == nullptr)
         {
-            crfhistory = std::make_shared<CiscoRfMib::Crfhistory>();
+            crfhistory = std::make_shared<CISCORFMIB::Crfhistory>();
         }
         return crfhistory;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     {
         if(crfhistoryswitchovertable == nullptr)
         {
-            crfhistoryswitchovertable = std::make_shared<CiscoRfMib::Crfhistoryswitchovertable>();
+            crfhistoryswitchovertable = std::make_shared<CISCORFMIB::Crfhistoryswitchovertable>();
         }
         return crfhistoryswitchovertable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     {
         if(crfstatus == nullptr)
         {
-            crfstatus = std::make_shared<CiscoRfMib::Crfstatus>();
+            crfstatus = std::make_shared<CISCORFMIB::Crfstatus>();
         }
         return crfstatus;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     {
         if(crfstatusrfclienttable == nullptr)
         {
-            crfstatusrfclienttable = std::make_shared<CiscoRfMib::Crfstatusrfclienttable>();
+            crfstatusrfclienttable = std::make_shared<CISCORFMIB::Crfstatusrfclienttable>();
         }
         return crfstatusrfclienttable;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     {
         if(crfstatusrfmodecapstable == nullptr)
         {
-            crfstatusrfmodecapstable = std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable>();
+            crfstatusrfmodecapstable = std::make_shared<CISCORFMIB::Crfstatusrfmodecapstable>();
         }
         return crfstatusrfmodecapstable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> CiscoRfMib::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(crfcfg != nullptr)
@@ -182,318 +166,47 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::get_children() const
     return children;
 }
 
-void CiscoRfMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRfMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoRfMib::clone_ptr() const
+std::shared_ptr<Entity> CISCORFMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoRfMib>();
+    return std::make_shared<CISCORFMIB>();
 }
 
-std::string CiscoRfMib::get_bundle_yang_models_location() const
+std::string CISCORFMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoRfMib::get_bundle_name() const
+std::string CISCORFMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoRfMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCORFMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoRfMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCORFMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoRfMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFCfg" || name == "cRFHistory" || name == "cRFHistorySwitchOverTable" || name == "cRFStatus" || name == "cRFStatusRFClientTable" || name == "cRFStatusRFModeCapsTable")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfstatus::Crfstatus()
-    :
-    crfstatusduplexmode{YType::boolean, "cRFStatusDuplexMode"},
-    crfstatusfailovertime{YType::uint32, "cRFStatusFailoverTime"},
-    crfstatusissufromversion{YType::str, "cRFStatusIssuFromVersion"},
-    crfstatusissustate{YType::enumeration, "cRFStatusIssuState"},
-    crfstatusissustaterev1{YType::enumeration, "cRFStatusIssuStateRev1"},
-    crfstatusissutoversion{YType::str, "cRFStatusIssuToVersion"},
-    crfstatuslastswactreasoncode{YType::enumeration, "cRFStatusLastSwactReasonCode"},
-    crfstatusmanualswactinhibit{YType::boolean, "cRFStatusManualSwactInhibit"},
-    crfstatuspeerstandbyentrytime{YType::uint32, "cRFStatusPeerStandByEntryTime"},
-    crfstatuspeerunitid{YType::int32, "cRFStatusPeerUnitId"},
-    crfstatuspeerunitstate{YType::enumeration, "cRFStatusPeerUnitState"},
-    crfstatusprimarymode{YType::boolean, "cRFStatusPrimaryMode"},
-    crfstatusunitid{YType::int32, "cRFStatusUnitId"},
-    crfstatusunitstate{YType::enumeration, "cRFStatusUnitState"}
-{
-    yang_name = "cRFStatus"; yang_parent_name = "CISCO-RF-MIB";
-}
-
-CiscoRfMib::Crfstatus::~Crfstatus()
-{
-}
-
-bool CiscoRfMib::Crfstatus::has_data() const
-{
-    return crfstatusduplexmode.is_set
-	|| crfstatusfailovertime.is_set
-	|| crfstatusissufromversion.is_set
-	|| crfstatusissustate.is_set
-	|| crfstatusissustaterev1.is_set
-	|| crfstatusissutoversion.is_set
-	|| crfstatuslastswactreasoncode.is_set
-	|| crfstatusmanualswactinhibit.is_set
-	|| crfstatuspeerstandbyentrytime.is_set
-	|| crfstatuspeerunitid.is_set
-	|| crfstatuspeerunitstate.is_set
-	|| crfstatusprimarymode.is_set
-	|| crfstatusunitid.is_set
-	|| crfstatusunitstate.is_set;
-}
-
-bool CiscoRfMib::Crfstatus::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(crfstatusduplexmode.yfilter)
-	|| ydk::is_set(crfstatusfailovertime.yfilter)
-	|| ydk::is_set(crfstatusissufromversion.yfilter)
-	|| ydk::is_set(crfstatusissustate.yfilter)
-	|| ydk::is_set(crfstatusissustaterev1.yfilter)
-	|| ydk::is_set(crfstatusissutoversion.yfilter)
-	|| ydk::is_set(crfstatuslastswactreasoncode.yfilter)
-	|| ydk::is_set(crfstatusmanualswactinhibit.yfilter)
-	|| ydk::is_set(crfstatuspeerstandbyentrytime.yfilter)
-	|| ydk::is_set(crfstatuspeerunitid.yfilter)
-	|| ydk::is_set(crfstatuspeerunitstate.yfilter)
-	|| ydk::is_set(crfstatusprimarymode.yfilter)
-	|| ydk::is_set(crfstatusunitid.yfilter)
-	|| ydk::is_set(crfstatusunitstate.yfilter);
-}
-
-std::string CiscoRfMib::Crfstatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cRFStatus";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRfMib::Crfstatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (crfstatusduplexmode.is_set || is_set(crfstatusduplexmode.yfilter)) leaf_name_data.push_back(crfstatusduplexmode.get_name_leafdata());
-    if (crfstatusfailovertime.is_set || is_set(crfstatusfailovertime.yfilter)) leaf_name_data.push_back(crfstatusfailovertime.get_name_leafdata());
-    if (crfstatusissufromversion.is_set || is_set(crfstatusissufromversion.yfilter)) leaf_name_data.push_back(crfstatusissufromversion.get_name_leafdata());
-    if (crfstatusissustate.is_set || is_set(crfstatusissustate.yfilter)) leaf_name_data.push_back(crfstatusissustate.get_name_leafdata());
-    if (crfstatusissustaterev1.is_set || is_set(crfstatusissustaterev1.yfilter)) leaf_name_data.push_back(crfstatusissustaterev1.get_name_leafdata());
-    if (crfstatusissutoversion.is_set || is_set(crfstatusissutoversion.yfilter)) leaf_name_data.push_back(crfstatusissutoversion.get_name_leafdata());
-    if (crfstatuslastswactreasoncode.is_set || is_set(crfstatuslastswactreasoncode.yfilter)) leaf_name_data.push_back(crfstatuslastswactreasoncode.get_name_leafdata());
-    if (crfstatusmanualswactinhibit.is_set || is_set(crfstatusmanualswactinhibit.yfilter)) leaf_name_data.push_back(crfstatusmanualswactinhibit.get_name_leafdata());
-    if (crfstatuspeerstandbyentrytime.is_set || is_set(crfstatuspeerstandbyentrytime.yfilter)) leaf_name_data.push_back(crfstatuspeerstandbyentrytime.get_name_leafdata());
-    if (crfstatuspeerunitid.is_set || is_set(crfstatuspeerunitid.yfilter)) leaf_name_data.push_back(crfstatuspeerunitid.get_name_leafdata());
-    if (crfstatuspeerunitstate.is_set || is_set(crfstatuspeerunitstate.yfilter)) leaf_name_data.push_back(crfstatuspeerunitstate.get_name_leafdata());
-    if (crfstatusprimarymode.is_set || is_set(crfstatusprimarymode.yfilter)) leaf_name_data.push_back(crfstatusprimarymode.get_name_leafdata());
-    if (crfstatusunitid.is_set || is_set(crfstatusunitid.yfilter)) leaf_name_data.push_back(crfstatusunitid.get_name_leafdata());
-    if (crfstatusunitstate.is_set || is_set(crfstatusunitstate.yfilter)) leaf_name_data.push_back(crfstatusunitstate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRfMib::Crfstatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRfMib::Crfstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cRFStatusDuplexMode")
-    {
-        crfstatusduplexmode = value;
-        crfstatusduplexmode.value_namespace = name_space;
-        crfstatusduplexmode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusFailoverTime")
-    {
-        crfstatusfailovertime = value;
-        crfstatusfailovertime.value_namespace = name_space;
-        crfstatusfailovertime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusIssuFromVersion")
-    {
-        crfstatusissufromversion = value;
-        crfstatusissufromversion.value_namespace = name_space;
-        crfstatusissufromversion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusIssuState")
-    {
-        crfstatusissustate = value;
-        crfstatusissustate.value_namespace = name_space;
-        crfstatusissustate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusIssuStateRev1")
-    {
-        crfstatusissustaterev1 = value;
-        crfstatusissustaterev1.value_namespace = name_space;
-        crfstatusissustaterev1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusIssuToVersion")
-    {
-        crfstatusissutoversion = value;
-        crfstatusissutoversion.value_namespace = name_space;
-        crfstatusissutoversion.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusLastSwactReasonCode")
-    {
-        crfstatuslastswactreasoncode = value;
-        crfstatuslastswactreasoncode.value_namespace = name_space;
-        crfstatuslastswactreasoncode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusManualSwactInhibit")
-    {
-        crfstatusmanualswactinhibit = value;
-        crfstatusmanualswactinhibit.value_namespace = name_space;
-        crfstatusmanualswactinhibit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusPeerStandByEntryTime")
-    {
-        crfstatuspeerstandbyentrytime = value;
-        crfstatuspeerstandbyentrytime.value_namespace = name_space;
-        crfstatuspeerstandbyentrytime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusPeerUnitId")
-    {
-        crfstatuspeerunitid = value;
-        crfstatuspeerunitid.value_namespace = name_space;
-        crfstatuspeerunitid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusPeerUnitState")
-    {
-        crfstatuspeerunitstate = value;
-        crfstatuspeerunitstate.value_namespace = name_space;
-        crfstatuspeerunitstate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusPrimaryMode")
-    {
-        crfstatusprimarymode = value;
-        crfstatusprimarymode.value_namespace = name_space;
-        crfstatusprimarymode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusUnitId")
-    {
-        crfstatusunitid = value;
-        crfstatusunitid.value_namespace = name_space;
-        crfstatusunitid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusUnitState")
-    {
-        crfstatusunitstate = value;
-        crfstatusunitstate.value_namespace = name_space;
-        crfstatusunitstate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRfMib::Crfstatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cRFStatusDuplexMode")
-    {
-        crfstatusduplexmode.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusFailoverTime")
-    {
-        crfstatusfailovertime.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusIssuFromVersion")
-    {
-        crfstatusissufromversion.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusIssuState")
-    {
-        crfstatusissustate.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusIssuStateRev1")
-    {
-        crfstatusissustaterev1.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusIssuToVersion")
-    {
-        crfstatusissutoversion.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusLastSwactReasonCode")
-    {
-        crfstatuslastswactreasoncode.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusManualSwactInhibit")
-    {
-        crfstatusmanualswactinhibit.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusPeerStandByEntryTime")
-    {
-        crfstatuspeerstandbyentrytime.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusPeerUnitId")
-    {
-        crfstatuspeerunitid.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusPeerUnitState")
-    {
-        crfstatuspeerunitstate.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusPrimaryMode")
-    {
-        crfstatusprimarymode.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusUnitId")
-    {
-        crfstatusunitid.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusUnitState")
-    {
-        crfstatusunitstate.yfilter = yfilter;
-    }
-}
-
-bool CiscoRfMib::Crfstatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cRFStatusDuplexMode" || name == "cRFStatusFailoverTime" || name == "cRFStatusIssuFromVersion" || name == "cRFStatusIssuState" || name == "cRFStatusIssuStateRev1" || name == "cRFStatusIssuToVersion" || name == "cRFStatusLastSwactReasonCode" || name == "cRFStatusManualSwactInhibit" || name == "cRFStatusPeerStandByEntryTime" || name == "cRFStatusPeerUnitId" || name == "cRFStatusPeerUnitState" || name == "cRFStatusPrimaryMode" || name == "cRFStatusUnitId" || name == "cRFStatusUnitState")
-        return true;
-    return false;
-}
-
-CiscoRfMib::Crfcfg::Crfcfg()
+CISCORFMIB::Crfcfg::Crfcfg()
     :
     crfcfgadminaction{YType::enumeration, "cRFCfgAdminAction"},
     crfcfgkeepalivethresh{YType::uint32, "cRFCfgKeepaliveThresh"},
@@ -512,14 +225,15 @@ CiscoRfMib::Crfcfg::Crfcfg()
     crfcfgredundancyopermode{YType::enumeration, "cRFCfgRedundancyOperMode"},
     crfcfgsplitmode{YType::boolean, "cRFCfgSplitMode"}
 {
-    yang_name = "cRFCfg"; yang_parent_name = "CISCO-RF-MIB";
+
+    yang_name = "cRFCfg"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfcfg::~Crfcfg()
+CISCORFMIB::Crfcfg::~Crfcfg()
 {
 }
 
-bool CiscoRfMib::Crfcfg::has_data() const
+bool CISCORFMIB::Crfcfg::has_data() const
 {
     return crfcfgadminaction.is_set
 	|| crfcfgkeepalivethresh.is_set
@@ -539,7 +253,7 @@ bool CiscoRfMib::Crfcfg::has_data() const
 	|| crfcfgsplitmode.is_set;
 }
 
-bool CiscoRfMib::Crfcfg::has_operation() const
+bool CISCORFMIB::Crfcfg::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(crfcfgadminaction.yfilter)
@@ -560,27 +274,22 @@ bool CiscoRfMib::Crfcfg::has_operation() const
 	|| ydk::is_set(crfcfgsplitmode.yfilter);
 }
 
-std::string CiscoRfMib::Crfcfg::get_segment_path() const
+std::string CISCORFMIB::Crfcfg::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfcfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFCfg";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfcfg::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfcfg::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (crfcfgadminaction.is_set || is_set(crfcfgadminaction.yfilter)) leaf_name_data.push_back(crfcfgadminaction.get_name_leafdata());
@@ -600,24 +309,22 @@ const EntityPath CiscoRfMib::Crfcfg::get_entity_path(Entity* ancestor) const
     if (crfcfgredundancyopermode.is_set || is_set(crfcfgredundancyopermode.yfilter)) leaf_name_data.push_back(crfcfgredundancyopermode.get_name_leafdata());
     if (crfcfgsplitmode.is_set || is_set(crfcfgsplitmode.yfilter)) leaf_name_data.push_back(crfcfgsplitmode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfcfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfcfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfcfg::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfcfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRfMib::Crfcfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfcfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cRFCfgAdminAction")
     {
@@ -717,7 +424,7 @@ void CiscoRfMib::Crfcfg::set_value(const std::string & value_path, const std::st
     }
 }
 
-void CiscoRfMib::Crfcfg::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfcfg::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cRFCfgAdminAction")
     {
@@ -785,34 +492,35 @@ void CiscoRfMib::Crfcfg::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool CiscoRfMib::Crfcfg::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfcfg::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFCfgAdminAction" || name == "cRFCfgKeepaliveThresh" || name == "cRFCfgKeepaliveThreshMax" || name == "cRFCfgKeepaliveThreshMin" || name == "cRFCfgKeepaliveTimer" || name == "cRFCfgKeepaliveTimerMax" || name == "cRFCfgKeepaliveTimerMin" || name == "cRFCfgMaintenanceMode" || name == "cRFCfgNotifsEnabled" || name == "cRFCfgNotifTimer" || name == "cRFCfgNotifTimerMax" || name == "cRFCfgNotifTimerMin" || name == "cRFCfgRedundancyMode" || name == "cRFCfgRedundancyModeDescr" || name == "cRFCfgRedundancyOperMode" || name == "cRFCfgSplitMode")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfhistory::Crfhistory()
+CISCORFMIB::Crfhistory::Crfhistory()
     :
     crfhistorycoldstarts{YType::uint32, "cRFHistoryColdStarts"},
     crfhistorystandbyavailtime{YType::int32, "cRFHistoryStandByAvailTime"},
     crfhistorytablemaxlength{YType::uint32, "cRFHistoryTableMaxLength"}
 {
-    yang_name = "cRFHistory"; yang_parent_name = "CISCO-RF-MIB";
+
+    yang_name = "cRFHistory"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfhistory::~Crfhistory()
+CISCORFMIB::Crfhistory::~Crfhistory()
 {
 }
 
-bool CiscoRfMib::Crfhistory::has_data() const
+bool CISCORFMIB::Crfhistory::has_data() const
 {
     return crfhistorycoldstarts.is_set
 	|| crfhistorystandbyavailtime.is_set
 	|| crfhistorytablemaxlength.is_set;
 }
 
-bool CiscoRfMib::Crfhistory::has_operation() const
+bool CISCORFMIB::Crfhistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(crfhistorycoldstarts.yfilter)
@@ -820,51 +528,44 @@ bool CiscoRfMib::Crfhistory::has_operation() const
 	|| ydk::is_set(crfhistorytablemaxlength.yfilter);
 }
 
-std::string CiscoRfMib::Crfhistory::get_segment_path() const
+std::string CISCORFMIB::Crfhistory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfhistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFHistory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfhistory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfhistory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (crfhistorycoldstarts.is_set || is_set(crfhistorycoldstarts.yfilter)) leaf_name_data.push_back(crfhistorycoldstarts.get_name_leafdata());
     if (crfhistorystandbyavailtime.is_set || is_set(crfhistorystandbyavailtime.yfilter)) leaf_name_data.push_back(crfhistorystandbyavailtime.get_name_leafdata());
     if (crfhistorytablemaxlength.is_set || is_set(crfhistorytablemaxlength.yfilter)) leaf_name_data.push_back(crfhistorytablemaxlength.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfhistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRfMib::Crfhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cRFHistoryColdStarts")
     {
@@ -886,7 +587,7 @@ void CiscoRfMib::Crfhistory::set_value(const std::string & value_path, const std
     }
 }
 
-void CiscoRfMib::Crfhistory::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfhistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cRFHistoryColdStarts")
     {
@@ -902,232 +603,24 @@ void CiscoRfMib::Crfhistory::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool CiscoRfMib::Crfhistory::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfhistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFHistoryColdStarts" || name == "cRFHistoryStandByAvailTime" || name == "cRFHistoryTableMaxLength")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapstable()
+CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchovertable()
 {
-    yang_name = "cRFStatusRFModeCapsTable"; yang_parent_name = "CISCO-RF-MIB";
+
+    yang_name = "cRFHistorySwitchOverTable"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfstatusrfmodecapstable::~Crfstatusrfmodecapstable()
-{
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::has_data() const
-{
-    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
-    {
-        if(crfstatusrfmodecapsentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::has_operation() const
-{
-    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
-    {
-        if(crfstatusrfmodecapsentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoRfMib::Crfstatusrfmodecapstable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cRFStatusRFModeCapsTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRfMib::Crfstatusrfmodecapstable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfmodecapstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cRFStatusRFModeCapsEntry")
-    {
-        for(auto const & c : crfstatusrfmodecapsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry>();
-        c->parent = this;
-        crfstatusrfmodecapsentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfmodecapstable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : crfstatusrfmodecapsentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoRfMib::Crfstatusrfmodecapstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+CISCORFMIB::Crfhistoryswitchovertable::~Crfhistoryswitchovertable()
 {
 }
 
-void CiscoRfMib::Crfstatusrfmodecapstable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cRFStatusRFModeCapsEntry")
-        return true;
-    return false;
-}
-
-CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::Crfstatusrfmodecapsentry()
-    :
-    crfstatusrfmodecapsmode{YType::enumeration, "cRFStatusRFModeCapsMode"},
-    crfstatusrfmodecapsmodedescr{YType::str, "cRFStatusRFModeCapsModeDescr"}
-{
-    yang_name = "cRFStatusRFModeCapsEntry"; yang_parent_name = "cRFStatusRFModeCapsTable";
-}
-
-CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::~Crfstatusrfmodecapsentry()
-{
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_data() const
-{
-    return crfstatusrfmodecapsmode.is_set
-	|| crfstatusrfmodecapsmodedescr.is_set;
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(crfstatusrfmodecapsmode.yfilter)
-	|| ydk::is_set(crfstatusrfmodecapsmodedescr.yfilter);
-}
-
-std::string CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cRFStatusRFModeCapsEntry" <<"[cRFStatusRFModeCapsMode='" <<crfstatusrfmodecapsmode <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFStatusRFModeCapsTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (crfstatusrfmodecapsmode.is_set || is_set(crfstatusrfmodecapsmode.yfilter)) leaf_name_data.push_back(crfstatusrfmodecapsmode.get_name_leafdata());
-    if (crfstatusrfmodecapsmodedescr.is_set || is_set(crfstatusrfmodecapsmodedescr.yfilter)) leaf_name_data.push_back(crfstatusrfmodecapsmodedescr.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cRFStatusRFModeCapsMode")
-    {
-        crfstatusrfmodecapsmode = value;
-        crfstatusrfmodecapsmode.value_namespace = name_space;
-        crfstatusrfmodecapsmode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cRFStatusRFModeCapsModeDescr")
-    {
-        crfstatusrfmodecapsmodedescr = value;
-        crfstatusrfmodecapsmodedescr.value_namespace = name_space;
-        crfstatusrfmodecapsmodedescr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cRFStatusRFModeCapsMode")
-    {
-        crfstatusrfmodecapsmode.yfilter = yfilter;
-    }
-    if(value_path == "cRFStatusRFModeCapsModeDescr")
-    {
-        crfstatusrfmodecapsmodedescr.yfilter = yfilter;
-    }
-}
-
-bool CiscoRfMib::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cRFStatusRFModeCapsMode" || name == "cRFStatusRFModeCapsModeDescr")
-        return true;
-    return false;
-}
-
-CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchovertable()
-{
-    yang_name = "cRFHistorySwitchOverTable"; yang_parent_name = "CISCO-RF-MIB";
-}
-
-CiscoRfMib::Crfhistoryswitchovertable::~Crfhistoryswitchovertable()
-{
-}
-
-bool CiscoRfMib::Crfhistoryswitchovertable::has_data() const
+bool CISCORFMIB::Crfhistoryswitchovertable::has_data() const
 {
     for (std::size_t index=0; index<crfhistoryswitchoverentry.size(); index++)
     {
@@ -1137,7 +630,7 @@ bool CiscoRfMib::Crfhistoryswitchovertable::has_data() const
     return false;
 }
 
-bool CiscoRfMib::Crfhistoryswitchovertable::has_operation() const
+bool CISCORFMIB::Crfhistoryswitchovertable::has_operation() const
 {
     for (std::size_t index=0; index<crfhistoryswitchoverentry.size(); index++)
     {
@@ -1147,37 +640,30 @@ bool CiscoRfMib::Crfhistoryswitchovertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRfMib::Crfhistoryswitchovertable::get_segment_path() const
+std::string CISCORFMIB::Crfhistoryswitchovertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfhistoryswitchovertable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFHistorySwitchOverTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfhistoryswitchovertable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfhistoryswitchovertable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfhistoryswitchovertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFHistorySwitchOverEntry")
     {
@@ -1189,7 +675,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry>();
+        auto c = std::make_shared<CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry>();
         c->parent = this;
         crfhistoryswitchoverentry.push_back(c);
         return c;
@@ -1198,7 +684,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfhistoryswitchovertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistoryswitchovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : crfhistoryswitchoverentry)
@@ -1209,22 +695,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfhistoryswitchovert
     return children;
 }
 
-void CiscoRfMib::Crfhistoryswitchovertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfhistoryswitchovertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRfMib::Crfhistoryswitchovertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfhistoryswitchovertable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRfMib::Crfhistoryswitchovertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfhistoryswitchovertable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFHistorySwitchOverEntry")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::Crfhistoryswitchoverentry()
+CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::Crfhistoryswitchoverentry()
     :
     crfhistoryswitchoverindex{YType::uint32, "cRFHistorySwitchOverIndex"},
     crfhistorycurractiveunitid{YType::int32, "cRFHistoryCurrActiveUnitId"},
@@ -1232,14 +718,15 @@ CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::Crfhistoryswit
     crfhistoryswacttime{YType::str, "cRFHistorySwactTime"},
     crfhistoryswitchoverreason{YType::enumeration, "cRFHistorySwitchOverReason"}
 {
-    yang_name = "cRFHistorySwitchOverEntry"; yang_parent_name = "cRFHistorySwitchOverTable";
+
+    yang_name = "cRFHistorySwitchOverEntry"; yang_parent_name = "cRFHistorySwitchOverTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::~Crfhistoryswitchoverentry()
+CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::~Crfhistoryswitchoverentry()
 {
 }
 
-bool CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_data() const
+bool CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_data() const
 {
     return crfhistoryswitchoverindex.is_set
 	|| crfhistorycurractiveunitid.is_set
@@ -1248,7 +735,7 @@ bool CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_data(
 	|| crfhistoryswitchoverreason.is_set;
 }
 
-bool CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_operation() const
+bool CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(crfhistoryswitchoverindex.yfilter)
@@ -1258,27 +745,22 @@ bool CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_opera
 	|| ydk::is_set(crfhistoryswitchoverreason.yfilter);
 }
 
-std::string CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_segment_path() const
+std::string CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFHistorySwitchOverTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFHistorySwitchOverEntry" <<"[cRFHistorySwitchOverIndex='" <<crfhistoryswitchoverindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFHistorySwitchOverTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (crfhistoryswitchoverindex.is_set || is_set(crfhistoryswitchoverindex.yfilter)) leaf_name_data.push_back(crfhistoryswitchoverindex.get_name_leafdata());
@@ -1287,24 +769,22 @@ const EntityPath CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentr
     if (crfhistoryswacttime.is_set || is_set(crfhistoryswacttime.yfilter)) leaf_name_data.push_back(crfhistoryswacttime.get_name_leafdata());
     if (crfhistoryswitchoverreason.is_set || is_set(crfhistoryswitchoverreason.yfilter)) leaf_name_data.push_back(crfhistoryswitchoverreason.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cRFHistorySwitchOverIndex")
     {
@@ -1338,7 +818,7 @@ void CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_value
     }
 }
 
-void CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cRFHistorySwitchOverIndex")
     {
@@ -1362,23 +842,289 @@ void CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::set_filte
     }
 }
 
-bool CiscoRfMib::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFHistorySwitchOverIndex" || name == "cRFHistoryCurrActiveUnitId" || name == "cRFHistoryPrevActiveUnitId" || name == "cRFHistorySwactTime" || name == "cRFHistorySwitchOverReason")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfclienttable()
+CISCORFMIB::Crfstatus::Crfstatus()
+    :
+    crfstatusduplexmode{YType::boolean, "cRFStatusDuplexMode"},
+    crfstatusfailovertime{YType::uint32, "cRFStatusFailoverTime"},
+    crfstatusissufromversion{YType::str, "cRFStatusIssuFromVersion"},
+    crfstatusissustate{YType::enumeration, "cRFStatusIssuState"},
+    crfstatusissustaterev1{YType::enumeration, "cRFStatusIssuStateRev1"},
+    crfstatusissutoversion{YType::str, "cRFStatusIssuToVersion"},
+    crfstatuslastswactreasoncode{YType::enumeration, "cRFStatusLastSwactReasonCode"},
+    crfstatusmanualswactinhibit{YType::boolean, "cRFStatusManualSwactInhibit"},
+    crfstatuspeerstandbyentrytime{YType::uint32, "cRFStatusPeerStandByEntryTime"},
+    crfstatuspeerunitid{YType::int32, "cRFStatusPeerUnitId"},
+    crfstatuspeerunitstate{YType::enumeration, "cRFStatusPeerUnitState"},
+    crfstatusprimarymode{YType::boolean, "cRFStatusPrimaryMode"},
+    crfstatusunitid{YType::int32, "cRFStatusUnitId"},
+    crfstatusunitstate{YType::enumeration, "cRFStatusUnitState"}
 {
-    yang_name = "cRFStatusRFClientTable"; yang_parent_name = "CISCO-RF-MIB";
+
+    yang_name = "cRFStatus"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfstatusrfclienttable::~Crfstatusrfclienttable()
+CISCORFMIB::Crfstatus::~Crfstatus()
 {
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::has_data() const
+bool CISCORFMIB::Crfstatus::has_data() const
+{
+    return crfstatusduplexmode.is_set
+	|| crfstatusfailovertime.is_set
+	|| crfstatusissufromversion.is_set
+	|| crfstatusissustate.is_set
+	|| crfstatusissustaterev1.is_set
+	|| crfstatusissutoversion.is_set
+	|| crfstatuslastswactreasoncode.is_set
+	|| crfstatusmanualswactinhibit.is_set
+	|| crfstatuspeerstandbyentrytime.is_set
+	|| crfstatuspeerunitid.is_set
+	|| crfstatuspeerunitstate.is_set
+	|| crfstatusprimarymode.is_set
+	|| crfstatusunitid.is_set
+	|| crfstatusunitstate.is_set;
+}
+
+bool CISCORFMIB::Crfstatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crfstatusduplexmode.yfilter)
+	|| ydk::is_set(crfstatusfailovertime.yfilter)
+	|| ydk::is_set(crfstatusissufromversion.yfilter)
+	|| ydk::is_set(crfstatusissustate.yfilter)
+	|| ydk::is_set(crfstatusissustaterev1.yfilter)
+	|| ydk::is_set(crfstatusissutoversion.yfilter)
+	|| ydk::is_set(crfstatuslastswactreasoncode.yfilter)
+	|| ydk::is_set(crfstatusmanualswactinhibit.yfilter)
+	|| ydk::is_set(crfstatuspeerstandbyentrytime.yfilter)
+	|| ydk::is_set(crfstatuspeerunitid.yfilter)
+	|| ydk::is_set(crfstatuspeerunitstate.yfilter)
+	|| ydk::is_set(crfstatusprimarymode.yfilter)
+	|| ydk::is_set(crfstatusunitid.yfilter)
+	|| ydk::is_set(crfstatusunitstate.yfilter);
+}
+
+std::string CISCORFMIB::Crfstatus::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfstatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cRFStatus";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfstatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crfstatusduplexmode.is_set || is_set(crfstatusduplexmode.yfilter)) leaf_name_data.push_back(crfstatusduplexmode.get_name_leafdata());
+    if (crfstatusfailovertime.is_set || is_set(crfstatusfailovertime.yfilter)) leaf_name_data.push_back(crfstatusfailovertime.get_name_leafdata());
+    if (crfstatusissufromversion.is_set || is_set(crfstatusissufromversion.yfilter)) leaf_name_data.push_back(crfstatusissufromversion.get_name_leafdata());
+    if (crfstatusissustate.is_set || is_set(crfstatusissustate.yfilter)) leaf_name_data.push_back(crfstatusissustate.get_name_leafdata());
+    if (crfstatusissustaterev1.is_set || is_set(crfstatusissustaterev1.yfilter)) leaf_name_data.push_back(crfstatusissustaterev1.get_name_leafdata());
+    if (crfstatusissutoversion.is_set || is_set(crfstatusissutoversion.yfilter)) leaf_name_data.push_back(crfstatusissutoversion.get_name_leafdata());
+    if (crfstatuslastswactreasoncode.is_set || is_set(crfstatuslastswactreasoncode.yfilter)) leaf_name_data.push_back(crfstatuslastswactreasoncode.get_name_leafdata());
+    if (crfstatusmanualswactinhibit.is_set || is_set(crfstatusmanualswactinhibit.yfilter)) leaf_name_data.push_back(crfstatusmanualswactinhibit.get_name_leafdata());
+    if (crfstatuspeerstandbyentrytime.is_set || is_set(crfstatuspeerstandbyentrytime.yfilter)) leaf_name_data.push_back(crfstatuspeerstandbyentrytime.get_name_leafdata());
+    if (crfstatuspeerunitid.is_set || is_set(crfstatuspeerunitid.yfilter)) leaf_name_data.push_back(crfstatuspeerunitid.get_name_leafdata());
+    if (crfstatuspeerunitstate.is_set || is_set(crfstatuspeerunitstate.yfilter)) leaf_name_data.push_back(crfstatuspeerunitstate.get_name_leafdata());
+    if (crfstatusprimarymode.is_set || is_set(crfstatusprimarymode.yfilter)) leaf_name_data.push_back(crfstatusprimarymode.get_name_leafdata());
+    if (crfstatusunitid.is_set || is_set(crfstatusunitid.yfilter)) leaf_name_data.push_back(crfstatusunitid.get_name_leafdata());
+    if (crfstatusunitstate.is_set || is_set(crfstatusunitstate.yfilter)) leaf_name_data.push_back(crfstatusunitstate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORFMIB::Crfstatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORFMIB::Crfstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cRFStatusDuplexMode")
+    {
+        crfstatusduplexmode = value;
+        crfstatusduplexmode.value_namespace = name_space;
+        crfstatusduplexmode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusFailoverTime")
+    {
+        crfstatusfailovertime = value;
+        crfstatusfailovertime.value_namespace = name_space;
+        crfstatusfailovertime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusIssuFromVersion")
+    {
+        crfstatusissufromversion = value;
+        crfstatusissufromversion.value_namespace = name_space;
+        crfstatusissufromversion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusIssuState")
+    {
+        crfstatusissustate = value;
+        crfstatusissustate.value_namespace = name_space;
+        crfstatusissustate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusIssuStateRev1")
+    {
+        crfstatusissustaterev1 = value;
+        crfstatusissustaterev1.value_namespace = name_space;
+        crfstatusissustaterev1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusIssuToVersion")
+    {
+        crfstatusissutoversion = value;
+        crfstatusissutoversion.value_namespace = name_space;
+        crfstatusissutoversion.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusLastSwactReasonCode")
+    {
+        crfstatuslastswactreasoncode = value;
+        crfstatuslastswactreasoncode.value_namespace = name_space;
+        crfstatuslastswactreasoncode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusManualSwactInhibit")
+    {
+        crfstatusmanualswactinhibit = value;
+        crfstatusmanualswactinhibit.value_namespace = name_space;
+        crfstatusmanualswactinhibit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusPeerStandByEntryTime")
+    {
+        crfstatuspeerstandbyentrytime = value;
+        crfstatuspeerstandbyentrytime.value_namespace = name_space;
+        crfstatuspeerstandbyentrytime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusPeerUnitId")
+    {
+        crfstatuspeerunitid = value;
+        crfstatuspeerunitid.value_namespace = name_space;
+        crfstatuspeerunitid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusPeerUnitState")
+    {
+        crfstatuspeerunitstate = value;
+        crfstatuspeerunitstate.value_namespace = name_space;
+        crfstatuspeerunitstate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusPrimaryMode")
+    {
+        crfstatusprimarymode = value;
+        crfstatusprimarymode.value_namespace = name_space;
+        crfstatusprimarymode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusUnitId")
+    {
+        crfstatusunitid = value;
+        crfstatusunitid.value_namespace = name_space;
+        crfstatusunitid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusUnitState")
+    {
+        crfstatusunitstate = value;
+        crfstatusunitstate.value_namespace = name_space;
+        crfstatusunitstate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORFMIB::Crfstatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cRFStatusDuplexMode")
+    {
+        crfstatusduplexmode.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusFailoverTime")
+    {
+        crfstatusfailovertime.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusIssuFromVersion")
+    {
+        crfstatusissufromversion.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusIssuState")
+    {
+        crfstatusissustate.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusIssuStateRev1")
+    {
+        crfstatusissustaterev1.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusIssuToVersion")
+    {
+        crfstatusissutoversion.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusLastSwactReasonCode")
+    {
+        crfstatuslastswactreasoncode.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusManualSwactInhibit")
+    {
+        crfstatusmanualswactinhibit.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusPeerStandByEntryTime")
+    {
+        crfstatuspeerstandbyentrytime.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusPeerUnitId")
+    {
+        crfstatuspeerunitid.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusPeerUnitState")
+    {
+        crfstatuspeerunitstate.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusPrimaryMode")
+    {
+        crfstatusprimarymode.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusUnitId")
+    {
+        crfstatusunitid.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusUnitState")
+    {
+        crfstatusunitstate.yfilter = yfilter;
+    }
+}
+
+bool CISCORFMIB::Crfstatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cRFStatusDuplexMode" || name == "cRFStatusFailoverTime" || name == "cRFStatusIssuFromVersion" || name == "cRFStatusIssuState" || name == "cRFStatusIssuStateRev1" || name == "cRFStatusIssuToVersion" || name == "cRFStatusLastSwactReasonCode" || name == "cRFStatusManualSwactInhibit" || name == "cRFStatusPeerStandByEntryTime" || name == "cRFStatusPeerUnitId" || name == "cRFStatusPeerUnitState" || name == "cRFStatusPrimaryMode" || name == "cRFStatusUnitId" || name == "cRFStatusUnitState")
+        return true;
+    return false;
+}
+
+CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfclienttable()
+{
+
+    yang_name = "cRFStatusRFClientTable"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORFMIB::Crfstatusrfclienttable::~Crfstatusrfclienttable()
+{
+}
+
+bool CISCORFMIB::Crfstatusrfclienttable::has_data() const
 {
     for (std::size_t index=0; index<crfstatusrfcliententry.size(); index++)
     {
@@ -1388,7 +1134,7 @@ bool CiscoRfMib::Crfstatusrfclienttable::has_data() const
     return false;
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::has_operation() const
+bool CISCORFMIB::Crfstatusrfclienttable::has_operation() const
 {
     for (std::size_t index=0; index<crfstatusrfcliententry.size(); index++)
     {
@@ -1398,37 +1144,30 @@ bool CiscoRfMib::Crfstatusrfclienttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoRfMib::Crfstatusrfclienttable::get_segment_path() const
+std::string CISCORFMIB::Crfstatusrfclienttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfstatusrfclienttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFStatusRFClientTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfstatusrfclienttable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfstatusrfclienttable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfclienttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFStatusRFClientEntry")
     {
@@ -1440,7 +1179,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(co
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry>();
+        auto c = std::make_shared<CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry>();
         c->parent = this;
         crfstatusrfcliententry.push_back(c);
         return c;
@@ -1449,7 +1188,7 @@ std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfclienttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : crfstatusrfcliententry)
@@ -1460,22 +1199,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfclienttabl
     return children;
 }
 
-void CiscoRfMib::Crfstatusrfclienttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfstatusrfclienttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoRfMib::Crfstatusrfclienttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfstatusrfclienttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfstatusrfclienttable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFStatusRFClientEntry")
         return true;
     return false;
 }
 
-CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::Crfstatusrfcliententry()
+CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::Crfstatusrfcliententry()
     :
     crfstatusrfclientid{YType::uint32, "cRFStatusRFClientID"},
     crfstatusrfclientdescr{YType::str, "cRFStatusRFClientDescr"},
@@ -1483,14 +1222,15 @@ CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::Crfstatusrfclientent
     crfstatusrfclientseq{YType::uint32, "cRFStatusRFClientSeq"},
     crfstatusrfclientstatus{YType::enumeration, "cRFStatusRFClientStatus"}
 {
-    yang_name = "cRFStatusRFClientEntry"; yang_parent_name = "cRFStatusRFClientTable";
+
+    yang_name = "cRFStatusRFClientEntry"; yang_parent_name = "cRFStatusRFClientTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::~Crfstatusrfcliententry()
+CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::~Crfstatusrfcliententry()
 {
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::has_data() const
+bool CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::has_data() const
 {
     return crfstatusrfclientid.is_set
 	|| crfstatusrfclientdescr.is_set
@@ -1499,7 +1239,7 @@ bool CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::has_data() cons
 	|| crfstatusrfclientstatus.is_set;
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::has_operation() const
+bool CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(crfstatusrfclientid.yfilter)
@@ -1509,27 +1249,22 @@ bool CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::has_operation()
 	|| ydk::is_set(crfstatusrfclientstatus.yfilter);
 }
 
-std::string CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::get_segment_path() const
+std::string CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFStatusRFClientTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cRFStatusRFClientEntry" <<"[cRFStatusRFClientID='" <<crfstatusrfclientid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFStatusRFClientTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (crfstatusrfclientid.is_set || is_set(crfstatusrfclientid.yfilter)) leaf_name_data.push_back(crfstatusrfclientid.get_name_leafdata());
@@ -1538,24 +1273,22 @@ const EntityPath CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::get
     if (crfstatusrfclientseq.is_set || is_set(crfstatusrfclientseq.yfilter)) leaf_name_data.push_back(crfstatusrfclientseq.get_name_leafdata());
     if (crfstatusrfclientstatus.is_set || is_set(crfstatusrfclientstatus.yfilter)) leaf_name_data.push_back(crfstatusrfclientstatus.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cRFStatusRFClientID")
     {
@@ -1589,7 +1322,7 @@ void CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::set_value(const
     }
 }
 
-void CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cRFStatusRFClientID")
     {
@@ -1613,71 +1346,268 @@ void CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::set_filter(cons
     }
 }
 
-bool CiscoRfMib::Crfstatusrfclienttable::Crfstatusrfcliententry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cRFStatusRFClientID" || name == "cRFStatusRFClientDescr" || name == "cRFStatusRFClientRedTime" || name == "cRFStatusRFClientSeq" || name == "cRFStatusRFClientStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf Rfaction::noAction {0, "noAction"};
-const Enum::YLeaf Rfaction::reloadPeer {1, "reloadPeer"};
-const Enum::YLeaf Rfaction::reloadShelf {2, "reloadShelf"};
-const Enum::YLeaf Rfaction::switchActivity {3, "switchActivity"};
-const Enum::YLeaf Rfaction::forceSwitchActivity {4, "forceSwitchActivity"};
+CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapstable()
+{
 
-const Enum::YLeaf Rfmode::nonRedundant {1, "nonRedundant"};
-const Enum::YLeaf Rfmode::staticLoadShareNonRedundant {2, "staticLoadShareNonRedundant"};
-const Enum::YLeaf Rfmode::dynamicLoadShareNonRedundant {3, "dynamicLoadShareNonRedundant"};
-const Enum::YLeaf Rfmode::staticLoadShareRedundant {4, "staticLoadShareRedundant"};
-const Enum::YLeaf Rfmode::dynamicLoadShareRedundant {5, "dynamicLoadShareRedundant"};
-const Enum::YLeaf Rfmode::coldStandbyRedundant {6, "coldStandbyRedundant"};
-const Enum::YLeaf Rfmode::warmStandbyRedundant {7, "warmStandbyRedundant"};
-const Enum::YLeaf Rfmode::hotStandbyRedundant {8, "hotStandbyRedundant"};
+    yang_name = "cRFStatusRFModeCapsTable"; yang_parent_name = "CISCO-RF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
 
-const Enum::YLeaf Rfstate::notKnown {1, "notKnown"};
-const Enum::YLeaf Rfstate::disabled {2, "disabled"};
-const Enum::YLeaf Rfstate::initialization {3, "initialization"};
-const Enum::YLeaf Rfstate::negotiation {4, "negotiation"};
-const Enum::YLeaf Rfstate::standbyCold {5, "standbyCold"};
-const Enum::YLeaf Rfstate::standbyColdConfig {6, "standbyColdConfig"};
-const Enum::YLeaf Rfstate::standbyColdFileSys {7, "standbyColdFileSys"};
-const Enum::YLeaf Rfstate::standbyColdBulk {8, "standbyColdBulk"};
-const Enum::YLeaf Rfstate::standbyHot {9, "standbyHot"};
-const Enum::YLeaf Rfstate::activeFast {10, "activeFast"};
-const Enum::YLeaf Rfstate::activeDrain {11, "activeDrain"};
-const Enum::YLeaf Rfstate::activePreconfig {12, "activePreconfig"};
-const Enum::YLeaf Rfstate::activePostconfig {13, "activePostconfig"};
-const Enum::YLeaf Rfstate::active {14, "active"};
-const Enum::YLeaf Rfstate::activeExtraload {15, "activeExtraload"};
-const Enum::YLeaf Rfstate::activeHandback {16, "activeHandback"};
+CISCORFMIB::Crfstatusrfmodecapstable::~Crfstatusrfmodecapstable()
+{
+}
 
-const Enum::YLeaf Rfissustaterev1::init {0, "init"};
-const Enum::YLeaf Rfissustaterev1::systemReset {1, "systemReset"};
-const Enum::YLeaf Rfissustaterev1::loadVersion {3, "loadVersion"};
-const Enum::YLeaf Rfissustaterev1::loadVersionSwitchover {4, "loadVersionSwitchover"};
-const Enum::YLeaf Rfissustaterev1::runVersion {6, "runVersion"};
-const Enum::YLeaf Rfissustaterev1::runVersionSwitchover {7, "runVersionSwitchover"};
-const Enum::YLeaf Rfissustaterev1::commitVersion {9, "commitVersion"};
+bool CISCORFMIB::Crfstatusrfmodecapstable::has_data() const
+{
+    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
+    {
+        if(crfstatusrfmodecapsentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
 
-const Enum::YLeaf Rfswactreasontype::unsupported {1, "unsupported"};
-const Enum::YLeaf Rfswactreasontype::none {2, "none"};
-const Enum::YLeaf Rfswactreasontype::notKnown {3, "notKnown"};
-const Enum::YLeaf Rfswactreasontype::userInitiated {4, "userInitiated"};
-const Enum::YLeaf Rfswactreasontype::userForced {5, "userForced"};
-const Enum::YLeaf Rfswactreasontype::activeUnitFailed {6, "activeUnitFailed"};
-const Enum::YLeaf Rfswactreasontype::activeUnitRemoved {7, "activeUnitRemoved"};
+bool CISCORFMIB::Crfstatusrfmodecapstable::has_operation() const
+{
+    for (std::size_t index=0; index<crfstatusrfmodecapsentry.size(); index++)
+    {
+        if(crfstatusrfmodecapsentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
 
-const Enum::YLeaf Rfissustate::unset {0, "unset"};
-const Enum::YLeaf Rfissustate::init {1, "init"};
-const Enum::YLeaf Rfissustate::loadVersion {2, "loadVersion"};
-const Enum::YLeaf Rfissustate::runVersion {3, "runVersion"};
-const Enum::YLeaf Rfissustate::commitVersion {4, "commitVersion"};
+std::string CISCORFMIB::Crfstatusrfmodecapstable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
 
-const Enum::YLeaf Rfclientstatus::noStatus {1, "noStatus"};
-const Enum::YLeaf Rfclientstatus::clientNotRedundant {2, "clientNotRedundant"};
-const Enum::YLeaf Rfclientstatus::clientRedundancyInProgress {3, "clientRedundancyInProgress"};
-const Enum::YLeaf Rfclientstatus::clientRedundant {4, "clientRedundant"};
+std::string CISCORFMIB::Crfstatusrfmodecapstable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cRFStatusRFModeCapsTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfstatusrfmodecapstable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfmodecapstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cRFStatusRFModeCapsEntry")
+    {
+        for(auto const & c : crfstatusrfmodecapsentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry>();
+        c->parent = this;
+        crfstatusrfmodecapsentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfmodecapstable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : crfstatusrfmodecapsentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCORFMIB::Crfstatusrfmodecapstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCORFMIB::Crfstatusrfmodecapstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCORFMIB::Crfstatusrfmodecapstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cRFStatusRFModeCapsEntry")
+        return true;
+    return false;
+}
+
+CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::Crfstatusrfmodecapsentry()
+    :
+    crfstatusrfmodecapsmode{YType::enumeration, "cRFStatusRFModeCapsMode"},
+    crfstatusrfmodecapsmodedescr{YType::str, "cRFStatusRFModeCapsModeDescr"}
+{
+
+    yang_name = "cRFStatusRFModeCapsEntry"; yang_parent_name = "cRFStatusRFModeCapsTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::~Crfstatusrfmodecapsentry()
+{
+}
+
+bool CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_data() const
+{
+    return crfstatusrfmodecapsmode.is_set
+	|| crfstatusrfmodecapsmodedescr.is_set;
+}
+
+bool CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crfstatusrfmodecapsmode.yfilter)
+	|| ydk::is_set(crfstatusrfmodecapsmodedescr.yfilter);
+}
+
+std::string CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-RF-MIB:CISCO-RF-MIB/cRFStatusRFModeCapsTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cRFStatusRFModeCapsEntry" <<"[cRFStatusRFModeCapsMode='" <<crfstatusrfmodecapsmode <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crfstatusrfmodecapsmode.is_set || is_set(crfstatusrfmodecapsmode.yfilter)) leaf_name_data.push_back(crfstatusrfmodecapsmode.get_name_leafdata());
+    if (crfstatusrfmodecapsmodedescr.is_set || is_set(crfstatusrfmodecapsmodedescr.yfilter)) leaf_name_data.push_back(crfstatusrfmodecapsmodedescr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cRFStatusRFModeCapsMode")
+    {
+        crfstatusrfmodecapsmode = value;
+        crfstatusrfmodecapsmode.value_namespace = name_space;
+        crfstatusrfmodecapsmode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cRFStatusRFModeCapsModeDescr")
+    {
+        crfstatusrfmodecapsmodedescr = value;
+        crfstatusrfmodecapsmodedescr.value_namespace = name_space;
+        crfstatusrfmodecapsmodedescr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cRFStatusRFModeCapsMode")
+    {
+        crfstatusrfmodecapsmode.yfilter = yfilter;
+    }
+    if(value_path == "cRFStatusRFModeCapsModeDescr")
+    {
+        crfstatusrfmodecapsmodedescr.yfilter = yfilter;
+    }
+}
+
+bool CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cRFStatusRFModeCapsMode" || name == "cRFStatusRFModeCapsModeDescr")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf RFAction::noAction {0, "noAction"};
+const Enum::YLeaf RFAction::reloadPeer {1, "reloadPeer"};
+const Enum::YLeaf RFAction::reloadShelf {2, "reloadShelf"};
+const Enum::YLeaf RFAction::switchActivity {3, "switchActivity"};
+const Enum::YLeaf RFAction::forceSwitchActivity {4, "forceSwitchActivity"};
+
+const Enum::YLeaf RFIssuStateRev1::init {0, "init"};
+const Enum::YLeaf RFIssuStateRev1::systemReset {1, "systemReset"};
+const Enum::YLeaf RFIssuStateRev1::loadVersion {3, "loadVersion"};
+const Enum::YLeaf RFIssuStateRev1::loadVersionSwitchover {4, "loadVersionSwitchover"};
+const Enum::YLeaf RFIssuStateRev1::runVersion {6, "runVersion"};
+const Enum::YLeaf RFIssuStateRev1::runVersionSwitchover {7, "runVersionSwitchover"};
+const Enum::YLeaf RFIssuStateRev1::commitVersion {9, "commitVersion"};
+
+const Enum::YLeaf RFSwactReasonType::unsupported {1, "unsupported"};
+const Enum::YLeaf RFSwactReasonType::none {2, "none"};
+const Enum::YLeaf RFSwactReasonType::notKnown {3, "notKnown"};
+const Enum::YLeaf RFSwactReasonType::userInitiated {4, "userInitiated"};
+const Enum::YLeaf RFSwactReasonType::userForced {5, "userForced"};
+const Enum::YLeaf RFSwactReasonType::activeUnitFailed {6, "activeUnitFailed"};
+const Enum::YLeaf RFSwactReasonType::activeUnitRemoved {7, "activeUnitRemoved"};
+
+const Enum::YLeaf RFState::notKnown {1, "notKnown"};
+const Enum::YLeaf RFState::disabled {2, "disabled"};
+const Enum::YLeaf RFState::initialization {3, "initialization"};
+const Enum::YLeaf RFState::negotiation {4, "negotiation"};
+const Enum::YLeaf RFState::standbyCold {5, "standbyCold"};
+const Enum::YLeaf RFState::standbyColdConfig {6, "standbyColdConfig"};
+const Enum::YLeaf RFState::standbyColdFileSys {7, "standbyColdFileSys"};
+const Enum::YLeaf RFState::standbyColdBulk {8, "standbyColdBulk"};
+const Enum::YLeaf RFState::standbyHot {9, "standbyHot"};
+const Enum::YLeaf RFState::activeFast {10, "activeFast"};
+const Enum::YLeaf RFState::activeDrain {11, "activeDrain"};
+const Enum::YLeaf RFState::activePreconfig {12, "activePreconfig"};
+const Enum::YLeaf RFState::activePostconfig {13, "activePostconfig"};
+const Enum::YLeaf RFState::active {14, "active"};
+const Enum::YLeaf RFState::activeExtraload {15, "activeExtraload"};
+const Enum::YLeaf RFState::activeHandback {16, "activeHandback"};
+
+const Enum::YLeaf RFClientStatus::noStatus {1, "noStatus"};
+const Enum::YLeaf RFClientStatus::clientNotRedundant {2, "clientNotRedundant"};
+const Enum::YLeaf RFClientStatus::clientRedundancyInProgress {3, "clientRedundancyInProgress"};
+const Enum::YLeaf RFClientStatus::clientRedundant {4, "clientRedundant"};
+
+const Enum::YLeaf RFMode::nonRedundant {1, "nonRedundant"};
+const Enum::YLeaf RFMode::staticLoadShareNonRedundant {2, "staticLoadShareNonRedundant"};
+const Enum::YLeaf RFMode::dynamicLoadShareNonRedundant {3, "dynamicLoadShareNonRedundant"};
+const Enum::YLeaf RFMode::staticLoadShareRedundant {4, "staticLoadShareRedundant"};
+const Enum::YLeaf RFMode::dynamicLoadShareRedundant {5, "dynamicLoadShareRedundant"};
+const Enum::YLeaf RFMode::coldStandbyRedundant {6, "coldStandbyRedundant"};
+const Enum::YLeaf RFMode::warmStandbyRedundant {7, "warmStandbyRedundant"};
+const Enum::YLeaf RFMode::hotStandbyRedundant {8, "hotStandbyRedundant"};
+
+const Enum::YLeaf RFIssuState::unset {0, "unset"};
+const Enum::YLeaf RFIssuState::init {1, "init"};
+const Enum::YLeaf RFIssuState::loadVersion {2, "loadVersion"};
+const Enum::YLeaf RFIssuState::runVersion {3, "runVersion"};
+const Enum::YLeaf RFIssuState::commitVersion {4, "commitVersion"};
 
 
 }

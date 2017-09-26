@@ -10,16 +10,7 @@
 namespace cisco_ios_xe {
 namespace INET_ADDRESS_MIB {
 
-class Inetversion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class Inetaddresstype : public ydk::Enum
+class InetAddressType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -31,7 +22,16 @@ class Inetaddresstype : public ydk::Enum
 
 };
 
-class Inetscopetype : public ydk::Enum
+class InetVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class InetScopeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf interfaceLocal;

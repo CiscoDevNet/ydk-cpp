@@ -19,7 +19,7 @@ class AclMapping : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -35,8 +35,8 @@ class AclMapping : public ydk::Entity
         class AclSets; //type: AclMapping::AclSets
         class Interfaces; //type: AclMapping::Interfaces
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::AclSets> acl_sets;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::AclSets> acl_sets;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces> interfaces;
         
 }; // AclMapping
 
@@ -49,17 +49,18 @@ class AclMapping::AclSets : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class AclSet; //type: AclMapping::AclSets::AclSet
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::AclSets::AclSet> > acl_set;
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::AclSets::AclSet> > acl_set;
         
 }; // AclMapping::AclSets
 
@@ -72,18 +73,19 @@ class AclMapping::AclSets::AclSet : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         class Config; //type: AclMapping::AclSets::AclSet::Config
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::AclSets::AclSet::Config> config;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::AclSets::AclSet::Config> config;
         
 }; // AclMapping::AclSets::AclSet
 
@@ -96,7 +98,7 @@ class AclMapping::AclSets::AclSet::Config : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -109,7 +111,7 @@ class AclMapping::AclSets::AclSet::Config : public ydk::Entity
         ydk::YLeaf description; //type: string
         class AclEntries; //type: AclMapping::AclSets::AclSet::Config::AclEntries
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::AclSets::AclSet::Config::AclEntries> acl_entries;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::AclSets::AclSet::Config::AclEntries> acl_entries;
         
 }; // AclMapping::AclSets::AclSet::Config
 
@@ -122,7 +124,7 @@ class AclMapping::AclSets::AclSet::Config::AclEntries : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -132,7 +134,7 @@ class AclMapping::AclSets::AclSet::Config::AclEntries : public ydk::Entity
 
         class AclEntry; //type: AclMapping::AclSets::AclSet::Config::AclEntries::AclEntry
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::AclSets::AclSet::Config::AclEntries::AclEntry> > acl_entry;
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::AclSets::AclSet::Config::AclEntries::AclEntry> > acl_entry;
         
 }; // AclMapping::AclSets::AclSet::Config::AclEntries
 
@@ -145,7 +147,7 @@ class AclMapping::AclSets::AclSet::Config::AclEntries::AclEntry : public ydk::En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -167,17 +169,18 @@ class AclMapping::Interfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Interface; //type: AclMapping::Interfaces::Interface
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface> > interface;
         
 }; // AclMapping::Interfaces
 
@@ -190,13 +193,14 @@ class AclMapping::Interfaces::Interface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: string
         class Config; //type: AclMapping::Interfaces::Interface::Config
@@ -204,10 +208,10 @@ class AclMapping::Interfaces::Interface : public ydk::Entity
         class IngressAclSets; //type: AclMapping::Interfaces::Interface::IngressAclSets
         class EgressAclSets; //type: AclMapping::Interfaces::Interface::EgressAclSets
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::Config> config;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets> egress_acl_sets;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets> ingress_acl_sets;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef> interface_ref;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::Config> config;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets> egress_acl_sets;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets> ingress_acl_sets;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef> interface_ref;
         
 }; // AclMapping::Interfaces::Interface
 
@@ -220,7 +224,7 @@ class AclMapping::Interfaces::Interface::Config : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -233,15 +237,15 @@ class AclMapping::Interfaces::Interface::Config : public ydk::Entity
 }; // AclMapping::Interfaces::Interface::Config
 
 
-class AclMapping::Interfaces::Interface::InterfaceRef : public ydk::Entity
+class AclMapping::Interfaces::Interface::EgressAclSets : public ydk::Entity
 {
     public:
-        InterfaceRef();
-        ~InterfaceRef();
+        EgressAclSets();
+        ~EgressAclSets();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -249,16 +253,84 @@ class AclMapping::Interfaces::Interface::InterfaceRef : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: AclMapping::Interfaces::Interface::InterfaceRef::Config
-        class State; //type: AclMapping::Interfaces::Interface::InterfaceRef::State
+        class EgressAclSet; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef::Config> config;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef::State> state;
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet> > egress_acl_set;
         
-}; // AclMapping::Interfaces::Interface::InterfaceRef
+}; // AclMapping::Interfaces::Interface::EgressAclSets
 
 
-class AclMapping::Interfaces::Interface::InterfaceRef::Config : public ydk::Entity
+class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet : public ydk::Entity
+{
+    public:
+        EgressAclSet();
+        ~EgressAclSet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf set_name; //type: string
+        class Config; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config
+        class AclEntries; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries
+
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries> acl_entries;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config> config;
+        
+}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet
+
+
+class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries : public ydk::Entity
+{
+    public:
+        AclEntries();
+        ~AclEntries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AclEntry; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry> > acl_entry;
+        
+}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries
+
+
+class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry : public ydk::Entity
+{
+    public:
+        AclEntry();
+        ~AclEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sequence_id; //type: string
+
+}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry
+
+
+class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config : public ydk::Entity
 {
     public:
         Config();
@@ -266,7 +338,7 @@ class AclMapping::Interfaces::Interface::InterfaceRef::Config : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -274,36 +346,9 @@ class AclMapping::Interfaces::Interface::InterfaceRef::Config : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
+        ydk::YLeaf set_name; //type: string
 
-}; // AclMapping::Interfaces::Interface::InterfaceRef::Config
-
-
-class AclMapping::Interfaces::Interface::InterfaceRef::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
-
-}; // AclMapping::Interfaces::Interface::InterfaceRef::State
+}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config
 
 
 class AclMapping::Interfaces::Interface::IngressAclSets : public ydk::Entity
@@ -314,7 +359,7 @@ class AclMapping::Interfaces::Interface::IngressAclSets : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -324,7 +369,7 @@ class AclMapping::Interfaces::Interface::IngressAclSets : public ydk::Entity
 
         class IngressAclSet; //type: AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet> > ingress_acl_set;
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet> > ingress_acl_set;
         
 }; // AclMapping::Interfaces::Interface::IngressAclSets
 
@@ -337,7 +382,7 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -350,11 +395,55 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet : public 
         class State; //type: AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State
         class AclEntries; //type: AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries
 
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries> acl_entries;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config> config;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State> state;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries> acl_entries;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config> config;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State> state;
         
 }; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet
+
+
+class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries : public ydk::Entity
+{
+    public:
+        AclEntries();
+        ~AclEntries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AclEntry; //type: AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry> > acl_entry;
+        
+}; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries
+
+
+class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry : public ydk::Entity
+{
+    public:
+        AclEntry();
+        ~AclEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sequence_id; //type: string
+
+}; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry
 
 
 class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config : public ydk::Entity
@@ -365,7 +454,7 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::Config :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -386,7 +475,7 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -399,15 +488,15 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State : 
 }; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::State
 
 
-class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries : public ydk::Entity
+class AclMapping::Interfaces::Interface::InterfaceRef : public ydk::Entity
 {
     public:
-        AclEntries();
-        ~AclEntries();
+        InterfaceRef();
+        ~InterfaceRef();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -415,84 +504,16 @@ class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AclEntry; //type: AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry
+        class Config; //type: AclMapping::Interfaces::Interface::InterfaceRef::Config
+        class State; //type: AclMapping::Interfaces::Interface::InterfaceRef::State
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry> > acl_entry;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef::Config> config;
+        std::shared_ptr<cisco_ios_xe::oc_mapping_acl::AclMapping::Interfaces::Interface::InterfaceRef::State> state;
         
-}; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries
+}; // AclMapping::Interfaces::Interface::InterfaceRef
 
 
-class AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry : public ydk::Entity
-{
-    public:
-        AclEntry();
-        ~AclEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sequence_id; //type: string
-
-}; // AclMapping::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry
-
-
-class AclMapping::Interfaces::Interface::EgressAclSets : public ydk::Entity
-{
-    public:
-        EgressAclSets();
-        ~EgressAclSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EgressAclSet; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet
-
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet> > egress_acl_set;
-        
-}; // AclMapping::Interfaces::Interface::EgressAclSets
-
-
-class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet : public ydk::Entity
-{
-    public:
-        EgressAclSet();
-        ~EgressAclSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf set_name; //type: string
-        class Config; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config
-        class AclEntries; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries
-
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries> acl_entries;
-        std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config> config;
-        
-}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet
-
-
-class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config : public ydk::Entity
+class AclMapping::Interfaces::Interface::InterfaceRef::Config : public ydk::Entity
 {
     public:
         Config();
@@ -500,7 +521,7 @@ class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -508,20 +529,23 @@ class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_name; //type: string
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
 
-}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::Config
+}; // AclMapping::Interfaces::Interface::InterfaceRef::Config
 
 
-class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries : public ydk::Entity
+class AclMapping::Interfaces::Interface::InterfaceRef::State : public ydk::Entity
 {
     public:
-        AclEntries();
-        ~AclEntries();
+        State();
+        ~State();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -529,32 +553,12 @@ class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AclEntry; //type: AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
 
-        std::vector<std::shared_ptr<oc_mapping_acl::AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry> > acl_entry;
-        
-}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries
-
-
-class AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry : public ydk::Entity
-{
-    public:
-        AclEntry();
-        ~AclEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sequence_id; //type: string
-
-}; // AclMapping::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry
+}; // AclMapping::Interfaces::Interface::InterfaceRef::State
 
 
 }

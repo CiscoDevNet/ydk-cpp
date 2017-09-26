@@ -17,7 +17,7 @@ Dwdm::Dwdm()
 {
     ports->parent = this;
 
-    yang_name = "dwdm"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper";
+    yang_name = "dwdm"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Dwdm::~Dwdm()
@@ -39,26 +39,15 @@ std::string Dwdm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:dwdm";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Dwdm::has_leaf_or_child_of_name(const std::string & name) const
 
 Dwdm::Ports::Ports()
 {
-    yang_name = "ports"; yang_parent_name = "dwdm";
+
+    yang_name = "ports"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Dwdm::Ports::~Ports()
@@ -156,33 +146,26 @@ bool Dwdm::Ports::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Dwdm::Ports::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:dwdm/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Dwdm::Ports::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ports";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:dwdm/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,12 +225,10 @@ Dwdm::Ports::Port::Port()
 	,prbs(std::make_shared<Dwdm::Ports::Port::Prbs>())
 {
     info->parent = this;
-
     optics->parent = this;
-
     prbs->parent = this;
 
-    yang_name = "port"; yang_parent_name = "ports";
+    yang_name = "port"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Dwdm::Ports::Port::~Port()
@@ -271,34 +252,27 @@ bool Dwdm::Ports::Port::has_operation() const
 	|| (prbs !=  nullptr && prbs->has_operation());
 }
 
+std::string Dwdm::Ports::Port::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:dwdm/ports/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Dwdm::Ports::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:dwdm/ports/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -380,1216 +354,6 @@ bool Dwdm::Ports::Port::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-Dwdm::Ports::Port::Prbs::Prbs()
-    :
-    fifteen_minutes_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>())
-	,twenty_four_hours_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>())
-{
-    fifteen_minutes_bucket->parent = this;
-
-    twenty_four_hours_bucket->parent = this;
-
-    yang_name = "prbs"; yang_parent_name = "port";
-}
-
-Dwdm::Ports::Port::Prbs::~Prbs()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::has_data() const
-{
-    return (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_data())
-	|| (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_data());
-}
-
-bool Dwdm::Ports::Port::Prbs::has_operation() const
-{
-    return is_set(yfilter)
-	|| (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_operation())
-	|| (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_operation());
-}
-
-std::string Dwdm::Ports::Port::Prbs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prbs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Prbs' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fifteen-minutes-bucket")
-    {
-        if(fifteen_minutes_bucket == nullptr)
-        {
-            fifteen_minutes_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>();
-        }
-        return fifteen_minutes_bucket;
-    }
-
-    if(child_yang_name == "twenty-four-hours-bucket")
-    {
-        if(twenty_four_hours_bucket == nullptr)
-        {
-            twenty_four_hours_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>();
-        }
-        return twenty_four_hours_bucket;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(fifteen_minutes_bucket != nullptr)
-    {
-        children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
-    }
-
-    if(twenty_four_hours_bucket != nullptr)
-    {
-        children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dwdm::Ports::Port::Prbs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fifteen-minutes-bucket" || name == "twenty-four-hours-bucket")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursBucket()
-    :
-    twenty_four_hours_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>())
-{
-    twenty_four_hours_statistics->parent = this;
-
-    yang_name = "twenty-four-hours-bucket"; yang_parent_name = "prbs";
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::~TwentyFourHoursBucket()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_data() const
-{
-    return (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_data());
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_operation() const
-{
-    return is_set(yfilter)
-	|| (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_operation());
-}
-
-std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "twenty-four-hours-bucket";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TwentyFourHoursBucket' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "twenty-four-hours-statistics")
-    {
-        if(twenty_four_hours_statistics == nullptr)
-        {
-            twenty_four_hours_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>();
-        }
-        return twenty_four_hours_statistics;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(twenty_four_hours_statistics != nullptr)
-    {
-        children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "twenty-four-hours-statistics")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::TwentyFourHoursStatistics()
-    :
-    is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
-    prbs_config_mode{YType::enumeration, "prbs-config-mode"}
-{
-    yang_name = "twenty-four-hours-statistics"; yang_parent_name = "twenty-four-hours-bucket";
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::~TwentyFourHoursStatistics()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_data() const
-{
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
-    {
-        if(prbs_entry[index]->has_data())
-            return true;
-    }
-    return is_prbs_enabled.is_set
-	|| prbs_config_mode.is_set;
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_operation() const
-{
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
-    {
-        if(prbs_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(is_prbs_enabled.yfilter)
-	|| ydk::is_set(prbs_config_mode.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "twenty-four-hours-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TwentyFourHoursStatistics' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_prbs_enabled.is_set || is_set(is_prbs_enabled.yfilter)) leaf_name_data.push_back(is_prbs_enabled.get_name_leafdata());
-    if (prbs_config_mode.is_set || is_set(prbs_config_mode.yfilter)) leaf_name_data.push_back(prbs_config_mode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prbs-entry")
-    {
-        for(auto const & c : prbs_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
-        c->parent = this;
-        prbs_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : prbs_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-prbs-enabled")
-    {
-        is_prbs_enabled = value;
-        is_prbs_enabled.value_namespace = name_space;
-        is_prbs_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prbs-config-mode")
-    {
-        prbs_config_mode = value;
-        prbs_config_mode.value_namespace = name_space;
-        prbs_config_mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-prbs-enabled")
-    {
-        is_prbs_enabled.yfilter = yfilter;
-    }
-    if(value_path == "prbs-config-mode")
-    {
-        prbs_config_mode.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prbs-entry" || name == "is-prbs-enabled" || name == "prbs-config-mode")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::PrbsEntry()
-    :
-    bit_error_count{YType::uint64, "bit-error-count"},
-    configured_pattern{YType::enumeration, "configured-pattern"},
-    found_at{YType::str, "found-at"},
-    found_count{YType::uint64, "found-count"},
-    interval_index{YType::enumeration, "interval-index"},
-    lost_at{YType::str, "lost-at"},
-    lost_count{YType::uint64, "lost-count"},
-    received_pattern{YType::enumeration, "received-pattern"},
-    start_at{YType::str, "start-at"},
-    stop_at{YType::str, "stop-at"}
-{
-    yang_name = "prbs-entry"; yang_parent_name = "twenty-four-hours-statistics";
-}
-
-Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::~PrbsEntry()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_data() const
-{
-    return bit_error_count.is_set
-	|| configured_pattern.is_set
-	|| found_at.is_set
-	|| found_count.is_set
-	|| interval_index.is_set
-	|| lost_at.is_set
-	|| lost_count.is_set
-	|| received_pattern.is_set
-	|| start_at.is_set
-	|| stop_at.is_set;
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bit_error_count.yfilter)
-	|| ydk::is_set(configured_pattern.yfilter)
-	|| ydk::is_set(found_at.yfilter)
-	|| ydk::is_set(found_count.yfilter)
-	|| ydk::is_set(interval_index.yfilter)
-	|| ydk::is_set(lost_at.yfilter)
-	|| ydk::is_set(lost_count.yfilter)
-	|| ydk::is_set(received_pattern.yfilter)
-	|| ydk::is_set(start_at.yfilter)
-	|| ydk::is_set(stop_at.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prbs-entry";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrbsEntry' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bit_error_count.is_set || is_set(bit_error_count.yfilter)) leaf_name_data.push_back(bit_error_count.get_name_leafdata());
-    if (configured_pattern.is_set || is_set(configured_pattern.yfilter)) leaf_name_data.push_back(configured_pattern.get_name_leafdata());
-    if (found_at.is_set || is_set(found_at.yfilter)) leaf_name_data.push_back(found_at.get_name_leafdata());
-    if (found_count.is_set || is_set(found_count.yfilter)) leaf_name_data.push_back(found_count.get_name_leafdata());
-    if (interval_index.is_set || is_set(interval_index.yfilter)) leaf_name_data.push_back(interval_index.get_name_leafdata());
-    if (lost_at.is_set || is_set(lost_at.yfilter)) leaf_name_data.push_back(lost_at.get_name_leafdata());
-    if (lost_count.is_set || is_set(lost_count.yfilter)) leaf_name_data.push_back(lost_count.get_name_leafdata());
-    if (received_pattern.is_set || is_set(received_pattern.yfilter)) leaf_name_data.push_back(received_pattern.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (stop_at.is_set || is_set(stop_at.yfilter)) leaf_name_data.push_back(stop_at.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bit-error-count")
-    {
-        bit_error_count = value;
-        bit_error_count.value_namespace = name_space;
-        bit_error_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-pattern")
-    {
-        configured_pattern = value;
-        configured_pattern.value_namespace = name_space;
-        configured_pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "found-at")
-    {
-        found_at = value;
-        found_at.value_namespace = name_space;
-        found_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "found-count")
-    {
-        found_count = value;
-        found_count.value_namespace = name_space;
-        found_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval-index")
-    {
-        interval_index = value;
-        interval_index.value_namespace = name_space;
-        interval_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lost-at")
-    {
-        lost_at = value;
-        lost_at.value_namespace = name_space;
-        lost_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lost-count")
-    {
-        lost_count = value;
-        lost_count.value_namespace = name_space;
-        lost_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "received-pattern")
-    {
-        received_pattern = value;
-        received_pattern.value_namespace = name_space;
-        received_pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-at")
-    {
-        start_at = value;
-        start_at.value_namespace = name_space;
-        start_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stop-at")
-    {
-        stop_at = value;
-        stop_at.value_namespace = name_space;
-        stop_at.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bit-error-count")
-    {
-        bit_error_count.yfilter = yfilter;
-    }
-    if(value_path == "configured-pattern")
-    {
-        configured_pattern.yfilter = yfilter;
-    }
-    if(value_path == "found-at")
-    {
-        found_at.yfilter = yfilter;
-    }
-    if(value_path == "found-count")
-    {
-        found_count.yfilter = yfilter;
-    }
-    if(value_path == "interval-index")
-    {
-        interval_index.yfilter = yfilter;
-    }
-    if(value_path == "lost-at")
-    {
-        lost_at.yfilter = yfilter;
-    }
-    if(value_path == "lost-count")
-    {
-        lost_count.yfilter = yfilter;
-    }
-    if(value_path == "received-pattern")
-    {
-        received_pattern.yfilter = yfilter;
-    }
-    if(value_path == "start-at")
-    {
-        start_at.yfilter = yfilter;
-    }
-    if(value_path == "stop-at")
-    {
-        stop_at.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bit-error-count" || name == "configured-pattern" || name == "found-at" || name == "found-count" || name == "interval-index" || name == "lost-at" || name == "lost-count" || name == "received-pattern" || name == "start-at" || name == "stop-at")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesBucket()
-    :
-    fifteen_minutes_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>())
-{
-    fifteen_minutes_statistics->parent = this;
-
-    yang_name = "fifteen-minutes-bucket"; yang_parent_name = "prbs";
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::~FifteenMinutesBucket()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_data() const
-{
-    return (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_data());
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_operation() const
-{
-    return is_set(yfilter)
-	|| (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_operation());
-}
-
-std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fifteen-minutes-bucket";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FifteenMinutesBucket' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fifteen-minutes-statistics")
-    {
-        if(fifteen_minutes_statistics == nullptr)
-        {
-            fifteen_minutes_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>();
-        }
-        return fifteen_minutes_statistics;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(fifteen_minutes_statistics != nullptr)
-    {
-        children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fifteen-minutes-statistics")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::FifteenMinutesStatistics()
-    :
-    is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
-    prbs_config_mode{YType::enumeration, "prbs-config-mode"}
-{
-    yang_name = "fifteen-minutes-statistics"; yang_parent_name = "fifteen-minutes-bucket";
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::~FifteenMinutesStatistics()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_data() const
-{
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
-    {
-        if(prbs_entry[index]->has_data())
-            return true;
-    }
-    return is_prbs_enabled.is_set
-	|| prbs_config_mode.is_set;
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_operation() const
-{
-    for (std::size_t index=0; index<prbs_entry.size(); index++)
-    {
-        if(prbs_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(is_prbs_enabled.yfilter)
-	|| ydk::is_set(prbs_config_mode.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fifteen-minutes-statistics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FifteenMinutesStatistics' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_prbs_enabled.is_set || is_set(is_prbs_enabled.yfilter)) leaf_name_data.push_back(is_prbs_enabled.get_name_leafdata());
-    if (prbs_config_mode.is_set || is_set(prbs_config_mode.yfilter)) leaf_name_data.push_back(prbs_config_mode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prbs-entry")
-    {
-        for(auto const & c : prbs_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
-        c->parent = this;
-        prbs_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : prbs_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-prbs-enabled")
-    {
-        is_prbs_enabled = value;
-        is_prbs_enabled.value_namespace = name_space;
-        is_prbs_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prbs-config-mode")
-    {
-        prbs_config_mode = value;
-        prbs_config_mode.value_namespace = name_space;
-        prbs_config_mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-prbs-enabled")
-    {
-        is_prbs_enabled.yfilter = yfilter;
-    }
-    if(value_path == "prbs-config-mode")
-    {
-        prbs_config_mode.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prbs-entry" || name == "is-prbs-enabled" || name == "prbs-config-mode")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::PrbsEntry()
-    :
-    bit_error_count{YType::uint64, "bit-error-count"},
-    configured_pattern{YType::enumeration, "configured-pattern"},
-    found_at{YType::str, "found-at"},
-    found_count{YType::uint64, "found-count"},
-    interval_index{YType::enumeration, "interval-index"},
-    lost_at{YType::str, "lost-at"},
-    lost_count{YType::uint64, "lost-count"},
-    received_pattern{YType::enumeration, "received-pattern"},
-    start_at{YType::str, "start-at"},
-    stop_at{YType::str, "stop-at"}
-{
-    yang_name = "prbs-entry"; yang_parent_name = "fifteen-minutes-statistics";
-}
-
-Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::~PrbsEntry()
-{
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_data() const
-{
-    return bit_error_count.is_set
-	|| configured_pattern.is_set
-	|| found_at.is_set
-	|| found_count.is_set
-	|| interval_index.is_set
-	|| lost_at.is_set
-	|| lost_count.is_set
-	|| received_pattern.is_set
-	|| start_at.is_set
-	|| stop_at.is_set;
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bit_error_count.yfilter)
-	|| ydk::is_set(configured_pattern.yfilter)
-	|| ydk::is_set(found_at.yfilter)
-	|| ydk::is_set(found_count.yfilter)
-	|| ydk::is_set(interval_index.yfilter)
-	|| ydk::is_set(lost_at.yfilter)
-	|| ydk::is_set(lost_count.yfilter)
-	|| ydk::is_set(received_pattern.yfilter)
-	|| ydk::is_set(start_at.yfilter)
-	|| ydk::is_set(stop_at.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prbs-entry";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrbsEntry' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bit_error_count.is_set || is_set(bit_error_count.yfilter)) leaf_name_data.push_back(bit_error_count.get_name_leafdata());
-    if (configured_pattern.is_set || is_set(configured_pattern.yfilter)) leaf_name_data.push_back(configured_pattern.get_name_leafdata());
-    if (found_at.is_set || is_set(found_at.yfilter)) leaf_name_data.push_back(found_at.get_name_leafdata());
-    if (found_count.is_set || is_set(found_count.yfilter)) leaf_name_data.push_back(found_count.get_name_leafdata());
-    if (interval_index.is_set || is_set(interval_index.yfilter)) leaf_name_data.push_back(interval_index.get_name_leafdata());
-    if (lost_at.is_set || is_set(lost_at.yfilter)) leaf_name_data.push_back(lost_at.get_name_leafdata());
-    if (lost_count.is_set || is_set(lost_count.yfilter)) leaf_name_data.push_back(lost_count.get_name_leafdata());
-    if (received_pattern.is_set || is_set(received_pattern.yfilter)) leaf_name_data.push_back(received_pattern.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (stop_at.is_set || is_set(stop_at.yfilter)) leaf_name_data.push_back(stop_at.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bit-error-count")
-    {
-        bit_error_count = value;
-        bit_error_count.value_namespace = name_space;
-        bit_error_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-pattern")
-    {
-        configured_pattern = value;
-        configured_pattern.value_namespace = name_space;
-        configured_pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "found-at")
-    {
-        found_at = value;
-        found_at.value_namespace = name_space;
-        found_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "found-count")
-    {
-        found_count = value;
-        found_count.value_namespace = name_space;
-        found_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval-index")
-    {
-        interval_index = value;
-        interval_index.value_namespace = name_space;
-        interval_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lost-at")
-    {
-        lost_at = value;
-        lost_at.value_namespace = name_space;
-        lost_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lost-count")
-    {
-        lost_count = value;
-        lost_count.value_namespace = name_space;
-        lost_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "received-pattern")
-    {
-        received_pattern = value;
-        received_pattern.value_namespace = name_space;
-        received_pattern.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-at")
-    {
-        start_at = value;
-        start_at.value_namespace = name_space;
-        start_at.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stop-at")
-    {
-        stop_at = value;
-        stop_at.value_namespace = name_space;
-        stop_at.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bit-error-count")
-    {
-        bit_error_count.yfilter = yfilter;
-    }
-    if(value_path == "configured-pattern")
-    {
-        configured_pattern.yfilter = yfilter;
-    }
-    if(value_path == "found-at")
-    {
-        found_at.yfilter = yfilter;
-    }
-    if(value_path == "found-count")
-    {
-        found_count.yfilter = yfilter;
-    }
-    if(value_path == "interval-index")
-    {
-        interval_index.yfilter = yfilter;
-    }
-    if(value_path == "lost-at")
-    {
-        lost_at.yfilter = yfilter;
-    }
-    if(value_path == "lost-count")
-    {
-        lost_count.yfilter = yfilter;
-    }
-    if(value_path == "received-pattern")
-    {
-        received_pattern.yfilter = yfilter;
-    }
-    if(value_path == "start-at")
-    {
-        start_at.yfilter = yfilter;
-    }
-    if(value_path == "stop-at")
-    {
-        stop_at.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bit-error-count" || name == "configured-pattern" || name == "found-at" || name == "found-count" || name == "interval-index" || name == "lost-at" || name == "lost-count" || name == "received-pattern" || name == "start-at" || name == "stop-at")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Optics::Optics()
-    :
-    wave_info(std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>())
-{
-    wave_info->parent = this;
-
-    yang_name = "optics"; yang_parent_name = "port";
-}
-
-Dwdm::Ports::Port::Optics::~Optics()
-{
-}
-
-bool Dwdm::Ports::Port::Optics::has_data() const
-{
-    return (wave_info !=  nullptr && wave_info->has_data());
-}
-
-bool Dwdm::Ports::Port::Optics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (wave_info !=  nullptr && wave_info->has_operation());
-}
-
-std::string Dwdm::Ports::Port::Optics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Optics::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Optics' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "wave-info")
-    {
-        if(wave_info == nullptr)
-        {
-            wave_info = std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>();
-        }
-        return wave_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(wave_info != nullptr)
-    {
-        children["wave-info"] = wave_info;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Dwdm::Ports::Port::Optics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Dwdm::Ports::Port::Optics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wave-info")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Optics::WaveInfo::WaveInfo()
-    :
-    wave_band{YType::uint32, "wave-band"},
-    wave_channel_max{YType::uint32, "wave-channel-max"},
-    wave_channel_min{YType::uint32, "wave-channel-min"}
-{
-    yang_name = "wave-info"; yang_parent_name = "optics";
-}
-
-Dwdm::Ports::Port::Optics::WaveInfo::~WaveInfo()
-{
-}
-
-bool Dwdm::Ports::Port::Optics::WaveInfo::has_data() const
-{
-    return wave_band.is_set
-	|| wave_channel_max.is_set
-	|| wave_channel_min.is_set;
-}
-
-bool Dwdm::Ports::Port::Optics::WaveInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(wave_band.yfilter)
-	|| ydk::is_set(wave_channel_max.yfilter)
-	|| ydk::is_set(wave_channel_min.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Optics::WaveInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wave-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Optics::WaveInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'WaveInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (wave_band.is_set || is_set(wave_band.yfilter)) leaf_name_data.push_back(wave_band.get_name_leafdata());
-    if (wave_channel_max.is_set || is_set(wave_channel_max.yfilter)) leaf_name_data.push_back(wave_channel_max.get_name_leafdata());
-    if (wave_channel_min.is_set || is_set(wave_channel_min.yfilter)) leaf_name_data.push_back(wave_channel_min.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::WaveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::WaveInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Optics::WaveInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "wave-band")
-    {
-        wave_band = value;
-        wave_band.value_namespace = name_space;
-        wave_band.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wave-channel-max")
-    {
-        wave_channel_max = value;
-        wave_channel_max.value_namespace = name_space;
-        wave_channel_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wave-channel-min")
-    {
-        wave_channel_min = value;
-        wave_channel_min.value_namespace = name_space;
-        wave_channel_min.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Optics::WaveInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "wave-band")
-    {
-        wave_band.yfilter = yfilter;
-    }
-    if(value_path == "wave-channel-max")
-    {
-        wave_channel_max.yfilter = yfilter;
-    }
-    if(value_path == "wave-channel-min")
-    {
-        wave_channel_min.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Optics::WaveInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wave-band" || name == "wave-channel-max" || name == "wave-channel-min")
-        return true;
-    return false;
-}
-
 Dwdm::Ports::Port::Info::Info()
     :
     controller_state{YType::enumeration, "controller-state"},
@@ -1604,18 +368,13 @@ Dwdm::Ports::Port::Info::Info()
 	,tdc_info(std::make_shared<Dwdm::Ports::Port::Info::TdcInfo>())
 {
     g709_info->parent = this;
-
     network_srlg_info->parent = this;
-
     optics_info->parent = this;
-
     proactive->parent = this;
-
     signal_log->parent = this;
-
     tdc_info->parent = this;
 
-    yang_name = "info"; yang_parent_name = "port";
+    yang_name = "info"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::~Info()
@@ -1653,32 +412,18 @@ std::string Dwdm::Ports::Port::Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Info' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (controller_state.is_set || is_set(controller_state.yfilter)) leaf_name_data.push_back(controller_state.get_name_leafdata());
     if (slice_state.is_set || is_set(slice_state.yfilter)) leaf_name_data.push_back(slice_state.get_name_leafdata());
     if (transport_admin_state.is_set || is_set(transport_admin_state.yfilter)) leaf_name_data.push_back(transport_admin_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1854,16 +599,12 @@ Dwdm::Ports::Port::Info::G709Info::G709Info()
 	,uc_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::UcTca>())
 {
     ec_tca->parent = this;
-
     fec_mismatch->parent = this;
-
     odu_info->parent = this;
-
     otu_info->parent = this;
-
     uc_tca->parent = this;
 
-    yang_name = "g709-info"; yang_parent_name = "info";
+    yang_name = "g709-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::~G709Info()
@@ -1937,23 +678,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "g709-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'G709Info' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ec.is_set || is_set(ec.yfilter)) leaf_name_data.push_back(ec.get_name_leafdata());
@@ -1979,9 +708,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ance
     if (remote_fec_mode.is_set || is_set(remote_fec_mode.yfilter)) leaf_name_data.push_back(remote_fec_mode.get_name_leafdata());
     if (uc.is_set || is_set(uc.yfilter)) leaf_name_data.push_back(uc.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2301,137 +1028,6 @@ bool Dwdm::Ports::Port::Info::G709Info::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::FecMismatch::FecMismatch()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "fec-mismatch"; yang_parent_name = "g709-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::FecMismatch::~FecMismatch()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fec-mismatch";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FecMismatch' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::FecMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::FecMismatch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
 Dwdm::Ports::Port::Info::G709Info::EcTca::EcTca()
     :
     counter{YType::uint64, "counter"},
@@ -2440,7 +1036,8 @@ Dwdm::Ports::Port::Info::G709Info::EcTca::EcTca()
     reporting_enabled{YType::boolean, "reporting-enabled"},
     threshold{YType::int32, "threshold"}
 {
-    yang_name = "ec-tca"; yang_parent_name = "g709-info";
+
+    yang_name = "ec-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::EcTca::~EcTca()
@@ -2470,23 +1067,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::EcTca::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-tca";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::EcTca::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EcTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
@@ -2495,9 +1080,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entit
     if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2577,7 +1160,770 @@ bool Dwdm::Ports::Port::Info::G709Info::EcTca::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::UcTca::UcTca()
+Dwdm::Ports::Port::Info::G709Info::FecMismatch::FecMismatch()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "fec-mismatch"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::FecMismatch::~FecMismatch()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fec-mismatch";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::FecMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::FecMismatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::FecMismatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::OduInfo()
+    :
+    bei{YType::uint64, "bei"},
+    bip{YType::uint64, "bip"}
+    	,
+    ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>())
+	,bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>())
+	,bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>())
+	,bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>())
+	,bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>())
+	,eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>())
+	,es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>())
+	,es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>())
+	,esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>())
+	,fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>())
+	,lck(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>())
+	,oci(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>())
+	,ptim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>())
+	,sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>())
+	,ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>())
+	,sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>())
+	,sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>())
+	,tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>())
+	,tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>())
+	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>())
+{
+    ais->parent = this;
+    bbe->parent = this;
+    bbe_tca->parent = this;
+    bber->parent = this;
+    bdi->parent = this;
+    eoc->parent = this;
+    es->parent = this;
+    es_tca->parent = this;
+    esr->parent = this;
+    fc->parent = this;
+    lck->parent = this;
+    oci->parent = this;
+    ptim->parent = this;
+    sd_ber->parent = this;
+    ses->parent = this;
+    sesr->parent = this;
+    sf_ber->parent = this;
+    tim->parent = this;
+    tti->parent = this;
+    uas->parent = this;
+
+    yang_name = "odu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::~OduInfo()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_data() const
+{
+    return bei.is_set
+	|| bip.is_set
+	|| (ais !=  nullptr && ais->has_data())
+	|| (bbe !=  nullptr && bbe->has_data())
+	|| (bbe_tca !=  nullptr && bbe_tca->has_data())
+	|| (bber !=  nullptr && bber->has_data())
+	|| (bdi !=  nullptr && bdi->has_data())
+	|| (eoc !=  nullptr && eoc->has_data())
+	|| (es !=  nullptr && es->has_data())
+	|| (es_tca !=  nullptr && es_tca->has_data())
+	|| (esr !=  nullptr && esr->has_data())
+	|| (fc !=  nullptr && fc->has_data())
+	|| (lck !=  nullptr && lck->has_data())
+	|| (oci !=  nullptr && oci->has_data())
+	|| (ptim !=  nullptr && ptim->has_data())
+	|| (sd_ber !=  nullptr && sd_ber->has_data())
+	|| (ses !=  nullptr && ses->has_data())
+	|| (sesr !=  nullptr && sesr->has_data())
+	|| (sf_ber !=  nullptr && sf_ber->has_data())
+	|| (tim !=  nullptr && tim->has_data())
+	|| (tti !=  nullptr && tti->has_data())
+	|| (uas !=  nullptr && uas->has_data());
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bei.yfilter)
+	|| ydk::is_set(bip.yfilter)
+	|| (ais !=  nullptr && ais->has_operation())
+	|| (bbe !=  nullptr && bbe->has_operation())
+	|| (bbe_tca !=  nullptr && bbe_tca->has_operation())
+	|| (bber !=  nullptr && bber->has_operation())
+	|| (bdi !=  nullptr && bdi->has_operation())
+	|| (eoc !=  nullptr && eoc->has_operation())
+	|| (es !=  nullptr && es->has_operation())
+	|| (es_tca !=  nullptr && es_tca->has_operation())
+	|| (esr !=  nullptr && esr->has_operation())
+	|| (fc !=  nullptr && fc->has_operation())
+	|| (lck !=  nullptr && lck->has_operation())
+	|| (oci !=  nullptr && oci->has_operation())
+	|| (ptim !=  nullptr && ptim->has_operation())
+	|| (sd_ber !=  nullptr && sd_ber->has_operation())
+	|| (ses !=  nullptr && ses->has_operation())
+	|| (sesr !=  nullptr && sesr->has_operation())
+	|| (sf_ber !=  nullptr && sf_ber->has_operation())
+	|| (tim !=  nullptr && tim->has_operation())
+	|| (tti !=  nullptr && tti->has_operation())
+	|| (uas !=  nullptr && uas->has_operation());
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bei.is_set || is_set(bei.yfilter)) leaf_name_data.push_back(bei.get_name_leafdata());
+    if (bip.is_set || is_set(bip.yfilter)) leaf_name_data.push_back(bip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ais")
+    {
+        if(ais == nullptr)
+        {
+            ais = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>();
+        }
+        return ais;
+    }
+
+    if(child_yang_name == "bbe")
+    {
+        if(bbe == nullptr)
+        {
+            bbe = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>();
+        }
+        return bbe;
+    }
+
+    if(child_yang_name == "bbe-tca")
+    {
+        if(bbe_tca == nullptr)
+        {
+            bbe_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>();
+        }
+        return bbe_tca;
+    }
+
+    if(child_yang_name == "bber")
+    {
+        if(bber == nullptr)
+        {
+            bber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>();
+        }
+        return bber;
+    }
+
+    if(child_yang_name == "bdi")
+    {
+        if(bdi == nullptr)
+        {
+            bdi = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>();
+        }
+        return bdi;
+    }
+
+    if(child_yang_name == "eoc")
+    {
+        if(eoc == nullptr)
+        {
+            eoc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>();
+        }
+        return eoc;
+    }
+
+    if(child_yang_name == "es")
+    {
+        if(es == nullptr)
+        {
+            es = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>();
+        }
+        return es;
+    }
+
+    if(child_yang_name == "es-tca")
+    {
+        if(es_tca == nullptr)
+        {
+            es_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>();
+        }
+        return es_tca;
+    }
+
+    if(child_yang_name == "esr")
+    {
+        if(esr == nullptr)
+        {
+            esr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>();
+        }
+        return esr;
+    }
+
+    if(child_yang_name == "fc")
+    {
+        if(fc == nullptr)
+        {
+            fc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>();
+        }
+        return fc;
+    }
+
+    if(child_yang_name == "lck")
+    {
+        if(lck == nullptr)
+        {
+            lck = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>();
+        }
+        return lck;
+    }
+
+    if(child_yang_name == "oci")
+    {
+        if(oci == nullptr)
+        {
+            oci = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>();
+        }
+        return oci;
+    }
+
+    if(child_yang_name == "ptim")
+    {
+        if(ptim == nullptr)
+        {
+            ptim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>();
+        }
+        return ptim;
+    }
+
+    if(child_yang_name == "sd-ber")
+    {
+        if(sd_ber == nullptr)
+        {
+            sd_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>();
+        }
+        return sd_ber;
+    }
+
+    if(child_yang_name == "ses")
+    {
+        if(ses == nullptr)
+        {
+            ses = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>();
+        }
+        return ses;
+    }
+
+    if(child_yang_name == "sesr")
+    {
+        if(sesr == nullptr)
+        {
+            sesr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>();
+        }
+        return sesr;
+    }
+
+    if(child_yang_name == "sf-ber")
+    {
+        if(sf_ber == nullptr)
+        {
+            sf_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>();
+        }
+        return sf_ber;
+    }
+
+    if(child_yang_name == "tim")
+    {
+        if(tim == nullptr)
+        {
+            tim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>();
+        }
+        return tim;
+    }
+
+    if(child_yang_name == "tti")
+    {
+        if(tti == nullptr)
+        {
+            tti = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>();
+        }
+        return tti;
+    }
+
+    if(child_yang_name == "uas")
+    {
+        if(uas == nullptr)
+        {
+            uas = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>();
+        }
+        return uas;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ais != nullptr)
+    {
+        children["ais"] = ais;
+    }
+
+    if(bbe != nullptr)
+    {
+        children["bbe"] = bbe;
+    }
+
+    if(bbe_tca != nullptr)
+    {
+        children["bbe-tca"] = bbe_tca;
+    }
+
+    if(bber != nullptr)
+    {
+        children["bber"] = bber;
+    }
+
+    if(bdi != nullptr)
+    {
+        children["bdi"] = bdi;
+    }
+
+    if(eoc != nullptr)
+    {
+        children["eoc"] = eoc;
+    }
+
+    if(es != nullptr)
+    {
+        children["es"] = es;
+    }
+
+    if(es_tca != nullptr)
+    {
+        children["es-tca"] = es_tca;
+    }
+
+    if(esr != nullptr)
+    {
+        children["esr"] = esr;
+    }
+
+    if(fc != nullptr)
+    {
+        children["fc"] = fc;
+    }
+
+    if(lck != nullptr)
+    {
+        children["lck"] = lck;
+    }
+
+    if(oci != nullptr)
+    {
+        children["oci"] = oci;
+    }
+
+    if(ptim != nullptr)
+    {
+        children["ptim"] = ptim;
+    }
+
+    if(sd_ber != nullptr)
+    {
+        children["sd-ber"] = sd_ber;
+    }
+
+    if(ses != nullptr)
+    {
+        children["ses"] = ses;
+    }
+
+    if(sesr != nullptr)
+    {
+        children["sesr"] = sesr;
+    }
+
+    if(sf_ber != nullptr)
+    {
+        children["sf-ber"] = sf_ber;
+    }
+
+    if(tim != nullptr)
+    {
+        children["tim"] = tim;
+    }
+
+    if(tti != nullptr)
+    {
+        children["tti"] = tti;
+    }
+
+    if(uas != nullptr)
+    {
+        children["uas"] = uas;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bei")
+    {
+        bei = value;
+        bei.value_namespace = name_space;
+        bei.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bip")
+    {
+        bip = value;
+        bip.value_namespace = name_space;
+        bip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bei")
+    {
+        bei.yfilter = yfilter;
+    }
+    if(value_path == "bip")
+    {
+        bip.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ais" || name == "bbe" || name == "bbe-tca" || name == "bber" || name == "bdi" || name == "eoc" || name == "es" || name == "es-tca" || name == "esr" || name == "fc" || name == "lck" || name == "oci" || name == "ptim" || name == "sd-ber" || name == "ses" || name == "sesr" || name == "sf-ber" || name == "tim" || name == "tti" || name == "uas" || name == "bei" || name == "bip")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::Ais()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "ais"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::~Ais()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ais";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::Bbe()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "bbe"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::~Bbe()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bbe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::BbeTca()
     :
     counter{YType::uint64, "counter"},
     is_asserted{YType::boolean, "is-asserted"},
@@ -2585,14 +1931,15 @@ Dwdm::Ports::Port::Info::G709Info::UcTca::UcTca()
     reporting_enabled{YType::boolean, "reporting-enabled"},
     threshold{YType::int32, "threshold"}
 {
-    yang_name = "uc-tca"; yang_parent_name = "g709-info";
+
+    yang_name = "bbe-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dwdm::Ports::Port::Info::G709Info::UcTca::~UcTca()
+Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::~BbeTca()
 {
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_data() const
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_data() const
 {
     return counter.is_set
 	|| is_asserted.is_set
@@ -2601,7 +1948,7 @@ bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_data() const
 	|| threshold.is_set;
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_operation() const
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(counter.yfilter)
@@ -2611,27 +1958,15 @@ bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_operation() const
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Dwdm::Ports::Port::Info::G709Info::UcTca::get_segment_path() const
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "uc-tca";
-
+    path_buffer << "bbe-tca";
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UcTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
@@ -2640,24 +1975,22 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entit
     if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::UcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::UcTca::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dwdm::Ports::Port::Info::G709Info::UcTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
@@ -2691,7 +2024,7 @@ void Dwdm::Ports::Port::Info::G709Info::UcTca::set_value(const std::string & val
     }
 }
 
-void Dwdm::Ports::Port::Info::G709Info::UcTca::set_filter(const std::string & value_path, YFilter yfilter)
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter")
     {
@@ -2715,9 +2048,2127 @@ void Dwdm::Ports::Port::Info::G709Info::UcTca::set_filter(const std::string & va
     }
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_leaf_or_child_of_name(const std::string & name) const
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::Bber()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "bber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::~Bber()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::Bdi()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "bdi"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::~Bdi()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bdi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::Eoc()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "eoc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::~Eoc()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "eoc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::Es()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "es"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::~Es()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "es";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::EsTca()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "es-tca"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::~EsTca()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "es-tca";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::Esr()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "esr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::~Esr()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "esr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::Fc()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "fc"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::~Fc()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::Lck()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "lck"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::~Lck()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lck";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::Oci()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "oci"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::~Oci()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oci";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::Ptim()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "ptim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::~Ptim()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ptim";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::SdBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "sd-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::~SdBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sd-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::Ses()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "ses"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::~Ses()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::Sesr()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "sesr"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::~Sesr()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sesr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::SfBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "sf-ber"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::~SfBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sf-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::Tim()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "tim"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::~Tim()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tim";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::Tti()
+    :
+    exp_dapi_range{YType::str, "exp-dapi-range"},
+    exp_oper_spec_range{YType::str, "exp-oper-spec-range"},
+    exp_sapi_range{YType::str, "exp-sapi-range"},
+    expected_dapi{YType::str, "expected-dapi"},
+    expected_dapi0{YType::str, "expected-dapi0"},
+    expected_oper_spec{YType::str, "expected-oper-spec"},
+    expected_sapi{YType::str, "expected-sapi"},
+    expected_sapi0{YType::str, "expected-sapi0"},
+    expected_string_type{YType::uint32, "expected-string-type"},
+    expected_tti{YType::str, "expected-tti"},
+    rx_dapi{YType::str, "rx-dapi"},
+    rx_dapi0{YType::str, "rx-dapi0"},
+    rx_dapi_range{YType::str, "rx-dapi-range"},
+    rx_oper_spec{YType::str, "rx-oper-spec"},
+    rx_oper_spec_range{YType::str, "rx-oper-spec-range"},
+    rx_sapi{YType::str, "rx-sapi"},
+    rx_sapi0{YType::str, "rx-sapi0"},
+    rx_sapi_range{YType::str, "rx-sapi-range"},
+    rx_string_type{YType::uint32, "rx-string-type"},
+    rx_tti{YType::str, "rx-tti"},
+    tx_dapi{YType::str, "tx-dapi"},
+    tx_dapi0{YType::str, "tx-dapi0"},
+    tx_dapi_range{YType::str, "tx-dapi-range"},
+    tx_oper_spec{YType::str, "tx-oper-spec"},
+    tx_oper_spec_range{YType::str, "tx-oper-spec-range"},
+    tx_sapi{YType::str, "tx-sapi"},
+    tx_sapi0{YType::str, "tx-sapi0"},
+    tx_sapi_range{YType::str, "tx-sapi-range"},
+    tx_string_type{YType::uint32, "tx-string-type"},
+    tx_tti{YType::str, "tx-tti"}
+{
+
+    yang_name = "tti"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::~Tti()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_data() const
+{
+    return exp_dapi_range.is_set
+	|| exp_oper_spec_range.is_set
+	|| exp_sapi_range.is_set
+	|| expected_dapi.is_set
+	|| expected_dapi0.is_set
+	|| expected_oper_spec.is_set
+	|| expected_sapi.is_set
+	|| expected_sapi0.is_set
+	|| expected_string_type.is_set
+	|| expected_tti.is_set
+	|| rx_dapi.is_set
+	|| rx_dapi0.is_set
+	|| rx_dapi_range.is_set
+	|| rx_oper_spec.is_set
+	|| rx_oper_spec_range.is_set
+	|| rx_sapi.is_set
+	|| rx_sapi0.is_set
+	|| rx_sapi_range.is_set
+	|| rx_string_type.is_set
+	|| rx_tti.is_set
+	|| tx_dapi.is_set
+	|| tx_dapi0.is_set
+	|| tx_dapi_range.is_set
+	|| tx_oper_spec.is_set
+	|| tx_oper_spec_range.is_set
+	|| tx_sapi.is_set
+	|| tx_sapi0.is_set
+	|| tx_sapi_range.is_set
+	|| tx_string_type.is_set
+	|| tx_tti.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(exp_dapi_range.yfilter)
+	|| ydk::is_set(exp_oper_spec_range.yfilter)
+	|| ydk::is_set(exp_sapi_range.yfilter)
+	|| ydk::is_set(expected_dapi.yfilter)
+	|| ydk::is_set(expected_dapi0.yfilter)
+	|| ydk::is_set(expected_oper_spec.yfilter)
+	|| ydk::is_set(expected_sapi.yfilter)
+	|| ydk::is_set(expected_sapi0.yfilter)
+	|| ydk::is_set(expected_string_type.yfilter)
+	|| ydk::is_set(expected_tti.yfilter)
+	|| ydk::is_set(rx_dapi.yfilter)
+	|| ydk::is_set(rx_dapi0.yfilter)
+	|| ydk::is_set(rx_dapi_range.yfilter)
+	|| ydk::is_set(rx_oper_spec.yfilter)
+	|| ydk::is_set(rx_oper_spec_range.yfilter)
+	|| ydk::is_set(rx_sapi.yfilter)
+	|| ydk::is_set(rx_sapi0.yfilter)
+	|| ydk::is_set(rx_sapi_range.yfilter)
+	|| ydk::is_set(rx_string_type.yfilter)
+	|| ydk::is_set(rx_tti.yfilter)
+	|| ydk::is_set(tx_dapi.yfilter)
+	|| ydk::is_set(tx_dapi0.yfilter)
+	|| ydk::is_set(tx_dapi_range.yfilter)
+	|| ydk::is_set(tx_oper_spec.yfilter)
+	|| ydk::is_set(tx_oper_spec_range.yfilter)
+	|| ydk::is_set(tx_sapi.yfilter)
+	|| ydk::is_set(tx_sapi0.yfilter)
+	|| ydk::is_set(tx_sapi_range.yfilter)
+	|| ydk::is_set(tx_string_type.yfilter)
+	|| ydk::is_set(tx_tti.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tti";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (exp_dapi_range.is_set || is_set(exp_dapi_range.yfilter)) leaf_name_data.push_back(exp_dapi_range.get_name_leafdata());
+    if (exp_oper_spec_range.is_set || is_set(exp_oper_spec_range.yfilter)) leaf_name_data.push_back(exp_oper_spec_range.get_name_leafdata());
+    if (exp_sapi_range.is_set || is_set(exp_sapi_range.yfilter)) leaf_name_data.push_back(exp_sapi_range.get_name_leafdata());
+    if (expected_dapi.is_set || is_set(expected_dapi.yfilter)) leaf_name_data.push_back(expected_dapi.get_name_leafdata());
+    if (expected_dapi0.is_set || is_set(expected_dapi0.yfilter)) leaf_name_data.push_back(expected_dapi0.get_name_leafdata());
+    if (expected_oper_spec.is_set || is_set(expected_oper_spec.yfilter)) leaf_name_data.push_back(expected_oper_spec.get_name_leafdata());
+    if (expected_sapi.is_set || is_set(expected_sapi.yfilter)) leaf_name_data.push_back(expected_sapi.get_name_leafdata());
+    if (expected_sapi0.is_set || is_set(expected_sapi0.yfilter)) leaf_name_data.push_back(expected_sapi0.get_name_leafdata());
+    if (expected_string_type.is_set || is_set(expected_string_type.yfilter)) leaf_name_data.push_back(expected_string_type.get_name_leafdata());
+    if (expected_tti.is_set || is_set(expected_tti.yfilter)) leaf_name_data.push_back(expected_tti.get_name_leafdata());
+    if (rx_dapi.is_set || is_set(rx_dapi.yfilter)) leaf_name_data.push_back(rx_dapi.get_name_leafdata());
+    if (rx_dapi0.is_set || is_set(rx_dapi0.yfilter)) leaf_name_data.push_back(rx_dapi0.get_name_leafdata());
+    if (rx_dapi_range.is_set || is_set(rx_dapi_range.yfilter)) leaf_name_data.push_back(rx_dapi_range.get_name_leafdata());
+    if (rx_oper_spec.is_set || is_set(rx_oper_spec.yfilter)) leaf_name_data.push_back(rx_oper_spec.get_name_leafdata());
+    if (rx_oper_spec_range.is_set || is_set(rx_oper_spec_range.yfilter)) leaf_name_data.push_back(rx_oper_spec_range.get_name_leafdata());
+    if (rx_sapi.is_set || is_set(rx_sapi.yfilter)) leaf_name_data.push_back(rx_sapi.get_name_leafdata());
+    if (rx_sapi0.is_set || is_set(rx_sapi0.yfilter)) leaf_name_data.push_back(rx_sapi0.get_name_leafdata());
+    if (rx_sapi_range.is_set || is_set(rx_sapi_range.yfilter)) leaf_name_data.push_back(rx_sapi_range.get_name_leafdata());
+    if (rx_string_type.is_set || is_set(rx_string_type.yfilter)) leaf_name_data.push_back(rx_string_type.get_name_leafdata());
+    if (rx_tti.is_set || is_set(rx_tti.yfilter)) leaf_name_data.push_back(rx_tti.get_name_leafdata());
+    if (tx_dapi.is_set || is_set(tx_dapi.yfilter)) leaf_name_data.push_back(tx_dapi.get_name_leafdata());
+    if (tx_dapi0.is_set || is_set(tx_dapi0.yfilter)) leaf_name_data.push_back(tx_dapi0.get_name_leafdata());
+    if (tx_dapi_range.is_set || is_set(tx_dapi_range.yfilter)) leaf_name_data.push_back(tx_dapi_range.get_name_leafdata());
+    if (tx_oper_spec.is_set || is_set(tx_oper_spec.yfilter)) leaf_name_data.push_back(tx_oper_spec.get_name_leafdata());
+    if (tx_oper_spec_range.is_set || is_set(tx_oper_spec_range.yfilter)) leaf_name_data.push_back(tx_oper_spec_range.get_name_leafdata());
+    if (tx_sapi.is_set || is_set(tx_sapi.yfilter)) leaf_name_data.push_back(tx_sapi.get_name_leafdata());
+    if (tx_sapi0.is_set || is_set(tx_sapi0.yfilter)) leaf_name_data.push_back(tx_sapi0.get_name_leafdata());
+    if (tx_sapi_range.is_set || is_set(tx_sapi_range.yfilter)) leaf_name_data.push_back(tx_sapi_range.get_name_leafdata());
+    if (tx_string_type.is_set || is_set(tx_string_type.yfilter)) leaf_name_data.push_back(tx_string_type.get_name_leafdata());
+    if (tx_tti.is_set || is_set(tx_tti.yfilter)) leaf_name_data.push_back(tx_tti.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "exp-dapi-range")
+    {
+        exp_dapi_range = value;
+        exp_dapi_range.value_namespace = name_space;
+        exp_dapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exp-oper-spec-range")
+    {
+        exp_oper_spec_range = value;
+        exp_oper_spec_range.value_namespace = name_space;
+        exp_oper_spec_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exp-sapi-range")
+    {
+        exp_sapi_range = value;
+        exp_sapi_range.value_namespace = name_space;
+        exp_sapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-dapi")
+    {
+        expected_dapi = value;
+        expected_dapi.value_namespace = name_space;
+        expected_dapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-dapi0")
+    {
+        expected_dapi0 = value;
+        expected_dapi0.value_namespace = name_space;
+        expected_dapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-oper-spec")
+    {
+        expected_oper_spec = value;
+        expected_oper_spec.value_namespace = name_space;
+        expected_oper_spec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-sapi")
+    {
+        expected_sapi = value;
+        expected_sapi.value_namespace = name_space;
+        expected_sapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-sapi0")
+    {
+        expected_sapi0 = value;
+        expected_sapi0.value_namespace = name_space;
+        expected_sapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-string-type")
+    {
+        expected_string_type = value;
+        expected_string_type.value_namespace = name_space;
+        expected_string_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "expected-tti")
+    {
+        expected_tti = value;
+        expected_tti.value_namespace = name_space;
+        expected_tti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dapi")
+    {
+        rx_dapi = value;
+        rx_dapi.value_namespace = name_space;
+        rx_dapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dapi0")
+    {
+        rx_dapi0 = value;
+        rx_dapi0.value_namespace = name_space;
+        rx_dapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-dapi-range")
+    {
+        rx_dapi_range = value;
+        rx_dapi_range.value_namespace = name_space;
+        rx_dapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-oper-spec")
+    {
+        rx_oper_spec = value;
+        rx_oper_spec.value_namespace = name_space;
+        rx_oper_spec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-oper-spec-range")
+    {
+        rx_oper_spec_range = value;
+        rx_oper_spec_range.value_namespace = name_space;
+        rx_oper_spec_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-sapi")
+    {
+        rx_sapi = value;
+        rx_sapi.value_namespace = name_space;
+        rx_sapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-sapi0")
+    {
+        rx_sapi0 = value;
+        rx_sapi0.value_namespace = name_space;
+        rx_sapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-sapi-range")
+    {
+        rx_sapi_range = value;
+        rx_sapi_range.value_namespace = name_space;
+        rx_sapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-string-type")
+    {
+        rx_string_type = value;
+        rx_string_type.value_namespace = name_space;
+        rx_string_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-tti")
+    {
+        rx_tti = value;
+        rx_tti.value_namespace = name_space;
+        rx_tti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-dapi")
+    {
+        tx_dapi = value;
+        tx_dapi.value_namespace = name_space;
+        tx_dapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-dapi0")
+    {
+        tx_dapi0 = value;
+        tx_dapi0.value_namespace = name_space;
+        tx_dapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-dapi-range")
+    {
+        tx_dapi_range = value;
+        tx_dapi_range.value_namespace = name_space;
+        tx_dapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-oper-spec")
+    {
+        tx_oper_spec = value;
+        tx_oper_spec.value_namespace = name_space;
+        tx_oper_spec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-oper-spec-range")
+    {
+        tx_oper_spec_range = value;
+        tx_oper_spec_range.value_namespace = name_space;
+        tx_oper_spec_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-sapi")
+    {
+        tx_sapi = value;
+        tx_sapi.value_namespace = name_space;
+        tx_sapi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-sapi0")
+    {
+        tx_sapi0 = value;
+        tx_sapi0.value_namespace = name_space;
+        tx_sapi0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-sapi-range")
+    {
+        tx_sapi_range = value;
+        tx_sapi_range.value_namespace = name_space;
+        tx_sapi_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-string-type")
+    {
+        tx_string_type = value;
+        tx_string_type.value_namespace = name_space;
+        tx_string_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-tti")
+    {
+        tx_tti = value;
+        tx_tti.value_namespace = name_space;
+        tx_tti.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exp-dapi-range")
+    {
+        exp_dapi_range.yfilter = yfilter;
+    }
+    if(value_path == "exp-oper-spec-range")
+    {
+        exp_oper_spec_range.yfilter = yfilter;
+    }
+    if(value_path == "exp-sapi-range")
+    {
+        exp_sapi_range.yfilter = yfilter;
+    }
+    if(value_path == "expected-dapi")
+    {
+        expected_dapi.yfilter = yfilter;
+    }
+    if(value_path == "expected-dapi0")
+    {
+        expected_dapi0.yfilter = yfilter;
+    }
+    if(value_path == "expected-oper-spec")
+    {
+        expected_oper_spec.yfilter = yfilter;
+    }
+    if(value_path == "expected-sapi")
+    {
+        expected_sapi.yfilter = yfilter;
+    }
+    if(value_path == "expected-sapi0")
+    {
+        expected_sapi0.yfilter = yfilter;
+    }
+    if(value_path == "expected-string-type")
+    {
+        expected_string_type.yfilter = yfilter;
+    }
+    if(value_path == "expected-tti")
+    {
+        expected_tti.yfilter = yfilter;
+    }
+    if(value_path == "rx-dapi")
+    {
+        rx_dapi.yfilter = yfilter;
+    }
+    if(value_path == "rx-dapi0")
+    {
+        rx_dapi0.yfilter = yfilter;
+    }
+    if(value_path == "rx-dapi-range")
+    {
+        rx_dapi_range.yfilter = yfilter;
+    }
+    if(value_path == "rx-oper-spec")
+    {
+        rx_oper_spec.yfilter = yfilter;
+    }
+    if(value_path == "rx-oper-spec-range")
+    {
+        rx_oper_spec_range.yfilter = yfilter;
+    }
+    if(value_path == "rx-sapi")
+    {
+        rx_sapi.yfilter = yfilter;
+    }
+    if(value_path == "rx-sapi0")
+    {
+        rx_sapi0.yfilter = yfilter;
+    }
+    if(value_path == "rx-sapi-range")
+    {
+        rx_sapi_range.yfilter = yfilter;
+    }
+    if(value_path == "rx-string-type")
+    {
+        rx_string_type.yfilter = yfilter;
+    }
+    if(value_path == "rx-tti")
+    {
+        rx_tti.yfilter = yfilter;
+    }
+    if(value_path == "tx-dapi")
+    {
+        tx_dapi.yfilter = yfilter;
+    }
+    if(value_path == "tx-dapi0")
+    {
+        tx_dapi0.yfilter = yfilter;
+    }
+    if(value_path == "tx-dapi-range")
+    {
+        tx_dapi_range.yfilter = yfilter;
+    }
+    if(value_path == "tx-oper-spec")
+    {
+        tx_oper_spec.yfilter = yfilter;
+    }
+    if(value_path == "tx-oper-spec-range")
+    {
+        tx_oper_spec_range.yfilter = yfilter;
+    }
+    if(value_path == "tx-sapi")
+    {
+        tx_sapi.yfilter = yfilter;
+    }
+    if(value_path == "tx-sapi0")
+    {
+        tx_sapi0.yfilter = yfilter;
+    }
+    if(value_path == "tx-sapi-range")
+    {
+        tx_sapi_range.yfilter = yfilter;
+    }
+    if(value_path == "tx-string-type")
+    {
+        tx_string_type.yfilter = yfilter;
+    }
+    if(value_path == "tx-tti")
+    {
+        tx_tti.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exp-dapi-range" || name == "exp-oper-spec-range" || name == "exp-sapi-range" || name == "expected-dapi" || name == "expected-dapi0" || name == "expected-oper-spec" || name == "expected-sapi" || name == "expected-sapi0" || name == "expected-string-type" || name == "expected-tti" || name == "rx-dapi" || name == "rx-dapi0" || name == "rx-dapi-range" || name == "rx-oper-spec" || name == "rx-oper-spec-range" || name == "rx-sapi" || name == "rx-sapi0" || name == "rx-sapi-range" || name == "rx-string-type" || name == "rx-tti" || name == "tx-dapi" || name == "tx-dapi0" || name == "tx-dapi-range" || name == "tx-oper-spec" || name == "tx-oper-spec-range" || name == "tx-sapi" || name == "tx-sapi0" || name == "tx-sapi-range" || name == "tx-string-type" || name == "tx-tti")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::Uas()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "uas"; yang_parent_name = "odu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::~Uas()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "uas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
         return true;
     return false;
 }
@@ -2754,56 +4205,32 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::OtuInfo()
 	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas>())
 {
     ais->parent = this;
-
     bbe->parent = this;
-
     bbe_tca->parent = this;
-
     bber->parent = this;
-
     bdi->parent = this;
-
     eoc->parent = this;
-
     es->parent = this;
-
     es_tca->parent = this;
-
     esr->parent = this;
-
     fc->parent = this;
-
     iae->parent = this;
-
     lof->parent = this;
-
     lom->parent = this;
-
     los->parent = this;
-
     oof->parent = this;
-
     oom->parent = this;
-
     prefec_sd_ber->parent = this;
-
     prefec_sf_ber->parent = this;
-
     sd_ber->parent = this;
-
     ses->parent = this;
-
     sesr->parent = this;
-
     sf_ber->parent = this;
-
     tim->parent = this;
-
     tti->parent = this;
-
     uas->parent = this;
 
-    yang_name = "otu-info"; yang_parent_name = "g709-info";
+    yang_name = "otu-info"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::~OtuInfo()
@@ -2877,31 +4304,17 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "otu-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OtuInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bei.is_set || is_set(bei.yfilter)) leaf_name_data.push_back(bei.get_name_leafdata());
     if (bip.is_set || is_set(bip.yfilter)) leaf_name_data.push_back(bip.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3301,661 +4714,6 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::has_leaf_or_child_of_name(const
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::Los()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "los"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::~Los()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "los";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Los' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::Lof()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "lof"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::~Lof()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lof";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lof' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::Lom()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "lom"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::~Lom()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lom";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lom' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::Oof()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "oof"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::~Oof()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oof";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Oof' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::Oom()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "oom"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::~Oom()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oom";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Oom' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::Ais()
     :
     counter{YType::uint64, "counter"},
@@ -3963,7 +4721,8 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::Ais()
     is_detected{YType::boolean, "is-detected"},
     reporting_enabled{YType::boolean, "reporting-enabled"}
 {
-    yang_name = "ais"; yang_parent_name = "otu-info";
+
+    yang_name = "ais"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::~Ais()
@@ -3991,23 +4750,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "ais";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ais' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
@@ -4015,9 +4762,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_pat
     if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
     if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4087,83 +4832,58 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::has_leaf_or_child_of_name(
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::Iae()
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::Bbe()
     :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
+    counter{YType::uint64, "counter"}
 {
-    yang_name = "iae"; yang_parent_name = "otu-info";
+
+    yang_name = "bbe"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::~Iae()
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::~Bbe()
 {
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_data() const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_data() const
 {
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
+    return counter.is_set;
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_operation() const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
+	|| ydk::is_set(counter.yfilter);
 }
 
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_segment_path() const
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iae";
-
+    path_buffer << "bbe";
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Iae' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
@@ -4171,1022 +4891,19 @@ void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_value(const std::strin
         counter.value_namespace = name_space;
         counter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_filter(const std::string & value_path, YFilter yfilter)
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter")
     {
         counter.yfilter = yfilter;
     }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_leaf_or_child_of_name(const std::string & name) const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::Bdi()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "bdi"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::~Bdi()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bdi";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bdi' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::Tim()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "tim"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::~Tim()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tim";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tim' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::Eoc()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "eoc"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::~Eoc()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "eoc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Eoc' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::SfBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "sf-ber"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::~SfBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sf-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SfBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::SdBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "sd-ber"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::~SdBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sd-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SdBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::PrefecSfBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "prefec-sf-ber"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::~PrefecSfBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefec-sf-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefecSfBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::PrefecSdBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "prefec-sd-ber"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::~PrefecSdBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefec-sd-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefecSdBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+    if(name == "counter")
         return true;
     return false;
 }
@@ -5199,7 +4916,8 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::BbeTca()
     reporting_enabled{YType::boolean, "reporting-enabled"},
     threshold{YType::int32, "threshold"}
 {
-    yang_name = "bbe-tca"; yang_parent_name = "otu-info";
+
+    yang_name = "bbe-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::~BbeTca()
@@ -5229,23 +4947,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-tca";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BbeTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
@@ -5254,9 +4960,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_
     if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5336,6 +5040,394 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::has_leaf_or_child_of_na
     return false;
 }
 
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::Bber()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "bber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::~Bber()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::Bdi()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "bdi"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::~Bdi()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bdi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::Eoc()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "eoc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::~Eoc()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "eoc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::Es()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "es"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::~Es()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "es";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::EsTca()
     :
     counter{YType::uint64, "counter"},
@@ -5344,7 +5436,8 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::EsTca()
     reporting_enabled{YType::boolean, "reporting-enabled"},
     threshold{YType::int32, "threshold"}
 {
-    yang_name = "es-tca"; yang_parent_name = "otu-info";
+
+    yang_name = "es-tca"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::~EsTca()
@@ -5374,23 +5467,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "es-tca";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EsTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
@@ -5399,9 +5480,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_p
     if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5481,545 +5560,12 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::has_leaf_or_child_of_nam
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::Bbe()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "bbe"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::~Bbe()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bbe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bbe' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::Es()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "es"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::~Es()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "es";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Es' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::Ses()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "ses"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::~Ses()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ses' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::Uas()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "uas"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::~Uas()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "uas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Uas' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::Fc()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "fc"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::~Fc()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Fc' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::Bber()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "bber"; yang_parent_name = "otu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::~Bber()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bber' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::Esr()
     :
     counter{YType::uint64, "counter"}
 {
-    yang_name = "esr"; yang_parent_name = "otu-info";
+
+    yang_name = "esr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::~Esr()
@@ -6041,30 +5587,16 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "esr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Esr' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6104,11 +5636,1268 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::has_leaf_or_child_of_name(
     return false;
 }
 
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::Fc()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "fc"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::~Fc()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::Iae()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "iae"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::~Iae()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "iae";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::Lof()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "lof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::~Lof()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lof";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::Lom()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "lom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::~Lom()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lom";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::Los()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "los"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::~Los()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "los";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::Oof()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "oof"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::~Oof()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oof";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::Oom()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "oom"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::~Oom()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oom";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::PrefecSdBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "prefec-sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::~PrefecSdBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefec-sd-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::PrefecSfBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "prefec-sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::~PrefecSfBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefec-sf-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::SdBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "sd-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::~SdBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sd-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::Ses()
+    :
+    counter{YType::uint64, "counter"}
+{
+
+    yang_name = "ses"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::~Ses()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_data() const
+{
+    return counter.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::Sesr()
     :
     counter{YType::uint64, "counter"}
 {
-    yang_name = "sesr"; yang_parent_name = "otu-info";
+
+    yang_name = "sesr"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::~Sesr()
@@ -6130,30 +6919,16 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sesr' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6193,6 +6968,256 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::has_leaf_or_child_of_name
     return false;
 }
 
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::SfBer()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
+{
+
+    yang_name = "sf-ber"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::~SfBer()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sf-ber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::Tim()
+    :
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"}
+{
+
+    yang_name = "tim"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::~Tim()
+{
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_data() const
+{
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tim";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
+}
+
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::Tti()
     :
     exp_dapi_range{YType::str, "exp-dapi-range"},
@@ -6226,7 +7251,8 @@ Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::Tti()
     tx_string_type{YType::uint32, "tx-string-type"},
     tx_tti{YType::str, "tx-tti"}
 {
-    yang_name = "tti"; yang_parent_name = "otu-info";
+
+    yang_name = "tti"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::~Tti()
@@ -6306,23 +7332,11 @@ std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "tti";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tti' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (exp_dapi_range.is_set || is_set(exp_dapi_range.yfilter)) leaf_name_data.push_back(exp_dapi_range.get_name_leafdata());
@@ -6356,9 +7370,7 @@ const EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_pat
     if (tx_string_type.is_set || is_set(tx_string_type.yfilter)) leaf_name_data.push_back(tx_string_type.get_name_leafdata());
     if (tx_tti.is_set || is_set(tx_tti.yfilter)) leaf_name_data.push_back(tx_tti.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6688,2319 +7700,58 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::has_leaf_or_child_of_name(
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::OduInfo()
-    :
-    bei{YType::uint64, "bei"},
-    bip{YType::uint64, "bip"}
-    	,
-    ais(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>())
-	,bbe(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>())
-	,bbe_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>())
-	,bber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>())
-	,bdi(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>())
-	,eoc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>())
-	,es(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>())
-	,es_tca(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>())
-	,esr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>())
-	,fc(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>())
-	,lck(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>())
-	,oci(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>())
-	,ptim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>())
-	,sd_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>())
-	,ses(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>())
-	,sesr(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>())
-	,sf_ber(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>())
-	,tim(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>())
-	,tti(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>())
-	,uas(std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>())
-{
-    ais->parent = this;
-
-    bbe->parent = this;
-
-    bbe_tca->parent = this;
-
-    bber->parent = this;
-
-    bdi->parent = this;
-
-    eoc->parent = this;
-
-    es->parent = this;
-
-    es_tca->parent = this;
-
-    esr->parent = this;
-
-    fc->parent = this;
-
-    lck->parent = this;
-
-    oci->parent = this;
-
-    ptim->parent = this;
-
-    sd_ber->parent = this;
-
-    ses->parent = this;
-
-    sesr->parent = this;
-
-    sf_ber->parent = this;
-
-    tim->parent = this;
-
-    tti->parent = this;
-
-    uas->parent = this;
-
-    yang_name = "odu-info"; yang_parent_name = "g709-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::~OduInfo()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_data() const
-{
-    return bei.is_set
-	|| bip.is_set
-	|| (ais !=  nullptr && ais->has_data())
-	|| (bbe !=  nullptr && bbe->has_data())
-	|| (bbe_tca !=  nullptr && bbe_tca->has_data())
-	|| (bber !=  nullptr && bber->has_data())
-	|| (bdi !=  nullptr && bdi->has_data())
-	|| (eoc !=  nullptr && eoc->has_data())
-	|| (es !=  nullptr && es->has_data())
-	|| (es_tca !=  nullptr && es_tca->has_data())
-	|| (esr !=  nullptr && esr->has_data())
-	|| (fc !=  nullptr && fc->has_data())
-	|| (lck !=  nullptr && lck->has_data())
-	|| (oci !=  nullptr && oci->has_data())
-	|| (ptim !=  nullptr && ptim->has_data())
-	|| (sd_ber !=  nullptr && sd_ber->has_data())
-	|| (ses !=  nullptr && ses->has_data())
-	|| (sesr !=  nullptr && sesr->has_data())
-	|| (sf_ber !=  nullptr && sf_ber->has_data())
-	|| (tim !=  nullptr && tim->has_data())
-	|| (tti !=  nullptr && tti->has_data())
-	|| (uas !=  nullptr && uas->has_data());
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bei.yfilter)
-	|| ydk::is_set(bip.yfilter)
-	|| (ais !=  nullptr && ais->has_operation())
-	|| (bbe !=  nullptr && bbe->has_operation())
-	|| (bbe_tca !=  nullptr && bbe_tca->has_operation())
-	|| (bber !=  nullptr && bber->has_operation())
-	|| (bdi !=  nullptr && bdi->has_operation())
-	|| (eoc !=  nullptr && eoc->has_operation())
-	|| (es !=  nullptr && es->has_operation())
-	|| (es_tca !=  nullptr && es_tca->has_operation())
-	|| (esr !=  nullptr && esr->has_operation())
-	|| (fc !=  nullptr && fc->has_operation())
-	|| (lck !=  nullptr && lck->has_operation())
-	|| (oci !=  nullptr && oci->has_operation())
-	|| (ptim !=  nullptr && ptim->has_operation())
-	|| (sd_ber !=  nullptr && sd_ber->has_operation())
-	|| (ses !=  nullptr && ses->has_operation())
-	|| (sesr !=  nullptr && sesr->has_operation())
-	|| (sf_ber !=  nullptr && sf_ber->has_operation())
-	|| (tim !=  nullptr && tim->has_operation())
-	|| (tti !=  nullptr && tti->has_operation())
-	|| (uas !=  nullptr && uas->has_operation());
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OduInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bei.is_set || is_set(bei.yfilter)) leaf_name_data.push_back(bei.get_name_leafdata());
-    if (bip.is_set || is_set(bip.yfilter)) leaf_name_data.push_back(bip.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ais")
-    {
-        if(ais == nullptr)
-        {
-            ais = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais>();
-        }
-        return ais;
-    }
-
-    if(child_yang_name == "bbe")
-    {
-        if(bbe == nullptr)
-        {
-            bbe = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe>();
-        }
-        return bbe;
-    }
-
-    if(child_yang_name == "bbe-tca")
-    {
-        if(bbe_tca == nullptr)
-        {
-            bbe_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca>();
-        }
-        return bbe_tca;
-    }
-
-    if(child_yang_name == "bber")
-    {
-        if(bber == nullptr)
-        {
-            bber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber>();
-        }
-        return bber;
-    }
-
-    if(child_yang_name == "bdi")
-    {
-        if(bdi == nullptr)
-        {
-            bdi = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi>();
-        }
-        return bdi;
-    }
-
-    if(child_yang_name == "eoc")
-    {
-        if(eoc == nullptr)
-        {
-            eoc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc>();
-        }
-        return eoc;
-    }
-
-    if(child_yang_name == "es")
-    {
-        if(es == nullptr)
-        {
-            es = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Es>();
-        }
-        return es;
-    }
-
-    if(child_yang_name == "es-tca")
-    {
-        if(es_tca == nullptr)
-        {
-            es_tca = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca>();
-        }
-        return es_tca;
-    }
-
-    if(child_yang_name == "esr")
-    {
-        if(esr == nullptr)
-        {
-            esr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr>();
-        }
-        return esr;
-    }
-
-    if(child_yang_name == "fc")
-    {
-        if(fc == nullptr)
-        {
-            fc = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc>();
-        }
-        return fc;
-    }
-
-    if(child_yang_name == "lck")
-    {
-        if(lck == nullptr)
-        {
-            lck = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck>();
-        }
-        return lck;
-    }
-
-    if(child_yang_name == "oci")
-    {
-        if(oci == nullptr)
-        {
-            oci = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci>();
-        }
-        return oci;
-    }
-
-    if(child_yang_name == "ptim")
-    {
-        if(ptim == nullptr)
-        {
-            ptim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim>();
-        }
-        return ptim;
-    }
-
-    if(child_yang_name == "sd-ber")
-    {
-        if(sd_ber == nullptr)
-        {
-            sd_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer>();
-        }
-        return sd_ber;
-    }
-
-    if(child_yang_name == "ses")
-    {
-        if(ses == nullptr)
-        {
-            ses = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses>();
-        }
-        return ses;
-    }
-
-    if(child_yang_name == "sesr")
-    {
-        if(sesr == nullptr)
-        {
-            sesr = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr>();
-        }
-        return sesr;
-    }
-
-    if(child_yang_name == "sf-ber")
-    {
-        if(sf_ber == nullptr)
-        {
-            sf_ber = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer>();
-        }
-        return sf_ber;
-    }
-
-    if(child_yang_name == "tim")
-    {
-        if(tim == nullptr)
-        {
-            tim = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim>();
-        }
-        return tim;
-    }
-
-    if(child_yang_name == "tti")
-    {
-        if(tti == nullptr)
-        {
-            tti = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti>();
-        }
-        return tti;
-    }
-
-    if(child_yang_name == "uas")
-    {
-        if(uas == nullptr)
-        {
-            uas = std::make_shared<Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas>();
-        }
-        return uas;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ais != nullptr)
-    {
-        children["ais"] = ais;
-    }
-
-    if(bbe != nullptr)
-    {
-        children["bbe"] = bbe;
-    }
-
-    if(bbe_tca != nullptr)
-    {
-        children["bbe-tca"] = bbe_tca;
-    }
-
-    if(bber != nullptr)
-    {
-        children["bber"] = bber;
-    }
-
-    if(bdi != nullptr)
-    {
-        children["bdi"] = bdi;
-    }
-
-    if(eoc != nullptr)
-    {
-        children["eoc"] = eoc;
-    }
-
-    if(es != nullptr)
-    {
-        children["es"] = es;
-    }
-
-    if(es_tca != nullptr)
-    {
-        children["es-tca"] = es_tca;
-    }
-
-    if(esr != nullptr)
-    {
-        children["esr"] = esr;
-    }
-
-    if(fc != nullptr)
-    {
-        children["fc"] = fc;
-    }
-
-    if(lck != nullptr)
-    {
-        children["lck"] = lck;
-    }
-
-    if(oci != nullptr)
-    {
-        children["oci"] = oci;
-    }
-
-    if(ptim != nullptr)
-    {
-        children["ptim"] = ptim;
-    }
-
-    if(sd_ber != nullptr)
-    {
-        children["sd-ber"] = sd_ber;
-    }
-
-    if(ses != nullptr)
-    {
-        children["ses"] = ses;
-    }
-
-    if(sesr != nullptr)
-    {
-        children["sesr"] = sesr;
-    }
-
-    if(sf_ber != nullptr)
-    {
-        children["sf-ber"] = sf_ber;
-    }
-
-    if(tim != nullptr)
-    {
-        children["tim"] = tim;
-    }
-
-    if(tti != nullptr)
-    {
-        children["tti"] = tti;
-    }
-
-    if(uas != nullptr)
-    {
-        children["uas"] = uas;
-    }
-
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bei")
-    {
-        bei = value;
-        bei.value_namespace = name_space;
-        bei.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bip")
-    {
-        bip = value;
-        bip.value_namespace = name_space;
-        bip.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bei")
-    {
-        bei.yfilter = yfilter;
-    }
-    if(value_path == "bip")
-    {
-        bip.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ais" || name == "bbe" || name == "bbe-tca" || name == "bber" || name == "bdi" || name == "eoc" || name == "es" || name == "es-tca" || name == "esr" || name == "fc" || name == "lck" || name == "oci" || name == "ptim" || name == "sd-ber" || name == "ses" || name == "sesr" || name == "sf-ber" || name == "tim" || name == "tti" || name == "uas" || name == "bei" || name == "bip")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::Oci()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "oci"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::~Oci()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oci";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Oci' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::Ais()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "ais"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::~Ais()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ais";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ais' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::Lck()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "lck"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::~Lck()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lck";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Lck' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::Bdi()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "bdi"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::~Bdi()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bdi";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bdi' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::Eoc()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "eoc"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::~Eoc()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "eoc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Eoc' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::Ptim()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "ptim"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::~Ptim()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ptim";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ptim' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::Tim()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"}
-{
-    yang_name = "tim"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::~Tim()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tim";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tim' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::SfBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "sf-ber"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::~SfBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sf-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SfBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::SdBer()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "sd-ber"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::~SdBer()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sd-ber";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SdBer' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::BbeTca()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "bbe-tca"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::~BbeTca()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bbe-tca";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BbeTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::EsTca()
-    :
-    counter{YType::uint64, "counter"},
-    is_asserted{YType::boolean, "is-asserted"},
-    is_detected{YType::boolean, "is-detected"},
-    reporting_enabled{YType::boolean, "reporting-enabled"},
-    threshold{YType::int32, "threshold"}
-{
-    yang_name = "es-tca"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::~EsTca()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_data() const
-{
-    return counter.is_set
-	|| is_asserted.is_set
-	|| is_detected.is_set
-	|| reporting_enabled.is_set
-	|| threshold.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_asserted.yfilter)
-	|| ydk::is_set(is_detected.yfilter)
-	|| ydk::is_set(reporting_enabled.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "es-tca";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EsTca' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted = value;
-        is_asserted.value_namespace = name_space;
-        is_asserted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled = value;
-        reporting_enabled.value_namespace = name_space;
-        reporting_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-asserted")
-    {
-        is_asserted.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-    if(value_path == "reporting-enabled")
-    {
-        reporting_enabled.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::Bbe()
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::Uas()
     :
     counter{YType::uint64, "counter"}
 {
-    yang_name = "bbe"; yang_parent_name = "odu-info";
+
+    yang_name = "uas"; yang_parent_name = "otu-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::~Bbe()
+Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::~Uas()
 {
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_data() const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_data() const
 {
     return counter.is_set;
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_operation() const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bbe";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bbe' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::Es()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "es"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::~Es()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "es";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Es' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::Ses()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "ses"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::~Ses()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ses";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ses' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::Uas()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "uas"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::~Uas()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_segment_path() const
+std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Uas' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
@@ -9010,7 +7761,7 @@ void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_value(const std::strin
     }
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_filter(const std::string & value_path, YFilter yfilter)
+void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter")
     {
@@ -9018,78 +7769,81 @@ void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_filter(const std::stri
     }
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::has_leaf_or_child_of_name(const std::string & name) const
+bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter")
         return true;
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::Fc()
+Dwdm::Ports::Port::Info::G709Info::UcTca::UcTca()
     :
-    counter{YType::uint64, "counter"}
+    counter{YType::uint64, "counter"},
+    is_asserted{YType::boolean, "is-asserted"},
+    is_detected{YType::boolean, "is-detected"},
+    reporting_enabled{YType::boolean, "reporting-enabled"},
+    threshold{YType::int32, "threshold"}
 {
-    yang_name = "fc"; yang_parent_name = "odu-info";
+
+    yang_name = "uc-tca"; yang_parent_name = "g709-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::~Fc()
+Dwdm::Ports::Port::Info::G709Info::UcTca::~UcTca()
 {
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_data() const
+bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_data() const
 {
-    return counter.is_set;
+    return counter.is_set
+	|| is_asserted.is_set
+	|| is_detected.is_set
+	|| reporting_enabled.is_set
+	|| threshold.is_set;
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_operation() const
+bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_segment_path() const
+std::string Dwdm::Ports::Port::Info::G709Info::UcTca::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fc";
-
+    path_buffer << "uc-tca";
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info::UcTca::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Fc' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::UcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::UcTca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dwdm::Ports::Port::Info::G709Info::UcTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
@@ -9097,781 +7851,144 @@ void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_value(const std::string
         counter.value_namespace = name_space;
         counter.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-asserted")
+    {
+        is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_filter(const std::string & value_path, YFilter yfilter)
+void Dwdm::Ports::Port::Info::G709Info::UcTca::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter")
     {
         counter.yfilter = yfilter;
     }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::has_leaf_or_child_of_name(const std::string & name) const
+bool Dwdm::Ports::Port::Info::G709Info::UcTca::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counter")
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled" || name == "threshold")
         return true;
     return false;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::Bber()
+Dwdm::Ports::Port::Info::NetworkSrlgInfo::NetworkSrlgInfo()
     :
-    counter{YType::uint64, "counter"}
+    network_srlg{YType::uint32, "network-srlg"}
 {
-    yang_name = "bber"; yang_parent_name = "odu-info";
+
+    yang_name = "network-srlg-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::~Bber()
+Dwdm::Ports::Port::Info::NetworkSrlgInfo::~NetworkSrlgInfo()
 {
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_data() const
+bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_data() const
 {
-    return counter.is_set;
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_operation() const
+bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_operation() const
 {
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
+	|| ydk::is_set(network_srlg.yfilter);
 }
 
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_segment_path() const
+std::string Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bber";
-
+    path_buffer << "network-srlg-info";
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Bber' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dwdm::Ports::Port::Info::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "counter")
+    if(value_path == "network-srlg")
     {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
+        network_srlg.append(value);
     }
 }
 
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::set_filter(const std::string & value_path, YFilter yfilter)
+void Dwdm::Ports::Port::Info::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "counter")
+    if(value_path == "network-srlg")
     {
-        counter.yfilter = yfilter;
+        network_srlg.yfilter = yfilter;
     }
 }
 
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::has_leaf_or_child_of_name(const std::string & name) const
+bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::Esr()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "esr"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::~Esr()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "esr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Esr' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::Sesr()
-    :
-    counter{YType::uint64, "counter"}
-{
-    yang_name = "sesr"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::~Sesr()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_data() const
-{
-    return counter.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sesr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sesr' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::Tti()
-    :
-    exp_dapi_range{YType::str, "exp-dapi-range"},
-    exp_oper_spec_range{YType::str, "exp-oper-spec-range"},
-    exp_sapi_range{YType::str, "exp-sapi-range"},
-    expected_dapi{YType::str, "expected-dapi"},
-    expected_dapi0{YType::str, "expected-dapi0"},
-    expected_oper_spec{YType::str, "expected-oper-spec"},
-    expected_sapi{YType::str, "expected-sapi"},
-    expected_sapi0{YType::str, "expected-sapi0"},
-    expected_string_type{YType::uint32, "expected-string-type"},
-    expected_tti{YType::str, "expected-tti"},
-    rx_dapi{YType::str, "rx-dapi"},
-    rx_dapi0{YType::str, "rx-dapi0"},
-    rx_dapi_range{YType::str, "rx-dapi-range"},
-    rx_oper_spec{YType::str, "rx-oper-spec"},
-    rx_oper_spec_range{YType::str, "rx-oper-spec-range"},
-    rx_sapi{YType::str, "rx-sapi"},
-    rx_sapi0{YType::str, "rx-sapi0"},
-    rx_sapi_range{YType::str, "rx-sapi-range"},
-    rx_string_type{YType::uint32, "rx-string-type"},
-    rx_tti{YType::str, "rx-tti"},
-    tx_dapi{YType::str, "tx-dapi"},
-    tx_dapi0{YType::str, "tx-dapi0"},
-    tx_dapi_range{YType::str, "tx-dapi-range"},
-    tx_oper_spec{YType::str, "tx-oper-spec"},
-    tx_oper_spec_range{YType::str, "tx-oper-spec-range"},
-    tx_sapi{YType::str, "tx-sapi"},
-    tx_sapi0{YType::str, "tx-sapi0"},
-    tx_sapi_range{YType::str, "tx-sapi-range"},
-    tx_string_type{YType::uint32, "tx-string-type"},
-    tx_tti{YType::str, "tx-tti"}
-{
-    yang_name = "tti"; yang_parent_name = "odu-info";
-}
-
-Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::~Tti()
-{
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_data() const
-{
-    return exp_dapi_range.is_set
-	|| exp_oper_spec_range.is_set
-	|| exp_sapi_range.is_set
-	|| expected_dapi.is_set
-	|| expected_dapi0.is_set
-	|| expected_oper_spec.is_set
-	|| expected_sapi.is_set
-	|| expected_sapi0.is_set
-	|| expected_string_type.is_set
-	|| expected_tti.is_set
-	|| rx_dapi.is_set
-	|| rx_dapi0.is_set
-	|| rx_dapi_range.is_set
-	|| rx_oper_spec.is_set
-	|| rx_oper_spec_range.is_set
-	|| rx_sapi.is_set
-	|| rx_sapi0.is_set
-	|| rx_sapi_range.is_set
-	|| rx_string_type.is_set
-	|| rx_tti.is_set
-	|| tx_dapi.is_set
-	|| tx_dapi0.is_set
-	|| tx_dapi_range.is_set
-	|| tx_oper_spec.is_set
-	|| tx_oper_spec_range.is_set
-	|| tx_sapi.is_set
-	|| tx_sapi0.is_set
-	|| tx_sapi_range.is_set
-	|| tx_string_type.is_set
-	|| tx_tti.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(exp_dapi_range.yfilter)
-	|| ydk::is_set(exp_oper_spec_range.yfilter)
-	|| ydk::is_set(exp_sapi_range.yfilter)
-	|| ydk::is_set(expected_dapi.yfilter)
-	|| ydk::is_set(expected_dapi0.yfilter)
-	|| ydk::is_set(expected_oper_spec.yfilter)
-	|| ydk::is_set(expected_sapi.yfilter)
-	|| ydk::is_set(expected_sapi0.yfilter)
-	|| ydk::is_set(expected_string_type.yfilter)
-	|| ydk::is_set(expected_tti.yfilter)
-	|| ydk::is_set(rx_dapi.yfilter)
-	|| ydk::is_set(rx_dapi0.yfilter)
-	|| ydk::is_set(rx_dapi_range.yfilter)
-	|| ydk::is_set(rx_oper_spec.yfilter)
-	|| ydk::is_set(rx_oper_spec_range.yfilter)
-	|| ydk::is_set(rx_sapi.yfilter)
-	|| ydk::is_set(rx_sapi0.yfilter)
-	|| ydk::is_set(rx_sapi_range.yfilter)
-	|| ydk::is_set(rx_string_type.yfilter)
-	|| ydk::is_set(rx_tti.yfilter)
-	|| ydk::is_set(tx_dapi.yfilter)
-	|| ydk::is_set(tx_dapi0.yfilter)
-	|| ydk::is_set(tx_dapi_range.yfilter)
-	|| ydk::is_set(tx_oper_spec.yfilter)
-	|| ydk::is_set(tx_oper_spec_range.yfilter)
-	|| ydk::is_set(tx_sapi.yfilter)
-	|| ydk::is_set(tx_sapi0.yfilter)
-	|| ydk::is_set(tx_sapi_range.yfilter)
-	|| ydk::is_set(tx_string_type.yfilter)
-	|| ydk::is_set(tx_tti.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tti";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Tti' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (exp_dapi_range.is_set || is_set(exp_dapi_range.yfilter)) leaf_name_data.push_back(exp_dapi_range.get_name_leafdata());
-    if (exp_oper_spec_range.is_set || is_set(exp_oper_spec_range.yfilter)) leaf_name_data.push_back(exp_oper_spec_range.get_name_leafdata());
-    if (exp_sapi_range.is_set || is_set(exp_sapi_range.yfilter)) leaf_name_data.push_back(exp_sapi_range.get_name_leafdata());
-    if (expected_dapi.is_set || is_set(expected_dapi.yfilter)) leaf_name_data.push_back(expected_dapi.get_name_leafdata());
-    if (expected_dapi0.is_set || is_set(expected_dapi0.yfilter)) leaf_name_data.push_back(expected_dapi0.get_name_leafdata());
-    if (expected_oper_spec.is_set || is_set(expected_oper_spec.yfilter)) leaf_name_data.push_back(expected_oper_spec.get_name_leafdata());
-    if (expected_sapi.is_set || is_set(expected_sapi.yfilter)) leaf_name_data.push_back(expected_sapi.get_name_leafdata());
-    if (expected_sapi0.is_set || is_set(expected_sapi0.yfilter)) leaf_name_data.push_back(expected_sapi0.get_name_leafdata());
-    if (expected_string_type.is_set || is_set(expected_string_type.yfilter)) leaf_name_data.push_back(expected_string_type.get_name_leafdata());
-    if (expected_tti.is_set || is_set(expected_tti.yfilter)) leaf_name_data.push_back(expected_tti.get_name_leafdata());
-    if (rx_dapi.is_set || is_set(rx_dapi.yfilter)) leaf_name_data.push_back(rx_dapi.get_name_leafdata());
-    if (rx_dapi0.is_set || is_set(rx_dapi0.yfilter)) leaf_name_data.push_back(rx_dapi0.get_name_leafdata());
-    if (rx_dapi_range.is_set || is_set(rx_dapi_range.yfilter)) leaf_name_data.push_back(rx_dapi_range.get_name_leafdata());
-    if (rx_oper_spec.is_set || is_set(rx_oper_spec.yfilter)) leaf_name_data.push_back(rx_oper_spec.get_name_leafdata());
-    if (rx_oper_spec_range.is_set || is_set(rx_oper_spec_range.yfilter)) leaf_name_data.push_back(rx_oper_spec_range.get_name_leafdata());
-    if (rx_sapi.is_set || is_set(rx_sapi.yfilter)) leaf_name_data.push_back(rx_sapi.get_name_leafdata());
-    if (rx_sapi0.is_set || is_set(rx_sapi0.yfilter)) leaf_name_data.push_back(rx_sapi0.get_name_leafdata());
-    if (rx_sapi_range.is_set || is_set(rx_sapi_range.yfilter)) leaf_name_data.push_back(rx_sapi_range.get_name_leafdata());
-    if (rx_string_type.is_set || is_set(rx_string_type.yfilter)) leaf_name_data.push_back(rx_string_type.get_name_leafdata());
-    if (rx_tti.is_set || is_set(rx_tti.yfilter)) leaf_name_data.push_back(rx_tti.get_name_leafdata());
-    if (tx_dapi.is_set || is_set(tx_dapi.yfilter)) leaf_name_data.push_back(tx_dapi.get_name_leafdata());
-    if (tx_dapi0.is_set || is_set(tx_dapi0.yfilter)) leaf_name_data.push_back(tx_dapi0.get_name_leafdata());
-    if (tx_dapi_range.is_set || is_set(tx_dapi_range.yfilter)) leaf_name_data.push_back(tx_dapi_range.get_name_leafdata());
-    if (tx_oper_spec.is_set || is_set(tx_oper_spec.yfilter)) leaf_name_data.push_back(tx_oper_spec.get_name_leafdata());
-    if (tx_oper_spec_range.is_set || is_set(tx_oper_spec_range.yfilter)) leaf_name_data.push_back(tx_oper_spec_range.get_name_leafdata());
-    if (tx_sapi.is_set || is_set(tx_sapi.yfilter)) leaf_name_data.push_back(tx_sapi.get_name_leafdata());
-    if (tx_sapi0.is_set || is_set(tx_sapi0.yfilter)) leaf_name_data.push_back(tx_sapi0.get_name_leafdata());
-    if (tx_sapi_range.is_set || is_set(tx_sapi_range.yfilter)) leaf_name_data.push_back(tx_sapi_range.get_name_leafdata());
-    if (tx_string_type.is_set || is_set(tx_string_type.yfilter)) leaf_name_data.push_back(tx_string_type.get_name_leafdata());
-    if (tx_tti.is_set || is_set(tx_tti.yfilter)) leaf_name_data.push_back(tx_tti.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "exp-dapi-range")
-    {
-        exp_dapi_range = value;
-        exp_dapi_range.value_namespace = name_space;
-        exp_dapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exp-oper-spec-range")
-    {
-        exp_oper_spec_range = value;
-        exp_oper_spec_range.value_namespace = name_space;
-        exp_oper_spec_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exp-sapi-range")
-    {
-        exp_sapi_range = value;
-        exp_sapi_range.value_namespace = name_space;
-        exp_sapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-dapi")
-    {
-        expected_dapi = value;
-        expected_dapi.value_namespace = name_space;
-        expected_dapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-dapi0")
-    {
-        expected_dapi0 = value;
-        expected_dapi0.value_namespace = name_space;
-        expected_dapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-oper-spec")
-    {
-        expected_oper_spec = value;
-        expected_oper_spec.value_namespace = name_space;
-        expected_oper_spec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-sapi")
-    {
-        expected_sapi = value;
-        expected_sapi.value_namespace = name_space;
-        expected_sapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-sapi0")
-    {
-        expected_sapi0 = value;
-        expected_sapi0.value_namespace = name_space;
-        expected_sapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-string-type")
-    {
-        expected_string_type = value;
-        expected_string_type.value_namespace = name_space;
-        expected_string_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "expected-tti")
-    {
-        expected_tti = value;
-        expected_tti.value_namespace = name_space;
-        expected_tti.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dapi")
-    {
-        rx_dapi = value;
-        rx_dapi.value_namespace = name_space;
-        rx_dapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dapi0")
-    {
-        rx_dapi0 = value;
-        rx_dapi0.value_namespace = name_space;
-        rx_dapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-dapi-range")
-    {
-        rx_dapi_range = value;
-        rx_dapi_range.value_namespace = name_space;
-        rx_dapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-oper-spec")
-    {
-        rx_oper_spec = value;
-        rx_oper_spec.value_namespace = name_space;
-        rx_oper_spec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-oper-spec-range")
-    {
-        rx_oper_spec_range = value;
-        rx_oper_spec_range.value_namespace = name_space;
-        rx_oper_spec_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-sapi")
-    {
-        rx_sapi = value;
-        rx_sapi.value_namespace = name_space;
-        rx_sapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-sapi0")
-    {
-        rx_sapi0 = value;
-        rx_sapi0.value_namespace = name_space;
-        rx_sapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-sapi-range")
-    {
-        rx_sapi_range = value;
-        rx_sapi_range.value_namespace = name_space;
-        rx_sapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-string-type")
-    {
-        rx_string_type = value;
-        rx_string_type.value_namespace = name_space;
-        rx_string_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-tti")
-    {
-        rx_tti = value;
-        rx_tti.value_namespace = name_space;
-        rx_tti.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-dapi")
-    {
-        tx_dapi = value;
-        tx_dapi.value_namespace = name_space;
-        tx_dapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-dapi0")
-    {
-        tx_dapi0 = value;
-        tx_dapi0.value_namespace = name_space;
-        tx_dapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-dapi-range")
-    {
-        tx_dapi_range = value;
-        tx_dapi_range.value_namespace = name_space;
-        tx_dapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-oper-spec")
-    {
-        tx_oper_spec = value;
-        tx_oper_spec.value_namespace = name_space;
-        tx_oper_spec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-oper-spec-range")
-    {
-        tx_oper_spec_range = value;
-        tx_oper_spec_range.value_namespace = name_space;
-        tx_oper_spec_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-sapi")
-    {
-        tx_sapi = value;
-        tx_sapi.value_namespace = name_space;
-        tx_sapi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-sapi0")
-    {
-        tx_sapi0 = value;
-        tx_sapi0.value_namespace = name_space;
-        tx_sapi0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-sapi-range")
-    {
-        tx_sapi_range = value;
-        tx_sapi_range.value_namespace = name_space;
-        tx_sapi_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-string-type")
-    {
-        tx_string_type = value;
-        tx_string_type.value_namespace = name_space;
-        tx_string_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-tti")
-    {
-        tx_tti = value;
-        tx_tti.value_namespace = name_space;
-        tx_tti.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "exp-dapi-range")
-    {
-        exp_dapi_range.yfilter = yfilter;
-    }
-    if(value_path == "exp-oper-spec-range")
-    {
-        exp_oper_spec_range.yfilter = yfilter;
-    }
-    if(value_path == "exp-sapi-range")
-    {
-        exp_sapi_range.yfilter = yfilter;
-    }
-    if(value_path == "expected-dapi")
-    {
-        expected_dapi.yfilter = yfilter;
-    }
-    if(value_path == "expected-dapi0")
-    {
-        expected_dapi0.yfilter = yfilter;
-    }
-    if(value_path == "expected-oper-spec")
-    {
-        expected_oper_spec.yfilter = yfilter;
-    }
-    if(value_path == "expected-sapi")
-    {
-        expected_sapi.yfilter = yfilter;
-    }
-    if(value_path == "expected-sapi0")
-    {
-        expected_sapi0.yfilter = yfilter;
-    }
-    if(value_path == "expected-string-type")
-    {
-        expected_string_type.yfilter = yfilter;
-    }
-    if(value_path == "expected-tti")
-    {
-        expected_tti.yfilter = yfilter;
-    }
-    if(value_path == "rx-dapi")
-    {
-        rx_dapi.yfilter = yfilter;
-    }
-    if(value_path == "rx-dapi0")
-    {
-        rx_dapi0.yfilter = yfilter;
-    }
-    if(value_path == "rx-dapi-range")
-    {
-        rx_dapi_range.yfilter = yfilter;
-    }
-    if(value_path == "rx-oper-spec")
-    {
-        rx_oper_spec.yfilter = yfilter;
-    }
-    if(value_path == "rx-oper-spec-range")
-    {
-        rx_oper_spec_range.yfilter = yfilter;
-    }
-    if(value_path == "rx-sapi")
-    {
-        rx_sapi.yfilter = yfilter;
-    }
-    if(value_path == "rx-sapi0")
-    {
-        rx_sapi0.yfilter = yfilter;
-    }
-    if(value_path == "rx-sapi-range")
-    {
-        rx_sapi_range.yfilter = yfilter;
-    }
-    if(value_path == "rx-string-type")
-    {
-        rx_string_type.yfilter = yfilter;
-    }
-    if(value_path == "rx-tti")
-    {
-        rx_tti.yfilter = yfilter;
-    }
-    if(value_path == "tx-dapi")
-    {
-        tx_dapi.yfilter = yfilter;
-    }
-    if(value_path == "tx-dapi0")
-    {
-        tx_dapi0.yfilter = yfilter;
-    }
-    if(value_path == "tx-dapi-range")
-    {
-        tx_dapi_range.yfilter = yfilter;
-    }
-    if(value_path == "tx-oper-spec")
-    {
-        tx_oper_spec.yfilter = yfilter;
-    }
-    if(value_path == "tx-oper-spec-range")
-    {
-        tx_oper_spec_range.yfilter = yfilter;
-    }
-    if(value_path == "tx-sapi")
-    {
-        tx_sapi.yfilter = yfilter;
-    }
-    if(value_path == "tx-sapi0")
-    {
-        tx_sapi0.yfilter = yfilter;
-    }
-    if(value_path == "tx-sapi-range")
-    {
-        tx_sapi_range.yfilter = yfilter;
-    }
-    if(value_path == "tx-string-type")
-    {
-        tx_string_type.yfilter = yfilter;
-    }
-    if(value_path == "tx-tti")
-    {
-        tx_tti.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exp-dapi-range" || name == "exp-oper-spec-range" || name == "exp-sapi-range" || name == "expected-dapi" || name == "expected-dapi0" || name == "expected-oper-spec" || name == "expected-sapi" || name == "expected-sapi0" || name == "expected-string-type" || name == "expected-tti" || name == "rx-dapi" || name == "rx-dapi0" || name == "rx-dapi-range" || name == "rx-oper-spec" || name == "rx-oper-spec-range" || name == "rx-sapi" || name == "rx-sapi0" || name == "rx-sapi-range" || name == "rx-string-type" || name == "rx-tti" || name == "tx-dapi" || name == "tx-dapi0" || name == "tx-dapi-range" || name == "tx-oper-spec" || name == "tx-oper-spec-range" || name == "tx-sapi" || name == "tx-sapi0" || name == "tx-sapi-range" || name == "tx-string-type" || name == "tx-tti")
+    if(name == "network-srlg")
         return true;
     return false;
 }
@@ -9918,7 +8035,8 @@ Dwdm::Ports::Port::Info::OpticsInfo::OpticsInfo()
     wavelength_progressive{YType::uint32, "wavelength-progressive"},
     wavelength_progressive_string{YType::str, "wavelength-progressive-string"}
 {
-    yang_name = "optics-info"; yang_parent_name = "info";
+
+    yang_name = "optics-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::OpticsInfo::~OpticsInfo()
@@ -10016,23 +8134,11 @@ std::string Dwdm::Ports::Port::Info::OpticsInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::OpticsInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (chromatic_dispersion.is_set || is_set(chromatic_dispersion.yfilter)) leaf_name_data.push_back(chromatic_dispersion.get_name_leafdata());
@@ -10075,9 +8181,7 @@ const EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* an
     if (wavelength_progressive.is_set || is_set(wavelength_progressive.yfilter)) leaf_name_data.push_back(wavelength_progressive.get_name_leafdata());
     if (wavelength_progressive_string.is_set || is_set(wavelength_progressive_string.yfilter)) leaf_name_data.push_back(wavelength_progressive_string.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10497,277 +8601,6 @@ bool Dwdm::Ports::Port::Info::OpticsInfo::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Dwdm::Ports::Port::Info::TdcInfo::TdcInfo()
-    :
-    dispersion_offset{YType::int32, "dispersion-offset"},
-    is_reroute_control_enabled{YType::boolean, "is-reroute-control-enabled"},
-    major_alarm{YType::boolean, "major-alarm"},
-    operation_mode{YType::boolean, "operation-mode"},
-    reroute_ber{YType::int32, "reroute-ber"},
-    tdc_status{YType::boolean, "tdc-status"},
-    tdc_valid{YType::boolean, "tdc-valid"}
-{
-    yang_name = "tdc-info"; yang_parent_name = "info";
-}
-
-Dwdm::Ports::Port::Info::TdcInfo::~TdcInfo()
-{
-}
-
-bool Dwdm::Ports::Port::Info::TdcInfo::has_data() const
-{
-    return dispersion_offset.is_set
-	|| is_reroute_control_enabled.is_set
-	|| major_alarm.is_set
-	|| operation_mode.is_set
-	|| reroute_ber.is_set
-	|| tdc_status.is_set
-	|| tdc_valid.is_set;
-}
-
-bool Dwdm::Ports::Port::Info::TdcInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dispersion_offset.yfilter)
-	|| ydk::is_set(is_reroute_control_enabled.yfilter)
-	|| ydk::is_set(major_alarm.yfilter)
-	|| ydk::is_set(operation_mode.yfilter)
-	|| ydk::is_set(reroute_ber.yfilter)
-	|| ydk::is_set(tdc_status.yfilter)
-	|| ydk::is_set(tdc_valid.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::TdcInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tdc-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::TdcInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TdcInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dispersion_offset.is_set || is_set(dispersion_offset.yfilter)) leaf_name_data.push_back(dispersion_offset.get_name_leafdata());
-    if (is_reroute_control_enabled.is_set || is_set(is_reroute_control_enabled.yfilter)) leaf_name_data.push_back(is_reroute_control_enabled.get_name_leafdata());
-    if (major_alarm.is_set || is_set(major_alarm.yfilter)) leaf_name_data.push_back(major_alarm.get_name_leafdata());
-    if (operation_mode.is_set || is_set(operation_mode.yfilter)) leaf_name_data.push_back(operation_mode.get_name_leafdata());
-    if (reroute_ber.is_set || is_set(reroute_ber.yfilter)) leaf_name_data.push_back(reroute_ber.get_name_leafdata());
-    if (tdc_status.is_set || is_set(tdc_status.yfilter)) leaf_name_data.push_back(tdc_status.get_name_leafdata());
-    if (tdc_valid.is_set || is_set(tdc_valid.yfilter)) leaf_name_data.push_back(tdc_valid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::TdcInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::TdcInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::TdcInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dispersion-offset")
-    {
-        dispersion_offset = value;
-        dispersion_offset.value_namespace = name_space;
-        dispersion_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-reroute-control-enabled")
-    {
-        is_reroute_control_enabled = value;
-        is_reroute_control_enabled.value_namespace = name_space;
-        is_reroute_control_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "major-alarm")
-    {
-        major_alarm = value;
-        major_alarm.value_namespace = name_space;
-        major_alarm.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operation-mode")
-    {
-        operation_mode = value;
-        operation_mode.value_namespace = name_space;
-        operation_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reroute-ber")
-    {
-        reroute_ber = value;
-        reroute_ber.value_namespace = name_space;
-        reroute_ber.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tdc-status")
-    {
-        tdc_status = value;
-        tdc_status.value_namespace = name_space;
-        tdc_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tdc-valid")
-    {
-        tdc_valid = value;
-        tdc_valid.value_namespace = name_space;
-        tdc_valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Dwdm::Ports::Port::Info::TdcInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dispersion-offset")
-    {
-        dispersion_offset.yfilter = yfilter;
-    }
-    if(value_path == "is-reroute-control-enabled")
-    {
-        is_reroute_control_enabled.yfilter = yfilter;
-    }
-    if(value_path == "major-alarm")
-    {
-        major_alarm.yfilter = yfilter;
-    }
-    if(value_path == "operation-mode")
-    {
-        operation_mode.yfilter = yfilter;
-    }
-    if(value_path == "reroute-ber")
-    {
-        reroute_ber.yfilter = yfilter;
-    }
-    if(value_path == "tdc-status")
-    {
-        tdc_status.yfilter = yfilter;
-    }
-    if(value_path == "tdc-valid")
-    {
-        tdc_valid.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::TdcInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dispersion-offset" || name == "is-reroute-control-enabled" || name == "major-alarm" || name == "operation-mode" || name == "reroute-ber" || name == "tdc-status" || name == "tdc-valid")
-        return true;
-    return false;
-}
-
-Dwdm::Ports::Port::Info::NetworkSrlgInfo::NetworkSrlgInfo()
-    :
-    network_srlg{YType::uint32, "network-srlg"}
-{
-    yang_name = "network-srlg-info"; yang_parent_name = "info";
-}
-
-Dwdm::Ports::Port::Info::NetworkSrlgInfo::~NetworkSrlgInfo()
-{
-}
-
-bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_data() const
-{
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_operation() const
-{
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(network_srlg.yfilter);
-}
-
-std::string Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlg-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkSrlgInfo' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dwdm::Ports::Port::Info::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "network-srlg")
-    {
-        network_srlg.append(value);
-    }
-}
-
-void Dwdm::Ports::Port::Info::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "network-srlg")
-    {
-        network_srlg.yfilter = yfilter;
-    }
-}
-
-bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlg")
-        return true;
-    return false;
-}
-
 Dwdm::Ports::Port::Info::Proactive::Proactive()
     :
     alarm_state{YType::boolean, "alarm-state"},
@@ -10798,7 +8631,8 @@ Dwdm::Ports::Port::Info::Proactive::Proactive()
     tx_aps{YType::uint8, "tx-aps"},
     tx_aps_descr{YType::enumeration, "tx-aps-descr"}
 {
-    yang_name = "proactive"; yang_parent_name = "info";
+
+    yang_name = "proactive"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::Proactive::~Proactive()
@@ -10872,23 +8706,11 @@ std::string Dwdm::Ports::Port::Info::Proactive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "proactive";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::Proactive::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Proactive' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (alarm_state.is_set || is_set(alarm_state.yfilter)) leaf_name_data.push_back(alarm_state.get_name_leafdata());
@@ -10919,9 +8741,7 @@ const EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* anc
     if (tx_aps.is_set || is_set(tx_aps.yfilter)) leaf_name_data.push_back(tx_aps.get_name_leafdata());
     if (tx_aps_descr.is_set || is_set(tx_aps_descr.yfilter)) leaf_name_data.push_back(tx_aps_descr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11226,7 +9046,8 @@ Dwdm::Ports::Port::Info::SignalLog::SignalLog()
     is_log_enabled{YType::boolean, "is-log-enabled"},
     log_filename{YType::str, "log-filename"}
 {
-    yang_name = "signal-log"; yang_parent_name = "info";
+
+    yang_name = "signal-log"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Dwdm::Ports::Port::Info::SignalLog::~SignalLog()
@@ -11250,31 +9071,17 @@ std::string Dwdm::Ports::Port::Info::SignalLog::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "signal-log";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Dwdm::Ports::Port::Info::SignalLog::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::SignalLog::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SignalLog' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
     if (log_filename.is_set || is_set(log_filename.yfilter)) leaf_name_data.push_back(log_filename.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11324,13 +9131,1261 @@ bool Dwdm::Ports::Port::Info::SignalLog::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+Dwdm::Ports::Port::Info::TdcInfo::TdcInfo()
+    :
+    dispersion_offset{YType::int32, "dispersion-offset"},
+    is_reroute_control_enabled{YType::boolean, "is-reroute-control-enabled"},
+    major_alarm{YType::boolean, "major-alarm"},
+    operation_mode{YType::boolean, "operation-mode"},
+    reroute_ber{YType::int32, "reroute-ber"},
+    tdc_status{YType::boolean, "tdc-status"},
+    tdc_valid{YType::boolean, "tdc-valid"}
+{
+
+    yang_name = "tdc-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Info::TdcInfo::~TdcInfo()
+{
+}
+
+bool Dwdm::Ports::Port::Info::TdcInfo::has_data() const
+{
+    return dispersion_offset.is_set
+	|| is_reroute_control_enabled.is_set
+	|| major_alarm.is_set
+	|| operation_mode.is_set
+	|| reroute_ber.is_set
+	|| tdc_status.is_set
+	|| tdc_valid.is_set;
+}
+
+bool Dwdm::Ports::Port::Info::TdcInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dispersion_offset.yfilter)
+	|| ydk::is_set(is_reroute_control_enabled.yfilter)
+	|| ydk::is_set(major_alarm.yfilter)
+	|| ydk::is_set(operation_mode.yfilter)
+	|| ydk::is_set(reroute_ber.yfilter)
+	|| ydk::is_set(tdc_status.yfilter)
+	|| ydk::is_set(tdc_valid.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Info::TdcInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tdc-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::TdcInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dispersion_offset.is_set || is_set(dispersion_offset.yfilter)) leaf_name_data.push_back(dispersion_offset.get_name_leafdata());
+    if (is_reroute_control_enabled.is_set || is_set(is_reroute_control_enabled.yfilter)) leaf_name_data.push_back(is_reroute_control_enabled.get_name_leafdata());
+    if (major_alarm.is_set || is_set(major_alarm.yfilter)) leaf_name_data.push_back(major_alarm.get_name_leafdata());
+    if (operation_mode.is_set || is_set(operation_mode.yfilter)) leaf_name_data.push_back(operation_mode.get_name_leafdata());
+    if (reroute_ber.is_set || is_set(reroute_ber.yfilter)) leaf_name_data.push_back(reroute_ber.get_name_leafdata());
+    if (tdc_status.is_set || is_set(tdc_status.yfilter)) leaf_name_data.push_back(tdc_status.get_name_leafdata());
+    if (tdc_valid.is_set || is_set(tdc_valid.yfilter)) leaf_name_data.push_back(tdc_valid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Info::TdcInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::TdcInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Info::TdcInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dispersion-offset")
+    {
+        dispersion_offset = value;
+        dispersion_offset.value_namespace = name_space;
+        dispersion_offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-reroute-control-enabled")
+    {
+        is_reroute_control_enabled = value;
+        is_reroute_control_enabled.value_namespace = name_space;
+        is_reroute_control_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "major-alarm")
+    {
+        major_alarm = value;
+        major_alarm.value_namespace = name_space;
+        major_alarm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operation-mode")
+    {
+        operation_mode = value;
+        operation_mode.value_namespace = name_space;
+        operation_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reroute-ber")
+    {
+        reroute_ber = value;
+        reroute_ber.value_namespace = name_space;
+        reroute_ber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tdc-status")
+    {
+        tdc_status = value;
+        tdc_status.value_namespace = name_space;
+        tdc_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tdc-valid")
+    {
+        tdc_valid = value;
+        tdc_valid.value_namespace = name_space;
+        tdc_valid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Info::TdcInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dispersion-offset")
+    {
+        dispersion_offset.yfilter = yfilter;
+    }
+    if(value_path == "is-reroute-control-enabled")
+    {
+        is_reroute_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "major-alarm")
+    {
+        major_alarm.yfilter = yfilter;
+    }
+    if(value_path == "operation-mode")
+    {
+        operation_mode.yfilter = yfilter;
+    }
+    if(value_path == "reroute-ber")
+    {
+        reroute_ber.yfilter = yfilter;
+    }
+    if(value_path == "tdc-status")
+    {
+        tdc_status.yfilter = yfilter;
+    }
+    if(value_path == "tdc-valid")
+    {
+        tdc_valid.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Info::TdcInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dispersion-offset" || name == "is-reroute-control-enabled" || name == "major-alarm" || name == "operation-mode" || name == "reroute-ber" || name == "tdc-status" || name == "tdc-valid")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Optics::Optics()
+    :
+    wave_info(std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>())
+{
+    wave_info->parent = this;
+
+    yang_name = "optics"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Optics::~Optics()
+{
+}
+
+bool Dwdm::Ports::Port::Optics::has_data() const
+{
+    return (wave_info !=  nullptr && wave_info->has_data());
+}
+
+bool Dwdm::Ports::Port::Optics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (wave_info !=  nullptr && wave_info->has_operation());
+}
+
+std::string Dwdm::Ports::Port::Optics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Optics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "wave-info")
+    {
+        if(wave_info == nullptr)
+        {
+            wave_info = std::make_shared<Dwdm::Ports::Port::Optics::WaveInfo>();
+        }
+        return wave_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(wave_info != nullptr)
+    {
+        children["wave-info"] = wave_info;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dwdm::Ports::Port::Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dwdm::Ports::Port::Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "wave-info")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Optics::WaveInfo::WaveInfo()
+    :
+    wave_band{YType::uint32, "wave-band"},
+    wave_channel_max{YType::uint32, "wave-channel-max"},
+    wave_channel_min{YType::uint32, "wave-channel-min"}
+{
+
+    yang_name = "wave-info"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Optics::WaveInfo::~WaveInfo()
+{
+}
+
+bool Dwdm::Ports::Port::Optics::WaveInfo::has_data() const
+{
+    return wave_band.is_set
+	|| wave_channel_max.is_set
+	|| wave_channel_min.is_set;
+}
+
+bool Dwdm::Ports::Port::Optics::WaveInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(wave_band.yfilter)
+	|| ydk::is_set(wave_channel_max.yfilter)
+	|| ydk::is_set(wave_channel_min.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Optics::WaveInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wave-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Optics::WaveInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (wave_band.is_set || is_set(wave_band.yfilter)) leaf_name_data.push_back(wave_band.get_name_leafdata());
+    if (wave_channel_max.is_set || is_set(wave_channel_max.yfilter)) leaf_name_data.push_back(wave_channel_max.get_name_leafdata());
+    if (wave_channel_min.is_set || is_set(wave_channel_min.yfilter)) leaf_name_data.push_back(wave_channel_min.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::WaveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::WaveInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Optics::WaveInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "wave-band")
+    {
+        wave_band = value;
+        wave_band.value_namespace = name_space;
+        wave_band.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wave-channel-max")
+    {
+        wave_channel_max = value;
+        wave_channel_max.value_namespace = name_space;
+        wave_channel_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wave-channel-min")
+    {
+        wave_channel_min = value;
+        wave_channel_min.value_namespace = name_space;
+        wave_channel_min.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Optics::WaveInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "wave-band")
+    {
+        wave_band.yfilter = yfilter;
+    }
+    if(value_path == "wave-channel-max")
+    {
+        wave_channel_max.yfilter = yfilter;
+    }
+    if(value_path == "wave-channel-min")
+    {
+        wave_channel_min.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Optics::WaveInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "wave-band" || name == "wave-channel-max" || name == "wave-channel-min")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::Prbs()
+    :
+    fifteen_minutes_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>())
+	,twenty_four_hours_bucket(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>())
+{
+    fifteen_minutes_bucket->parent = this;
+    twenty_four_hours_bucket->parent = this;
+
+    yang_name = "prbs"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::~Prbs()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::has_data() const
+{
+    return (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_data())
+	|| (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_data());
+}
+
+bool Dwdm::Ports::Port::Prbs::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_operation())
+	|| (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_operation());
+}
+
+std::string Dwdm::Ports::Port::Prbs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prbs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fifteen-minutes-bucket")
+    {
+        if(fifteen_minutes_bucket == nullptr)
+        {
+            fifteen_minutes_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket>();
+        }
+        return fifteen_minutes_bucket;
+    }
+
+    if(child_yang_name == "twenty-four-hours-bucket")
+    {
+        if(twenty_four_hours_bucket == nullptr)
+        {
+            twenty_four_hours_bucket = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket>();
+        }
+        return twenty_four_hours_bucket;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fifteen_minutes_bucket != nullptr)
+    {
+        children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
+    }
+
+    if(twenty_four_hours_bucket != nullptr)
+    {
+        children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dwdm::Ports::Port::Prbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fifteen-minutes-bucket" || name == "twenty-four-hours-bucket")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesBucket()
+    :
+    fifteen_minutes_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>())
+{
+    fifteen_minutes_statistics->parent = this;
+
+    yang_name = "fifteen-minutes-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::~FifteenMinutesBucket()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_data() const
+{
+    return (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_data());
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_operation() const
+{
+    return is_set(yfilter)
+	|| (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_operation());
+}
+
+std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fifteen-minutes-bucket";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "fifteen-minutes-statistics")
+    {
+        if(fifteen_minutes_statistics == nullptr)
+        {
+            fifteen_minutes_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics>();
+        }
+        return fifteen_minutes_statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(fifteen_minutes_statistics != nullptr)
+    {
+        children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fifteen-minutes-statistics")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::FifteenMinutesStatistics()
+    :
+    is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
+    prbs_config_mode{YType::enumeration, "prbs-config-mode"}
+{
+
+    yang_name = "fifteen-minutes-statistics"; yang_parent_name = "fifteen-minutes-bucket"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::~FifteenMinutesStatistics()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_data() const
+{
+    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    {
+        if(prbs_entry[index]->has_data())
+            return true;
+    }
+    return is_prbs_enabled.is_set
+	|| prbs_config_mode.is_set;
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_operation() const
+{
+    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    {
+        if(prbs_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(is_prbs_enabled.yfilter)
+	|| ydk::is_set(prbs_config_mode.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fifteen-minutes-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_prbs_enabled.is_set || is_set(is_prbs_enabled.yfilter)) leaf_name_data.push_back(is_prbs_enabled.get_name_leafdata());
+    if (prbs_config_mode.is_set || is_set(prbs_config_mode.yfilter)) leaf_name_data.push_back(prbs_config_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prbs-entry")
+    {
+        for(auto const & c : prbs_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
+        c->parent = this;
+        prbs_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : prbs_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-prbs-enabled")
+    {
+        is_prbs_enabled = value;
+        is_prbs_enabled.value_namespace = name_space;
+        is_prbs_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prbs-config-mode")
+    {
+        prbs_config_mode = value;
+        prbs_config_mode.value_namespace = name_space;
+        prbs_config_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-prbs-enabled")
+    {
+        is_prbs_enabled.yfilter = yfilter;
+    }
+    if(value_path == "prbs-config-mode")
+    {
+        prbs_config_mode.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prbs-entry" || name == "is-prbs-enabled" || name == "prbs-config-mode")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::PrbsEntry()
+    :
+    bit_error_count{YType::uint64, "bit-error-count"},
+    configured_pattern{YType::enumeration, "configured-pattern"},
+    found_at{YType::str, "found-at"},
+    found_count{YType::uint64, "found-count"},
+    interval_index{YType::enumeration, "interval-index"},
+    lost_at{YType::str, "lost-at"},
+    lost_count{YType::uint64, "lost-count"},
+    received_pattern{YType::enumeration, "received-pattern"},
+    start_at{YType::str, "start-at"},
+    stop_at{YType::str, "stop-at"}
+{
+
+    yang_name = "prbs-entry"; yang_parent_name = "fifteen-minutes-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::~PrbsEntry()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_data() const
+{
+    return bit_error_count.is_set
+	|| configured_pattern.is_set
+	|| found_at.is_set
+	|| found_count.is_set
+	|| interval_index.is_set
+	|| lost_at.is_set
+	|| lost_count.is_set
+	|| received_pattern.is_set
+	|| start_at.is_set
+	|| stop_at.is_set;
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bit_error_count.yfilter)
+	|| ydk::is_set(configured_pattern.yfilter)
+	|| ydk::is_set(found_at.yfilter)
+	|| ydk::is_set(found_count.yfilter)
+	|| ydk::is_set(interval_index.yfilter)
+	|| ydk::is_set(lost_at.yfilter)
+	|| ydk::is_set(lost_count.yfilter)
+	|| ydk::is_set(received_pattern.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(stop_at.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prbs-entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bit_error_count.is_set || is_set(bit_error_count.yfilter)) leaf_name_data.push_back(bit_error_count.get_name_leafdata());
+    if (configured_pattern.is_set || is_set(configured_pattern.yfilter)) leaf_name_data.push_back(configured_pattern.get_name_leafdata());
+    if (found_at.is_set || is_set(found_at.yfilter)) leaf_name_data.push_back(found_at.get_name_leafdata());
+    if (found_count.is_set || is_set(found_count.yfilter)) leaf_name_data.push_back(found_count.get_name_leafdata());
+    if (interval_index.is_set || is_set(interval_index.yfilter)) leaf_name_data.push_back(interval_index.get_name_leafdata());
+    if (lost_at.is_set || is_set(lost_at.yfilter)) leaf_name_data.push_back(lost_at.get_name_leafdata());
+    if (lost_count.is_set || is_set(lost_count.yfilter)) leaf_name_data.push_back(lost_count.get_name_leafdata());
+    if (received_pattern.is_set || is_set(received_pattern.yfilter)) leaf_name_data.push_back(received_pattern.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (stop_at.is_set || is_set(stop_at.yfilter)) leaf_name_data.push_back(stop_at.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bit-error-count")
+    {
+        bit_error_count = value;
+        bit_error_count.value_namespace = name_space;
+        bit_error_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-pattern")
+    {
+        configured_pattern = value;
+        configured_pattern.value_namespace = name_space;
+        configured_pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "found-at")
+    {
+        found_at = value;
+        found_at.value_namespace = name_space;
+        found_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "found-count")
+    {
+        found_count = value;
+        found_count.value_namespace = name_space;
+        found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval-index")
+    {
+        interval_index = value;
+        interval_index.value_namespace = name_space;
+        interval_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lost-at")
+    {
+        lost_at = value;
+        lost_at.value_namespace = name_space;
+        lost_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lost-count")
+    {
+        lost_count = value;
+        lost_count.value_namespace = name_space;
+        lost_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-pattern")
+    {
+        received_pattern = value;
+        received_pattern.value_namespace = name_space;
+        received_pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-at")
+    {
+        start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stop-at")
+    {
+        stop_at = value;
+        stop_at.value_namespace = name_space;
+        stop_at.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-error-count")
+    {
+        bit_error_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-pattern")
+    {
+        configured_pattern.yfilter = yfilter;
+    }
+    if(value_path == "found-at")
+    {
+        found_at.yfilter = yfilter;
+    }
+    if(value_path == "found-count")
+    {
+        found_count.yfilter = yfilter;
+    }
+    if(value_path == "interval-index")
+    {
+        interval_index.yfilter = yfilter;
+    }
+    if(value_path == "lost-at")
+    {
+        lost_at.yfilter = yfilter;
+    }
+    if(value_path == "lost-count")
+    {
+        lost_count.yfilter = yfilter;
+    }
+    if(value_path == "received-pattern")
+    {
+        received_pattern.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "stop-at")
+    {
+        stop_at.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-error-count" || name == "configured-pattern" || name == "found-at" || name == "found-count" || name == "interval-index" || name == "lost-at" || name == "lost-count" || name == "received-pattern" || name == "start-at" || name == "stop-at")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursBucket()
+    :
+    twenty_four_hours_statistics(std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>())
+{
+    twenty_four_hours_statistics->parent = this;
+
+    yang_name = "twenty-four-hours-bucket"; yang_parent_name = "prbs"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::~TwentyFourHoursBucket()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_data() const
+{
+    return (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_data());
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_operation() const
+{
+    return is_set(yfilter)
+	|| (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_operation());
+}
+
+std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "twenty-four-hours-bucket";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "twenty-four-hours-statistics")
+    {
+        if(twenty_four_hours_statistics == nullptr)
+        {
+            twenty_four_hours_statistics = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics>();
+        }
+        return twenty_four_hours_statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(twenty_four_hours_statistics != nullptr)
+    {
+        children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "twenty-four-hours-statistics")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::TwentyFourHoursStatistics()
+    :
+    is_prbs_enabled{YType::boolean, "is-prbs-enabled"},
+    prbs_config_mode{YType::enumeration, "prbs-config-mode"}
+{
+
+    yang_name = "twenty-four-hours-statistics"; yang_parent_name = "twenty-four-hours-bucket"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::~TwentyFourHoursStatistics()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_data() const
+{
+    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    {
+        if(prbs_entry[index]->has_data())
+            return true;
+    }
+    return is_prbs_enabled.is_set
+	|| prbs_config_mode.is_set;
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_operation() const
+{
+    for (std::size_t index=0; index<prbs_entry.size(); index++)
+    {
+        if(prbs_entry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(is_prbs_enabled.yfilter)
+	|| ydk::is_set(prbs_config_mode.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "twenty-four-hours-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_prbs_enabled.is_set || is_set(is_prbs_enabled.yfilter)) leaf_name_data.push_back(is_prbs_enabled.get_name_leafdata());
+    if (prbs_config_mode.is_set || is_set(prbs_config_mode.yfilter)) leaf_name_data.push_back(prbs_config_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prbs-entry")
+    {
+        for(auto const & c : prbs_entry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
+        c->parent = this;
+        prbs_entry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : prbs_entry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-prbs-enabled")
+    {
+        is_prbs_enabled = value;
+        is_prbs_enabled.value_namespace = name_space;
+        is_prbs_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prbs-config-mode")
+    {
+        prbs_config_mode = value;
+        prbs_config_mode.value_namespace = name_space;
+        prbs_config_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-prbs-enabled")
+    {
+        is_prbs_enabled.yfilter = yfilter;
+    }
+    if(value_path == "prbs-config-mode")
+    {
+        prbs_config_mode.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prbs-entry" || name == "is-prbs-enabled" || name == "prbs-config-mode")
+        return true;
+    return false;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::PrbsEntry()
+    :
+    bit_error_count{YType::uint64, "bit-error-count"},
+    configured_pattern{YType::enumeration, "configured-pattern"},
+    found_at{YType::str, "found-at"},
+    found_count{YType::uint64, "found-count"},
+    interval_index{YType::enumeration, "interval-index"},
+    lost_at{YType::str, "lost-at"},
+    lost_count{YType::uint64, "lost-count"},
+    received_pattern{YType::enumeration, "received-pattern"},
+    start_at{YType::str, "start-at"},
+    stop_at{YType::str, "stop-at"}
+{
+
+    yang_name = "prbs-entry"; yang_parent_name = "twenty-four-hours-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::~PrbsEntry()
+{
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_data() const
+{
+    return bit_error_count.is_set
+	|| configured_pattern.is_set
+	|| found_at.is_set
+	|| found_count.is_set
+	|| interval_index.is_set
+	|| lost_at.is_set
+	|| lost_count.is_set
+	|| received_pattern.is_set
+	|| start_at.is_set
+	|| stop_at.is_set;
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bit_error_count.yfilter)
+	|| ydk::is_set(configured_pattern.yfilter)
+	|| ydk::is_set(found_at.yfilter)
+	|| ydk::is_set(found_count.yfilter)
+	|| ydk::is_set(interval_index.yfilter)
+	|| ydk::is_set(lost_at.yfilter)
+	|| ydk::is_set(lost_count.yfilter)
+	|| ydk::is_set(received_pattern.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(stop_at.yfilter);
+}
+
+std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prbs-entry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bit_error_count.is_set || is_set(bit_error_count.yfilter)) leaf_name_data.push_back(bit_error_count.get_name_leafdata());
+    if (configured_pattern.is_set || is_set(configured_pattern.yfilter)) leaf_name_data.push_back(configured_pattern.get_name_leafdata());
+    if (found_at.is_set || is_set(found_at.yfilter)) leaf_name_data.push_back(found_at.get_name_leafdata());
+    if (found_count.is_set || is_set(found_count.yfilter)) leaf_name_data.push_back(found_count.get_name_leafdata());
+    if (interval_index.is_set || is_set(interval_index.yfilter)) leaf_name_data.push_back(interval_index.get_name_leafdata());
+    if (lost_at.is_set || is_set(lost_at.yfilter)) leaf_name_data.push_back(lost_at.get_name_leafdata());
+    if (lost_count.is_set || is_set(lost_count.yfilter)) leaf_name_data.push_back(lost_count.get_name_leafdata());
+    if (received_pattern.is_set || is_set(received_pattern.yfilter)) leaf_name_data.push_back(received_pattern.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (stop_at.is_set || is_set(stop_at.yfilter)) leaf_name_data.push_back(stop_at.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bit-error-count")
+    {
+        bit_error_count = value;
+        bit_error_count.value_namespace = name_space;
+        bit_error_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-pattern")
+    {
+        configured_pattern = value;
+        configured_pattern.value_namespace = name_space;
+        configured_pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "found-at")
+    {
+        found_at = value;
+        found_at.value_namespace = name_space;
+        found_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "found-count")
+    {
+        found_count = value;
+        found_count.value_namespace = name_space;
+        found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval-index")
+    {
+        interval_index = value;
+        interval_index.value_namespace = name_space;
+        interval_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lost-at")
+    {
+        lost_at = value;
+        lost_at.value_namespace = name_space;
+        lost_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lost-count")
+    {
+        lost_count = value;
+        lost_count.value_namespace = name_space;
+        lost_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-pattern")
+    {
+        received_pattern = value;
+        received_pattern.value_namespace = name_space;
+        received_pattern.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-at")
+    {
+        start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stop-at")
+    {
+        stop_at = value;
+        stop_at.value_namespace = name_space;
+        stop_at.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-error-count")
+    {
+        bit_error_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-pattern")
+    {
+        configured_pattern.yfilter = yfilter;
+    }
+    if(value_path == "found-at")
+    {
+        found_at.yfilter = yfilter;
+    }
+    if(value_path == "found-count")
+    {
+        found_count.yfilter = yfilter;
+    }
+    if(value_path == "interval-index")
+    {
+        interval_index.yfilter = yfilter;
+    }
+    if(value_path == "lost-at")
+    {
+        lost_at.yfilter = yfilter;
+    }
+    if(value_path == "lost-count")
+    {
+        lost_count.yfilter = yfilter;
+    }
+    if(value_path == "received-pattern")
+    {
+        received_pattern.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "stop-at")
+    {
+        stop_at.yfilter = yfilter;
+    }
+}
+
+bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-error-count" || name == "configured-pattern" || name == "found-at" || name == "found-count" || name == "interval-index" || name == "lost-at" || name == "lost-count" || name == "received-pattern" || name == "start-at" || name == "stop-at")
+        return true;
+    return false;
+}
+
 Vtxp::Vtxp()
     :
     dwdm_vtxp(std::make_shared<Vtxp::DwdmVtxp>())
 {
     dwdm_vtxp->parent = this;
 
-    yang_name = "vtxp"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper";
+    yang_name = "vtxp"; yang_parent_name = "Cisco-IOS-XR-dwdm-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Vtxp::~Vtxp()
@@ -11352,26 +10407,15 @@ std::string Vtxp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vtxp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vtxp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11446,7 +10490,7 @@ Vtxp::DwdmVtxp::DwdmVtxp()
 {
     port_vtxps->parent = this;
 
-    yang_name = "dwdm-vtxp"; yang_parent_name = "vtxp";
+    yang_name = "dwdm-vtxp"; yang_parent_name = "vtxp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vtxp::DwdmVtxp::~DwdmVtxp()
@@ -11464,33 +10508,26 @@ bool Vtxp::DwdmVtxp::has_operation() const
 	|| (port_vtxps !=  nullptr && port_vtxps->has_operation());
 }
 
+std::string Vtxp::DwdmVtxp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vtxp::DwdmVtxp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-vtxp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vtxp::DwdmVtxp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11536,7 +10573,8 @@ bool Vtxp::DwdmVtxp::has_leaf_or_child_of_name(const std::string & name) const
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxps()
 {
-    yang_name = "port-vtxps"; yang_parent_name = "dwdm-vtxp";
+
+    yang_name = "port-vtxps"; yang_parent_name = "dwdm-vtxp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vtxp::DwdmVtxp::PortVtxps::~PortVtxps()
@@ -11563,33 +10601,26 @@ bool Vtxp::DwdmVtxp::PortVtxps::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Vtxp::DwdmVtxp::PortVtxps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/dwdm-vtxp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vtxp::DwdmVtxp::PortVtxps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-vtxps";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vtxp::DwdmVtxp::PortVtxps::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/dwdm-vtxp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11648,7 +10679,7 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::PortVtxp()
 {
     info->parent = this;
 
-    yang_name = "port-vtxp"; yang_parent_name = "port-vtxps";
+    yang_name = "port-vtxp"; yang_parent_name = "port-vtxps"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxp::~PortVtxp()
@@ -11668,34 +10699,27 @@ bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::has_operation() const
 	|| (info !=  nullptr && info->has_operation());
 }
 
+std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/dwdm-vtxp/port-vtxps/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-vtxp" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dwdm-ui-oper:vtxp/dwdm-vtxp/port-vtxps/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11753,7 +10777,8 @@ Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::Info()
     :
     vtxp_enable{YType::boolean, "vtxp-enable"}
 {
-    yang_name = "info"; yang_parent_name = "port-vtxp";
+
+    yang_name = "info"; yang_parent_name = "port-vtxp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::~Info()
@@ -11775,30 +10800,16 @@ std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Info' in Cisco_IOS_XR_dwdm_ui_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vtxp_enable.is_set || is_set(vtxp_enable.yfilter)) leaf_name_data.push_back(vtxp_enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11838,94 +10849,94 @@ bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::has_leaf_or_child_of_name(const 
     return false;
 }
 
-const Enum::YLeaf G709PpfsmState::in_active {0, "in-active"};
-const Enum::YLeaf G709PpfsmState::disabled {1, "disabled"};
-const Enum::YLeaf G709PpfsmState::normal_state {2, "normal-state"};
-const Enum::YLeaf G709PpfsmState::local_failing {3, "local-failing"};
-const Enum::YLeaf G709PpfsmState::remote_failing {4, "remote-failing"};
-const Enum::YLeaf G709PpfsmState::main_t_failing {5, "main-t-failing"};
-const Enum::YLeaf G709PpfsmState::regen_failing {6, "regen-failing"};
-const Enum::YLeaf G709PpfsmState::local_failed {7, "local-failed"};
-const Enum::YLeaf G709PpfsmState::remote_failed {8, "remote-failed"};
-const Enum::YLeaf G709PpfsmState::main_t_failed {9, "main-t-failed"};
-const Enum::YLeaf G709PpfsmState::regen_failed {10, "regen-failed"};
+const Enum::YLeaf G709ppintfState::pp_intf_up {0, "pp-intf-up"};
+const Enum::YLeaf G709ppintfState::pp_intf_failing {1, "pp-intf-failing"};
+const Enum::YLeaf G709ppintfState::pp_intf_down {2, "pp-intf-down"};
 
-const Enum::YLeaf G709PpintfState::pp_intf_up {0, "pp-intf-up"};
-const Enum::YLeaf G709PpintfState::pp_intf_failing {1, "pp-intf-failing"};
-const Enum::YLeaf G709PpintfState::pp_intf_down {2, "pp-intf-down"};
+const Enum::YLeaf G709ppfsmMode::pp_disable {0, "pp-disable"};
+const Enum::YLeaf G709ppfsmMode::pp_default_mode {1, "pp-default-mode"};
+const Enum::YLeaf G709ppfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
 
-const Enum::YLeaf G709PpfsmMode::pp_disable {0, "pp-disable"};
-const Enum::YLeaf G709PpfsmMode::pp_default_mode {1, "pp-default-mode"};
-const Enum::YLeaf G709PpfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
-
-const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
-const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
-const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
-
-const Enum::YLeaf G709PrbsMode::mode_source {0, "mode-source"};
-const Enum::YLeaf G709PrbsMode::mode_sink {1, "mode-sink"};
-const Enum::YLeaf G709PrbsMode::mode_source_sink {2, "mode-source-sink"};
-const Enum::YLeaf G709PrbsMode::mode_invalid {3, "mode-invalid"};
-
-const Enum::YLeaf G709PrbsPattern::pattern_none {0, "pattern-none"};
-const Enum::YLeaf G709PrbsPattern::pattern_null {1, "pattern-null"};
-const Enum::YLeaf G709PrbsPattern::pattern_pn11 {2, "pattern-pn11"};
-const Enum::YLeaf G709PrbsPattern::pattern_pn23 {3, "pattern-pn23"};
-const Enum::YLeaf G709PrbsPattern::pattern_pn31 {4, "pattern-pn31"};
-
-const Enum::YLeaf G709EfecMode::g975_none {0, "g975-none"};
-const Enum::YLeaf G709EfecMode::g975_1_i4 {1, "g975-1-i4"};
-const Enum::YLeaf G709EfecMode::g975_1_i7 {2, "g975-1-i7"};
-
-const Enum::YLeaf G709PrbsInterval::current_interval {0, "current-interval"};
-const Enum::YLeaf G709PrbsInterval::previous_interval {1, "previous-interval"};
-const Enum::YLeaf G709PrbsInterval::previous_interval2 {2, "previous-interval2"};
-const Enum::YLeaf G709PrbsInterval::previous_interval3 {3, "previous-interval3"};
-const Enum::YLeaf G709PrbsInterval::previous_interval4 {4, "previous-interval4"};
-const Enum::YLeaf G709PrbsInterval::previous_interval5 {5, "previous-interval5"};
-const Enum::YLeaf G709PrbsInterval::previous_interval6 {6, "previous-interval6"};
-const Enum::YLeaf G709PrbsInterval::previous_interval7 {7, "previous-interval7"};
-const Enum::YLeaf G709PrbsInterval::previous_interval8 {8, "previous-interval8"};
-const Enum::YLeaf G709PrbsInterval::previous_interval9 {9, "previous-interval9"};
-const Enum::YLeaf G709PrbsInterval::previous_interval10 {10, "previous-interval10"};
-const Enum::YLeaf G709PrbsInterval::previous_interval11 {11, "previous-interval11"};
-const Enum::YLeaf G709PrbsInterval::previous_interval12 {12, "previous-interval12"};
-const Enum::YLeaf G709PrbsInterval::previous_interval13 {13, "previous-interval13"};
-const Enum::YLeaf G709PrbsInterval::previous_interval14 {14, "previous-interval14"};
-const Enum::YLeaf G709PrbsInterval::previous_interval15 {15, "previous-interval15"};
-const Enum::YLeaf G709PrbsInterval::previous_interval16 {16, "previous-interval16"};
-const Enum::YLeaf G709PrbsInterval::previous_interval17 {17, "previous-interval17"};
-const Enum::YLeaf G709PrbsInterval::previous_interval18 {18, "previous-interval18"};
-const Enum::YLeaf G709PrbsInterval::previous_interval19 {19, "previous-interval19"};
-const Enum::YLeaf G709PrbsInterval::previous_interval20 {20, "previous-interval20"};
-const Enum::YLeaf G709PrbsInterval::previous_interval21 {21, "previous-interval21"};
-const Enum::YLeaf G709PrbsInterval::previous_interval22 {22, "previous-interval22"};
-const Enum::YLeaf G709PrbsInterval::previous_interval23 {23, "previous-interval23"};
-const Enum::YLeaf G709PrbsInterval::previous_interval24 {24, "previous-interval24"};
-const Enum::YLeaf G709PrbsInterval::previous_interval25 {25, "previous-interval25"};
-const Enum::YLeaf G709PrbsInterval::previous_interval26 {26, "previous-interval26"};
-const Enum::YLeaf G709PrbsInterval::previous_interval27 {27, "previous-interval27"};
-const Enum::YLeaf G709PrbsInterval::previous_interval28 {28, "previous-interval28"};
-const Enum::YLeaf G709PrbsInterval::previous_interval29 {29, "previous-interval29"};
-const Enum::YLeaf G709PrbsInterval::previous_interval30 {30, "previous-interval30"};
-const Enum::YLeaf G709PrbsInterval::previous_interval31 {31, "previous-interval31"};
-const Enum::YLeaf G709PrbsInterval::previous_interval32 {32, "previous-interval32"};
-
-const Enum::YLeaf G709ApsByte::pp_no_protect {0, "pp-no-protect"};
-const Enum::YLeaf G709ApsByte::pp_no_request {15, "pp-no-request"};
-const Enum::YLeaf G709ApsByte::pp_regen_degrade {63, "pp-regen-degrade"};
-const Enum::YLeaf G709ApsByte::pp_sig_degrade {175, "pp-sig-degrade"};
-const Enum::YLeaf G709ApsByte::pp_remote_main {239, "pp-remote-main"};
-const Enum::YLeaf G709ApsByte::pp_aps_unknown {255, "pp-aps-unknown"};
-
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
+const Enum::YLeaf G709ppfsmState::in_active {0, "in-active"};
+const Enum::YLeaf G709ppfsmState::disabled {1, "disabled"};
+const Enum::YLeaf G709ppfsmState::normal_state {2, "normal-state"};
+const Enum::YLeaf G709ppfsmState::local_failing {3, "local-failing"};
+const Enum::YLeaf G709ppfsmState::remote_failing {4, "remote-failing"};
+const Enum::YLeaf G709ppfsmState::main_t_failing {5, "main-t-failing"};
+const Enum::YLeaf G709ppfsmState::regen_failing {6, "regen-failing"};
+const Enum::YLeaf G709ppfsmState::local_failed {7, "local-failed"};
+const Enum::YLeaf G709ppfsmState::remote_failed {8, "remote-failed"};
+const Enum::YLeaf G709ppfsmState::main_t_failed {9, "main-t-failed"};
+const Enum::YLeaf G709ppfsmState::regen_failed {10, "regen-failed"};
 
 const Enum::YLeaf DwdmtasState::tas_oos {0, "tas-oos"};
 const Enum::YLeaf DwdmtasState::tas_is {1, "tas-is"};
 const Enum::YLeaf DwdmtasState::tas_oos_mt {2, "tas-oos-mt"};
 const Enum::YLeaf DwdmtasState::tas_is_cfg {3, "tas-is-cfg"};
+
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
+
+const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
+const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
+const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
+
+const Enum::YLeaf G709apsByte::pp_no_protect {0, "pp-no-protect"};
+const Enum::YLeaf G709apsByte::pp_no_request {15, "pp-no-request"};
+const Enum::YLeaf G709apsByte::pp_regen_degrade {63, "pp-regen-degrade"};
+const Enum::YLeaf G709apsByte::pp_sig_degrade {175, "pp-sig-degrade"};
+const Enum::YLeaf G709apsByte::pp_remote_main {239, "pp-remote-main"};
+const Enum::YLeaf G709apsByte::pp_aps_unknown {255, "pp-aps-unknown"};
+
+const Enum::YLeaf G709prbsInterval::current_interval {0, "current-interval"};
+const Enum::YLeaf G709prbsInterval::previous_interval {1, "previous-interval"};
+const Enum::YLeaf G709prbsInterval::previous_interval2 {2, "previous-interval2"};
+const Enum::YLeaf G709prbsInterval::previous_interval3 {3, "previous-interval3"};
+const Enum::YLeaf G709prbsInterval::previous_interval4 {4, "previous-interval4"};
+const Enum::YLeaf G709prbsInterval::previous_interval5 {5, "previous-interval5"};
+const Enum::YLeaf G709prbsInterval::previous_interval6 {6, "previous-interval6"};
+const Enum::YLeaf G709prbsInterval::previous_interval7 {7, "previous-interval7"};
+const Enum::YLeaf G709prbsInterval::previous_interval8 {8, "previous-interval8"};
+const Enum::YLeaf G709prbsInterval::previous_interval9 {9, "previous-interval9"};
+const Enum::YLeaf G709prbsInterval::previous_interval10 {10, "previous-interval10"};
+const Enum::YLeaf G709prbsInterval::previous_interval11 {11, "previous-interval11"};
+const Enum::YLeaf G709prbsInterval::previous_interval12 {12, "previous-interval12"};
+const Enum::YLeaf G709prbsInterval::previous_interval13 {13, "previous-interval13"};
+const Enum::YLeaf G709prbsInterval::previous_interval14 {14, "previous-interval14"};
+const Enum::YLeaf G709prbsInterval::previous_interval15 {15, "previous-interval15"};
+const Enum::YLeaf G709prbsInterval::previous_interval16 {16, "previous-interval16"};
+const Enum::YLeaf G709prbsInterval::previous_interval17 {17, "previous-interval17"};
+const Enum::YLeaf G709prbsInterval::previous_interval18 {18, "previous-interval18"};
+const Enum::YLeaf G709prbsInterval::previous_interval19 {19, "previous-interval19"};
+const Enum::YLeaf G709prbsInterval::previous_interval20 {20, "previous-interval20"};
+const Enum::YLeaf G709prbsInterval::previous_interval21 {21, "previous-interval21"};
+const Enum::YLeaf G709prbsInterval::previous_interval22 {22, "previous-interval22"};
+const Enum::YLeaf G709prbsInterval::previous_interval23 {23, "previous-interval23"};
+const Enum::YLeaf G709prbsInterval::previous_interval24 {24, "previous-interval24"};
+const Enum::YLeaf G709prbsInterval::previous_interval25 {25, "previous-interval25"};
+const Enum::YLeaf G709prbsInterval::previous_interval26 {26, "previous-interval26"};
+const Enum::YLeaf G709prbsInterval::previous_interval27 {27, "previous-interval27"};
+const Enum::YLeaf G709prbsInterval::previous_interval28 {28, "previous-interval28"};
+const Enum::YLeaf G709prbsInterval::previous_interval29 {29, "previous-interval29"};
+const Enum::YLeaf G709prbsInterval::previous_interval30 {30, "previous-interval30"};
+const Enum::YLeaf G709prbsInterval::previous_interval31 {31, "previous-interval31"};
+const Enum::YLeaf G709prbsInterval::previous_interval32 {32, "previous-interval32"};
+
+const Enum::YLeaf G709efecMode::g975_none {0, "g975-none"};
+const Enum::YLeaf G709efecMode::g975_1_i4 {1, "g975-1-i4"};
+const Enum::YLeaf G709efecMode::g975_1_i7 {2, "g975-1-i7"};
+
+const Enum::YLeaf G709prbsPattern::pattern_none {0, "pattern-none"};
+const Enum::YLeaf G709prbsPattern::pattern_null {1, "pattern-null"};
+const Enum::YLeaf G709prbsPattern::pattern_pn11 {2, "pattern-pn11"};
+const Enum::YLeaf G709prbsPattern::pattern_pn23 {3, "pattern-pn23"};
+const Enum::YLeaf G709prbsPattern::pattern_pn31 {4, "pattern-pn31"};
+
+const Enum::YLeaf G709prbsMode::mode_source {0, "mode-source"};
+const Enum::YLeaf G709prbsMode::mode_sink {1, "mode-sink"};
+const Enum::YLeaf G709prbsMode::mode_source_sink {2, "mode-source-sink"};
+const Enum::YLeaf G709prbsMode::mode_invalid {3, "mode-invalid"};
 
 
 }

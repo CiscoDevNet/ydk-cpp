@@ -25,6 +25,7 @@
 //
 //////////////////////////////////////////////////////////////////
 
+#include "entity_util.hpp"
 #include "logger.hpp"
 #include "types.hpp"
 #include <iostream>
@@ -39,7 +40,7 @@ namespace ydk
 /// Entity
 //////////////////////////////////////////////////////////////////
 Entity::Entity()
-  : parent(nullptr), yfilter(YFilter::not_set), is_presence_container(false)
+  : parent(nullptr), yfilter(YFilter::not_set), is_presence_container(false), is_top_level_class(false), has_list_ancestor(false)
 {
 }
 
@@ -82,6 +83,11 @@ std::map<std::pair<std::string, std::string>, std::string> Entity::get_namespace
     return {};
 }
 
+std::string Entity::get_absolute_path() const
+{
+    return "";
+}
+
 bool Entity::operator == (Entity & other) const
 {
     if(!has_data() && !other.has_data())
@@ -90,16 +96,18 @@ bool Entity::operator == (Entity & other) const
     if(!has_data() || !other.has_data())
         return false;
 
+    YLOG_DEBUG("Comparing equality {} and {}", get_segment_path(), other.get_segment_path());
+
     auto const this_children = get_children();
     auto const other_children = other.get_children();
 
-    if(get_entity_path(parent) == other.get_entity_path(other.parent))
+    if(get_entity_path(*this, parent) == get_entity_path(other, other.parent))
     {
         if(this_children.size() == other_children.size())
         {
             for(map<std::string, shared_ptr<Entity>>::const_iterator rit = this_children.begin(), lit = other_children.begin() ;
                     rit!=this_children.end() && lit!=other_children.end();
-                    rit++, lit++)
+                    ++rit, ++lit)
             {
                 if(*(rit->second) != *(lit->second))
                 {
@@ -126,16 +134,18 @@ bool Entity::operator != (Entity & other) const
     if(!has_data() && other.has_data())
         return true;
 
+    YLOG_DEBUG("Comparing inequality {} and {}", get_segment_path(), other.get_segment_path());
+
     auto const & this_children = get_children();
     auto const & other_children = other.get_children();
 
-    if(get_entity_path(parent) == other.get_entity_path(other.parent))
+    if(get_entity_path(*this, parent) == get_entity_path(other, other.parent))
     {
         if(this_children.size() == other_children.size())
         {
             for(map<std::string, shared_ptr<Entity>>::const_iterator rit = this_children.begin(), lit = other_children.begin() ;
                     rit!=this_children.end() && lit!=other_children.end();
-                    rit++, lit++)
+                    ++rit, ++lit)
             {
                 if(*(rit->second) != *(lit->second))
                 {
@@ -146,6 +156,7 @@ bool Entity::operator != (Entity & other) const
     }
     else
     {
+        YLOG_DEBUG("Entity path not equal: {} and {}", yang_name, other.yang_name);
         return true;
     }
 
@@ -154,7 +165,7 @@ bool Entity::operator != (Entity & other) const
 
 std::ostream& operator<< (std::ostream& stream, Entity& entity)
 {
-    stream<<entity.get_entity_path(entity.parent);
+    stream<<get_entity_path(entity, entity.parent);
     auto const & children = entity.get_children();
     if(entity.has_data() && children.size() > 0)
         stream<<endl;
@@ -170,7 +181,7 @@ std::ostream& operator<< (std::ostream& stream, Entity& entity)
 /// EntityPath
 //////////////////////////////////////////////////////////////////
 
-EntityPath::EntityPath(std::string path, std::vector<std::pair<std::string, LeafData> > value_paths)
+EntityPath::EntityPath(const std::string & path, std::vector<std::pair<std::string, LeafData> > & value_paths)
     : path(path), value_paths(value_paths)
 {
 }
@@ -181,21 +192,37 @@ EntityPath::~EntityPath()
 
 bool EntityPath::operator == (EntityPath & other) const
 {
+    ostringstream os1, os2;
+    os1<<*this;
+    os2<<other;
+    YLOG_DEBUG("Comparing equality {} and {}", os1.str(), os2.str());
     return path == other.path && value_paths == other.value_paths;
 }
 
 bool EntityPath::operator == (const EntityPath & other) const
 {
+    ostringstream os1, os2;
+    os1<<*this;
+    os2<<other;
+    YLOG_DEBUG("Comparing const equality {} and {}", os1.str(), os2.str());
     return path == other.path && value_paths == other.value_paths;
 }
 
 bool EntityPath::operator != (EntityPath & other) const
 {
+    ostringstream os1, os2;
+    os1<<*this;
+    os2<<other;
+    YLOG_DEBUG("Comparing inequality {} and {}", os1.str(), os2.str());
     return path != other.path || value_paths != other.value_paths;
 }
 
 bool EntityPath::operator != (const EntityPath & other) const
 {
+    ostringstream os1, os2;
+    os1<<*this;
+    os2<<other;
+    YLOG_DEBUG("Comparing const inequality {} and {}", os1.str(), os2.str());
     return path != other.path || value_paths != other.value_paths;
 }
 

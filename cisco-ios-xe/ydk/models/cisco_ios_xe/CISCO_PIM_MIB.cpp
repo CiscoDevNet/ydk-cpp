@@ -11,69 +11,57 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_PIM_MIB {
 
-CiscoPimMib::CiscoPimMib()
+CISCOPIMMIB::CISCOPIMMIB()
     :
-    ciscopimmibnotificationobjects(std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>())
-	,cpim(std::make_shared<CiscoPimMib::Cpim>())
+    ciscopimmibnotificationobjects(std::make_shared<CISCOPIMMIB::Ciscopimmibnotificationobjects>())
+	,cpim(std::make_shared<CISCOPIMMIB::Cpim>())
 {
     ciscopimmibnotificationobjects->parent = this;
-
     cpim->parent = this;
 
-    yang_name = "CISCO-PIM-MIB"; yang_parent_name = "CISCO-PIM-MIB";
+    yang_name = "CISCO-PIM-MIB"; yang_parent_name = "CISCO-PIM-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoPimMib::~CiscoPimMib()
+CISCOPIMMIB::~CISCOPIMMIB()
 {
 }
 
-bool CiscoPimMib::has_data() const
+bool CISCOPIMMIB::has_data() const
 {
     return (ciscopimmibnotificationobjects !=  nullptr && ciscopimmibnotificationobjects->has_data())
 	|| (cpim !=  nullptr && cpim->has_data());
 }
 
-bool CiscoPimMib::has_operation() const
+bool CISCOPIMMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ciscopimmibnotificationobjects !=  nullptr && ciscopimmibnotificationobjects->has_operation())
 	|| (cpim !=  nullptr && cpim->has_operation());
 }
 
-std::string CiscoPimMib::get_segment_path() const
+std::string CISCOPIMMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PIM-MIB:CISCO-PIM-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPimMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoPimMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPIMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoPimMIBNotificationObjects")
     {
         if(ciscopimmibnotificationobjects == nullptr)
         {
-            ciscopimmibnotificationobjects = std::make_shared<CiscoPimMib::Ciscopimmibnotificationobjects>();
+            ciscopimmibnotificationobjects = std::make_shared<CISCOPIMMIB::Ciscopimmibnotificationobjects>();
         }
         return ciscopimmibnotificationobjects;
     }
@@ -82,7 +70,7 @@ std::shared_ptr<Entity> CiscoPimMib::get_child_by_name(const std::string & child
     {
         if(cpim == nullptr)
         {
-            cpim = std::make_shared<CiscoPimMib::Cpim>();
+            cpim = std::make_shared<CISCOPIMMIB::Cpim>();
         }
         return cpim;
     }
@@ -90,7 +78,7 @@ std::shared_ptr<Entity> CiscoPimMib::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPimMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ciscopimmibnotificationobjects != nullptr)
@@ -106,47 +94,130 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPimMib::get_children() const
     return children;
 }
 
-void CiscoPimMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPIMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoPimMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPIMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoPimMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOPIMMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoPimMib>();
+    return std::make_shared<CISCOPIMMIB>();
 }
 
-std::string CiscoPimMib::get_bundle_yang_models_location() const
+std::string CISCOPIMMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoPimMib::get_bundle_name() const
+std::string CISCOPIMMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoPimMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOPIMMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoPimMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOPIMMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoPimMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPIMMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoPimMIBNotificationObjects" || name == "cpim")
         return true;
     return false;
 }
 
-CiscoPimMib::Cpim::Cpim()
+CISCOPIMMIB::Ciscopimmibnotificationobjects::Ciscopimmibnotificationobjects()
+    :
+    cpimrpmappingchangetype{YType::enumeration, "cpimRPMappingChangeType"}
+{
+
+    yang_name = "ciscoPimMIBNotificationObjects"; yang_parent_name = "CISCO-PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOPIMMIB::Ciscopimmibnotificationobjects::~Ciscopimmibnotificationobjects()
+{
+}
+
+bool CISCOPIMMIB::Ciscopimmibnotificationobjects::has_data() const
+{
+    return cpimrpmappingchangetype.is_set;
+}
+
+bool CISCOPIMMIB::Ciscopimmibnotificationobjects::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cpimrpmappingchangetype.yfilter);
+}
+
+std::string CISCOPIMMIB::Ciscopimmibnotificationobjects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PIM-MIB:CISCO-PIM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPIMMIB::Ciscopimmibnotificationobjects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ciscoPimMIBNotificationObjects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::Ciscopimmibnotificationobjects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cpimrpmappingchangetype.is_set || is_set(cpimrpmappingchangetype.yfilter)) leaf_name_data.push_back(cpimrpmappingchangetype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOPIMMIB::Ciscopimmibnotificationobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::Ciscopimmibnotificationobjects::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOPIMMIB::Ciscopimmibnotificationobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cpimRPMappingChangeType")
+    {
+        cpimrpmappingchangetype = value;
+        cpimrpmappingchangetype.value_namespace = name_space;
+        cpimrpmappingchangetype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOPIMMIB::Ciscopimmibnotificationobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cpimRPMappingChangeType")
+    {
+        cpimrpmappingchangetype.yfilter = yfilter;
+    }
+}
+
+bool CISCOPIMMIB::Ciscopimmibnotificationobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpimRPMappingChangeType")
+        return true;
+    return false;
+}
+
+CISCOPIMMIB::Cpim::Cpim()
     :
     cpiminvalidjoinprunemsgsrcvd{YType::uint32, "cpimInvalidJoinPruneMsgsRcvd"},
     cpiminvalidregistermsgsrcvd{YType::uint32, "cpimInvalidRegisterMsgsRcvd"},
@@ -158,14 +229,15 @@ CiscoPimMib::Cpim::Cpim()
     cpimlasterrorrptype{YType::enumeration, "cpimLastErrorRPType"},
     cpimlasterrortype{YType::enumeration, "cpimLastErrorType"}
 {
-    yang_name = "cpim"; yang_parent_name = "CISCO-PIM-MIB";
+
+    yang_name = "cpim"; yang_parent_name = "CISCO-PIM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoPimMib::Cpim::~Cpim()
+CISCOPIMMIB::Cpim::~Cpim()
 {
 }
 
-bool CiscoPimMib::Cpim::has_data() const
+bool CISCOPIMMIB::Cpim::has_data() const
 {
     return cpiminvalidjoinprunemsgsrcvd.is_set
 	|| cpiminvalidregistermsgsrcvd.is_set
@@ -178,7 +250,7 @@ bool CiscoPimMib::Cpim::has_data() const
 	|| cpimlasterrortype.is_set;
 }
 
-bool CiscoPimMib::Cpim::has_operation() const
+bool CISCOPIMMIB::Cpim::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpiminvalidjoinprunemsgsrcvd.yfilter)
@@ -192,27 +264,22 @@ bool CiscoPimMib::Cpim::has_operation() const
 	|| ydk::is_set(cpimlasterrortype.yfilter);
 }
 
-std::string CiscoPimMib::Cpim::get_segment_path() const
+std::string CISCOPIMMIB::Cpim::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-PIM-MIB:CISCO-PIM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOPIMMIB::Cpim::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpim";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoPimMib::Cpim::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::Cpim::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PIM-MIB:CISCO-PIM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpiminvalidjoinprunemsgsrcvd.is_set || is_set(cpiminvalidjoinprunemsgsrcvd.yfilter)) leaf_name_data.push_back(cpiminvalidjoinprunemsgsrcvd.get_name_leafdata());
@@ -225,24 +292,22 @@ const EntityPath CiscoPimMib::Cpim::get_entity_path(Entity* ancestor) const
     if (cpimlasterrorrptype.is_set || is_set(cpimlasterrorrptype.yfilter)) leaf_name_data.push_back(cpimlasterrorrptype.get_name_leafdata());
     if (cpimlasterrortype.is_set || is_set(cpimlasterrortype.yfilter)) leaf_name_data.push_back(cpimlasterrortype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoPimMib::Cpim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPIMMIB::Cpim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPimMib::Cpim::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::Cpim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoPimMib::Cpim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPIMMIB::Cpim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpimInvalidJoinPruneMsgsRcvd")
     {
@@ -300,7 +365,7 @@ void CiscoPimMib::Cpim::set_value(const std::string & value_path, const std::str
     }
 }
 
-void CiscoPimMib::Cpim::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPIMMIB::Cpim::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpimInvalidJoinPruneMsgsRcvd")
     {
@@ -340,110 +405,21 @@ void CiscoPimMib::Cpim::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-bool CiscoPimMib::Cpim::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPIMMIB::Cpim::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpimInvalidJoinPruneMsgsRcvd" || name == "cpimInvalidRegisterMsgsRcvd" || name == "cpimLastErrorGroup" || name == "cpimLastErrorGroupType" || name == "cpimLastErrorOrigin" || name == "cpimLastErrorOriginType" || name == "cpimLastErrorRP" || name == "cpimLastErrorRPType" || name == "cpimLastErrorType")
         return true;
     return false;
 }
 
-CiscoPimMib::Ciscopimmibnotificationobjects::Ciscopimmibnotificationobjects()
-    :
-    cpimrpmappingchangetype{YType::enumeration, "cpimRPMappingChangeType"}
-{
-    yang_name = "ciscoPimMIBNotificationObjects"; yang_parent_name = "CISCO-PIM-MIB";
-}
+const Enum::YLeaf CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::newMapping {1, "newMapping"};
+const Enum::YLeaf CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::deletedMapping {2, "deletedMapping"};
+const Enum::YLeaf CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::modifiedOldMapping {3, "modifiedOldMapping"};
+const Enum::YLeaf CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::modifiedNewMapping {4, "modifiedNewMapping"};
 
-CiscoPimMib::Ciscopimmibnotificationobjects::~Ciscopimmibnotificationobjects()
-{
-}
-
-bool CiscoPimMib::Ciscopimmibnotificationobjects::has_data() const
-{
-    return cpimrpmappingchangetype.is_set;
-}
-
-bool CiscoPimMib::Ciscopimmibnotificationobjects::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cpimrpmappingchangetype.yfilter);
-}
-
-std::string CiscoPimMib::Ciscopimmibnotificationobjects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ciscoPimMIBNotificationObjects";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoPimMib::Ciscopimmibnotificationobjects::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-PIM-MIB:CISCO-PIM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cpimrpmappingchangetype.is_set || is_set(cpimrpmappingchangetype.yfilter)) leaf_name_data.push_back(cpimrpmappingchangetype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoPimMib::Ciscopimmibnotificationobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoPimMib::Ciscopimmibnotificationobjects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoPimMib::Ciscopimmibnotificationobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cpimRPMappingChangeType")
-    {
-        cpimrpmappingchangetype = value;
-        cpimrpmappingchangetype.value_namespace = name_space;
-        cpimrpmappingchangetype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoPimMib::Ciscopimmibnotificationobjects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cpimRPMappingChangeType")
-    {
-        cpimrpmappingchangetype.yfilter = yfilter;
-    }
-}
-
-bool CiscoPimMib::Ciscopimmibnotificationobjects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cpimRPMappingChangeType")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf CiscoPimMib::Cpim::Cpimlasterrortype::none {1, "none"};
-const Enum::YLeaf CiscoPimMib::Cpim::Cpimlasterrortype::invalidRegister {2, "invalidRegister"};
-const Enum::YLeaf CiscoPimMib::Cpim::Cpimlasterrortype::invalidJoinPrune {3, "invalidJoinPrune"};
-
-const Enum::YLeaf CiscoPimMib::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::newMapping {1, "newMapping"};
-const Enum::YLeaf CiscoPimMib::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::deletedMapping {2, "deletedMapping"};
-const Enum::YLeaf CiscoPimMib::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::modifiedOldMapping {3, "modifiedOldMapping"};
-const Enum::YLeaf CiscoPimMib::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype::modifiedNewMapping {4, "modifiedNewMapping"};
+const Enum::YLeaf CISCOPIMMIB::Cpim::Cpimlasterrortype::none {1, "none"};
+const Enum::YLeaf CISCOPIMMIB::Cpim::Cpimlasterrortype::invalidRegister {2, "invalidRegister"};
+const Enum::YLeaf CISCOPIMMIB::Cpim::Cpimlasterrortype::invalidJoinPrune {3, "invalidJoinPrune"};
 
 
 }

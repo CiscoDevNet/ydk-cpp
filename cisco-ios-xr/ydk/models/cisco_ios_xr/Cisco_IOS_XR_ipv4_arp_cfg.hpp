@@ -18,7 +18,7 @@ class Arp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -37,6 +37,223 @@ class Arp : public ydk::Entity
 
 }; // Arp
 
+class ArpRedundancy : public ydk::Entity
+{
+    public:
+        ArpRedundancy();
+        ~ArpRedundancy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Redundancy; //type: ArpRedundancy::Redundancy
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy> redundancy; // presence node
+        
+}; // ArpRedundancy
+
+
+class ArpRedundancy::Redundancy : public ydk::Entity
+{
+    public:
+        Redundancy();
+        ~Redundancy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+        class Groups; //type: ArpRedundancy::Redundancy::Groups
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups> groups;
+        
+}; // ArpRedundancy::Redundancy
+
+
+class ArpRedundancy::Redundancy::Groups : public ydk::Entity
+{
+    public:
+        Groups();
+        ~Groups();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Group; //type: ArpRedundancy::Redundancy::Groups::Group
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group> > group;
+        
+}; // ArpRedundancy::Redundancy::Groups
+
+
+class ArpRedundancy::Redundancy::Groups::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf source_interface; //type: string
+        class Peers; //type: ArpRedundancy::Redundancy::Groups::Group::Peers
+        class InterfaceList; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList> interface_list; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::Peers> peers;
+        
+}; // ArpRedundancy::Redundancy::Groups::Group
+
+
+class ArpRedundancy::Redundancy::Groups::Group::InterfaceList : public ydk::Entity
+{
+    public:
+        InterfaceList();
+        ~InterfaceList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        class Interfaces; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces> interfaces;
+        
+}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList
+
+
+class ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
+        
+}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces
+
+
+class ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_id; //type: uint32
+
+}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface
+
+
+class ArpRedundancy::Redundancy::Groups::Group::Peers : public ydk::Entity
+{
+    public:
+        Peers();
+        ~Peers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Peer; //type: ArpRedundancy::Redundancy::Groups::Group::Peers::Peer
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::Peers::Peer> > peer;
+        
+}; // ArpRedundancy::Redundancy::Groups::Group::Peers
+
+
+class ArpRedundancy::Redundancy::Groups::Group::Peers::Peer : public ydk::Entity
+{
+    public:
+        Peer();
+        ~Peer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_string; //type: string
+
+}; // ArpRedundancy::Redundancy::Groups::Group::Peers::Peer
+
 class Arpgmp : public ydk::Entity
 {
     public:
@@ -45,7 +262,7 @@ class Arpgmp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -60,7 +277,7 @@ class Arpgmp : public ydk::Entity
 
         class Vrf; //type: Arpgmp::Vrf
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf> > vrf;
         
 }; // Arpgmp
 
@@ -73,18 +290,19 @@ class Arpgmp::Vrf : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
         class Entries; //type: Arpgmp::Vrf::Entries
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf::Entries> entries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf::Entries> entries;
         
 }; // Arpgmp::Vrf
 
@@ -97,7 +315,7 @@ class Arpgmp::Vrf::Entries : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -107,7 +325,7 @@ class Arpgmp::Vrf::Entries : public ydk::Entity
 
         class Entry; //type: Arpgmp::Vrf::Entries::Entry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf::Entries::Entry> > entry;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf::Entries::Entry> > entry;
         
 }; // Arpgmp::Vrf::Entries
 
@@ -120,7 +338,7 @@ class Arpgmp::Vrf::Entries::Entry : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -136,15 +354,15 @@ class Arpgmp::Vrf::Entries::Entry : public ydk::Entity
 
 }; // Arpgmp::Vrf::Entries::Entry
 
-class ArpRedundancy : public ydk::Entity
+class IedgeCfg : public ydk::Entity
 {
     public:
-        ArpRedundancy();
-        ~ArpRedundancy();
+        IedgeCfg();
+        ~IedgeCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -157,198 +375,18 @@ class ArpRedundancy : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Redundancy; //type: ArpRedundancy::Redundancy
+        ydk::YLeaf subscriber_uncond_proxy; //type: empty
+        ydk::YLeaf subscriber_scale_mode; //type: empty
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy> redundancy; // presence node
-        
-}; // ArpRedundancy
+}; // IedgeCfg
 
-
-class ArpRedundancy::Redundancy : public ydk::Entity
+class ArpEntry : public ydk::Enum
 {
     public:
-        Redundancy();
-        ~Redundancy();
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf alias;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-        class Groups; //type: ArpRedundancy::Redundancy::Groups
-
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups> groups;
-        
-}; // ArpRedundancy::Redundancy
-
-
-class ArpRedundancy::Redundancy::Groups : public ydk::Entity
-{
-    public:
-        Groups();
-        ~Groups();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Group; //type: ArpRedundancy::Redundancy::Groups::Group
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group> > group;
-        
-}; // ArpRedundancy::Redundancy::Groups
-
-
-class ArpRedundancy::Redundancy::Groups::Group : public ydk::Entity
-{
-    public:
-        Group();
-        ~Group();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf group_id; //type: uint32
-        ydk::YLeaf source_interface; //type: string
-        class Peers; //type: ArpRedundancy::Redundancy::Groups::Group::Peers
-        class InterfaceList; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList
-
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList> interface_list; // presence node
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::Peers> peers;
-        
-}; // ArpRedundancy::Redundancy::Groups::Group
-
-
-class ArpRedundancy::Redundancy::Groups::Group::Peers : public ydk::Entity
-{
-    public:
-        Peers();
-        ~Peers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Peer; //type: ArpRedundancy::Redundancy::Groups::Group::Peers::Peer
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::Peers::Peer> > peer;
-        
-}; // ArpRedundancy::Redundancy::Groups::Group::Peers
-
-
-class ArpRedundancy::Redundancy::Groups::Group::Peers::Peer : public ydk::Entity
-{
-    public:
-        Peer();
-        ~Peer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_string; //type: string
-
-}; // ArpRedundancy::Redundancy::Groups::Group::Peers::Peer
-
-
-class ArpRedundancy::Redundancy::Groups::Group::InterfaceList : public ydk::Entity
-{
-    public:
-        InterfaceList();
-        ~InterfaceList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-        class Interfaces; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces
-
-        std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces> interfaces;
-        
-}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList
-
-
-class ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
-        
-}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces
-
-
-class ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_id; //type: uint32
-
-}; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface
+};
 
 class ArpEncap : public ydk::Enum
 {
@@ -357,14 +395,6 @@ class ArpEncap : public ydk::Enum
         static const ydk::Enum::YLeaf srp;
         static const ydk::Enum::YLeaf srpa;
         static const ydk::Enum::YLeaf srpb;
-
-};
-
-class ArpEntry : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf alias;
 
 };
 

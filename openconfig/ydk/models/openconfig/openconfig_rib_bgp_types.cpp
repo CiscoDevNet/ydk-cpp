@@ -11,147 +11,163 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_rib_bgp_types {
 
-Bgp_Not_Selected_Policy::Bgp_Not_Selected_Policy()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:BGP_NOT_SELECTED_POLICY")
-{
-}
-
-Bgp_Not_Selected_Policy::~Bgp_Not_Selected_Policy()
-{
-}
-
-Bgp_Not_Selected_Bestpath::Bgp_Not_Selected_Bestpath()
+BGPNOTSELECTEDBESTPATH::BGPNOTSELECTEDBESTPATH()
      : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:BGP_NOT_SELECTED_BESTPATH")
 {
+
 }
 
-Bgp_Not_Selected_Bestpath::~Bgp_Not_Selected_Bestpath()
+BGPNOTSELECTEDBESTPATH::~BGPNOTSELECTEDBESTPATH()
 {
 }
 
-Invalid_Route_Reason::Invalid_Route_Reason()
+BGPNOTSELECTEDPOLICY::BGPNOTSELECTEDPOLICY()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:BGP_NOT_SELECTED_POLICY")
+{
+
+}
+
+BGPNOTSELECTEDPOLICY::~BGPNOTSELECTEDPOLICY()
+{
+}
+
+INVALIDROUTEREASON::INVALIDROUTEREASON()
      : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_ROUTE_REASON")
 {
+
 }
 
-Invalid_Route_Reason::~Invalid_Route_Reason()
+INVALIDROUTEREASON::~INVALIDROUTEREASON()
 {
 }
 
-Invalid_Cluster_Loop::Invalid_Cluster_Loop()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CLUSTER_LOOP")
-{
-}
-
-Invalid_Cluster_Loop::~Invalid_Cluster_Loop()
-{
-}
-
-Higher_Router_Id::Higher_Router_Id()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:HIGHER_ROUTER_ID")
-{
-}
-
-Higher_Router_Id::~Higher_Router_Id()
-{
-}
-
-Invalid_As_Loop::Invalid_As_Loop()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_AS_LOOP")
-{
-}
-
-Invalid_As_Loop::~Invalid_As_Loop()
-{
-}
-
-Invalid_Originator::Invalid_Originator()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_ORIGINATOR")
-{
-}
-
-Invalid_Originator::~Invalid_Originator()
-{
-}
-
-Invalid_Confed::Invalid_Confed()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CONFED")
-{
-}
-
-Invalid_Confed::~Invalid_Confed()
-{
-}
-
-Origin_Type_Higher::Origin_Type_Higher()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:ORIGIN_TYPE_HIGHER")
-{
-}
-
-Origin_Type_Higher::~Origin_Type_Higher()
-{
-}
-
-Local_Pref_Lower::Local_Pref_Lower()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:LOCAL_PREF_LOWER")
-{
-}
-
-Local_Pref_Lower::~Local_Pref_Lower()
-{
-}
-
-Prefer_External::Prefer_External()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:PREFER_EXTERNAL")
-{
-}
-
-Prefer_External::~Prefer_External()
-{
-}
-
-Rejected_Import_Policy::Rejected_Import_Policy()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:REJECTED_IMPORT_POLICY")
-{
-}
-
-Rejected_Import_Policy::~Rejected_Import_Policy()
-{
-}
-
-As_Path_Longer::As_Path_Longer()
+ASPATHLONGER::ASPATHLONGER()
      : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:AS_PATH_LONGER")
 {
+
 }
 
-As_Path_Longer::~As_Path_Longer()
+ASPATHLONGER::~ASPATHLONGER()
 {
 }
 
-Higher_Peer_Address::Higher_Peer_Address()
+HIGHERPEERADDRESS::HIGHERPEERADDRESS()
      : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:HIGHER_PEER_ADDRESS")
 {
+
 }
 
-Higher_Peer_Address::~Higher_Peer_Address()
+HIGHERPEERADDRESS::~HIGHERPEERADDRESS()
 {
 }
 
-Nexthop_Cost_Higher::Nexthop_Cost_Higher()
-     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:NEXTHOP_COST_HIGHER")
+HIGHERROUTERID::HIGHERROUTERID()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:HIGHER_ROUTER_ID")
+{
+
+}
+
+HIGHERROUTERID::~HIGHERROUTERID()
 {
 }
 
-Nexthop_Cost_Higher::~Nexthop_Cost_Higher()
+INVALIDASLOOP::INVALIDASLOOP()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_AS_LOOP")
+{
+
+}
+
+INVALIDASLOOP::~INVALIDASLOOP()
 {
 }
 
-Med_Higher::Med_Higher()
+INVALIDCLUSTERLOOP::INVALIDCLUSTERLOOP()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CLUSTER_LOOP")
+{
+
+}
+
+INVALIDCLUSTERLOOP::~INVALIDCLUSTERLOOP()
+{
+}
+
+INVALIDCONFED::INVALIDCONFED()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CONFED")
+{
+
+}
+
+INVALIDCONFED::~INVALIDCONFED()
+{
+}
+
+INVALIDORIGINATOR::INVALIDORIGINATOR()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_ORIGINATOR")
+{
+
+}
+
+INVALIDORIGINATOR::~INVALIDORIGINATOR()
+{
+}
+
+LOCALPREFLOWER::LOCALPREFLOWER()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:LOCAL_PREF_LOWER")
+{
+
+}
+
+LOCALPREFLOWER::~LOCALPREFLOWER()
+{
+}
+
+MEDHIGHER::MEDHIGHER()
      : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:MED_HIGHER")
 {
+
 }
 
-Med_Higher::~Med_Higher()
+MEDHIGHER::~MEDHIGHER()
+{
+}
+
+NEXTHOPCOSTHIGHER::NEXTHOPCOSTHIGHER()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:NEXTHOP_COST_HIGHER")
+{
+
+}
+
+NEXTHOPCOSTHIGHER::~NEXTHOPCOSTHIGHER()
+{
+}
+
+ORIGINTYPEHIGHER::ORIGINTYPEHIGHER()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:ORIGIN_TYPE_HIGHER")
+{
+
+}
+
+ORIGINTYPEHIGHER::~ORIGINTYPEHIGHER()
+{
+}
+
+PREFEREXTERNAL::PREFEREXTERNAL()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:PREFER_EXTERNAL")
+{
+
+}
+
+PREFEREXTERNAL::~PREFEREXTERNAL()
+{
+}
+
+REJECTEDIMPORTPOLICY::REJECTEDIMPORTPOLICY()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:REJECTED_IMPORT_POLICY")
+{
+
+}
+
+REJECTEDIMPORTPOLICY::~REJECTEDIMPORTPOLICY()
 {
 }
 

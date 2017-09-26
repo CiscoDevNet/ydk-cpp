@@ -17,7 +17,7 @@ OpticsOper::OpticsOper()
 {
     optics_ports->parent = this;
 
-    yang_name = "optics-oper"; yang_parent_name = "Cisco-IOS-XR-controller-optics-oper";
+    yang_name = "optics-oper"; yang_parent_name = "Cisco-IOS-XR-controller-optics-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 OpticsOper::~OpticsOper()
@@ -39,26 +39,15 @@ std::string OpticsOper::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-controller-optics-oper:optics-oper";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool OpticsOper::has_leaf_or_child_of_name(const std::string & name) const
 
 OpticsOper::OpticsPorts::OpticsPorts()
 {
-    yang_name = "optics-ports"; yang_parent_name = "optics-oper";
+
+    yang_name = "optics-ports"; yang_parent_name = "optics-oper"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticsOper::OpticsPorts::~OpticsPorts()
@@ -156,33 +146,26 @@ bool OpticsOper::OpticsPorts::has_operation() const
     return is_set(yfilter);
 }
 
+std::string OpticsOper::OpticsPorts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-controller-optics-oper:optics-oper/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticsOper::OpticsPorts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-ports";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-controller-optics-oper:optics-oper/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -243,14 +226,11 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsPort()
 	,optics_lanes(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes>())
 {
     optics_db_info->parent = this;
-
     optics_dwdm_carrrier_channel_map->parent = this;
-
     optics_info->parent = this;
-
     optics_lanes->parent = this;
 
-    yang_name = "optics-port"; yang_parent_name = "optics-ports";
+    yang_name = "optics-port"; yang_parent_name = "optics-ports"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::~OpticsPort()
@@ -276,34 +256,27 @@ bool OpticsOper::OpticsPorts::OpticsPort::has_operation() const
 	|| (optics_lanes !=  nullptr && optics_lanes->has_operation());
 }
 
+std::string OpticsOper::OpticsPorts::OpticsPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string OpticsOper::OpticsPorts::OpticsPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-port" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -399,13 +372,314 @@ bool OpticsOper::OpticsPorts::OpticsPort::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::OpticsDbInfo()
+    :
+    controller_state{YType::enumeration, "controller-state"},
+    transport_admin_state{YType::enumeration, "transport-admin-state"}
+    	,
+    network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>())
+{
+    network_srlg_info->parent = this;
+
+    yang_name = "optics-db-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::~OpticsDbInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_data() const
+{
+    return controller_state.is_set
+	|| transport_admin_state.is_set
+	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data());
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(controller_state.yfilter)
+	|| ydk::is_set(transport_admin_state.yfilter)
+	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation());
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-db-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (controller_state.is_set || is_set(controller_state.yfilter)) leaf_name_data.push_back(controller_state.get_name_leafdata());
+    if (transport_admin_state.is_set || is_set(transport_admin_state.yfilter)) leaf_name_data.push_back(transport_admin_state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network-srlg-info")
+    {
+        if(network_srlg_info == nullptr)
+        {
+            network_srlg_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>();
+        }
+        return network_srlg_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(network_srlg_info != nullptr)
+    {
+        children["network-srlg-info"] = network_srlg_info;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "controller-state")
+    {
+        controller_state = value;
+        controller_state.value_namespace = name_space;
+        controller_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transport-admin-state")
+    {
+        transport_admin_state = value;
+        transport_admin_state.value_namespace = name_space;
+        transport_admin_state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "controller-state")
+    {
+        controller_state.yfilter = yfilter;
+    }
+    if(value_path == "transport-admin-state")
+    {
+        transport_admin_state.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg-info" || name == "controller-state" || name == "transport-admin-state")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgInfo()
+{
+
+    yang_name = "network-srlg-info"; yang_parent_name = "optics-db-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_data() const
+{
+    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    {
+        if(network_srlg_array[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_operation() const
+{
+    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    {
+        if(network_srlg_array[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlg-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network-srlg-array")
+    {
+        for(auto const & c : network_srlg_array)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
+        c->parent = this;
+        network_srlg_array.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : network_srlg_array)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg-array")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::NetworkSrlgArray()
+    :
+    network_srlg{YType::uint32, "network-srlg"},
+    set_number{YType::uint32, "set-number"}
+{
+
+    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
+{
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return set_number.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
+{
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(network_srlg.yfilter)
+	|| ydk::is_set(set_number.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlg-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_number.is_set || is_set(set_number.yfilter)) leaf_name_data.push_back(set_number.get_name_leafdata());
+
+    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "network-srlg")
+    {
+        network_srlg.append(value);
+    }
+    if(value_path == "set-number")
+    {
+        set_number = value;
+        set_number.value_namespace = name_space;
+        set_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "network-srlg")
+    {
+        network_srlg.yfilter = yfilter;
+    }
+    if(value_path == "set-number")
+    {
+        set_number.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg" || name == "set-number")
+        return true;
+    return false;
+}
+
 OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::OpticsDwdmCarrrierChannelMap()
     :
     dwdm_carrier_band{YType::enumeration, "dwdm-carrier-band"},
     dwdm_carrier_max{YType::uint32, "dwdm-carrier-max"},
     dwdm_carrier_min{YType::uint32, "dwdm-carrier-min"}
 {
-    yang_name = "optics-dwdm-carrrier-channel-map"; yang_parent_name = "optics-port";
+
+    yang_name = "optics-dwdm-carrrier-channel-map"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::~OpticsDwdmCarrrierChannelMap()
@@ -441,32 +715,18 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::g
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-dwdm-carrrier-channel-map";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsDwdmCarrrierChannelMap' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dwdm_carrier_band.is_set || is_set(dwdm_carrier_band.yfilter)) leaf_name_data.push_back(dwdm_carrier_band.get_name_leafdata());
     if (dwdm_carrier_max.is_set || is_set(dwdm_carrier_max.yfilter)) leaf_name_data.push_back(dwdm_carrier_max.get_name_leafdata());
     if (dwdm_carrier_min.is_set || is_set(dwdm_carrier_min.yfilter)) leaf_name_data.push_back(dwdm_carrier_min.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -554,7 +814,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMa
     itu_chan_num{YType::uint32, "itu-chan-num"},
     wavelength{YType::str, "wavelength"}
 {
-    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrrier-channel-map";
+
+    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrrier-channel-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::~DwdmCarrierMapInfo()
@@ -582,23 +843,11 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::D
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DwdmCarrierMapInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (frequency.is_set || is_set(frequency.yfilter)) leaf_name_data.push_back(frequency.get_name_leafdata());
@@ -606,9 +855,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelM
     if (itu_chan_num.is_set || is_set(itu_chan_num.yfilter)) leaf_name_data.push_back(itu_chan_num.get_name_leafdata());
     if (wavelength.is_set || is_set(wavelength.yfilter)) leaf_name_data.push_back(wavelength.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -685,6 +932,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     ampli_control_mode_config_val{YType::enumeration, "ampli-control-mode-config-val"},
     ampli_gain{YType::int32, "ampli-gain"},
     ampli_gain_config_val{YType::int32, "ampli-gain-config-val"},
+    ampli_gain_range{YType::enumeration, "ampli-gain-range"},
     ampli_gain_range_config_val{YType::enumeration, "ampli-gain-range-config-val"},
     ampli_gain_thr_deg_high_config_val{YType::int32, "ampli-gain-thr-deg-high-config-val"},
     ampli_gain_thr_deg_low_config_val{YType::int32, "ampli-gain-thr-deg-low-config-val"},
@@ -700,6 +948,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     cfg_tx_power_configurable{YType::boolean, "cfg-tx-power-configurable"},
     channel_power_max_delta_config_val{YType::int32, "channel-power-max-delta-config-val"},
     controller_state{YType::enumeration, "controller-state"},
+    derived_optics_type{YType::str, "derived-optics-type"},
+    description{YType::str, "description"},
     dgd_high_threshold{YType::str, "dgd-high-threshold"},
     differential_group_delay{YType::str, "differential-group-delay"},
     display_volt_temp{YType::boolean, "display-volt-temp"},
@@ -711,6 +961,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     grey_wavelength{YType::uint32, "grey-wavelength"},
     is_bo_configured{YType::boolean, "is-bo-configured"},
     is_ext_param_valid{YType::boolean, "is-ext-param-valid"},
+    is_optics_type_string_valid{YType::boolean, "is-optics-type-string-valid"},
     laser_state{YType::enumeration, "laser-state"},
     lbc_high_threshold{YType::int32, "lbc-high-threshold"},
     lbc_th_high_default{YType::int32, "lbc-th-high-default"},
@@ -723,7 +974,9 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     optics_module{YType::str, "optics-module"},
     optics_present{YType::boolean, "optics-present"},
     optics_type{YType::enumeration, "optics-type"},
+    optics_type_str{YType::str, "optics-type-str"},
     osnr_low_threshold{YType::str, "osnr-low-threshold"},
+    osri{YType::boolean, "osri"},
     osri_config_val{YType::boolean, "osri-config-val"},
     phase_noise{YType::str, "phase-noise"},
     phy_type{YType::enumeration, "phy-type"},
@@ -740,6 +993,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     rx_power_th_configurable{YType::boolean, "rx-power-th-configurable"},
     rx_voa_attenuation{YType::int32, "rx-voa-attenuation"},
     rx_voa_attenuation_config_val{YType::int32, "rx-voa-attenuation-config-val"},
+    safety_control_mode{YType::enumeration, "safety-control-mode"},
     safety_control_mode_config_val{YType::enumeration, "safety-control-mode-config-val"},
     second_order_polarization_mode_dispersion{YType::str, "second-order-polarization-mode-dispersion"},
     temp_high_threshold{YType::int32, "temp-high-threshold"},
@@ -768,21 +1022,18 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
 	,network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo>())
 	,optics_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo>())
 	,ots_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo>())
+	,spectrum_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo>())
 	,transceiver_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo>())
 {
     ext_param_threshold_val->parent = this;
-
     ext_param_val->parent = this;
-
     network_srlg_info->parent = this;
-
     optics_alarm_info->parent = this;
-
     ots_alarm_info->parent = this;
-
+    spectrum_info->parent = this;
     transceiver_info->parent = this;
 
-    yang_name = "optics-info"; yang_parent_name = "optics-port";
+    yang_name = "optics-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::~OpticsInfo()
@@ -801,6 +1052,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| ampli_control_mode_config_val.is_set
 	|| ampli_gain.is_set
 	|| ampli_gain_config_val.is_set
+	|| ampli_gain_range.is_set
 	|| ampli_gain_range_config_val.is_set
 	|| ampli_gain_thr_deg_high_config_val.is_set
 	|| ampli_gain_thr_deg_low_config_val.is_set
@@ -816,6 +1068,8 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| cfg_tx_power_configurable.is_set
 	|| channel_power_max_delta_config_val.is_set
 	|| controller_state.is_set
+	|| derived_optics_type.is_set
+	|| description.is_set
 	|| dgd_high_threshold.is_set
 	|| differential_group_delay.is_set
 	|| display_volt_temp.is_set
@@ -827,6 +1081,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| grey_wavelength.is_set
 	|| is_bo_configured.is_set
 	|| is_ext_param_valid.is_set
+	|| is_optics_type_string_valid.is_set
 	|| laser_state.is_set
 	|| lbc_high_threshold.is_set
 	|| lbc_th_high_default.is_set
@@ -839,7 +1094,9 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| optics_module.is_set
 	|| optics_present.is_set
 	|| optics_type.is_set
+	|| optics_type_str.is_set
 	|| osnr_low_threshold.is_set
+	|| osri.is_set
 	|| osri_config_val.is_set
 	|| phase_noise.is_set
 	|| phy_type.is_set
@@ -856,6 +1113,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| rx_power_th_configurable.is_set
 	|| rx_voa_attenuation.is_set
 	|| rx_voa_attenuation_config_val.is_set
+	|| safety_control_mode.is_set
 	|| safety_control_mode_config_val.is_set
 	|| second_order_polarization_mode_dispersion.is_set
 	|| temp_high_threshold.is_set
@@ -883,6 +1141,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_data())
 	|| (ots_alarm_info !=  nullptr && ots_alarm_info->has_data())
+	|| (spectrum_info !=  nullptr && spectrum_info->has_data())
 	|| (transceiver_info !=  nullptr && transceiver_info->has_data());
 }
 
@@ -899,6 +1158,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(ampli_control_mode_config_val.yfilter)
 	|| ydk::is_set(ampli_gain.yfilter)
 	|| ydk::is_set(ampli_gain_config_val.yfilter)
+	|| ydk::is_set(ampli_gain_range.yfilter)
 	|| ydk::is_set(ampli_gain_range_config_val.yfilter)
 	|| ydk::is_set(ampli_gain_thr_deg_high_config_val.yfilter)
 	|| ydk::is_set(ampli_gain_thr_deg_low_config_val.yfilter)
@@ -914,6 +1174,8 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(cfg_tx_power_configurable.yfilter)
 	|| ydk::is_set(channel_power_max_delta_config_val.yfilter)
 	|| ydk::is_set(controller_state.yfilter)
+	|| ydk::is_set(derived_optics_type.yfilter)
+	|| ydk::is_set(description.yfilter)
 	|| ydk::is_set(dgd_high_threshold.yfilter)
 	|| ydk::is_set(differential_group_delay.yfilter)
 	|| ydk::is_set(display_volt_temp.yfilter)
@@ -925,6 +1187,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(grey_wavelength.yfilter)
 	|| ydk::is_set(is_bo_configured.yfilter)
 	|| ydk::is_set(is_ext_param_valid.yfilter)
+	|| ydk::is_set(is_optics_type_string_valid.yfilter)
 	|| ydk::is_set(laser_state.yfilter)
 	|| ydk::is_set(lbc_high_threshold.yfilter)
 	|| ydk::is_set(lbc_th_high_default.yfilter)
@@ -937,7 +1200,9 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(optics_module.yfilter)
 	|| ydk::is_set(optics_present.yfilter)
 	|| ydk::is_set(optics_type.yfilter)
+	|| ydk::is_set(optics_type_str.yfilter)
 	|| ydk::is_set(osnr_low_threshold.yfilter)
+	|| ydk::is_set(osri.yfilter)
 	|| ydk::is_set(osri_config_val.yfilter)
 	|| ydk::is_set(phase_noise.yfilter)
 	|| ydk::is_set(phy_type.yfilter)
@@ -954,6 +1219,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(rx_power_th_configurable.yfilter)
 	|| ydk::is_set(rx_voa_attenuation.yfilter)
 	|| ydk::is_set(rx_voa_attenuation_config_val.yfilter)
+	|| ydk::is_set(safety_control_mode.yfilter)
 	|| ydk::is_set(safety_control_mode_config_val.yfilter)
 	|| ydk::is_set(second_order_polarization_mode_dispersion.yfilter)
 	|| ydk::is_set(temp_high_threshold.yfilter)
@@ -981,6 +1247,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_operation())
 	|| (ots_alarm_info !=  nullptr && ots_alarm_info->has_operation())
+	|| (spectrum_info !=  nullptr && spectrum_info->has_operation())
 	|| (transceiver_info !=  nullptr && transceiver_info->has_operation());
 }
 
@@ -988,23 +1255,11 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (alarm_detected.is_set || is_set(alarm_detected.yfilter)) leaf_name_data.push_back(alarm_detected.get_name_leafdata());
@@ -1012,6 +1267,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (ampli_control_mode_config_val.is_set || is_set(ampli_control_mode_config_val.yfilter)) leaf_name_data.push_back(ampli_control_mode_config_val.get_name_leafdata());
     if (ampli_gain.is_set || is_set(ampli_gain.yfilter)) leaf_name_data.push_back(ampli_gain.get_name_leafdata());
     if (ampli_gain_config_val.is_set || is_set(ampli_gain_config_val.yfilter)) leaf_name_data.push_back(ampli_gain_config_val.get_name_leafdata());
+    if (ampli_gain_range.is_set || is_set(ampli_gain_range.yfilter)) leaf_name_data.push_back(ampli_gain_range.get_name_leafdata());
     if (ampli_gain_range_config_val.is_set || is_set(ampli_gain_range_config_val.yfilter)) leaf_name_data.push_back(ampli_gain_range_config_val.get_name_leafdata());
     if (ampli_gain_thr_deg_high_config_val.is_set || is_set(ampli_gain_thr_deg_high_config_val.yfilter)) leaf_name_data.push_back(ampli_gain_thr_deg_high_config_val.get_name_leafdata());
     if (ampli_gain_thr_deg_low_config_val.is_set || is_set(ampli_gain_thr_deg_low_config_val.yfilter)) leaf_name_data.push_back(ampli_gain_thr_deg_low_config_val.get_name_leafdata());
@@ -1027,6 +1283,8 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (cfg_tx_power_configurable.is_set || is_set(cfg_tx_power_configurable.yfilter)) leaf_name_data.push_back(cfg_tx_power_configurable.get_name_leafdata());
     if (channel_power_max_delta_config_val.is_set || is_set(channel_power_max_delta_config_val.yfilter)) leaf_name_data.push_back(channel_power_max_delta_config_val.get_name_leafdata());
     if (controller_state.is_set || is_set(controller_state.yfilter)) leaf_name_data.push_back(controller_state.get_name_leafdata());
+    if (derived_optics_type.is_set || is_set(derived_optics_type.yfilter)) leaf_name_data.push_back(derived_optics_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (dgd_high_threshold.is_set || is_set(dgd_high_threshold.yfilter)) leaf_name_data.push_back(dgd_high_threshold.get_name_leafdata());
     if (differential_group_delay.is_set || is_set(differential_group_delay.yfilter)) leaf_name_data.push_back(differential_group_delay.get_name_leafdata());
     if (display_volt_temp.is_set || is_set(display_volt_temp.yfilter)) leaf_name_data.push_back(display_volt_temp.get_name_leafdata());
@@ -1038,6 +1296,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (grey_wavelength.is_set || is_set(grey_wavelength.yfilter)) leaf_name_data.push_back(grey_wavelength.get_name_leafdata());
     if (is_bo_configured.is_set || is_set(is_bo_configured.yfilter)) leaf_name_data.push_back(is_bo_configured.get_name_leafdata());
     if (is_ext_param_valid.is_set || is_set(is_ext_param_valid.yfilter)) leaf_name_data.push_back(is_ext_param_valid.get_name_leafdata());
+    if (is_optics_type_string_valid.is_set || is_set(is_optics_type_string_valid.yfilter)) leaf_name_data.push_back(is_optics_type_string_valid.get_name_leafdata());
     if (laser_state.is_set || is_set(laser_state.yfilter)) leaf_name_data.push_back(laser_state.get_name_leafdata());
     if (lbc_high_threshold.is_set || is_set(lbc_high_threshold.yfilter)) leaf_name_data.push_back(lbc_high_threshold.get_name_leafdata());
     if (lbc_th_high_default.is_set || is_set(lbc_th_high_default.yfilter)) leaf_name_data.push_back(lbc_th_high_default.get_name_leafdata());
@@ -1050,7 +1309,9 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (optics_module.is_set || is_set(optics_module.yfilter)) leaf_name_data.push_back(optics_module.get_name_leafdata());
     if (optics_present.is_set || is_set(optics_present.yfilter)) leaf_name_data.push_back(optics_present.get_name_leafdata());
     if (optics_type.is_set || is_set(optics_type.yfilter)) leaf_name_data.push_back(optics_type.get_name_leafdata());
+    if (optics_type_str.is_set || is_set(optics_type_str.yfilter)) leaf_name_data.push_back(optics_type_str.get_name_leafdata());
     if (osnr_low_threshold.is_set || is_set(osnr_low_threshold.yfilter)) leaf_name_data.push_back(osnr_low_threshold.get_name_leafdata());
+    if (osri.is_set || is_set(osri.yfilter)) leaf_name_data.push_back(osri.get_name_leafdata());
     if (osri_config_val.is_set || is_set(osri_config_val.yfilter)) leaf_name_data.push_back(osri_config_val.get_name_leafdata());
     if (phase_noise.is_set || is_set(phase_noise.yfilter)) leaf_name_data.push_back(phase_noise.get_name_leafdata());
     if (phy_type.is_set || is_set(phy_type.yfilter)) leaf_name_data.push_back(phy_type.get_name_leafdata());
@@ -1067,6 +1328,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (rx_power_th_configurable.is_set || is_set(rx_power_th_configurable.yfilter)) leaf_name_data.push_back(rx_power_th_configurable.get_name_leafdata());
     if (rx_voa_attenuation.is_set || is_set(rx_voa_attenuation.yfilter)) leaf_name_data.push_back(rx_voa_attenuation.get_name_leafdata());
     if (rx_voa_attenuation_config_val.is_set || is_set(rx_voa_attenuation_config_val.yfilter)) leaf_name_data.push_back(rx_voa_attenuation_config_val.get_name_leafdata());
+    if (safety_control_mode.is_set || is_set(safety_control_mode.yfilter)) leaf_name_data.push_back(safety_control_mode.get_name_leafdata());
     if (safety_control_mode_config_val.is_set || is_set(safety_control_mode_config_val.yfilter)) leaf_name_data.push_back(safety_control_mode_config_val.get_name_leafdata());
     if (second_order_polarization_mode_dispersion.is_set || is_set(second_order_polarization_mode_dispersion.yfilter)) leaf_name_data.push_back(second_order_polarization_mode_dispersion.get_name_leafdata());
     if (temp_high_threshold.is_set || is_set(temp_high_threshold.yfilter)) leaf_name_data.push_back(temp_high_threshold.get_name_leafdata());
@@ -1090,9 +1352,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_pat
     if (volt_low_warning_threshold.is_set || is_set(volt_low_warning_threshold.yfilter)) leaf_name_data.push_back(volt_low_warning_threshold.get_name_leafdata());
     if (voltage.is_set || is_set(voltage.yfilter)) leaf_name_data.push_back(voltage.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1159,6 +1419,15 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_chi
         return ots_alarm_info;
     }
 
+    if(child_yang_name == "spectrum-info")
+    {
+        if(spectrum_info == nullptr)
+        {
+            spectrum_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo>();
+        }
+        return spectrum_info;
+    }
+
     if(child_yang_name == "transceiver-info")
     {
         if(transceiver_info == nullptr)
@@ -1204,6 +1473,11 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
         children["ots-alarm-info"] = ots_alarm_info;
     }
 
+    if(spectrum_info != nullptr)
+    {
+        children["spectrum-info"] = spectrum_info;
+    }
+
     if(transceiver_info != nullptr)
     {
         children["transceiver-info"] = transceiver_info;
@@ -1243,6 +1517,12 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         ampli_gain_config_val = value;
         ampli_gain_config_val.value_namespace = name_space;
         ampli_gain_config_val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ampli-gain-range")
+    {
+        ampli_gain_range = value;
+        ampli_gain_range.value_namespace = name_space;
+        ampli_gain_range.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ampli-gain-range-config-val")
     {
@@ -1334,6 +1614,18 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         controller_state.value_namespace = name_space;
         controller_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "derived-optics-type")
+    {
+        derived_optics_type = value;
+        derived_optics_type.value_namespace = name_space;
+        derived_optics_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dgd-high-threshold")
     {
         dgd_high_threshold = value;
@@ -1399,6 +1691,12 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         is_ext_param_valid = value;
         is_ext_param_valid.value_namespace = name_space;
         is_ext_param_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-optics-type-string-valid")
+    {
+        is_optics_type_string_valid = value;
+        is_optics_type_string_valid.value_namespace = name_space;
+        is_optics_type_string_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "laser-state")
     {
@@ -1472,11 +1770,23 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         optics_type.value_namespace = name_space;
         optics_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "optics-type-str")
+    {
+        optics_type_str = value;
+        optics_type_str.value_namespace = name_space;
+        optics_type_str.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "osnr-low-threshold")
     {
         osnr_low_threshold = value;
         osnr_low_threshold.value_namespace = name_space;
         osnr_low_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "osri")
+    {
+        osri = value;
+        osri.value_namespace = name_space;
+        osri.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "osri-config-val")
     {
@@ -1573,6 +1883,12 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         rx_voa_attenuation_config_val = value;
         rx_voa_attenuation_config_val.value_namespace = name_space;
         rx_voa_attenuation_config_val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "safety-control-mode")
+    {
+        safety_control_mode = value;
+        safety_control_mode.value_namespace = name_space;
+        safety_control_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "safety-control-mode-config-val")
     {
@@ -1730,6 +2046,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         ampli_gain_config_val.yfilter = yfilter;
     }
+    if(value_path == "ampli-gain-range")
+    {
+        ampli_gain_range.yfilter = yfilter;
+    }
     if(value_path == "ampli-gain-range-config-val")
     {
         ampli_gain_range_config_val.yfilter = yfilter;
@@ -1790,6 +2110,14 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         controller_state.yfilter = yfilter;
     }
+    if(value_path == "derived-optics-type")
+    {
+        derived_optics_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
     if(value_path == "dgd-high-threshold")
     {
         dgd_high_threshold.yfilter = yfilter;
@@ -1833,6 +2161,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     if(value_path == "is-ext-param-valid")
     {
         is_ext_param_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-optics-type-string-valid")
+    {
+        is_optics_type_string_valid.yfilter = yfilter;
     }
     if(value_path == "laser-state")
     {
@@ -1882,9 +2214,17 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         optics_type.yfilter = yfilter;
     }
+    if(value_path == "optics-type-str")
+    {
+        optics_type_str.yfilter = yfilter;
+    }
     if(value_path == "osnr-low-threshold")
     {
         osnr_low_threshold.yfilter = yfilter;
+    }
+    if(value_path == "osri")
+    {
+        osri.yfilter = yfilter;
     }
     if(value_path == "osri-config-val")
     {
@@ -1949,6 +2289,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     if(value_path == "rx-voa-attenuation-config-val")
     {
         rx_voa_attenuation_config_val.yfilter = yfilter;
+    }
+    if(value_path == "safety-control-mode")
+    {
+        safety_control_mode.yfilter = yfilter;
     }
     if(value_path == "safety-control-mode-config-val")
     {
@@ -2042,7696 +2386,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ext-param-threshold-val" || name == "ext-param-val" || name == "lane-data" || name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "transceiver-info" || name == "alarm-detected" || name == "ampli-channel-power-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain" || name == "ampli-gain-config-val" || name == "ampli-gain-range-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-tilt" || name == "ampli-tilt-config-val" || name == "cd" || name == "cd-configurable" || name == "cd-high-threshold" || name == "cd-low-threshold" || name == "cd-max" || name == "cd-min" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "channel-power-max-delta-config-val" || name == "controller-state" || name == "dgd-high-threshold" || name == "differential-group-delay" || name == "display-volt-temp" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "form-factor" || name == "grey-wavelength" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "laser-state" || name == "lbc-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-default" || name == "lbc-th-low-warning-default" || name == "led-state" || name == "optical-signal-to-noise-ratio" || name == "optics-fec" || name == "optics-module" || name == "optics-present" || name == "optics-type" || name == "osnr-low-threshold" || name == "osri-config-val" || name == "phase-noise" || name == "phy-type" || name == "pm-enable" || name == "polarization-change-rate" || name == "polarization-dependent-loss" || name == "polarization-mode-dispersion" || name == "port-status" || name == "port-type" || name == "rx-high-threshold" || name == "rx-high-warning-threshold" || name == "rx-low-threshold" || name == "rx-low-warning-threshold" || name == "rx-power-th-configurable" || name == "rx-voa-attenuation" || name == "rx-voa-attenuation-config-val" || name == "safety-control-mode-config-val" || name == "second-order-polarization-mode-dispersion" || name == "temp-high-threshold" || name == "temp-high-warning-threshold" || name == "temp-low-threshold" || name == "temp-low-warning-threshold" || name == "temperature" || name == "total-rx-power" || name == "total-tx-power" || name == "transport-admin-state" || name == "tx-high-threshold" || name == "tx-high-warning-threshold" || name == "tx-low-threshold" || name == "tx-low-warning-threshold" || name == "tx-power-th-configurable" || name == "tx-voa-attenuation" || name == "tx-voa-attenuation-config-val" || name == "volt-high-threshold" || name == "volt-high-warning-threshold" || name == "volt-low-threshold" || name == "volt-low-warning-threshold" || name == "voltage")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgInfo()
-{
-    yang_name = "network-srlg-info"; yang_parent_name = "optics-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_data() const
-{
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
-    {
-        if(network_srlg_array[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_operation() const
-{
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
-    {
-        if(network_srlg_array[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlg-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkSrlgInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network-srlg-array")
-    {
-        for(auto const & c : network_srlg_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
-        c->parent = this;
-        network_srlg_array.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : network_srlg_array)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlg-array")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::NetworkSrlgArray()
-    :
-    network_srlg{YType::uint32, "network-srlg"},
-    set_number{YType::uint32, "set-number"}
-{
-    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
-{
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return set_number.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
-{
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(network_srlg.yfilter)
-	|| ydk::is_set(set_number.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlg-array";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkSrlgArray' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_number.is_set || is_set(set_number.yfilter)) leaf_name_data.push_back(set_number.get_name_leafdata());
-
-    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "network-srlg")
-    {
-        network_srlg.append(value);
-    }
-    if(value_path == "set-number")
-    {
-        set_number = value;
-        set_number.value_namespace = name_space;
-        set_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "network-srlg")
-    {
-        network_srlg.yfilter = yfilter;
-    }
-    if(value_path == "set-number")
-    {
-        set_number.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlg" || name == "set-number")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::OpticsAlarmInfo()
-    :
-    amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>())
-	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>())
-	,hidgd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>())
-	,high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>())
-	,high_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>())
-	,high_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>())
-	,high_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>())
-	,high_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>())
-	,high_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>())
-	,high_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>())
-	,high_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>())
-	,high_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>())
-	,high_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>())
-	,high_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>())
-	,high_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>())
-	,high_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>())
-	,high_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>())
-	,high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>())
-	,imp_removal(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>())
-	,low_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>())
-	,low_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>())
-	,low_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>())
-	,low_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>())
-	,low_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>())
-	,low_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>())
-	,low_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>())
-	,low_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>())
-	,low_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>())
-	,low_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>())
-	,low_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>())
-	,low_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>())
-	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>())
-	,mea(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>())
-	,oorcd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>())
-	,osnr(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>())
-	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>())
-	,rx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>())
-	,rx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>())
-	,tx_fault(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>())
-	,tx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>())
-	,tx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>())
-	,txpwr_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>())
-	,wvlool(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>())
-{
-    amp_gain_deg_high->parent = this;
-
-    amp_gain_deg_low->parent = this;
-
-    hidgd->parent = this;
-
-    high_lbc->parent = this;
-
-    high_rx1_power->parent = this;
-
-    high_rx2_power->parent = this;
-
-    high_rx3_power->parent = this;
-
-    high_rx4_power->parent = this;
-
-    high_rx_power->parent = this;
-
-    high_tx1_power->parent = this;
-
-    high_tx1lbc->parent = this;
-
-    high_tx2_power->parent = this;
-
-    high_tx2lbc->parent = this;
-
-    high_tx3_power->parent = this;
-
-    high_tx3lbc->parent = this;
-
-    high_tx4_power->parent = this;
-
-    high_tx4lbc->parent = this;
-
-    high_tx_power->parent = this;
-
-    imp_removal->parent = this;
-
-    low_rx1_power->parent = this;
-
-    low_rx2_power->parent = this;
-
-    low_rx3_power->parent = this;
-
-    low_rx4_power->parent = this;
-
-    low_rx_power->parent = this;
-
-    low_tx1_power->parent = this;
-
-    low_tx1lbc->parent = this;
-
-    low_tx2_power->parent = this;
-
-    low_tx2lbc->parent = this;
-
-    low_tx3_power->parent = this;
-
-    low_tx3lbc->parent = this;
-
-    low_tx4_power->parent = this;
-
-    low_tx4lbc->parent = this;
-
-    low_tx_power->parent = this;
-
-    mea->parent = this;
-
-    oorcd->parent = this;
-
-    osnr->parent = this;
-
-    rx_loc->parent = this;
-
-    rx_lol->parent = this;
-
-    rx_los->parent = this;
-
-    tx_fault->parent = this;
-
-    tx_lol->parent = this;
-
-    tx_los->parent = this;
-
-    txpwr_mismatch->parent = this;
-
-    wvlool->parent = this;
-
-    yang_name = "optics-alarm-info"; yang_parent_name = "optics-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::~OpticsAlarmInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_data() const
-{
-    return (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_data())
-	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_data())
-	|| (hidgd !=  nullptr && hidgd->has_data())
-	|| (high_lbc !=  nullptr && high_lbc->has_data())
-	|| (high_rx1_power !=  nullptr && high_rx1_power->has_data())
-	|| (high_rx2_power !=  nullptr && high_rx2_power->has_data())
-	|| (high_rx3_power !=  nullptr && high_rx3_power->has_data())
-	|| (high_rx4_power !=  nullptr && high_rx4_power->has_data())
-	|| (high_rx_power !=  nullptr && high_rx_power->has_data())
-	|| (high_tx1_power !=  nullptr && high_tx1_power->has_data())
-	|| (high_tx1lbc !=  nullptr && high_tx1lbc->has_data())
-	|| (high_tx2_power !=  nullptr && high_tx2_power->has_data())
-	|| (high_tx2lbc !=  nullptr && high_tx2lbc->has_data())
-	|| (high_tx3_power !=  nullptr && high_tx3_power->has_data())
-	|| (high_tx3lbc !=  nullptr && high_tx3lbc->has_data())
-	|| (high_tx4_power !=  nullptr && high_tx4_power->has_data())
-	|| (high_tx4lbc !=  nullptr && high_tx4lbc->has_data())
-	|| (high_tx_power !=  nullptr && high_tx_power->has_data())
-	|| (imp_removal !=  nullptr && imp_removal->has_data())
-	|| (low_rx1_power !=  nullptr && low_rx1_power->has_data())
-	|| (low_rx2_power !=  nullptr && low_rx2_power->has_data())
-	|| (low_rx3_power !=  nullptr && low_rx3_power->has_data())
-	|| (low_rx4_power !=  nullptr && low_rx4_power->has_data())
-	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
-	|| (low_tx1_power !=  nullptr && low_tx1_power->has_data())
-	|| (low_tx1lbc !=  nullptr && low_tx1lbc->has_data())
-	|| (low_tx2_power !=  nullptr && low_tx2_power->has_data())
-	|| (low_tx2lbc !=  nullptr && low_tx2lbc->has_data())
-	|| (low_tx3_power !=  nullptr && low_tx3_power->has_data())
-	|| (low_tx3lbc !=  nullptr && low_tx3lbc->has_data())
-	|| (low_tx4_power !=  nullptr && low_tx4_power->has_data())
-	|| (low_tx4lbc !=  nullptr && low_tx4lbc->has_data())
-	|| (low_tx_power !=  nullptr && low_tx_power->has_data())
-	|| (mea !=  nullptr && mea->has_data())
-	|| (oorcd !=  nullptr && oorcd->has_data())
-	|| (osnr !=  nullptr && osnr->has_data())
-	|| (rx_loc !=  nullptr && rx_loc->has_data())
-	|| (rx_lol !=  nullptr && rx_lol->has_data())
-	|| (rx_los !=  nullptr && rx_los->has_data())
-	|| (tx_fault !=  nullptr && tx_fault->has_data())
-	|| (tx_lol !=  nullptr && tx_lol->has_data())
-	|| (tx_los !=  nullptr && tx_los->has_data())
-	|| (txpwr_mismatch !=  nullptr && txpwr_mismatch->has_data())
-	|| (wvlool !=  nullptr && wvlool->has_data());
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_operation())
-	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_operation())
-	|| (hidgd !=  nullptr && hidgd->has_operation())
-	|| (high_lbc !=  nullptr && high_lbc->has_operation())
-	|| (high_rx1_power !=  nullptr && high_rx1_power->has_operation())
-	|| (high_rx2_power !=  nullptr && high_rx2_power->has_operation())
-	|| (high_rx3_power !=  nullptr && high_rx3_power->has_operation())
-	|| (high_rx4_power !=  nullptr && high_rx4_power->has_operation())
-	|| (high_rx_power !=  nullptr && high_rx_power->has_operation())
-	|| (high_tx1_power !=  nullptr && high_tx1_power->has_operation())
-	|| (high_tx1lbc !=  nullptr && high_tx1lbc->has_operation())
-	|| (high_tx2_power !=  nullptr && high_tx2_power->has_operation())
-	|| (high_tx2lbc !=  nullptr && high_tx2lbc->has_operation())
-	|| (high_tx3_power !=  nullptr && high_tx3_power->has_operation())
-	|| (high_tx3lbc !=  nullptr && high_tx3lbc->has_operation())
-	|| (high_tx4_power !=  nullptr && high_tx4_power->has_operation())
-	|| (high_tx4lbc !=  nullptr && high_tx4lbc->has_operation())
-	|| (high_tx_power !=  nullptr && high_tx_power->has_operation())
-	|| (imp_removal !=  nullptr && imp_removal->has_operation())
-	|| (low_rx1_power !=  nullptr && low_rx1_power->has_operation())
-	|| (low_rx2_power !=  nullptr && low_rx2_power->has_operation())
-	|| (low_rx3_power !=  nullptr && low_rx3_power->has_operation())
-	|| (low_rx4_power !=  nullptr && low_rx4_power->has_operation())
-	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
-	|| (low_tx1_power !=  nullptr && low_tx1_power->has_operation())
-	|| (low_tx1lbc !=  nullptr && low_tx1lbc->has_operation())
-	|| (low_tx2_power !=  nullptr && low_tx2_power->has_operation())
-	|| (low_tx2lbc !=  nullptr && low_tx2lbc->has_operation())
-	|| (low_tx3_power !=  nullptr && low_tx3_power->has_operation())
-	|| (low_tx3lbc !=  nullptr && low_tx3lbc->has_operation())
-	|| (low_tx4_power !=  nullptr && low_tx4_power->has_operation())
-	|| (low_tx4lbc !=  nullptr && low_tx4lbc->has_operation())
-	|| (low_tx_power !=  nullptr && low_tx_power->has_operation())
-	|| (mea !=  nullptr && mea->has_operation())
-	|| (oorcd !=  nullptr && oorcd->has_operation())
-	|| (osnr !=  nullptr && osnr->has_operation())
-	|| (rx_loc !=  nullptr && rx_loc->has_operation())
-	|| (rx_lol !=  nullptr && rx_lol->has_operation())
-	|| (rx_los !=  nullptr && rx_los->has_operation())
-	|| (tx_fault !=  nullptr && tx_fault->has_operation())
-	|| (tx_lol !=  nullptr && tx_lol->has_operation())
-	|| (tx_los !=  nullptr && tx_los->has_operation())
-	|| (txpwr_mismatch !=  nullptr && txpwr_mismatch->has_operation())
-	|| (wvlool !=  nullptr && wvlool->has_operation());
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-alarm-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsAlarmInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "amp-gain-deg-high")
-    {
-        if(amp_gain_deg_high == nullptr)
-        {
-            amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>();
-        }
-        return amp_gain_deg_high;
-    }
-
-    if(child_yang_name == "amp-gain-deg-low")
-    {
-        if(amp_gain_deg_low == nullptr)
-        {
-            amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>();
-        }
-        return amp_gain_deg_low;
-    }
-
-    if(child_yang_name == "hidgd")
-    {
-        if(hidgd == nullptr)
-        {
-            hidgd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>();
-        }
-        return hidgd;
-    }
-
-    if(child_yang_name == "high-lbc")
-    {
-        if(high_lbc == nullptr)
-        {
-            high_lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>();
-        }
-        return high_lbc;
-    }
-
-    if(child_yang_name == "high-rx1-power")
-    {
-        if(high_rx1_power == nullptr)
-        {
-            high_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>();
-        }
-        return high_rx1_power;
-    }
-
-    if(child_yang_name == "high-rx2-power")
-    {
-        if(high_rx2_power == nullptr)
-        {
-            high_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>();
-        }
-        return high_rx2_power;
-    }
-
-    if(child_yang_name == "high-rx3-power")
-    {
-        if(high_rx3_power == nullptr)
-        {
-            high_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>();
-        }
-        return high_rx3_power;
-    }
-
-    if(child_yang_name == "high-rx4-power")
-    {
-        if(high_rx4_power == nullptr)
-        {
-            high_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>();
-        }
-        return high_rx4_power;
-    }
-
-    if(child_yang_name == "high-rx-power")
-    {
-        if(high_rx_power == nullptr)
-        {
-            high_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>();
-        }
-        return high_rx_power;
-    }
-
-    if(child_yang_name == "high-tx1-power")
-    {
-        if(high_tx1_power == nullptr)
-        {
-            high_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>();
-        }
-        return high_tx1_power;
-    }
-
-    if(child_yang_name == "high-tx1lbc")
-    {
-        if(high_tx1lbc == nullptr)
-        {
-            high_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>();
-        }
-        return high_tx1lbc;
-    }
-
-    if(child_yang_name == "high-tx2-power")
-    {
-        if(high_tx2_power == nullptr)
-        {
-            high_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>();
-        }
-        return high_tx2_power;
-    }
-
-    if(child_yang_name == "high-tx2lbc")
-    {
-        if(high_tx2lbc == nullptr)
-        {
-            high_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>();
-        }
-        return high_tx2lbc;
-    }
-
-    if(child_yang_name == "high-tx3-power")
-    {
-        if(high_tx3_power == nullptr)
-        {
-            high_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>();
-        }
-        return high_tx3_power;
-    }
-
-    if(child_yang_name == "high-tx3lbc")
-    {
-        if(high_tx3lbc == nullptr)
-        {
-            high_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>();
-        }
-        return high_tx3lbc;
-    }
-
-    if(child_yang_name == "high-tx4-power")
-    {
-        if(high_tx4_power == nullptr)
-        {
-            high_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>();
-        }
-        return high_tx4_power;
-    }
-
-    if(child_yang_name == "high-tx4lbc")
-    {
-        if(high_tx4lbc == nullptr)
-        {
-            high_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>();
-        }
-        return high_tx4lbc;
-    }
-
-    if(child_yang_name == "high-tx-power")
-    {
-        if(high_tx_power == nullptr)
-        {
-            high_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>();
-        }
-        return high_tx_power;
-    }
-
-    if(child_yang_name == "imp-removal")
-    {
-        if(imp_removal == nullptr)
-        {
-            imp_removal = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>();
-        }
-        return imp_removal;
-    }
-
-    if(child_yang_name == "low-rx1-power")
-    {
-        if(low_rx1_power == nullptr)
-        {
-            low_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>();
-        }
-        return low_rx1_power;
-    }
-
-    if(child_yang_name == "low-rx2-power")
-    {
-        if(low_rx2_power == nullptr)
-        {
-            low_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>();
-        }
-        return low_rx2_power;
-    }
-
-    if(child_yang_name == "low-rx3-power")
-    {
-        if(low_rx3_power == nullptr)
-        {
-            low_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>();
-        }
-        return low_rx3_power;
-    }
-
-    if(child_yang_name == "low-rx4-power")
-    {
-        if(low_rx4_power == nullptr)
-        {
-            low_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>();
-        }
-        return low_rx4_power;
-    }
-
-    if(child_yang_name == "low-rx-power")
-    {
-        if(low_rx_power == nullptr)
-        {
-            low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>();
-        }
-        return low_rx_power;
-    }
-
-    if(child_yang_name == "low-tx1-power")
-    {
-        if(low_tx1_power == nullptr)
-        {
-            low_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>();
-        }
-        return low_tx1_power;
-    }
-
-    if(child_yang_name == "low-tx1lbc")
-    {
-        if(low_tx1lbc == nullptr)
-        {
-            low_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>();
-        }
-        return low_tx1lbc;
-    }
-
-    if(child_yang_name == "low-tx2-power")
-    {
-        if(low_tx2_power == nullptr)
-        {
-            low_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>();
-        }
-        return low_tx2_power;
-    }
-
-    if(child_yang_name == "low-tx2lbc")
-    {
-        if(low_tx2lbc == nullptr)
-        {
-            low_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>();
-        }
-        return low_tx2lbc;
-    }
-
-    if(child_yang_name == "low-tx3-power")
-    {
-        if(low_tx3_power == nullptr)
-        {
-            low_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>();
-        }
-        return low_tx3_power;
-    }
-
-    if(child_yang_name == "low-tx3lbc")
-    {
-        if(low_tx3lbc == nullptr)
-        {
-            low_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>();
-        }
-        return low_tx3lbc;
-    }
-
-    if(child_yang_name == "low-tx4-power")
-    {
-        if(low_tx4_power == nullptr)
-        {
-            low_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>();
-        }
-        return low_tx4_power;
-    }
-
-    if(child_yang_name == "low-tx4lbc")
-    {
-        if(low_tx4lbc == nullptr)
-        {
-            low_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>();
-        }
-        return low_tx4lbc;
-    }
-
-    if(child_yang_name == "low-tx-power")
-    {
-        if(low_tx_power == nullptr)
-        {
-            low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>();
-        }
-        return low_tx_power;
-    }
-
-    if(child_yang_name == "mea")
-    {
-        if(mea == nullptr)
-        {
-            mea = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>();
-        }
-        return mea;
-    }
-
-    if(child_yang_name == "oorcd")
-    {
-        if(oorcd == nullptr)
-        {
-            oorcd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>();
-        }
-        return oorcd;
-    }
-
-    if(child_yang_name == "osnr")
-    {
-        if(osnr == nullptr)
-        {
-            osnr = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>();
-        }
-        return osnr;
-    }
-
-    if(child_yang_name == "rx-loc")
-    {
-        if(rx_loc == nullptr)
-        {
-            rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>();
-        }
-        return rx_loc;
-    }
-
-    if(child_yang_name == "rx-lol")
-    {
-        if(rx_lol == nullptr)
-        {
-            rx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>();
-        }
-        return rx_lol;
-    }
-
-    if(child_yang_name == "rx-los")
-    {
-        if(rx_los == nullptr)
-        {
-            rx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>();
-        }
-        return rx_los;
-    }
-
-    if(child_yang_name == "tx-fault")
-    {
-        if(tx_fault == nullptr)
-        {
-            tx_fault = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>();
-        }
-        return tx_fault;
-    }
-
-    if(child_yang_name == "tx-lol")
-    {
-        if(tx_lol == nullptr)
-        {
-            tx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>();
-        }
-        return tx_lol;
-    }
-
-    if(child_yang_name == "tx-los")
-    {
-        if(tx_los == nullptr)
-        {
-            tx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>();
-        }
-        return tx_los;
-    }
-
-    if(child_yang_name == "txpwr-mismatch")
-    {
-        if(txpwr_mismatch == nullptr)
-        {
-            txpwr_mismatch = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>();
-        }
-        return txpwr_mismatch;
-    }
-
-    if(child_yang_name == "wvlool")
-    {
-        if(wvlool == nullptr)
-        {
-            wvlool = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>();
-        }
-        return wvlool;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(amp_gain_deg_high != nullptr)
-    {
-        children["amp-gain-deg-high"] = amp_gain_deg_high;
-    }
-
-    if(amp_gain_deg_low != nullptr)
-    {
-        children["amp-gain-deg-low"] = amp_gain_deg_low;
-    }
-
-    if(hidgd != nullptr)
-    {
-        children["hidgd"] = hidgd;
-    }
-
-    if(high_lbc != nullptr)
-    {
-        children["high-lbc"] = high_lbc;
-    }
-
-    if(high_rx1_power != nullptr)
-    {
-        children["high-rx1-power"] = high_rx1_power;
-    }
-
-    if(high_rx2_power != nullptr)
-    {
-        children["high-rx2-power"] = high_rx2_power;
-    }
-
-    if(high_rx3_power != nullptr)
-    {
-        children["high-rx3-power"] = high_rx3_power;
-    }
-
-    if(high_rx4_power != nullptr)
-    {
-        children["high-rx4-power"] = high_rx4_power;
-    }
-
-    if(high_rx_power != nullptr)
-    {
-        children["high-rx-power"] = high_rx_power;
-    }
-
-    if(high_tx1_power != nullptr)
-    {
-        children["high-tx1-power"] = high_tx1_power;
-    }
-
-    if(high_tx1lbc != nullptr)
-    {
-        children["high-tx1lbc"] = high_tx1lbc;
-    }
-
-    if(high_tx2_power != nullptr)
-    {
-        children["high-tx2-power"] = high_tx2_power;
-    }
-
-    if(high_tx2lbc != nullptr)
-    {
-        children["high-tx2lbc"] = high_tx2lbc;
-    }
-
-    if(high_tx3_power != nullptr)
-    {
-        children["high-tx3-power"] = high_tx3_power;
-    }
-
-    if(high_tx3lbc != nullptr)
-    {
-        children["high-tx3lbc"] = high_tx3lbc;
-    }
-
-    if(high_tx4_power != nullptr)
-    {
-        children["high-tx4-power"] = high_tx4_power;
-    }
-
-    if(high_tx4lbc != nullptr)
-    {
-        children["high-tx4lbc"] = high_tx4lbc;
-    }
-
-    if(high_tx_power != nullptr)
-    {
-        children["high-tx-power"] = high_tx_power;
-    }
-
-    if(imp_removal != nullptr)
-    {
-        children["imp-removal"] = imp_removal;
-    }
-
-    if(low_rx1_power != nullptr)
-    {
-        children["low-rx1-power"] = low_rx1_power;
-    }
-
-    if(low_rx2_power != nullptr)
-    {
-        children["low-rx2-power"] = low_rx2_power;
-    }
-
-    if(low_rx3_power != nullptr)
-    {
-        children["low-rx3-power"] = low_rx3_power;
-    }
-
-    if(low_rx4_power != nullptr)
-    {
-        children["low-rx4-power"] = low_rx4_power;
-    }
-
-    if(low_rx_power != nullptr)
-    {
-        children["low-rx-power"] = low_rx_power;
-    }
-
-    if(low_tx1_power != nullptr)
-    {
-        children["low-tx1-power"] = low_tx1_power;
-    }
-
-    if(low_tx1lbc != nullptr)
-    {
-        children["low-tx1lbc"] = low_tx1lbc;
-    }
-
-    if(low_tx2_power != nullptr)
-    {
-        children["low-tx2-power"] = low_tx2_power;
-    }
-
-    if(low_tx2lbc != nullptr)
-    {
-        children["low-tx2lbc"] = low_tx2lbc;
-    }
-
-    if(low_tx3_power != nullptr)
-    {
-        children["low-tx3-power"] = low_tx3_power;
-    }
-
-    if(low_tx3lbc != nullptr)
-    {
-        children["low-tx3lbc"] = low_tx3lbc;
-    }
-
-    if(low_tx4_power != nullptr)
-    {
-        children["low-tx4-power"] = low_tx4_power;
-    }
-
-    if(low_tx4lbc != nullptr)
-    {
-        children["low-tx4lbc"] = low_tx4lbc;
-    }
-
-    if(low_tx_power != nullptr)
-    {
-        children["low-tx-power"] = low_tx_power;
-    }
-
-    if(mea != nullptr)
-    {
-        children["mea"] = mea;
-    }
-
-    if(oorcd != nullptr)
-    {
-        children["oorcd"] = oorcd;
-    }
-
-    if(osnr != nullptr)
-    {
-        children["osnr"] = osnr;
-    }
-
-    if(rx_loc != nullptr)
-    {
-        children["rx-loc"] = rx_loc;
-    }
-
-    if(rx_lol != nullptr)
-    {
-        children["rx-lol"] = rx_lol;
-    }
-
-    if(rx_los != nullptr)
-    {
-        children["rx-los"] = rx_los;
-    }
-
-    if(tx_fault != nullptr)
-    {
-        children["tx-fault"] = tx_fault;
-    }
-
-    if(tx_lol != nullptr)
-    {
-        children["tx-lol"] = tx_lol;
-    }
-
-    if(tx_los != nullptr)
-    {
-        children["tx-los"] = tx_los;
-    }
-
-    if(txpwr_mismatch != nullptr)
-    {
-        children["txpwr-mismatch"] = txpwr_mismatch;
-    }
-
-    if(wvlool != nullptr)
-    {
-        children["wvlool"] = wvlool;
-    }
-
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "amp-gain-deg-high" || name == "amp-gain-deg-low" || name == "hidgd" || name == "high-lbc" || name == "high-rx1-power" || name == "high-rx2-power" || name == "high-rx3-power" || name == "high-rx4-power" || name == "high-rx-power" || name == "high-tx1-power" || name == "high-tx1lbc" || name == "high-tx2-power" || name == "high-tx2lbc" || name == "high-tx3-power" || name == "high-tx3lbc" || name == "high-tx4-power" || name == "high-tx4lbc" || name == "high-tx-power" || name == "imp-removal" || name == "low-rx1-power" || name == "low-rx2-power" || name == "low-rx3-power" || name == "low-rx4-power" || name == "low-rx-power" || name == "low-tx1-power" || name == "low-tx1lbc" || name == "low-tx2-power" || name == "low-tx2lbc" || name == "low-tx3-power" || name == "low-tx3lbc" || name == "low-tx4-power" || name == "low-tx4lbc" || name == "low-tx-power" || name == "mea" || name == "oorcd" || name == "osnr" || name == "rx-loc" || name == "rx-lol" || name == "rx-los" || name == "tx-fault" || name == "tx-lol" || name == "tx-los" || name == "txpwr-mismatch" || name == "wvlool")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::HighRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::~HighRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::LowRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::~LowRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::HighTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::~HighTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::LowTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::~LowTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::HighLbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::~HighLbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighLbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::HighRx1Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx1-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::~HighRx1Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx1-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRx1Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::HighRx2Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx2-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::~HighRx2Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx2-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRx2Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::HighRx3Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx3-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::~HighRx3Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx3-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRx3Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::HighRx4Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx4-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::~HighRx4Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx4-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRx4Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::LowRx1Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx1-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::~LowRx1Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx1-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRx1Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::LowRx2Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx2-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::~LowRx2Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx2-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRx2Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::LowRx3Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx3-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::~LowRx3Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx3-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRx3Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::LowRx4Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx4-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::~LowRx4Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx4-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRx4Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::HighTx1Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx1-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::~HighTx1Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx1-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx1Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::HighTx2Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx2-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::~HighTx2Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx2-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx2Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::HighTx3Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx3-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::~HighTx3Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx3-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx3Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::HighTx4Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx4-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::~HighTx4Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx4-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx4Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::LowTx1Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx1-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::~LowTx1Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx1-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx1Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::LowTx2Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx2-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::~LowTx2Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx2-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx2Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::LowTx3Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx3-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::~LowTx3Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx3-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx3Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::LowTx4Power()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx4-power"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::~LowTx4Power()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx4-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx4Power' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::HighTx1Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx1lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::~HighTx1Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx1lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx1Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::HighTx2Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx2lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::~HighTx2Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx2lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx2Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::HighTx3Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx3lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::~HighTx3Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx3lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx3Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::HighTx4Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx4lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::~HighTx4Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx4lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTx4Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::LowTx1Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx1lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::~LowTx1Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx1lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx1Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::LowTx2Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx2lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::~LowTx2Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx2lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx2Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::LowTx3Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx3lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::~LowTx3Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx3lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx3Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::LowTx4Lbc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx4lbc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::~LowTx4Lbc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx4lbc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTx4Lbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::RxLos()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "rx-los"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::~RxLos()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-los";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLos' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::TxLos()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "tx-los"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::~TxLos()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-los";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLos' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::RxLol()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "rx-lol"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::~RxLol()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-lol";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLol' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::TxLol()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "tx-lol"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::~TxLol()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-lol";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxLol' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::TxFault()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "tx-fault"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::~TxFault()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-fault";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxFault' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::Hidgd()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "hidgd"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::~Hidgd()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hidgd";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Hidgd' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::Oorcd()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "oorcd"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::~Oorcd()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oorcd";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Oorcd' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::Osnr()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "osnr"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::~Osnr()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "osnr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Osnr' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::Wvlool()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "wvlool"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::~Wvlool()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wvlool";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Wvlool' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::Mea()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "mea"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::~Mea()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mea";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Mea' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::ImpRemoval()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "imp-removal"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::~ImpRemoval()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "imp-removal";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ImpRemoval' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::RxLoc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "rx-loc"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::~RxLoc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-loc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLoc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::AmpGainDegLow()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "amp-gain-deg-low"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "amp-gain-deg-low";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AmpGainDegLow' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::AmpGainDegHigh()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "amp-gain-deg-high"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "amp-gain-deg-high";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AmpGainDegHigh' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::TxpwrMismatch()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "txpwr-mismatch"; yang_parent_name = "optics-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::~TxpwrMismatch()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "txpwr-mismatch";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxpwrMismatch' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::OtsAlarmInfo()
-    :
-    amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>())
-	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>())
-	,auto_ampli_ctrl_config_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>())
-	,auto_ampli_ctrl_disabled(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>())
-	,auto_laser_shut(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>())
-	,auto_power_red(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>())
-	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>())
-	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>())
-	,rx_los_p(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>())
-	,switch_to_protect(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>())
-{
-    amp_gain_deg_high->parent = this;
-
-    amp_gain_deg_low->parent = this;
-
-    auto_ampli_ctrl_config_mismatch->parent = this;
-
-    auto_ampli_ctrl_disabled->parent = this;
-
-    auto_laser_shut->parent = this;
-
-    auto_power_red->parent = this;
-
-    low_rx_power->parent = this;
-
-    low_tx_power->parent = this;
-
-    rx_loc->parent = this;
-
-    rx_los_p->parent = this;
-
-    switch_to_protect->parent = this;
-
-    yang_name = "ots-alarm-info"; yang_parent_name = "optics-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::~OtsAlarmInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_data() const
-{
-    return (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_data())
-	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_data())
-	|| (auto_ampli_ctrl_config_mismatch !=  nullptr && auto_ampli_ctrl_config_mismatch->has_data())
-	|| (auto_ampli_ctrl_disabled !=  nullptr && auto_ampli_ctrl_disabled->has_data())
-	|| (auto_laser_shut !=  nullptr && auto_laser_shut->has_data())
-	|| (auto_power_red !=  nullptr && auto_power_red->has_data())
-	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
-	|| (low_tx_power !=  nullptr && low_tx_power->has_data())
-	|| (rx_loc !=  nullptr && rx_loc->has_data())
-	|| (rx_los_p !=  nullptr && rx_los_p->has_data())
-	|| (switch_to_protect !=  nullptr && switch_to_protect->has_data());
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_operation())
-	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_operation())
-	|| (auto_ampli_ctrl_config_mismatch !=  nullptr && auto_ampli_ctrl_config_mismatch->has_operation())
-	|| (auto_ampli_ctrl_disabled !=  nullptr && auto_ampli_ctrl_disabled->has_operation())
-	|| (auto_laser_shut !=  nullptr && auto_laser_shut->has_operation())
-	|| (auto_power_red !=  nullptr && auto_power_red->has_operation())
-	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
-	|| (low_tx_power !=  nullptr && low_tx_power->has_operation())
-	|| (rx_loc !=  nullptr && rx_loc->has_operation())
-	|| (rx_los_p !=  nullptr && rx_los_p->has_operation())
-	|| (switch_to_protect !=  nullptr && switch_to_protect->has_operation());
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ots-alarm-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OtsAlarmInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "amp-gain-deg-high")
-    {
-        if(amp_gain_deg_high == nullptr)
-        {
-            amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>();
-        }
-        return amp_gain_deg_high;
-    }
-
-    if(child_yang_name == "amp-gain-deg-low")
-    {
-        if(amp_gain_deg_low == nullptr)
-        {
-            amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>();
-        }
-        return amp_gain_deg_low;
-    }
-
-    if(child_yang_name == "auto-ampli-ctrl-config-mismatch")
-    {
-        if(auto_ampli_ctrl_config_mismatch == nullptr)
-        {
-            auto_ampli_ctrl_config_mismatch = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>();
-        }
-        return auto_ampli_ctrl_config_mismatch;
-    }
-
-    if(child_yang_name == "auto-ampli-ctrl-disabled")
-    {
-        if(auto_ampli_ctrl_disabled == nullptr)
-        {
-            auto_ampli_ctrl_disabled = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>();
-        }
-        return auto_ampli_ctrl_disabled;
-    }
-
-    if(child_yang_name == "auto-laser-shut")
-    {
-        if(auto_laser_shut == nullptr)
-        {
-            auto_laser_shut = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>();
-        }
-        return auto_laser_shut;
-    }
-
-    if(child_yang_name == "auto-power-red")
-    {
-        if(auto_power_red == nullptr)
-        {
-            auto_power_red = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>();
-        }
-        return auto_power_red;
-    }
-
-    if(child_yang_name == "low-rx-power")
-    {
-        if(low_rx_power == nullptr)
-        {
-            low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>();
-        }
-        return low_rx_power;
-    }
-
-    if(child_yang_name == "low-tx-power")
-    {
-        if(low_tx_power == nullptr)
-        {
-            low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>();
-        }
-        return low_tx_power;
-    }
-
-    if(child_yang_name == "rx-loc")
-    {
-        if(rx_loc == nullptr)
-        {
-            rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>();
-        }
-        return rx_loc;
-    }
-
-    if(child_yang_name == "rx-los-p")
-    {
-        if(rx_los_p == nullptr)
-        {
-            rx_los_p = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>();
-        }
-        return rx_los_p;
-    }
-
-    if(child_yang_name == "switch-to-protect")
-    {
-        if(switch_to_protect == nullptr)
-        {
-            switch_to_protect = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>();
-        }
-        return switch_to_protect;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(amp_gain_deg_high != nullptr)
-    {
-        children["amp-gain-deg-high"] = amp_gain_deg_high;
-    }
-
-    if(amp_gain_deg_low != nullptr)
-    {
-        children["amp-gain-deg-low"] = amp_gain_deg_low;
-    }
-
-    if(auto_ampli_ctrl_config_mismatch != nullptr)
-    {
-        children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
-    }
-
-    if(auto_ampli_ctrl_disabled != nullptr)
-    {
-        children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
-    }
-
-    if(auto_laser_shut != nullptr)
-    {
-        children["auto-laser-shut"] = auto_laser_shut;
-    }
-
-    if(auto_power_red != nullptr)
-    {
-        children["auto-power-red"] = auto_power_red;
-    }
-
-    if(low_rx_power != nullptr)
-    {
-        children["low-rx-power"] = low_rx_power;
-    }
-
-    if(low_tx_power != nullptr)
-    {
-        children["low-tx-power"] = low_tx_power;
-    }
-
-    if(rx_loc != nullptr)
-    {
-        children["rx-loc"] = rx_loc;
-    }
-
-    if(rx_los_p != nullptr)
-    {
-        children["rx-los-p"] = rx_los_p;
-    }
-
-    if(switch_to_protect != nullptr)
-    {
-        children["switch-to-protect"] = switch_to_protect;
-    }
-
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "amp-gain-deg-high" || name == "amp-gain-deg-low" || name == "auto-ampli-ctrl-config-mismatch" || name == "auto-ampli-ctrl-disabled" || name == "auto-laser-shut" || name == "auto-power-red" || name == "low-rx-power" || name == "low-tx-power" || name == "rx-loc" || name == "rx-los-p" || name == "switch-to-protect")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::LowTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx-power"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::~LowTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::LowRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx-power"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::~LowRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::RxLosP()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "rx-los-p"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::~RxLosP()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-los-p";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLosP' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::RxLoc()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "rx-loc"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::~RxLoc()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-loc";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RxLoc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::AmpGainDegLow()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "amp-gain-deg-low"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "amp-gain-deg-low";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AmpGainDegLow' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::AmpGainDegHigh()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "amp-gain-deg-high"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "amp-gain-deg-high";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AmpGainDegHigh' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::AutoLaserShut()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "auto-laser-shut"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::~AutoLaserShut()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto-laser-shut";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AutoLaserShut' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::AutoPowerRed()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "auto-power-red"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::~AutoPowerRed()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto-power-red";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AutoPowerRed' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::AutoAmpliCtrlDisabled()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "auto-ampli-ctrl-disabled"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::~AutoAmpliCtrlDisabled()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto-ampli-ctrl-disabled";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AutoAmpliCtrlDisabled' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::AutoAmpliCtrlConfigMismatch()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "auto-ampli-ctrl-config-mismatch"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::~AutoAmpliCtrlConfigMismatch()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto-ampli-ctrl-config-mismatch";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AutoAmpliCtrlConfigMismatch' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::SwitchToProtect()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "switch-to-protect"; yang_parent_name = "ots-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::~SwitchToProtect()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "switch-to-protect";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'SwitchToProtect' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::TransceiverInfo()
-    :
-    adapter_vendor_info{YType::str, "adapter-vendor-info"},
-    connector_type{YType::enumeration, "connector-type"},
-    date{YType::str, "date"},
-    ethernet_compliance_code{YType::enumeration, "ethernet-compliance-code"},
-    internal_temperature{YType::int32, "internal-temperature"},
-    optics_serial_no{YType::str, "optics-serial-no"},
-    optics_vendor_part{YType::str, "optics-vendor-part"},
-    optics_vendor_rev{YType::str, "optics-vendor-rev"},
-    otn_application_code{YType::enumeration, "otn-application-code"},
-    sonet_application_code{YType::enumeration, "sonet-application-code"},
-    vendor_info{YType::str, "vendor-info"}
-{
-    yang_name = "transceiver-info"; yang_parent_name = "optics-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::~TransceiverInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_data() const
-{
-    return adapter_vendor_info.is_set
-	|| connector_type.is_set
-	|| date.is_set
-	|| ethernet_compliance_code.is_set
-	|| internal_temperature.is_set
-	|| optics_serial_no.is_set
-	|| optics_vendor_part.is_set
-	|| optics_vendor_rev.is_set
-	|| otn_application_code.is_set
-	|| sonet_application_code.is_set
-	|| vendor_info.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adapter_vendor_info.yfilter)
-	|| ydk::is_set(connector_type.yfilter)
-	|| ydk::is_set(date.yfilter)
-	|| ydk::is_set(ethernet_compliance_code.yfilter)
-	|| ydk::is_set(internal_temperature.yfilter)
-	|| ydk::is_set(optics_serial_no.yfilter)
-	|| ydk::is_set(optics_vendor_part.yfilter)
-	|| ydk::is_set(optics_vendor_rev.yfilter)
-	|| ydk::is_set(otn_application_code.yfilter)
-	|| ydk::is_set(sonet_application_code.yfilter)
-	|| ydk::is_set(vendor_info.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transceiver-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransceiverInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adapter_vendor_info.is_set || is_set(adapter_vendor_info.yfilter)) leaf_name_data.push_back(adapter_vendor_info.get_name_leafdata());
-    if (connector_type.is_set || is_set(connector_type.yfilter)) leaf_name_data.push_back(connector_type.get_name_leafdata());
-    if (date.is_set || is_set(date.yfilter)) leaf_name_data.push_back(date.get_name_leafdata());
-    if (ethernet_compliance_code.is_set || is_set(ethernet_compliance_code.yfilter)) leaf_name_data.push_back(ethernet_compliance_code.get_name_leafdata());
-    if (internal_temperature.is_set || is_set(internal_temperature.yfilter)) leaf_name_data.push_back(internal_temperature.get_name_leafdata());
-    if (optics_serial_no.is_set || is_set(optics_serial_no.yfilter)) leaf_name_data.push_back(optics_serial_no.get_name_leafdata());
-    if (optics_vendor_part.is_set || is_set(optics_vendor_part.yfilter)) leaf_name_data.push_back(optics_vendor_part.get_name_leafdata());
-    if (optics_vendor_rev.is_set || is_set(optics_vendor_rev.yfilter)) leaf_name_data.push_back(optics_vendor_rev.get_name_leafdata());
-    if (otn_application_code.is_set || is_set(otn_application_code.yfilter)) leaf_name_data.push_back(otn_application_code.get_name_leafdata());
-    if (sonet_application_code.is_set || is_set(sonet_application_code.yfilter)) leaf_name_data.push_back(sonet_application_code.get_name_leafdata());
-    if (vendor_info.is_set || is_set(vendor_info.yfilter)) leaf_name_data.push_back(vendor_info.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adapter-vendor-info")
-    {
-        adapter_vendor_info = value;
-        adapter_vendor_info.value_namespace = name_space;
-        adapter_vendor_info.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "connector-type")
-    {
-        connector_type = value;
-        connector_type.value_namespace = name_space;
-        connector_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "date")
-    {
-        date = value;
-        date.value_namespace = name_space;
-        date.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ethernet-compliance-code")
-    {
-        ethernet_compliance_code = value;
-        ethernet_compliance_code.value_namespace = name_space;
-        ethernet_compliance_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "internal-temperature")
-    {
-        internal_temperature = value;
-        internal_temperature.value_namespace = name_space;
-        internal_temperature.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-serial-no")
-    {
-        optics_serial_no = value;
-        optics_serial_no.value_namespace = name_space;
-        optics_serial_no.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-vendor-part")
-    {
-        optics_vendor_part = value;
-        optics_vendor_part.value_namespace = name_space;
-        optics_vendor_part.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-vendor-rev")
-    {
-        optics_vendor_rev = value;
-        optics_vendor_rev.value_namespace = name_space;
-        optics_vendor_rev.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "otn-application-code")
-    {
-        otn_application_code = value;
-        otn_application_code.value_namespace = name_space;
-        otn_application_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sonet-application-code")
-    {
-        sonet_application_code = value;
-        sonet_application_code.value_namespace = name_space;
-        sonet_application_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-info")
-    {
-        vendor_info = value;
-        vendor_info.value_namespace = name_space;
-        vendor_info.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adapter-vendor-info")
-    {
-        adapter_vendor_info.yfilter = yfilter;
-    }
-    if(value_path == "connector-type")
-    {
-        connector_type.yfilter = yfilter;
-    }
-    if(value_path == "date")
-    {
-        date.yfilter = yfilter;
-    }
-    if(value_path == "ethernet-compliance-code")
-    {
-        ethernet_compliance_code.yfilter = yfilter;
-    }
-    if(value_path == "internal-temperature")
-    {
-        internal_temperature.yfilter = yfilter;
-    }
-    if(value_path == "optics-serial-no")
-    {
-        optics_serial_no.yfilter = yfilter;
-    }
-    if(value_path == "optics-vendor-part")
-    {
-        optics_vendor_part.yfilter = yfilter;
-    }
-    if(value_path == "optics-vendor-rev")
-    {
-        optics_vendor_rev.yfilter = yfilter;
-    }
-    if(value_path == "otn-application-code")
-    {
-        otn_application_code.yfilter = yfilter;
-    }
-    if(value_path == "sonet-application-code")
-    {
-        sonet_application_code.yfilter = yfilter;
-    }
-    if(value_path == "vendor-info")
-    {
-        vendor_info.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adapter-vendor-info" || name == "connector-type" || name == "date" || name == "ethernet-compliance-code" || name == "internal-temperature" || name == "optics-serial-no" || name == "optics-vendor-part" || name == "optics-vendor-rev" || name == "otn-application-code" || name == "sonet-application-code" || name == "vendor-info")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::ExtParamVal()
-    :
-    isi_correction_lane1{YType::int32, "isi-correction-lane1"},
-    isi_correction_lane2{YType::int32, "isi-correction-lane2"},
-    laser_diff_frequency_lane1{YType::int32, "laser-diff-frequency-lane1"},
-    laser_diff_frequency_lane2{YType::int32, "laser-diff-frequency-lane2"},
-    laser_diff_temperature_lane1{YType::int32, "laser-diff-temperature-lane1"},
-    laser_diff_temperature_lane2{YType::int32, "laser-diff-temperature-lane2"},
-    pam_rate_lane1{YType::int32, "pam-rate-lane1"},
-    pam_rate_lane2{YType::int32, "pam-rate-lane2"},
-    pre_fec_ber{YType::int64, "pre-fec-ber"},
-    pre_fec_ber_accumulated{YType::int64, "pre-fec-ber-accumulated"},
-    pre_fec_ber_instantaneous{YType::int64, "pre-fec-ber-instantaneous"},
-    pre_fec_ber_latched_max{YType::int64, "pre-fec-ber-latched-max"},
-    pre_fec_ber_latched_min{YType::int64, "pre-fec-ber-latched-min"},
-    snr_lane1{YType::int32, "snr-lane1"},
-    snr_lane2{YType::int32, "snr-lane2"},
-    tec_current_lane1{YType::int32, "tec-current-lane1"},
-    tec_current_lane2{YType::int32, "tec-current-lane2"},
-    uncorrected_ber{YType::int64, "uncorrected-ber"},
-    uncorrected_ber_accumulated{YType::int64, "uncorrected-ber-accumulated"},
-    uncorrected_ber_instantaneous{YType::int64, "uncorrected-ber-instantaneous"},
-    uncorrected_ber_latched_max{YType::int64, "uncorrected-ber-latched-max"},
-    uncorrected_ber_latched_min{YType::int64, "uncorrected-ber-latched-min"}
-{
-    yang_name = "ext-param-val"; yang_parent_name = "optics-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::~ExtParamVal()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_data() const
-{
-    return isi_correction_lane1.is_set
-	|| isi_correction_lane2.is_set
-	|| laser_diff_frequency_lane1.is_set
-	|| laser_diff_frequency_lane2.is_set
-	|| laser_diff_temperature_lane1.is_set
-	|| laser_diff_temperature_lane2.is_set
-	|| pam_rate_lane1.is_set
-	|| pam_rate_lane2.is_set
-	|| pre_fec_ber.is_set
-	|| pre_fec_ber_accumulated.is_set
-	|| pre_fec_ber_instantaneous.is_set
-	|| pre_fec_ber_latched_max.is_set
-	|| pre_fec_ber_latched_min.is_set
-	|| snr_lane1.is_set
-	|| snr_lane2.is_set
-	|| tec_current_lane1.is_set
-	|| tec_current_lane2.is_set
-	|| uncorrected_ber.is_set
-	|| uncorrected_ber_accumulated.is_set
-	|| uncorrected_ber_instantaneous.is_set
-	|| uncorrected_ber_latched_max.is_set
-	|| uncorrected_ber_latched_min.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(isi_correction_lane1.yfilter)
-	|| ydk::is_set(isi_correction_lane2.yfilter)
-	|| ydk::is_set(laser_diff_frequency_lane1.yfilter)
-	|| ydk::is_set(laser_diff_frequency_lane2.yfilter)
-	|| ydk::is_set(laser_diff_temperature_lane1.yfilter)
-	|| ydk::is_set(laser_diff_temperature_lane2.yfilter)
-	|| ydk::is_set(pam_rate_lane1.yfilter)
-	|| ydk::is_set(pam_rate_lane2.yfilter)
-	|| ydk::is_set(pre_fec_ber.yfilter)
-	|| ydk::is_set(pre_fec_ber_accumulated.yfilter)
-	|| ydk::is_set(pre_fec_ber_instantaneous.yfilter)
-	|| ydk::is_set(pre_fec_ber_latched_max.yfilter)
-	|| ydk::is_set(pre_fec_ber_latched_min.yfilter)
-	|| ydk::is_set(snr_lane1.yfilter)
-	|| ydk::is_set(snr_lane2.yfilter)
-	|| ydk::is_set(tec_current_lane1.yfilter)
-	|| ydk::is_set(tec_current_lane2.yfilter)
-	|| ydk::is_set(uncorrected_ber.yfilter)
-	|| ydk::is_set(uncorrected_ber_accumulated.yfilter)
-	|| ydk::is_set(uncorrected_ber_instantaneous.yfilter)
-	|| ydk::is_set(uncorrected_ber_latched_max.yfilter)
-	|| ydk::is_set(uncorrected_ber_latched_min.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ext-param-val";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExtParamVal' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (isi_correction_lane1.is_set || is_set(isi_correction_lane1.yfilter)) leaf_name_data.push_back(isi_correction_lane1.get_name_leafdata());
-    if (isi_correction_lane2.is_set || is_set(isi_correction_lane2.yfilter)) leaf_name_data.push_back(isi_correction_lane2.get_name_leafdata());
-    if (laser_diff_frequency_lane1.is_set || is_set(laser_diff_frequency_lane1.yfilter)) leaf_name_data.push_back(laser_diff_frequency_lane1.get_name_leafdata());
-    if (laser_diff_frequency_lane2.is_set || is_set(laser_diff_frequency_lane2.yfilter)) leaf_name_data.push_back(laser_diff_frequency_lane2.get_name_leafdata());
-    if (laser_diff_temperature_lane1.is_set || is_set(laser_diff_temperature_lane1.yfilter)) leaf_name_data.push_back(laser_diff_temperature_lane1.get_name_leafdata());
-    if (laser_diff_temperature_lane2.is_set || is_set(laser_diff_temperature_lane2.yfilter)) leaf_name_data.push_back(laser_diff_temperature_lane2.get_name_leafdata());
-    if (pam_rate_lane1.is_set || is_set(pam_rate_lane1.yfilter)) leaf_name_data.push_back(pam_rate_lane1.get_name_leafdata());
-    if (pam_rate_lane2.is_set || is_set(pam_rate_lane2.yfilter)) leaf_name_data.push_back(pam_rate_lane2.get_name_leafdata());
-    if (pre_fec_ber.is_set || is_set(pre_fec_ber.yfilter)) leaf_name_data.push_back(pre_fec_ber.get_name_leafdata());
-    if (pre_fec_ber_accumulated.is_set || is_set(pre_fec_ber_accumulated.yfilter)) leaf_name_data.push_back(pre_fec_ber_accumulated.get_name_leafdata());
-    if (pre_fec_ber_instantaneous.is_set || is_set(pre_fec_ber_instantaneous.yfilter)) leaf_name_data.push_back(pre_fec_ber_instantaneous.get_name_leafdata());
-    if (pre_fec_ber_latched_max.is_set || is_set(pre_fec_ber_latched_max.yfilter)) leaf_name_data.push_back(pre_fec_ber_latched_max.get_name_leafdata());
-    if (pre_fec_ber_latched_min.is_set || is_set(pre_fec_ber_latched_min.yfilter)) leaf_name_data.push_back(pre_fec_ber_latched_min.get_name_leafdata());
-    if (snr_lane1.is_set || is_set(snr_lane1.yfilter)) leaf_name_data.push_back(snr_lane1.get_name_leafdata());
-    if (snr_lane2.is_set || is_set(snr_lane2.yfilter)) leaf_name_data.push_back(snr_lane2.get_name_leafdata());
-    if (tec_current_lane1.is_set || is_set(tec_current_lane1.yfilter)) leaf_name_data.push_back(tec_current_lane1.get_name_leafdata());
-    if (tec_current_lane2.is_set || is_set(tec_current_lane2.yfilter)) leaf_name_data.push_back(tec_current_lane2.get_name_leafdata());
-    if (uncorrected_ber.is_set || is_set(uncorrected_ber.yfilter)) leaf_name_data.push_back(uncorrected_ber.get_name_leafdata());
-    if (uncorrected_ber_accumulated.is_set || is_set(uncorrected_ber_accumulated.yfilter)) leaf_name_data.push_back(uncorrected_ber_accumulated.get_name_leafdata());
-    if (uncorrected_ber_instantaneous.is_set || is_set(uncorrected_ber_instantaneous.yfilter)) leaf_name_data.push_back(uncorrected_ber_instantaneous.get_name_leafdata());
-    if (uncorrected_ber_latched_max.is_set || is_set(uncorrected_ber_latched_max.yfilter)) leaf_name_data.push_back(uncorrected_ber_latched_max.get_name_leafdata());
-    if (uncorrected_ber_latched_min.is_set || is_set(uncorrected_ber_latched_min.yfilter)) leaf_name_data.push_back(uncorrected_ber_latched_min.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "isi-correction-lane1")
-    {
-        isi_correction_lane1 = value;
-        isi_correction_lane1.value_namespace = name_space;
-        isi_correction_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "isi-correction-lane2")
-    {
-        isi_correction_lane2 = value;
-        isi_correction_lane2.value_namespace = name_space;
-        isi_correction_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "laser-diff-frequency-lane1")
-    {
-        laser_diff_frequency_lane1 = value;
-        laser_diff_frequency_lane1.value_namespace = name_space;
-        laser_diff_frequency_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "laser-diff-frequency-lane2")
-    {
-        laser_diff_frequency_lane2 = value;
-        laser_diff_frequency_lane2.value_namespace = name_space;
-        laser_diff_frequency_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "laser-diff-temperature-lane1")
-    {
-        laser_diff_temperature_lane1 = value;
-        laser_diff_temperature_lane1.value_namespace = name_space;
-        laser_diff_temperature_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "laser-diff-temperature-lane2")
-    {
-        laser_diff_temperature_lane2 = value;
-        laser_diff_temperature_lane2.value_namespace = name_space;
-        laser_diff_temperature_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pam-rate-lane1")
-    {
-        pam_rate_lane1 = value;
-        pam_rate_lane1.value_namespace = name_space;
-        pam_rate_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pam-rate-lane2")
-    {
-        pam_rate_lane2 = value;
-        pam_rate_lane2.value_namespace = name_space;
-        pam_rate_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-fec-ber")
-    {
-        pre_fec_ber = value;
-        pre_fec_ber.value_namespace = name_space;
-        pre_fec_ber.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-fec-ber-accumulated")
-    {
-        pre_fec_ber_accumulated = value;
-        pre_fec_ber_accumulated.value_namespace = name_space;
-        pre_fec_ber_accumulated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-fec-ber-instantaneous")
-    {
-        pre_fec_ber_instantaneous = value;
-        pre_fec_ber_instantaneous.value_namespace = name_space;
-        pre_fec_ber_instantaneous.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-fec-ber-latched-max")
-    {
-        pre_fec_ber_latched_max = value;
-        pre_fec_ber_latched_max.value_namespace = name_space;
-        pre_fec_ber_latched_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-fec-ber-latched-min")
-    {
-        pre_fec_ber_latched_min = value;
-        pre_fec_ber_latched_min.value_namespace = name_space;
-        pre_fec_ber_latched_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "snr-lane1")
-    {
-        snr_lane1 = value;
-        snr_lane1.value_namespace = name_space;
-        snr_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "snr-lane2")
-    {
-        snr_lane2 = value;
-        snr_lane2.value_namespace = name_space;
-        snr_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tec-current-lane1")
-    {
-        tec_current_lane1 = value;
-        tec_current_lane1.value_namespace = name_space;
-        tec_current_lane1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tec-current-lane2")
-    {
-        tec_current_lane2 = value;
-        tec_current_lane2.value_namespace = name_space;
-        tec_current_lane2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrected-ber")
-    {
-        uncorrected_ber = value;
-        uncorrected_ber.value_namespace = name_space;
-        uncorrected_ber.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrected-ber-accumulated")
-    {
-        uncorrected_ber_accumulated = value;
-        uncorrected_ber_accumulated.value_namespace = name_space;
-        uncorrected_ber_accumulated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrected-ber-instantaneous")
-    {
-        uncorrected_ber_instantaneous = value;
-        uncorrected_ber_instantaneous.value_namespace = name_space;
-        uncorrected_ber_instantaneous.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrected-ber-latched-max")
-    {
-        uncorrected_ber_latched_max = value;
-        uncorrected_ber_latched_max.value_namespace = name_space;
-        uncorrected_ber_latched_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "uncorrected-ber-latched-min")
-    {
-        uncorrected_ber_latched_min = value;
-        uncorrected_ber_latched_min.value_namespace = name_space;
-        uncorrected_ber_latched_min.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "isi-correction-lane1")
-    {
-        isi_correction_lane1.yfilter = yfilter;
-    }
-    if(value_path == "isi-correction-lane2")
-    {
-        isi_correction_lane2.yfilter = yfilter;
-    }
-    if(value_path == "laser-diff-frequency-lane1")
-    {
-        laser_diff_frequency_lane1.yfilter = yfilter;
-    }
-    if(value_path == "laser-diff-frequency-lane2")
-    {
-        laser_diff_frequency_lane2.yfilter = yfilter;
-    }
-    if(value_path == "laser-diff-temperature-lane1")
-    {
-        laser_diff_temperature_lane1.yfilter = yfilter;
-    }
-    if(value_path == "laser-diff-temperature-lane2")
-    {
-        laser_diff_temperature_lane2.yfilter = yfilter;
-    }
-    if(value_path == "pam-rate-lane1")
-    {
-        pam_rate_lane1.yfilter = yfilter;
-    }
-    if(value_path == "pam-rate-lane2")
-    {
-        pam_rate_lane2.yfilter = yfilter;
-    }
-    if(value_path == "pre-fec-ber")
-    {
-        pre_fec_ber.yfilter = yfilter;
-    }
-    if(value_path == "pre-fec-ber-accumulated")
-    {
-        pre_fec_ber_accumulated.yfilter = yfilter;
-    }
-    if(value_path == "pre-fec-ber-instantaneous")
-    {
-        pre_fec_ber_instantaneous.yfilter = yfilter;
-    }
-    if(value_path == "pre-fec-ber-latched-max")
-    {
-        pre_fec_ber_latched_max.yfilter = yfilter;
-    }
-    if(value_path == "pre-fec-ber-latched-min")
-    {
-        pre_fec_ber_latched_min.yfilter = yfilter;
-    }
-    if(value_path == "snr-lane1")
-    {
-        snr_lane1.yfilter = yfilter;
-    }
-    if(value_path == "snr-lane2")
-    {
-        snr_lane2.yfilter = yfilter;
-    }
-    if(value_path == "tec-current-lane1")
-    {
-        tec_current_lane1.yfilter = yfilter;
-    }
-    if(value_path == "tec-current-lane2")
-    {
-        tec_current_lane2.yfilter = yfilter;
-    }
-    if(value_path == "uncorrected-ber")
-    {
-        uncorrected_ber.yfilter = yfilter;
-    }
-    if(value_path == "uncorrected-ber-accumulated")
-    {
-        uncorrected_ber_accumulated.yfilter = yfilter;
-    }
-    if(value_path == "uncorrected-ber-instantaneous")
-    {
-        uncorrected_ber_instantaneous.yfilter = yfilter;
-    }
-    if(value_path == "uncorrected-ber-latched-max")
-    {
-        uncorrected_ber_latched_max.yfilter = yfilter;
-    }
-    if(value_path == "uncorrected-ber-latched-min")
-    {
-        uncorrected_ber_latched_min.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "isi-correction-lane1" || name == "isi-correction-lane2" || name == "laser-diff-frequency-lane1" || name == "laser-diff-frequency-lane2" || name == "laser-diff-temperature-lane1" || name == "laser-diff-temperature-lane2" || name == "pam-rate-lane1" || name == "pam-rate-lane2" || name == "pre-fec-ber" || name == "pre-fec-ber-accumulated" || name == "pre-fec-ber-instantaneous" || name == "pre-fec-ber-latched-max" || name == "pre-fec-ber-latched-min" || name == "snr-lane1" || name == "snr-lane2" || name == "tec-current-lane1" || name == "tec-current-lane2" || name == "uncorrected-ber" || name == "uncorrected-ber-accumulated" || name == "uncorrected-ber-instantaneous" || name == "uncorrected-ber-latched-max" || name == "uncorrected-ber-latched-min")
+    if(name == "ext-param-threshold-val" || name == "ext-param-val" || name == "lane-data" || name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "spectrum-info" || name == "transceiver-info" || name == "alarm-detected" || name == "ampli-channel-power-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain" || name == "ampli-gain-config-val" || name == "ampli-gain-range" || name == "ampli-gain-range-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-tilt" || name == "ampli-tilt-config-val" || name == "cd" || name == "cd-configurable" || name == "cd-high-threshold" || name == "cd-low-threshold" || name == "cd-max" || name == "cd-min" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "channel-power-max-delta-config-val" || name == "controller-state" || name == "derived-optics-type" || name == "description" || name == "dgd-high-threshold" || name == "differential-group-delay" || name == "display-volt-temp" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "form-factor" || name == "grey-wavelength" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "is-optics-type-string-valid" || name == "laser-state" || name == "lbc-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-default" || name == "lbc-th-low-warning-default" || name == "led-state" || name == "optical-signal-to-noise-ratio" || name == "optics-fec" || name == "optics-module" || name == "optics-present" || name == "optics-type" || name == "optics-type-str" || name == "osnr-low-threshold" || name == "osri" || name == "osri-config-val" || name == "phase-noise" || name == "phy-type" || name == "pm-enable" || name == "polarization-change-rate" || name == "polarization-dependent-loss" || name == "polarization-mode-dispersion" || name == "port-status" || name == "port-type" || name == "rx-high-threshold" || name == "rx-high-warning-threshold" || name == "rx-low-threshold" || name == "rx-low-warning-threshold" || name == "rx-power-th-configurable" || name == "rx-voa-attenuation" || name == "rx-voa-attenuation-config-val" || name == "safety-control-mode" || name == "safety-control-mode-config-val" || name == "second-order-polarization-mode-dispersion" || name == "temp-high-threshold" || name == "temp-high-warning-threshold" || name == "temp-low-threshold" || name == "temp-low-warning-threshold" || name == "temperature" || name == "total-rx-power" || name == "total-tx-power" || name == "transport-admin-state" || name == "tx-high-threshold" || name == "tx-high-warning-threshold" || name == "tx-low-threshold" || name == "tx-low-warning-threshold" || name == "tx-power-th-configurable" || name == "tx-voa-attenuation" || name == "tx-voa-attenuation-config-val" || name == "volt-high-threshold" || name == "volt-high-warning-threshold" || name == "volt-low-threshold" || name == "volt-low-warning-threshold" || name == "voltage")
         return true;
     return false;
 }
@@ -9803,7 +2458,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::ExtParamT
     uncorrected_ber_warn_high_threshold{YType::int64, "uncorrected-ber-warn-high-threshold"},
     uncorrected_ber_warn_low_threshold{YType::int64, "uncorrected-ber-warn-low-threshold"}
 {
-    yang_name = "ext-param-threshold-val"; yang_parent_name = "optics-info";
+
+    yang_name = "ext-param-threshold-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::~ExtParamThresholdVal()
@@ -9951,23 +2607,11 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVa
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-param-threshold-val";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ExtParamThresholdVal' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (isi_correction_alarm_high_threshold.is_set || is_set(isi_correction_alarm_high_threshold.yfilter)) leaf_name_data.push_back(isi_correction_alarm_high_threshold.get_name_leafdata());
@@ -10035,9 +2679,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresh
     if (uncorrected_ber_warn_high_threshold.is_set || is_set(uncorrected_ber_warn_high_threshold.yfilter)) leaf_name_data.push_back(uncorrected_ber_warn_high_threshold.get_name_leafdata());
     if (uncorrected_ber_warn_low_threshold.is_set || is_set(uncorrected_ber_warn_low_threshold.yfilter)) leaf_name_data.push_back(uncorrected_ber_warn_low_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10707,8 +3349,379 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::has_
     return false;
 }
 
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::ExtParamVal()
+    :
+    isi_correction_lane1{YType::int32, "isi-correction-lane1"},
+    isi_correction_lane2{YType::int32, "isi-correction-lane2"},
+    laser_diff_frequency_lane1{YType::int32, "laser-diff-frequency-lane1"},
+    laser_diff_frequency_lane2{YType::int32, "laser-diff-frequency-lane2"},
+    laser_diff_temperature_lane1{YType::int32, "laser-diff-temperature-lane1"},
+    laser_diff_temperature_lane2{YType::int32, "laser-diff-temperature-lane2"},
+    pam_rate_lane1{YType::int32, "pam-rate-lane1"},
+    pam_rate_lane2{YType::int32, "pam-rate-lane2"},
+    pre_fec_ber{YType::int64, "pre-fec-ber"},
+    pre_fec_ber_accumulated{YType::int64, "pre-fec-ber-accumulated"},
+    pre_fec_ber_instantaneous{YType::int64, "pre-fec-ber-instantaneous"},
+    pre_fec_ber_latched_max{YType::int64, "pre-fec-ber-latched-max"},
+    pre_fec_ber_latched_min{YType::int64, "pre-fec-ber-latched-min"},
+    snr_lane1{YType::int32, "snr-lane1"},
+    snr_lane2{YType::int32, "snr-lane2"},
+    tec_current_lane1{YType::int32, "tec-current-lane1"},
+    tec_current_lane2{YType::int32, "tec-current-lane2"},
+    uncorrected_ber{YType::int64, "uncorrected-ber"},
+    uncorrected_ber_accumulated{YType::int64, "uncorrected-ber-accumulated"},
+    uncorrected_ber_instantaneous{YType::int64, "uncorrected-ber-instantaneous"},
+    uncorrected_ber_latched_max{YType::int64, "uncorrected-ber-latched-max"},
+    uncorrected_ber_latched_min{YType::int64, "uncorrected-ber-latched-min"}
+{
+
+    yang_name = "ext-param-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::~ExtParamVal()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_data() const
+{
+    return isi_correction_lane1.is_set
+	|| isi_correction_lane2.is_set
+	|| laser_diff_frequency_lane1.is_set
+	|| laser_diff_frequency_lane2.is_set
+	|| laser_diff_temperature_lane1.is_set
+	|| laser_diff_temperature_lane2.is_set
+	|| pam_rate_lane1.is_set
+	|| pam_rate_lane2.is_set
+	|| pre_fec_ber.is_set
+	|| pre_fec_ber_accumulated.is_set
+	|| pre_fec_ber_instantaneous.is_set
+	|| pre_fec_ber_latched_max.is_set
+	|| pre_fec_ber_latched_min.is_set
+	|| snr_lane1.is_set
+	|| snr_lane2.is_set
+	|| tec_current_lane1.is_set
+	|| tec_current_lane2.is_set
+	|| uncorrected_ber.is_set
+	|| uncorrected_ber_accumulated.is_set
+	|| uncorrected_ber_instantaneous.is_set
+	|| uncorrected_ber_latched_max.is_set
+	|| uncorrected_ber_latched_min.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(isi_correction_lane1.yfilter)
+	|| ydk::is_set(isi_correction_lane2.yfilter)
+	|| ydk::is_set(laser_diff_frequency_lane1.yfilter)
+	|| ydk::is_set(laser_diff_frequency_lane2.yfilter)
+	|| ydk::is_set(laser_diff_temperature_lane1.yfilter)
+	|| ydk::is_set(laser_diff_temperature_lane2.yfilter)
+	|| ydk::is_set(pam_rate_lane1.yfilter)
+	|| ydk::is_set(pam_rate_lane2.yfilter)
+	|| ydk::is_set(pre_fec_ber.yfilter)
+	|| ydk::is_set(pre_fec_ber_accumulated.yfilter)
+	|| ydk::is_set(pre_fec_ber_instantaneous.yfilter)
+	|| ydk::is_set(pre_fec_ber_latched_max.yfilter)
+	|| ydk::is_set(pre_fec_ber_latched_min.yfilter)
+	|| ydk::is_set(snr_lane1.yfilter)
+	|| ydk::is_set(snr_lane2.yfilter)
+	|| ydk::is_set(tec_current_lane1.yfilter)
+	|| ydk::is_set(tec_current_lane2.yfilter)
+	|| ydk::is_set(uncorrected_ber.yfilter)
+	|| ydk::is_set(uncorrected_ber_accumulated.yfilter)
+	|| ydk::is_set(uncorrected_ber_instantaneous.yfilter)
+	|| ydk::is_set(uncorrected_ber_latched_max.yfilter)
+	|| ydk::is_set(uncorrected_ber_latched_min.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ext-param-val";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (isi_correction_lane1.is_set || is_set(isi_correction_lane1.yfilter)) leaf_name_data.push_back(isi_correction_lane1.get_name_leafdata());
+    if (isi_correction_lane2.is_set || is_set(isi_correction_lane2.yfilter)) leaf_name_data.push_back(isi_correction_lane2.get_name_leafdata());
+    if (laser_diff_frequency_lane1.is_set || is_set(laser_diff_frequency_lane1.yfilter)) leaf_name_data.push_back(laser_diff_frequency_lane1.get_name_leafdata());
+    if (laser_diff_frequency_lane2.is_set || is_set(laser_diff_frequency_lane2.yfilter)) leaf_name_data.push_back(laser_diff_frequency_lane2.get_name_leafdata());
+    if (laser_diff_temperature_lane1.is_set || is_set(laser_diff_temperature_lane1.yfilter)) leaf_name_data.push_back(laser_diff_temperature_lane1.get_name_leafdata());
+    if (laser_diff_temperature_lane2.is_set || is_set(laser_diff_temperature_lane2.yfilter)) leaf_name_data.push_back(laser_diff_temperature_lane2.get_name_leafdata());
+    if (pam_rate_lane1.is_set || is_set(pam_rate_lane1.yfilter)) leaf_name_data.push_back(pam_rate_lane1.get_name_leafdata());
+    if (pam_rate_lane2.is_set || is_set(pam_rate_lane2.yfilter)) leaf_name_data.push_back(pam_rate_lane2.get_name_leafdata());
+    if (pre_fec_ber.is_set || is_set(pre_fec_ber.yfilter)) leaf_name_data.push_back(pre_fec_ber.get_name_leafdata());
+    if (pre_fec_ber_accumulated.is_set || is_set(pre_fec_ber_accumulated.yfilter)) leaf_name_data.push_back(pre_fec_ber_accumulated.get_name_leafdata());
+    if (pre_fec_ber_instantaneous.is_set || is_set(pre_fec_ber_instantaneous.yfilter)) leaf_name_data.push_back(pre_fec_ber_instantaneous.get_name_leafdata());
+    if (pre_fec_ber_latched_max.is_set || is_set(pre_fec_ber_latched_max.yfilter)) leaf_name_data.push_back(pre_fec_ber_latched_max.get_name_leafdata());
+    if (pre_fec_ber_latched_min.is_set || is_set(pre_fec_ber_latched_min.yfilter)) leaf_name_data.push_back(pre_fec_ber_latched_min.get_name_leafdata());
+    if (snr_lane1.is_set || is_set(snr_lane1.yfilter)) leaf_name_data.push_back(snr_lane1.get_name_leafdata());
+    if (snr_lane2.is_set || is_set(snr_lane2.yfilter)) leaf_name_data.push_back(snr_lane2.get_name_leafdata());
+    if (tec_current_lane1.is_set || is_set(tec_current_lane1.yfilter)) leaf_name_data.push_back(tec_current_lane1.get_name_leafdata());
+    if (tec_current_lane2.is_set || is_set(tec_current_lane2.yfilter)) leaf_name_data.push_back(tec_current_lane2.get_name_leafdata());
+    if (uncorrected_ber.is_set || is_set(uncorrected_ber.yfilter)) leaf_name_data.push_back(uncorrected_ber.get_name_leafdata());
+    if (uncorrected_ber_accumulated.is_set || is_set(uncorrected_ber_accumulated.yfilter)) leaf_name_data.push_back(uncorrected_ber_accumulated.get_name_leafdata());
+    if (uncorrected_ber_instantaneous.is_set || is_set(uncorrected_ber_instantaneous.yfilter)) leaf_name_data.push_back(uncorrected_ber_instantaneous.get_name_leafdata());
+    if (uncorrected_ber_latched_max.is_set || is_set(uncorrected_ber_latched_max.yfilter)) leaf_name_data.push_back(uncorrected_ber_latched_max.get_name_leafdata());
+    if (uncorrected_ber_latched_min.is_set || is_set(uncorrected_ber_latched_min.yfilter)) leaf_name_data.push_back(uncorrected_ber_latched_min.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "isi-correction-lane1")
+    {
+        isi_correction_lane1 = value;
+        isi_correction_lane1.value_namespace = name_space;
+        isi_correction_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "isi-correction-lane2")
+    {
+        isi_correction_lane2 = value;
+        isi_correction_lane2.value_namespace = name_space;
+        isi_correction_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "laser-diff-frequency-lane1")
+    {
+        laser_diff_frequency_lane1 = value;
+        laser_diff_frequency_lane1.value_namespace = name_space;
+        laser_diff_frequency_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "laser-diff-frequency-lane2")
+    {
+        laser_diff_frequency_lane2 = value;
+        laser_diff_frequency_lane2.value_namespace = name_space;
+        laser_diff_frequency_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "laser-diff-temperature-lane1")
+    {
+        laser_diff_temperature_lane1 = value;
+        laser_diff_temperature_lane1.value_namespace = name_space;
+        laser_diff_temperature_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "laser-diff-temperature-lane2")
+    {
+        laser_diff_temperature_lane2 = value;
+        laser_diff_temperature_lane2.value_namespace = name_space;
+        laser_diff_temperature_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pam-rate-lane1")
+    {
+        pam_rate_lane1 = value;
+        pam_rate_lane1.value_namespace = name_space;
+        pam_rate_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pam-rate-lane2")
+    {
+        pam_rate_lane2 = value;
+        pam_rate_lane2.value_namespace = name_space;
+        pam_rate_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-fec-ber")
+    {
+        pre_fec_ber = value;
+        pre_fec_ber.value_namespace = name_space;
+        pre_fec_ber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-fec-ber-accumulated")
+    {
+        pre_fec_ber_accumulated = value;
+        pre_fec_ber_accumulated.value_namespace = name_space;
+        pre_fec_ber_accumulated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-fec-ber-instantaneous")
+    {
+        pre_fec_ber_instantaneous = value;
+        pre_fec_ber_instantaneous.value_namespace = name_space;
+        pre_fec_ber_instantaneous.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-fec-ber-latched-max")
+    {
+        pre_fec_ber_latched_max = value;
+        pre_fec_ber_latched_max.value_namespace = name_space;
+        pre_fec_ber_latched_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-fec-ber-latched-min")
+    {
+        pre_fec_ber_latched_min = value;
+        pre_fec_ber_latched_min.value_namespace = name_space;
+        pre_fec_ber_latched_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "snr-lane1")
+    {
+        snr_lane1 = value;
+        snr_lane1.value_namespace = name_space;
+        snr_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "snr-lane2")
+    {
+        snr_lane2 = value;
+        snr_lane2.value_namespace = name_space;
+        snr_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tec-current-lane1")
+    {
+        tec_current_lane1 = value;
+        tec_current_lane1.value_namespace = name_space;
+        tec_current_lane1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tec-current-lane2")
+    {
+        tec_current_lane2 = value;
+        tec_current_lane2.value_namespace = name_space;
+        tec_current_lane2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrected-ber")
+    {
+        uncorrected_ber = value;
+        uncorrected_ber.value_namespace = name_space;
+        uncorrected_ber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrected-ber-accumulated")
+    {
+        uncorrected_ber_accumulated = value;
+        uncorrected_ber_accumulated.value_namespace = name_space;
+        uncorrected_ber_accumulated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrected-ber-instantaneous")
+    {
+        uncorrected_ber_instantaneous = value;
+        uncorrected_ber_instantaneous.value_namespace = name_space;
+        uncorrected_ber_instantaneous.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrected-ber-latched-max")
+    {
+        uncorrected_ber_latched_max = value;
+        uncorrected_ber_latched_max.value_namespace = name_space;
+        uncorrected_ber_latched_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uncorrected-ber-latched-min")
+    {
+        uncorrected_ber_latched_min = value;
+        uncorrected_ber_latched_min.value_namespace = name_space;
+        uncorrected_ber_latched_min.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "isi-correction-lane1")
+    {
+        isi_correction_lane1.yfilter = yfilter;
+    }
+    if(value_path == "isi-correction-lane2")
+    {
+        isi_correction_lane2.yfilter = yfilter;
+    }
+    if(value_path == "laser-diff-frequency-lane1")
+    {
+        laser_diff_frequency_lane1.yfilter = yfilter;
+    }
+    if(value_path == "laser-diff-frequency-lane2")
+    {
+        laser_diff_frequency_lane2.yfilter = yfilter;
+    }
+    if(value_path == "laser-diff-temperature-lane1")
+    {
+        laser_diff_temperature_lane1.yfilter = yfilter;
+    }
+    if(value_path == "laser-diff-temperature-lane2")
+    {
+        laser_diff_temperature_lane2.yfilter = yfilter;
+    }
+    if(value_path == "pam-rate-lane1")
+    {
+        pam_rate_lane1.yfilter = yfilter;
+    }
+    if(value_path == "pam-rate-lane2")
+    {
+        pam_rate_lane2.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber")
+    {
+        pre_fec_ber.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-accumulated")
+    {
+        pre_fec_ber_accumulated.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-instantaneous")
+    {
+        pre_fec_ber_instantaneous.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-latched-max")
+    {
+        pre_fec_ber_latched_max.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-latched-min")
+    {
+        pre_fec_ber_latched_min.yfilter = yfilter;
+    }
+    if(value_path == "snr-lane1")
+    {
+        snr_lane1.yfilter = yfilter;
+    }
+    if(value_path == "snr-lane2")
+    {
+        snr_lane2.yfilter = yfilter;
+    }
+    if(value_path == "tec-current-lane1")
+    {
+        tec_current_lane1.yfilter = yfilter;
+    }
+    if(value_path == "tec-current-lane2")
+    {
+        tec_current_lane2.yfilter = yfilter;
+    }
+    if(value_path == "uncorrected-ber")
+    {
+        uncorrected_ber.yfilter = yfilter;
+    }
+    if(value_path == "uncorrected-ber-accumulated")
+    {
+        uncorrected_ber_accumulated.yfilter = yfilter;
+    }
+    if(value_path == "uncorrected-ber-instantaneous")
+    {
+        uncorrected_ber_instantaneous.yfilter = yfilter;
+    }
+    if(value_path == "uncorrected-ber-latched-max")
+    {
+        uncorrected_ber_latched_max.yfilter = yfilter;
+    }
+    if(value_path == "uncorrected-ber-latched-min")
+    {
+        uncorrected_ber_latched_min.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isi-correction-lane1" || name == "isi-correction-lane2" || name == "laser-diff-frequency-lane1" || name == "laser-diff-frequency-lane2" || name == "laser-diff-temperature-lane1" || name == "laser-diff-temperature-lane2" || name == "pam-rate-lane1" || name == "pam-rate-lane2" || name == "pre-fec-ber" || name == "pre-fec-ber-accumulated" || name == "pre-fec-ber-instantaneous" || name == "pre-fec-ber-latched-max" || name == "pre-fec-ber-latched-min" || name == "snr-lane1" || name == "snr-lane2" || name == "tec-current-lane1" || name == "tec-current-lane2" || name == "uncorrected-ber" || name == "uncorrected-ber-accumulated" || name == "uncorrected-ber-instantaneous" || name == "uncorrected-ber-latched-max" || name == "uncorrected-ber-latched-min")
+        return true;
+    return false;
+}
+
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneData()
     :
+    frequency_offset{YType::int32, "frequency-offset"},
     lane_index{YType::uint32, "lane-index"},
     laser_bias_current_milli_amps{YType::uint32, "laser-bias-current-milli-amps"},
     laser_bias_current_percent{YType::uint32, "laser-bias-current-percent"},
@@ -10722,7 +3735,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneData()
 {
     lane_alarm_info->parent = this;
 
-    yang_name = "lane-data"; yang_parent_name = "optics-info";
+    yang_name = "lane-data"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::~LaneData()
@@ -10731,7 +3744,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::~LaneData()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_data() const
 {
-    return lane_index.is_set
+    return frequency_offset.is_set
+	|| lane_index.is_set
 	|| laser_bias_current_milli_amps.is_set
 	|| laser_bias_current_percent.is_set
 	|| output_frequency.is_set
@@ -10745,6 +3759,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_data() const
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(frequency_offset.yfilter)
 	|| ydk::is_set(lane_index.yfilter)
 	|| ydk::is_set(laser_bias_current_milli_amps.yfilter)
 	|| ydk::is_set(laser_bias_current_percent.yfilter)
@@ -10760,25 +3775,14 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "lane-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LaneData' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (frequency_offset.is_set || is_set(frequency_offset.yfilter)) leaf_name_data.push_back(frequency_offset.get_name_leafdata());
     if (lane_index.is_set || is_set(lane_index.yfilter)) leaf_name_data.push_back(lane_index.get_name_leafdata());
     if (laser_bias_current_milli_amps.is_set || is_set(laser_bias_current_milli_amps.yfilter)) leaf_name_data.push_back(laser_bias_current_milli_amps.get_name_leafdata());
     if (laser_bias_current_percent.is_set || is_set(laser_bias_current_percent.yfilter)) leaf_name_data.push_back(laser_bias_current_percent.get_name_leafdata());
@@ -10788,9 +3792,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_
     if (transmit_power.is_set || is_set(transmit_power.yfilter)) leaf_name_data.push_back(transmit_power.get_name_leafdata());
     if (transmit_signal_power.is_set || is_set(transmit_signal_power.yfilter)) leaf_name_data.push_back(transmit_signal_power.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -10821,6 +3823,12 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "frequency-offset")
+    {
+        frequency_offset = value;
+        frequency_offset.value_namespace = name_space;
+        frequency_offset.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "lane-index")
     {
         lane_index = value;
@@ -10873,6 +3881,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::set_value(const 
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "frequency-offset")
+    {
+        frequency_offset.yfilter = yfilter;
+    }
     if(value_path == "lane-index")
     {
         lane_index.yfilter = yfilter;
@@ -10909,7 +3921,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::set_filter(const
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lane-alarm-info" || name == "lane-index" || name == "laser-bias-current-milli-amps" || name == "laser-bias-current-percent" || name == "output-frequency" || name == "receive-power" || name == "receive-signal-power" || name == "transmit-power" || name == "transmit-signal-power")
+    if(name == "lane-alarm-info" || name == "frequency-offset" || name == "lane-index" || name == "laser-bias-current-milli-amps" || name == "laser-bias-current-percent" || name == "output-frequency" || name == "receive-power" || name == "receive-signal-power" || name == "transmit-power" || name == "transmit-signal-power")
         return true;
     return false;
 }
@@ -10923,16 +3935,12 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LaneAl
 	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower>())
 {
     high_lbc->parent = this;
-
     high_rx_power->parent = this;
-
     high_tx_power->parent = this;
-
     low_rx_power->parent = this;
-
     low_tx_power->parent = this;
 
-    yang_name = "lane-alarm-info"; yang_parent_name = "lane-data";
+    yang_name = "lane-alarm-info"; yang_parent_name = "lane-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::~LaneAlarmInfo()
@@ -10962,29 +3970,15 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 {
     std::ostringstream path_buffer;
     path_buffer << "lane-alarm-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LaneAlarmInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11084,424 +4078,13 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::h
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::HighRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::~HighRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::LowRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::~LowRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::HighTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::~HighTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::LowTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::~LowTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::HighLbc()
     :
     counter{YType::uint32, "counter"},
     is_detected{YType::boolean, "is-detected"}
 {
-    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info";
+
+    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::~HighLbc()
@@ -11525,31 +4108,17 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarm
 {
     std::ostringstream path_buffer;
     path_buffer << "high-lbc";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighLbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
     if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11599,9 +4168,7314 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::H
     return false;
 }
 
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::HighRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::~HighRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::HighTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::~HighTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::LowRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::~LowRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::LowTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::~LowTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgInfo()
+{
+
+    yang_name = "network-srlg-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_data() const
+{
+    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    {
+        if(network_srlg_array[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_operation() const
+{
+    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    {
+        if(network_srlg_array[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlg-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network-srlg-array")
+    {
+        for(auto const & c : network_srlg_array)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
+        c->parent = this;
+        network_srlg_array.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : network_srlg_array)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg-array")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::NetworkSrlgArray()
+    :
+    network_srlg{YType::uint32, "network-srlg"},
+    set_number{YType::uint32, "set-number"}
+{
+
+    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
+{
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return set_number.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
+{
+    for (auto const & leaf : network_srlg.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(network_srlg.yfilter)
+	|| ydk::is_set(set_number.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlg-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_number.is_set || is_set(set_number.yfilter)) leaf_name_data.push_back(set_number.get_name_leafdata());
+
+    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "network-srlg")
+    {
+        network_srlg.append(value);
+    }
+    if(value_path == "set-number")
+    {
+        set_number = value;
+        set_number.value_namespace = name_space;
+        set_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "network-srlg")
+    {
+        network_srlg.yfilter = yfilter;
+    }
+    if(value_path == "set-number")
+    {
+        set_number.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg" || name == "set-number")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::OpticsAlarmInfo()
+    :
+    amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>())
+	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>())
+	,hidgd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>())
+	,high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>())
+	,high_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>())
+	,high_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>())
+	,high_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>())
+	,high_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>())
+	,high_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>())
+	,high_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>())
+	,high_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>())
+	,high_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>())
+	,high_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>())
+	,high_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>())
+	,high_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>())
+	,high_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>())
+	,high_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>())
+	,high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>())
+	,imp_removal(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>())
+	,low_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>())
+	,low_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>())
+	,low_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>())
+	,low_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>())
+	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>())
+	,low_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>())
+	,low_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>())
+	,low_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>())
+	,low_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>())
+	,low_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>())
+	,low_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>())
+	,low_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>())
+	,low_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>())
+	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>())
+	,mea(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>())
+	,oorcd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>())
+	,osnr(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>())
+	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>())
+	,rx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>())
+	,rx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>())
+	,tx_fault(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>())
+	,tx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>())
+	,tx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>())
+	,txpwr_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>())
+	,wvlool(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>())
+{
+    amp_gain_deg_high->parent = this;
+    amp_gain_deg_low->parent = this;
+    hidgd->parent = this;
+    high_lbc->parent = this;
+    high_rx1_power->parent = this;
+    high_rx2_power->parent = this;
+    high_rx3_power->parent = this;
+    high_rx4_power->parent = this;
+    high_rx_power->parent = this;
+    high_tx1_power->parent = this;
+    high_tx1lbc->parent = this;
+    high_tx2_power->parent = this;
+    high_tx2lbc->parent = this;
+    high_tx3_power->parent = this;
+    high_tx3lbc->parent = this;
+    high_tx4_power->parent = this;
+    high_tx4lbc->parent = this;
+    high_tx_power->parent = this;
+    imp_removal->parent = this;
+    low_rx1_power->parent = this;
+    low_rx2_power->parent = this;
+    low_rx3_power->parent = this;
+    low_rx4_power->parent = this;
+    low_rx_power->parent = this;
+    low_tx1_power->parent = this;
+    low_tx1lbc->parent = this;
+    low_tx2_power->parent = this;
+    low_tx2lbc->parent = this;
+    low_tx3_power->parent = this;
+    low_tx3lbc->parent = this;
+    low_tx4_power->parent = this;
+    low_tx4lbc->parent = this;
+    low_tx_power->parent = this;
+    mea->parent = this;
+    oorcd->parent = this;
+    osnr->parent = this;
+    rx_loc->parent = this;
+    rx_lol->parent = this;
+    rx_los->parent = this;
+    tx_fault->parent = this;
+    tx_lol->parent = this;
+    tx_los->parent = this;
+    txpwr_mismatch->parent = this;
+    wvlool->parent = this;
+
+    yang_name = "optics-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::~OpticsAlarmInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_data() const
+{
+    return (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_data())
+	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_data())
+	|| (hidgd !=  nullptr && hidgd->has_data())
+	|| (high_lbc !=  nullptr && high_lbc->has_data())
+	|| (high_rx1_power !=  nullptr && high_rx1_power->has_data())
+	|| (high_rx2_power !=  nullptr && high_rx2_power->has_data())
+	|| (high_rx3_power !=  nullptr && high_rx3_power->has_data())
+	|| (high_rx4_power !=  nullptr && high_rx4_power->has_data())
+	|| (high_rx_power !=  nullptr && high_rx_power->has_data())
+	|| (high_tx1_power !=  nullptr && high_tx1_power->has_data())
+	|| (high_tx1lbc !=  nullptr && high_tx1lbc->has_data())
+	|| (high_tx2_power !=  nullptr && high_tx2_power->has_data())
+	|| (high_tx2lbc !=  nullptr && high_tx2lbc->has_data())
+	|| (high_tx3_power !=  nullptr && high_tx3_power->has_data())
+	|| (high_tx3lbc !=  nullptr && high_tx3lbc->has_data())
+	|| (high_tx4_power !=  nullptr && high_tx4_power->has_data())
+	|| (high_tx4lbc !=  nullptr && high_tx4lbc->has_data())
+	|| (high_tx_power !=  nullptr && high_tx_power->has_data())
+	|| (imp_removal !=  nullptr && imp_removal->has_data())
+	|| (low_rx1_power !=  nullptr && low_rx1_power->has_data())
+	|| (low_rx2_power !=  nullptr && low_rx2_power->has_data())
+	|| (low_rx3_power !=  nullptr && low_rx3_power->has_data())
+	|| (low_rx4_power !=  nullptr && low_rx4_power->has_data())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
+	|| (low_tx1_power !=  nullptr && low_tx1_power->has_data())
+	|| (low_tx1lbc !=  nullptr && low_tx1lbc->has_data())
+	|| (low_tx2_power !=  nullptr && low_tx2_power->has_data())
+	|| (low_tx2lbc !=  nullptr && low_tx2lbc->has_data())
+	|| (low_tx3_power !=  nullptr && low_tx3_power->has_data())
+	|| (low_tx3lbc !=  nullptr && low_tx3lbc->has_data())
+	|| (low_tx4_power !=  nullptr && low_tx4_power->has_data())
+	|| (low_tx4lbc !=  nullptr && low_tx4lbc->has_data())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_data())
+	|| (mea !=  nullptr && mea->has_data())
+	|| (oorcd !=  nullptr && oorcd->has_data())
+	|| (osnr !=  nullptr && osnr->has_data())
+	|| (rx_loc !=  nullptr && rx_loc->has_data())
+	|| (rx_lol !=  nullptr && rx_lol->has_data())
+	|| (rx_los !=  nullptr && rx_los->has_data())
+	|| (tx_fault !=  nullptr && tx_fault->has_data())
+	|| (tx_lol !=  nullptr && tx_lol->has_data())
+	|| (tx_los !=  nullptr && tx_los->has_data())
+	|| (txpwr_mismatch !=  nullptr && txpwr_mismatch->has_data())
+	|| (wvlool !=  nullptr && wvlool->has_data());
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_operation())
+	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_operation())
+	|| (hidgd !=  nullptr && hidgd->has_operation())
+	|| (high_lbc !=  nullptr && high_lbc->has_operation())
+	|| (high_rx1_power !=  nullptr && high_rx1_power->has_operation())
+	|| (high_rx2_power !=  nullptr && high_rx2_power->has_operation())
+	|| (high_rx3_power !=  nullptr && high_rx3_power->has_operation())
+	|| (high_rx4_power !=  nullptr && high_rx4_power->has_operation())
+	|| (high_rx_power !=  nullptr && high_rx_power->has_operation())
+	|| (high_tx1_power !=  nullptr && high_tx1_power->has_operation())
+	|| (high_tx1lbc !=  nullptr && high_tx1lbc->has_operation())
+	|| (high_tx2_power !=  nullptr && high_tx2_power->has_operation())
+	|| (high_tx2lbc !=  nullptr && high_tx2lbc->has_operation())
+	|| (high_tx3_power !=  nullptr && high_tx3_power->has_operation())
+	|| (high_tx3lbc !=  nullptr && high_tx3lbc->has_operation())
+	|| (high_tx4_power !=  nullptr && high_tx4_power->has_operation())
+	|| (high_tx4lbc !=  nullptr && high_tx4lbc->has_operation())
+	|| (high_tx_power !=  nullptr && high_tx_power->has_operation())
+	|| (imp_removal !=  nullptr && imp_removal->has_operation())
+	|| (low_rx1_power !=  nullptr && low_rx1_power->has_operation())
+	|| (low_rx2_power !=  nullptr && low_rx2_power->has_operation())
+	|| (low_rx3_power !=  nullptr && low_rx3_power->has_operation())
+	|| (low_rx4_power !=  nullptr && low_rx4_power->has_operation())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
+	|| (low_tx1_power !=  nullptr && low_tx1_power->has_operation())
+	|| (low_tx1lbc !=  nullptr && low_tx1lbc->has_operation())
+	|| (low_tx2_power !=  nullptr && low_tx2_power->has_operation())
+	|| (low_tx2lbc !=  nullptr && low_tx2lbc->has_operation())
+	|| (low_tx3_power !=  nullptr && low_tx3_power->has_operation())
+	|| (low_tx3lbc !=  nullptr && low_tx3lbc->has_operation())
+	|| (low_tx4_power !=  nullptr && low_tx4_power->has_operation())
+	|| (low_tx4lbc !=  nullptr && low_tx4lbc->has_operation())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_operation())
+	|| (mea !=  nullptr && mea->has_operation())
+	|| (oorcd !=  nullptr && oorcd->has_operation())
+	|| (osnr !=  nullptr && osnr->has_operation())
+	|| (rx_loc !=  nullptr && rx_loc->has_operation())
+	|| (rx_lol !=  nullptr && rx_lol->has_operation())
+	|| (rx_los !=  nullptr && rx_los->has_operation())
+	|| (tx_fault !=  nullptr && tx_fault->has_operation())
+	|| (tx_lol !=  nullptr && tx_lol->has_operation())
+	|| (tx_los !=  nullptr && tx_los->has_operation())
+	|| (txpwr_mismatch !=  nullptr && txpwr_mismatch->has_operation())
+	|| (wvlool !=  nullptr && wvlool->has_operation());
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "amp-gain-deg-high")
+    {
+        if(amp_gain_deg_high == nullptr)
+        {
+            amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>();
+        }
+        return amp_gain_deg_high;
+    }
+
+    if(child_yang_name == "amp-gain-deg-low")
+    {
+        if(amp_gain_deg_low == nullptr)
+        {
+            amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>();
+        }
+        return amp_gain_deg_low;
+    }
+
+    if(child_yang_name == "hidgd")
+    {
+        if(hidgd == nullptr)
+        {
+            hidgd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>();
+        }
+        return hidgd;
+    }
+
+    if(child_yang_name == "high-lbc")
+    {
+        if(high_lbc == nullptr)
+        {
+            high_lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>();
+        }
+        return high_lbc;
+    }
+
+    if(child_yang_name == "high-rx1-power")
+    {
+        if(high_rx1_power == nullptr)
+        {
+            high_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>();
+        }
+        return high_rx1_power;
+    }
+
+    if(child_yang_name == "high-rx2-power")
+    {
+        if(high_rx2_power == nullptr)
+        {
+            high_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>();
+        }
+        return high_rx2_power;
+    }
+
+    if(child_yang_name == "high-rx3-power")
+    {
+        if(high_rx3_power == nullptr)
+        {
+            high_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>();
+        }
+        return high_rx3_power;
+    }
+
+    if(child_yang_name == "high-rx4-power")
+    {
+        if(high_rx4_power == nullptr)
+        {
+            high_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>();
+        }
+        return high_rx4_power;
+    }
+
+    if(child_yang_name == "high-rx-power")
+    {
+        if(high_rx_power == nullptr)
+        {
+            high_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>();
+        }
+        return high_rx_power;
+    }
+
+    if(child_yang_name == "high-tx1-power")
+    {
+        if(high_tx1_power == nullptr)
+        {
+            high_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>();
+        }
+        return high_tx1_power;
+    }
+
+    if(child_yang_name == "high-tx1lbc")
+    {
+        if(high_tx1lbc == nullptr)
+        {
+            high_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>();
+        }
+        return high_tx1lbc;
+    }
+
+    if(child_yang_name == "high-tx2-power")
+    {
+        if(high_tx2_power == nullptr)
+        {
+            high_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>();
+        }
+        return high_tx2_power;
+    }
+
+    if(child_yang_name == "high-tx2lbc")
+    {
+        if(high_tx2lbc == nullptr)
+        {
+            high_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>();
+        }
+        return high_tx2lbc;
+    }
+
+    if(child_yang_name == "high-tx3-power")
+    {
+        if(high_tx3_power == nullptr)
+        {
+            high_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>();
+        }
+        return high_tx3_power;
+    }
+
+    if(child_yang_name == "high-tx3lbc")
+    {
+        if(high_tx3lbc == nullptr)
+        {
+            high_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>();
+        }
+        return high_tx3lbc;
+    }
+
+    if(child_yang_name == "high-tx4-power")
+    {
+        if(high_tx4_power == nullptr)
+        {
+            high_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>();
+        }
+        return high_tx4_power;
+    }
+
+    if(child_yang_name == "high-tx4lbc")
+    {
+        if(high_tx4lbc == nullptr)
+        {
+            high_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>();
+        }
+        return high_tx4lbc;
+    }
+
+    if(child_yang_name == "high-tx-power")
+    {
+        if(high_tx_power == nullptr)
+        {
+            high_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>();
+        }
+        return high_tx_power;
+    }
+
+    if(child_yang_name == "imp-removal")
+    {
+        if(imp_removal == nullptr)
+        {
+            imp_removal = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>();
+        }
+        return imp_removal;
+    }
+
+    if(child_yang_name == "low-rx1-power")
+    {
+        if(low_rx1_power == nullptr)
+        {
+            low_rx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>();
+        }
+        return low_rx1_power;
+    }
+
+    if(child_yang_name == "low-rx2-power")
+    {
+        if(low_rx2_power == nullptr)
+        {
+            low_rx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>();
+        }
+        return low_rx2_power;
+    }
+
+    if(child_yang_name == "low-rx3-power")
+    {
+        if(low_rx3_power == nullptr)
+        {
+            low_rx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>();
+        }
+        return low_rx3_power;
+    }
+
+    if(child_yang_name == "low-rx4-power")
+    {
+        if(low_rx4_power == nullptr)
+        {
+            low_rx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>();
+        }
+        return low_rx4_power;
+    }
+
+    if(child_yang_name == "low-rx-power")
+    {
+        if(low_rx_power == nullptr)
+        {
+            low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>();
+        }
+        return low_rx_power;
+    }
+
+    if(child_yang_name == "low-tx1-power")
+    {
+        if(low_tx1_power == nullptr)
+        {
+            low_tx1_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>();
+        }
+        return low_tx1_power;
+    }
+
+    if(child_yang_name == "low-tx1lbc")
+    {
+        if(low_tx1lbc == nullptr)
+        {
+            low_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>();
+        }
+        return low_tx1lbc;
+    }
+
+    if(child_yang_name == "low-tx2-power")
+    {
+        if(low_tx2_power == nullptr)
+        {
+            low_tx2_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>();
+        }
+        return low_tx2_power;
+    }
+
+    if(child_yang_name == "low-tx2lbc")
+    {
+        if(low_tx2lbc == nullptr)
+        {
+            low_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>();
+        }
+        return low_tx2lbc;
+    }
+
+    if(child_yang_name == "low-tx3-power")
+    {
+        if(low_tx3_power == nullptr)
+        {
+            low_tx3_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>();
+        }
+        return low_tx3_power;
+    }
+
+    if(child_yang_name == "low-tx3lbc")
+    {
+        if(low_tx3lbc == nullptr)
+        {
+            low_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>();
+        }
+        return low_tx3lbc;
+    }
+
+    if(child_yang_name == "low-tx4-power")
+    {
+        if(low_tx4_power == nullptr)
+        {
+            low_tx4_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>();
+        }
+        return low_tx4_power;
+    }
+
+    if(child_yang_name == "low-tx4lbc")
+    {
+        if(low_tx4lbc == nullptr)
+        {
+            low_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>();
+        }
+        return low_tx4lbc;
+    }
+
+    if(child_yang_name == "low-tx-power")
+    {
+        if(low_tx_power == nullptr)
+        {
+            low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>();
+        }
+        return low_tx_power;
+    }
+
+    if(child_yang_name == "mea")
+    {
+        if(mea == nullptr)
+        {
+            mea = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>();
+        }
+        return mea;
+    }
+
+    if(child_yang_name == "oorcd")
+    {
+        if(oorcd == nullptr)
+        {
+            oorcd = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>();
+        }
+        return oorcd;
+    }
+
+    if(child_yang_name == "osnr")
+    {
+        if(osnr == nullptr)
+        {
+            osnr = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>();
+        }
+        return osnr;
+    }
+
+    if(child_yang_name == "rx-loc")
+    {
+        if(rx_loc == nullptr)
+        {
+            rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>();
+        }
+        return rx_loc;
+    }
+
+    if(child_yang_name == "rx-lol")
+    {
+        if(rx_lol == nullptr)
+        {
+            rx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>();
+        }
+        return rx_lol;
+    }
+
+    if(child_yang_name == "rx-los")
+    {
+        if(rx_los == nullptr)
+        {
+            rx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>();
+        }
+        return rx_los;
+    }
+
+    if(child_yang_name == "tx-fault")
+    {
+        if(tx_fault == nullptr)
+        {
+            tx_fault = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>();
+        }
+        return tx_fault;
+    }
+
+    if(child_yang_name == "tx-lol")
+    {
+        if(tx_lol == nullptr)
+        {
+            tx_lol = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>();
+        }
+        return tx_lol;
+    }
+
+    if(child_yang_name == "tx-los")
+    {
+        if(tx_los == nullptr)
+        {
+            tx_los = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>();
+        }
+        return tx_los;
+    }
+
+    if(child_yang_name == "txpwr-mismatch")
+    {
+        if(txpwr_mismatch == nullptr)
+        {
+            txpwr_mismatch = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>();
+        }
+        return txpwr_mismatch;
+    }
+
+    if(child_yang_name == "wvlool")
+    {
+        if(wvlool == nullptr)
+        {
+            wvlool = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>();
+        }
+        return wvlool;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amp_gain_deg_high != nullptr)
+    {
+        children["amp-gain-deg-high"] = amp_gain_deg_high;
+    }
+
+    if(amp_gain_deg_low != nullptr)
+    {
+        children["amp-gain-deg-low"] = amp_gain_deg_low;
+    }
+
+    if(hidgd != nullptr)
+    {
+        children["hidgd"] = hidgd;
+    }
+
+    if(high_lbc != nullptr)
+    {
+        children["high-lbc"] = high_lbc;
+    }
+
+    if(high_rx1_power != nullptr)
+    {
+        children["high-rx1-power"] = high_rx1_power;
+    }
+
+    if(high_rx2_power != nullptr)
+    {
+        children["high-rx2-power"] = high_rx2_power;
+    }
+
+    if(high_rx3_power != nullptr)
+    {
+        children["high-rx3-power"] = high_rx3_power;
+    }
+
+    if(high_rx4_power != nullptr)
+    {
+        children["high-rx4-power"] = high_rx4_power;
+    }
+
+    if(high_rx_power != nullptr)
+    {
+        children["high-rx-power"] = high_rx_power;
+    }
+
+    if(high_tx1_power != nullptr)
+    {
+        children["high-tx1-power"] = high_tx1_power;
+    }
+
+    if(high_tx1lbc != nullptr)
+    {
+        children["high-tx1lbc"] = high_tx1lbc;
+    }
+
+    if(high_tx2_power != nullptr)
+    {
+        children["high-tx2-power"] = high_tx2_power;
+    }
+
+    if(high_tx2lbc != nullptr)
+    {
+        children["high-tx2lbc"] = high_tx2lbc;
+    }
+
+    if(high_tx3_power != nullptr)
+    {
+        children["high-tx3-power"] = high_tx3_power;
+    }
+
+    if(high_tx3lbc != nullptr)
+    {
+        children["high-tx3lbc"] = high_tx3lbc;
+    }
+
+    if(high_tx4_power != nullptr)
+    {
+        children["high-tx4-power"] = high_tx4_power;
+    }
+
+    if(high_tx4lbc != nullptr)
+    {
+        children["high-tx4lbc"] = high_tx4lbc;
+    }
+
+    if(high_tx_power != nullptr)
+    {
+        children["high-tx-power"] = high_tx_power;
+    }
+
+    if(imp_removal != nullptr)
+    {
+        children["imp-removal"] = imp_removal;
+    }
+
+    if(low_rx1_power != nullptr)
+    {
+        children["low-rx1-power"] = low_rx1_power;
+    }
+
+    if(low_rx2_power != nullptr)
+    {
+        children["low-rx2-power"] = low_rx2_power;
+    }
+
+    if(low_rx3_power != nullptr)
+    {
+        children["low-rx3-power"] = low_rx3_power;
+    }
+
+    if(low_rx4_power != nullptr)
+    {
+        children["low-rx4-power"] = low_rx4_power;
+    }
+
+    if(low_rx_power != nullptr)
+    {
+        children["low-rx-power"] = low_rx_power;
+    }
+
+    if(low_tx1_power != nullptr)
+    {
+        children["low-tx1-power"] = low_tx1_power;
+    }
+
+    if(low_tx1lbc != nullptr)
+    {
+        children["low-tx1lbc"] = low_tx1lbc;
+    }
+
+    if(low_tx2_power != nullptr)
+    {
+        children["low-tx2-power"] = low_tx2_power;
+    }
+
+    if(low_tx2lbc != nullptr)
+    {
+        children["low-tx2lbc"] = low_tx2lbc;
+    }
+
+    if(low_tx3_power != nullptr)
+    {
+        children["low-tx3-power"] = low_tx3_power;
+    }
+
+    if(low_tx3lbc != nullptr)
+    {
+        children["low-tx3lbc"] = low_tx3lbc;
+    }
+
+    if(low_tx4_power != nullptr)
+    {
+        children["low-tx4-power"] = low_tx4_power;
+    }
+
+    if(low_tx4lbc != nullptr)
+    {
+        children["low-tx4lbc"] = low_tx4lbc;
+    }
+
+    if(low_tx_power != nullptr)
+    {
+        children["low-tx-power"] = low_tx_power;
+    }
+
+    if(mea != nullptr)
+    {
+        children["mea"] = mea;
+    }
+
+    if(oorcd != nullptr)
+    {
+        children["oorcd"] = oorcd;
+    }
+
+    if(osnr != nullptr)
+    {
+        children["osnr"] = osnr;
+    }
+
+    if(rx_loc != nullptr)
+    {
+        children["rx-loc"] = rx_loc;
+    }
+
+    if(rx_lol != nullptr)
+    {
+        children["rx-lol"] = rx_lol;
+    }
+
+    if(rx_los != nullptr)
+    {
+        children["rx-los"] = rx_los;
+    }
+
+    if(tx_fault != nullptr)
+    {
+        children["tx-fault"] = tx_fault;
+    }
+
+    if(tx_lol != nullptr)
+    {
+        children["tx-lol"] = tx_lol;
+    }
+
+    if(tx_los != nullptr)
+    {
+        children["tx-los"] = tx_los;
+    }
+
+    if(txpwr_mismatch != nullptr)
+    {
+        children["txpwr-mismatch"] = txpwr_mismatch;
+    }
+
+    if(wvlool != nullptr)
+    {
+        children["wvlool"] = wvlool;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "amp-gain-deg-high" || name == "amp-gain-deg-low" || name == "hidgd" || name == "high-lbc" || name == "high-rx1-power" || name == "high-rx2-power" || name == "high-rx3-power" || name == "high-rx4-power" || name == "high-rx-power" || name == "high-tx1-power" || name == "high-tx1lbc" || name == "high-tx2-power" || name == "high-tx2lbc" || name == "high-tx3-power" || name == "high-tx3lbc" || name == "high-tx4-power" || name == "high-tx4lbc" || name == "high-tx-power" || name == "imp-removal" || name == "low-rx1-power" || name == "low-rx2-power" || name == "low-rx3-power" || name == "low-rx4-power" || name == "low-rx-power" || name == "low-tx1-power" || name == "low-tx1lbc" || name == "low-tx2-power" || name == "low-tx2lbc" || name == "low-tx3-power" || name == "low-tx3lbc" || name == "low-tx4-power" || name == "low-tx4lbc" || name == "low-tx-power" || name == "mea" || name == "oorcd" || name == "osnr" || name == "rx-loc" || name == "rx-lol" || name == "rx-los" || name == "tx-fault" || name == "tx-lol" || name == "tx-los" || name == "txpwr-mismatch" || name == "wvlool")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::AmpGainDegHigh()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "amp-gain-deg-high"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "amp-gain-deg-high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::AmpGainDegLow()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "amp-gain-deg-low"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "amp-gain-deg-low";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::Hidgd()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "hidgd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::~Hidgd()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hidgd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::HighLbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::~HighLbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::HighRx1Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::~HighRx1Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx1-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::HighRx2Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::~HighRx2Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx2-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::HighRx3Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::~HighRx3Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx3-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::HighRx4Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::~HighRx4Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx4-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::HighRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::~HighRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::HighTx1Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::~HighTx1Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx1lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::HighTx1Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::~HighTx1Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx1-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::HighTx2Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::~HighTx2Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx2lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::HighTx2Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::~HighTx2Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx2-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::HighTx3Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::~HighTx3Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx3lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::HighTx3Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::~HighTx3Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx3-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::HighTx4Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::~HighTx4Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx4lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::HighTx4Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::~HighTx4Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx4-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::HighTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "high-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::~HighTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::ImpRemoval()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "imp-removal"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::~ImpRemoval()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "imp-removal";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::LowRx1Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::~LowRx1Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx1-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::LowRx2Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::~LowRx2Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx2-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::LowRx3Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::~LowRx3Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx3-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::LowRx4Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::~LowRx4Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx4-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::LowRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::~LowRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::LowTx1Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::~LowTx1Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx1lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::LowTx1Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::~LowTx1Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx1-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::LowTx2Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::~LowTx2Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx2lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::LowTx2Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::~LowTx2Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx2-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::LowTx3Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::~LowTx3Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx3lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::LowTx3Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::~LowTx3Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx3-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::LowTx4Lbc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::~LowTx4Lbc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx4lbc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::LowTx4Power()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::~LowTx4Power()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx4-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::LowTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::~LowTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::Mea()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "mea"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::~Mea()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mea";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::Oorcd()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "oorcd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::~Oorcd()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oorcd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::Osnr()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "osnr"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::~Osnr()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "osnr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::RxLoc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "rx-loc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::~RxLoc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-loc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::RxLol()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "rx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::~RxLol()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-lol";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::RxLos()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "rx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::~RxLos()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-los";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::TxFault()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "tx-fault"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::~TxFault()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-fault";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::TxLol()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "tx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::~TxLol()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-lol";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::TxLos()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "tx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::~TxLos()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-los";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::TxpwrMismatch()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "txpwr-mismatch"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::~TxpwrMismatch()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "txpwr-mismatch";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::Wvlool()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "wvlool"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::~Wvlool()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "wvlool";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::OtsAlarmInfo()
+    :
+    amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>())
+	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>())
+	,auto_ampli_ctrl_config_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>())
+	,auto_ampli_ctrl_disabled(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>())
+	,auto_ampli_ctrl_running(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning>())
+	,auto_laser_shut(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>())
+	,auto_power_red(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>())
+	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>())
+	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>())
+	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>())
+	,rx_los_p(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>())
+	,switch_to_protect(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>())
+{
+    amp_gain_deg_high->parent = this;
+    amp_gain_deg_low->parent = this;
+    auto_ampli_ctrl_config_mismatch->parent = this;
+    auto_ampli_ctrl_disabled->parent = this;
+    auto_ampli_ctrl_running->parent = this;
+    auto_laser_shut->parent = this;
+    auto_power_red->parent = this;
+    low_rx_power->parent = this;
+    low_tx_power->parent = this;
+    rx_loc->parent = this;
+    rx_los_p->parent = this;
+    switch_to_protect->parent = this;
+
+    yang_name = "ots-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::~OtsAlarmInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_data() const
+{
+    return (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_data())
+	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_data())
+	|| (auto_ampli_ctrl_config_mismatch !=  nullptr && auto_ampli_ctrl_config_mismatch->has_data())
+	|| (auto_ampli_ctrl_disabled !=  nullptr && auto_ampli_ctrl_disabled->has_data())
+	|| (auto_ampli_ctrl_running !=  nullptr && auto_ampli_ctrl_running->has_data())
+	|| (auto_laser_shut !=  nullptr && auto_laser_shut->has_data())
+	|| (auto_power_red !=  nullptr && auto_power_red->has_data())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_data())
+	|| (rx_loc !=  nullptr && rx_loc->has_data())
+	|| (rx_los_p !=  nullptr && rx_los_p->has_data())
+	|| (switch_to_protect !=  nullptr && switch_to_protect->has_data());
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_operation())
+	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_operation())
+	|| (auto_ampli_ctrl_config_mismatch !=  nullptr && auto_ampli_ctrl_config_mismatch->has_operation())
+	|| (auto_ampli_ctrl_disabled !=  nullptr && auto_ampli_ctrl_disabled->has_operation())
+	|| (auto_ampli_ctrl_running !=  nullptr && auto_ampli_ctrl_running->has_operation())
+	|| (auto_laser_shut !=  nullptr && auto_laser_shut->has_operation())
+	|| (auto_power_red !=  nullptr && auto_power_red->has_operation())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_operation())
+	|| (rx_loc !=  nullptr && rx_loc->has_operation())
+	|| (rx_los_p !=  nullptr && rx_los_p->has_operation())
+	|| (switch_to_protect !=  nullptr && switch_to_protect->has_operation());
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ots-alarm-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "amp-gain-deg-high")
+    {
+        if(amp_gain_deg_high == nullptr)
+        {
+            amp_gain_deg_high = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>();
+        }
+        return amp_gain_deg_high;
+    }
+
+    if(child_yang_name == "amp-gain-deg-low")
+    {
+        if(amp_gain_deg_low == nullptr)
+        {
+            amp_gain_deg_low = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>();
+        }
+        return amp_gain_deg_low;
+    }
+
+    if(child_yang_name == "auto-ampli-ctrl-config-mismatch")
+    {
+        if(auto_ampli_ctrl_config_mismatch == nullptr)
+        {
+            auto_ampli_ctrl_config_mismatch = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>();
+        }
+        return auto_ampli_ctrl_config_mismatch;
+    }
+
+    if(child_yang_name == "auto-ampli-ctrl-disabled")
+    {
+        if(auto_ampli_ctrl_disabled == nullptr)
+        {
+            auto_ampli_ctrl_disabled = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>();
+        }
+        return auto_ampli_ctrl_disabled;
+    }
+
+    if(child_yang_name == "auto-ampli-ctrl-running")
+    {
+        if(auto_ampli_ctrl_running == nullptr)
+        {
+            auto_ampli_ctrl_running = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning>();
+        }
+        return auto_ampli_ctrl_running;
+    }
+
+    if(child_yang_name == "auto-laser-shut")
+    {
+        if(auto_laser_shut == nullptr)
+        {
+            auto_laser_shut = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>();
+        }
+        return auto_laser_shut;
+    }
+
+    if(child_yang_name == "auto-power-red")
+    {
+        if(auto_power_red == nullptr)
+        {
+            auto_power_red = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>();
+        }
+        return auto_power_red;
+    }
+
+    if(child_yang_name == "low-rx-power")
+    {
+        if(low_rx_power == nullptr)
+        {
+            low_rx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>();
+        }
+        return low_rx_power;
+    }
+
+    if(child_yang_name == "low-tx-power")
+    {
+        if(low_tx_power == nullptr)
+        {
+            low_tx_power = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>();
+        }
+        return low_tx_power;
+    }
+
+    if(child_yang_name == "rx-loc")
+    {
+        if(rx_loc == nullptr)
+        {
+            rx_loc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>();
+        }
+        return rx_loc;
+    }
+
+    if(child_yang_name == "rx-los-p")
+    {
+        if(rx_los_p == nullptr)
+        {
+            rx_los_p = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>();
+        }
+        return rx_los_p;
+    }
+
+    if(child_yang_name == "switch-to-protect")
+    {
+        if(switch_to_protect == nullptr)
+        {
+            switch_to_protect = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>();
+        }
+        return switch_to_protect;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(amp_gain_deg_high != nullptr)
+    {
+        children["amp-gain-deg-high"] = amp_gain_deg_high;
+    }
+
+    if(amp_gain_deg_low != nullptr)
+    {
+        children["amp-gain-deg-low"] = amp_gain_deg_low;
+    }
+
+    if(auto_ampli_ctrl_config_mismatch != nullptr)
+    {
+        children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
+    }
+
+    if(auto_ampli_ctrl_disabled != nullptr)
+    {
+        children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
+    }
+
+    if(auto_ampli_ctrl_running != nullptr)
+    {
+        children["auto-ampli-ctrl-running"] = auto_ampli_ctrl_running;
+    }
+
+    if(auto_laser_shut != nullptr)
+    {
+        children["auto-laser-shut"] = auto_laser_shut;
+    }
+
+    if(auto_power_red != nullptr)
+    {
+        children["auto-power-red"] = auto_power_red;
+    }
+
+    if(low_rx_power != nullptr)
+    {
+        children["low-rx-power"] = low_rx_power;
+    }
+
+    if(low_tx_power != nullptr)
+    {
+        children["low-tx-power"] = low_tx_power;
+    }
+
+    if(rx_loc != nullptr)
+    {
+        children["rx-loc"] = rx_loc;
+    }
+
+    if(rx_los_p != nullptr)
+    {
+        children["rx-los-p"] = rx_los_p;
+    }
+
+    if(switch_to_protect != nullptr)
+    {
+        children["switch-to-protect"] = switch_to_protect;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "amp-gain-deg-high" || name == "amp-gain-deg-low" || name == "auto-ampli-ctrl-config-mismatch" || name == "auto-ampli-ctrl-disabled" || name == "auto-ampli-ctrl-running" || name == "auto-laser-shut" || name == "auto-power-red" || name == "low-rx-power" || name == "low-tx-power" || name == "rx-loc" || name == "rx-los-p" || name == "switch-to-protect")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::AmpGainDegHigh()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "amp-gain-deg-high"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "amp-gain-deg-high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::AmpGainDegLow()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "amp-gain-deg-low"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "amp-gain-deg-low";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::AutoAmpliCtrlConfigMismatch()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "auto-ampli-ctrl-config-mismatch"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::~AutoAmpliCtrlConfigMismatch()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-ampli-ctrl-config-mismatch";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::AutoAmpliCtrlDisabled()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "auto-ampli-ctrl-disabled"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::~AutoAmpliCtrlDisabled()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-ampli-ctrl-disabled";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::AutoAmpliCtrlRunning()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "auto-ampli-ctrl-running"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::~AutoAmpliCtrlRunning()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-ampli-ctrl-running";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::AutoLaserShut()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "auto-laser-shut"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::~AutoLaserShut()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-laser-shut";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::AutoPowerRed()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "auto-power-red"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::~AutoPowerRed()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-power-red";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::LowRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-rx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::~LowRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::LowTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::~LowTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::RxLoc()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "rx-loc"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::~RxLoc()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-loc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::RxLosP()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "rx-los-p"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::~RxLosP()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-los-p";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::SwitchToProtect()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "switch-to-protect"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::~SwitchToProtect()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "switch-to-protect";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumInfo()
+    :
+    first_slice_wavelength{YType::str, "first-slice-wavelength"},
+    spectrum_slice_spacing{YType::uint32, "spectrum-slice-spacing"},
+    total_spectrum_slice_count{YType::uint32, "total-spectrum-slice-count"}
+{
+
+    yang_name = "spectrum-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::~SpectrumInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::has_data() const
+{
+    for (std::size_t index=0; index<spectrum_slice_power_info.size(); index++)
+    {
+        if(spectrum_slice_power_info[index]->has_data())
+            return true;
+    }
+    return first_slice_wavelength.is_set
+	|| spectrum_slice_spacing.is_set
+	|| total_spectrum_slice_count.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::has_operation() const
+{
+    for (std::size_t index=0; index<spectrum_slice_power_info.size(); index++)
+    {
+        if(spectrum_slice_power_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(first_slice_wavelength.yfilter)
+	|| ydk::is_set(spectrum_slice_spacing.yfilter)
+	|| ydk::is_set(total_spectrum_slice_count.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spectrum-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (first_slice_wavelength.is_set || is_set(first_slice_wavelength.yfilter)) leaf_name_data.push_back(first_slice_wavelength.get_name_leafdata());
+    if (spectrum_slice_spacing.is_set || is_set(spectrum_slice_spacing.yfilter)) leaf_name_data.push_back(spectrum_slice_spacing.get_name_leafdata());
+    if (total_spectrum_slice_count.is_set || is_set(total_spectrum_slice_count.yfilter)) leaf_name_data.push_back(total_spectrum_slice_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "spectrum-slice-power-info")
+    {
+        for(auto const & c : spectrum_slice_power_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo>();
+        c->parent = this;
+        spectrum_slice_power_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : spectrum_slice_power_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "first-slice-wavelength")
+    {
+        first_slice_wavelength = value;
+        first_slice_wavelength.value_namespace = name_space;
+        first_slice_wavelength.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "spectrum-slice-spacing")
+    {
+        spectrum_slice_spacing = value;
+        spectrum_slice_spacing.value_namespace = name_space;
+        spectrum_slice_spacing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-spectrum-slice-count")
+    {
+        total_spectrum_slice_count = value;
+        total_spectrum_slice_count.value_namespace = name_space;
+        total_spectrum_slice_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "first-slice-wavelength")
+    {
+        first_slice_wavelength.yfilter = yfilter;
+    }
+    if(value_path == "spectrum-slice-spacing")
+    {
+        spectrum_slice_spacing.yfilter = yfilter;
+    }
+    if(value_path == "total-spectrum-slice-count")
+    {
+        total_spectrum_slice_count.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spectrum-slice-power-info" || name == "first-slice-wavelength" || name == "spectrum-slice-spacing" || name == "total-spectrum-slice-count")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::SpectrumSlicePowerInfo()
+    :
+    lower_frequency{YType::uint64, "lower-frequency"},
+    rx_power{YType::str, "rx-power"},
+    rx_psd{YType::str, "rx-psd"},
+    slice_num{YType::uint32, "slice-num"},
+    tx_power{YType::str, "tx-power"},
+    tx_psd{YType::str, "tx-psd"},
+    upper_frequency{YType::uint64, "upper-frequency"}
+{
+
+    yang_name = "spectrum-slice-power-info"; yang_parent_name = "spectrum-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::~SpectrumSlicePowerInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::has_data() const
+{
+    return lower_frequency.is_set
+	|| rx_power.is_set
+	|| rx_psd.is_set
+	|| slice_num.is_set
+	|| tx_power.is_set
+	|| tx_psd.is_set
+	|| upper_frequency.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lower_frequency.yfilter)
+	|| ydk::is_set(rx_power.yfilter)
+	|| ydk::is_set(rx_psd.yfilter)
+	|| ydk::is_set(slice_num.yfilter)
+	|| ydk::is_set(tx_power.yfilter)
+	|| ydk::is_set(tx_psd.yfilter)
+	|| ydk::is_set(upper_frequency.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spectrum-slice-power-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lower_frequency.is_set || is_set(lower_frequency.yfilter)) leaf_name_data.push_back(lower_frequency.get_name_leafdata());
+    if (rx_power.is_set || is_set(rx_power.yfilter)) leaf_name_data.push_back(rx_power.get_name_leafdata());
+    if (rx_psd.is_set || is_set(rx_psd.yfilter)) leaf_name_data.push_back(rx_psd.get_name_leafdata());
+    if (slice_num.is_set || is_set(slice_num.yfilter)) leaf_name_data.push_back(slice_num.get_name_leafdata());
+    if (tx_power.is_set || is_set(tx_power.yfilter)) leaf_name_data.push_back(tx_power.get_name_leafdata());
+    if (tx_psd.is_set || is_set(tx_psd.yfilter)) leaf_name_data.push_back(tx_psd.get_name_leafdata());
+    if (upper_frequency.is_set || is_set(upper_frequency.yfilter)) leaf_name_data.push_back(upper_frequency.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lower-frequency")
+    {
+        lower_frequency = value;
+        lower_frequency.value_namespace = name_space;
+        lower_frequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-power")
+    {
+        rx_power = value;
+        rx_power.value_namespace = name_space;
+        rx_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-psd")
+    {
+        rx_psd = value;
+        rx_psd.value_namespace = name_space;
+        rx_psd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slice-num")
+    {
+        slice_num = value;
+        slice_num.value_namespace = name_space;
+        slice_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-power")
+    {
+        tx_power = value;
+        tx_power.value_namespace = name_space;
+        tx_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-psd")
+    {
+        tx_psd = value;
+        tx_psd.value_namespace = name_space;
+        tx_psd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper-frequency")
+    {
+        upper_frequency = value;
+        upper_frequency.value_namespace = name_space;
+        upper_frequency.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-frequency")
+    {
+        lower_frequency.yfilter = yfilter;
+    }
+    if(value_path == "rx-power")
+    {
+        rx_power.yfilter = yfilter;
+    }
+    if(value_path == "rx-psd")
+    {
+        rx_psd.yfilter = yfilter;
+    }
+    if(value_path == "slice-num")
+    {
+        slice_num.yfilter = yfilter;
+    }
+    if(value_path == "tx-power")
+    {
+        tx_power.yfilter = yfilter;
+    }
+    if(value_path == "tx-psd")
+    {
+        tx_psd.yfilter = yfilter;
+    }
+    if(value_path == "upper-frequency")
+    {
+        upper_frequency.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower-frequency" || name == "rx-power" || name == "rx-psd" || name == "slice-num" || name == "tx-power" || name == "tx-psd" || name == "upper-frequency")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::TransceiverInfo()
+    :
+    adapter_vendor_info{YType::str, "adapter-vendor-info"},
+    connector_type{YType::enumeration, "connector-type"},
+    date{YType::str, "date"},
+    ethernet_compliance_code{YType::enumeration, "ethernet-compliance-code"},
+    internal_temperature{YType::int32, "internal-temperature"},
+    optics_pid{YType::str, "optics-pid"},
+    optics_serial_no{YType::str, "optics-serial-no"},
+    optics_type{YType::str, "optics-type"},
+    optics_vendor_part{YType::str, "optics-vendor-part"},
+    optics_vendor_rev{YType::str, "optics-vendor-rev"},
+    optics_vid{YType::str, "optics-vid"},
+    otn_application_code{YType::enumeration, "otn-application-code"},
+    oui_no{YType::str, "oui-no"},
+    sonet_application_code{YType::enumeration, "sonet-application-code"},
+    vendor_info{YType::str, "vendor-info"},
+    vendor_name{YType::str, "vendor-name"}
+{
+
+    yang_name = "transceiver-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::~TransceiverInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_data() const
+{
+    return adapter_vendor_info.is_set
+	|| connector_type.is_set
+	|| date.is_set
+	|| ethernet_compliance_code.is_set
+	|| internal_temperature.is_set
+	|| optics_pid.is_set
+	|| optics_serial_no.is_set
+	|| optics_type.is_set
+	|| optics_vendor_part.is_set
+	|| optics_vendor_rev.is_set
+	|| optics_vid.is_set
+	|| otn_application_code.is_set
+	|| oui_no.is_set
+	|| sonet_application_code.is_set
+	|| vendor_info.is_set
+	|| vendor_name.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(adapter_vendor_info.yfilter)
+	|| ydk::is_set(connector_type.yfilter)
+	|| ydk::is_set(date.yfilter)
+	|| ydk::is_set(ethernet_compliance_code.yfilter)
+	|| ydk::is_set(internal_temperature.yfilter)
+	|| ydk::is_set(optics_pid.yfilter)
+	|| ydk::is_set(optics_serial_no.yfilter)
+	|| ydk::is_set(optics_type.yfilter)
+	|| ydk::is_set(optics_vendor_part.yfilter)
+	|| ydk::is_set(optics_vendor_rev.yfilter)
+	|| ydk::is_set(optics_vid.yfilter)
+	|| ydk::is_set(otn_application_code.yfilter)
+	|| ydk::is_set(oui_no.yfilter)
+	|| ydk::is_set(sonet_application_code.yfilter)
+	|| ydk::is_set(vendor_info.yfilter)
+	|| ydk::is_set(vendor_name.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transceiver-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adapter_vendor_info.is_set || is_set(adapter_vendor_info.yfilter)) leaf_name_data.push_back(adapter_vendor_info.get_name_leafdata());
+    if (connector_type.is_set || is_set(connector_type.yfilter)) leaf_name_data.push_back(connector_type.get_name_leafdata());
+    if (date.is_set || is_set(date.yfilter)) leaf_name_data.push_back(date.get_name_leafdata());
+    if (ethernet_compliance_code.is_set || is_set(ethernet_compliance_code.yfilter)) leaf_name_data.push_back(ethernet_compliance_code.get_name_leafdata());
+    if (internal_temperature.is_set || is_set(internal_temperature.yfilter)) leaf_name_data.push_back(internal_temperature.get_name_leafdata());
+    if (optics_pid.is_set || is_set(optics_pid.yfilter)) leaf_name_data.push_back(optics_pid.get_name_leafdata());
+    if (optics_serial_no.is_set || is_set(optics_serial_no.yfilter)) leaf_name_data.push_back(optics_serial_no.get_name_leafdata());
+    if (optics_type.is_set || is_set(optics_type.yfilter)) leaf_name_data.push_back(optics_type.get_name_leafdata());
+    if (optics_vendor_part.is_set || is_set(optics_vendor_part.yfilter)) leaf_name_data.push_back(optics_vendor_part.get_name_leafdata());
+    if (optics_vendor_rev.is_set || is_set(optics_vendor_rev.yfilter)) leaf_name_data.push_back(optics_vendor_rev.get_name_leafdata());
+    if (optics_vid.is_set || is_set(optics_vid.yfilter)) leaf_name_data.push_back(optics_vid.get_name_leafdata());
+    if (otn_application_code.is_set || is_set(otn_application_code.yfilter)) leaf_name_data.push_back(otn_application_code.get_name_leafdata());
+    if (oui_no.is_set || is_set(oui_no.yfilter)) leaf_name_data.push_back(oui_no.get_name_leafdata());
+    if (sonet_application_code.is_set || is_set(sonet_application_code.yfilter)) leaf_name_data.push_back(sonet_application_code.get_name_leafdata());
+    if (vendor_info.is_set || is_set(vendor_info.yfilter)) leaf_name_data.push_back(vendor_info.get_name_leafdata());
+    if (vendor_name.is_set || is_set(vendor_name.yfilter)) leaf_name_data.push_back(vendor_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adapter-vendor-info")
+    {
+        adapter_vendor_info = value;
+        adapter_vendor_info.value_namespace = name_space;
+        adapter_vendor_info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connector-type")
+    {
+        connector_type = value;
+        connector_type.value_namespace = name_space;
+        connector_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "date")
+    {
+        date = value;
+        date.value_namespace = name_space;
+        date.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-compliance-code")
+    {
+        ethernet_compliance_code = value;
+        ethernet_compliance_code.value_namespace = name_space;
+        ethernet_compliance_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-temperature")
+    {
+        internal_temperature = value;
+        internal_temperature.value_namespace = name_space;
+        internal_temperature.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-pid")
+    {
+        optics_pid = value;
+        optics_pid.value_namespace = name_space;
+        optics_pid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-serial-no")
+    {
+        optics_serial_no = value;
+        optics_serial_no.value_namespace = name_space;
+        optics_serial_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-type")
+    {
+        optics_type = value;
+        optics_type.value_namespace = name_space;
+        optics_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-vendor-part")
+    {
+        optics_vendor_part = value;
+        optics_vendor_part.value_namespace = name_space;
+        optics_vendor_part.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-vendor-rev")
+    {
+        optics_vendor_rev = value;
+        optics_vendor_rev.value_namespace = name_space;
+        optics_vendor_rev.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-vid")
+    {
+        optics_vid = value;
+        optics_vid.value_namespace = name_space;
+        optics_vid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "otn-application-code")
+    {
+        otn_application_code = value;
+        otn_application_code.value_namespace = name_space;
+        otn_application_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oui-no")
+    {
+        oui_no = value;
+        oui_no.value_namespace = name_space;
+        oui_no.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sonet-application-code")
+    {
+        sonet_application_code = value;
+        sonet_application_code.value_namespace = name_space;
+        sonet_application_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-info")
+    {
+        vendor_info = value;
+        vendor_info.value_namespace = name_space;
+        vendor_info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-name")
+    {
+        vendor_name = value;
+        vendor_name.value_namespace = name_space;
+        vendor_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adapter-vendor-info")
+    {
+        adapter_vendor_info.yfilter = yfilter;
+    }
+    if(value_path == "connector-type")
+    {
+        connector_type.yfilter = yfilter;
+    }
+    if(value_path == "date")
+    {
+        date.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-compliance-code")
+    {
+        ethernet_compliance_code.yfilter = yfilter;
+    }
+    if(value_path == "internal-temperature")
+    {
+        internal_temperature.yfilter = yfilter;
+    }
+    if(value_path == "optics-pid")
+    {
+        optics_pid.yfilter = yfilter;
+    }
+    if(value_path == "optics-serial-no")
+    {
+        optics_serial_no.yfilter = yfilter;
+    }
+    if(value_path == "optics-type")
+    {
+        optics_type.yfilter = yfilter;
+    }
+    if(value_path == "optics-vendor-part")
+    {
+        optics_vendor_part.yfilter = yfilter;
+    }
+    if(value_path == "optics-vendor-rev")
+    {
+        optics_vendor_rev.yfilter = yfilter;
+    }
+    if(value_path == "optics-vid")
+    {
+        optics_vid.yfilter = yfilter;
+    }
+    if(value_path == "otn-application-code")
+    {
+        otn_application_code.yfilter = yfilter;
+    }
+    if(value_path == "oui-no")
+    {
+        oui_no.yfilter = yfilter;
+    }
+    if(value_path == "sonet-application-code")
+    {
+        sonet_application_code.yfilter = yfilter;
+    }
+    if(value_path == "vendor-info")
+    {
+        vendor_info.yfilter = yfilter;
+    }
+    if(value_path == "vendor-name")
+    {
+        vendor_name.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adapter-vendor-info" || name == "connector-type" || name == "date" || name == "ethernet-compliance-code" || name == "internal-temperature" || name == "optics-pid" || name == "optics-serial-no" || name == "optics-type" || name == "optics-vendor-part" || name == "optics-vendor-rev" || name == "optics-vid" || name == "otn-application-code" || name == "oui-no" || name == "sonet-application-code" || name == "vendor-info" || name == "vendor-name")
+        return true;
+    return false;
+}
+
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLanes()
 {
-    yang_name = "optics-lanes"; yang_parent_name = "optics-port";
+
+    yang_name = "optics-lanes"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::~OpticsLanes()
@@ -11632,29 +11506,15 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-lanes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsLanes' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11708,6 +11568,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::has_leaf_or_child_of_name
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::OpticsLane()
     :
     number{YType::int32, "number"},
+    frequency_offset{YType::int32, "frequency-offset"},
     lane_index{YType::uint32, "lane-index"},
     laser_bias_current_milli_amps{YType::uint32, "laser-bias-current-milli-amps"},
     laser_bias_current_percent{YType::uint32, "laser-bias-current-percent"},
@@ -11721,7 +11582,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::OpticsLane()
 {
     lane_alarm_info->parent = this;
 
-    yang_name = "optics-lane"; yang_parent_name = "optics-lanes";
+    yang_name = "optics-lane"; yang_parent_name = "optics-lanes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::~OpticsLane()
@@ -11731,6 +11592,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::~OpticsLane()
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_data() const
 {
     return number.is_set
+	|| frequency_offset.is_set
 	|| lane_index.is_set
 	|| laser_bias_current_milli_amps.is_set
 	|| laser_bias_current_percent.is_set
@@ -11746,6 +11608,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_operation
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(frequency_offset.yfilter)
 	|| ydk::is_set(lane_index.yfilter)
 	|| ydk::is_set(laser_bias_current_milli_amps.yfilter)
 	|| ydk::is_set(laser_bias_current_percent.yfilter)
@@ -11761,26 +11624,15 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "optics-lane" <<"[number='" <<number <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsLane' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (frequency_offset.is_set || is_set(frequency_offset.yfilter)) leaf_name_data.push_back(frequency_offset.get_name_leafdata());
     if (lane_index.is_set || is_set(lane_index.yfilter)) leaf_name_data.push_back(lane_index.get_name_leafdata());
     if (laser_bias_current_milli_amps.is_set || is_set(laser_bias_current_milli_amps.yfilter)) leaf_name_data.push_back(laser_bias_current_milli_amps.get_name_leafdata());
     if (laser_bias_current_percent.is_set || is_set(laser_bias_current_percent.yfilter)) leaf_name_data.push_back(laser_bias_current_percent.get_name_leafdata());
@@ -11790,9 +11642,7 @@ const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::g
     if (transmit_power.is_set || is_set(transmit_power.yfilter)) leaf_name_data.push_back(transmit_power.get_name_leafdata());
     if (transmit_signal_power.is_set || is_set(transmit_signal_power.yfilter)) leaf_name_data.push_back(transmit_signal_power.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -11828,6 +11678,12 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::set_value(con
         number = value;
         number.value_namespace = name_space;
         number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frequency-offset")
+    {
+        frequency_offset = value;
+        frequency_offset.value_namespace = name_space;
+        frequency_offset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lane-index")
     {
@@ -11885,6 +11741,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::set_filter(co
     {
         number.yfilter = yfilter;
     }
+    if(value_path == "frequency-offset")
+    {
+        frequency_offset.yfilter = yfilter;
+    }
     if(value_path == "lane-index")
     {
         lane_index.yfilter = yfilter;
@@ -11921,7 +11781,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::set_filter(co
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lane-alarm-info" || name == "number" || name == "lane-index" || name == "laser-bias-current-milli-amps" || name == "laser-bias-current-percent" || name == "output-frequency" || name == "receive-power" || name == "receive-signal-power" || name == "transmit-power" || name == "transmit-signal-power")
+    if(name == "lane-alarm-info" || name == "number" || name == "frequency-offset" || name == "lane-index" || name == "laser-bias-current-milli-amps" || name == "laser-bias-current-percent" || name == "output-frequency" || name == "receive-power" || name == "receive-signal-power" || name == "transmit-power" || name == "transmit-signal-power")
         return true;
     return false;
 }
@@ -11935,16 +11795,12 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Lan
 	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower>())
 {
     high_lbc->parent = this;
-
     high_rx_power->parent = this;
-
     high_tx_power->parent = this;
-
     low_rx_power->parent = this;
-
     low_tx_power->parent = this;
 
-    yang_name = "lane-alarm-info"; yang_parent_name = "optics-lane";
+    yang_name = "lane-alarm-info"; yang_parent_name = "optics-lane"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::~LaneAlarmInfo()
@@ -11974,29 +11830,15 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 {
     std::ostringstream path_buffer;
     path_buffer << "lane-alarm-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LaneAlarmInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12096,424 +11938,13 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::HighRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::~HighRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::LowRxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::~LowRxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-rx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowRxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::HighTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::~HighTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::LowTxPower()
-    :
-    counter{YType::uint32, "counter"},
-    is_detected{YType::boolean, "is-detected"}
-{
-    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::~LowTxPower()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_data() const
-{
-    return counter.is_set
-	|| is_detected.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(is_detected.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "low-tx-power";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LowTxPower' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "counter")
-    {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected = value;
-        is_detected.value_namespace = name_space;
-        is_detected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "counter")
-    {
-        counter.yfilter = yfilter;
-    }
-    if(value_path == "is-detected")
-    {
-        is_detected.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "counter" || name == "is-detected")
-        return true;
-    return false;
-}
-
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::HighLbc()
     :
     counter{YType::uint32, "counter"},
     is_detected{YType::boolean, "is-detected"}
 {
-    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info";
+
+    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::~HighLbc()
@@ -12537,31 +11968,17 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAl
 {
     std::ostringstream path_buffer;
     path_buffer << "high-lbc";
-
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'HighLbc' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
     if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -12611,383 +12028,394 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::OpticsDbInfo()
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::HighRxPower()
     :
-    controller_state{YType::enumeration, "controller-state"},
-    transport_admin_state{YType::enumeration, "transport-admin-state"}
-    	,
-    network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>())
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
 {
-    network_srlg_info->parent = this;
 
-    yang_name = "optics-db-info"; yang_parent_name = "optics-port";
+    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::~OpticsDbInfo()
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::~HighRxPower()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_data() const
 {
-    return controller_state.is_set
-	|| transport_admin_state.is_set
-	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data());
+    return counter.is_set
+	|| is_detected.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(controller_state.yfilter)
-	|| ydk::is_set(transport_admin_state.yfilter)
-	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation());
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-db-info";
-
+    path_buffer << "high-rx-power";
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OpticsDbInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (controller_state.is_set || is_set(controller_state.yfilter)) leaf_name_data.push_back(controller_state.get_name_leafdata());
-    if (transport_admin_state.is_set || is_set(transport_admin_state.yfilter)) leaf_name_data.push_back(transport_admin_state.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "network-srlg-info")
-    {
-        if(network_srlg_info == nullptr)
-        {
-            network_srlg_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>();
-        }
-        return network_srlg_info;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(network_srlg_info != nullptr)
-    {
-        children["network-srlg-info"] = network_srlg_info;
-    }
-
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "controller-state")
+    if(value_path == "counter")
     {
-        controller_state = value;
-        controller_state.value_namespace = name_space;
-        controller_state.value_namespace_prefix = name_space_prefix;
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "transport-admin-state")
+    if(value_path == "is-detected")
     {
-        transport_admin_state = value;
-        transport_admin_state.value_namespace = name_space;
-        transport_admin_state.value_namespace_prefix = name_space_prefix;
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "controller-state")
+    if(value_path == "counter")
     {
-        controller_state.yfilter = yfilter;
+        counter.yfilter = yfilter;
     }
-    if(value_path == "transport-admin-state")
+    if(value_path == "is-detected")
     {
-        transport_admin_state.yfilter = yfilter;
+        is_detected.yfilter = yfilter;
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "network-srlg-info" || name == "controller-state" || name == "transport-admin-state")
+    if(name == "counter" || name == "is-detected")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgInfo()
-{
-    yang_name = "network-srlg-info"; yang_parent_name = "optics-db-info";
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_data() const
-{
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
-    {
-        if(network_srlg_array[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_operation() const
-{
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
-    {
-        if(network_srlg_array[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlg-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkSrlgInfo' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network-srlg-array")
-    {
-        for(auto const & c : network_srlg_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
-        c->parent = this;
-        network_srlg_array.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : network_srlg_array)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlg-array")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::NetworkSrlgArray()
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::HighTxPower()
     :
-    network_srlg{YType::uint32, "network-srlg"},
-    set_number{YType::uint32, "set-number"}
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
 {
-    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info";
+
+    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::~HighTxPower()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_data() const
 {
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return set_number.is_set;
+    return counter.is_set
+	|| is_detected.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_operation() const
 {
-    for (auto const & leaf : network_srlg.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(network_srlg.yfilter)
-	|| ydk::is_set(set_number.yfilter);
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network-srlg-array";
-
+    path_buffer << "high-tx-power";
     return path_buffer.str();
-
 }
 
-const EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NetworkSrlgArray' in Cisco_IOS_XR_controller_optics_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_number.is_set || is_set(set_number.yfilter)) leaf_name_data.push_back(set_number.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
 
-    auto network_srlg_name_datas = network_srlg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), network_srlg_name_datas.begin(), network_srlg_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "network-srlg")
+    if(value_path == "counter")
     {
-        network_srlg.append(value);
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "set-number")
+    if(value_path == "is-detected")
     {
-        set_number = value;
-        set_number.value_namespace = name_space;
-        set_number.value_namespace_prefix = name_space_prefix;
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "network-srlg")
+    if(value_path == "counter")
     {
-        network_srlg.yfilter = yfilter;
+        counter.yfilter = yfilter;
     }
-    if(value_path == "set-number")
+    if(value_path == "is-detected")
     {
-        set_number.yfilter = yfilter;
+        is_detected.yfilter = yfilter;
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "network-srlg" || name == "set-number")
+    if(name == "counter" || name == "is-detected")
         return true;
     return false;
 }
 
-const Enum::YLeaf OpticsPortStatus::active {0, "active"};
-const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::LowRxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
 
-const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
-const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
+    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::~LowRxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-rx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::LowTxPower()
+    :
+    counter{YType::uint32, "counter"},
+    is_detected{YType::boolean, "is-detected"}
+{
+
+    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::~LowTxPower()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_data() const
+{
+    return counter.is_set
+	|| is_detected.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_detected.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-tx-power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-detected")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
+const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
+
+const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_invalid {0, "optics-amplifier-safety-mode-invalid"};
+const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
+const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_disabled {2, "optics-amplifier-safety-mode-disabled"};
+
+const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
+const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
+const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
+const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
+const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
+const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
+const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
+const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
+const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
+const Enum::YLeaf OpticsFormFactor::cfp4 {11, "cfp4"};
+const Enum::YLeaf OpticsFormFactor::xfp {12, "xfp"};
+const Enum::YLeaf OpticsFormFactor::x2 {13, "x2"};
+const Enum::YLeaf OpticsFormFactor::non_pluggable {14, "non-pluggable"};
+const Enum::YLeaf OpticsFormFactor::other {15, "other"};
 
 const Enum::YLeaf Optics::optics_unknown {0, "optics-unknown"};
 const Enum::YLeaf Optics::optics_grey {1, "optics-grey"};
 const Enum::YLeaf Optics::optics_dwdm {2, "optics-dwdm"};
 const Enum::YLeaf Optics::optics_cwdm {3, "optics-cwdm"};
-
-const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
-const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
-
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
-
-const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
-const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
-const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
-
-const Enum::YLeaf OpticsLedState::off {0, "off"};
-const Enum::YLeaf OpticsLedState::green_on {1, "green-on"};
-const Enum::YLeaf OpticsLedState::green_flashing {2, "green-flashing"};
-const Enum::YLeaf OpticsLedState::yellow_on {3, "yellow-on"};
-const Enum::YLeaf OpticsLedState::yellow_flashing {4, "yellow-flashing"};
-const Enum::YLeaf OpticsLedState::red_on {5, "red-on"};
-const Enum::YLeaf OpticsLedState::red_flashing {6, "red-flashing"};
-
-const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
-const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_disabled {2, "optics-amplifier-safety-mode-disabled"};
 
 const Enum::YLeaf FiberConnector::optics_connect_or_not_set {0, "optics-connect-or-not-set"};
 const Enum::YLeaf FiberConnector::optics_sc_connect_or {1, "optics-sc-connect-or"};
@@ -12995,12 +12423,60 @@ const Enum::YLeaf FiberConnector::optics_lc_connect_or {2, "optics-lc-connect-or
 const Enum::YLeaf FiberConnector::optics_mpo_connect_or {3, "optics-mpo-connect-or"};
 const Enum::YLeaf FiberConnector::optics_undefined_connect_or {4, "optics-undefined-connect-or"};
 
+const Enum::YLeaf OpticsPort::com {0, "com"};
+const Enum::YLeaf OpticsPort::line {1, "line"};
+const Enum::YLeaf OpticsPort::osc {2, "osc"};
+const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
+const Enum::YLeaf OpticsPort::work {4, "work"};
+const Enum::YLeaf OpticsPort::prot {5, "prot"};
+
+const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
+const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
+const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
+
+const Enum::YLeaf EthernetPmd::optics_eth_not_set {0, "optics-eth-not-set"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lr {2, "optics-eth-10gbase-lr"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase_zr {3, "optics-eth-10gbase-zr"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase_er {4, "optics-eth-10gbase-er"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase_sr {5, "optics-eth-10gbase-sr"};
+const Enum::YLeaf EthernetPmd::optics_eth_10gbase {6, "optics-eth-10gbase"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_cr4 {7, "optics-eth-40gbase-cr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_sr4 {8, "optics-eth-40gbase-sr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_lr4 {9, "optics-eth-40gbase-lr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_er4 {10, "optics-eth-40gbase-er4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_psm4 {11, "optics-eth-40gbase-psm4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_csr4 {12, "optics-eth-40gbase-csr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_40gbase_sr_bd {13, "optics-eth-40gbase-sr-bd"};
+const Enum::YLeaf EthernetPmd::optics_eth_40g_aoc {14, "optics-eth-40g-aoc"};
+const Enum::YLeaf EthernetPmd::optics_eth_4x10gbase_lr {15, "optics-eth-4x10gbase-lr"};
+const Enum::YLeaf EthernetPmd::optics_eth_4x10gbase_sr {16, "optics-eth-4x10gbase-sr"};
+const Enum::YLeaf EthernetPmd::optics_eth_100g_aoc {17, "optics-eth-100g-aoc"};
+const Enum::YLeaf EthernetPmd::optics_eth_100g_acc {18, "optics-eth-100g-acc"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_sr10 {19, "optics-eth-100gbase-sr10"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_sr4 {20, "optics-eth-100gbase-sr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_lr4 {21, "optics-eth-100gbase-lr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_er4 {22, "optics-eth-100gbase-er4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cwdm4 {23, "optics-eth-100gbase-cwdm4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_clr4 {24, "optics-eth-100gbase-clr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_psm4 {25, "optics-eth-100gbase-psm4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
+const Enum::YLeaf EthernetPmd::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
+const Enum::YLeaf EthernetPmd::optics_eth_undefined {29, "optics-eth-undefined"};
+
 const Enum::YLeaf OpticsFec::fec_none {0, "fec-none"};
 const Enum::YLeaf OpticsFec::fec_hg15 {1, "fec-hg15"};
 const Enum::YLeaf OpticsFec::fec_hg25 {2, "fec-hg25"};
 const Enum::YLeaf OpticsFec::fec_hg15_de {4, "fec-hg15-de"};
 const Enum::YLeaf OpticsFec::fec_hg25_de {8, "fec-hg25-de"};
 const Enum::YLeaf OpticsFec::fec_enabled {16, "fec-enabled"};
+
+const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
+const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
 
 const Enum::YLeaf OpticsPhy::not_set {0, "not-set"};
 const Enum::YLeaf OpticsPhy::invalid {1, "invalid"};
@@ -13057,47 +12533,11 @@ const Enum::YLeaf OpticsPhy::inmd_reach1lane {51, "inmd-reach1lane"};
 const Enum::YLeaf OpticsPhy::long_reach1_lane {52, "long-reach1-lane"};
 const Enum::YLeaf OpticsPhy::twenty_five_gig_ecu_one_lanes {53, "twenty-five-gig-ecu-one-lanes"};
 const Enum::YLeaf OpticsPhy::hundred_gig_e {54, "hundred-gig-e"};
+const Enum::YLeaf OpticsPhy::ten_gig_bx {55, "ten-gig-bx"};
+const Enum::YLeaf OpticsPhy::one_geige {56, "one-geige"};
 
-const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
-const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
-
-const Enum::YLeaf EthernetPmd::optics_eth_not_set {0, "optics-eth-not-set"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lr {2, "optics-eth-10gbase-lr"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase_zr {3, "optics-eth-10gbase-zr"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase_er {4, "optics-eth-10gbase-er"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase_sr {5, "optics-eth-10gbase-sr"};
-const Enum::YLeaf EthernetPmd::optics_eth_10gbase {6, "optics-eth-10gbase"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_cr4 {7, "optics-eth-40gbase-cr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_sr4 {8, "optics-eth-40gbase-sr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_lr4 {9, "optics-eth-40gbase-lr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_er4 {10, "optics-eth-40gbase-er4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_psm4 {11, "optics-eth-40gbase-psm4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_csr4 {12, "optics-eth-40gbase-csr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_40gbase_sr_bd {13, "optics-eth-40gbase-sr-bd"};
-const Enum::YLeaf EthernetPmd::optics_eth_40g_aoc {14, "optics-eth-40g-aoc"};
-const Enum::YLeaf EthernetPmd::optics_eth_4x10gbase_lr {15, "optics-eth-4x10gbase-lr"};
-const Enum::YLeaf EthernetPmd::optics_eth_4x10gbase_sr {16, "optics-eth-4x10gbase-sr"};
-const Enum::YLeaf EthernetPmd::optics_eth_100g_aoc {17, "optics-eth-100g-aoc"};
-const Enum::YLeaf EthernetPmd::optics_eth_100g_acc {18, "optics-eth-100g-acc"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_sr10 {19, "optics-eth-100gbase-sr10"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_sr4 {20, "optics-eth-100gbase-sr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_lr4 {21, "optics-eth-100gbase-lr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_er4 {22, "optics-eth-100gbase-er4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cwdm4 {23, "optics-eth-100gbase-cwdm4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_clr4 {24, "optics-eth-100gbase-clr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_psm4 {25, "optics-eth-100gbase-psm4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
-const Enum::YLeaf EthernetPmd::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
-const Enum::YLeaf EthernetPmd::optics_eth_undefined {29, "optics-eth-undefined"};
-
-const Enum::YLeaf OpticsPort::com {0, "com"};
-const Enum::YLeaf OpticsPort::line {1, "line"};
-const Enum::YLeaf OpticsPort::osc {2, "osc"};
-const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
-const Enum::YLeaf OpticsPort::work {4, "work"};
-const Enum::YLeaf OpticsPort::prot {5, "prot"};
+const Enum::YLeaf OpticsPortStatus::active {0, "active"};
+const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
 
 const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
 const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};
@@ -13109,28 +12549,29 @@ const Enum::YLeaf OpticsLaserState::off {1, "off"};
 const Enum::YLeaf OpticsLaserState::unknown {2, "unknown"};
 const Enum::YLeaf OpticsLaserState::apr {3, "apr"};
 
-const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
-const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
-const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
-const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
-const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
-const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
-const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
-const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
-const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
-const Enum::YLeaf OpticsFormFactor::cfp4 {11, "cfp4"};
-const Enum::YLeaf OpticsFormFactor::xfp {12, "xfp"};
-const Enum::YLeaf OpticsFormFactor::x2 {13, "x2"};
-const Enum::YLeaf OpticsFormFactor::non_pluggable {14, "non-pluggable"};
-const Enum::YLeaf OpticsFormFactor::other {15, "other"};
+const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
+const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
+
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_invalid {0, "optics-amplifier-gain-range-invalid"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
 
 const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
 const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
 const Enum::YLeaf OpticsWaveBand::c_band_odd {2, "c-band-odd"};
 const Enum::YLeaf OpticsWaveBand::c_band_even {3, "c-band-even"};
 const Enum::YLeaf OpticsWaveBand::invalid_band {4, "invalid-band"};
+
+const Enum::YLeaf OpticsLedState::off {0, "off"};
+const Enum::YLeaf OpticsLedState::green_on {1, "green-on"};
+const Enum::YLeaf OpticsLedState::green_flashing {2, "green-flashing"};
+const Enum::YLeaf OpticsLedState::yellow_on {3, "yellow-on"};
+const Enum::YLeaf OpticsLedState::yellow_flashing {4, "yellow-flashing"};
+const Enum::YLeaf OpticsLedState::red_on {5, "red-on"};
+const Enum::YLeaf OpticsLedState::red_flashing {6, "red-flashing"};
 
 
 }

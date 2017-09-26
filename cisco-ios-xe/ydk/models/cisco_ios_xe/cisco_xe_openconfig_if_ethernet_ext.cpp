@@ -11,12 +11,13 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_xe_openconfig_if_ethernet_ext {
 
-Auto_::Auto_()
+AUTO_::AUTO_()
      : Identity("http://cisco.com/ns/yang/cisco-xe-openconfig-if-ethernet-ext", "cisco-xe-openconfig-if-ethernet-ext", "cisco-xe-openconfig-if-ethernet-ext:AUTO")
 {
+
 }
 
-Auto_::~Auto_()
+AUTO_::~AUTO_()
 {
 }
 

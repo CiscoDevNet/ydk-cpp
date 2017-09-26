@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_invmgr_cfg {
 
 InventoryConfigurations::InventoryConfigurations()
 {
-    yang_name = "inventory-configurations"; yang_parent_name = "Cisco-IOS-XR-invmgr-cfg";
+
+    yang_name = "inventory-configurations"; yang_parent_name = "Cisco-IOS-XR-invmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 InventoryConfigurations::~InventoryConfigurations()
@@ -44,26 +45,15 @@ std::string InventoryConfigurations::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-invmgr-cfg:inventory-configurations";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InventoryConfigurations::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -144,7 +134,8 @@ InventoryConfigurations::Entity_::Entity_()
     name{YType::str, "name"},
     name_xr{YType::str, "name-xr"}
 {
-    yang_name = "entity"; yang_parent_name = "inventory-configurations";
+
+    yang_name = "entity"; yang_parent_name = "inventory-configurations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 InventoryConfigurations::Entity_::~Entity_()
@@ -164,35 +155,28 @@ bool InventoryConfigurations::Entity_::has_operation() const
 	|| ydk::is_set(name_xr.yfilter);
 }
 
+std::string InventoryConfigurations::Entity_::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-invmgr-cfg:inventory-configurations/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string InventoryConfigurations::Entity_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "entity" <<"[name='" <<name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath InventoryConfigurations::Entity_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::Entity_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-invmgr-cfg:inventory-configurations/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

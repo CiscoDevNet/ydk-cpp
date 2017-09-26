@@ -22,16 +22,12 @@
 #include <string>
 
 #include "path_api.hpp"
+#include "service_provider.hpp"
 
 namespace ydk {
-static const std::string default_capabilities_url = "/ietf-restconf-monitoring:restconf-state/capabilities";
-
-class CapabilitiesParser;
-struct OpenDaylightNode;
-class RestconfClient;
 
 
-class RestconfServiceProvider : public path::ServiceProvider {
+class RestconfServiceProvider : public ServiceProvider {
 public:
         RestconfServiceProvider(path::Repository & repo,
                                const std::string & address,
@@ -43,7 +39,7 @@ public:
                                const std::string & state_url_root = "/data");
 
         RestconfServiceProvider(std::unique_ptr<RestconfClient> client,
-                                std::shared_ptr<ydk::path::RootSchemaNode> root_schema,
+                                const std::shared_ptr<ydk::path::RootSchemaNode>& root_schema,
                                 const std::string & edit_method,
                                 const std::string & config_url_root,
                                 const std::string & state_url_root,
@@ -51,27 +47,12 @@ public:
 
         ~RestconfServiceProvider();
 
-        path::RootSchemaNode& get_root_schema() const;
-        std::shared_ptr<path::DataNode> invoke(path::Rpc& rpc) const;
         EncodingFormat get_encoding() const;
+        const path::Session& get_session() const;
 
 private:
-        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, const std::string & yfilter) const;
-        std::shared_ptr<path::DataNode> handle_read(path::Rpc& rpc) const;
-        void initialize(path::Repository & repo);
-
-private:
-        std::unique_ptr<RestconfClient> client;
-
-        std::unique_ptr<path::ModelProvider> model_provider;
-        std::shared_ptr<ydk::path::RootSchemaNode> root_schema;
-
-        std::vector<std::string> server_capabilities;
-
         EncodingFormat encoding;
-        std::string edit_method;
-        std::string config_url_root;
-        std::string state_url_root;
+        const path::RestconfSession session;
 };
 }
 

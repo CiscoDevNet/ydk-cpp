@@ -11,29 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace SNMPv2_MIB {
 
-Snmpv2Mib::Snmpv2Mib()
+SNMPv2MIB::SNMPv2MIB()
     :
-    snmp(std::make_shared<Snmpv2Mib::Snmp>())
-	,snmpset(std::make_shared<Snmpv2Mib::Snmpset>())
-	,sysortable(std::make_shared<Snmpv2Mib::Sysortable>())
-	,system(std::make_shared<Snmpv2Mib::System>())
+    snmp(std::make_shared<SNMPv2MIB::Snmp>())
+	,snmpset(std::make_shared<SNMPv2MIB::Snmpset>())
+	,sysortable(std::make_shared<SNMPv2MIB::Sysortable>())
+	,system(std::make_shared<SNMPv2MIB::System>())
 {
     snmp->parent = this;
-
     snmpset->parent = this;
-
     sysortable->parent = this;
-
     system->parent = this;
 
-    yang_name = "SNMPv2-MIB"; yang_parent_name = "SNMPv2-MIB";
+    yang_name = "SNMPv2-MIB"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-Snmpv2Mib::~Snmpv2Mib()
+SNMPv2MIB::~SNMPv2MIB()
 {
 }
 
-bool Snmpv2Mib::has_data() const
+bool SNMPv2MIB::has_data() const
 {
     return (snmp !=  nullptr && snmp->has_data())
 	|| (snmpset !=  nullptr && snmpset->has_data())
@@ -41,7 +38,7 @@ bool Snmpv2Mib::has_data() const
 	|| (system !=  nullptr && system->has_data());
 }
 
-bool Snmpv2Mib::has_operation() const
+bool SNMPv2MIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (snmp !=  nullptr && snmp->has_operation())
@@ -50,40 +47,29 @@ bool Snmpv2Mib::has_operation() const
 	|| (system !=  nullptr && system->has_operation());
 }
 
-std::string Snmpv2Mib::get_segment_path() const
+std::string SNMPv2MIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMPv2-MIB:SNMPv2-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Snmpv2Mib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snmp")
     {
         if(snmp == nullptr)
         {
-            snmp = std::make_shared<Snmpv2Mib::Snmp>();
+            snmp = std::make_shared<SNMPv2MIB::Snmp>();
         }
         return snmp;
     }
@@ -92,7 +78,7 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
     {
         if(snmpset == nullptr)
         {
-            snmpset = std::make_shared<Snmpv2Mib::Snmpset>();
+            snmpset = std::make_shared<SNMPv2MIB::Snmpset>();
         }
         return snmpset;
     }
@@ -101,7 +87,7 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
     {
         if(sysortable == nullptr)
         {
-            sysortable = std::make_shared<Snmpv2Mib::Sysortable>();
+            sysortable = std::make_shared<SNMPv2MIB::Sysortable>();
         }
         return sysortable;
     }
@@ -110,7 +96,7 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
     {
         if(system == nullptr)
         {
-            system = std::make_shared<Snmpv2Mib::System>();
+            system = std::make_shared<SNMPv2MIB::System>();
         }
         return system;
     }
@@ -118,7 +104,7 @@ std::shared_ptr<Entity> Snmpv2Mib::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(snmp != nullptr)
@@ -144,234 +130,47 @@ std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::get_children() const
     return children;
 }
 
-void Snmpv2Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmpv2Mib::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::clone_ptr() const
+std::shared_ptr<Entity> SNMPv2MIB::clone_ptr() const
 {
-    return std::make_shared<Snmpv2Mib>();
+    return std::make_shared<SNMPv2MIB>();
 }
 
-std::string Snmpv2Mib::get_bundle_yang_models_location() const
+std::string SNMPv2MIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string Snmpv2Mib::get_bundle_name() const
+std::string SNMPv2MIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function Snmpv2Mib::get_augment_capabilities_function() const
+augment_capabilities_function SNMPv2MIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> Snmpv2Mib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> SNMPv2MIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool Snmpv2Mib::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmp" || name == "snmpSet" || name == "sysORTable" || name == "system")
         return true;
     return false;
 }
 
-Snmpv2Mib::System::System()
-    :
-    syscontact{YType::str, "sysContact"},
-    sysdescr{YType::str, "sysDescr"},
-    syslocation{YType::str, "sysLocation"},
-    sysname{YType::str, "sysName"},
-    sysobjectid{YType::str, "sysObjectID"},
-    sysorlastchange{YType::uint32, "sysORLastChange"},
-    sysservices{YType::int32, "sysServices"},
-    sysuptime{YType::uint32, "sysUpTime"}
-{
-    yang_name = "system"; yang_parent_name = "SNMPv2-MIB";
-}
-
-Snmpv2Mib::System::~System()
-{
-}
-
-bool Snmpv2Mib::System::has_data() const
-{
-    return syscontact.is_set
-	|| sysdescr.is_set
-	|| syslocation.is_set
-	|| sysname.is_set
-	|| sysobjectid.is_set
-	|| sysorlastchange.is_set
-	|| sysservices.is_set
-	|| sysuptime.is_set;
-}
-
-bool Snmpv2Mib::System::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(syscontact.yfilter)
-	|| ydk::is_set(sysdescr.yfilter)
-	|| ydk::is_set(syslocation.yfilter)
-	|| ydk::is_set(sysname.yfilter)
-	|| ydk::is_set(sysobjectid.yfilter)
-	|| ydk::is_set(sysorlastchange.yfilter)
-	|| ydk::is_set(sysservices.yfilter)
-	|| ydk::is_set(sysuptime.yfilter);
-}
-
-std::string Snmpv2Mib::System::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "system";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Snmpv2Mib::System::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (syscontact.is_set || is_set(syscontact.yfilter)) leaf_name_data.push_back(syscontact.get_name_leafdata());
-    if (sysdescr.is_set || is_set(sysdescr.yfilter)) leaf_name_data.push_back(sysdescr.get_name_leafdata());
-    if (syslocation.is_set || is_set(syslocation.yfilter)) leaf_name_data.push_back(syslocation.get_name_leafdata());
-    if (sysname.is_set || is_set(sysname.yfilter)) leaf_name_data.push_back(sysname.get_name_leafdata());
-    if (sysobjectid.is_set || is_set(sysobjectid.yfilter)) leaf_name_data.push_back(sysobjectid.get_name_leafdata());
-    if (sysorlastchange.is_set || is_set(sysorlastchange.yfilter)) leaf_name_data.push_back(sysorlastchange.get_name_leafdata());
-    if (sysservices.is_set || is_set(sysservices.yfilter)) leaf_name_data.push_back(sysservices.get_name_leafdata());
-    if (sysuptime.is_set || is_set(sysuptime.yfilter)) leaf_name_data.push_back(sysuptime.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Snmpv2Mib::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::System::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Snmpv2Mib::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sysContact")
-    {
-        syscontact = value;
-        syscontact.value_namespace = name_space;
-        syscontact.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysDescr")
-    {
-        sysdescr = value;
-        sysdescr.value_namespace = name_space;
-        sysdescr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysLocation")
-    {
-        syslocation = value;
-        syslocation.value_namespace = name_space;
-        syslocation.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysName")
-    {
-        sysname = value;
-        sysname.value_namespace = name_space;
-        sysname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysObjectID")
-    {
-        sysobjectid = value;
-        sysobjectid.value_namespace = name_space;
-        sysobjectid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysORLastChange")
-    {
-        sysorlastchange = value;
-        sysorlastchange.value_namespace = name_space;
-        sysorlastchange.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysServices")
-    {
-        sysservices = value;
-        sysservices.value_namespace = name_space;
-        sysservices.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sysUpTime")
-    {
-        sysuptime = value;
-        sysuptime.value_namespace = name_space;
-        sysuptime.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmpv2Mib::System::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sysContact")
-    {
-        syscontact.yfilter = yfilter;
-    }
-    if(value_path == "sysDescr")
-    {
-        sysdescr.yfilter = yfilter;
-    }
-    if(value_path == "sysLocation")
-    {
-        syslocation.yfilter = yfilter;
-    }
-    if(value_path == "sysName")
-    {
-        sysname.yfilter = yfilter;
-    }
-    if(value_path == "sysObjectID")
-    {
-        sysobjectid.yfilter = yfilter;
-    }
-    if(value_path == "sysORLastChange")
-    {
-        sysorlastchange.yfilter = yfilter;
-    }
-    if(value_path == "sysServices")
-    {
-        sysservices.yfilter = yfilter;
-    }
-    if(value_path == "sysUpTime")
-    {
-        sysuptime.yfilter = yfilter;
-    }
-}
-
-bool Snmpv2Mib::System::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sysContact" || name == "sysDescr" || name == "sysLocation" || name == "sysName" || name == "sysObjectID" || name == "sysORLastChange" || name == "sysServices" || name == "sysUpTime")
-        return true;
-    return false;
-}
-
-Snmpv2Mib::Snmp::Snmp()
+SNMPv2MIB::Snmp::Snmp()
     :
     snmpenableauthentraps{YType::enumeration, "snmpEnableAuthenTraps"},
     snmpinasnparseerrs{YType::uint32, "snmpInASNParseErrs"},
@@ -404,14 +203,15 @@ Snmpv2Mib::Snmp::Snmp()
     snmpproxydrops{YType::uint32, "snmpProxyDrops"},
     snmpsilentdrops{YType::uint32, "snmpSilentDrops"}
 {
-    yang_name = "snmp"; yang_parent_name = "SNMPv2-MIB";
+
+    yang_name = "snmp"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmpv2Mib::Snmp::~Snmp()
+SNMPv2MIB::Snmp::~Snmp()
 {
 }
 
-bool Snmpv2Mib::Snmp::has_data() const
+bool SNMPv2MIB::Snmp::has_data() const
 {
     return snmpenableauthentraps.is_set
 	|| snmpinasnparseerrs.is_set
@@ -445,7 +245,7 @@ bool Snmpv2Mib::Snmp::has_data() const
 	|| snmpsilentdrops.is_set;
 }
 
-bool Snmpv2Mib::Snmp::has_operation() const
+bool SNMPv2MIB::Snmp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmpenableauthentraps.yfilter)
@@ -480,27 +280,22 @@ bool Snmpv2Mib::Snmp::has_operation() const
 	|| ydk::is_set(snmpsilentdrops.yfilter);
 }
 
-std::string Snmpv2Mib::Snmp::get_segment_path() const
+std::string SNMPv2MIB::Snmp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPv2MIB::Snmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Snmpv2Mib::Snmp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Snmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (snmpenableauthentraps.is_set || is_set(snmpenableauthentraps.yfilter)) leaf_name_data.push_back(snmpenableauthentraps.get_name_leafdata());
@@ -534,24 +329,22 @@ const EntityPath Snmpv2Mib::Snmp::get_entity_path(Entity* ancestor) const
     if (snmpproxydrops.is_set || is_set(snmpproxydrops.yfilter)) leaf_name_data.push_back(snmpproxydrops.get_name_leafdata());
     if (snmpsilentdrops.is_set || is_set(snmpsilentdrops.yfilter)) leaf_name_data.push_back(snmpsilentdrops.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmpv2Mib::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpEnableAuthenTraps")
     {
@@ -735,7 +528,7 @@ void Snmpv2Mib::Snmp::set_value(const std::string & value_path, const std::strin
     }
 }
 
-void Snmpv2Mib::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpEnableAuthenTraps")
     {
@@ -859,78 +652,72 @@ void Snmpv2Mib::Snmp::set_filter(const std::string & value_path, YFilter yfilter
     }
 }
 
-bool Snmpv2Mib::Snmp::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::Snmp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpEnableAuthenTraps" || name == "snmpInASNParseErrs" || name == "snmpInBadCommunityNames" || name == "snmpInBadCommunityUses" || name == "snmpInBadValues" || name == "snmpInBadVersions" || name == "snmpInGenErrs" || name == "snmpInGetNexts" || name == "snmpInGetRequests" || name == "snmpInGetResponses" || name == "snmpInNoSuchNames" || name == "snmpInPkts" || name == "snmpInReadOnlys" || name == "snmpInSetRequests" || name == "snmpInTooBigs" || name == "snmpInTotalReqVars" || name == "snmpInTotalSetVars" || name == "snmpInTraps" || name == "snmpOutBadValues" || name == "snmpOutGenErrs" || name == "snmpOutGetNexts" || name == "snmpOutGetRequests" || name == "snmpOutGetResponses" || name == "snmpOutNoSuchNames" || name == "snmpOutPkts" || name == "snmpOutSetRequests" || name == "snmpOutTooBigs" || name == "snmpOutTraps" || name == "snmpProxyDrops" || name == "snmpSilentDrops")
         return true;
     return false;
 }
 
-Snmpv2Mib::Snmpset::Snmpset()
+SNMPv2MIB::Snmpset::Snmpset()
     :
     snmpsetserialno{YType::int32, "snmpSetSerialNo"}
 {
-    yang_name = "snmpSet"; yang_parent_name = "SNMPv2-MIB";
+
+    yang_name = "snmpSet"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmpv2Mib::Snmpset::~Snmpset()
+SNMPv2MIB::Snmpset::~Snmpset()
 {
 }
 
-bool Snmpv2Mib::Snmpset::has_data() const
+bool SNMPv2MIB::Snmpset::has_data() const
 {
     return snmpsetserialno.is_set;
 }
 
-bool Snmpv2Mib::Snmpset::has_operation() const
+bool SNMPv2MIB::Snmpset::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmpsetserialno.yfilter);
 }
 
-std::string Snmpv2Mib::Snmpset::get_segment_path() const
+std::string SNMPv2MIB::Snmpset::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPv2MIB::Snmpset::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpSet";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Snmpv2Mib::Snmpset::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Snmpset::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (snmpsetserialno.is_set || is_set(snmpsetserialno.yfilter)) leaf_name_data.push_back(snmpsetserialno.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::Snmpset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::Snmpset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Snmpset::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Snmpset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmpv2Mib::Snmpset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::Snmpset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpSetSerialNo")
     {
@@ -940,7 +727,7 @@ void Snmpv2Mib::Snmpset::set_value(const std::string & value_path, const std::st
     }
 }
 
-void Snmpv2Mib::Snmpset::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::Snmpset::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpSetSerialNo")
     {
@@ -948,23 +735,24 @@ void Snmpv2Mib::Snmpset::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool Snmpv2Mib::Snmpset::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::Snmpset::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpSetSerialNo")
         return true;
     return false;
 }
 
-Snmpv2Mib::Sysortable::Sysortable()
+SNMPv2MIB::Sysortable::Sysortable()
 {
-    yang_name = "sysORTable"; yang_parent_name = "SNMPv2-MIB";
+
+    yang_name = "sysORTable"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmpv2Mib::Sysortable::~Sysortable()
+SNMPv2MIB::Sysortable::~Sysortable()
 {
 }
 
-bool Snmpv2Mib::Sysortable::has_data() const
+bool SNMPv2MIB::Sysortable::has_data() const
 {
     for (std::size_t index=0; index<sysorentry.size(); index++)
     {
@@ -974,7 +762,7 @@ bool Snmpv2Mib::Sysortable::has_data() const
     return false;
 }
 
-bool Snmpv2Mib::Sysortable::has_operation() const
+bool SNMPv2MIB::Sysortable::has_operation() const
 {
     for (std::size_t index=0; index<sysorentry.size(); index++)
     {
@@ -984,37 +772,30 @@ bool Snmpv2Mib::Sysortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Snmpv2Mib::Sysortable::get_segment_path() const
+std::string SNMPv2MIB::Sysortable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPv2MIB::Sysortable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sysORTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Snmpv2Mib::Sysortable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::Sysortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sysOREntry")
     {
@@ -1026,7 +807,7 @@ std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::stri
                 return c;
             }
         }
-        auto c = std::make_shared<Snmpv2Mib::Sysortable::Sysorentry>();
+        auto c = std::make_shared<SNMPv2MIB::Sysortable::Sysorentry>();
         c->parent = this;
         sysorentry.push_back(c);
         return c;
@@ -1035,7 +816,7 @@ std::shared_ptr<Entity> Snmpv2Mib::Sysortable::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Sysortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : sysorentry)
@@ -1046,36 +827,37 @@ std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Sysortable::get_childr
     return children;
 }
 
-void Snmpv2Mib::Sysortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::Sysortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmpv2Mib::Sysortable::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::Sysortable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmpv2Mib::Sysortable::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::Sysortable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sysOREntry")
         return true;
     return false;
 }
 
-Snmpv2Mib::Sysortable::Sysorentry::Sysorentry()
+SNMPv2MIB::Sysortable::Sysorentry::Sysorentry()
     :
     sysorindex{YType::int32, "sysORIndex"},
     sysordescr{YType::str, "sysORDescr"},
     sysorid{YType::str, "sysORID"},
     sysoruptime{YType::uint32, "sysORUpTime"}
 {
-    yang_name = "sysOREntry"; yang_parent_name = "sysORTable";
+
+    yang_name = "sysOREntry"; yang_parent_name = "sysORTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmpv2Mib::Sysortable::Sysorentry::~Sysorentry()
+SNMPv2MIB::Sysortable::Sysorentry::~Sysorentry()
 {
 }
 
-bool Snmpv2Mib::Sysortable::Sysorentry::has_data() const
+bool SNMPv2MIB::Sysortable::Sysorentry::has_data() const
 {
     return sysorindex.is_set
 	|| sysordescr.is_set
@@ -1083,7 +865,7 @@ bool Snmpv2Mib::Sysortable::Sysorentry::has_data() const
 	|| sysoruptime.is_set;
 }
 
-bool Snmpv2Mib::Sysortable::Sysorentry::has_operation() const
+bool SNMPv2MIB::Sysortable::Sysorentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sysorindex.yfilter)
@@ -1092,27 +874,22 @@ bool Snmpv2Mib::Sysortable::Sysorentry::has_operation() const
 	|| ydk::is_set(sysoruptime.yfilter);
 }
 
-std::string Snmpv2Mib::Sysortable::Sysorentry::get_segment_path() const
+std::string SNMPv2MIB::Sysortable::Sysorentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMPv2-MIB:SNMPv2-MIB/sysORTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPv2MIB::Sysortable::Sysorentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sysOREntry" <<"[sysORIndex='" <<sysorindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Snmpv2Mib::Sysortable::Sysorentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::Sysorentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "SNMPv2-MIB:SNMPv2-MIB/sysORTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (sysorindex.is_set || is_set(sysorindex.yfilter)) leaf_name_data.push_back(sysorindex.get_name_leafdata());
@@ -1120,24 +897,22 @@ const EntityPath Snmpv2Mib::Sysortable::Sysorentry::get_entity_path(Entity* ance
     if (sysorid.is_set || is_set(sysorid.yfilter)) leaf_name_data.push_back(sysorid.get_name_leafdata());
     if (sysoruptime.is_set || is_set(sysoruptime.yfilter)) leaf_name_data.push_back(sysoruptime.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmpv2Mib::Sysortable::Sysorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::Sysortable::Sysorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmpv2Mib::Sysortable::Sysorentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::Sysorentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Snmpv2Mib::Sysortable::Sysorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::Sysortable::Sysorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sysORIndex")
     {
@@ -1165,7 +940,7 @@ void Snmpv2Mib::Sysortable::Sysorentry::set_value(const std::string & value_path
     }
 }
 
-void Snmpv2Mib::Sysortable::Sysorentry::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::Sysortable::Sysorentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sysORIndex")
     {
@@ -1185,15 +960,196 @@ void Snmpv2Mib::Sysortable::Sysorentry::set_filter(const std::string & value_pat
     }
 }
 
-bool Snmpv2Mib::Sysortable::Sysorentry::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::Sysortable::Sysorentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sysORIndex" || name == "sysORDescr" || name == "sysORID" || name == "sysORUpTime")
         return true;
     return false;
 }
 
-const Enum::YLeaf Snmpv2Mib::Snmp::Snmpenableauthentraps::enabled {1, "enabled"};
-const Enum::YLeaf Snmpv2Mib::Snmp::Snmpenableauthentraps::disabled {2, "disabled"};
+SNMPv2MIB::System::System()
+    :
+    syscontact{YType::str, "sysContact"},
+    sysdescr{YType::str, "sysDescr"},
+    syslocation{YType::str, "sysLocation"},
+    sysname{YType::str, "sysName"},
+    sysobjectid{YType::str, "sysObjectID"},
+    sysorlastchange{YType::uint32, "sysORLastChange"},
+    sysservices{YType::int32, "sysServices"},
+    sysuptime{YType::uint32, "sysUpTime"}
+{
+
+    yang_name = "system"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+SNMPv2MIB::System::~System()
+{
+}
+
+bool SNMPv2MIB::System::has_data() const
+{
+    return syscontact.is_set
+	|| sysdescr.is_set
+	|| syslocation.is_set
+	|| sysname.is_set
+	|| sysobjectid.is_set
+	|| sysorlastchange.is_set
+	|| sysservices.is_set
+	|| sysuptime.is_set;
+}
+
+bool SNMPv2MIB::System::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(syscontact.yfilter)
+	|| ydk::is_set(sysdescr.yfilter)
+	|| ydk::is_set(syslocation.yfilter)
+	|| ydk::is_set(sysname.yfilter)
+	|| ydk::is_set(sysobjectid.yfilter)
+	|| ydk::is_set(sysorlastchange.yfilter)
+	|| ydk::is_set(sysservices.yfilter)
+	|| ydk::is_set(sysuptime.yfilter);
+}
+
+std::string SNMPv2MIB::System::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SNMPv2MIB::System::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "system";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::System::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (syscontact.is_set || is_set(syscontact.yfilter)) leaf_name_data.push_back(syscontact.get_name_leafdata());
+    if (sysdescr.is_set || is_set(sysdescr.yfilter)) leaf_name_data.push_back(sysdescr.get_name_leafdata());
+    if (syslocation.is_set || is_set(syslocation.yfilter)) leaf_name_data.push_back(syslocation.get_name_leafdata());
+    if (sysname.is_set || is_set(sysname.yfilter)) leaf_name_data.push_back(sysname.get_name_leafdata());
+    if (sysobjectid.is_set || is_set(sysobjectid.yfilter)) leaf_name_data.push_back(sysobjectid.get_name_leafdata());
+    if (sysorlastchange.is_set || is_set(sysorlastchange.yfilter)) leaf_name_data.push_back(sysorlastchange.get_name_leafdata());
+    if (sysservices.is_set || is_set(sysservices.yfilter)) leaf_name_data.push_back(sysservices.get_name_leafdata());
+    if (sysuptime.is_set || is_set(sysuptime.yfilter)) leaf_name_data.push_back(sysuptime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SNMPv2MIB::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::System::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SNMPv2MIB::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sysContact")
+    {
+        syscontact = value;
+        syscontact.value_namespace = name_space;
+        syscontact.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysDescr")
+    {
+        sysdescr = value;
+        sysdescr.value_namespace = name_space;
+        sysdescr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysLocation")
+    {
+        syslocation = value;
+        syslocation.value_namespace = name_space;
+        syslocation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysName")
+    {
+        sysname = value;
+        sysname.value_namespace = name_space;
+        sysname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysObjectID")
+    {
+        sysobjectid = value;
+        sysobjectid.value_namespace = name_space;
+        sysobjectid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysORLastChange")
+    {
+        sysorlastchange = value;
+        sysorlastchange.value_namespace = name_space;
+        sysorlastchange.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysServices")
+    {
+        sysservices = value;
+        sysservices.value_namespace = name_space;
+        sysservices.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sysUpTime")
+    {
+        sysuptime = value;
+        sysuptime.value_namespace = name_space;
+        sysuptime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SNMPv2MIB::System::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sysContact")
+    {
+        syscontact.yfilter = yfilter;
+    }
+    if(value_path == "sysDescr")
+    {
+        sysdescr.yfilter = yfilter;
+    }
+    if(value_path == "sysLocation")
+    {
+        syslocation.yfilter = yfilter;
+    }
+    if(value_path == "sysName")
+    {
+        sysname.yfilter = yfilter;
+    }
+    if(value_path == "sysObjectID")
+    {
+        sysobjectid.yfilter = yfilter;
+    }
+    if(value_path == "sysORLastChange")
+    {
+        sysorlastchange.yfilter = yfilter;
+    }
+    if(value_path == "sysServices")
+    {
+        sysservices.yfilter = yfilter;
+    }
+    if(value_path == "sysUpTime")
+    {
+        sysuptime.yfilter = yfilter;
+    }
+}
+
+bool SNMPv2MIB::System::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sysContact" || name == "sysDescr" || name == "sysLocation" || name == "sysName" || name == "sysObjectID" || name == "sysORLastChange" || name == "sysServices" || name == "sysUpTime")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SNMPv2MIB::Snmp::Snmpenableauthentraps::enabled {1, "enabled"};
+const Enum::YLeaf SNMPv2MIB::Snmp::Snmpenableauthentraps::disabled {2, "disabled"};
 
 
 }

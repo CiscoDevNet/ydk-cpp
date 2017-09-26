@@ -10,14 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_optics_cfg {
 
-class OpticsOtsAmpliGainRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf extended;
-
-};
-
 class OpticsOtsAmpliControlMode : public ydk::Enum
 {
     public:
@@ -34,6 +26,14 @@ class Threshold : public ydk::Enum
 
 };
 
+class OpticsDwdmCarrierGrid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_50g_hz_grid;
+        static const ydk::Enum::YLeaf Y_100mhz_grid;
+
+};
+
 class OpticsDwdmCarrierParam : public ydk::Enum
 {
     public:
@@ -43,19 +43,19 @@ class OpticsDwdmCarrierParam : public ydk::Enum
 
 };
 
+class OpticsOtsAmpliGainRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf extended;
+
+};
+
 class OpticsOtsSafetyControlMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf disabled;
-
-};
-
-class OpticsDwdmCarrierGrid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_50g_hz_grid;
-        static const ydk::Enum::YLeaf Y_100mhz_grid;
 
 };
 

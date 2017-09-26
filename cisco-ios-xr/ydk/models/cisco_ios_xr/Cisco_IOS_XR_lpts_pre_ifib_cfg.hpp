@@ -24,6 +24,14 @@ class LptsPreIFibPrecedenceNumber : public ydk::Enum
 
 };
 
+class LptsDynamicFlowConfig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flows_config;
+        static const ydk::Enum::YLeaf platform_config;
+
+};
+
 class LptsFlow : public ydk::Enum
 {
     public:
@@ -124,6 +132,7 @@ class LptsFlow : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp6;
         static const ydk::Enum::YLeaf onepk;
         static const ydk::Enum::YLeaf exr;
+        static const ydk::Enum::YLeaf platform_limit;
 
 };
 

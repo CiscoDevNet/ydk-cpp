@@ -18,12 +18,10 @@ MplsOam::MplsOam()
 	,packet(std::make_shared<MplsOam::Packet>())
 {
     global->parent = this;
-
     interface->parent = this;
-
     packet->parent = this;
 
-    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-oper";
+    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MplsOam::~MplsOam()
@@ -49,26 +47,15 @@ std::string MplsOam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -165,16 +152,887 @@ bool MplsOam::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+MplsOam::Global::Global()
+    :
+    total_clients{YType::uint32, "total-clients"}
+    	,
+    collaborator_statistics(std::make_shared<MplsOam::Global::CollaboratorStatistics>())
+	,message_statistics(std::make_shared<MplsOam::Global::MessageStatistics>())
+{
+    collaborator_statistics->parent = this;
+    message_statistics->parent = this;
+
+    yang_name = "global"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::~Global()
+{
+}
+
+bool MplsOam::Global::has_data() const
+{
+    return total_clients.is_set
+	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_data())
+	|| (message_statistics !=  nullptr && message_statistics->has_data());
+}
+
+bool MplsOam::Global::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(total_clients.yfilter)
+	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_operation())
+	|| (message_statistics !=  nullptr && message_statistics->has_operation());
+}
+
+std::string MplsOam::Global::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total_clients.is_set || is_set(total_clients.yfilter)) leaf_name_data.push_back(total_clients.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "collaborator-statistics")
+    {
+        if(collaborator_statistics == nullptr)
+        {
+            collaborator_statistics = std::make_shared<MplsOam::Global::CollaboratorStatistics>();
+        }
+        return collaborator_statistics;
+    }
+
+    if(child_yang_name == "message-statistics")
+    {
+        if(message_statistics == nullptr)
+        {
+            message_statistics = std::make_shared<MplsOam::Global::MessageStatistics>();
+        }
+        return message_statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_statistics != nullptr)
+    {
+        children["collaborator-statistics"] = collaborator_statistics;
+    }
+
+    if(message_statistics != nullptr)
+    {
+        children["message-statistics"] = message_statistics;
+    }
+
+    return children;
+}
+
+void MplsOam::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "total-clients")
+    {
+        total_clients = value;
+        total_clients.value_namespace = name_space;
+        total_clients.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-clients")
+    {
+        total_clients.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collaborator-statistics" || name == "message-statistics" || name == "total-clients")
+        return true;
+    return false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorStatistics()
+    :
+    collaborator_i_parm(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>())
+	,collaborator_im(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>())
+	,collaborator_net_io(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>())
+	,collaborator_rib(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>())
+{
+    collaborator_i_parm->parent = this;
+    collaborator_im->parent = this;
+    collaborator_net_io->parent = this;
+    collaborator_rib->parent = this;
+
+    yang_name = "collaborator-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::CollaboratorStatistics::~CollaboratorStatistics()
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::has_data() const
+{
+    return (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_data())
+	|| (collaborator_im !=  nullptr && collaborator_im->has_data())
+	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_data())
+	|| (collaborator_rib !=  nullptr && collaborator_rib->has_data());
+}
+
+bool MplsOam::Global::CollaboratorStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_operation())
+	|| (collaborator_im !=  nullptr && collaborator_im->has_operation())
+	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_operation())
+	|| (collaborator_rib !=  nullptr && collaborator_rib->has_operation());
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "collaborator-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "collaborator-i-parm")
+    {
+        if(collaborator_i_parm == nullptr)
+        {
+            collaborator_i_parm = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>();
+        }
+        return collaborator_i_parm;
+    }
+
+    if(child_yang_name == "collaborator-im")
+    {
+        if(collaborator_im == nullptr)
+        {
+            collaborator_im = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>();
+        }
+        return collaborator_im;
+    }
+
+    if(child_yang_name == "collaborator-net-io")
+    {
+        if(collaborator_net_io == nullptr)
+        {
+            collaborator_net_io = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>();
+        }
+        return collaborator_net_io;
+    }
+
+    if(child_yang_name == "collaborator-rib")
+    {
+        if(collaborator_rib == nullptr)
+        {
+            collaborator_rib = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>();
+        }
+        return collaborator_rib;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(collaborator_i_parm != nullptr)
+    {
+        children["collaborator-i-parm"] = collaborator_i_parm;
+    }
+
+    if(collaborator_im != nullptr)
+    {
+        children["collaborator-im"] = collaborator_im;
+    }
+
+    if(collaborator_net_io != nullptr)
+    {
+        children["collaborator-net-io"] = collaborator_net_io;
+    }
+
+    if(collaborator_rib != nullptr)
+    {
+        children["collaborator-rib"] = collaborator_rib;
+    }
+
+    return children;
+}
+
+void MplsOam::Global::CollaboratorStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::Global::CollaboratorStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collaborator-i-parm" || name == "collaborator-im" || name == "collaborator-net-io" || name == "collaborator-rib")
+        return true;
+    return false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::CollaboratorIParm()
+    :
+    downs{YType::uint32, "downs"},
+    ups{YType::uint32, "ups"}
+{
+
+    yang_name = "collaborator-i-parm"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::~CollaboratorIParm()
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_data() const
+{
+    return downs.is_set
+	|| ups.is_set;
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "collaborator-i-parm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "downs")
+    {
+        downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ups")
+    {
+        ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorIm::CollaboratorIm()
+    :
+    downs{YType::uint32, "downs"},
+    ups{YType::uint32, "ups"}
+{
+
+    yang_name = "collaborator-im"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorIm::~CollaboratorIm()
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_data() const
+{
+    return downs.is_set
+	|| ups.is_set;
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "collaborator-im";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "downs")
+    {
+        downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ups")
+    {
+        ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::CollaboratorNetIo()
+    :
+    downs{YType::uint32, "downs"},
+    ups{YType::uint32, "ups"}
+{
+
+    yang_name = "collaborator-net-io"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::~CollaboratorNetIo()
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_data() const
+{
+    return downs.is_set
+	|| ups.is_set;
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "collaborator-net-io";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "downs")
+    {
+        downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ups")
+    {
+        ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorRib::CollaboratorRib()
+    :
+    downs{YType::uint32, "downs"},
+    ups{YType::uint32, "ups"}
+{
+
+    yang_name = "collaborator-rib"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::CollaboratorStatistics::CollaboratorRib::~CollaboratorRib()
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_data() const
+{
+    return downs.is_set
+	|| ups.is_set;
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "collaborator-rib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "downs")
+    {
+        downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ups")
+    {
+        ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
+}
+
+MplsOam::Global::MessageStatistics::MessageStatistics()
+    :
+    echo_cancel_messages{YType::uint32, "echo-cancel-messages"},
+    echo_submit_messages{YType::uint32, "echo-submit-messages"},
+    get_config_messages{YType::uint32, "get-config-messages"},
+    get_response_messages{YType::uint32, "get-response-messages"},
+    get_result_messages{YType::uint32, "get-result-messages"},
+    property_block_messages{YType::uint32, "property-block-messages"},
+    property_request_messages{YType::uint32, "property-request-messages"},
+    property_response_messages{YType::uint32, "property-response-messages"},
+    register_messages{YType::uint32, "register-messages"},
+    thread_request_messages{YType::uint32, "thread-request-messages"},
+    unregister_messages{YType::uint32, "unregister-messages"}
+{
+
+    yang_name = "message-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Global::MessageStatistics::~MessageStatistics()
+{
+}
+
+bool MplsOam::Global::MessageStatistics::has_data() const
+{
+    return echo_cancel_messages.is_set
+	|| echo_submit_messages.is_set
+	|| get_config_messages.is_set
+	|| get_response_messages.is_set
+	|| get_result_messages.is_set
+	|| property_block_messages.is_set
+	|| property_request_messages.is_set
+	|| property_response_messages.is_set
+	|| register_messages.is_set
+	|| thread_request_messages.is_set
+	|| unregister_messages.is_set;
+}
+
+bool MplsOam::Global::MessageStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(echo_cancel_messages.yfilter)
+	|| ydk::is_set(echo_submit_messages.yfilter)
+	|| ydk::is_set(get_config_messages.yfilter)
+	|| ydk::is_set(get_response_messages.yfilter)
+	|| ydk::is_set(get_result_messages.yfilter)
+	|| ydk::is_set(property_block_messages.yfilter)
+	|| ydk::is_set(property_request_messages.yfilter)
+	|| ydk::is_set(property_response_messages.yfilter)
+	|| ydk::is_set(register_messages.yfilter)
+	|| ydk::is_set(thread_request_messages.yfilter)
+	|| ydk::is_set(unregister_messages.yfilter);
+}
+
+std::string MplsOam::Global::MessageStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Global::MessageStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "message-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Global::MessageStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (echo_cancel_messages.is_set || is_set(echo_cancel_messages.yfilter)) leaf_name_data.push_back(echo_cancel_messages.get_name_leafdata());
+    if (echo_submit_messages.is_set || is_set(echo_submit_messages.yfilter)) leaf_name_data.push_back(echo_submit_messages.get_name_leafdata());
+    if (get_config_messages.is_set || is_set(get_config_messages.yfilter)) leaf_name_data.push_back(get_config_messages.get_name_leafdata());
+    if (get_response_messages.is_set || is_set(get_response_messages.yfilter)) leaf_name_data.push_back(get_response_messages.get_name_leafdata());
+    if (get_result_messages.is_set || is_set(get_result_messages.yfilter)) leaf_name_data.push_back(get_result_messages.get_name_leafdata());
+    if (property_block_messages.is_set || is_set(property_block_messages.yfilter)) leaf_name_data.push_back(property_block_messages.get_name_leafdata());
+    if (property_request_messages.is_set || is_set(property_request_messages.yfilter)) leaf_name_data.push_back(property_request_messages.get_name_leafdata());
+    if (property_response_messages.is_set || is_set(property_response_messages.yfilter)) leaf_name_data.push_back(property_response_messages.get_name_leafdata());
+    if (register_messages.is_set || is_set(register_messages.yfilter)) leaf_name_data.push_back(register_messages.get_name_leafdata());
+    if (thread_request_messages.is_set || is_set(thread_request_messages.yfilter)) leaf_name_data.push_back(thread_request_messages.get_name_leafdata());
+    if (unregister_messages.is_set || is_set(unregister_messages.yfilter)) leaf_name_data.push_back(unregister_messages.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Global::MessageStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Global::MessageStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "echo-cancel-messages")
+    {
+        echo_cancel_messages = value;
+        echo_cancel_messages.value_namespace = name_space;
+        echo_cancel_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "echo-submit-messages")
+    {
+        echo_submit_messages = value;
+        echo_submit_messages.value_namespace = name_space;
+        echo_submit_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "get-config-messages")
+    {
+        get_config_messages = value;
+        get_config_messages.value_namespace = name_space;
+        get_config_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "get-response-messages")
+    {
+        get_response_messages = value;
+        get_response_messages.value_namespace = name_space;
+        get_response_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "get-result-messages")
+    {
+        get_result_messages = value;
+        get_result_messages.value_namespace = name_space;
+        get_result_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "property-block-messages")
+    {
+        property_block_messages = value;
+        property_block_messages.value_namespace = name_space;
+        property_block_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "property-request-messages")
+    {
+        property_request_messages = value;
+        property_request_messages.value_namespace = name_space;
+        property_request_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "property-response-messages")
+    {
+        property_response_messages = value;
+        property_response_messages.value_namespace = name_space;
+        property_response_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "register-messages")
+    {
+        register_messages = value;
+        register_messages.value_namespace = name_space;
+        register_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "thread-request-messages")
+    {
+        thread_request_messages = value;
+        thread_request_messages.value_namespace = name_space;
+        thread_request_messages.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unregister-messages")
+    {
+        unregister_messages = value;
+        unregister_messages.value_namespace = name_space;
+        unregister_messages.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Global::MessageStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "echo-cancel-messages")
+    {
+        echo_cancel_messages.yfilter = yfilter;
+    }
+    if(value_path == "echo-submit-messages")
+    {
+        echo_submit_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-config-messages")
+    {
+        get_config_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-response-messages")
+    {
+        get_response_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-result-messages")
+    {
+        get_result_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-block-messages")
+    {
+        property_block_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-request-messages")
+    {
+        property_request_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-response-messages")
+    {
+        property_response_messages.yfilter = yfilter;
+    }
+    if(value_path == "register-messages")
+    {
+        register_messages.yfilter = yfilter;
+    }
+    if(value_path == "thread-request-messages")
+    {
+        thread_request_messages.yfilter = yfilter;
+    }
+    if(value_path == "unregister-messages")
+    {
+        unregister_messages.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::MessageStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "echo-cancel-messages" || name == "echo-submit-messages" || name == "get-config-messages" || name == "get-response-messages" || name == "get-result-messages" || name == "property-block-messages" || name == "property-request-messages" || name == "property-response-messages" || name == "register-messages" || name == "thread-request-messages" || name == "unregister-messages")
+        return true;
+    return false;
+}
+
 MplsOam::Interface::Interface()
     :
     briefs(std::make_shared<MplsOam::Interface::Briefs>())
 	,details(std::make_shared<MplsOam::Interface::Details>())
 {
     briefs->parent = this;
-
     details->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "mpls-oam";
+    yang_name = "interface"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Interface::~Interface()
@@ -194,33 +1052,26 @@ bool MplsOam::Interface::has_operation() const
 	|| (details !=  nullptr && details->has_operation());
 }
 
+std::string MplsOam::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -280,7 +1131,8 @@ bool MplsOam::Interface::has_leaf_or_child_of_name(const std::string & name) con
 
 MplsOam::Interface::Briefs::Briefs()
 {
-    yang_name = "briefs"; yang_parent_name = "interface";
+
+    yang_name = "briefs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Interface::Briefs::~Briefs()
@@ -307,33 +1159,26 @@ bool MplsOam::Interface::Briefs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MplsOam::Interface::Briefs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Interface::Briefs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "briefs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Briefs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Briefs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -395,7 +1240,8 @@ MplsOam::Interface::Briefs::Brief::Brief()
     primary_address_v6{YType::str, "primary-address-v6"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "brief"; yang_parent_name = "briefs";
+
+    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Interface::Briefs::Brief::~Brief()
@@ -427,27 +1273,22 @@ bool MplsOam::Interface::Briefs::Brief::has_operation() const
 	|| ydk::is_set(state.yfilter);
 }
 
+std::string MplsOam::Interface::Briefs::Brief::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/briefs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Interface::Briefs::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "brief" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Briefs::Brief::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/briefs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -459,9 +1300,7 @@ const EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ance
     if (primary_address_v6.is_set || is_set(primary_address_v6.yfilter)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -573,7 +1412,8 @@ bool MplsOam::Interface::Briefs::Brief::has_leaf_or_child_of_name(const std::str
 
 MplsOam::Interface::Details::Details()
 {
-    yang_name = "details"; yang_parent_name = "interface";
+
+    yang_name = "details"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Interface::Details::~Details()
@@ -600,33 +1440,26 @@ bool MplsOam::Interface::Details::has_operation() const
     return is_set(yfilter);
 }
 
+std::string MplsOam::Interface::Details::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Interface::Details::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "details";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -685,10 +1518,9 @@ MplsOam::Interface::Details::Detail::Detail()
 	,packet_statistics(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics>())
 {
     interface_brief->parent = this;
-
     packet_statistics->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "details";
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Interface::Details::Detail::~Detail()
@@ -710,34 +1542,27 @@ bool MplsOam::Interface::Details::Detail::has_operation() const
 	|| (packet_statistics !=  nullptr && packet_statistics->has_operation());
 }
 
+std::string MplsOam::Interface::Details::Detail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/details/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Interface::Details::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "detail" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/interface/details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -815,7 +1640,8 @@ MplsOam::Interface::Details::Detail::InterfaceBrief::InterfaceBrief()
     primary_address_v6{YType::str, "primary-address-v6"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "interface-brief"; yang_parent_name = "detail";
+
+    yang_name = "interface-brief"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::InterfaceBrief::~InterfaceBrief()
@@ -849,23 +1675,11 @@ std::string MplsOam::Interface::Details::Detail::InterfaceBrief::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-brief";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::InterfaceBrief::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceBrief' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
@@ -876,9 +1690,7 @@ const EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity
     if (primary_address_v6.is_set || is_set(primary_address_v6.yfilter)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -988,18 +1800,13 @@ MplsOam::Interface::Details::Detail::PacketStatistics::PacketStatistics()
 	,working_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent>())
 {
     protect_rep_sent->parent = this;
-
     protect_req_sent->parent = this;
-
     received->parent = this;
-
     sent->parent = this;
-
     working_rep_sent->parent = this;
-
     working_req_sent->parent = this;
 
-    yang_name = "packet-statistics"; yang_parent_name = "detail";
+    yang_name = "packet-statistics"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::~PacketStatistics()
@@ -1031,29 +1838,15 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PacketStatistics' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1167,6 +1960,994 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::has_leaf_or_child_of
     return false;
 }
 
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::ProtectRepSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>())
+{
+    bfd_no_reply->parent = this;
+    transmit_bfd_good->parent = this;
+    transmit_drop->parent = this;
+    transmit_good->parent = this;
+
+    yang_name = "protect-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::~ProtectRepSent()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_data() const
+{
+    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
+	|| (transmit_good !=  nullptr && transmit_good->has_data());
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
+	|| (transmit_good !=  nullptr && transmit_good->has_operation());
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protect-rep-sent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-no-reply")
+    {
+        if(bfd_no_reply == nullptr)
+        {
+            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>();
+        }
+        return bfd_no_reply;
+    }
+
+    if(child_yang_name == "transmit-bfd-good")
+    {
+        if(transmit_bfd_good == nullptr)
+        {
+            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>();
+        }
+        return transmit_bfd_good;
+    }
+
+    if(child_yang_name == "transmit-drop")
+    {
+        if(transmit_drop == nullptr)
+        {
+            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>();
+        }
+        return transmit_drop;
+    }
+
+    if(child_yang_name == "transmit-good")
+    {
+        if(transmit_good == nullptr)
+        {
+            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>();
+        }
+        return transmit_good;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
+    {
+        children["bfd-no-reply"] = bfd_no_reply;
+    }
+
+    if(transmit_bfd_good != nullptr)
+    {
+        children["transmit-bfd-good"] = transmit_bfd_good;
+    }
+
+    if(transmit_drop != nullptr)
+    {
+        children["transmit-drop"] = transmit_drop;
+    }
+
+    if(transmit_good != nullptr)
+    {
+        children["transmit-good"] = transmit_good;
+    }
+
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::BfdNoReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::~BfdNoReply()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-no-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::ProtectReqSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>())
+{
+    bfd_no_reply->parent = this;
+    transmit_bfd_good->parent = this;
+    transmit_drop->parent = this;
+    transmit_good->parent = this;
+
+    yang_name = "protect-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::~ProtectReqSent()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_data() const
+{
+    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
+	|| (transmit_good !=  nullptr && transmit_good->has_data());
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
+	|| (transmit_good !=  nullptr && transmit_good->has_operation());
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protect-req-sent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-no-reply")
+    {
+        if(bfd_no_reply == nullptr)
+        {
+            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>();
+        }
+        return bfd_no_reply;
+    }
+
+    if(child_yang_name == "transmit-bfd-good")
+    {
+        if(transmit_bfd_good == nullptr)
+        {
+            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>();
+        }
+        return transmit_bfd_good;
+    }
+
+    if(child_yang_name == "transmit-drop")
+    {
+        if(transmit_drop == nullptr)
+        {
+            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>();
+        }
+        return transmit_drop;
+    }
+
+    if(child_yang_name == "transmit-good")
+    {
+        if(transmit_good == nullptr)
+        {
+            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>();
+        }
+        return transmit_good;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
+    {
+        children["bfd-no-reply"] = bfd_no_reply;
+    }
+
+    if(transmit_bfd_good != nullptr)
+    {
+        children["transmit-bfd-good"] = transmit_bfd_good;
+    }
+
+    if(transmit_drop != nullptr)
+    {
+        children["transmit-drop"] = transmit_drop;
+    }
+
+    if(transmit_good != nullptr)
+    {
+        children["transmit-good"] = transmit_good;
+    }
+
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::BfdNoReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::~BfdNoReply()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-no-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
     :
     protect_protocol_received_good_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply>())
@@ -1185,34 +2966,21 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
 	,received_unknown(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown>())
 {
     protect_protocol_received_good_reply->parent = this;
-
     protect_protocol_received_good_request->parent = this;
-
     received_error_general->parent = this;
-
     received_error_ip_header->parent = this;
-
     received_error_no_interface->parent = this;
-
     received_error_no_memory->parent = this;
-
     received_error_queue_full->parent = this;
-
     received_error_runt->parent = this;
-
     received_error_udp_header->parent = this;
-
     received_good_bfd_reply->parent = this;
-
     received_good_bfd_request->parent = this;
-
     received_good_reply->parent = this;
-
     received_good_request->parent = this;
-
     received_unknown->parent = this;
 
-    yang_name = "received"; yang_parent_name = "packet-statistics";
+    yang_name = "received"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::~Received()
@@ -1260,29 +3028,15 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::get
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Received' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1508,75 +3262,62 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::has_leaf_o
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::ReceivedGoodRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-request"; yang_parent_name = "received";
+
+    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-request";
-
+    path_buffer << "protect-protocol-received-good-reply";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedGoodRequest' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -1592,7 +3333,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -1604,82 +3345,69 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::ReceivedGoodReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-reply"; yang_parent_name = "received";
+
+    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::~ReceivedGoodReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-reply";
-
+    path_buffer << "protect-protocol-received-good-request";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedGoodReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -1695,7 +3423,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -1707,522 +3435,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::ReceivedUnknown()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-unknown"; yang_parent_name = "received";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::~ReceivedUnknown()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-unknown";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedUnknown' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-ip-header"; yang_parent_name = "received";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-ip-header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorIpHeader' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-udp-header"; yang_parent_name = "received";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-udp-header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorUdpHeader' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::ReceivedErrorRunt()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-runt"; yang_parent_name = "received";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-runt";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorRunt' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-queue-full"; yang_parent_name = "received";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-queue-full";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorQueueFull' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -2234,7 +3447,8 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGe
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-general"; yang_parent_name = "received";
+
+    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::~ReceivedErrorGeneral()
@@ -2258,31 +3472,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-general";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorGeneral' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2332,12 +3532,103 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
     return false;
 }
 
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-error-ip-header";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::ReceivedErrorNoInterface()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-no-interface"; yang_parent_name = "received";
+
+    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::~ReceivedErrorNoInterface()
@@ -2361,31 +3652,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-no-interface";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorNoInterface' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2440,7 +3717,8 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNo
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-no-memory"; yang_parent_name = "received";
+
+    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::~ReceivedErrorNoMemory()
@@ -2464,31 +3742,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-no-memory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedErrorNoMemory' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2538,75 +3802,62 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received";
+
+    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-protocol-received-good-request";
-
+    path_buffer << "received-error-queue-full";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectProtocolReceivedGoodRequest' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -2622,7 +3873,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -2634,82 +3885,69 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::ReceivedErrorRunt()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received";
+
+    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-protocol-received-good-reply";
-
+    path_buffer << "received-error-runt";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectProtocolReceivedGoodReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -2725,7 +3963,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -2737,82 +3975,69 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-bfd-request"; yang_parent_name = "received";
+
+    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-bfd-request";
-
+    path_buffer << "received-error-udp-header";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedGoodBfdRequest' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -2828,7 +4053,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -2840,7 +4065,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -2852,7 +4077,8 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfd
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-bfd-reply"; yang_parent_name = "received";
+
+    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::~ReceivedGoodBfdReply()
@@ -2876,31 +4102,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::Rec
 {
     std::ostringstream path_buffer;
     path_buffer << "received-good-bfd-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReceivedGoodBfdReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2950,6 +4162,366 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
     return false;
 }
 
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-bfd-request";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::ReceivedGoodReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::~ReceivedGoodReply()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::ReceivedGoodRequest()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-request";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::ReceivedUnknown()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::~ReceivedUnknown()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-unknown";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Sent()
     :
     bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply>())
@@ -2958,14 +4530,11 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Sent()
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "sent"; yang_parent_name = "packet-statistics";
+    yang_name = "sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::~Sent()
@@ -2993,29 +4562,15 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "sent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Sent' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3101,321 +4656,13 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::has_leaf_or_ch
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitDrop' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitBfdGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::~BfdNoReply()
@@ -3439,31 +4686,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoRe
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNoReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3513,432 +4746,62 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::ha
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::WorkingReqSent()
-    :
-    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>())
-{
-    bfd_no_reply->parent = this;
-
-    transmit_bfd_good->parent = this;
-
-    transmit_drop->parent = this;
-
-    transmit_good->parent = this;
-
-    yang_name = "working-req-sent"; yang_parent_name = "packet-statistics";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::~WorkingReqSent()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_data() const
-{
-    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
-	|| (transmit_good !=  nullptr && transmit_good->has_data());
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
-	|| (transmit_good !=  nullptr && transmit_good->has_operation());
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "working-req-sent";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'WorkingReqSent' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-no-reply")
-    {
-        if(bfd_no_reply == nullptr)
-        {
-            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>();
-        }
-        return bfd_no_reply;
-    }
-
-    if(child_yang_name == "transmit-bfd-good")
-    {
-        if(transmit_bfd_good == nullptr)
-        {
-            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>();
-        }
-        return transmit_bfd_good;
-    }
-
-    if(child_yang_name == "transmit-drop")
-    {
-        if(transmit_drop == nullptr)
-        {
-            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>();
-        }
-        return transmit_drop;
-    }
-
-    if(child_yang_name == "transmit-good")
-    {
-        if(transmit_good == nullptr)
-        {
-            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>();
-        }
-        return transmit_good;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_no_reply != nullptr)
-    {
-        children["bfd-no-reply"] = bfd_no_reply;
-    }
-
-    if(transmit_bfd_good != nullptr)
-    {
-        children["transmit-bfd-good"] = transmit_bfd_good;
-    }
-
-    if(transmit_drop != nullptr)
-    {
-        children["transmit-drop"] = transmit_drop;
-    }
-
-    if(transmit_good != nullptr)
-    {
-        children["transmit-good"] = transmit_good;
-    }
-
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::TransmitGood()
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::TransmitBfdGood()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "transmit-good"; yang_parent_name = "working-req-sent";
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::~TransmitGood()
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::~TransmitBfdGood()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitDrop' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit-bfd-good";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitBfdGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -3954,7 +4817,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tran
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -3966,82 +4829,69 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tran
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::BfdNoReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::TransmitDrop()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent";
+
+    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::~BfdNoReply()
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::~TransmitDrop()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-no-reply";
-
+    path_buffer << "transmit-drop";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNoReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -4057,7 +4907,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdN
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -4069,7 +4919,97 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdN
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -4084,14 +5024,11 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::WorkingRe
 	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "working-rep-sent"; yang_parent_name = "packet-statistics";
+    yang_name = "working-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::~WorkingRepSent()
@@ -4119,29 +5056,15 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 {
     std::ostringstream path_buffer;
     path_buffer << "working-rep-sent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'WorkingRepSent' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4227,321 +5150,13 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::has_
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitDrop' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitBfdGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::~BfdNoReply()
@@ -4565,31 +5180,17 @@ std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSen
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNoReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4639,29 +5240,296 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdN
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::ProtectReqSent()
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
     :
-    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>())
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::WorkingReqSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "protect-req-sent"; yang_parent_name = "packet-statistics";
+    yang_name = "working-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::~ProtectReqSent()
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::~WorkingReqSent()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_data() const
 {
     return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -4669,7 +5537,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_
 	|| (transmit_good !=  nullptr && transmit_good->has_data());
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_operation() const
 {
     return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
@@ -4678,43 +5546,29 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_
 	|| (transmit_good !=  nullptr && transmit_good->has_operation());
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-req-sent";
-
+    path_buffer << "working-req-sent";
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectReqSent' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-no-reply")
     {
         if(bfd_no_reply == nullptr)
         {
-            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>();
+            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>();
         }
         return bfd_no_reply;
     }
@@ -4723,7 +5577,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     {
         if(transmit_bfd_good == nullptr)
         {
-            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>();
+            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>();
         }
         return transmit_bfd_good;
     }
@@ -4732,7 +5586,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     {
         if(transmit_drop == nullptr)
         {
-            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>();
+            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>();
         }
         return transmit_drop;
     }
@@ -4741,7 +5595,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     {
         if(transmit_good == nullptr)
         {
-            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>();
+            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>();
         }
         return transmit_good;
     }
@@ -4749,7 +5603,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(bfd_no_reply != nullptr)
@@ -4775,962 +5629,77 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitDrop' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitBfdGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::BfdNoReply()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::~BfdNoReply()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-no-reply";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNoReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::ProtectRepSent()
-    :
-    bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>())
-{
-    bfd_no_reply->parent = this;
-
-    transmit_bfd_good->parent = this;
-
-    transmit_drop->parent = this;
-
-    transmit_good->parent = this;
-
-    yang_name = "protect-rep-sent"; yang_parent_name = "packet-statistics";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::~ProtectRepSent()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_data() const
-{
-    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
-	|| (transmit_good !=  nullptr && transmit_good->has_data());
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
-	|| (transmit_good !=  nullptr && transmit_good->has_operation());
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protect-rep-sent";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ProtectRepSent' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-no-reply")
-    {
-        if(bfd_no_reply == nullptr)
-        {
-            bfd_no_reply = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>();
-        }
-        return bfd_no_reply;
-    }
-
-    if(child_yang_name == "transmit-bfd-good")
-    {
-        if(transmit_bfd_good == nullptr)
-        {
-            transmit_bfd_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>();
-        }
-        return transmit_bfd_good;
-    }
-
-    if(child_yang_name == "transmit-drop")
-    {
-        if(transmit_drop == nullptr)
-        {
-            transmit_drop = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>();
-        }
-        return transmit_drop;
-    }
-
-    if(child_yang_name == "transmit-good")
-    {
-        if(transmit_good == nullptr)
-        {
-            transmit_good = std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>();
-        }
-        return transmit_good;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_no_reply != nullptr)
-    {
-        children["bfd-no-reply"] = bfd_no_reply;
-    }
-
-    if(transmit_bfd_good != nullptr)
-    {
-        children["transmit-bfd-good"] = transmit_bfd_good;
-    }
-
-    if(transmit_drop != nullptr)
-    {
-        children["transmit-drop"] = transmit_drop;
-    }
-
-    if(transmit_good != nullptr)
-    {
-        children["transmit-good"] = transmit_good;
-    }
-
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
         return true;
     return false;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::TransmitGood()
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::~TransmitGood()
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::~BfdNoReply()
 {
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_data() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_operation() const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitDrop' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TransmitBfdGood' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::BfdNoReply()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::~BfdNoReply()
-{
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_segment_path() const
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BfdNoReply' in Cisco_IOS_XR_mpls_oam_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -5746,7 +5715,7 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdN
     }
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -5758,7 +5727,277 @@ void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdN
     }
 }
 
-bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -5775,18 +6014,13 @@ MplsOam::Packet::Packet()
 	,working_req_sent(std::make_shared<MplsOam::Packet::WorkingReqSent>())
 {
     protect_rep_sent->parent = this;
-
     protect_req_sent->parent = this;
-
     received->parent = this;
-
     sent->parent = this;
-
     working_rep_sent->parent = this;
-
     working_req_sent->parent = this;
 
-    yang_name = "packet"; yang_parent_name = "mpls-oam";
+    yang_name = "packet"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::~Packet()
@@ -5814,33 +6048,26 @@ bool MplsOam::Packet::has_operation() const
 	|| (working_req_sent !=  nullptr && working_req_sent->has_operation());
 }
 
+std::string MplsOam::Packet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -5954,6 +6181,1064 @@ bool MplsOam::Packet::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+MplsOam::Packet::ProtectRepSent::ProtectRepSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>())
+{
+    bfd_no_reply->parent = this;
+    transmit_bfd_good->parent = this;
+    transmit_drop->parent = this;
+    transmit_good->parent = this;
+
+    yang_name = "protect-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectRepSent::~ProtectRepSent()
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::has_data() const
+{
+    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
+	|| (transmit_good !=  nullptr && transmit_good->has_data());
+}
+
+bool MplsOam::Packet::ProtectRepSent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
+	|| (transmit_good !=  nullptr && transmit_good->has_operation());
+}
+
+std::string MplsOam::Packet::ProtectRepSent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectRepSent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protect-rep-sent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-no-reply")
+    {
+        if(bfd_no_reply == nullptr)
+        {
+            bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>();
+        }
+        return bfd_no_reply;
+    }
+
+    if(child_yang_name == "transmit-bfd-good")
+    {
+        if(transmit_bfd_good == nullptr)
+        {
+            transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>();
+        }
+        return transmit_bfd_good;
+    }
+
+    if(child_yang_name == "transmit-drop")
+    {
+        if(transmit_drop == nullptr)
+        {
+            transmit_drop = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>();
+        }
+        return transmit_drop;
+    }
+
+    if(child_yang_name == "transmit-good")
+    {
+        if(transmit_good == nullptr)
+        {
+            transmit_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>();
+        }
+        return transmit_good;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
+    {
+        children["bfd-no-reply"] = bfd_no_reply;
+    }
+
+    if(transmit_bfd_good != nullptr)
+    {
+        children["transmit-bfd-good"] = transmit_bfd_good;
+    }
+
+    if(transmit_drop != nullptr)
+    {
+        children["transmit-drop"] = transmit_drop;
+    }
+
+    if(transmit_good != nullptr)
+    {
+        children["transmit-good"] = transmit_good;
+    }
+
+    return children;
+}
+
+void MplsOam::Packet::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::Packet::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectRepSent::BfdNoReply::BfdNoReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectRepSent::BfdNoReply::~BfdNoReply()
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectRepSent::BfdNoReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectRepSent::BfdNoReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-no-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::BfdNoReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitDrop::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectRepSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectRepSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectReqSent::ProtectReqSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>())
+{
+    bfd_no_reply->parent = this;
+    transmit_bfd_good->parent = this;
+    transmit_drop->parent = this;
+    transmit_good->parent = this;
+
+    yang_name = "protect-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectReqSent::~ProtectReqSent()
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::has_data() const
+{
+    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
+	|| (transmit_good !=  nullptr && transmit_good->has_data());
+}
+
+bool MplsOam::Packet::ProtectReqSent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
+	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
+	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
+	|| (transmit_good !=  nullptr && transmit_good->has_operation());
+}
+
+std::string MplsOam::Packet::ProtectReqSent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectReqSent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protect-req-sent";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bfd-no-reply")
+    {
+        if(bfd_no_reply == nullptr)
+        {
+            bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>();
+        }
+        return bfd_no_reply;
+    }
+
+    if(child_yang_name == "transmit-bfd-good")
+    {
+        if(transmit_bfd_good == nullptr)
+        {
+            transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>();
+        }
+        return transmit_bfd_good;
+    }
+
+    if(child_yang_name == "transmit-drop")
+    {
+        if(transmit_drop == nullptr)
+        {
+            transmit_drop = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>();
+        }
+        return transmit_drop;
+    }
+
+    if(child_yang_name == "transmit-good")
+    {
+        if(transmit_good == nullptr)
+        {
+            transmit_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>();
+        }
+        return transmit_good;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(bfd_no_reply != nullptr)
+    {
+        children["bfd-no-reply"] = bfd_no_reply;
+    }
+
+    if(transmit_bfd_good != nullptr)
+    {
+        children["transmit-bfd-good"] = transmit_bfd_good;
+    }
+
+    if(transmit_drop != nullptr)
+    {
+        children["transmit-drop"] = transmit_drop;
+    }
+
+    if(transmit_good != nullptr)
+    {
+        children["transmit-good"] = transmit_good;
+    }
+
+    return children;
+}
+
+void MplsOam::Packet::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::Packet::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectReqSent::BfdNoReply::BfdNoReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectReqSent::BfdNoReply::~BfdNoReply()
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectReqSent::BfdNoReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectReqSent::BfdNoReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd-no-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::BfdNoReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitDrop::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::ProtectReqSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::ProtectReqSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Packet::Received::Received()
     :
     protect_protocol_received_good_reply(std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply>())
@@ -5972,34 +7257,21 @@ MplsOam::Packet::Received::Received()
 	,received_unknown(std::make_shared<MplsOam::Packet::Received::ReceivedUnknown>())
 {
     protect_protocol_received_good_reply->parent = this;
-
     protect_protocol_received_good_request->parent = this;
-
     received_error_general->parent = this;
-
     received_error_ip_header->parent = this;
-
     received_error_no_interface->parent = this;
-
     received_error_no_memory->parent = this;
-
     received_error_queue_full->parent = this;
-
     received_error_runt->parent = this;
-
     received_error_udp_header->parent = this;
-
     received_good_bfd_reply->parent = this;
-
     received_good_bfd_request->parent = this;
-
     received_good_reply->parent = this;
-
     received_good_request->parent = this;
-
     received_unknown->parent = this;
 
-    yang_name = "received"; yang_parent_name = "packet";
+    yang_name = "received"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Received::~Received()
@@ -6043,33 +7315,26 @@ bool MplsOam::Packet::Received::has_operation() const
 	|| (received_unknown !=  nullptr && received_unknown->has_operation());
 }
 
+std::string MplsOam::Packet::Received::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Received::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -6295,75 +7560,69 @@ bool MplsOam::Packet::Received::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodRequest::ReceivedGoodRequest()
+MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-request"; yang_parent_name = "received";
+
+    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
+MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
 {
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodRequest::has_data() const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodRequest::has_operation() const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::Received::ReceivedGoodRequest::get_segment_path() const
+std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-request";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "protect-protocol-received-good-reply";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -6379,7 +7638,7 @@ void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string
     }
 }
 
-void MplsOam::Packet::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -6391,82 +7650,76 @@ void MplsOam::Packet::Received::ReceivedGoodRequest::set_filter(const std::strin
     }
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodReply::ReceivedGoodReply()
+MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-reply"; yang_parent_name = "received";
+
+    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodReply::~ReceivedGoodReply()
+MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
 {
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodReply::has_data() const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodReply::has_operation() const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::Received::ReceivedGoodReply::get_segment_path() const
+std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-reply";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedGoodReply::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "protect-protocol-received-good-request";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -6482,7 +7735,7 @@ void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string &
     }
 }
 
-void MplsOam::Packet::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -6494,522 +7747,7 @@ void MplsOam::Packet::Received::ReceivedGoodReply::set_filter(const std::string 
     }
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Received::ReceivedUnknown::ReceivedUnknown()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-unknown"; yang_parent_name = "received";
-}
-
-MplsOam::Packet::Received::ReceivedUnknown::~ReceivedUnknown()
-{
-}
-
-bool MplsOam::Packet::Received::ReceivedUnknown::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Received::ReceivedUnknown::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Received::ReceivedUnknown::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-unknown";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Received::ReceivedUnknown::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-ip-header"; yang_parent_name = "received";
-}
-
-MplsOam::Packet::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
-{
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Received::ReceivedErrorIpHeader::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-ip-header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Received::ReceivedErrorIpHeader::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-udp-header"; yang_parent_name = "received";
-}
-
-MplsOam::Packet::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
-{
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-udp-header";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Received::ReceivedErrorRunt::ReceivedErrorRunt()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-runt"; yang_parent_name = "received";
-}
-
-MplsOam::Packet::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
-{
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorRunt::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorRunt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Received::ReceivedErrorRunt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-runt";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Received::ReceivedErrorRunt::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "received-error-queue-full"; yang_parent_name = "received";
-}
-
-MplsOam::Packet::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
-{
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Received::ReceivedErrorQueueFull::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-error-queue-full";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Received::ReceivedErrorQueueFull::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -7021,7 +7759,8 @@ MplsOam::Packet::Received::ReceivedErrorGeneral::ReceivedErrorGeneral()
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-general"; yang_parent_name = "received";
+
+    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorGeneral::~ReceivedErrorGeneral()
@@ -7041,35 +7780,28 @@ bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::Received::ReceivedErrorGeneral::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Received::ReceivedErrorGeneral::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-general";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedErrorGeneral::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorGeneral::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7119,12 +7851,110 @@ bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_leaf_or_child_of_name(
     return false;
 }
 
+MplsOam::Packet::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
+{
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Received::ReceivedErrorIpHeader::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Received::ReceivedErrorIpHeader::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-error-ip-header";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorIpHeader::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Packet::Received::ReceivedErrorNoInterface::ReceivedErrorNoInterface()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-no-interface"; yang_parent_name = "received";
+
+    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoInterface::~ReceivedErrorNoInterface()
@@ -7144,35 +7974,28 @@ bool MplsOam::Packet::Received::ReceivedErrorNoInterface::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::Received::ReceivedErrorNoInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Received::ReceivedErrorNoInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-no-interface";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedErrorNoInterface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorNoInterface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7227,7 +8050,8 @@ MplsOam::Packet::Received::ReceivedErrorNoMemory::ReceivedErrorNoMemory()
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-error-no-memory"; yang_parent_name = "received";
+
+    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoMemory::~ReceivedErrorNoMemory()
@@ -7247,35 +8071,28 @@ bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::Received::ReceivedErrorNoMemory::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Received::ReceivedErrorNoMemory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received-error-no-memory";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedErrorNoMemory::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorNoMemory::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7325,75 +8142,69 @@ bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_leaf_or_child_of_name
     return false;
 }
 
-MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
+MplsOam::Packet::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received";
+
+    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
+MplsOam::Packet::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
 {
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_data() const
+bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
+bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
+std::string MplsOam::Packet::Received::ReceivedErrorQueueFull::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-protocol-received-good-request";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Received::ReceivedErrorQueueFull::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "received-error-queue-full";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorQueueFull::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -7409,7 +8220,7 @@ void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(co
     }
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -7421,82 +8232,76 @@ void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_filter(c
     }
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
+MplsOam::Packet::Received::ReceivedErrorRunt::ReceivedErrorRunt()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received";
+
+    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
+MplsOam::Packet::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
 {
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_data() const
+bool MplsOam::Packet::Received::ReceivedErrorRunt::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_operation() const
+bool MplsOam::Packet::Received::ReceivedErrorRunt::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
+std::string MplsOam::Packet::Received::ReceivedErrorRunt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-protocol-received-good-reply";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Received::ReceivedErrorRunt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "received-error-runt";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorRunt::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -7512,7 +8317,7 @@ void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(cons
     }
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -7524,82 +8329,76 @@ void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_filter(con
     }
 }
 
-bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
+MplsOam::Packet::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-bfd-request"; yang_parent_name = "received";
+
+    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
+MplsOam::Packet::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
 {
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_data() const
+bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_operation() const
+bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_segment_path() const
+std::string MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-good-bfd-request";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "received-error-udp-header";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -7615,7 +8414,7 @@ void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::str
     }
 }
 
-void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -7627,7 +8426,7 @@ void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_filter(const std::st
     }
 }
 
-bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -7639,7 +8438,8 @@ MplsOam::Packet::Received::ReceivedGoodBfdReply::ReceivedGoodBfdReply()
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "received-good-bfd-reply"; yang_parent_name = "received";
+
+    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Received::ReceivedGoodBfdReply::~ReceivedGoodBfdReply()
@@ -7659,35 +8459,28 @@ bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::Received::ReceivedGoodBfdReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Received::ReceivedGoodBfdReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received-good-bfd-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedGoodBfdReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7737,6 +8530,394 @@ bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_leaf_or_child_of_name(
     return false;
 }
 
+MplsOam::Packet::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
+{
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-bfd-request";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::Received::ReceivedGoodReply::ReceivedGoodReply()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Received::ReceivedGoodReply::~ReceivedGoodReply()
+{
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodReply::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedGoodReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::Received::ReceivedGoodRequest::ReceivedGoodRequest()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
+{
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodRequest::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodRequest::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodRequest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Received::ReceivedGoodRequest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-good-request";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedGoodRequest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::Received::ReceivedUnknown::ReceivedUnknown()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Received::ReceivedUnknown::~ReceivedUnknown()
+{
+}
+
+bool MplsOam::Packet::Received::ReceivedUnknown::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Received::ReceivedUnknown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Received::ReceivedUnknown::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/received/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Received::ReceivedUnknown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "received-unknown";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::ReceivedUnknown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
 MplsOam::Packet::Sent::Sent()
     :
     bfd_no_reply(std::make_shared<MplsOam::Packet::Sent::BfdNoReply>())
@@ -7745,14 +8926,11 @@ MplsOam::Packet::Sent::Sent()
 	,transmit_good(std::make_shared<MplsOam::Packet::Sent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "sent"; yang_parent_name = "packet";
+    yang_name = "sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Sent::~Sent()
@@ -7776,33 +8954,26 @@ bool MplsOam::Packet::Sent::has_operation() const
 	|| (transmit_good !=  nullptr && transmit_good->has_operation());
 }
 
+std::string MplsOam::Packet::Sent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Sent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Sent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -7888,321 +9059,13 @@ bool MplsOam::Packet::Sent::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
-MplsOam::Packet::Sent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "sent";
-}
-
-MplsOam::Packet::Sent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Packet::Sent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Sent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Sent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Sent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Sent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "sent";
-}
-
-MplsOam::Packet::Sent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Packet::Sent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Sent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Sent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Sent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::Sent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "sent";
-}
-
-MplsOam::Packet::Sent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Packet::Sent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::Sent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::Sent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::Sent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
 MplsOam::Packet::Sent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::Sent::BfdNoReply::~BfdNoReply()
@@ -8222,35 +9085,28 @@ bool MplsOam::Packet::Sent::BfdNoReply::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::Sent::BfdNoReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::Sent::BfdNoReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::Sent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -8300,432 +9156,69 @@ bool MplsOam::Packet::Sent::BfdNoReply::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-MplsOam::Packet::WorkingReqSent::WorkingReqSent()
-    :
-    bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>())
-{
-    bfd_no_reply->parent = this;
-
-    transmit_bfd_good->parent = this;
-
-    transmit_drop->parent = this;
-
-    transmit_good->parent = this;
-
-    yang_name = "working-req-sent"; yang_parent_name = "packet";
-}
-
-MplsOam::Packet::WorkingReqSent::~WorkingReqSent()
-{
-}
-
-bool MplsOam::Packet::WorkingReqSent::has_data() const
-{
-    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
-	|| (transmit_good !=  nullptr && transmit_good->has_data());
-}
-
-bool MplsOam::Packet::WorkingReqSent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
-	|| (transmit_good !=  nullptr && transmit_good->has_operation());
-}
-
-std::string MplsOam::Packet::WorkingReqSent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "working-req-sent";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::WorkingReqSent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-no-reply")
-    {
-        if(bfd_no_reply == nullptr)
-        {
-            bfd_no_reply = std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>();
-        }
-        return bfd_no_reply;
-    }
-
-    if(child_yang_name == "transmit-bfd-good")
-    {
-        if(transmit_bfd_good == nullptr)
-        {
-            transmit_bfd_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>();
-        }
-        return transmit_bfd_good;
-    }
-
-    if(child_yang_name == "transmit-drop")
-    {
-        if(transmit_drop == nullptr)
-        {
-            transmit_drop = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>();
-        }
-        return transmit_drop;
-    }
-
-    if(child_yang_name == "transmit-good")
-    {
-        if(transmit_good == nullptr)
-        {
-            transmit_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>();
-        }
-        return transmit_good;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_no_reply != nullptr)
-    {
-        children["bfd-no-reply"] = bfd_no_reply;
-    }
-
-    if(transmit_bfd_good != nullptr)
-    {
-        children["transmit-bfd-good"] = transmit_bfd_good;
-    }
-
-    if(transmit_drop != nullptr)
-    {
-        children["transmit-drop"] = transmit_drop;
-    }
-
-    if(transmit_good != nullptr)
-    {
-        children["transmit-good"] = transmit_good;
-    }
-
-    return children;
-}
-
-void MplsOam::Packet::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsOam::Packet::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsOam::Packet::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::WorkingReqSent::TransmitGood::TransmitGood()
+MplsOam::Packet::Sent::TransmitBfdGood::TransmitBfdGood()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "transmit-good"; yang_parent_name = "working-req-sent";
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::WorkingReqSent::TransmitGood::~TransmitGood()
+MplsOam::Packet::Sent::TransmitBfdGood::~TransmitBfdGood()
 {
 }
 
-bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_data() const
+bool MplsOam::Packet::Sent::TransmitBfdGood::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_operation() const
+bool MplsOam::Packet::Sent::TransmitBfdGood::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::WorkingReqSent::TransmitGood::get_segment_path() const
+std::string MplsOam::Packet::Sent::TransmitBfdGood::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::WorkingReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::WorkingReqSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent";
-}
-
-MplsOam::Packet::WorkingReqSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::WorkingReqSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::WorkingReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent";
-}
-
-MplsOam::Packet::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_segment_path() const
+std::string MplsOam::Packet::Sent::TransmitBfdGood::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit-bfd-good";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitBfdGood::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -8741,7 +9234,7 @@ void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::stri
     }
 }
 
-void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -8753,82 +9246,76 @@ void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_filter(const std::str
     }
 }
 
-bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Packet::WorkingReqSent::BfdNoReply::BfdNoReply()
+MplsOam::Packet::Sent::TransmitDrop::TransmitDrop()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent";
+
+    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::WorkingReqSent::BfdNoReply::~BfdNoReply()
+MplsOam::Packet::Sent::TransmitDrop::~TransmitDrop()
 {
 }
 
-bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_data() const
+bool MplsOam::Packet::Sent::TransmitDrop::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_operation() const
+bool MplsOam::Packet::Sent::TransmitDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::WorkingReqSent::BfdNoReply::get_segment_path() const
+std::string MplsOam::Packet::Sent::TransmitDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-no-reply";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::WorkingReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::Sent::TransmitDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitDrop::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -8844,7 +9331,7 @@ void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & 
     }
 }
 
-void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -8856,7 +9343,104 @@ void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_filter(const std::string &
     }
 }
 
-bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::Sent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::Sent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Packet::Sent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::Sent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::Sent::TransmitGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::Sent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
@@ -8871,14 +9455,11 @@ MplsOam::Packet::WorkingRepSent::WorkingRepSent()
 	,transmit_good(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "working-rep-sent"; yang_parent_name = "packet";
+    yang_name = "working-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::WorkingRepSent::~WorkingRepSent()
@@ -8902,33 +9483,26 @@ bool MplsOam::Packet::WorkingRepSent::has_operation() const
 	|| (transmit_good !=  nullptr && transmit_good->has_operation());
 }
 
+std::string MplsOam::Packet::WorkingRepSent::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::WorkingRepSent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "working-rep-sent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::WorkingRepSent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9014,321 +9588,13 @@ bool MplsOam::Packet::WorkingRepSent::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-MplsOam::Packet::WorkingRepSent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Packet::WorkingRepSent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::WorkingRepSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::WorkingRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::WorkingRepSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Packet::WorkingRepSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::WorkingRepSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::WorkingRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent";
-}
-
-MplsOam::Packet::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
 MplsOam::Packet::WorkingRepSent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MplsOam::Packet::WorkingRepSent::BfdNoReply::~BfdNoReply()
@@ -9348,35 +9614,28 @@ bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_operation() const
 	|| ydk::is_set(packets.yfilter);
 }
 
+std::string MplsOam::Packet::WorkingRepSent::BfdNoReply::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MplsOam::Packet::WorkingRepSent::BfdNoReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::WorkingRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -9426,29 +9685,317 @@ bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_leaf_or_child_of_name(cons
     return false;
 }
 
-MplsOam::Packet::ProtectReqSent::ProtectReqSent()
+MplsOam::Packet::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
     :
-    bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>())
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
+{
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::WorkingRepSent::TransmitDrop::TransmitDrop()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::WorkingRepSent::TransmitDrop::~TransmitDrop()
+{
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitDrop::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitDrop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::TransmitDrop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::WorkingRepSent::TransmitGood::TransmitGood()
+    :
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
+{
+
+    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MplsOam::Packet::WorkingRepSent::TransmitGood::~TransmitGood()
+{
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_data() const
+{
+    return bytes.is_set
+	|| packets.is_set;
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitGood::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-rep-sent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsOam::Packet::WorkingRepSent::TransmitGood::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::TransmitGood::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bytes")
+    {
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
+}
+
+MplsOam::Packet::WorkingReqSent::WorkingReqSent()
+    :
+    bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>())
+	,transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>())
+	,transmit_drop(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>())
+	,transmit_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>())
 {
     bfd_no_reply->parent = this;
-
     transmit_bfd_good->parent = this;
-
     transmit_drop->parent = this;
-
     transmit_good->parent = this;
 
-    yang_name = "protect-req-sent"; yang_parent_name = "packet";
+    yang_name = "working-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::ProtectReqSent::~ProtectReqSent()
+MplsOam::Packet::WorkingReqSent::~WorkingReqSent()
 {
 }
 
-bool MplsOam::Packet::ProtectReqSent::has_data() const
+bool MplsOam::Packet::WorkingReqSent::has_data() const
 {
     return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -9456,7 +10003,7 @@ bool MplsOam::Packet::ProtectReqSent::has_data() const
 	|| (transmit_good !=  nullptr && transmit_good->has_data());
 }
 
-bool MplsOam::Packet::ProtectReqSent::has_operation() const
+bool MplsOam::Packet::WorkingReqSent::has_operation() const
 {
     return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
@@ -9465,43 +10012,36 @@ bool MplsOam::Packet::ProtectReqSent::has_operation() const
 	|| (transmit_good !=  nullptr && transmit_good->has_operation());
 }
 
-std::string MplsOam::Packet::ProtectReqSent::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-req-sent";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::ProtectReqSent::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::WorkingReqSent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "working-req-sent";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-no-reply")
     {
         if(bfd_no_reply == nullptr)
         {
-            bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>();
+            bfd_no_reply = std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>();
         }
         return bfd_no_reply;
     }
@@ -9510,7 +10050,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
     {
         if(transmit_bfd_good == nullptr)
         {
-            transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>();
+            transmit_bfd_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>();
         }
         return transmit_bfd_good;
     }
@@ -9519,7 +10059,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
     {
         if(transmit_drop == nullptr)
         {
-            transmit_drop = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>();
+            transmit_drop = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>();
         }
         return transmit_drop;
     }
@@ -9528,7 +10068,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
     {
         if(transmit_good == nullptr)
         {
-            transmit_good = std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>();
+            transmit_good = std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>();
         }
         return transmit_good;
     }
@@ -9536,7 +10076,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(bfd_no_reply != nullptr)
@@ -9562,962 +10102,84 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsOam::Packet::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsOam::Packet::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitGood::TransmitGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitGood::~TransmitGood()
-{
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectReqSent::TransmitGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectReqSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectReqSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectReqSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Packet::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectReqSent::BfdNoReply::BfdNoReply()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent";
-}
-
-MplsOam::Packet::ProtectReqSent::BfdNoReply::~BfdNoReply()
-{
-}
-
-bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectReqSent::BfdNoReply::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd-no-reply";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectReqSent::BfdNoReply::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-req-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectRepSent::ProtectRepSent()
-    :
-    bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>())
-	,transmit_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>())
-{
-    bfd_no_reply->parent = this;
-
-    transmit_bfd_good->parent = this;
-
-    transmit_drop->parent = this;
-
-    transmit_good->parent = this;
-
-    yang_name = "protect-rep-sent"; yang_parent_name = "packet";
-}
-
-MplsOam::Packet::ProtectRepSent::~ProtectRepSent()
-{
-}
-
-bool MplsOam::Packet::ProtectRepSent::has_data() const
-{
-    return (bfd_no_reply !=  nullptr && bfd_no_reply->has_data())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
-	|| (transmit_good !=  nullptr && transmit_good->has_data());
-}
-
-bool MplsOam::Packet::ProtectRepSent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
-	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
-	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
-	|| (transmit_good !=  nullptr && transmit_good->has_operation());
-}
-
-std::string MplsOam::Packet::ProtectRepSent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protect-rep-sent";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectRepSent::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd-no-reply")
-    {
-        if(bfd_no_reply == nullptr)
-        {
-            bfd_no_reply = std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>();
-        }
-        return bfd_no_reply;
-    }
-
-    if(child_yang_name == "transmit-bfd-good")
-    {
-        if(transmit_bfd_good == nullptr)
-        {
-            transmit_bfd_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>();
-        }
-        return transmit_bfd_good;
-    }
-
-    if(child_yang_name == "transmit-drop")
-    {
-        if(transmit_drop == nullptr)
-        {
-            transmit_drop = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>();
-        }
-        return transmit_drop;
-    }
-
-    if(child_yang_name == "transmit-good")
-    {
-        if(transmit_good == nullptr)
-        {
-            transmit_good = std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>();
-        }
-        return transmit_good;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bfd_no_reply != nullptr)
-    {
-        children["bfd-no-reply"] = bfd_no_reply;
-    }
-
-    if(transmit_bfd_good != nullptr)
-    {
-        children["transmit-bfd-good"] = transmit_bfd_good;
-    }
-
-    if(transmit_drop != nullptr)
-    {
-        children["transmit-drop"] = transmit_drop;
-    }
-
-    if(transmit_good != nullptr)
-    {
-        children["transmit-good"] = transmit_good;
-    }
-
-    return children;
-}
-
-void MplsOam::Packet::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsOam::Packet::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsOam::Packet::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
         return true;
     return false;
 }
 
-MplsOam::Packet::ProtectRepSent::TransmitGood::TransmitGood()
+MplsOam::Packet::WorkingReqSent::BfdNoReply::BfdNoReply()
     :
     bytes{YType::uint64, "bytes"},
     packets{YType::uint64, "packets"}
 {
-    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent";
+
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Packet::ProtectRepSent::TransmitGood::~TransmitGood()
+MplsOam::Packet::WorkingReqSent::BfdNoReply::~BfdNoReply()
 {
 }
 
-bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_data() const
+bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_data() const
 {
     return bytes.is_set
 	|| packets.is_set;
 }
 
-bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_operation() const
+bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bytes.yfilter)
 	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Packet::ProtectRepSent::TransmitGood::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::BfdNoReply::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transmit-good";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::ProtectRepSent::TransmitGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectRepSent::TransmitDrop::TransmitDrop()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Packet::ProtectRepSent::TransmitDrop::~TransmitDrop()
-{
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectRepSent::TransmitDrop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-drop";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectRepSent::TransmitDrop::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Packet::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
-{
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "transmit-bfd-good";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bytes" || name == "packets")
-        return true;
-    return false;
-}
-
-MplsOam::Packet::ProtectRepSent::BfdNoReply::BfdNoReply()
-    :
-    bytes{YType::uint64, "bytes"},
-    packets{YType::uint64, "packets"}
-{
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent";
-}
-
-MplsOam::Packet::ProtectRepSent::BfdNoReply::~BfdNoReply()
-{
-}
-
-bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_data() const
-{
-    return bytes.is_set
-	|| packets.is_set;
-}
-
-bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bytes.yfilter)
-	|| ydk::is_set(packets.yfilter);
-}
-
-std::string MplsOam::Packet::ProtectRepSent::BfdNoReply::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::BfdNoReply::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-no-reply";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Packet::ProtectRepSent::BfdNoReply::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::BfdNoReply::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/protect-rep-sent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
     if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
@@ -10533,7 +10195,7 @@ void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & 
     }
 }
 
-void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bytes")
     {
@@ -10545,929 +10207,300 @@ void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_filter(const std::string &
     }
 }
 
-bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Global::Global()
+MplsOam::Packet::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
     :
-    total_clients{YType::uint32, "total-clients"}
-    	,
-    collaborator_statistics(std::make_shared<MplsOam::Global::CollaboratorStatistics>())
-	,message_statistics(std::make_shared<MplsOam::Global::MessageStatistics>())
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
 {
-    collaborator_statistics->parent = this;
 
-    message_statistics->parent = this;
-
-    yang_name = "global"; yang_parent_name = "mpls-oam";
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Global::~Global()
+MplsOam::Packet::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
 {
 }
 
-bool MplsOam::Global::has_data() const
+bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_data() const
 {
-    return total_clients.is_set
-	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_data())
-	|| (message_statistics !=  nullptr && message_statistics->has_data());
+    return bytes.is_set
+	|| packets.is_set;
 }
 
-bool MplsOam::Global::has_operation() const
+bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(total_clients.yfilter)
-	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_operation())
-	|| (message_statistics !=  nullptr && message_statistics->has_operation());
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Global::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Global::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "transmit-bfd-good";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_clients.is_set || is_set(total_clients.yfilter)) leaf_name_data.push_back(total_clients.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "collaborator-statistics")
-    {
-        if(collaborator_statistics == nullptr)
-        {
-            collaborator_statistics = std::make_shared<MplsOam::Global::CollaboratorStatistics>();
-        }
-        return collaborator_statistics;
-    }
-
-    if(child_yang_name == "message-statistics")
-    {
-        if(message_statistics == nullptr)
-        {
-            message_statistics = std::make_shared<MplsOam::Global::MessageStatistics>();
-        }
-        return message_statistics;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(collaborator_statistics != nullptr)
-    {
-        children["collaborator-statistics"] = collaborator_statistics;
-    }
-
-    if(message_statistics != nullptr)
-    {
-        children["message-statistics"] = message_statistics;
-    }
-
     return children;
 }
 
-void MplsOam::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "total-clients")
+    if(value_path == "bytes")
     {
-        total_clients = value;
-        total_clients.value_namespace = name_space;
-        total_clients.value_namespace_prefix = name_space_prefix;
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets")
+    {
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MplsOam::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "total-clients")
+    if(value_path == "bytes")
     {
-        total_clients.yfilter = yfilter;
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
     }
 }
 
-bool MplsOam::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collaborator-statistics" || name == "message-statistics" || name == "total-clients")
+    if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Global::MessageStatistics::MessageStatistics()
+MplsOam::Packet::WorkingReqSent::TransmitDrop::TransmitDrop()
     :
-    echo_cancel_messages{YType::uint32, "echo-cancel-messages"},
-    echo_submit_messages{YType::uint32, "echo-submit-messages"},
-    get_config_messages{YType::uint32, "get-config-messages"},
-    get_response_messages{YType::uint32, "get-response-messages"},
-    get_result_messages{YType::uint32, "get-result-messages"},
-    property_block_messages{YType::uint32, "property-block-messages"},
-    property_request_messages{YType::uint32, "property-request-messages"},
-    property_response_messages{YType::uint32, "property-response-messages"},
-    register_messages{YType::uint32, "register-messages"},
-    thread_request_messages{YType::uint32, "thread-request-messages"},
-    unregister_messages{YType::uint32, "unregister-messages"}
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
 {
-    yang_name = "message-statistics"; yang_parent_name = "global";
+
+    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Global::MessageStatistics::~MessageStatistics()
+MplsOam::Packet::WorkingReqSent::TransmitDrop::~TransmitDrop()
 {
 }
 
-bool MplsOam::Global::MessageStatistics::has_data() const
+bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_data() const
 {
-    return echo_cancel_messages.is_set
-	|| echo_submit_messages.is_set
-	|| get_config_messages.is_set
-	|| get_response_messages.is_set
-	|| get_result_messages.is_set
-	|| property_block_messages.is_set
-	|| property_request_messages.is_set
-	|| property_response_messages.is_set
-	|| register_messages.is_set
-	|| thread_request_messages.is_set
-	|| unregister_messages.is_set;
+    return bytes.is_set
+	|| packets.is_set;
 }
 
-bool MplsOam::Global::MessageStatistics::has_operation() const
+bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(echo_cancel_messages.yfilter)
-	|| ydk::is_set(echo_submit_messages.yfilter)
-	|| ydk::is_set(get_config_messages.yfilter)
-	|| ydk::is_set(get_response_messages.yfilter)
-	|| ydk::is_set(get_result_messages.yfilter)
-	|| ydk::is_set(property_block_messages.yfilter)
-	|| ydk::is_set(property_request_messages.yfilter)
-	|| ydk::is_set(property_response_messages.yfilter)
-	|| ydk::is_set(register_messages.yfilter)
-	|| ydk::is_set(thread_request_messages.yfilter)
-	|| ydk::is_set(unregister_messages.yfilter);
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Global::MessageStatistics::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::TransmitDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "message-statistics";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Global::MessageStatistics::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::WorkingReqSent::TransmitDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "transmit-drop";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::TransmitDrop::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (echo_cancel_messages.is_set || is_set(echo_cancel_messages.yfilter)) leaf_name_data.push_back(echo_cancel_messages.get_name_leafdata());
-    if (echo_submit_messages.is_set || is_set(echo_submit_messages.yfilter)) leaf_name_data.push_back(echo_submit_messages.get_name_leafdata());
-    if (get_config_messages.is_set || is_set(get_config_messages.yfilter)) leaf_name_data.push_back(get_config_messages.get_name_leafdata());
-    if (get_response_messages.is_set || is_set(get_response_messages.yfilter)) leaf_name_data.push_back(get_response_messages.get_name_leafdata());
-    if (get_result_messages.is_set || is_set(get_result_messages.yfilter)) leaf_name_data.push_back(get_result_messages.get_name_leafdata());
-    if (property_block_messages.is_set || is_set(property_block_messages.yfilter)) leaf_name_data.push_back(property_block_messages.get_name_leafdata());
-    if (property_request_messages.is_set || is_set(property_request_messages.yfilter)) leaf_name_data.push_back(property_request_messages.get_name_leafdata());
-    if (property_response_messages.is_set || is_set(property_response_messages.yfilter)) leaf_name_data.push_back(property_response_messages.get_name_leafdata());
-    if (register_messages.is_set || is_set(register_messages.yfilter)) leaf_name_data.push_back(register_messages.get_name_leafdata());
-    if (thread_request_messages.is_set || is_set(thread_request_messages.yfilter)) leaf_name_data.push_back(thread_request_messages.get_name_leafdata());
-    if (unregister_messages.is_set || is_set(unregister_messages.yfilter)) leaf_name_data.push_back(unregister_messages.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::MessageStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Global::MessageStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "echo-cancel-messages")
+    if(value_path == "bytes")
     {
-        echo_cancel_messages = value;
-        echo_cancel_messages.value_namespace = name_space;
-        echo_cancel_messages.value_namespace_prefix = name_space_prefix;
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "echo-submit-messages")
+    if(value_path == "packets")
     {
-        echo_submit_messages = value;
-        echo_submit_messages.value_namespace = name_space;
-        echo_submit_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "get-config-messages")
-    {
-        get_config_messages = value;
-        get_config_messages.value_namespace = name_space;
-        get_config_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "get-response-messages")
-    {
-        get_response_messages = value;
-        get_response_messages.value_namespace = name_space;
-        get_response_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "get-result-messages")
-    {
-        get_result_messages = value;
-        get_result_messages.value_namespace = name_space;
-        get_result_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "property-block-messages")
-    {
-        property_block_messages = value;
-        property_block_messages.value_namespace = name_space;
-        property_block_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "property-request-messages")
-    {
-        property_request_messages = value;
-        property_request_messages.value_namespace = name_space;
-        property_request_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "property-response-messages")
-    {
-        property_response_messages = value;
-        property_response_messages.value_namespace = name_space;
-        property_response_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "register-messages")
-    {
-        register_messages = value;
-        register_messages.value_namespace = name_space;
-        register_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "thread-request-messages")
-    {
-        thread_request_messages = value;
-        thread_request_messages.value_namespace = name_space;
-        thread_request_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unregister-messages")
-    {
-        unregister_messages = value;
-        unregister_messages.value_namespace = name_space;
-        unregister_messages.value_namespace_prefix = name_space_prefix;
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MplsOam::Global::MessageStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "echo-cancel-messages")
+    if(value_path == "bytes")
     {
-        echo_cancel_messages.yfilter = yfilter;
+        bytes.yfilter = yfilter;
     }
-    if(value_path == "echo-submit-messages")
+    if(value_path == "packets")
     {
-        echo_submit_messages.yfilter = yfilter;
-    }
-    if(value_path == "get-config-messages")
-    {
-        get_config_messages.yfilter = yfilter;
-    }
-    if(value_path == "get-response-messages")
-    {
-        get_response_messages.yfilter = yfilter;
-    }
-    if(value_path == "get-result-messages")
-    {
-        get_result_messages.yfilter = yfilter;
-    }
-    if(value_path == "property-block-messages")
-    {
-        property_block_messages.yfilter = yfilter;
-    }
-    if(value_path == "property-request-messages")
-    {
-        property_request_messages.yfilter = yfilter;
-    }
-    if(value_path == "property-response-messages")
-    {
-        property_response_messages.yfilter = yfilter;
-    }
-    if(value_path == "register-messages")
-    {
-        register_messages.yfilter = yfilter;
-    }
-    if(value_path == "thread-request-messages")
-    {
-        thread_request_messages.yfilter = yfilter;
-    }
-    if(value_path == "unregister-messages")
-    {
-        unregister_messages.yfilter = yfilter;
+        packets.yfilter = yfilter;
     }
 }
 
-bool MplsOam::Global::MessageStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "echo-cancel-messages" || name == "echo-submit-messages" || name == "get-config-messages" || name == "get-response-messages" || name == "get-result-messages" || name == "property-block-messages" || name == "property-request-messages" || name == "property-response-messages" || name == "register-messages" || name == "thread-request-messages" || name == "unregister-messages")
+    if(name == "bytes" || name == "packets")
         return true;
     return false;
 }
 
-MplsOam::Global::CollaboratorStatistics::CollaboratorStatistics()
+MplsOam::Packet::WorkingReqSent::TransmitGood::TransmitGood()
     :
-    collaborator_i_parm(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>())
-	,collaborator_im(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>())
-	,collaborator_net_io(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>())
-	,collaborator_rib(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>())
+    bytes{YType::uint64, "bytes"},
+    packets{YType::uint64, "packets"}
 {
-    collaborator_i_parm->parent = this;
 
-    collaborator_im->parent = this;
-
-    collaborator_net_io->parent = this;
-
-    collaborator_rib->parent = this;
-
-    yang_name = "collaborator-statistics"; yang_parent_name = "global";
+    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsOam::Global::CollaboratorStatistics::~CollaboratorStatistics()
+MplsOam::Packet::WorkingReqSent::TransmitGood::~TransmitGood()
 {
 }
 
-bool MplsOam::Global::CollaboratorStatistics::has_data() const
+bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_data() const
 {
-    return (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_data())
-	|| (collaborator_im !=  nullptr && collaborator_im->has_data())
-	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_data())
-	|| (collaborator_rib !=  nullptr && collaborator_rib->has_data());
+    return bytes.is_set
+	|| packets.is_set;
 }
 
-bool MplsOam::Global::CollaboratorStatistics::has_operation() const
+bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_operation() const
 {
     return is_set(yfilter)
-	|| (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_operation())
-	|| (collaborator_im !=  nullptr && collaborator_im->has_operation())
-	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_operation())
-	|| (collaborator_rib !=  nullptr && collaborator_rib->has_operation());
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
-std::string MplsOam::Global::CollaboratorStatistics::get_segment_path() const
+std::string MplsOam::Packet::WorkingReqSent::TransmitGood::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "collaborator-statistics";
-
+    path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/packet/working-req-sent/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsOam::Global::CollaboratorStatistics::get_entity_path(Entity* ancestor) const
+std::string MplsOam::Packet::WorkingReqSent::TransmitGood::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "transmit-good";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::TransmitGood::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "collaborator-i-parm")
-    {
-        if(collaborator_i_parm == nullptr)
-        {
-            collaborator_i_parm = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>();
-        }
-        return collaborator_i_parm;
-    }
-
-    if(child_yang_name == "collaborator-im")
-    {
-        if(collaborator_im == nullptr)
-        {
-            collaborator_im = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>();
-        }
-        return collaborator_im;
-    }
-
-    if(child_yang_name == "collaborator-net-io")
-    {
-        if(collaborator_net_io == nullptr)
-        {
-            collaborator_net_io = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>();
-        }
-        return collaborator_net_io;
-    }
-
-    if(child_yang_name == "collaborator-rib")
-    {
-        if(collaborator_rib == nullptr)
-        {
-            collaborator_rib = std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>();
-        }
-        return collaborator_rib;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(collaborator_i_parm != nullptr)
-    {
-        children["collaborator-i-parm"] = collaborator_i_parm;
-    }
-
-    if(collaborator_im != nullptr)
-    {
-        children["collaborator-im"] = collaborator_im;
-    }
-
-    if(collaborator_net_io != nullptr)
-    {
-        children["collaborator-net-io"] = collaborator_net_io;
-    }
-
-    if(collaborator_rib != nullptr)
-    {
-        children["collaborator-rib"] = collaborator_rib;
-    }
-
-    return children;
-}
-
-void MplsOam::Global::CollaboratorStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsOam::Global::CollaboratorStatistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsOam::Global::CollaboratorStatistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "collaborator-i-parm" || name == "collaborator-im" || name == "collaborator-net-io" || name == "collaborator-rib")
-        return true;
-    return false;
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::CollaboratorIParm()
-    :
-    downs{YType::uint32, "downs"},
-    ups{YType::uint32, "ups"}
-{
-    yang_name = "collaborator-i-parm"; yang_parent_name = "collaborator-statistics";
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::~CollaboratorIParm()
-{
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_data() const
-{
-    return downs.is_set
-	|| ups.is_set;
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(downs.yfilter)
-	|| ydk::is_set(ups.yfilter);
-}
-
-std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "collaborator-i-parm";
-
-    return path_buffer.str();
+    return leaf_name_data;
 
 }
 
-const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsOam::Packet::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "downs")
+    if(value_path == "bytes")
     {
-        downs = value;
-        downs.value_namespace = name_space;
-        downs.value_namespace_prefix = name_space_prefix;
+        bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ups")
+    if(value_path == "packets")
     {
-        ups = value;
-        ups.value_namespace = name_space;
-        ups.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "downs")
-    {
-        downs.yfilter = yfilter;
-    }
-    if(value_path == "ups")
-    {
-        ups.yfilter = yfilter;
+        packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_leaf_or_child_of_name(const std::string & name) const
+void MplsOam::Packet::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "downs" || name == "ups")
-        return true;
-    return false;
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorIm::CollaboratorIm()
-    :
-    downs{YType::uint32, "downs"},
-    ups{YType::uint32, "ups"}
-{
-    yang_name = "collaborator-im"; yang_parent_name = "collaborator-statistics";
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorIm::~CollaboratorIm()
-{
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_data() const
-{
-    return downs.is_set
-	|| ups.is_set;
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(downs.yfilter)
-	|| ydk::is_set(ups.yfilter);
-}
-
-std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "collaborator-im";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "bytes")
     {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
+        bytes.yfilter = yfilter;
     }
-    else
+    if(value_path == "packets")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "downs")
-    {
-        downs = value;
-        downs.value_namespace = name_space;
-        downs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ups")
-    {
-        ups = value;
-        ups.value_namespace = name_space;
-        ups.value_namespace_prefix = name_space_prefix;
+        packets.yfilter = yfilter;
     }
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_filter(const std::string & value_path, YFilter yfilter)
+bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "downs")
-    {
-        downs.yfilter = yfilter;
-    }
-    if(value_path == "ups")
-    {
-        ups.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "downs" || name == "ups")
-        return true;
-    return false;
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::CollaboratorNetIo()
-    :
-    downs{YType::uint32, "downs"},
-    ups{YType::uint32, "ups"}
-{
-    yang_name = "collaborator-net-io"; yang_parent_name = "collaborator-statistics";
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::~CollaboratorNetIo()
-{
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_data() const
-{
-    return downs.is_set
-	|| ups.is_set;
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(downs.yfilter)
-	|| ydk::is_set(ups.yfilter);
-}
-
-std::string MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "collaborator-net-io";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "downs")
-    {
-        downs = value;
-        downs.value_namespace = name_space;
-        downs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ups")
-    {
-        ups = value;
-        ups.value_namespace = name_space;
-        ups.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "downs")
-    {
-        downs.yfilter = yfilter;
-    }
-    if(value_path == "ups")
-    {
-        ups.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "downs" || name == "ups")
-        return true;
-    return false;
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorRib::CollaboratorRib()
-    :
-    downs{YType::uint32, "downs"},
-    ups{YType::uint32, "ups"}
-{
-    yang_name = "collaborator-rib"; yang_parent_name = "collaborator-statistics";
-}
-
-MplsOam::Global::CollaboratorStatistics::CollaboratorRib::~CollaboratorRib()
-{
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_data() const
-{
-    return downs.is_set
-	|| ups.is_set;
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(downs.yfilter)
-	|| ydk::is_set(ups.yfilter);
-}
-
-std::string MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "collaborator-rib";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-mpls-oam-oper:mpls-oam/global/collaborator-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "downs")
-    {
-        downs = value;
-        downs.value_namespace = name_space;
-        downs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ups")
-    {
-        ups = value;
-        ups.value_namespace = name_space;
-        ups.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "downs")
-    {
-        downs.yfilter = yfilter;
-    }
-    if(value_path == "ups")
-    {
-        ups.yfilter = yfilter;
-    }
-}
-
-bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "downs" || name == "ups")
+    if(name == "bytes" || name == "packets")
         return true;
     return false;
 }

@@ -20,14 +20,6 @@ class Ipv6Qppb : public ydk::Enum
 
 };
 
-class Ipv6DefaultPing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
-
-};
-
 class Ipv6SelfPing : public ydk::Enum
 {
     public:
@@ -41,6 +33,14 @@ class Ipv6Reachable : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf received;
+
+};
+
+class Ipv6DefaultPing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 

@@ -10,6 +10,13 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_qos_ma_bng_cfg {
 
+class Qosl2DataLink : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf aal5;
+
+};
+
 class Qosl2Encap : public ydk::Enum
 {
     public:
@@ -21,13 +28,6 @@ class Qosl2Encap : public ydk::Enum
         static const ydk::Enum::YLeaf snap_dot1qrbe;
         static const ydk::Enum::YLeaf mux_rbe;
         static const ydk::Enum::YLeaf mux_dot1qrbe;
-
-};
-
-class Qosl2DataLink : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf aal5;
 
 };
 

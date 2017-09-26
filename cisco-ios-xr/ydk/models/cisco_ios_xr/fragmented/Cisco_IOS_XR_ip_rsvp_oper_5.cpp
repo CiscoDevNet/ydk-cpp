@@ -11,28 +11,4053 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rsvp_oper {
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::Protection()
+RsvpStandby::SessionBriefs::SessionBrief::Session::Session()
+    :
+    rsvp_session(std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession>())
+{
+    rsvp_session->parent = this;
+
+    yang_name = "session"; yang_parent_name = "session-brief"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::~Session()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::has_data() const
+{
+    return (rsvp_session !=  nullptr && rsvp_session->has_data());
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvp-session")
+    {
+        if(rsvp_session == nullptr)
+        {
+            rsvp_session = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession>();
+        }
+        return rsvp_session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
+    {
+        children["rsvp-session"] = rsvp_session;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-session")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::RsvpSession()
+    :
+    session_type{YType::enumeration, "session-type"}
+    	,
+    ipv4(std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4>())
+	,ipv4_lsp_session(std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession>())
+	,ipv4_p2mp_lsp_session(std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession>())
+	,ipv4_uni_session(std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession>())
+{
+    ipv4->parent = this;
+    ipv4_lsp_session->parent = this;
+    ipv4_p2mp_lsp_session->parent = this;
+    ipv4_uni_session->parent = this;
+
+    yang_name = "rsvp-session"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::~RsvpSession()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::has_data() const
+{
+    return session_type.is_set
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_data())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_data())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_data());
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv4-lsp-session")
+    {
+        if(ipv4_lsp_session == nullptr)
+        {
+            ipv4_lsp_session = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession>();
+        }
+        return ipv4_lsp_session;
+    }
+
+    if(child_yang_name == "ipv4-p2mp-lsp-session")
+    {
+        if(ipv4_p2mp_lsp_session == nullptr)
+        {
+            ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession>();
+        }
+        return ipv4_p2mp_lsp_session;
+    }
+
+    if(child_yang_name == "ipv4-uni-session")
+    {
+        if(ipv4_uni_session == nullptr)
+        {
+            ipv4_uni_session = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession>();
+        }
+        return ipv4_uni_session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv4_lsp_session != nullptr)
+    {
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
+    }
+
+    if(ipv4_p2mp_lsp_session != nullptr)
+    {
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+    }
+
+    if(ipv4_uni_session != nullptr)
+    {
+        children["ipv4-uni-session"] = ipv4_uni_session;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-type")
+    {
+        session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv4-lsp-session" || name == "ipv4-p2mp-lsp-session" || name == "ipv4-uni-session" || name == "session-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::Ipv4()
+    :
+    destination_address{YType::str, "destination-address"},
+    destination_port{YType::uint16, "destination-port"},
+    protocol{YType::uint8, "protocol"}
+{
+
+    yang_name = "ipv4"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::~Ipv4()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::has_data() const
+{
+    return destination_address.is_set
+	|| destination_port.is_set
+	|| protocol.is_set;
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(protocol.yfilter);
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port = value;
+        destination_port.value_namespace = name_space;
+        destination_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "destination-port" || name == "protocol")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::Ipv4LspSession()
+    :
+    destination_address{YType::str, "destination-address"},
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::~Ipv4LspSession()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::has_data() const
+{
+    return destination_address.is_set
+	|| extended_tunnel_id.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(extended_tunnel_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-lsp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id = value;
+        extended_tunnel_id.value_namespace = name_space;
+        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "extended-tunnel-id" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::Ipv4P2MpLspSession()
+    :
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    p2mp_id{YType::uint32, "p2mp-id"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-p2mp-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::~Ipv4P2MpLspSession()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_data() const
+{
+    return extended_tunnel_id.is_set
+	|| p2mp_id.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(extended_tunnel_id.yfilter)
+	|| ydk::is_set(p2mp_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-p2mp-lsp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id = value;
+        extended_tunnel_id.value_namespace = name_space;
+        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id = value;
+        p2mp_id.value_namespace = name_space;
+        p2mp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-tunnel-id" || name == "p2mp-id" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::Ipv4UniSession()
+    :
+    destination_address{YType::str, "destination-address"},
+    extended_address{YType::str, "extended-address"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-uni-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::~Ipv4UniSession()
+{
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::has_data() const
+{
+    return destination_address.is_set
+	|| extended_address.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(extended_address.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-briefs/session-brief/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-uni-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (extended_address.is_set || is_set(extended_address.yfilter)) leaf_name_data.push_back(extended_address.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-address")
+    {
+        extended_address = value;
+        extended_address.value_namespace = name_space;
+        extended_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "extended-address")
+    {
+        extended_address.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "extended-address" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetaileds()
+{
+
+    yang_name = "session-detaileds"; yang_parent_name = "rsvp-standby"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::~SessionDetaileds()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::has_data() const
+{
+    for (std::size_t index=0; index<session_detailed.size(); index++)
+    {
+        if(session_detailed[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::has_operation() const
+{
+    for (std::size_t index=0; index<session_detailed.size(); index++)
+    {
+        if(session_detailed[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-detaileds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-detailed")
+    {
+        for(auto const & c : session_detailed)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed>();
+        c->parent = this;
+        session_detailed.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : session_detailed)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RsvpStandby::SessionDetaileds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RsvpStandby::SessionDetaileds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-detailed")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::SessionDetailed()
+    :
+    destination_address{YType::str, "destination-address"},
+    destination_port{YType::int32, "destination-port"},
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    p2mp_id{YType::int32, "p2mp-id"},
+    protocol{YType::int32, "protocol"},
+    session_type{YType::enumeration, "session-type"},
+    vrf_name{YType::str, "vrf-name"}
+    	,
+    compact(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact>())
+	,s2l_sub_lsp(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp>())
+{
+    compact->parent = this;
+    s2l_sub_lsp->parent = this;
+
+    yang_name = "session-detailed"; yang_parent_name = "session-detaileds"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::~SessionDetailed()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::has_data() const
+{
+    for (std::size_t index=0; index<psb_rsb_info.size(); index++)
+    {
+        if(psb_rsb_info[index]->has_data())
+            return true;
+    }
+    return destination_address.is_set
+	|| destination_port.is_set
+	|| extended_tunnel_id.is_set
+	|| p2mp_id.is_set
+	|| protocol.is_set
+	|| session_type.is_set
+	|| vrf_name.is_set
+	|| (compact !=  nullptr && compact->has_data())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::has_operation() const
+{
+    for (std::size_t index=0; index<psb_rsb_info.size(); index++)
+    {
+        if(psb_rsb_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(extended_tunnel_id.yfilter)
+	|| ydk::is_set(p2mp_id.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (compact !=  nullptr && compact->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-detailed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "compact")
+    {
+        if(compact == nullptr)
+        {
+            compact = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact>();
+        }
+        return compact;
+    }
+
+    if(child_yang_name == "psb-rsb-info")
+    {
+        for(auto const & c : psb_rsb_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo>();
+        c->parent = this;
+        psb_rsb_info.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "s2l-sub-lsp")
+    {
+        if(s2l_sub_lsp == nullptr)
+        {
+            s2l_sub_lsp = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp>();
+        }
+        return s2l_sub_lsp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(compact != nullptr)
+    {
+        children["compact"] = compact;
+    }
+
+    for (auto const & c : psb_rsb_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(s2l_sub_lsp != nullptr)
+    {
+        children["s2l-sub-lsp"] = s2l_sub_lsp;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port = value;
+        destination_port.value_namespace = name_space;
+        destination_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id = value;
+        extended_tunnel_id.value_namespace = name_space;
+        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id = value;
+        p2mp_id.value_namespace = name_space;
+        p2mp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-type")
+    {
+        session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "compact" || name == "psb-rsb-info" || name == "s2l-sub-lsp" || name == "destination-address" || name == "destination-port" || name == "extended-tunnel-id" || name == "p2mp-id" || name == "protocol" || name == "session-type" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Compact()
+    :
+    detail_list_size{YType::uint32, "detail-list-size"},
+    ps_bs{YType::uint32, "ps-bs"},
+    requests{YType::uint32, "requests"},
+    rs_bs{YType::uint32, "rs-bs"}
+    	,
+    session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session>())
+{
+    session->parent = this;
+
+    yang_name = "compact"; yang_parent_name = "session-detailed"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::~Compact()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::has_data() const
+{
+    return detail_list_size.is_set
+	|| ps_bs.is_set
+	|| requests.is_set
+	|| rs_bs.is_set
+	|| (session !=  nullptr && session->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(detail_list_size.yfilter)
+	|| ydk::is_set(ps_bs.yfilter)
+	|| ydk::is_set(requests.yfilter)
+	|| ydk::is_set(rs_bs.yfilter)
+	|| (session !=  nullptr && session->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "compact";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (detail_list_size.is_set || is_set(detail_list_size.yfilter)) leaf_name_data.push_back(detail_list_size.get_name_leafdata());
+    if (ps_bs.is_set || is_set(ps_bs.yfilter)) leaf_name_data.push_back(ps_bs.get_name_leafdata());
+    if (requests.is_set || is_set(requests.yfilter)) leaf_name_data.push_back(requests.get_name_leafdata());
+    if (rs_bs.is_set || is_set(rs_bs.yfilter)) leaf_name_data.push_back(rs_bs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session")
+    {
+        if(session == nullptr)
+        {
+            session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session>();
+        }
+        return session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(session != nullptr)
+    {
+        children["session"] = session;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "detail-list-size")
+    {
+        detail_list_size = value;
+        detail_list_size.value_namespace = name_space;
+        detail_list_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ps-bs")
+    {
+        ps_bs = value;
+        ps_bs.value_namespace = name_space;
+        ps_bs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "requests")
+    {
+        requests = value;
+        requests.value_namespace = name_space;
+        requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rs-bs")
+    {
+        rs_bs = value;
+        rs_bs.value_namespace = name_space;
+        rs_bs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detail-list-size")
+    {
+        detail_list_size.yfilter = yfilter;
+    }
+    if(value_path == "ps-bs")
+    {
+        ps_bs.yfilter = yfilter;
+    }
+    if(value_path == "requests")
+    {
+        requests.yfilter = yfilter;
+    }
+    if(value_path == "rs-bs")
+    {
+        rs_bs.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "detail-list-size" || name == "ps-bs" || name == "requests" || name == "rs-bs")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::Session()
+    :
+    rsvp_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession>())
+{
+    rsvp_session->parent = this;
+
+    yang_name = "session"; yang_parent_name = "compact"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::~Session()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::has_data() const
+{
+    return (rsvp_session !=  nullptr && rsvp_session->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rsvp-session")
+    {
+        if(rsvp_session == nullptr)
+        {
+            rsvp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession>();
+        }
+        return rsvp_session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(rsvp_session != nullptr)
+    {
+        children["rsvp-session"] = rsvp_session;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-session")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::RsvpSession()
+    :
+    session_type{YType::enumeration, "session-type"}
+    	,
+    ipv4(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4>())
+	,ipv4_lsp_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession>())
+	,ipv4_p2mp_lsp_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession>())
+	,ipv4_uni_session(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession>())
+{
+    ipv4->parent = this;
+    ipv4_lsp_session->parent = this;
+    ipv4_p2mp_lsp_session->parent = this;
+    ipv4_uni_session->parent = this;
+
+    yang_name = "rsvp-session"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::~RsvpSession()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::has_data() const
+{
+    return session_type.is_set
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_data())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_data())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsvp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv4-lsp-session")
+    {
+        if(ipv4_lsp_session == nullptr)
+        {
+            ipv4_lsp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession>();
+        }
+        return ipv4_lsp_session;
+    }
+
+    if(child_yang_name == "ipv4-p2mp-lsp-session")
+    {
+        if(ipv4_p2mp_lsp_session == nullptr)
+        {
+            ipv4_p2mp_lsp_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession>();
+        }
+        return ipv4_p2mp_lsp_session;
+    }
+
+    if(child_yang_name == "ipv4-uni-session")
+    {
+        if(ipv4_uni_session == nullptr)
+        {
+            ipv4_uni_session = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession>();
+        }
+        return ipv4_uni_session;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv4_lsp_session != nullptr)
+    {
+        children["ipv4-lsp-session"] = ipv4_lsp_session;
+    }
+
+    if(ipv4_p2mp_lsp_session != nullptr)
+    {
+        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+    }
+
+    if(ipv4_uni_session != nullptr)
+    {
+        children["ipv4-uni-session"] = ipv4_uni_session;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-type")
+    {
+        session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv4-lsp-session" || name == "ipv4-p2mp-lsp-session" || name == "ipv4-uni-session" || name == "session-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::Ipv4()
+    :
+    destination_address{YType::str, "destination-address"},
+    destination_port{YType::uint16, "destination-port"},
+    protocol{YType::uint8, "protocol"}
+{
+
+    yang_name = "ipv4"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::~Ipv4()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::has_data() const
+{
+    return destination_address.is_set
+	|| destination_port.is_set
+	|| protocol.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(protocol.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port = value;
+        destination_port.value_namespace = name_space;
+        destination_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "destination-port" || name == "protocol")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::Ipv4LspSession()
+    :
+    destination_address{YType::str, "destination-address"},
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::~Ipv4LspSession()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::has_data() const
+{
+    return destination_address.is_set
+	|| extended_tunnel_id.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(extended_tunnel_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-lsp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id = value;
+        extended_tunnel_id.value_namespace = name_space;
+        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4LspSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "extended-tunnel-id" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::Ipv4P2MpLspSession()
+    :
+    extended_tunnel_id{YType::str, "extended-tunnel-id"},
+    p2mp_id{YType::uint32, "p2mp-id"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-p2mp-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::~Ipv4P2MpLspSession()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::has_data() const
+{
+    return extended_tunnel_id.is_set
+	|| p2mp_id.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(extended_tunnel_id.yfilter)
+	|| ydk::is_set(p2mp_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-p2mp-lsp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
+    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id = value;
+        extended_tunnel_id.value_namespace = name_space;
+        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id = value;
+        p2mp_id.value_namespace = name_space;
+        p2mp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "extended-tunnel-id")
+    {
+        extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "p2mp-id")
+    {
+        p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4P2MpLspSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-tunnel-id" || name == "p2mp-id" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::Ipv4UniSession()
+    :
+    destination_address{YType::str, "destination-address"},
+    extended_address{YType::str, "extended-address"},
+    tunnel_id{YType::uint16, "tunnel-id"}
+{
+
+    yang_name = "ipv4-uni-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::~Ipv4UniSession()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::has_data() const
+{
+    return destination_address.is_set
+	|| extended_address.is_set
+	|| tunnel_id.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(extended_address.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/compact/session/rsvp-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-uni-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (extended_address.is_set || is_set(extended_address.yfilter)) leaf_name_data.push_back(extended_address.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "extended-address")
+    {
+        extended_address = value;
+        extended_address.value_namespace = name_space;
+        extended_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "extended-address")
+    {
+        extended_address.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::Ipv4UniSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "extended-address" || name == "tunnel-id")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbRsbInfo()
+{
+
+    yang_name = "psb-rsb-info"; yang_parent_name = "session-detailed"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::~PsbRsbInfo()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::has_data() const
+{
+    for (std::size_t index=0; index<psb_info.size(); index++)
+    {
+        if(psb_info[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<rsb_info.size(); index++)
+    {
+        if(rsb_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::has_operation() const
+{
+    for (std::size_t index=0; index<psb_info.size(); index++)
+    {
+        if(psb_info[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<rsb_info.size(); index++)
+    {
+        if(rsb_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "psb-rsb-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "psb-info")
+    {
+        for(auto const & c : psb_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo>();
+        c->parent = this;
+        psb_info.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "rsb-info")
+    {
+        for(auto const & c : rsb_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo>();
+        c->parent = this;
+        rsb_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : psb_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    for (auto const & c : rsb_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "psb-info" || name == "rsb-info")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::PsbInfo()
+    :
+    destination_address{YType::str, "destination-address"},
+    in_interface{YType::str, "in-interface"},
+    in_label{YType::uint32, "in-label"},
+    incoming_interface_address{YType::str, "incoming-interface-address"},
+    is_bad_address{YType::boolean, "is-bad-address"},
+    is_ero_valid{YType::boolean, "is-ero-valid"},
+    is_rro_valid{YType::boolean, "is-rro-valid"},
+    is_traffic_spec_valid{YType::boolean, "is-traffic-spec-valid"},
+    is_valid{YType::boolean, "is-valid"},
+    lsp_id{YType::uint32, "lsp-id"},
+    lsp_wrap_label{YType::uint32, "lsp-wrap-label"},
+    p2mp_sub_group_origin{YType::str, "p2mp-sub-group-origin"},
+    sub_group_id{YType::uint16, "sub-group-id"},
+    tunnel_name{YType::str, "tunnel-name"}
+    	,
+    association(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association>())
+	,generic_in_label(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel>())
+	,generic_traffic_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec>())
+	,protection(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection>())
+	,reverse_lsp(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp>())
+	,traffic_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec>())
+{
+    association->parent = this;
+    generic_in_label->parent = this;
+    generic_traffic_spec->parent = this;
+    protection->parent = this;
+    reverse_lsp->parent = this;
+    traffic_spec->parent = this;
+
+    yang_name = "psb-info"; yang_parent_name = "psb-rsb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::~PsbInfo()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::has_data() const
+{
+    for (std::size_t index=0; index<ero.size(); index++)
+    {
+        if(ero[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<rro.size(); index++)
+    {
+        if(rro[index]->has_data())
+            return true;
+    }
+    return destination_address.is_set
+	|| in_interface.is_set
+	|| in_label.is_set
+	|| incoming_interface_address.is_set
+	|| is_bad_address.is_set
+	|| is_ero_valid.is_set
+	|| is_rro_valid.is_set
+	|| is_traffic_spec_valid.is_set
+	|| is_valid.is_set
+	|| lsp_id.is_set
+	|| lsp_wrap_label.is_set
+	|| p2mp_sub_group_origin.is_set
+	|| sub_group_id.is_set
+	|| tunnel_name.is_set
+	|| (association !=  nullptr && association->has_data())
+	|| (generic_in_label !=  nullptr && generic_in_label->has_data())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_data())
+	|| (protection !=  nullptr && protection->has_data())
+	|| (reverse_lsp !=  nullptr && reverse_lsp->has_data())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::has_operation() const
+{
+    for (std::size_t index=0; index<ero.size(); index++)
+    {
+        if(ero[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<rro.size(); index++)
+    {
+        if(rro[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(in_interface.yfilter)
+	|| ydk::is_set(in_label.yfilter)
+	|| ydk::is_set(incoming_interface_address.yfilter)
+	|| ydk::is_set(is_bad_address.yfilter)
+	|| ydk::is_set(is_ero_valid.yfilter)
+	|| ydk::is_set(is_rro_valid.yfilter)
+	|| ydk::is_set(is_traffic_spec_valid.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(lsp_id.yfilter)
+	|| ydk::is_set(lsp_wrap_label.yfilter)
+	|| ydk::is_set(p2mp_sub_group_origin.yfilter)
+	|| ydk::is_set(sub_group_id.yfilter)
+	|| ydk::is_set(tunnel_name.yfilter)
+	|| (association !=  nullptr && association->has_operation())
+	|| (generic_in_label !=  nullptr && generic_in_label->has_operation())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (protection !=  nullptr && protection->has_operation())
+	|| (reverse_lsp !=  nullptr && reverse_lsp->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "psb-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (in_interface.is_set || is_set(in_interface.yfilter)) leaf_name_data.push_back(in_interface.get_name_leafdata());
+    if (in_label.is_set || is_set(in_label.yfilter)) leaf_name_data.push_back(in_label.get_name_leafdata());
+    if (incoming_interface_address.is_set || is_set(incoming_interface_address.yfilter)) leaf_name_data.push_back(incoming_interface_address.get_name_leafdata());
+    if (is_bad_address.is_set || is_set(is_bad_address.yfilter)) leaf_name_data.push_back(is_bad_address.get_name_leafdata());
+    if (is_ero_valid.is_set || is_set(is_ero_valid.yfilter)) leaf_name_data.push_back(is_ero_valid.get_name_leafdata());
+    if (is_rro_valid.is_set || is_set(is_rro_valid.yfilter)) leaf_name_data.push_back(is_rro_valid.get_name_leafdata());
+    if (is_traffic_spec_valid.is_set || is_set(is_traffic_spec_valid.yfilter)) leaf_name_data.push_back(is_traffic_spec_valid.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+    if (lsp_wrap_label.is_set || is_set(lsp_wrap_label.yfilter)) leaf_name_data.push_back(lsp_wrap_label.get_name_leafdata());
+    if (p2mp_sub_group_origin.is_set || is_set(p2mp_sub_group_origin.yfilter)) leaf_name_data.push_back(p2mp_sub_group_origin.get_name_leafdata());
+    if (sub_group_id.is_set || is_set(sub_group_id.yfilter)) leaf_name_data.push_back(sub_group_id.get_name_leafdata());
+    if (tunnel_name.is_set || is_set(tunnel_name.yfilter)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "association")
+    {
+        if(association == nullptr)
+        {
+            association = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association>();
+        }
+        return association;
+    }
+
+    if(child_yang_name == "ero")
+    {
+        for(auto const & c : ero)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero>();
+        c->parent = this;
+        ero.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "generic-in-label")
+    {
+        if(generic_in_label == nullptr)
+        {
+            generic_in_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel>();
+        }
+        return generic_in_label;
+    }
+
+    if(child_yang_name == "generic-traffic-spec")
+    {
+        if(generic_traffic_spec == nullptr)
+        {
+            generic_traffic_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec>();
+        }
+        return generic_traffic_spec;
+    }
+
+    if(child_yang_name == "protection")
+    {
+        if(protection == nullptr)
+        {
+            protection = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection>();
+        }
+        return protection;
+    }
+
+    if(child_yang_name == "reverse-lsp")
+    {
+        if(reverse_lsp == nullptr)
+        {
+            reverse_lsp = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp>();
+        }
+        return reverse_lsp;
+    }
+
+    if(child_yang_name == "rro")
+    {
+        for(auto const & c : rro)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro>();
+        c->parent = this;
+        rro.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "traffic-spec")
+    {
+        if(traffic_spec == nullptr)
+        {
+            traffic_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec>();
+        }
+        return traffic_spec;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(association != nullptr)
+    {
+        children["association"] = association;
+    }
+
+    for (auto const & c : ero)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(generic_in_label != nullptr)
+    {
+        children["generic-in-label"] = generic_in_label;
+    }
+
+    if(generic_traffic_spec != nullptr)
+    {
+        children["generic-traffic-spec"] = generic_traffic_spec;
+    }
+
+    if(protection != nullptr)
+    {
+        children["protection"] = protection;
+    }
+
+    if(reverse_lsp != nullptr)
+    {
+        children["reverse-lsp"] = reverse_lsp;
+    }
+
+    for (auto const & c : rro)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    if(traffic_spec != nullptr)
+    {
+        children["traffic-spec"] = traffic_spec;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-interface")
+    {
+        in_interface = value;
+        in_interface.value_namespace = name_space;
+        in_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-label")
+    {
+        in_label = value;
+        in_label.value_namespace = name_space;
+        in_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "incoming-interface-address")
+    {
+        incoming_interface_address = value;
+        incoming_interface_address.value_namespace = name_space;
+        incoming_interface_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-bad-address")
+    {
+        is_bad_address = value;
+        is_bad_address.value_namespace = name_space;
+        is_bad_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-ero-valid")
+    {
+        is_ero_valid = value;
+        is_ero_valid.value_namespace = name_space;
+        is_ero_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-rro-valid")
+    {
+        is_rro_valid = value;
+        is_rro_valid.value_namespace = name_space;
+        is_rro_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-traffic-spec-valid")
+    {
+        is_traffic_spec_valid = value;
+        is_traffic_spec_valid.value_namespace = name_space;
+        is_traffic_spec_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-id")
+    {
+        lsp_id = value;
+        lsp_id.value_namespace = name_space;
+        lsp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-wrap-label")
+    {
+        lsp_wrap_label = value;
+        lsp_wrap_label.value_namespace = name_space;
+        lsp_wrap_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "p2mp-sub-group-origin")
+    {
+        p2mp_sub_group_origin = value;
+        p2mp_sub_group_origin.value_namespace = name_space;
+        p2mp_sub_group_origin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-group-id")
+    {
+        sub_group_id = value;
+        sub_group_id.value_namespace = name_space;
+        sub_group_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-name")
+    {
+        tunnel_name = value;
+        tunnel_name.value_namespace = name_space;
+        tunnel_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "in-interface")
+    {
+        in_interface.yfilter = yfilter;
+    }
+    if(value_path == "in-label")
+    {
+        in_label.yfilter = yfilter;
+    }
+    if(value_path == "incoming-interface-address")
+    {
+        incoming_interface_address.yfilter = yfilter;
+    }
+    if(value_path == "is-bad-address")
+    {
+        is_bad_address.yfilter = yfilter;
+    }
+    if(value_path == "is-ero-valid")
+    {
+        is_ero_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-rro-valid")
+    {
+        is_rro_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-traffic-spec-valid")
+    {
+        is_traffic_spec_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "lsp-id")
+    {
+        lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "lsp-wrap-label")
+    {
+        lsp_wrap_label.yfilter = yfilter;
+    }
+    if(value_path == "p2mp-sub-group-origin")
+    {
+        p2mp_sub_group_origin.yfilter = yfilter;
+    }
+    if(value_path == "sub-group-id")
+    {
+        sub_group_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-name")
+    {
+        tunnel_name.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association" || name == "ero" || name == "generic-in-label" || name == "generic-traffic-spec" || name == "protection" || name == "reverse-lsp" || name == "rro" || name == "traffic-spec" || name == "destination-address" || name == "in-interface" || name == "in-label" || name == "incoming-interface-address" || name == "is-bad-address" || name == "is-ero-valid" || name == "is-rro-valid" || name == "is-traffic-spec-valid" || name == "is-valid" || name == "lsp-id" || name == "lsp-wrap-label" || name == "p2mp-sub-group-origin" || name == "sub-group-id" || name == "tunnel-name")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Association()
+    :
+    association_type{YType::enumeration, "association-type"}
+    	,
+    extended_ipv4(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4>())
+	,extended_ipv6(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6>())
+	,ipv4(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4>())
+	,ipv6(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6>())
+{
+    extended_ipv4->parent = this;
+    extended_ipv6->parent = this;
+    ipv4->parent = this;
+    ipv6->parent = this;
+
+    yang_name = "association"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::~Association()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::has_data() const
+{
+    return association_type.is_set
+	|| (extended_ipv4 !=  nullptr && extended_ipv4->has_data())
+	|| (extended_ipv6 !=  nullptr && extended_ipv6->has_data())
+	|| (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(association_type.yfilter)
+	|| (extended_ipv4 !=  nullptr && extended_ipv4->has_operation())
+	|| (extended_ipv6 !=  nullptr && extended_ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "association";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (association_type.is_set || is_set(association_type.yfilter)) leaf_name_data.push_back(association_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "extended-ipv4")
+    {
+        if(extended_ipv4 == nullptr)
+        {
+            extended_ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4>();
+        }
+        return extended_ipv4;
+    }
+
+    if(child_yang_name == "extended-ipv6")
+    {
+        if(extended_ipv6 == nullptr)
+        {
+            extended_ipv6 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6>();
+        }
+        return extended_ipv6;
+    }
+
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(extended_ipv4 != nullptr)
+    {
+        children["extended-ipv4"] = extended_ipv4;
+    }
+
+    if(extended_ipv6 != nullptr)
+    {
+        children["extended-ipv6"] = extended_ipv6;
+    }
+
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        children["ipv6"] = ipv6;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "association-type")
+    {
+        association_type = value;
+        association_type.value_namespace = name_space;
+        association_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "association-type")
+    {
+        association_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-ipv4" || name == "extended-ipv6" || name == "ipv4" || name == "ipv6" || name == "association-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::ExtendedIpv4()
+    :
+    extended_id{YType::uint32, "extended-id"},
+    global_source{YType::uint32, "global-source"},
+    id{YType::uint16, "id"},
+    source{YType::str, "source"},
+    type{YType::uint16, "type"}
+{
+
+    yang_name = "extended-ipv4"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::~ExtendedIpv4()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_data() const
+{
+    for (auto const & leaf : extended_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return global_source.is_set
+	|| id.is_set
+	|| source.is_set
+	|| type.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_operation() const
+{
+    for (auto const & leaf : extended_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(extended_id.yfilter)
+	|| ydk::is_set(global_source.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/association/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "extended-ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global_source.is_set || is_set(global_source.yfilter)) leaf_name_data.push_back(global_source.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    auto extended_id_name_datas = extended_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), extended_id_name_datas.begin(), extended_id_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "extended-id")
+    {
+        extended_id.append(value);
+    }
+    if(value_path == "global-source")
+    {
+        global_source = value;
+        global_source.value_namespace = name_space;
+        global_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "extended-id")
+    {
+        extended_id.yfilter = yfilter;
+    }
+    if(value_path == "global-source")
+    {
+        global_source.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-id" || name == "global-source" || name == "id" || name == "source" || name == "type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::ExtendedIpv6()
+    :
+    extended_id{YType::uint32, "extended-id"},
+    global_source{YType::uint32, "global-source"},
+    id{YType::uint16, "id"},
+    source{YType::str, "source"},
+    type{YType::uint16, "type"}
+{
+
+    yang_name = "extended-ipv6"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::~ExtendedIpv6()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_data() const
+{
+    for (auto const & leaf : extended_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return global_source.is_set
+	|| id.is_set
+	|| source.is_set
+	|| type.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_operation() const
+{
+    for (auto const & leaf : extended_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(extended_id.yfilter)
+	|| ydk::is_set(global_source.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/association/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "extended-ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global_source.is_set || is_set(global_source.yfilter)) leaf_name_data.push_back(global_source.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    auto extended_id_name_datas = extended_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), extended_id_name_datas.begin(), extended_id_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "extended-id")
+    {
+        extended_id.append(value);
+    }
+    if(value_path == "global-source")
+    {
+        global_source = value;
+        global_source.value_namespace = name_space;
+        global_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "extended-id")
+    {
+        extended_id.yfilter = yfilter;
+    }
+    if(value_path == "global-source")
+    {
+        global_source.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-id" || name == "global-source" || name == "id" || name == "source" || name == "type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::Ipv4()
+    :
+    id{YType::uint16, "id"},
+    source{YType::str, "source"},
+    type{YType::uint16, "type"}
+{
+
+    yang_name = "ipv4"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::~Ipv4()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::has_data() const
+{
+    return id.is_set
+	|| source.is_set
+	|| type.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/association/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "source" || name == "type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::Ipv6()
+    :
+    id{YType::uint16, "id"},
+    source{YType::str, "source"},
+    type{YType::uint16, "type"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::~Ipv6()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::has_data() const
+{
+    return id.is_set
+	|| source.is_set
+	|| type.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/association/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "source" || name == "type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ero()
+    :
+    ero_type{YType::enumeration, "ero-type"}
+    	,
+    ipv4ero_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject>())
+	,unnumbered_ero_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject>())
+{
+    ipv4ero_sub_object->parent = this;
+    unnumbered_ero_sub_object->parent = this;
+
+    yang_name = "ero"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::~Ero()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_data() const
+{
+    return ero_type.is_set
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_data())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_type.yfilter)
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ero";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_type.is_set || is_set(ero_type.yfilter)) leaf_name_data.push_back(ero_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4ero-sub-object")
+    {
+        if(ipv4ero_sub_object == nullptr)
+        {
+            ipv4ero_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject>();
+        }
+        return ipv4ero_sub_object;
+    }
+
+    if(child_yang_name == "unnumbered-ero-sub-object")
+    {
+        if(unnumbered_ero_sub_object == nullptr)
+        {
+            unnumbered_ero_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject>();
+        }
+        return unnumbered_ero_sub_object;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
+    {
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
+    }
+
+    if(unnumbered_ero_sub_object != nullptr)
+    {
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-type")
+    {
+        ero_type = value;
+        ero_type.value_namespace = name_space;
+        ero_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-type")
+    {
+        ero_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4ero-sub-object" || name == "unnumbered-ero-sub-object" || name == "ero-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::Ipv4EroSubObject()
+    :
+    ero_address{YType::str, "ero-address"},
+    is_strict_route{YType::boolean, "is-strict-route"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "ipv4ero-sub-object"; yang_parent_name = "ero"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::~Ipv4EroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_data() const
+{
+    return ero_address.is_set
+	|| is_strict_route.is_set
+	|| prefix_length.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_address.yfilter)
+	|| ydk::is_set(is_strict_route.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/ero/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4ero-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_address.is_set || is_set(ero_address.yfilter)) leaf_name_data.push_back(ero_address.get_name_leafdata());
+    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-address")
+    {
+        ero_address = value;
+        ero_address.value_namespace = name_space;
+        ero_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route = value;
+        is_strict_route.value_namespace = name_space;
+        is_strict_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-address")
+    {
+        ero_address.yfilter = yfilter;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ero-address" || name == "is-strict-route" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::UnnumberedEroSubObject()
+    :
+    ero_interface_id{YType::uint32, "ero-interface-id"},
+    ero_router_id{YType::str, "ero-router-id"},
+    is_strict_route{YType::boolean, "is-strict-route"},
+    status{YType::enumeration, "status"}
+{
+
+    yang_name = "unnumbered-ero-sub-object"; yang_parent_name = "ero"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::~UnnumberedEroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_data() const
+{
+    return ero_interface_id.is_set
+	|| ero_router_id.is_set
+	|| is_strict_route.is_set
+	|| status.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_interface_id.yfilter)
+	|| ydk::is_set(ero_router_id.yfilter)
+	|| ydk::is_set(is_strict_route.yfilter)
+	|| ydk::is_set(status.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/ero/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "unnumbered-ero-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_interface_id.is_set || is_set(ero_interface_id.yfilter)) leaf_name_data.push_back(ero_interface_id.get_name_leafdata());
+    if (ero_router_id.is_set || is_set(ero_router_id.yfilter)) leaf_name_data.push_back(ero_router_id.get_name_leafdata());
+    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-interface-id")
+    {
+        ero_interface_id = value;
+        ero_interface_id.value_namespace = name_space;
+        ero_interface_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ero-router-id")
+    {
+        ero_router_id = value;
+        ero_router_id.value_namespace = name_space;
+        ero_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route = value;
+        is_strict_route.value_namespace = name_space;
+        is_strict_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-interface-id")
+    {
+        ero_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "ero-router-id")
+    {
+        ero_router_id.yfilter = yfilter;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ero-interface-id" || name == "ero-router-id" || name == "is-strict-route" || name == "status")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GenericInLabel()
+    :
+    generic_label_type{YType::enumeration, "generic-label-type"}
+    	,
+    generalized_label(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel>())
+{
+    generalized_label->parent = this;
+
+    yang_name = "generic-in-label"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::~GenericInLabel()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::has_data() const
+{
+    return generic_label_type.is_set
+	|| (generalized_label !=  nullptr && generalized_label->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(generic_label_type.yfilter)
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generic-in-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (generic_label_type.is_set || is_set(generic_label_type.yfilter)) leaf_name_data.push_back(generic_label_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "generalized-label")
+    {
+        if(generalized_label == nullptr)
+        {
+            generalized_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel>();
+        }
+        return generalized_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generalized_label != nullptr)
+    {
+        children["generalized-label"] = generalized_label;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "generic-label-type")
+    {
+        generic_label_type = value;
+        generic_label_type.value_namespace = name_space;
+        generic_label_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "generic-label-type")
+    {
+        generic_label_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "generalized-label" || name == "generic-label-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::GeneralizedLabel()
+    :
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "generalized-label"; yang_parent_name = "generic-in-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::~GeneralizedLabel()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_data() const
+{
+    for (auto const & leaf : value_.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_operation() const
+{
+    for (auto const & leaf : value_.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/generic-in-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generalized-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto value__name_datas = value_.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), value__name_datas.begin(), value__name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_.append(value);
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::GenericTrafficSpec()
+    :
+    tspec_type{YType::enumeration, "tspec-type"}
+    	,
+    g709otn_tspec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec>())
+	,intsrv_tspec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec>())
+{
+    g709otn_tspec->parent = this;
+    intsrv_tspec->parent = this;
+
+    yang_name = "generic-traffic-spec"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::~GenericTrafficSpec()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::has_data() const
+{
+    return tspec_type.is_set
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_data())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tspec_type.yfilter)
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generic-traffic-spec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tspec_type.is_set || is_set(tspec_type.yfilter)) leaf_name_data.push_back(tspec_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "g709otn-tspec")
+    {
+        if(g709otn_tspec == nullptr)
+        {
+            g709otn_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec>();
+        }
+        return g709otn_tspec;
+    }
+
+    if(child_yang_name == "intsrv-tspec")
+    {
+        if(intsrv_tspec == nullptr)
+        {
+            intsrv_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec>();
+        }
+        return intsrv_tspec;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(g709otn_tspec != nullptr)
+    {
+        children["g709otn-tspec"] = g709otn_tspec;
+    }
+
+    if(intsrv_tspec != nullptr)
+    {
+        children["intsrv-tspec"] = intsrv_tspec;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tspec-type")
+    {
+        tspec_type = value;
+        tspec_type.value_namespace = name_space;
+        tspec_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tspec-type")
+    {
+        tspec_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "g709otn-tspec" || name == "intsrv-tspec" || name == "tspec-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::G709OtnTspec()
+    :
+    traffic_bit_rate{YType::uint64, "traffic-bit-rate"},
+    traffic_multiplier{YType::uint16, "traffic-multiplier"},
+    traffic_nvc{YType::uint16, "traffic-nvc"},
+    traffic_signal_type{YType::uint8, "traffic-signal-type"}
+{
+
+    yang_name = "g709otn-tspec"; yang_parent_name = "generic-traffic-spec"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::~G709OtnTspec()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::has_data() const
+{
+    return traffic_bit_rate.is_set
+	|| traffic_multiplier.is_set
+	|| traffic_nvc.is_set
+	|| traffic_signal_type.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(traffic_bit_rate.yfilter)
+	|| ydk::is_set(traffic_multiplier.yfilter)
+	|| ydk::is_set(traffic_nvc.yfilter)
+	|| ydk::is_set(traffic_signal_type.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/generic-traffic-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "g709otn-tspec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (traffic_bit_rate.is_set || is_set(traffic_bit_rate.yfilter)) leaf_name_data.push_back(traffic_bit_rate.get_name_leafdata());
+    if (traffic_multiplier.is_set || is_set(traffic_multiplier.yfilter)) leaf_name_data.push_back(traffic_multiplier.get_name_leafdata());
+    if (traffic_nvc.is_set || is_set(traffic_nvc.yfilter)) leaf_name_data.push_back(traffic_nvc.get_name_leafdata());
+    if (traffic_signal_type.is_set || is_set(traffic_signal_type.yfilter)) leaf_name_data.push_back(traffic_signal_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "traffic-bit-rate")
+    {
+        traffic_bit_rate = value;
+        traffic_bit_rate.value_namespace = name_space;
+        traffic_bit_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-multiplier")
+    {
+        traffic_multiplier = value;
+        traffic_multiplier.value_namespace = name_space;
+        traffic_multiplier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-nvc")
+    {
+        traffic_nvc = value;
+        traffic_nvc.value_namespace = name_space;
+        traffic_nvc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-signal-type")
+    {
+        traffic_signal_type = value;
+        traffic_signal_type.value_namespace = name_space;
+        traffic_signal_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "traffic-bit-rate")
+    {
+        traffic_bit_rate.yfilter = yfilter;
+    }
+    if(value_path == "traffic-multiplier")
+    {
+        traffic_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "traffic-nvc")
+    {
+        traffic_nvc.yfilter = yfilter;
+    }
+    if(value_path == "traffic-signal-type")
+    {
+        traffic_signal_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::G709OtnTspec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-bit-rate" || name == "traffic-multiplier" || name == "traffic-nvc" || name == "traffic-signal-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::IntsrvTspec()
+    :
+    traffic_average_rate{YType::uint64, "traffic-average-rate"},
+    traffic_max_burst{YType::uint64, "traffic-max-burst"},
+    traffic_max_unit{YType::uint32, "traffic-max-unit"},
+    traffic_min_unit{YType::uint32, "traffic-min-unit"},
+    traffic_peak_rate{YType::uint64, "traffic-peak-rate"}
+{
+
+    yang_name = "intsrv-tspec"; yang_parent_name = "generic-traffic-spec"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::~IntsrvTspec()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::has_data() const
+{
+    return traffic_average_rate.is_set
+	|| traffic_max_burst.is_set
+	|| traffic_max_unit.is_set
+	|| traffic_min_unit.is_set
+	|| traffic_peak_rate.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(traffic_average_rate.yfilter)
+	|| ydk::is_set(traffic_max_burst.yfilter)
+	|| ydk::is_set(traffic_max_unit.yfilter)
+	|| ydk::is_set(traffic_min_unit.yfilter)
+	|| ydk::is_set(traffic_peak_rate.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/generic-traffic-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "intsrv-tspec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (traffic_average_rate.is_set || is_set(traffic_average_rate.yfilter)) leaf_name_data.push_back(traffic_average_rate.get_name_leafdata());
+    if (traffic_max_burst.is_set || is_set(traffic_max_burst.yfilter)) leaf_name_data.push_back(traffic_max_burst.get_name_leafdata());
+    if (traffic_max_unit.is_set || is_set(traffic_max_unit.yfilter)) leaf_name_data.push_back(traffic_max_unit.get_name_leafdata());
+    if (traffic_min_unit.is_set || is_set(traffic_min_unit.yfilter)) leaf_name_data.push_back(traffic_min_unit.get_name_leafdata());
+    if (traffic_peak_rate.is_set || is_set(traffic_peak_rate.yfilter)) leaf_name_data.push_back(traffic_peak_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "traffic-average-rate")
+    {
+        traffic_average_rate = value;
+        traffic_average_rate.value_namespace = name_space;
+        traffic_average_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-max-burst")
+    {
+        traffic_max_burst = value;
+        traffic_max_burst.value_namespace = name_space;
+        traffic_max_burst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-max-unit")
+    {
+        traffic_max_unit = value;
+        traffic_max_unit.value_namespace = name_space;
+        traffic_max_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-min-unit")
+    {
+        traffic_min_unit = value;
+        traffic_min_unit.value_namespace = name_space;
+        traffic_min_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-peak-rate")
+    {
+        traffic_peak_rate = value;
+        traffic_peak_rate.value_namespace = name_space;
+        traffic_peak_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "traffic-average-rate")
+    {
+        traffic_average_rate.yfilter = yfilter;
+    }
+    if(value_path == "traffic-max-burst")
+    {
+        traffic_max_burst.yfilter = yfilter;
+    }
+    if(value_path == "traffic-max-unit")
+    {
+        traffic_max_unit.yfilter = yfilter;
+    }
+    if(value_path == "traffic-min-unit")
+    {
+        traffic_min_unit.yfilter = yfilter;
+    }
+    if(value_path == "traffic-peak-rate")
+    {
+        traffic_peak_rate.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::IntsrvTspec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-average-rate" || name == "traffic-max-burst" || name == "traffic-max-unit" || name == "traffic-min-unit" || name == "traffic-peak-rate")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::Protection()
     :
     n{YType::boolean, "n"},
     o{YType::boolean, "o"},
     p{YType::boolean, "p"},
     s{YType::boolean, "s"}
     	,
-    link_flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags>())
-	,lsp_flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>())
+    link_flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags>())
+	,lsp_flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>())
 {
     link_flags->parent = this;
-
     lsp_flags->parent = this;
 
-    yang_name = "protection"; yang_parent_name = "psb-info";
+    yang_name = "protection"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::~Protection()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::~Protection()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_data() const
 {
     return n.is_set
 	|| o.is_set
@@ -42,7 +4067,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::h
 	|| (lsp_flags !=  nullptr && lsp_flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(n.yfilter)
@@ -53,27 +4078,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::h
 	|| (lsp_flags !=  nullptr && lsp_flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protection";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (n.is_set || is_set(n.yfilter)) leaf_name_data.push_back(n.get_name_leafdata());
@@ -81,19 +4101,17 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::P
     if (p.is_set || is_set(p.yfilter)) leaf_name_data.push_back(p.get_name_leafdata());
     if (s.is_set || is_set(s.yfilter)) leaf_name_data.push_back(s.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-flags")
     {
         if(link_flags == nullptr)
         {
-            link_flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags>();
+            link_flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags>();
         }
         return link_flags;
     }
@@ -102,7 +4120,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(lsp_flags == nullptr)
         {
-            lsp_flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>();
+            lsp_flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags>();
         }
         return lsp_flags;
     }
@@ -110,7 +4128,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(link_flags != nullptr)
@@ -126,7 +4144,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "n")
     {
@@ -154,7 +4172,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::s
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "n")
     {
@@ -174,159 +4192,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::s
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "link-flags" || name == "lsp-flags" || name == "n" || name == "o" || name == "p" || name == "s")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::LspFlags()
-    :
-    one_plus_one_bi{YType::boolean, "one-plus-one-bi"},
-    one_plus_one_uni{YType::boolean, "one-plus-one-uni"},
-    one_to_n_protection_et{YType::boolean, "one-to-n-protection-et"},
-    rerouting{YType::boolean, "rerouting"},
-    rerouting_no_et{YType::boolean, "rerouting-no-et"}
-{
-    yang_name = "lsp-flags"; yang_parent_name = "protection";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::~LspFlags()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_data() const
-{
-    return one_plus_one_bi.is_set
-	|| one_plus_one_uni.is_set
-	|| one_to_n_protection_et.is_set
-	|| rerouting.is_set
-	|| rerouting_no_et.is_set;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(one_plus_one_bi.yfilter)
-	|| ydk::is_set(one_plus_one_uni.yfilter)
-	|| ydk::is_set(one_to_n_protection_et.yfilter)
-	|| ydk::is_set(rerouting.yfilter)
-	|| ydk::is_set(rerouting_no_et.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-flags";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/protection/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (one_plus_one_bi.is_set || is_set(one_plus_one_bi.yfilter)) leaf_name_data.push_back(one_plus_one_bi.get_name_leafdata());
-    if (one_plus_one_uni.is_set || is_set(one_plus_one_uni.yfilter)) leaf_name_data.push_back(one_plus_one_uni.get_name_leafdata());
-    if (one_to_n_protection_et.is_set || is_set(one_to_n_protection_et.yfilter)) leaf_name_data.push_back(one_to_n_protection_et.get_name_leafdata());
-    if (rerouting.is_set || is_set(rerouting.yfilter)) leaf_name_data.push_back(rerouting.get_name_leafdata());
-    if (rerouting_no_et.is_set || is_set(rerouting_no_et.yfilter)) leaf_name_data.push_back(rerouting_no_et.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "one-plus-one-bi")
-    {
-        one_plus_one_bi = value;
-        one_plus_one_bi.value_namespace = name_space;
-        one_plus_one_bi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "one-plus-one-uni")
-    {
-        one_plus_one_uni = value;
-        one_plus_one_uni.value_namespace = name_space;
-        one_plus_one_uni.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "one-to-n-protection-et")
-    {
-        one_to_n_protection_et = value;
-        one_to_n_protection_et.value_namespace = name_space;
-        one_to_n_protection_et.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rerouting")
-    {
-        rerouting = value;
-        rerouting.value_namespace = name_space;
-        rerouting.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rerouting-no-et")
-    {
-        rerouting_no_et = value;
-        rerouting_no_et.value_namespace = name_space;
-        rerouting_no_et.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "one-plus-one-bi")
-    {
-        one_plus_one_bi.yfilter = yfilter;
-    }
-    if(value_path == "one-plus-one-uni")
-    {
-        one_plus_one_uni.yfilter = yfilter;
-    }
-    if(value_path == "one-to-n-protection-et")
-    {
-        one_to_n_protection_et.yfilter = yfilter;
-    }
-    if(value_path == "rerouting")
-    {
-        rerouting.yfilter = yfilter;
-    }
-    if(value_path == "rerouting-no-et")
-    {
-        rerouting_no_et.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "one-plus-one-bi" || name == "one-plus-one-uni" || name == "one-to-n-protection-et" || name == "rerouting" || name == "rerouting-no-et")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::LinkFlags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::LinkFlags()
     :
     ded1_plus1{YType::boolean, "ded1-plus1"},
     ded1_to1{YType::boolean, "ded1-to1"},
@@ -337,14 +4210,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFl
     shared{YType::boolean, "shared"},
     unprotected{YType::boolean, "unprotected"}
 {
-    yang_name = "link-flags"; yang_parent_name = "protection";
+
+    yang_name = "link-flags"; yang_parent_name = "protection"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::~LinkFlags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::~LinkFlags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_data() const
 {
     return ded1_plus1.is_set
 	|| ded1_to1.is_set
@@ -356,7 +4230,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::L
 	|| unprotected.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ded1_plus1.yfilter)
@@ -369,27 +4243,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::L
 	|| ydk::is_set(unprotected.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/protection/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "link-flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/protection/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ded1_plus1.is_set || is_set(ded1_plus1.yfilter)) leaf_name_data.push_back(ded1_plus1.get_name_leafdata());
@@ -401,24 +4270,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::P
     if (shared.is_set || is_set(shared.yfilter)) leaf_name_data.push_back(shared.get_name_leafdata());
     if (unprotected.is_set || is_set(unprotected.yfilter)) leaf_name_data.push_back(unprotected.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ded1-plus1")
     {
@@ -470,7 +4337,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::L
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ded1-plus1")
     {
@@ -506,27 +4373,166 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::L
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LinkFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ded1-plus1" || name == "ded1-to1" || name == "enhanced" || name == "extra-traffic" || name == "reserved-bit1" || name == "reserved-bit2" || name == "shared" || name == "unprotected")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::ReverseLsp()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::LspFlags()
     :
-    generic_traffic_spec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec>())
+    one_plus_one_bi{YType::boolean, "one-plus-one-bi"},
+    one_plus_one_uni{YType::boolean, "one-plus-one-uni"},
+    one_to_n_protection_et{YType::boolean, "one-to-n-protection-et"},
+    rerouting{YType::boolean, "rerouting"},
+    rerouting_no_et{YType::boolean, "rerouting-no-et"}
+{
+
+    yang_name = "lsp-flags"; yang_parent_name = "protection"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::~LspFlags()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_data() const
+{
+    return one_plus_one_bi.is_set
+	|| one_plus_one_uni.is_set
+	|| one_to_n_protection_et.is_set
+	|| rerouting.is_set
+	|| rerouting_no_et.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(one_plus_one_bi.yfilter)
+	|| ydk::is_set(one_plus_one_uni.yfilter)
+	|| ydk::is_set(one_to_n_protection_et.yfilter)
+	|| ydk::is_set(rerouting.yfilter)
+	|| ydk::is_set(rerouting_no_et.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/protection/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsp-flags";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (one_plus_one_bi.is_set || is_set(one_plus_one_bi.yfilter)) leaf_name_data.push_back(one_plus_one_bi.get_name_leafdata());
+    if (one_plus_one_uni.is_set || is_set(one_plus_one_uni.yfilter)) leaf_name_data.push_back(one_plus_one_uni.get_name_leafdata());
+    if (one_to_n_protection_et.is_set || is_set(one_to_n_protection_et.yfilter)) leaf_name_data.push_back(one_to_n_protection_et.get_name_leafdata());
+    if (rerouting.is_set || is_set(rerouting.yfilter)) leaf_name_data.push_back(rerouting.get_name_leafdata());
+    if (rerouting_no_et.is_set || is_set(rerouting_no_et.yfilter)) leaf_name_data.push_back(rerouting_no_et.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "one-plus-one-bi")
+    {
+        one_plus_one_bi = value;
+        one_plus_one_bi.value_namespace = name_space;
+        one_plus_one_bi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "one-plus-one-uni")
+    {
+        one_plus_one_uni = value;
+        one_plus_one_uni.value_namespace = name_space;
+        one_plus_one_uni.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "one-to-n-protection-et")
+    {
+        one_to_n_protection_et = value;
+        one_to_n_protection_et.value_namespace = name_space;
+        one_to_n_protection_et.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rerouting")
+    {
+        rerouting = value;
+        rerouting.value_namespace = name_space;
+        rerouting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rerouting-no-et")
+    {
+        rerouting_no_et = value;
+        rerouting_no_et.value_namespace = name_space;
+        rerouting_no_et.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "one-plus-one-bi")
+    {
+        one_plus_one_bi.yfilter = yfilter;
+    }
+    if(value_path == "one-plus-one-uni")
+    {
+        one_plus_one_uni.yfilter = yfilter;
+    }
+    if(value_path == "one-to-n-protection-et")
+    {
+        one_to_n_protection_et.yfilter = yfilter;
+    }
+    if(value_path == "rerouting")
+    {
+        rerouting.yfilter = yfilter;
+    }
+    if(value_path == "rerouting-no-et")
+    {
+        rerouting_no_et.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::LspFlags::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "one-plus-one-bi" || name == "one-plus-one-uni" || name == "one-to-n-protection-et" || name == "rerouting" || name == "rerouting-no-et")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::ReverseLsp()
+    :
+    generic_traffic_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec>())
 {
     generic_traffic_spec->parent = this;
 
-    yang_name = "reverse-lsp"; yang_parent_name = "psb-info";
+    yang_name = "reverse-lsp"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::~ReverseLsp()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::~ReverseLsp()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_data() const
 {
     for (std::size_t index=0; index<ero.size(); index++)
     {
@@ -541,7 +4547,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::h
     return (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_operation() const
 {
     for (std::size_t index=0; index<ero.size(); index++)
     {
@@ -557,37 +4563,30 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::h
 	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reverse-lsp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ero")
     {
@@ -599,7 +4598,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
                 return c;
             }
         }
-        auto c = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero>();
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero>();
         c->parent = this;
         ero.push_back(c);
         return c;
@@ -609,7 +4608,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(generic_traffic_spec == nullptr)
         {
-            generic_traffic_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec>();
+            generic_traffic_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec>();
         }
         return generic_traffic_spec;
     }
@@ -624,7 +4623,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
                 return c;
             }
         }
-        auto c = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject>();
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject>();
         c->parent = this;
         unsup_sub_object.push_back(c);
         return c;
@@ -633,7 +4632,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ero)
@@ -654,47 +4653,402 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ero" || name == "generic-traffic-spec" || name == "unsup-sub-object")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::GenericTrafficSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ero()
+    :
+    ero_type{YType::enumeration, "ero-type"}
+    	,
+    ipv4ero_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject>())
+	,unnumbered_ero_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject>())
+{
+    ipv4ero_sub_object->parent = this;
+    unnumbered_ero_sub_object->parent = this;
+
+    yang_name = "ero"; yang_parent_name = "reverse-lsp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::~Ero()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_data() const
+{
+    return ero_type.is_set
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_data())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_type.yfilter)
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ero";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_type.is_set || is_set(ero_type.yfilter)) leaf_name_data.push_back(ero_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4ero-sub-object")
+    {
+        if(ipv4ero_sub_object == nullptr)
+        {
+            ipv4ero_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject>();
+        }
+        return ipv4ero_sub_object;
+    }
+
+    if(child_yang_name == "unnumbered-ero-sub-object")
+    {
+        if(unnumbered_ero_sub_object == nullptr)
+        {
+            unnumbered_ero_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject>();
+        }
+        return unnumbered_ero_sub_object;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4ero_sub_object != nullptr)
+    {
+        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
+    }
+
+    if(unnumbered_ero_sub_object != nullptr)
+    {
+        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-type")
+    {
+        ero_type = value;
+        ero_type.value_namespace = name_space;
+        ero_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-type")
+    {
+        ero_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4ero-sub-object" || name == "unnumbered-ero-sub-object" || name == "ero-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::Ipv4EroSubObject()
+    :
+    ero_address{YType::str, "ero-address"},
+    is_strict_route{YType::boolean, "is-strict-route"},
+    prefix_length{YType::uint8, "prefix-length"}
+{
+
+    yang_name = "ipv4ero-sub-object"; yang_parent_name = "ero"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::~Ipv4EroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_data() const
+{
+    return ero_address.is_set
+	|| is_strict_route.is_set
+	|| prefix_length.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_address.yfilter)
+	|| ydk::is_set(is_strict_route.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/ero/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4ero-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_address.is_set || is_set(ero_address.yfilter)) leaf_name_data.push_back(ero_address.get_name_leafdata());
+    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-address")
+    {
+        ero_address = value;
+        ero_address.value_namespace = name_space;
+        ero_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route = value;
+        is_strict_route.value_namespace = name_space;
+        is_strict_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-address")
+    {
+        ero_address.yfilter = yfilter;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ero-address" || name == "is-strict-route" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::UnnumberedEroSubObject()
+    :
+    ero_interface_id{YType::uint32, "ero-interface-id"},
+    ero_router_id{YType::str, "ero-router-id"},
+    is_strict_route{YType::boolean, "is-strict-route"},
+    status{YType::enumeration, "status"}
+{
+
+    yang_name = "unnumbered-ero-sub-object"; yang_parent_name = "ero"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::~UnnumberedEroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_data() const
+{
+    return ero_interface_id.is_set
+	|| ero_router_id.is_set
+	|| is_strict_route.is_set
+	|| status.is_set;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ero_interface_id.yfilter)
+	|| ydk::is_set(ero_router_id.yfilter)
+	|| ydk::is_set(is_strict_route.yfilter)
+	|| ydk::is_set(status.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/ero/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "unnumbered-ero-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ero_interface_id.is_set || is_set(ero_interface_id.yfilter)) leaf_name_data.push_back(ero_interface_id.get_name_leafdata());
+    if (ero_router_id.is_set || is_set(ero_router_id.yfilter)) leaf_name_data.push_back(ero_router_id.get_name_leafdata());
+    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ero-interface-id")
+    {
+        ero_interface_id = value;
+        ero_interface_id.value_namespace = name_space;
+        ero_interface_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ero-router-id")
+    {
+        ero_router_id = value;
+        ero_router_id.value_namespace = name_space;
+        ero_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route = value;
+        is_strict_route.value_namespace = name_space;
+        is_strict_route.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ero-interface-id")
+    {
+        ero_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "ero-router-id")
+    {
+        ero_router_id.yfilter = yfilter;
+    }
+    if(value_path == "is-strict-route")
+    {
+        is_strict_route.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ero-interface-id" || name == "ero-router-id" || name == "is-strict-route" || name == "status")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::GenericTrafficSpec()
     :
     tspec_type{YType::enumeration, "tspec-type"}
     	,
-    g709otn_tspec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec>())
-	,intsrv_tspec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec>())
+    g709otn_tspec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec>())
+	,intsrv_tspec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec>())
 {
     g709otn_tspec->parent = this;
-
     intsrv_tspec->parent = this;
 
-    yang_name = "generic-traffic-spec"; yang_parent_name = "reverse-lsp";
+    yang_name = "generic-traffic-spec"; yang_parent_name = "reverse-lsp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::~GenericTrafficSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::~GenericTrafficSpec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_data() const
 {
     return tspec_type.is_set
 	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_data())
 	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tspec_type.yfilter)
@@ -702,44 +5056,37 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "generic-traffic-spec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tspec_type.is_set || is_set(tspec_type.yfilter)) leaf_name_data.push_back(tspec_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-tspec")
     {
         if(g709otn_tspec == nullptr)
         {
-            g709otn_tspec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec>();
+            g709otn_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec>();
         }
         return g709otn_tspec;
     }
@@ -748,7 +5095,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(intsrv_tspec == nullptr)
         {
-            intsrv_tspec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec>();
+            intsrv_tspec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec>();
         }
         return intsrv_tspec;
     }
@@ -756,7 +5103,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(g709otn_tspec != nullptr)
@@ -772,7 +5119,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tspec-type")
     {
@@ -782,7 +5129,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tspec-type")
     {
@@ -790,28 +5137,29 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "g709otn-tspec" || name == "intsrv-tspec" || name == "tspec-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::G709OtnTspec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::G709OtnTspec()
     :
     traffic_bit_rate{YType::uint64, "traffic-bit-rate"},
     traffic_multiplier{YType::uint16, "traffic-multiplier"},
     traffic_nvc{YType::uint16, "traffic-nvc"},
     traffic_signal_type{YType::uint8, "traffic-signal-type"}
 {
-    yang_name = "g709otn-tspec"; yang_parent_name = "generic-traffic-spec";
+
+    yang_name = "g709otn-tspec"; yang_parent_name = "generic-traffic-spec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::~G709OtnTspec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::~G709OtnTspec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_data() const
 {
     return traffic_bit_rate.is_set
 	|| traffic_multiplier.is_set
@@ -819,7 +5167,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 	|| traffic_signal_type.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(traffic_bit_rate.yfilter)
@@ -828,27 +5176,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 	|| ydk::is_set(traffic_signal_type.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/generic-traffic-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "g709otn-tspec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/generic-traffic-spec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_bit_rate.is_set || is_set(traffic_bit_rate.yfilter)) leaf_name_data.push_back(traffic_bit_rate.get_name_leafdata());
@@ -856,24 +5199,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::R
     if (traffic_nvc.is_set || is_set(traffic_nvc.yfilter)) leaf_name_data.push_back(traffic_nvc.get_name_leafdata());
     if (traffic_signal_type.is_set || is_set(traffic_signal_type.yfilter)) leaf_name_data.push_back(traffic_signal_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "traffic-bit-rate")
     {
@@ -901,7 +5242,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "traffic-bit-rate")
     {
@@ -921,14 +5262,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::G709OtnTspec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "traffic-bit-rate" || name == "traffic-multiplier" || name == "traffic-nvc" || name == "traffic-signal-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::IntsrvTspec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::IntsrvTspec()
     :
     traffic_average_rate{YType::uint64, "traffic-average-rate"},
     traffic_max_burst{YType::uint64, "traffic-max-burst"},
@@ -936,14 +5277,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Generi
     traffic_min_unit{YType::uint32, "traffic-min-unit"},
     traffic_peak_rate{YType::uint64, "traffic-peak-rate"}
 {
-    yang_name = "intsrv-tspec"; yang_parent_name = "generic-traffic-spec";
+
+    yang_name = "intsrv-tspec"; yang_parent_name = "generic-traffic-spec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::~IntsrvTspec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::~IntsrvTspec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_data() const
 {
     return traffic_average_rate.is_set
 	|| traffic_max_burst.is_set
@@ -952,7 +5294,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 	|| traffic_peak_rate.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(traffic_average_rate.yfilter)
@@ -962,27 +5304,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 	|| ydk::is_set(traffic_peak_rate.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/generic-traffic-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intsrv-tspec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/generic-traffic-spec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (traffic_average_rate.is_set || is_set(traffic_average_rate.yfilter)) leaf_name_data.push_back(traffic_average_rate.get_name_leafdata());
@@ -991,24 +5328,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::R
     if (traffic_min_unit.is_set || is_set(traffic_min_unit.yfilter)) leaf_name_data.push_back(traffic_min_unit.get_name_leafdata());
     if (traffic_peak_rate.is_set || is_set(traffic_peak_rate.yfilter)) leaf_name_data.push_back(traffic_peak_rate.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "traffic-average-rate")
     {
@@ -1042,7 +5377,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "traffic-average-rate")
     {
@@ -1066,401 +5401,26 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::IntsrvTspec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "traffic-average-rate" || name == "traffic-max-burst" || name == "traffic-max-unit" || name == "traffic-min-unit" || name == "traffic-peak-rate")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ero()
-    :
-    ero_type{YType::enumeration, "ero-type"}
-    	,
-    ipv4ero_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject>())
-	,unnumbered_ero_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject>())
-{
-    ipv4ero_sub_object->parent = this;
-
-    unnumbered_ero_sub_object->parent = this;
-
-    yang_name = "ero"; yang_parent_name = "reverse-lsp";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::~Ero()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_data() const
-{
-    return ero_type.is_set
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_data())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_data());
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_type.yfilter)
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ero";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_type.is_set || is_set(ero_type.yfilter)) leaf_name_data.push_back(ero_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4ero-sub-object")
-    {
-        if(ipv4ero_sub_object == nullptr)
-        {
-            ipv4ero_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject>();
-        }
-        return ipv4ero_sub_object;
-    }
-
-    if(child_yang_name == "unnumbered-ero-sub-object")
-    {
-        if(unnumbered_ero_sub_object == nullptr)
-        {
-            unnumbered_ero_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject>();
-        }
-        return unnumbered_ero_sub_object;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4ero_sub_object != nullptr)
-    {
-        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-    }
-
-    if(unnumbered_ero_sub_object != nullptr)
-    {
-        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-    }
-
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type = value;
-        ero_type.value_namespace = name_space;
-        ero_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4ero-sub-object" || name == "unnumbered-ero-sub-object" || name == "ero-type")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::Ipv4EroSubObject()
-    :
-    ero_address{YType::str, "ero-address"},
-    is_strict_route{YType::boolean, "is-strict-route"},
-    prefix_length{YType::uint8, "prefix-length"}
-{
-    yang_name = "ipv4ero-sub-object"; yang_parent_name = "ero";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::~Ipv4EroSubObject()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_data() const
-{
-    return ero_address.is_set
-	|| is_strict_route.is_set
-	|| prefix_length.is_set;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_address.yfilter)
-	|| ydk::is_set(is_strict_route.yfilter)
-	|| ydk::is_set(prefix_length.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4ero-sub-object";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/ero/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_address.is_set || is_set(ero_address.yfilter)) leaf_name_data.push_back(ero_address.get_name_leafdata());
-    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-address")
-    {
-        ero_address = value;
-        ero_address.value_namespace = name_space;
-        ero_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route = value;
-        is_strict_route.value_namespace = name_space;
-        is_strict_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-address")
-    {
-        ero_address.yfilter = yfilter;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::Ipv4EroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ero-address" || name == "is-strict-route" || name == "prefix-length")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::UnnumberedEroSubObject()
-    :
-    ero_interface_id{YType::uint32, "ero-interface-id"},
-    ero_router_id{YType::str, "ero-router-id"},
-    is_strict_route{YType::boolean, "is-strict-route"},
-    status{YType::enumeration, "status"}
-{
-    yang_name = "unnumbered-ero-sub-object"; yang_parent_name = "ero";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::~UnnumberedEroSubObject()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_data() const
-{
-    return ero_interface_id.is_set
-	|| ero_router_id.is_set
-	|| is_strict_route.is_set
-	|| status.is_set;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_interface_id.yfilter)
-	|| ydk::is_set(ero_router_id.yfilter)
-	|| ydk::is_set(is_strict_route.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unnumbered-ero-sub-object";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/ero/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_interface_id.is_set || is_set(ero_interface_id.yfilter)) leaf_name_data.push_back(ero_interface_id.get_name_leafdata());
-    if (ero_router_id.is_set || is_set(ero_router_id.yfilter)) leaf_name_data.push_back(ero_router_id.get_name_leafdata());
-    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-interface-id")
-    {
-        ero_interface_id = value;
-        ero_interface_id.value_namespace = name_space;
-        ero_interface_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ero-router-id")
-    {
-        ero_router_id = value;
-        ero_router_id.value_namespace = name_space;
-        ero_router_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route = value;
-        is_strict_route.value_namespace = name_space;
-        is_strict_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-interface-id")
-    {
-        ero_interface_id.yfilter = yfilter;
-    }
-    if(value_path == "ero-router-id")
-    {
-        ero_router_id.yfilter = yfilter;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::UnnumberedEroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ero-interface-id" || name == "ero-router-id" || name == "is-strict-route" || name == "status")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::UnsupSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::UnsupSubObject()
     :
     rsvp_mgmt_rev_lsp_unsupported_subobj{YType::uint8, "rsvp-mgmt-rev-lsp-unsupported-subobj"}
 {
-    yang_name = "unsup-sub-object"; yang_parent_name = "reverse-lsp";
+
+    yang_name = "unsup-sub-object"; yang_parent_name = "reverse-lsp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::~UnsupSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::~UnsupSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_data() const
 {
     for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
@@ -1470,7 +5430,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::U
     return false;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_operation() const
 {
     for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
@@ -1481,50 +5441,43 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::U
 	|| ydk::is_set(rsvp_mgmt_rev_lsp_unsupported_subobj.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unsup-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/reverse-lsp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto rsvp_mgmt_rev_lsp_unsupported_subobj_name_datas = rsvp_mgmt_rev_lsp_unsupported_subobj.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rsvp_mgmt_rev_lsp_unsupported_subobj_name_datas.begin(), rsvp_mgmt_rev_lsp_unsupported_subobj_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvp-mgmt-rev-lsp-unsupported-subobj")
     {
@@ -1532,7 +5485,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::U
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvp-mgmt-rev-lsp-unsupported-subobj")
     {
@@ -1540,414 +5493,35 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::U
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvp-mgmt-rev-lsp-unsupported-subobj")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ero()
-    :
-    ero_type{YType::enumeration, "ero-type"}
-    	,
-    ipv4ero_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject>())
-	,unnumbered_ero_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject>())
-{
-    ipv4ero_sub_object->parent = this;
-
-    unnumbered_ero_sub_object->parent = this;
-
-    yang_name = "ero"; yang_parent_name = "psb-info";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::~Ero()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_data() const
-{
-    return ero_type.is_set
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_data())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_data());
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_type.yfilter)
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ero";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_type.is_set || is_set(ero_type.yfilter)) leaf_name_data.push_back(ero_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4ero-sub-object")
-    {
-        if(ipv4ero_sub_object == nullptr)
-        {
-            ipv4ero_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject>();
-        }
-        return ipv4ero_sub_object;
-    }
-
-    if(child_yang_name == "unnumbered-ero-sub-object")
-    {
-        if(unnumbered_ero_sub_object == nullptr)
-        {
-            unnumbered_ero_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject>();
-        }
-        return unnumbered_ero_sub_object;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4ero_sub_object != nullptr)
-    {
-        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-    }
-
-    if(unnumbered_ero_sub_object != nullptr)
-    {
-        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-    }
-
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type = value;
-        ero_type.value_namespace = name_space;
-        ero_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4ero-sub-object" || name == "unnumbered-ero-sub-object" || name == "ero-type")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::Ipv4EroSubObject()
-    :
-    ero_address{YType::str, "ero-address"},
-    is_strict_route{YType::boolean, "is-strict-route"},
-    prefix_length{YType::uint8, "prefix-length"}
-{
-    yang_name = "ipv4ero-sub-object"; yang_parent_name = "ero";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::~Ipv4EroSubObject()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_data() const
-{
-    return ero_address.is_set
-	|| is_strict_route.is_set
-	|| prefix_length.is_set;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_address.yfilter)
-	|| ydk::is_set(is_strict_route.yfilter)
-	|| ydk::is_set(prefix_length.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4ero-sub-object";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/ero/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_address.is_set || is_set(ero_address.yfilter)) leaf_name_data.push_back(ero_address.get_name_leafdata());
-    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-address")
-    {
-        ero_address = value;
-        ero_address.value_namespace = name_space;
-        ero_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route = value;
-        is_strict_route.value_namespace = name_space;
-        is_strict_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-address")
-    {
-        ero_address.yfilter = yfilter;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::Ipv4EroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ero-address" || name == "is-strict-route" || name == "prefix-length")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::UnnumberedEroSubObject()
-    :
-    ero_interface_id{YType::uint32, "ero-interface-id"},
-    ero_router_id{YType::str, "ero-router-id"},
-    is_strict_route{YType::boolean, "is-strict-route"},
-    status{YType::enumeration, "status"}
-{
-    yang_name = "unnumbered-ero-sub-object"; yang_parent_name = "ero";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::~UnnumberedEroSubObject()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_data() const
-{
-    return ero_interface_id.is_set
-	|| ero_router_id.is_set
-	|| is_strict_route.is_set
-	|| status.is_set;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_interface_id.yfilter)
-	|| ydk::is_set(ero_router_id.yfilter)
-	|| ydk::is_set(is_strict_route.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unnumbered-ero-sub-object";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/ero/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_interface_id.is_set || is_set(ero_interface_id.yfilter)) leaf_name_data.push_back(ero_interface_id.get_name_leafdata());
-    if (ero_router_id.is_set || is_set(ero_router_id.yfilter)) leaf_name_data.push_back(ero_router_id.get_name_leafdata());
-    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-interface-id")
-    {
-        ero_interface_id = value;
-        ero_interface_id.value_namespace = name_space;
-        ero_interface_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ero-router-id")
-    {
-        ero_router_id = value;
-        ero_router_id.value_namespace = name_space;
-        ero_router_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route = value;
-        is_strict_route.value_namespace = name_space;
-        is_strict_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-interface-id")
-    {
-        ero_interface_id.yfilter = yfilter;
-    }
-    if(value_path == "ero-router-id")
-    {
-        ero_router_id.yfilter = yfilter;
-    }
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::UnnumberedEroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ero-interface-id" || name == "ero-router-id" || name == "is-strict-route" || name == "status")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Rro()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Rro()
     :
     rro_type{YType::enumeration, "rro-type"}
     	,
-    ipv4rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject>())
-	,label_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject>())
-	,srlg_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject>())
-	,unnumbered_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject>())
+    ipv4rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject>())
+	,label_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject>())
+	,srlg_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject>())
+	,unnumbered_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject>())
 {
     ipv4rro_sub_object->parent = this;
-
     label_rro_sub_object->parent = this;
-
     srlg_rro_sub_object->parent = this;
-
     unnumbered_rro_sub_object->parent = this;
 
-    yang_name = "rro"; yang_parent_name = "psb-info";
+    yang_name = "rro"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::~Rro()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::~Rro()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_data() const
 {
     return rro_type.is_set
 	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_data())
@@ -1956,7 +5530,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_data
 	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rro_type.yfilter)
@@ -1966,44 +5540,37 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_oper
 	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rro";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rro_type.is_set || is_set(rro_type.yfilter)) leaf_name_data.push_back(rro_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4rro-sub-object")
     {
         if(ipv4rro_sub_object == nullptr)
         {
-            ipv4rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject>();
+            ipv4rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject>();
         }
         return ipv4rro_sub_object;
     }
@@ -2012,7 +5579,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(label_rro_sub_object == nullptr)
         {
-            label_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject>();
+            label_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject>();
         }
         return label_rro_sub_object;
     }
@@ -2021,7 +5588,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(srlg_rro_sub_object == nullptr)
         {
-            srlg_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject>();
+            srlg_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject>();
         }
         return srlg_rro_sub_object;
     }
@@ -2030,7 +5597,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     {
         if(unnumbered_rro_sub_object == nullptr)
         {
-            unnumbered_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject>();
+            unnumbered_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject>();
         }
         return unnumbered_rro_sub_object;
     }
@@ -2038,7 +5605,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipv4rro_sub_object != nullptr)
@@ -2064,7 +5631,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rro-type")
     {
@@ -2074,7 +5641,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_valu
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rro-type")
     {
@@ -2082,79 +5649,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::set_filt
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4rro-sub-object" || name == "label-rro-sub-object" || name == "srlg-rro-sub-object" || name == "unnumbered-rro-sub-object" || name == "rro-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Ipv4RroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Ipv4RroSubObject()
     :
     rro_address{YType::str, "rro-address"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "ipv4rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "ipv4rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::~Ipv4RroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::~Ipv4RroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_data() const
 {
     return rro_address.is_set
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rro_address.yfilter)
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rro_address.is_set || is_set(rro_address.yfilter)) leaf_name_data.push_back(rro_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags>();
         }
         return flags;
     }
@@ -2162,7 +5722,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -2173,7 +5733,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rro-address")
     {
@@ -2183,7 +5743,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rro-address")
     {
@@ -2191,14 +5751,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "rro-address")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::Flags()
     :
     is_bandwidth_protected{YType::boolean, "is-bandwidth-protected"},
     is_node_id{YType::boolean, "is-node-id"},
@@ -2206,14 +5766,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObj
     is_protection_available{YType::boolean, "is-protection-available"},
     is_protection_in_use{YType::boolean, "is-protection-in-use"}
 {
-    yang_name = "flags"; yang_parent_name = "ipv4rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "ipv4rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_data() const
 {
     return is_bandwidth_protected.is_set
 	|| is_node_id.is_set
@@ -2222,7 +5783,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
 	|| is_protection_in_use.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_bandwidth_protected.yfilter)
@@ -2232,27 +5793,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
 	|| ydk::is_set(is_protection_in_use.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/ipv4rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/ipv4rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_bandwidth_protected.is_set || is_set(is_bandwidth_protected.yfilter)) leaf_name_data.push_back(is_bandwidth_protected.get_name_leafdata());
@@ -2261,24 +5817,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::R
     if (is_protection_available.is_set || is_set(is_protection_available.yfilter)) leaf_name_data.push_back(is_protection_available.get_name_leafdata());
     if (is_protection_in_use.is_set || is_set(is_protection_in_use.yfilter)) leaf_name_data.push_back(is_protection_in_use.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -2312,7 +5866,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -2336,31 +5890,31 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-bandwidth-protected" || name == "is-node-id" || name == "is-node-protection-available" || name == "is-protection-available" || name == "is-protection-in-use")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::LabelRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::LabelRroSubObject()
     :
     is_label_variable_length{YType::boolean, "is-label-variable-length"},
     label{YType::uint32, "label"},
     variable_length_label{YType::uint32, "variable-length-label"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "label-rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "label-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::~LabelRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::~LabelRroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_data() const
 {
     for (auto const & leaf : variable_length_label.getYLeafs())
     {
@@ -2372,7 +5926,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
     for (auto const & leaf : variable_length_label.getYLeafs())
     {
@@ -2386,27 +5940,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "label-rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_label_variable_length.is_set || is_set(is_label_variable_length.yfilter)) leaf_name_data.push_back(is_label_variable_length.get_name_leafdata());
@@ -2414,19 +5963,17 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::R
 
     auto variable_length_label_name_datas = variable_length_label.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), variable_length_label_name_datas.begin(), variable_length_label_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags>();
         }
         return flags;
     }
@@ -2434,7 +5981,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -2445,7 +5992,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-label-variable-length")
     {
@@ -2465,7 +6012,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-label-variable-length")
     {
@@ -2481,78 +6028,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "is-label-variable-length" || name == "label" || name == "variable-length-label")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::Flags()
     :
     is_global_label{YType::boolean, "is-global-label"}
 {
-    yang_name = "flags"; yang_parent_name = "label-rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "label-rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_data() const
 {
     return is_global_label.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_global_label.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/label-rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/label-rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_global_label.is_set || is_set(is_global_label.yfilter)) leaf_name_data.push_back(is_global_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-global-label")
     {
@@ -2562,7 +6103,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-global-label")
     {
@@ -2570,37 +6111,129 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-global-label")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::UnnumberedRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::SrlgRroSubObject()
+    :
+    srl_gs{YType::uint32, "srl-gs"}
+{
+
+    yang_name = "srlg-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::~SrlgRroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_data() const
+{
+    for (auto const & leaf : srl_gs.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_operation() const
+{
+    for (auto const & leaf : srl_gs.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(srl_gs.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlg-rro-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto srl_gs_name_datas = srl_gs.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), srl_gs_name_datas.begin(), srl_gs_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "srl-gs")
+    {
+        srl_gs.append(value);
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srl-gs")
+    {
+        srl_gs.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srl-gs")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::UnnumberedRroSubObject()
     :
     interface_address{YType::str, "interface-address"},
     interface_id{YType::uint32, "interface-id"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::~UnnumberedRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::~UnnumberedRroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_data() const
 {
     return interface_address.is_set
 	|| interface_id.is_set
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_address.yfilter)
@@ -2608,45 +6241,38 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unnumbered-rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_address.is_set || is_set(interface_address.yfilter)) leaf_name_data.push_back(interface_address.get_name_leafdata());
     if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags>();
         }
         return flags;
     }
@@ -2654,7 +6280,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Psb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -2665,7 +6291,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-address")
     {
@@ -2681,7 +6307,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-address")
     {
@@ -2693,14 +6319,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "interface-address" || name == "interface-id")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::Flags()
     :
     is_bandwidth_protected{YType::boolean, "is-bandwidth-protected"},
     is_node_id{YType::boolean, "is-node-id"},
@@ -2708,14 +6334,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRro
     is_protection_available{YType::boolean, "is-protection-available"},
     is_protection_in_use{YType::boolean, "is-protection-in-use"}
 {
-    yang_name = "flags"; yang_parent_name = "unnumbered-rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "unnumbered-rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_data() const
 {
     return is_bandwidth_protected.is_set
 	|| is_node_id.is_set
@@ -2724,7 +6351,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
 	|| is_protection_in_use.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_bandwidth_protected.yfilter)
@@ -2734,27 +6361,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
 	|| ydk::is_set(is_protection_in_use.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/unnumbered-rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/unnumbered-rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_bandwidth_protected.is_set || is_set(is_bandwidth_protected.yfilter)) leaf_name_data.push_back(is_bandwidth_protected.get_name_leafdata());
@@ -2763,24 +6385,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::R
     if (is_protection_available.is_set || is_set(is_protection_available.yfilter)) leaf_name_data.push_back(is_protection_available.get_name_leafdata());
     if (is_protection_in_use.is_set || is_set(is_protection_in_use.yfilter)) leaf_name_data.push_back(is_protection_in_use.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -2814,7 +6434,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -2838,112 +6458,153 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-bandwidth-protected" || name == "is-node-id" || name == "is-node-protection-available" || name == "is-protection-available" || name == "is-protection-in-use")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::SrlgRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::TrafficSpec()
     :
-    srl_gs{YType::uint32, "srl-gs"}
+    traffic_average_rate{YType::uint64, "traffic-average-rate"},
+    traffic_max_burst{YType::uint64, "traffic-max-burst"},
+    traffic_max_unit{YType::uint32, "traffic-max-unit"},
+    traffic_min_unit{YType::uint32, "traffic-min-unit"},
+    traffic_peak_rate{YType::uint64, "traffic-peak-rate"}
 {
-    yang_name = "srlg-rro-sub-object"; yang_parent_name = "rro";
+
+    yang_name = "traffic-spec"; yang_parent_name = "psb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::~SrlgRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::~TrafficSpec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::has_data() const
 {
-    for (auto const & leaf : srl_gs.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
+    return traffic_average_rate.is_set
+	|| traffic_max_burst.is_set
+	|| traffic_max_unit.is_set
+	|| traffic_min_unit.is_set
+	|| traffic_peak_rate.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::has_operation() const
 {
-    for (auto const & leaf : srl_gs.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(srl_gs.yfilter);
+	|| ydk::is_set(traffic_average_rate.yfilter)
+	|| ydk::is_set(traffic_max_burst.yfilter)
+	|| ydk::is_set(traffic_max_unit.yfilter)
+	|| ydk::is_set(traffic_min_unit.yfilter)
+	|| ydk::is_set(traffic_peak_rate.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "srlg-rro-sub-object";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/psb-info/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/psb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "traffic-spec";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (traffic_average_rate.is_set || is_set(traffic_average_rate.yfilter)) leaf_name_data.push_back(traffic_average_rate.get_name_leafdata());
+    if (traffic_max_burst.is_set || is_set(traffic_max_burst.yfilter)) leaf_name_data.push_back(traffic_max_burst.get_name_leafdata());
+    if (traffic_max_unit.is_set || is_set(traffic_max_unit.yfilter)) leaf_name_data.push_back(traffic_max_unit.get_name_leafdata());
+    if (traffic_min_unit.is_set || is_set(traffic_min_unit.yfilter)) leaf_name_data.push_back(traffic_min_unit.get_name_leafdata());
+    if (traffic_peak_rate.is_set || is_set(traffic_peak_rate.yfilter)) leaf_name_data.push_back(traffic_peak_rate.get_name_leafdata());
 
-    auto srl_gs_name_datas = srl_gs.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), srl_gs_name_datas.begin(), srl_gs_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "srl-gs")
+    if(value_path == "traffic-average-rate")
     {
-        srl_gs.append(value);
+        traffic_average_rate = value;
+        traffic_average_rate.value_namespace = name_space;
+        traffic_average_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-max-burst")
+    {
+        traffic_max_burst = value;
+        traffic_max_burst.value_namespace = name_space;
+        traffic_max_burst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-max-unit")
+    {
+        traffic_max_unit = value;
+        traffic_max_unit.value_namespace = name_space;
+        traffic_max_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-min-unit")
+    {
+        traffic_min_unit = value;
+        traffic_min_unit.value_namespace = name_space;
+        traffic_min_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "traffic-peak-rate")
+    {
+        traffic_peak_rate = value;
+        traffic_peak_rate.value_namespace = name_space;
+        traffic_peak_rate.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "srl-gs")
+    if(value_path == "traffic-average-rate")
     {
-        srl_gs.yfilter = yfilter;
+        traffic_average_rate.yfilter = yfilter;
+    }
+    if(value_path == "traffic-max-burst")
+    {
+        traffic_max_burst.yfilter = yfilter;
+    }
+    if(value_path == "traffic-max-unit")
+    {
+        traffic_max_unit.yfilter = yfilter;
+    }
+    if(value_path == "traffic-min-unit")
+    {
+        traffic_min_unit.yfilter = yfilter;
+    }
+    if(value_path == "traffic-peak-rate")
+    {
+        traffic_peak_rate.yfilter = yfilter;
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::TrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "srl-gs")
+    if(name == "traffic-average-rate" || name == "traffic-max-burst" || name == "traffic-max-unit" || name == "traffic-min-unit" || name == "traffic-peak-rate")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::RsbInfo()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::RsbInfo()
     :
     backup_interface{YType::str, "backup-interface"},
     backup_label{YType::uint32, "backup-label"},
@@ -2954,24 +6615,22 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::RsbInfo()
     out_interface{YType::str, "out-interface"},
     out_label{YType::uint32, "out-label"}
     	,
-    flow_spec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec>())
-	,generic_flow_spec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec>())
-	,generic_out_label(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>())
+    flow_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec>())
+	,generic_flow_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec>())
+	,generic_out_label(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>())
 {
     flow_spec->parent = this;
-
     generic_flow_spec->parent = this;
-
     generic_out_label->parent = this;
 
-    yang_name = "rsb-info"; yang_parent_name = "psb-rsb-info";
+    yang_name = "rsb-info"; yang_parent_name = "psb-rsb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::~RsbInfo()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::~RsbInfo()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_data() const
 {
     for (std::size_t index=0; index<rro.size(); index++)
     {
@@ -2991,7 +6650,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_data() co
 	|| (generic_out_label !=  nullptr && generic_out_label->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_operation() const
 {
     for (std::size_t index=0; index<rro.size(); index++)
     {
@@ -3012,27 +6671,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_operation
 	|| (generic_out_label !=  nullptr && generic_out_label->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (backup_interface.is_set || is_set(backup_interface.yfilter)) leaf_name_data.push_back(backup_interface.get_name_leafdata());
@@ -3044,19 +6698,17 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::g
     if (out_interface.is_set || is_set(out_interface.yfilter)) leaf_name_data.push_back(out_interface.get_name_leafdata());
     if (out_label.is_set || is_set(out_label.yfilter)) leaf_name_data.push_back(out_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-spec")
     {
         if(flow_spec == nullptr)
         {
-            flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec>();
+            flow_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec>();
         }
         return flow_spec;
     }
@@ -3065,7 +6717,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     {
         if(generic_flow_spec == nullptr)
         {
-            generic_flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec>();
+            generic_flow_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec>();
         }
         return generic_flow_spec;
     }
@@ -3074,7 +6726,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     {
         if(generic_out_label == nullptr)
         {
-            generic_out_label = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>();
+            generic_out_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel>();
         }
         return generic_out_label;
     }
@@ -3089,7 +6741,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
                 return c;
             }
         }
-        auto c = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro>();
+        auto c = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro>();
         c->parent = this;
         rro.push_back(c);
         return c;
@@ -3098,7 +6750,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flow_spec != nullptr)
@@ -3124,7 +6776,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-interface")
     {
@@ -3176,7 +6828,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_value(con
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backup-interface")
     {
@@ -3212,221 +6864,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::set_filter(co
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-spec" || name == "generic-flow-spec" || name == "generic-out-label" || name == "rro" || name == "backup-interface" || name == "backup-label" || name == "destination-address" || name == "is-flow-spec-valid" || name == "is-rro-valid" || name == "is-valid" || name == "out-interface" || name == "out-label")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GenericOutLabel()
-    :
-    generic_label_type{YType::enumeration, "generic-label-type"}
-    	,
-    generalized_label(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>())
-{
-    generalized_label->parent = this;
-
-    yang_name = "generic-out-label"; yang_parent_name = "rsb-info";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::~GenericOutLabel()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_data() const
-{
-    return generic_label_type.is_set
-	|| (generalized_label !=  nullptr && generalized_label->has_data());
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(generic_label_type.yfilter)
-	|| (generalized_label !=  nullptr && generalized_label->has_operation());
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "generic-out-label";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (generic_label_type.is_set || is_set(generic_label_type.yfilter)) leaf_name_data.push_back(generic_label_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "generalized-label")
-    {
-        if(generalized_label == nullptr)
-        {
-            generalized_label = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>();
-        }
-        return generalized_label;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(generalized_label != nullptr)
-    {
-        children["generalized-label"] = generalized_label;
-    }
-
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "generic-label-type")
-    {
-        generic_label_type = value;
-        generic_label_type.value_namespace = name_space;
-        generic_label_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "generic-label-type")
-    {
-        generic_label_type.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "generalized-label" || name == "generic-label-type")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::GeneralizedLabel()
-    :
-    value_{YType::uint32, "value"}
-{
-    yang_name = "generalized-label"; yang_parent_name = "generic-out-label";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::~GeneralizedLabel()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_data() const
-{
-    for (auto const & leaf : value_.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_operation() const
-{
-    for (auto const & leaf : value_.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "generalized-label";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/generic-out-label/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto value__name_datas = value_.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), value__name_datas.begin(), value__name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_.append(value);
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "value")
-        return true;
-    return false;
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::FlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::FlowSpec()
     :
     flow_average_rate{YType::uint64, "flow-average-rate"},
     flow_max_burst{YType::uint64, "flow-max-burst"},
@@ -3437,14 +6882,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::FlowSpec
     flow_requested_rate{YType::uint64, "flow-requested-rate"},
     flow_slack{YType::uint32, "flow-slack"}
 {
-    yang_name = "flow-spec"; yang_parent_name = "rsb-info";
+
+    yang_name = "flow-spec"; yang_parent_name = "rsb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::~FlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::~FlowSpec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_data() const
 {
     return flow_average_rate.is_set
 	|| flow_max_burst.is_set
@@ -3456,7 +6902,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has
 	|| flow_slack.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_average_rate.yfilter)
@@ -3469,27 +6915,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has
 	|| ydk::is_set(flow_slack.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-spec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flow_average_rate.is_set || is_set(flow_average_rate.yfilter)) leaf_name_data.push_back(flow_average_rate.get_name_leafdata());
@@ -3501,24 +6942,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::F
     if (flow_requested_rate.is_set || is_set(flow_requested_rate.yfilter)) leaf_name_data.push_back(flow_requested_rate.get_name_leafdata());
     if (flow_slack.is_set || is_set(flow_slack.yfilter)) leaf_name_data.push_back(flow_slack.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-average-rate")
     {
@@ -3570,7 +7009,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-average-rate")
     {
@@ -3606,79 +7045,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::set
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::FlowSpec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-average-rate" || name == "flow-max-burst" || name == "flow-max-unit" || name == "flow-min-unit" || name == "flow-peak-rate" || name == "flow-qos" || name == "flow-requested-rate" || name == "flow-slack")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::GenericFlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::GenericFlowSpec()
     :
     flow_spec_type{YType::enumeration, "flow-spec-type"}
     	,
-    g709otn_flow_spec(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>())
+    g709otn_flow_spec(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>())
 {
     g709otn_flow_spec->parent = this;
 
-    yang_name = "generic-flow-spec"; yang_parent_name = "rsb-info";
+    yang_name = "generic-flow-spec"; yang_parent_name = "rsb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::~GenericFlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::~GenericFlowSpec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_data() const
 {
     return flow_spec_type.is_set
 	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_spec_type.yfilter)
 	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "generic-flow-spec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flow_spec_type.is_set || is_set(flow_spec_type.yfilter)) leaf_name_data.push_back(flow_spec_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-flow-spec")
     {
         if(g709otn_flow_spec == nullptr)
         {
-            g709otn_flow_spec = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>();
+            g709otn_flow_spec = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec>();
         }
         return g709otn_flow_spec;
     }
@@ -3686,7 +7118,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(g709otn_flow_spec != nullptr)
@@ -3697,7 +7129,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-spec-type")
     {
@@ -3707,7 +7139,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-spec-type")
     {
@@ -3715,28 +7147,29 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "g709otn-flow-spec" || name == "flow-spec-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::G709OtnFlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::G709OtnFlowSpec()
     :
     flow_bit_rate{YType::uint64, "flow-bit-rate"},
     flow_multiplier{YType::uint16, "flow-multiplier"},
     flow_nvc{YType::uint16, "flow-nvc"},
     flow_signal_type{YType::uint8, "flow-signal-type"}
 {
-    yang_name = "g709otn-flow-spec"; yang_parent_name = "generic-flow-spec";
+
+    yang_name = "g709otn-flow-spec"; yang_parent_name = "generic-flow-spec"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::~G709OtnFlowSpec()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::~G709OtnFlowSpec()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_data() const
 {
     return flow_bit_rate.is_set
 	|| flow_multiplier.is_set
@@ -3744,7 +7177,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
 	|| flow_signal_type.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(flow_bit_rate.yfilter)
@@ -3753,27 +7186,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
 	|| ydk::is_set(flow_signal_type.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/generic-flow-spec/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "g709otn-flow-spec";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/generic-flow-spec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (flow_bit_rate.is_set || is_set(flow_bit_rate.yfilter)) leaf_name_data.push_back(flow_bit_rate.get_name_leafdata());
@@ -3781,24 +7209,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::G
     if (flow_nvc.is_set || is_set(flow_nvc.yfilter)) leaf_name_data.push_back(flow_nvc.get_name_leafdata());
     if (flow_signal_type.is_set || is_set(flow_signal_type.yfilter)) leaf_name_data.push_back(flow_signal_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-bit-rate")
     {
@@ -3826,7 +7252,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "flow-bit-rate")
     {
@@ -3846,38 +7272,229 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::G709OtnFlowSpec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-bit-rate" || name == "flow-multiplier" || name == "flow-nvc" || name == "flow-signal-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Rro()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GenericOutLabel()
+    :
+    generic_label_type{YType::enumeration, "generic-label-type"}
+    	,
+    generalized_label(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>())
+{
+    generalized_label->parent = this;
+
+    yang_name = "generic-out-label"; yang_parent_name = "rsb-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::~GenericOutLabel()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_data() const
+{
+    return generic_label_type.is_set
+	|| (generalized_label !=  nullptr && generalized_label->has_data());
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(generic_label_type.yfilter)
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generic-out-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (generic_label_type.is_set || is_set(generic_label_type.yfilter)) leaf_name_data.push_back(generic_label_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "generalized-label")
+    {
+        if(generalized_label == nullptr)
+        {
+            generalized_label = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel>();
+        }
+        return generalized_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(generalized_label != nullptr)
+    {
+        children["generalized-label"] = generalized_label;
+    }
+
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "generic-label-type")
+    {
+        generic_label_type = value;
+        generic_label_type.value_namespace = name_space;
+        generic_label_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "generic-label-type")
+    {
+        generic_label_type.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "generalized-label" || name == "generic-label-type")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::GeneralizedLabel()
+    :
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "generalized-label"; yang_parent_name = "generic-out-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::~GeneralizedLabel()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_data() const
+{
+    for (auto const & leaf : value_.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_operation() const
+{
+    for (auto const & leaf : value_.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/generic-out-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generalized-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto value__name_datas = value_.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), value__name_datas.begin(), value__name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_.append(value);
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Rro()
     :
     rro_type{YType::enumeration, "rro-type"}
     	,
-    ipv4rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject>())
-	,label_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject>())
-	,srlg_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject>())
-	,unnumbered_rro_sub_object(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>())
+    ipv4rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject>())
+	,label_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject>())
+	,srlg_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject>())
+	,unnumbered_rro_sub_object(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>())
 {
     ipv4rro_sub_object->parent = this;
-
     label_rro_sub_object->parent = this;
-
     srlg_rro_sub_object->parent = this;
-
     unnumbered_rro_sub_object->parent = this;
 
-    yang_name = "rro"; yang_parent_name = "rsb-info";
+    yang_name = "rro"; yang_parent_name = "rsb-info"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::~Rro()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::~Rro()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_data() const
 {
     return rro_type.is_set
 	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_data())
@@ -3886,7 +7503,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_data
 	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rro_type.yfilter)
@@ -3896,44 +7513,37 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_oper
 	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rro";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rro_type.is_set || is_set(rro_type.yfilter)) leaf_name_data.push_back(rro_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4rro-sub-object")
     {
         if(ipv4rro_sub_object == nullptr)
         {
-            ipv4rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject>();
+            ipv4rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject>();
         }
         return ipv4rro_sub_object;
     }
@@ -3942,7 +7552,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     {
         if(label_rro_sub_object == nullptr)
         {
-            label_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject>();
+            label_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject>();
         }
         return label_rro_sub_object;
     }
@@ -3951,7 +7561,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     {
         if(srlg_rro_sub_object == nullptr)
         {
-            srlg_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject>();
+            srlg_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject>();
         }
         return srlg_rro_sub_object;
     }
@@ -3960,7 +7570,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     {
         if(unnumbered_rro_sub_object == nullptr)
         {
-            unnumbered_rro_sub_object = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>();
+            unnumbered_rro_sub_object = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject>();
         }
         return unnumbered_rro_sub_object;
     }
@@ -3968,7 +7578,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ipv4rro_sub_object != nullptr)
@@ -3994,7 +7604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rro-type")
     {
@@ -4004,7 +7614,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_valu
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rro-type")
     {
@@ -4012,79 +7622,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::set_filt
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4rro-sub-object" || name == "label-rro-sub-object" || name == "srlg-rro-sub-object" || name == "unnumbered-rro-sub-object" || name == "rro-type")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Ipv4RroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Ipv4RroSubObject()
     :
     rro_address{YType::str, "rro-address"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "ipv4rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "ipv4rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::~Ipv4RroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::~Ipv4RroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_data() const
 {
     return rro_address.is_set
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rro_address.yfilter)
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (rro_address.is_set || is_set(rro_address.yfilter)) leaf_name_data.push_back(rro_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags>();
         }
         return flags;
     }
@@ -4092,7 +7695,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -4103,7 +7706,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rro-address")
     {
@@ -4113,7 +7716,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rro-address")
     {
@@ -4121,14 +7724,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "rro-address")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::Flags()
     :
     is_bandwidth_protected{YType::boolean, "is-bandwidth-protected"},
     is_node_id{YType::boolean, "is-node-id"},
@@ -4136,14 +7739,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObj
     is_protection_available{YType::boolean, "is-protection-available"},
     is_protection_in_use{YType::boolean, "is-protection-in-use"}
 {
-    yang_name = "flags"; yang_parent_name = "ipv4rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "ipv4rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_data() const
 {
     return is_bandwidth_protected.is_set
 	|| is_node_id.is_set
@@ -4152,7 +7756,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
 	|| is_protection_in_use.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_bandwidth_protected.yfilter)
@@ -4162,27 +7766,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
 	|| ydk::is_set(is_protection_in_use.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/ipv4rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/ipv4rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_bandwidth_protected.is_set || is_set(is_bandwidth_protected.yfilter)) leaf_name_data.push_back(is_bandwidth_protected.get_name_leafdata());
@@ -4191,24 +7790,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::R
     if (is_protection_available.is_set || is_set(is_protection_available.yfilter)) leaf_name_data.push_back(is_protection_available.get_name_leafdata());
     if (is_protection_in_use.is_set || is_set(is_protection_in_use.yfilter)) leaf_name_data.push_back(is_protection_in_use.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -4242,7 +7839,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -4266,31 +7863,31 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-bandwidth-protected" || name == "is-node-id" || name == "is-node-protection-available" || name == "is-protection-available" || name == "is-protection-in-use")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::LabelRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::LabelRroSubObject()
     :
     is_label_variable_length{YType::boolean, "is-label-variable-length"},
     label{YType::uint32, "label"},
     variable_length_label{YType::uint32, "variable-length-label"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "label-rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "label-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::~LabelRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::~LabelRroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_data() const
 {
     for (auto const & leaf : variable_length_label.getYLeafs())
     {
@@ -4302,7 +7899,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
     for (auto const & leaf : variable_length_label.getYLeafs())
     {
@@ -4316,27 +7913,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "label-rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_label_variable_length.is_set || is_set(is_label_variable_length.yfilter)) leaf_name_data.push_back(is_label_variable_length.get_name_leafdata());
@@ -4344,19 +7936,17 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::R
 
     auto variable_length_label_name_datas = variable_length_label.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), variable_length_label_name_datas.begin(), variable_length_label_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags>();
         }
         return flags;
     }
@@ -4364,7 +7954,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -4375,7 +7965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-label-variable-length")
     {
@@ -4395,7 +7985,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-label-variable-length")
     {
@@ -4411,78 +8001,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "is-label-variable-length" || name == "label" || name == "variable-length-label")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::Flags()
     :
     is_global_label{YType::boolean, "is-global-label"}
 {
-    yang_name = "flags"; yang_parent_name = "label-rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "label-rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_data() const
 {
     return is_global_label.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_global_label.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/label-rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/label-rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_global_label.is_set || is_set(is_global_label.yfilter)) leaf_name_data.push_back(is_global_label.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-global-label")
     {
@@ -4492,7 +8076,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-global-label")
     {
@@ -4500,37 +8084,129 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-global-label")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::UnnumberedRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::SrlgRroSubObject()
+    :
+    srl_gs{YType::uint32, "srl-gs"}
+{
+
+    yang_name = "srlg-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::~SrlgRroSubObject()
+{
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_data() const
+{
+    for (auto const & leaf : srl_gs.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_operation() const
+{
+    for (auto const & leaf : srl_gs.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(srl_gs.yfilter);
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlg-rro-sub-object";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto srl_gs_name_datas = srl_gs.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), srl_gs_name_datas.begin(), srl_gs_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "srl-gs")
+    {
+        srl_gs.append(value);
+    }
+}
+
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srl-gs")
+    {
+        srl_gs.yfilter = yfilter;
+    }
+}
+
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srl-gs")
+        return true;
+    return false;
+}
+
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::UnnumberedRroSubObject()
     :
     interface_address{YType::str, "interface-address"},
     interface_id{YType::uint32, "interface-id"}
     	,
-    flags(std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>())
+    flags(std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro";
+    yang_name = "unnumbered-rro-sub-object"; yang_parent_name = "rro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::~UnnumberedRroSubObject()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::~UnnumberedRroSubObject()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_data() const
 {
     return interface_address.is_set
 	|| interface_id.is_set
 	|| (flags !=  nullptr && flags->has_data());
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_address.yfilter)
@@ -4538,45 +8214,38 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
 	|| (flags !=  nullptr && flags->has_operation());
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unnumbered-rro-sub-object";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_address.is_set || is_set(interface_address.yfilter)) leaf_name_data.push_back(interface_address.get_name_leafdata());
     if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
         if(flags == nullptr)
         {
-            flags = std::make_shared<Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>();
+            flags = std::make_shared<RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags>();
         }
         return flags;
     }
@@ -4584,7 +8253,7 @@ std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::Rsb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(flags != nullptr)
@@ -4595,7 +8264,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDe
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-address")
     {
@@ -4611,7 +8280,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-address")
     {
@@ -4623,14 +8292,14 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flags" || name == "interface-address" || name == "interface-id")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::Flags()
     :
     is_bandwidth_protected{YType::boolean, "is-bandwidth-protected"},
     is_node_id{YType::boolean, "is-node-id"},
@@ -4638,14 +8307,15 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRro
     is_protection_available{YType::boolean, "is-protection-available"},
     is_protection_in_use{YType::boolean, "is-protection-in-use"}
 {
-    yang_name = "flags"; yang_parent_name = "unnumbered-rro-sub-object";
+
+    yang_name = "flags"; yang_parent_name = "unnumbered-rro-sub-object"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::~Flags()
+RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::~Flags()
 {
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_data() const
 {
     return is_bandwidth_protected.is_set
 	|| is_node_id.is_set
@@ -4654,7 +8324,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
 	|| is_protection_in_use.is_set;
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_bandwidth_protected.yfilter)
@@ -4664,27 +8334,22 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
 	|| ydk::is_set(is_protection_in_use.yfilter);
 }
 
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/unnumbered-rro-sub-object/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flags";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/unnumbered-rro-sub-object/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_bandwidth_protected.is_set || is_set(is_bandwidth_protected.yfilter)) leaf_name_data.push_back(is_bandwidth_protected.get_name_leafdata());
@@ -4693,24 +8358,22 @@ const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::R
     if (is_protection_available.is_set || is_set(is_protection_available.yfilter)) leaf_name_data.push_back(is_protection_available.get_name_leafdata());
     if (is_protection_in_use.is_set || is_set(is_protection_in_use.yfilter)) leaf_name_data.push_back(is_protection_in_use.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -4744,7 +8407,7 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
     }
 }
 
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-bandwidth-protected")
     {
@@ -4768,3426 +8431,72 @@ void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
     }
 }
 
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::Flags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-bandwidth-protected" || name == "is-node-id" || name == "is-node-protection-available" || name == "is-protection-available" || name == "is-protection-in-use")
         return true;
     return false;
 }
 
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::SrlgRroSubObject()
-    :
-    srl_gs{YType::uint32, "srl-gs"}
-{
-    yang_name = "srlg-rro-sub-object"; yang_parent_name = "rro";
-}
-
-Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::~SrlgRroSubObject()
-{
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_data() const
-{
-    for (auto const & leaf : srl_gs.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_operation() const
-{
-    for (auto const & leaf : srl_gs.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(srl_gs.yfilter);
-}
-
-std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srlg-rro-sub-object";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/session-detaileds/session-detailed/psb-rsb-info/rsb-info/rro/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto srl_gs_name_datas = srl_gs.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), srl_gs_name_datas.begin(), srl_gs_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "srl-gs")
-    {
-        srl_gs.append(value);
-    }
-}
-
-void Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "srl-gs")
-    {
-        srl_gs.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "srl-gs")
-        return true;
-    return false;
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetails()
-{
-    yang_name = "hello-instance-details"; yang_parent_name = "rsvp";
-}
-
-Rsvp::HelloInstanceDetails::~HelloInstanceDetails()
-{
-}
-
-bool Rsvp::HelloInstanceDetails::has_data() const
-{
-    for (std::size_t index=0; index<hello_instance_detail.size(); index++)
-    {
-        if(hello_instance_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::HelloInstanceDetails::has_operation() const
-{
-    for (std::size_t index=0; index<hello_instance_detail.size(); index++)
-    {
-        if(hello_instance_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::HelloInstanceDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hello-instance-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::HelloInstanceDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hello-instance-detail")
-    {
-        for(auto const & c : hello_instance_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail>();
-        c->parent = this;
-        hello_instance_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : hello_instance_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::HelloInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::HelloInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::HelloInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hello-instance-detail")
-        return true;
-    return false;
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::HelloInstanceDetail()
-    :
-    source_address{YType::str, "source-address"},
-    destination_address{YType::str, "destination-address"},
-    communication_lost_hello_missed{YType::uint16, "communication-lost-hello-missed"},
-    communication_lost_interface_down{YType::uint16, "communication-lost-interface-down"},
-    communication_lost_neighbor_disabled_hello{YType::uint16, "communication-lost-neighbor-disabled-hello"},
-    communication_lost_reason{YType::enumeration, "communication-lost-reason"},
-    communication_lost_wrong_destination_inst{YType::uint16, "communication-lost-wrong-destination-inst"},
-    communication_lost_wrong_source_inst{YType::uint16, "communication-lost-wrong-source-inst"},
-    destination_address_xr{YType::str, "destination-address-xr"},
-    destination_instance{YType::uint32, "destination-instance"},
-    hello_instance_owner{YType::enumeration, "hello-instance-owner"},
-    hello_interface{YType::str, "hello-interface"},
-    hello_interval{YType::uint32, "hello-interval"},
-    hello_messages_received{YType::uint64, "hello-messages-received"},
-    hello_messages_sent{YType::uint64, "hello-messages-sent"},
-    hello_request_suppressed{YType::uint64, "hello-request-suppressed"},
-    instance_type{YType::enumeration, "instance-type"},
-    missed_acks_allowed{YType::uint32, "missed-acks-allowed"},
-    neighbor_hello_state{YType::enumeration, "neighbor-hello-state"},
-    source_address_xr{YType::str, "source-address-xr"},
-    source_instance{YType::uint32, "source-instance"},
-    total_communication_lost{YType::uint16, "total-communication-lost"}
-    	,
-    communication_lost_time(std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime>())
-	,up_time(std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime>())
-{
-    communication_lost_time->parent = this;
-
-    up_time->parent = this;
-
-    yang_name = "hello-instance-detail"; yang_parent_name = "hello-instance-details";
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::~HelloInstanceDetail()
-{
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_data() const
-{
-    return source_address.is_set
-	|| destination_address.is_set
-	|| communication_lost_hello_missed.is_set
-	|| communication_lost_interface_down.is_set
-	|| communication_lost_neighbor_disabled_hello.is_set
-	|| communication_lost_reason.is_set
-	|| communication_lost_wrong_destination_inst.is_set
-	|| communication_lost_wrong_source_inst.is_set
-	|| destination_address_xr.is_set
-	|| destination_instance.is_set
-	|| hello_instance_owner.is_set
-	|| hello_interface.is_set
-	|| hello_interval.is_set
-	|| hello_messages_received.is_set
-	|| hello_messages_sent.is_set
-	|| hello_request_suppressed.is_set
-	|| instance_type.is_set
-	|| missed_acks_allowed.is_set
-	|| neighbor_hello_state.is_set
-	|| source_address_xr.is_set
-	|| source_instance.is_set
-	|| total_communication_lost.is_set
-	|| (communication_lost_time !=  nullptr && communication_lost_time->has_data())
-	|| (up_time !=  nullptr && up_time->has_data());
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(communication_lost_hello_missed.yfilter)
-	|| ydk::is_set(communication_lost_interface_down.yfilter)
-	|| ydk::is_set(communication_lost_neighbor_disabled_hello.yfilter)
-	|| ydk::is_set(communication_lost_reason.yfilter)
-	|| ydk::is_set(communication_lost_wrong_destination_inst.yfilter)
-	|| ydk::is_set(communication_lost_wrong_source_inst.yfilter)
-	|| ydk::is_set(destination_address_xr.yfilter)
-	|| ydk::is_set(destination_instance.yfilter)
-	|| ydk::is_set(hello_instance_owner.yfilter)
-	|| ydk::is_set(hello_interface.yfilter)
-	|| ydk::is_set(hello_interval.yfilter)
-	|| ydk::is_set(hello_messages_received.yfilter)
-	|| ydk::is_set(hello_messages_sent.yfilter)
-	|| ydk::is_set(hello_request_suppressed.yfilter)
-	|| ydk::is_set(instance_type.yfilter)
-	|| ydk::is_set(missed_acks_allowed.yfilter)
-	|| ydk::is_set(neighbor_hello_state.yfilter)
-	|| ydk::is_set(source_address_xr.yfilter)
-	|| ydk::is_set(source_instance.yfilter)
-	|| ydk::is_set(total_communication_lost.yfilter)
-	|| (communication_lost_time !=  nullptr && communication_lost_time->has_operation())
-	|| (up_time !=  nullptr && up_time->has_operation());
-}
-
-std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hello-instance-detail" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/hello-instance-details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (communication_lost_hello_missed.is_set || is_set(communication_lost_hello_missed.yfilter)) leaf_name_data.push_back(communication_lost_hello_missed.get_name_leafdata());
-    if (communication_lost_interface_down.is_set || is_set(communication_lost_interface_down.yfilter)) leaf_name_data.push_back(communication_lost_interface_down.get_name_leafdata());
-    if (communication_lost_neighbor_disabled_hello.is_set || is_set(communication_lost_neighbor_disabled_hello.yfilter)) leaf_name_data.push_back(communication_lost_neighbor_disabled_hello.get_name_leafdata());
-    if (communication_lost_reason.is_set || is_set(communication_lost_reason.yfilter)) leaf_name_data.push_back(communication_lost_reason.get_name_leafdata());
-    if (communication_lost_wrong_destination_inst.is_set || is_set(communication_lost_wrong_destination_inst.yfilter)) leaf_name_data.push_back(communication_lost_wrong_destination_inst.get_name_leafdata());
-    if (communication_lost_wrong_source_inst.is_set || is_set(communication_lost_wrong_source_inst.yfilter)) leaf_name_data.push_back(communication_lost_wrong_source_inst.get_name_leafdata());
-    if (destination_address_xr.is_set || is_set(destination_address_xr.yfilter)) leaf_name_data.push_back(destination_address_xr.get_name_leafdata());
-    if (destination_instance.is_set || is_set(destination_instance.yfilter)) leaf_name_data.push_back(destination_instance.get_name_leafdata());
-    if (hello_instance_owner.is_set || is_set(hello_instance_owner.yfilter)) leaf_name_data.push_back(hello_instance_owner.get_name_leafdata());
-    if (hello_interface.is_set || is_set(hello_interface.yfilter)) leaf_name_data.push_back(hello_interface.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (hello_messages_received.is_set || is_set(hello_messages_received.yfilter)) leaf_name_data.push_back(hello_messages_received.get_name_leafdata());
-    if (hello_messages_sent.is_set || is_set(hello_messages_sent.yfilter)) leaf_name_data.push_back(hello_messages_sent.get_name_leafdata());
-    if (hello_request_suppressed.is_set || is_set(hello_request_suppressed.yfilter)) leaf_name_data.push_back(hello_request_suppressed.get_name_leafdata());
-    if (instance_type.is_set || is_set(instance_type.yfilter)) leaf_name_data.push_back(instance_type.get_name_leafdata());
-    if (missed_acks_allowed.is_set || is_set(missed_acks_allowed.yfilter)) leaf_name_data.push_back(missed_acks_allowed.get_name_leafdata());
-    if (neighbor_hello_state.is_set || is_set(neighbor_hello_state.yfilter)) leaf_name_data.push_back(neighbor_hello_state.get_name_leafdata());
-    if (source_address_xr.is_set || is_set(source_address_xr.yfilter)) leaf_name_data.push_back(source_address_xr.get_name_leafdata());
-    if (source_instance.is_set || is_set(source_instance.yfilter)) leaf_name_data.push_back(source_instance.get_name_leafdata());
-    if (total_communication_lost.is_set || is_set(total_communication_lost.yfilter)) leaf_name_data.push_back(total_communication_lost.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "communication-lost-time")
-    {
-        if(communication_lost_time == nullptr)
-        {
-            communication_lost_time = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime>();
-        }
-        return communication_lost_time;
-    }
-
-    if(child_yang_name == "up-time")
-    {
-        if(up_time == nullptr)
-        {
-            up_time = std::make_shared<Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime>();
-        }
-        return up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(communication_lost_time != nullptr)
-    {
-        children["communication-lost-time"] = communication_lost_time;
-    }
-
-    if(up_time != nullptr)
-    {
-        children["up-time"] = up_time;
-    }
-
-    return children;
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-hello-missed")
-    {
-        communication_lost_hello_missed = value;
-        communication_lost_hello_missed.value_namespace = name_space;
-        communication_lost_hello_missed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-interface-down")
-    {
-        communication_lost_interface_down = value;
-        communication_lost_interface_down.value_namespace = name_space;
-        communication_lost_interface_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-neighbor-disabled-hello")
-    {
-        communication_lost_neighbor_disabled_hello = value;
-        communication_lost_neighbor_disabled_hello.value_namespace = name_space;
-        communication_lost_neighbor_disabled_hello.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-reason")
-    {
-        communication_lost_reason = value;
-        communication_lost_reason.value_namespace = name_space;
-        communication_lost_reason.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-wrong-destination-inst")
-    {
-        communication_lost_wrong_destination_inst = value;
-        communication_lost_wrong_destination_inst.value_namespace = name_space;
-        communication_lost_wrong_destination_inst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "communication-lost-wrong-source-inst")
-    {
-        communication_lost_wrong_source_inst = value;
-        communication_lost_wrong_source_inst.value_namespace = name_space;
-        communication_lost_wrong_source_inst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-address-xr")
-    {
-        destination_address_xr = value;
-        destination_address_xr.value_namespace = name_space;
-        destination_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-instance")
-    {
-        destination_instance = value;
-        destination_instance.value_namespace = name_space;
-        destination_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-instance-owner")
-    {
-        hello_instance_owner = value;
-        hello_instance_owner.value_namespace = name_space;
-        hello_instance_owner.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-interface")
-    {
-        hello_interface = value;
-        hello_interface.value_namespace = name_space;
-        hello_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval = value;
-        hello_interval.value_namespace = name_space;
-        hello_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-messages-received")
-    {
-        hello_messages_received = value;
-        hello_messages_received.value_namespace = name_space;
-        hello_messages_received.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-messages-sent")
-    {
-        hello_messages_sent = value;
-        hello_messages_sent.value_namespace = name_space;
-        hello_messages_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-request-suppressed")
-    {
-        hello_request_suppressed = value;
-        hello_request_suppressed.value_namespace = name_space;
-        hello_request_suppressed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "instance-type")
-    {
-        instance_type = value;
-        instance_type.value_namespace = name_space;
-        instance_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "missed-acks-allowed")
-    {
-        missed_acks_allowed = value;
-        missed_acks_allowed.value_namespace = name_space;
-        missed_acks_allowed.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state = value;
-        neighbor_hello_state.value_namespace = name_space;
-        neighbor_hello_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-address-xr")
-    {
-        source_address_xr = value;
-        source_address_xr.value_namespace = name_space;
-        source_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-instance")
-    {
-        source_instance = value;
-        source_instance.value_namespace = name_space;
-        source_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-communication-lost")
-    {
-        total_communication_lost = value;
-        total_communication_lost.value_namespace = name_space;
-        total_communication_lost.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-hello-missed")
-    {
-        communication_lost_hello_missed.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-interface-down")
-    {
-        communication_lost_interface_down.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-neighbor-disabled-hello")
-    {
-        communication_lost_neighbor_disabled_hello.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-reason")
-    {
-        communication_lost_reason.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-wrong-destination-inst")
-    {
-        communication_lost_wrong_destination_inst.yfilter = yfilter;
-    }
-    if(value_path == "communication-lost-wrong-source-inst")
-    {
-        communication_lost_wrong_source_inst.yfilter = yfilter;
-    }
-    if(value_path == "destination-address-xr")
-    {
-        destination_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "destination-instance")
-    {
-        destination_instance.yfilter = yfilter;
-    }
-    if(value_path == "hello-instance-owner")
-    {
-        hello_instance_owner.yfilter = yfilter;
-    }
-    if(value_path == "hello-interface")
-    {
-        hello_interface.yfilter = yfilter;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval.yfilter = yfilter;
-    }
-    if(value_path == "hello-messages-received")
-    {
-        hello_messages_received.yfilter = yfilter;
-    }
-    if(value_path == "hello-messages-sent")
-    {
-        hello_messages_sent.yfilter = yfilter;
-    }
-    if(value_path == "hello-request-suppressed")
-    {
-        hello_request_suppressed.yfilter = yfilter;
-    }
-    if(value_path == "instance-type")
-    {
-        instance_type.yfilter = yfilter;
-    }
-    if(value_path == "missed-acks-allowed")
-    {
-        missed_acks_allowed.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state.yfilter = yfilter;
-    }
-    if(value_path == "source-address-xr")
-    {
-        source_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "source-instance")
-    {
-        source_instance.yfilter = yfilter;
-    }
-    if(value_path == "total-communication-lost")
-    {
-        total_communication_lost.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "communication-lost-time" || name == "up-time" || name == "source-address" || name == "destination-address" || name == "communication-lost-hello-missed" || name == "communication-lost-interface-down" || name == "communication-lost-neighbor-disabled-hello" || name == "communication-lost-reason" || name == "communication-lost-wrong-destination-inst" || name == "communication-lost-wrong-source-inst" || name == "destination-address-xr" || name == "destination-instance" || name == "hello-instance-owner" || name == "hello-interface" || name == "hello-interval" || name == "hello-messages-received" || name == "hello-messages-sent" || name == "hello-request-suppressed" || name == "instance-type" || name == "missed-acks-allowed" || name == "neighbor-hello-state" || name == "source-address-xr" || name == "source-instance" || name == "total-communication-lost")
-        return true;
-    return false;
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::UpTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "up-time"; yang_parent_name = "hello-instance-detail";
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::~UpTime()
-{
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "up-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UpTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::CommunicationLostTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "communication-lost-time"; yang_parent_name = "hello-instance-detail";
-}
-
-Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::~CommunicationLostTime()
-{
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "communication-lost-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CommunicationLostTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetails()
-{
-    yang_name = "global-neighbor-details"; yang_parent_name = "rsvp";
-}
-
-Rsvp::GlobalNeighborDetails::~GlobalNeighborDetails()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::has_data() const
-{
-    for (std::size_t index=0; index<global_neighbor_detail.size(); index++)
-    {
-        if(global_neighbor_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::GlobalNeighborDetails::has_operation() const
-{
-    for (std::size_t index=0; index<global_neighbor_detail.size(); index++)
-    {
-        if(global_neighbor_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global-neighbor-detail")
-    {
-        for(auto const & c : global_neighbor_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail>();
-        c->parent = this;
-        global_neighbor_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : global_neighbor_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::GlobalNeighborDetails::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-neighbor-detail")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborDetail()
-    :
-    neighbor_address{YType::str, "neighbor-address"},
-    hello_interval{YType::uint32, "hello-interval"},
-    interface_neighbor{YType::str, "interface-neighbor"},
-    is_gr_enabled{YType::boolean, "is-gr-enabled"},
-    is_recovery_timer_running{YType::boolean, "is-recovery-timer-running"},
-    is_restart_timer_running{YType::boolean, "is-restart-timer-running"},
-    local_node_address{YType::str, "local-node-address"},
-    lost_communication_reason{YType::enumeration, "lost-communication-reason"},
-    lost_communication_total{YType::uint16, "lost-communication-total"},
-    missed_hellos{YType::uint8, "missed-hellos"},
-    neighbor_hello_state{YType::enumeration, "neighbor-hello-state"},
-    node_address{YType::str, "node-address"},
-    pending_states{YType::uint32, "pending-states"},
-    recovery_time{YType::uint32, "recovery-time"},
-    restart_state{YType::enumeration, "restart-state"},
-    restart_time{YType::uint32, "restart-time"}
-    	,
-    global_neighbor_flags(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags>())
-	,recovery_time_left(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft>())
-	,recovery_timer_exp_time(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime>())
-	,restart_time_left(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft>())
-	,restart_timer_expiry_time(std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime>())
-{
-    global_neighbor_flags->parent = this;
-
-    recovery_time_left->parent = this;
-
-    recovery_timer_exp_time->parent = this;
-
-    restart_time_left->parent = this;
-
-    restart_timer_expiry_time->parent = this;
-
-    yang_name = "global-neighbor-detail"; yang_parent_name = "global-neighbor-details";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::~GlobalNeighborDetail()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_data() const
-{
-    for (std::size_t index=0; index<lost_communication_time.size(); index++)
-    {
-        if(lost_communication_time[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<up_time.size(); index++)
-    {
-        if(up_time[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : interface_neighbor.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : local_node_address.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : lost_communication_reason.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : lost_communication_total.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : neighbor_hello_state.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return neighbor_address.is_set
-	|| hello_interval.is_set
-	|| is_gr_enabled.is_set
-	|| is_recovery_timer_running.is_set
-	|| is_restart_timer_running.is_set
-	|| missed_hellos.is_set
-	|| node_address.is_set
-	|| pending_states.is_set
-	|| recovery_time.is_set
-	|| restart_state.is_set
-	|| restart_time.is_set
-	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_data())
-	|| (recovery_time_left !=  nullptr && recovery_time_left->has_data())
-	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_data())
-	|| (restart_time_left !=  nullptr && restart_time_left->has_data())
-	|| (restart_timer_expiry_time !=  nullptr && restart_timer_expiry_time->has_data());
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_operation() const
-{
-    for (std::size_t index=0; index<lost_communication_time.size(); index++)
-    {
-        if(lost_communication_time[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<up_time.size(); index++)
-    {
-        if(up_time[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : interface_neighbor.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : local_node_address.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : lost_communication_reason.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : lost_communication_total.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : neighbor_hello_state.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(hello_interval.yfilter)
-	|| ydk::is_set(interface_neighbor.yfilter)
-	|| ydk::is_set(is_gr_enabled.yfilter)
-	|| ydk::is_set(is_recovery_timer_running.yfilter)
-	|| ydk::is_set(is_restart_timer_running.yfilter)
-	|| ydk::is_set(local_node_address.yfilter)
-	|| ydk::is_set(lost_communication_reason.yfilter)
-	|| ydk::is_set(lost_communication_total.yfilter)
-	|| ydk::is_set(missed_hellos.yfilter)
-	|| ydk::is_set(neighbor_hello_state.yfilter)
-	|| ydk::is_set(node_address.yfilter)
-	|| ydk::is_set(pending_states.yfilter)
-	|| ydk::is_set(recovery_time.yfilter)
-	|| ydk::is_set(restart_state.yfilter)
-	|| ydk::is_set(restart_time.yfilter)
-	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation())
-	|| (recovery_time_left !=  nullptr && recovery_time_left->has_operation())
-	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_operation())
-	|| (restart_time_left !=  nullptr && restart_time_left->has_operation())
-	|| (restart_timer_expiry_time !=  nullptr && restart_timer_expiry_time->has_operation());
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-detail" <<"[neighbor-address='" <<neighbor_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/global-neighbor-details/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (is_gr_enabled.is_set || is_set(is_gr_enabled.yfilter)) leaf_name_data.push_back(is_gr_enabled.get_name_leafdata());
-    if (is_recovery_timer_running.is_set || is_set(is_recovery_timer_running.yfilter)) leaf_name_data.push_back(is_recovery_timer_running.get_name_leafdata());
-    if (is_restart_timer_running.is_set || is_set(is_restart_timer_running.yfilter)) leaf_name_data.push_back(is_restart_timer_running.get_name_leafdata());
-    if (missed_hellos.is_set || is_set(missed_hellos.yfilter)) leaf_name_data.push_back(missed_hellos.get_name_leafdata());
-    if (node_address.is_set || is_set(node_address.yfilter)) leaf_name_data.push_back(node_address.get_name_leafdata());
-    if (pending_states.is_set || is_set(pending_states.yfilter)) leaf_name_data.push_back(pending_states.get_name_leafdata());
-    if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
-    if (restart_state.is_set || is_set(restart_state.yfilter)) leaf_name_data.push_back(restart_state.get_name_leafdata());
-    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
-
-    auto interface_neighbor_name_datas = interface_neighbor.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), interface_neighbor_name_datas.begin(), interface_neighbor_name_datas.end());
-    auto local_node_address_name_datas = local_node_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), local_node_address_name_datas.begin(), local_node_address_name_datas.end());
-    auto lost_communication_reason_name_datas = lost_communication_reason.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), lost_communication_reason_name_datas.begin(), lost_communication_reason_name_datas.end());
-    auto lost_communication_total_name_datas = lost_communication_total.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), lost_communication_total_name_datas.begin(), lost_communication_total_name_datas.end());
-    auto neighbor_hello_state_name_datas = neighbor_hello_state.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), neighbor_hello_state_name_datas.begin(), neighbor_hello_state_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global-neighbor-flags")
-    {
-        if(global_neighbor_flags == nullptr)
-        {
-            global_neighbor_flags = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags>();
-        }
-        return global_neighbor_flags;
-    }
-
-    if(child_yang_name == "lost-communication-time")
-    {
-        for(auto const & c : lost_communication_time)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime>();
-        c->parent = this;
-        lost_communication_time.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "recovery-time-left")
-    {
-        if(recovery_time_left == nullptr)
-        {
-            recovery_time_left = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft>();
-        }
-        return recovery_time_left;
-    }
-
-    if(child_yang_name == "recovery-timer-exp-time")
-    {
-        if(recovery_timer_exp_time == nullptr)
-        {
-            recovery_timer_exp_time = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime>();
-        }
-        return recovery_timer_exp_time;
-    }
-
-    if(child_yang_name == "restart-time-left")
-    {
-        if(restart_time_left == nullptr)
-        {
-            restart_time_left = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft>();
-        }
-        return restart_time_left;
-    }
-
-    if(child_yang_name == "restart-timer-expiry-time")
-    {
-        if(restart_timer_expiry_time == nullptr)
-        {
-            restart_timer_expiry_time = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime>();
-        }
-        return restart_timer_expiry_time;
-    }
-
-    if(child_yang_name == "up-time")
-    {
-        for(auto const & c : up_time)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime>();
-        c->parent = this;
-        up_time.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(global_neighbor_flags != nullptr)
-    {
-        children["global-neighbor-flags"] = global_neighbor_flags;
-    }
-
-    for (auto const & c : lost_communication_time)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    if(recovery_time_left != nullptr)
-    {
-        children["recovery-time-left"] = recovery_time_left;
-    }
-
-    if(recovery_timer_exp_time != nullptr)
-    {
-        children["recovery-timer-exp-time"] = recovery_timer_exp_time;
-    }
-
-    if(restart_time_left != nullptr)
-    {
-        children["restart-time-left"] = restart_time_left;
-    }
-
-    if(restart_timer_expiry_time != nullptr)
-    {
-        children["restart-timer-expiry-time"] = restart_timer_expiry_time;
-    }
-
-    for (auto const & c : up_time)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address = value;
-        neighbor_address.value_namespace = name_space;
-        neighbor_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval = value;
-        hello_interval.value_namespace = name_space;
-        hello_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-neighbor")
-    {
-        interface_neighbor.append(value);
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled = value;
-        is_gr_enabled.value_namespace = name_space;
-        is_gr_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-recovery-timer-running")
-    {
-        is_recovery_timer_running = value;
-        is_recovery_timer_running.value_namespace = name_space;
-        is_recovery_timer_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-restart-timer-running")
-    {
-        is_restart_timer_running = value;
-        is_restart_timer_running.value_namespace = name_space;
-        is_restart_timer_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-node-address")
-    {
-        local_node_address.append(value);
-    }
-    if(value_path == "lost-communication-reason")
-    {
-        lost_communication_reason.append(value);
-    }
-    if(value_path == "lost-communication-total")
-    {
-        lost_communication_total.append(value);
-    }
-    if(value_path == "missed-hellos")
-    {
-        missed_hellos = value;
-        missed_hellos.value_namespace = name_space;
-        missed_hellos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state.append(value);
-    }
-    if(value_path == "node-address")
-    {
-        node_address = value;
-        node_address.value_namespace = name_space;
-        node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pending-states")
-    {
-        pending_states = value;
-        pending_states.value_namespace = name_space;
-        pending_states.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "recovery-time")
-    {
-        recovery_time = value;
-        recovery_time.value_namespace = name_space;
-        recovery_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "restart-state")
-    {
-        restart_state = value;
-        restart_state.value_namespace = name_space;
-        restart_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "restart-time")
-    {
-        restart_time = value;
-        restart_time.value_namespace = name_space;
-        restart_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address.yfilter = yfilter;
-    }
-    if(value_path == "hello-interval")
-    {
-        hello_interval.yfilter = yfilter;
-    }
-    if(value_path == "interface-neighbor")
-    {
-        interface_neighbor.yfilter = yfilter;
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled.yfilter = yfilter;
-    }
-    if(value_path == "is-recovery-timer-running")
-    {
-        is_recovery_timer_running.yfilter = yfilter;
-    }
-    if(value_path == "is-restart-timer-running")
-    {
-        is_restart_timer_running.yfilter = yfilter;
-    }
-    if(value_path == "local-node-address")
-    {
-        local_node_address.yfilter = yfilter;
-    }
-    if(value_path == "lost-communication-reason")
-    {
-        lost_communication_reason.yfilter = yfilter;
-    }
-    if(value_path == "lost-communication-total")
-    {
-        lost_communication_total.yfilter = yfilter;
-    }
-    if(value_path == "missed-hellos")
-    {
-        missed_hellos.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state.yfilter = yfilter;
-    }
-    if(value_path == "node-address")
-    {
-        node_address.yfilter = yfilter;
-    }
-    if(value_path == "pending-states")
-    {
-        pending_states.yfilter = yfilter;
-    }
-    if(value_path == "recovery-time")
-    {
-        recovery_time.yfilter = yfilter;
-    }
-    if(value_path == "restart-state")
-    {
-        restart_state.yfilter = yfilter;
-    }
-    if(value_path == "restart-time")
-    {
-        restart_time.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-neighbor-flags" || name == "lost-communication-time" || name == "recovery-time-left" || name == "recovery-timer-exp-time" || name == "restart-time-left" || name == "restart-timer-expiry-time" || name == "up-time" || name == "neighbor-address" || name == "hello-interval" || name == "interface-neighbor" || name == "is-gr-enabled" || name == "is-recovery-timer-running" || name == "is-restart-timer-running" || name == "local-node-address" || name == "lost-communication-reason" || name == "lost-communication-total" || name == "missed-hellos" || name == "neighbor-hello-state" || name == "node-address" || name == "pending-states" || name == "recovery-time" || name == "restart-state" || name == "restart-time")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::GlobalNeighborFlags()
-    :
-    is_application_mpls{YType::boolean, "is-application-mpls"},
-    is_application_ouni{YType::boolean, "is-application-ouni"}
-{
-    yang_name = "global-neighbor-flags"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::~GlobalNeighborFlags()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::has_data() const
-{
-    return is_application_mpls.is_set
-	|| is_application_ouni.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_application_mpls.yfilter)
-	|| ydk::is_set(is_application_ouni.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-flags";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GlobalNeighborFlags' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_application_mpls.is_set || is_set(is_application_mpls.yfilter)) leaf_name_data.push_back(is_application_mpls.get_name_leafdata());
-    if (is_application_ouni.is_set || is_set(is_application_ouni.yfilter)) leaf_name_data.push_back(is_application_ouni.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-application-mpls")
-    {
-        is_application_mpls = value;
-        is_application_mpls.value_namespace = name_space;
-        is_application_mpls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-application-ouni")
-    {
-        is_application_ouni = value;
-        is_application_ouni.value_namespace = name_space;
-        is_application_ouni.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-application-mpls")
-    {
-        is_application_mpls.yfilter = yfilter;
-    }
-    if(value_path == "is-application-ouni")
-    {
-        is_application_ouni.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-application-mpls" || name == "is-application-ouni")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::RestartTimeLeft()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "restart-time-left"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::~RestartTimeLeft()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "restart-time-left";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RestartTimeLeft' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::RestartTimerExpiryTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "restart-timer-expiry-time"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::~RestartTimerExpiryTime()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "restart-timer-expiry-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RestartTimerExpiryTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiryTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::RecoveryTimeLeft()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "recovery-time-left"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::~RecoveryTimeLeft()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "recovery-time-left";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RecoveryTimeLeft' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::RecoveryTimerExpTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "recovery-timer-exp-time"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::~RecoveryTimerExpTime()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "recovery-timer-exp-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RecoveryTimerExpTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::UpTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "up-time"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::~UpTime()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "up-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UpTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::LostCommunicationTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "lost-communication-time"; yang_parent_name = "global-neighbor-detail";
-}
-
-Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::~LostCommunicationTime()
-{
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lost-communication-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LostCommunicationTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBriefs()
-{
-    yang_name = "psb-briefs"; yang_parent_name = "rsvp";
-}
-
-Rsvp::PsbBriefs::~PsbBriefs()
-{
-}
-
-bool Rsvp::PsbBriefs::has_data() const
-{
-    for (std::size_t index=0; index<psb_brief.size(); index++)
-    {
-        if(psb_brief[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::PsbBriefs::has_operation() const
-{
-    for (std::size_t index=0; index<psb_brief.size(); index++)
-    {
-        if(psb_brief[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::PsbBriefs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "psb-briefs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "psb-brief")
-    {
-        for(auto const & c : psb_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::PsbBriefs::PsbBrief>();
-        c->parent = this;
-        psb_brief.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : psb_brief)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::PsbBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::PsbBriefs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::PsbBriefs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "psb-brief")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::PsbBrief()
-    :
-    destination_address{YType::str, "destination-address"},
-    destination_port{YType::int32, "destination-port"},
-    extended_tunnel_id{YType::str, "extended-tunnel-id"},
-    input_interface{YType::str, "input-interface"},
-    p2mp_id{YType::int32, "p2mp-id"},
-    protocol{YType::int32, "protocol"},
-    session_type{YType::enumeration, "session-type"},
-    source_address{YType::str, "source-address"},
-    source_port{YType::int32, "source-port"},
-    sub_group_id{YType::int32, "sub-group-id"},
-    sub_group_origin{YType::str, "sub-group-origin"},
-    vrf_name{YType::str, "vrf-name"}
-    	,
-    generic_traffic_spec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec>())
-	,s2l_sub_lsp(std::make_shared<Rsvp::PsbBriefs::PsbBrief::S2LSubLsp>())
-	,session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session>())
-	,session_attribute(std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute>())
-	,template_(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_>())
-	,traffic_spec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::TrafficSpec>())
-{
-    generic_traffic_spec->parent = this;
-
-    s2l_sub_lsp->parent = this;
-
-    session->parent = this;
-
-    session_attribute->parent = this;
-
-    template_->parent = this;
-
-    traffic_spec->parent = this;
-
-    yang_name = "psb-brief"; yang_parent_name = "psb-briefs";
-}
-
-Rsvp::PsbBriefs::PsbBrief::~PsbBrief()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::has_data() const
-{
-    return destination_address.is_set
-	|| destination_port.is_set
-	|| extended_tunnel_id.is_set
-	|| input_interface.is_set
-	|| p2mp_id.is_set
-	|| protocol.is_set
-	|| session_type.is_set
-	|| source_address.is_set
-	|| source_port.is_set
-	|| sub_group_id.is_set
-	|| sub_group_origin.is_set
-	|| vrf_name.is_set
-	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_data())
-	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_data())
-	|| (session !=  nullptr && session->has_data())
-	|| (session_attribute !=  nullptr && session_attribute->has_data())
-	|| (template_ !=  nullptr && template_->has_data())
-	|| (traffic_spec !=  nullptr && traffic_spec->has_data());
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(destination_port.yfilter)
-	|| ydk::is_set(extended_tunnel_id.yfilter)
-	|| ydk::is_set(input_interface.yfilter)
-	|| ydk::is_set(p2mp_id.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(session_type.yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(source_port.yfilter)
-	|| ydk::is_set(sub_group_id.yfilter)
-	|| ydk::is_set(sub_group_origin.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
-	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
-	|| (session !=  nullptr && session->has_operation())
-	|| (session_attribute !=  nullptr && session_attribute->has_operation())
-	|| (template_ !=  nullptr && template_->has_operation())
-	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "psb-brief";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-    if (input_interface.is_set || is_set(input_interface.yfilter)) leaf_name_data.push_back(input_interface.get_name_leafdata());
-    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
-    if (sub_group_id.is_set || is_set(sub_group_id.yfilter)) leaf_name_data.push_back(sub_group_id.get_name_leafdata());
-    if (sub_group_origin.is_set || is_set(sub_group_origin.yfilter)) leaf_name_data.push_back(sub_group_origin.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "generic-traffic-spec")
-    {
-        if(generic_traffic_spec == nullptr)
-        {
-            generic_traffic_spec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec>();
-        }
-        return generic_traffic_spec;
-    }
-
-    if(child_yang_name == "s2l-sub-lsp")
-    {
-        if(s2l_sub_lsp == nullptr)
-        {
-            s2l_sub_lsp = std::make_shared<Rsvp::PsbBriefs::PsbBrief::S2LSubLsp>();
-        }
-        return s2l_sub_lsp;
-    }
-
-    if(child_yang_name == "session")
-    {
-        if(session == nullptr)
-        {
-            session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session>();
-        }
-        return session;
-    }
-
-    if(child_yang_name == "session-attribute")
-    {
-        if(session_attribute == nullptr)
-        {
-            session_attribute = std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute>();
-        }
-        return session_attribute;
-    }
-
-    if(child_yang_name == "template")
-    {
-        if(template_ == nullptr)
-        {
-            template_ = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_>();
-        }
-        return template_;
-    }
-
-    if(child_yang_name == "traffic-spec")
-    {
-        if(traffic_spec == nullptr)
-        {
-            traffic_spec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::TrafficSpec>();
-        }
-        return traffic_spec;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(generic_traffic_spec != nullptr)
-    {
-        children["generic-traffic-spec"] = generic_traffic_spec;
-    }
-
-    if(s2l_sub_lsp != nullptr)
-    {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
-    }
-
-    if(session != nullptr)
-    {
-        children["session"] = session;
-    }
-
-    if(session_attribute != nullptr)
-    {
-        children["session-attribute"] = session_attribute;
-    }
-
-    if(template_ != nullptr)
-    {
-        children["template"] = template_;
-    }
-
-    if(traffic_spec != nullptr)
-    {
-        children["traffic-spec"] = traffic_spec;
-    }
-
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port = value;
-        destination_port.value_namespace = name_space;
-        destination_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
-        extended_tunnel_id.value_namespace = name_space;
-        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input-interface")
-    {
-        input_interface = value;
-        input_interface.value_namespace = name_space;
-        input_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id = value;
-        p2mp_id.value_namespace = name_space;
-        p2mp_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-type")
-    {
-        session_type = value;
-        session_type.value_namespace = name_space;
-        session_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-port")
-    {
-        source_port = value;
-        source_port.value_namespace = name_space;
-        source_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id = value;
-        sub_group_id.value_namespace = name_space;
-        sub_group_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-origin")
-    {
-        sub_group_origin = value;
-        sub_group_origin.value_namespace = name_space;
-        sub_group_origin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port.yfilter = yfilter;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "input-interface")
-    {
-        input_interface.yfilter = yfilter;
-    }
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "session-type")
-    {
-        session_type.yfilter = yfilter;
-    }
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "source-port")
-    {
-        source_port.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-origin")
-    {
-        sub_group_origin.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "generic-traffic-spec" || name == "s2l-sub-lsp" || name == "session" || name == "session-attribute" || name == "template" || name == "traffic-spec" || name == "destination-address" || name == "destination-port" || name == "extended-tunnel-id" || name == "input-interface" || name == "p2mp-id" || name == "protocol" || name == "session-type" || name == "source-address" || name == "source-port" || name == "sub-group-id" || name == "sub-group-origin" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::Session()
-    :
-    rsvp_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession>())
-{
-    rsvp_session->parent = this;
-
-    yang_name = "session"; yang_parent_name = "psb-brief";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::~Session()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::has_data() const
-{
-    return (rsvp_session !=  nullptr && rsvp_session->has_data());
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rsvp-session")
-    {
-        if(rsvp_session == nullptr)
-        {
-            rsvp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession>();
-        }
-        return rsvp_session;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rsvp_session != nullptr)
-    {
-        children["rsvp-session"] = rsvp_session;
-    }
-
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rsvp-session")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::RsvpSession()
-    :
-    session_type{YType::enumeration, "session-type"}
-    	,
-    ipv4(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4>())
-	,ipv4_lsp_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession>())
-	,ipv4_p2mp_lsp_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession>())
-	,ipv4_uni_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession>())
-{
-    ipv4->parent = this;
-
-    ipv4_lsp_session->parent = this;
-
-    ipv4_p2mp_lsp_session->parent = this;
-
-    ipv4_uni_session->parent = this;
-
-    yang_name = "rsvp-session"; yang_parent_name = "session";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::~RsvpSession()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::has_data() const
-{
-    return session_type.is_set
-	|| (ipv4 !=  nullptr && ipv4->has_data())
-	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_data())
-	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_data())
-	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_data());
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(session_type.yfilter)
-	|| (ipv4 !=  nullptr && ipv4->has_operation())
-	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
-	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
-	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvp-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4")
-    {
-        if(ipv4 == nullptr)
-        {
-            ipv4 = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4>();
-        }
-        return ipv4;
-    }
-
-    if(child_yang_name == "ipv4-lsp-session")
-    {
-        if(ipv4_lsp_session == nullptr)
-        {
-            ipv4_lsp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession>();
-        }
-        return ipv4_lsp_session;
-    }
-
-    if(child_yang_name == "ipv4-p2mp-lsp-session")
-    {
-        if(ipv4_p2mp_lsp_session == nullptr)
-        {
-            ipv4_p2mp_lsp_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession>();
-        }
-        return ipv4_p2mp_lsp_session;
-    }
-
-    if(child_yang_name == "ipv4-uni-session")
-    {
-        if(ipv4_uni_session == nullptr)
-        {
-            ipv4_uni_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession>();
-        }
-        return ipv4_uni_session;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipv4 != nullptr)
-    {
-        children["ipv4"] = ipv4;
-    }
-
-    if(ipv4_lsp_session != nullptr)
-    {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
-    }
-
-    if(ipv4_p2mp_lsp_session != nullptr)
-    {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
-    }
-
-    if(ipv4_uni_session != nullptr)
-    {
-        children["ipv4-uni-session"] = ipv4_uni_session;
-    }
-
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-type")
-    {
-        session_type = value;
-        session_type.value_namespace = name_space;
-        session_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-type")
-    {
-        session_type.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4" || name == "ipv4-lsp-session" || name == "ipv4-p2mp-lsp-session" || name == "ipv4-uni-session" || name == "session-type")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::Ipv4()
-    :
-    destination_address{YType::str, "destination-address"},
-    destination_port{YType::uint16, "destination-port"},
-    protocol{YType::uint8, "protocol"}
-{
-    yang_name = "ipv4"; yang_parent_name = "rsvp-session";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::~Ipv4()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::has_data() const
-{
-    return destination_address.is_set
-	|| destination_port.is_set
-	|| protocol.is_set;
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(destination_port.yfilter)
-	|| ydk::is_set(protocol.yfilter);
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session/rsvp-session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port = value;
-        destination_port.value_namespace = name_space;
-        destination_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "destination-port" || name == "protocol")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::Ipv4LspSession()
-    :
-    destination_address{YType::str, "destination-address"},
-    extended_tunnel_id{YType::str, "extended-tunnel-id"},
-    tunnel_id{YType::uint16, "tunnel-id"}
-{
-    yang_name = "ipv4-lsp-session"; yang_parent_name = "rsvp-session";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::~Ipv4LspSession()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::has_data() const
-{
-    return destination_address.is_set
-	|| extended_tunnel_id.is_set
-	|| tunnel_id.is_set;
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(extended_tunnel_id.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter);
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-lsp-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session/rsvp-session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
-        extended_tunnel_id.value_namespace = name_space;
-        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4LspSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "extended-tunnel-id" || name == "tunnel-id")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::Ipv4UniSession()
-    :
-    destination_address{YType::str, "destination-address"},
-    extended_address{YType::str, "extended-address"},
-    tunnel_id{YType::uint16, "tunnel-id"}
-{
-    yang_name = "ipv4-uni-session"; yang_parent_name = "rsvp-session";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::~Ipv4UniSession()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::has_data() const
-{
-    return destination_address.is_set
-	|| extended_address.is_set
-	|| tunnel_id.is_set;
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(extended_address.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter);
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-uni-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session/rsvp-session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (extended_address.is_set || is_set(extended_address.yfilter)) leaf_name_data.push_back(extended_address.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-address")
-    {
-        extended_address = value;
-        extended_address.value_namespace = name_space;
-        extended_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "extended-address")
-    {
-        extended_address.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4UniSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "extended-address" || name == "tunnel-id")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::Ipv4P2MpLspSession()
-    :
-    extended_tunnel_id{YType::str, "extended-tunnel-id"},
-    p2mp_id{YType::uint32, "p2mp-id"},
-    tunnel_id{YType::uint16, "tunnel-id"}
-{
-    yang_name = "ipv4-p2mp-lsp-session"; yang_parent_name = "rsvp-session";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::~Ipv4P2MpLspSession()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_data() const
-{
-    return extended_tunnel_id.is_set
-	|| p2mp_id.is_set
-	|| tunnel_id.is_set;
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(extended_tunnel_id.yfilter)
-	|| ydk::is_set(p2mp_id.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter);
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-p2mp-lsp-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session/rsvp-session/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
-        extended_tunnel_id.value_namespace = name_space;
-        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id = value;
-        p2mp_id.value_namespace = name_space;
-        p2mp_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "extended-tunnel-id" || name == "p2mp-id" || name == "tunnel-id")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::S2LSubLsp()
+RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::S2LSubLsp()
     :
     s2l_destination_address{YType::str, "s2l-destination-address"}
 {
-    yang_name = "s2l-sub-lsp"; yang_parent_name = "psb-brief";
+
+    yang_name = "s2l-sub-lsp"; yang_parent_name = "session-detailed"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::~S2LSubLsp()
+RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::~S2LSubLsp()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::has_data() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::has_data() const
 {
     return s2l_destination_address.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::has_operation() const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(s2l_destination_address.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_segment_path() const
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/session-detaileds/session-detailed/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-sub-lsp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (s2l_destination_address.is_set || is_set(s2l_destination_address.yfilter)) leaf_name_data.push_back(s2l_destination_address.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "s2l-destination-address")
     {
@@ -8197,7 +8506,7 @@ void Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::set_value(const std::string & value_p
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "s2l-destination-address")
     {
@@ -8205,1998 +8514,1166 @@ void Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::set_filter(const std::string & value_
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::S2LSubLsp::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::SessionDetaileds::SessionDetailed::S2LSubLsp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "s2l-destination-address")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::Template_::Template_()
+RsvpStandby::Summary::Summary()
     :
-    rsvp_filter(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter>())
-{
-    rsvp_filter->parent = this;
-
-    yang_name = "template"; yang_parent_name = "psb-brief";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Template_::~Template_()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::has_data() const
-{
-    return (rsvp_filter !=  nullptr && rsvp_filter->has_data());
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::has_operation() const
-{
-    return is_set(yfilter)
-	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Template_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "template";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rsvp-filter")
-    {
-        if(rsvp_filter == nullptr)
-        {
-            rsvp_filter = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter>();
-        }
-        return rsvp_filter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(rsvp_filter != nullptr)
-    {
-        children["rsvp-filter"] = rsvp_filter;
-    }
-
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Template_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rsvp-filter")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::RsvpFilter()
-    :
-    filter_type{YType::enumeration, "filter-type"}
+    interfaces{YType::uint32, "interfaces"},
+    ls_ps{YType::uint32, "ls-ps"}
     	,
-    p2mp_ipv4_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session>())
-	,udp_ipv4_session(std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session>())
+    database_counters(std::make_shared<RsvpStandby::Summary::DatabaseCounters>())
+	,issu_status(std::make_shared<RsvpStandby::Summary::IssuStatus>())
+	,nsr_status(std::make_shared<RsvpStandby::Summary::NsrStatus>())
 {
-    p2mp_ipv4_session->parent = this;
+    database_counters->parent = this;
+    issu_status->parent = this;
+    nsr_status->parent = this;
 
-    udp_ipv4_session->parent = this;
-
-    yang_name = "rsvp-filter"; yang_parent_name = "template";
+    yang_name = "summary"; yang_parent_name = "rsvp-standby"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::~RsvpFilter()
+RsvpStandby::Summary::~Summary()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::has_data() const
+bool RsvpStandby::Summary::has_data() const
 {
-    return filter_type.is_set
-	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_data())
-	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_data());
+    return interfaces.is_set
+	|| ls_ps.is_set
+	|| (database_counters !=  nullptr && database_counters->has_data())
+	|| (issu_status !=  nullptr && issu_status->has_data())
+	|| (nsr_status !=  nullptr && nsr_status->has_data());
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::has_operation() const
+bool RsvpStandby::Summary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(filter_type.yfilter)
-	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
-	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(ls_ps.yfilter)
+	|| (database_counters !=  nullptr && database_counters->has_operation())
+	|| (issu_status !=  nullptr && issu_status->has_operation())
+	|| (nsr_status !=  nullptr && nsr_status->has_operation());
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_segment_path() const
+std::string RsvpStandby::Summary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvp-filter";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/template/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "summary";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (filter_type.is_set || is_set(filter_type.yfilter)) leaf_name_data.push_back(filter_type.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (ls_ps.is_set || is_set(ls_ps.yfilter)) leaf_name_data.push_back(ls_ps.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "p2mp-ipv4-session")
+    if(child_yang_name == "database-counters")
     {
-        if(p2mp_ipv4_session == nullptr)
+        if(database_counters == nullptr)
         {
-            p2mp_ipv4_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session>();
+            database_counters = std::make_shared<RsvpStandby::Summary::DatabaseCounters>();
         }
-        return p2mp_ipv4_session;
+        return database_counters;
     }
 
-    if(child_yang_name == "udp-ipv4-session")
+    if(child_yang_name == "issu-status")
     {
-        if(udp_ipv4_session == nullptr)
+        if(issu_status == nullptr)
         {
-            udp_ipv4_session = std::make_shared<Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session>();
+            issu_status = std::make_shared<RsvpStandby::Summary::IssuStatus>();
         }
-        return udp_ipv4_session;
+        return issu_status;
+    }
+
+    if(child_yang_name == "nsr-status")
+    {
+        if(nsr_status == nullptr)
+        {
+            nsr_status = std::make_shared<RsvpStandby::Summary::NsrStatus>();
+        }
+        return nsr_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(p2mp_ipv4_session != nullptr)
+    if(database_counters != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        children["database-counters"] = database_counters;
     }
 
-    if(udp_ipv4_session != nullptr)
+    if(issu_status != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        children["issu-status"] = issu_status;
+    }
+
+    if(nsr_status != nullptr)
+    {
+        children["nsr-status"] = nsr_status;
     }
 
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "filter-type")
+    if(value_path == "interfaces")
     {
-        filter_type = value;
-        filter_type.value_namespace = name_space;
-        filter_type.value_namespace_prefix = name_space_prefix;
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ls-ps")
+    {
+        ls_ps = value;
+        ls_ps.value_namespace = name_space;
+        ls_ps.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "filter-type")
+    if(value_path == "interfaces")
     {
-        filter_type.yfilter = yfilter;
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "ls-ps")
+    {
+        ls_ps.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "p2mp-ipv4-session" || name == "udp-ipv4-session" || name == "filter-type")
+    if(name == "database-counters" || name == "issu-status" || name == "nsr-status" || name == "interfaces" || name == "ls-ps")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::UdpIpv4Session()
+RsvpStandby::Summary::DatabaseCounters::DatabaseCounters()
     :
-    source_address{YType::str, "source-address"},
-    source_port{YType::uint16, "source-port"}
+    incoming_paths{YType::uint32, "incoming-paths"},
+    incoming_reservations{YType::uint32, "incoming-reservations"},
+    interfaces{YType::uint32, "interfaces"},
+    outgoing_paths{YType::uint32, "outgoing-paths"},
+    outgoing_reservations{YType::uint32, "outgoing-reservations"},
+    sessions{YType::uint32, "sessions"}
 {
-    yang_name = "udp-ipv4-session"; yang_parent_name = "rsvp-filter";
+
+    yang_name = "database-counters"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::~UdpIpv4Session()
+RsvpStandby::Summary::DatabaseCounters::~DatabaseCounters()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::has_data() const
+bool RsvpStandby::Summary::DatabaseCounters::has_data() const
 {
-    return source_address.is_set
-	|| source_port.is_set;
+    return incoming_paths.is_set
+	|| incoming_reservations.is_set
+	|| interfaces.is_set
+	|| outgoing_paths.is_set
+	|| outgoing_reservations.is_set
+	|| sessions.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::has_operation() const
+bool RsvpStandby::Summary::DatabaseCounters::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(source_port.yfilter);
+	|| ydk::is_set(incoming_paths.yfilter)
+	|| ydk::is_set(incoming_reservations.yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(outgoing_paths.yfilter)
+	|| ydk::is_set(outgoing_reservations.yfilter)
+	|| ydk::is_set(sessions.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_segment_path() const
+std::string RsvpStandby::Summary::DatabaseCounters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udp-ipv4-session";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::DatabaseCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/template/rsvp-filter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "database-counters";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::DatabaseCounters::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (incoming_paths.is_set || is_set(incoming_paths.yfilter)) leaf_name_data.push_back(incoming_paths.get_name_leafdata());
+    if (incoming_reservations.is_set || is_set(incoming_reservations.yfilter)) leaf_name_data.push_back(incoming_reservations.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (outgoing_paths.is_set || is_set(outgoing_paths.yfilter)) leaf_name_data.push_back(outgoing_paths.get_name_leafdata());
+    if (outgoing_reservations.is_set || is_set(outgoing_reservations.yfilter)) leaf_name_data.push_back(outgoing_reservations.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::DatabaseCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::DatabaseCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "source-address")
+    if(value_path == "incoming-paths")
     {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
+        incoming_paths = value;
+        incoming_paths.value_namespace = name_space;
+        incoming_paths.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "source-port")
+    if(value_path == "incoming-reservations")
     {
-        source_port = value;
-        source_port.value_namespace = name_space;
-        source_port.value_namespace_prefix = name_space_prefix;
+        incoming_reservations = value;
+        incoming_reservations.value_namespace = name_space;
+        incoming_reservations.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interfaces")
+    {
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-paths")
+    {
+        outgoing_paths = value;
+        outgoing_paths.value_namespace = name_space;
+        outgoing_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-reservations")
+    {
+        outgoing_reservations = value;
+        outgoing_reservations.value_namespace = name_space;
+        outgoing_reservations.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::DatabaseCounters::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "source-address")
+    if(value_path == "incoming-paths")
     {
-        source_address.yfilter = yfilter;
+        incoming_paths.yfilter = yfilter;
     }
-    if(value_path == "source-port")
+    if(value_path == "incoming-reservations")
     {
-        source_port.yfilter = yfilter;
+        incoming_reservations.yfilter = yfilter;
+    }
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-paths")
+    {
+        outgoing_paths.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-reservations")
+    {
+        outgoing_reservations.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::DatabaseCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-address" || name == "source-port")
+    if(name == "incoming-paths" || name == "incoming-reservations" || name == "interfaces" || name == "outgoing-paths" || name == "outgoing-reservations" || name == "sessions")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::P2MpIpv4Session()
+RsvpStandby::Summary::IssuStatus::IssuStatus()
     :
-    p2mp_sub_group_origin{YType::str, "p2mp-sub-group-origin"},
-    source_address{YType::str, "source-address"},
-    source_port{YType::uint16, "source-port"},
-    sub_group_id{YType::uint16, "sub-group-id"}
-{
-    yang_name = "p2mp-ipv4-session"; yang_parent_name = "rsvp-filter";
-}
-
-Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::~P2MpIpv4Session()
-{
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::has_data() const
-{
-    return p2mp_sub_group_origin.is_set
-	|| source_address.is_set
-	|| source_port.is_set
-	|| sub_group_id.is_set;
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(p2mp_sub_group_origin.yfilter)
-	|| ydk::is_set(source_address.yfilter)
-	|| ydk::is_set(source_port.yfilter)
-	|| ydk::is_set(sub_group_id.yfilter);
-}
-
-std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "p2mp-ipv4-session";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/template/rsvp-filter/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (p2mp_sub_group_origin.is_set || is_set(p2mp_sub_group_origin.yfilter)) leaf_name_data.push_back(p2mp_sub_group_origin.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
-    if (sub_group_id.is_set || is_set(sub_group_id.yfilter)) leaf_name_data.push_back(sub_group_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "p2mp-sub-group-origin")
-    {
-        p2mp_sub_group_origin = value;
-        p2mp_sub_group_origin.value_namespace = name_space;
-        p2mp_sub_group_origin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-address")
-    {
-        source_address = value;
-        source_address.value_namespace = name_space;
-        source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-port")
-    {
-        source_port = value;
-        source_port.value_namespace = name_space;
-        source_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id = value;
-        sub_group_id.value_namespace = name_space;
-        sub_group_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "p2mp-sub-group-origin")
-    {
-        p2mp_sub_group_origin.yfilter = yfilter;
-    }
-    if(value_path == "source-address")
-    {
-        source_address.yfilter = yfilter;
-    }
-    if(value_path == "source-port")
-    {
-        source_port.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "p2mp-sub-group-origin" || name == "source-address" || name == "source-port" || name == "sub-group-id")
-        return true;
-    return false;
-}
-
-Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessionAttribute()
-    :
-    reservation_priority{YType::uint8, "reservation-priority"},
-    setup_priority{YType::uint8, "setup-priority"}
+    role{YType::enumeration, "role"}
     	,
-    sess_attribute_flags(std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags>())
+    idt_status(std::make_shared<RsvpStandby::Summary::IssuStatus::IdtStatus>())
+	,previous_idt_status(std::make_shared<RsvpStandby::Summary::IssuStatus::PreviousIdtStatus>())
 {
-    sess_attribute_flags->parent = this;
+    idt_status->parent = this;
+    previous_idt_status->parent = this;
 
-    yang_name = "session-attribute"; yang_parent_name = "psb-brief";
+    yang_name = "issu-status"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::SessionAttribute::~SessionAttribute()
+RsvpStandby::Summary::IssuStatus::~IssuStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::has_data() const
+bool RsvpStandby::Summary::IssuStatus::has_data() const
 {
-    return reservation_priority.is_set
-	|| setup_priority.is_set
-	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_data());
+    return role.is_set
+	|| (idt_status !=  nullptr && idt_status->has_data())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_data());
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::has_operation() const
+bool RsvpStandby::Summary::IssuStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(reservation_priority.yfilter)
-	|| ydk::is_set(setup_priority.yfilter)
-	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_operation());
+	|| ydk::is_set(role.yfilter)
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_segment_path() const
+std::string RsvpStandby::Summary::IssuStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session-attribute";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::IssuStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "issu-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::IssuStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reservation_priority.is_set || is_set(reservation_priority.yfilter)) leaf_name_data.push_back(reservation_priority.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "sess-attribute-flags")
+    if(child_yang_name == "idt-status")
     {
-        if(sess_attribute_flags == nullptr)
+        if(idt_status == nullptr)
         {
-            sess_attribute_flags = std::make_shared<Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags>();
+            idt_status = std::make_shared<RsvpStandby::Summary::IssuStatus::IdtStatus>();
         }
-        return sess_attribute_flags;
+        return idt_status;
+    }
+
+    if(child_yang_name == "previous-idt-status")
+    {
+        if(previous_idt_status == nullptr)
+        {
+            previous_idt_status = std::make_shared<RsvpStandby::Summary::IssuStatus::PreviousIdtStatus>();
+        }
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(sess_attribute_flags != nullptr)
+    if(idt_status != nullptr)
     {
-        children["sess-attribute-flags"] = sess_attribute_flags;
+        children["idt-status"] = idt_status;
+    }
+
+    if(previous_idt_status != nullptr)
+    {
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::SessionAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::IssuStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reservation-priority")
+    if(value_path == "role")
     {
-        reservation_priority = value;
-        reservation_priority.value_namespace = name_space;
-        reservation_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "setup-priority")
-    {
-        setup_priority = value;
-        setup_priority.value_namespace = name_space;
-        setup_priority.value_namespace_prefix = name_space_prefix;
+        role = value;
+        role.value_namespace = name_space;
+        role.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::SessionAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::IssuStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reservation-priority")
+    if(value_path == "role")
     {
-        reservation_priority.yfilter = yfilter;
-    }
-    if(value_path == "setup-priority")
-    {
-        setup_priority.yfilter = yfilter;
+        role.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::IssuStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sess-attribute-flags" || name == "reservation-priority" || name == "setup-priority")
+    if(name == "idt-status" || name == "previous-idt-status" || name == "role")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::SessAttributeFlags()
+RsvpStandby::Summary::IssuStatus::IdtStatus::IdtStatus()
     :
-    is_bandwidth_protect{YType::boolean, "is-bandwidth-protect"},
-    is_local_protect{YType::boolean, "is-local-protect"},
-    is_node_protect{YType::boolean, "is-node-protect"},
-    is_record_labels{YType::boolean, "is-record-labels"},
-    is_shared_explicit_requested{YType::boolean, "is-shared-explicit-requested"}
+    declare_time{YType::uint32, "declare-time"},
+    idt_end_time{YType::uint32, "idt-end-time"},
+    idt_start_time{YType::uint32, "idt-start-time"},
+    not_ready_reason{YType::enumeration, "not-ready-reason"},
+    sync_status{YType::enumeration, "sync-status"},
+    withdraw_time{YType::uint32, "withdraw-time"}
 {
-    yang_name = "sess-attribute-flags"; yang_parent_name = "session-attribute";
+
+    yang_name = "idt-status"; yang_parent_name = "issu-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::~SessAttributeFlags()
+RsvpStandby::Summary::IssuStatus::IdtStatus::~IdtStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::has_data() const
+bool RsvpStandby::Summary::IssuStatus::IdtStatus::has_data() const
 {
-    return is_bandwidth_protect.is_set
-	|| is_local_protect.is_set
-	|| is_node_protect.is_set
-	|| is_record_labels.is_set
-	|| is_shared_explicit_requested.is_set;
+    return declare_time.is_set
+	|| idt_end_time.is_set
+	|| idt_start_time.is_set
+	|| not_ready_reason.is_set
+	|| sync_status.is_set
+	|| withdraw_time.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::has_operation() const
+bool RsvpStandby::Summary::IssuStatus::IdtStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(is_bandwidth_protect.yfilter)
-	|| ydk::is_set(is_local_protect.yfilter)
-	|| ydk::is_set(is_node_protect.yfilter)
-	|| ydk::is_set(is_record_labels.yfilter)
-	|| ydk::is_set(is_shared_explicit_requested.yfilter);
+	|| ydk::is_set(declare_time.yfilter)
+	|| ydk::is_set(idt_end_time.yfilter)
+	|| ydk::is_set(idt_start_time.yfilter)
+	|| ydk::is_set(not_ready_reason.yfilter)
+	|| ydk::is_set(sync_status.yfilter)
+	|| ydk::is_set(withdraw_time.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_segment_path() const
+std::string RsvpStandby::Summary::IssuStatus::IdtStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sess-attribute-flags";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/issu-status/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::IssuStatus::IdtStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/session-attribute/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "idt-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::IssuStatus::IdtStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_bandwidth_protect.is_set || is_set(is_bandwidth_protect.yfilter)) leaf_name_data.push_back(is_bandwidth_protect.get_name_leafdata());
-    if (is_local_protect.is_set || is_set(is_local_protect.yfilter)) leaf_name_data.push_back(is_local_protect.get_name_leafdata());
-    if (is_node_protect.is_set || is_set(is_node_protect.yfilter)) leaf_name_data.push_back(is_node_protect.get_name_leafdata());
-    if (is_record_labels.is_set || is_set(is_record_labels.yfilter)) leaf_name_data.push_back(is_record_labels.get_name_leafdata());
-    if (is_shared_explicit_requested.is_set || is_set(is_shared_explicit_requested.yfilter)) leaf_name_data.push_back(is_shared_explicit_requested.get_name_leafdata());
+    if (declare_time.is_set || is_set(declare_time.yfilter)) leaf_name_data.push_back(declare_time.get_name_leafdata());
+    if (idt_end_time.is_set || is_set(idt_end_time.yfilter)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
+    if (idt_start_time.is_set || is_set(idt_start_time.yfilter)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
+    if (not_ready_reason.is_set || is_set(not_ready_reason.yfilter)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
+    if (sync_status.is_set || is_set(sync_status.yfilter)) leaf_name_data.push_back(sync_status.get_name_leafdata());
+    if (withdraw_time.is_set || is_set(withdraw_time.yfilter)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::IdtStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::IssuStatus::IdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "is-bandwidth-protect")
+    if(value_path == "declare-time")
     {
-        is_bandwidth_protect = value;
-        is_bandwidth_protect.value_namespace = name_space;
-        is_bandwidth_protect.value_namespace_prefix = name_space_prefix;
+        declare_time = value;
+        declare_time.value_namespace = name_space;
+        declare_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-local-protect")
+    if(value_path == "idt-end-time")
     {
-        is_local_protect = value;
-        is_local_protect.value_namespace = name_space;
-        is_local_protect.value_namespace_prefix = name_space_prefix;
+        idt_end_time = value;
+        idt_end_time.value_namespace = name_space;
+        idt_end_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-node-protect")
+    if(value_path == "idt-start-time")
     {
-        is_node_protect = value;
-        is_node_protect.value_namespace = name_space;
-        is_node_protect.value_namespace_prefix = name_space_prefix;
+        idt_start_time = value;
+        idt_start_time.value_namespace = name_space;
+        idt_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-record-labels")
+    if(value_path == "not-ready-reason")
     {
-        is_record_labels = value;
-        is_record_labels.value_namespace = name_space;
-        is_record_labels.value_namespace_prefix = name_space_prefix;
+        not_ready_reason = value;
+        not_ready_reason.value_namespace = name_space;
+        not_ready_reason.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-shared-explicit-requested")
+    if(value_path == "sync-status")
     {
-        is_shared_explicit_requested = value;
-        is_shared_explicit_requested.value_namespace = name_space;
-        is_shared_explicit_requested.value_namespace_prefix = name_space_prefix;
+        sync_status = value;
+        sync_status.value_namespace = name_space;
+        sync_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time = value;
+        withdraw_time.value_namespace = name_space;
+        withdraw_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::IssuStatus::IdtStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "is-bandwidth-protect")
+    if(value_path == "declare-time")
     {
-        is_bandwidth_protect.yfilter = yfilter;
+        declare_time.yfilter = yfilter;
     }
-    if(value_path == "is-local-protect")
+    if(value_path == "idt-end-time")
     {
-        is_local_protect.yfilter = yfilter;
+        idt_end_time.yfilter = yfilter;
     }
-    if(value_path == "is-node-protect")
+    if(value_path == "idt-start-time")
     {
-        is_node_protect.yfilter = yfilter;
+        idt_start_time.yfilter = yfilter;
     }
-    if(value_path == "is-record-labels")
+    if(value_path == "not-ready-reason")
     {
-        is_record_labels.yfilter = yfilter;
+        not_ready_reason.yfilter = yfilter;
     }
-    if(value_path == "is-shared-explicit-requested")
+    if(value_path == "sync-status")
     {
-        is_shared_explicit_requested.yfilter = yfilter;
+        sync_status.yfilter = yfilter;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::SessAttributeFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::IssuStatus::IdtStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "is-bandwidth-protect" || name == "is-local-protect" || name == "is-node-protect" || name == "is-record-labels" || name == "is-shared-explicit-requested")
+    if(name == "declare-time" || name == "idt-end-time" || name == "idt-start-time" || name == "not-ready-reason" || name == "sync-status" || name == "withdraw-time")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::TrafficSpec::TrafficSpec()
+RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::PreviousIdtStatus()
     :
-    traffic_average_rate{YType::uint64, "traffic-average-rate"},
-    traffic_max_burst{YType::uint64, "traffic-max-burst"},
-    traffic_max_unit{YType::uint32, "traffic-max-unit"},
-    traffic_min_unit{YType::uint32, "traffic-min-unit"},
-    traffic_peak_rate{YType::uint64, "traffic-peak-rate"}
+    declare_time{YType::uint32, "declare-time"},
+    idt_end_time{YType::uint32, "idt-end-time"},
+    idt_start_time{YType::uint32, "idt-start-time"},
+    not_ready_reason{YType::enumeration, "not-ready-reason"},
+    sync_status{YType::enumeration, "sync-status"},
+    withdraw_time{YType::uint32, "withdraw-time"}
 {
-    yang_name = "traffic-spec"; yang_parent_name = "psb-brief";
+
+    yang_name = "previous-idt-status"; yang_parent_name = "issu-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::TrafficSpec::~TrafficSpec()
+RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::~PreviousIdtStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::TrafficSpec::has_data() const
+bool RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::has_data() const
 {
-    return traffic_average_rate.is_set
-	|| traffic_max_burst.is_set
-	|| traffic_max_unit.is_set
-	|| traffic_min_unit.is_set
-	|| traffic_peak_rate.is_set;
+    return declare_time.is_set
+	|| idt_end_time.is_set
+	|| idt_start_time.is_set
+	|| not_ready_reason.is_set
+	|| sync_status.is_set
+	|| withdraw_time.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::TrafficSpec::has_operation() const
+bool RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(traffic_average_rate.yfilter)
-	|| ydk::is_set(traffic_max_burst.yfilter)
-	|| ydk::is_set(traffic_max_unit.yfilter)
-	|| ydk::is_set(traffic_min_unit.yfilter)
-	|| ydk::is_set(traffic_peak_rate.yfilter);
+	|| ydk::is_set(declare_time.yfilter)
+	|| ydk::is_set(idt_end_time.yfilter)
+	|| ydk::is_set(idt_start_time.yfilter)
+	|| ydk::is_set(not_ready_reason.yfilter)
+	|| ydk::is_set(sync_status.yfilter)
+	|| ydk::is_set(withdraw_time.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_segment_path() const
+std::string RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-spec";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/issu-status/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "previous-idt-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (traffic_average_rate.is_set || is_set(traffic_average_rate.yfilter)) leaf_name_data.push_back(traffic_average_rate.get_name_leafdata());
-    if (traffic_max_burst.is_set || is_set(traffic_max_burst.yfilter)) leaf_name_data.push_back(traffic_max_burst.get_name_leafdata());
-    if (traffic_max_unit.is_set || is_set(traffic_max_unit.yfilter)) leaf_name_data.push_back(traffic_max_unit.get_name_leafdata());
-    if (traffic_min_unit.is_set || is_set(traffic_min_unit.yfilter)) leaf_name_data.push_back(traffic_min_unit.get_name_leafdata());
-    if (traffic_peak_rate.is_set || is_set(traffic_peak_rate.yfilter)) leaf_name_data.push_back(traffic_peak_rate.get_name_leafdata());
+    if (declare_time.is_set || is_set(declare_time.yfilter)) leaf_name_data.push_back(declare_time.get_name_leafdata());
+    if (idt_end_time.is_set || is_set(idt_end_time.yfilter)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
+    if (idt_start_time.is_set || is_set(idt_start_time.yfilter)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
+    if (not_ready_reason.is_set || is_set(not_ready_reason.yfilter)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
+    if (sync_status.is_set || is_set(sync_status.yfilter)) leaf_name_data.push_back(sync_status.get_name_leafdata());
+    if (withdraw_time.is_set || is_set(withdraw_time.yfilter)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::TrafficSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::TrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "traffic-average-rate")
+    if(value_path == "declare-time")
     {
-        traffic_average_rate = value;
-        traffic_average_rate.value_namespace = name_space;
-        traffic_average_rate.value_namespace_prefix = name_space_prefix;
+        declare_time = value;
+        declare_time.value_namespace = name_space;
+        declare_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-max-burst")
+    if(value_path == "idt-end-time")
     {
-        traffic_max_burst = value;
-        traffic_max_burst.value_namespace = name_space;
-        traffic_max_burst.value_namespace_prefix = name_space_prefix;
+        idt_end_time = value;
+        idt_end_time.value_namespace = name_space;
+        idt_end_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-max-unit")
+    if(value_path == "idt-start-time")
     {
-        traffic_max_unit = value;
-        traffic_max_unit.value_namespace = name_space;
-        traffic_max_unit.value_namespace_prefix = name_space_prefix;
+        idt_start_time = value;
+        idt_start_time.value_namespace = name_space;
+        idt_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-min-unit")
+    if(value_path == "not-ready-reason")
     {
-        traffic_min_unit = value;
-        traffic_min_unit.value_namespace = name_space;
-        traffic_min_unit.value_namespace_prefix = name_space_prefix;
+        not_ready_reason = value;
+        not_ready_reason.value_namespace = name_space;
+        not_ready_reason.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-peak-rate")
+    if(value_path == "sync-status")
     {
-        traffic_peak_rate = value;
-        traffic_peak_rate.value_namespace = name_space;
-        traffic_peak_rate.value_namespace_prefix = name_space_prefix;
+        sync_status = value;
+        sync_status.value_namespace = name_space;
+        sync_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time = value;
+        withdraw_time.value_namespace = name_space;
+        withdraw_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::TrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "traffic-average-rate")
+    if(value_path == "declare-time")
     {
-        traffic_average_rate.yfilter = yfilter;
+        declare_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-max-burst")
+    if(value_path == "idt-end-time")
     {
-        traffic_max_burst.yfilter = yfilter;
+        idt_end_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-max-unit")
+    if(value_path == "idt-start-time")
     {
-        traffic_max_unit.yfilter = yfilter;
+        idt_start_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-min-unit")
+    if(value_path == "not-ready-reason")
     {
-        traffic_min_unit.yfilter = yfilter;
+        not_ready_reason.yfilter = yfilter;
     }
-    if(value_path == "traffic-peak-rate")
+    if(value_path == "sync-status")
     {
-        traffic_peak_rate.yfilter = yfilter;
+        sync_status.yfilter = yfilter;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::TrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::IssuStatus::PreviousIdtStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "traffic-average-rate" || name == "traffic-max-burst" || name == "traffic-max-unit" || name == "traffic-min-unit" || name == "traffic-peak-rate")
+    if(name == "declare-time" || name == "idt-end-time" || name == "idt-start-time" || name == "not-ready-reason" || name == "sync-status" || name == "withdraw-time")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::GenericTrafficSpec()
+RsvpStandby::Summary::NsrStatus::NsrStatus()
     :
-    tspec_type{YType::enumeration, "tspec-type"}
+    role{YType::enumeration, "role"}
     	,
-    g709otn_tspec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec>())
-	,intsrv_tspec(std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec>())
+    idt_status(std::make_shared<RsvpStandby::Summary::NsrStatus::IdtStatus>())
+	,previous_idt_status(std::make_shared<RsvpStandby::Summary::NsrStatus::PreviousIdtStatus>())
 {
-    g709otn_tspec->parent = this;
+    idt_status->parent = this;
+    previous_idt_status->parent = this;
 
-    intsrv_tspec->parent = this;
-
-    yang_name = "generic-traffic-spec"; yang_parent_name = "psb-brief";
+    yang_name = "nsr-status"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::~GenericTrafficSpec()
+RsvpStandby::Summary::NsrStatus::~NsrStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::has_data() const
+bool RsvpStandby::Summary::NsrStatus::has_data() const
 {
-    return tspec_type.is_set
-	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_data())
-	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_data());
+    return role.is_set
+	|| (idt_status !=  nullptr && idt_status->has_data())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_data());
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::has_operation() const
+bool RsvpStandby::Summary::NsrStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(tspec_type.yfilter)
-	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
-	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
+	|| ydk::is_set(role.yfilter)
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_segment_path() const
+std::string RsvpStandby::Summary::NsrStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-traffic-spec";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::NsrStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "nsr-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::NsrStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tspec_type.is_set || is_set(tspec_type.yfilter)) leaf_name_data.push_back(tspec_type.get_name_leafdata());
+    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "g709otn-tspec")
+    if(child_yang_name == "idt-status")
     {
-        if(g709otn_tspec == nullptr)
+        if(idt_status == nullptr)
         {
-            g709otn_tspec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec>();
+            idt_status = std::make_shared<RsvpStandby::Summary::NsrStatus::IdtStatus>();
         }
-        return g709otn_tspec;
+        return idt_status;
     }
 
-    if(child_yang_name == "intsrv-tspec")
+    if(child_yang_name == "previous-idt-status")
     {
-        if(intsrv_tspec == nullptr)
+        if(previous_idt_status == nullptr)
         {
-            intsrv_tspec = std::make_shared<Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec>();
+            previous_idt_status = std::make_shared<RsvpStandby::Summary::NsrStatus::PreviousIdtStatus>();
         }
-        return intsrv_tspec;
+        return previous_idt_status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(g709otn_tspec != nullptr)
+    if(idt_status != nullptr)
     {
-        children["g709otn-tspec"] = g709otn_tspec;
+        children["idt-status"] = idt_status;
     }
 
-    if(intsrv_tspec != nullptr)
+    if(previous_idt_status != nullptr)
     {
-        children["intsrv-tspec"] = intsrv_tspec;
+        children["previous-idt-status"] = previous_idt_status;
     }
 
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::NsrStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "tspec-type")
+    if(value_path == "role")
     {
-        tspec_type = value;
-        tspec_type.value_namespace = name_space;
-        tspec_type.value_namespace_prefix = name_space_prefix;
+        role = value;
+        role.value_namespace = name_space;
+        role.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::NsrStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "tspec-type")
+    if(value_path == "role")
     {
-        tspec_type.yfilter = yfilter;
+        role.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::NsrStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "g709otn-tspec" || name == "intsrv-tspec" || name == "tspec-type")
+    if(name == "idt-status" || name == "previous-idt-status" || name == "role")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::G709OtnTspec()
+RsvpStandby::Summary::NsrStatus::IdtStatus::IdtStatus()
     :
-    traffic_bit_rate{YType::uint64, "traffic-bit-rate"},
-    traffic_multiplier{YType::uint16, "traffic-multiplier"},
-    traffic_nvc{YType::uint16, "traffic-nvc"},
-    traffic_signal_type{YType::uint8, "traffic-signal-type"}
+    declare_time{YType::uint32, "declare-time"},
+    idt_end_time{YType::uint32, "idt-end-time"},
+    idt_start_time{YType::uint32, "idt-start-time"},
+    not_ready_reason{YType::enumeration, "not-ready-reason"},
+    sync_status{YType::enumeration, "sync-status"},
+    withdraw_time{YType::uint32, "withdraw-time"}
 {
-    yang_name = "g709otn-tspec"; yang_parent_name = "generic-traffic-spec";
+
+    yang_name = "idt-status"; yang_parent_name = "nsr-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::~G709OtnTspec()
+RsvpStandby::Summary::NsrStatus::IdtStatus::~IdtStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::has_data() const
+bool RsvpStandby::Summary::NsrStatus::IdtStatus::has_data() const
 {
-    return traffic_bit_rate.is_set
-	|| traffic_multiplier.is_set
-	|| traffic_nvc.is_set
-	|| traffic_signal_type.is_set;
+    return declare_time.is_set
+	|| idt_end_time.is_set
+	|| idt_start_time.is_set
+	|| not_ready_reason.is_set
+	|| sync_status.is_set
+	|| withdraw_time.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::has_operation() const
+bool RsvpStandby::Summary::NsrStatus::IdtStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(traffic_bit_rate.yfilter)
-	|| ydk::is_set(traffic_multiplier.yfilter)
-	|| ydk::is_set(traffic_nvc.yfilter)
-	|| ydk::is_set(traffic_signal_type.yfilter);
+	|| ydk::is_set(declare_time.yfilter)
+	|| ydk::is_set(idt_end_time.yfilter)
+	|| ydk::is_set(idt_start_time.yfilter)
+	|| ydk::is_set(not_ready_reason.yfilter)
+	|| ydk::is_set(sync_status.yfilter)
+	|| ydk::is_set(withdraw_time.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_segment_path() const
+std::string RsvpStandby::Summary::NsrStatus::IdtStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "g709otn-tspec";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/nsr-status/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::NsrStatus::IdtStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/generic-traffic-spec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "idt-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::NsrStatus::IdtStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (traffic_bit_rate.is_set || is_set(traffic_bit_rate.yfilter)) leaf_name_data.push_back(traffic_bit_rate.get_name_leafdata());
-    if (traffic_multiplier.is_set || is_set(traffic_multiplier.yfilter)) leaf_name_data.push_back(traffic_multiplier.get_name_leafdata());
-    if (traffic_nvc.is_set || is_set(traffic_nvc.yfilter)) leaf_name_data.push_back(traffic_nvc.get_name_leafdata());
-    if (traffic_signal_type.is_set || is_set(traffic_signal_type.yfilter)) leaf_name_data.push_back(traffic_signal_type.get_name_leafdata());
+    if (declare_time.is_set || is_set(declare_time.yfilter)) leaf_name_data.push_back(declare_time.get_name_leafdata());
+    if (idt_end_time.is_set || is_set(idt_end_time.yfilter)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
+    if (idt_start_time.is_set || is_set(idt_start_time.yfilter)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
+    if (not_ready_reason.is_set || is_set(not_ready_reason.yfilter)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
+    if (sync_status.is_set || is_set(sync_status.yfilter)) leaf_name_data.push_back(sync_status.get_name_leafdata());
+    if (withdraw_time.is_set || is_set(withdraw_time.yfilter)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::IdtStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::NsrStatus::IdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "traffic-bit-rate")
+    if(value_path == "declare-time")
     {
-        traffic_bit_rate = value;
-        traffic_bit_rate.value_namespace = name_space;
-        traffic_bit_rate.value_namespace_prefix = name_space_prefix;
+        declare_time = value;
+        declare_time.value_namespace = name_space;
+        declare_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-multiplier")
+    if(value_path == "idt-end-time")
     {
-        traffic_multiplier = value;
-        traffic_multiplier.value_namespace = name_space;
-        traffic_multiplier.value_namespace_prefix = name_space_prefix;
+        idt_end_time = value;
+        idt_end_time.value_namespace = name_space;
+        idt_end_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-nvc")
+    if(value_path == "idt-start-time")
     {
-        traffic_nvc = value;
-        traffic_nvc.value_namespace = name_space;
-        traffic_nvc.value_namespace_prefix = name_space_prefix;
+        idt_start_time = value;
+        idt_start_time.value_namespace = name_space;
+        idt_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-signal-type")
+    if(value_path == "not-ready-reason")
     {
-        traffic_signal_type = value;
-        traffic_signal_type.value_namespace = name_space;
-        traffic_signal_type.value_namespace_prefix = name_space_prefix;
+        not_ready_reason = value;
+        not_ready_reason.value_namespace = name_space;
+        not_ready_reason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sync-status")
+    {
+        sync_status = value;
+        sync_status.value_namespace = name_space;
+        sync_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time = value;
+        withdraw_time.value_namespace = name_space;
+        withdraw_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::NsrStatus::IdtStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "traffic-bit-rate")
+    if(value_path == "declare-time")
     {
-        traffic_bit_rate.yfilter = yfilter;
+        declare_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-multiplier")
+    if(value_path == "idt-end-time")
     {
-        traffic_multiplier.yfilter = yfilter;
+        idt_end_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-nvc")
+    if(value_path == "idt-start-time")
     {
-        traffic_nvc.yfilter = yfilter;
+        idt_start_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-signal-type")
+    if(value_path == "not-ready-reason")
     {
-        traffic_signal_type.yfilter = yfilter;
+        not_ready_reason.yfilter = yfilter;
+    }
+    if(value_path == "sync-status")
+    {
+        sync_status.yfilter = yfilter;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::G709OtnTspec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::NsrStatus::IdtStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "traffic-bit-rate" || name == "traffic-multiplier" || name == "traffic-nvc" || name == "traffic-signal-type")
+    if(name == "declare-time" || name == "idt-end-time" || name == "idt-start-time" || name == "not-ready-reason" || name == "sync-status" || name == "withdraw-time")
         return true;
     return false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::IntsrvTspec()
+RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::PreviousIdtStatus()
     :
-    traffic_average_rate{YType::uint64, "traffic-average-rate"},
-    traffic_max_burst{YType::uint64, "traffic-max-burst"},
-    traffic_max_unit{YType::uint32, "traffic-max-unit"},
-    traffic_min_unit{YType::uint32, "traffic-min-unit"},
-    traffic_peak_rate{YType::uint64, "traffic-peak-rate"}
+    declare_time{YType::uint32, "declare-time"},
+    idt_end_time{YType::uint32, "idt-end-time"},
+    idt_start_time{YType::uint32, "idt-start-time"},
+    not_ready_reason{YType::enumeration, "not-ready-reason"},
+    sync_status{YType::enumeration, "sync-status"},
+    withdraw_time{YType::uint32, "withdraw-time"}
 {
-    yang_name = "intsrv-tspec"; yang_parent_name = "generic-traffic-spec";
+
+    yang_name = "previous-idt-status"; yang_parent_name = "nsr-status"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::~IntsrvTspec()
+RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::~PreviousIdtStatus()
 {
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::has_data() const
+bool RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::has_data() const
 {
-    return traffic_average_rate.is_set
-	|| traffic_max_burst.is_set
-	|| traffic_max_unit.is_set
-	|| traffic_min_unit.is_set
-	|| traffic_peak_rate.is_set;
+    return declare_time.is_set
+	|| idt_end_time.is_set
+	|| idt_start_time.is_set
+	|| not_ready_reason.is_set
+	|| sync_status.is_set
+	|| withdraw_time.is_set;
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::has_operation() const
+bool RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(traffic_average_rate.yfilter)
-	|| ydk::is_set(traffic_max_burst.yfilter)
-	|| ydk::is_set(traffic_max_unit.yfilter)
-	|| ydk::is_set(traffic_min_unit.yfilter)
-	|| ydk::is_set(traffic_peak_rate.yfilter);
+	|| ydk::is_set(declare_time.yfilter)
+	|| ydk::is_set(idt_end_time.yfilter)
+	|| ydk::is_set(idt_start_time.yfilter)
+	|| ydk::is_set(not_ready_reason.yfilter)
+	|| ydk::is_set(sync_status.yfilter)
+	|| ydk::is_set(withdraw_time.yfilter);
 }
 
-std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_segment_path() const
+std::string RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intsrv-tspec";
-
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/summary/nsr-status/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_entity_path(Entity* ancestor) const
+std::string RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/psb-briefs/psb-brief/generic-traffic-spec/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "previous-idt-status";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (traffic_average_rate.is_set || is_set(traffic_average_rate.yfilter)) leaf_name_data.push_back(traffic_average_rate.get_name_leafdata());
-    if (traffic_max_burst.is_set || is_set(traffic_max_burst.yfilter)) leaf_name_data.push_back(traffic_max_burst.get_name_leafdata());
-    if (traffic_max_unit.is_set || is_set(traffic_max_unit.yfilter)) leaf_name_data.push_back(traffic_max_unit.get_name_leafdata());
-    if (traffic_min_unit.is_set || is_set(traffic_min_unit.yfilter)) leaf_name_data.push_back(traffic_min_unit.get_name_leafdata());
-    if (traffic_peak_rate.is_set || is_set(traffic_peak_rate.yfilter)) leaf_name_data.push_back(traffic_peak_rate.get_name_leafdata());
+    if (declare_time.is_set || is_set(declare_time.yfilter)) leaf_name_data.push_back(declare_time.get_name_leafdata());
+    if (idt_end_time.is_set || is_set(idt_end_time.yfilter)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
+    if (idt_start_time.is_set || is_set(idt_start_time.yfilter)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
+    if (not_ready_reason.is_set || is_set(not_ready_reason.yfilter)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
+    if (sync_status.is_set || is_set(sync_status.yfilter)) leaf_name_data.push_back(sync_status.get_name_leafdata());
+    if (withdraw_time.is_set || is_set(withdraw_time.yfilter)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "traffic-average-rate")
+    if(value_path == "declare-time")
     {
-        traffic_average_rate = value;
-        traffic_average_rate.value_namespace = name_space;
-        traffic_average_rate.value_namespace_prefix = name_space_prefix;
+        declare_time = value;
+        declare_time.value_namespace = name_space;
+        declare_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-max-burst")
+    if(value_path == "idt-end-time")
     {
-        traffic_max_burst = value;
-        traffic_max_burst.value_namespace = name_space;
-        traffic_max_burst.value_namespace_prefix = name_space_prefix;
+        idt_end_time = value;
+        idt_end_time.value_namespace = name_space;
+        idt_end_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-max-unit")
+    if(value_path == "idt-start-time")
     {
-        traffic_max_unit = value;
-        traffic_max_unit.value_namespace = name_space;
-        traffic_max_unit.value_namespace_prefix = name_space_prefix;
+        idt_start_time = value;
+        idt_start_time.value_namespace = name_space;
+        idt_start_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-min-unit")
+    if(value_path == "not-ready-reason")
     {
-        traffic_min_unit = value;
-        traffic_min_unit.value_namespace = name_space;
-        traffic_min_unit.value_namespace_prefix = name_space_prefix;
+        not_ready_reason = value;
+        not_ready_reason.value_namespace = name_space;
+        not_ready_reason.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "traffic-peak-rate")
+    if(value_path == "sync-status")
     {
-        traffic_peak_rate = value;
-        traffic_peak_rate.value_namespace = name_space;
-        traffic_peak_rate.value_namespace_prefix = name_space_prefix;
+        sync_status = value;
+        sync_status.value_namespace = name_space;
+        sync_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time = value;
+        withdraw_time.value_namespace = name_space;
+        withdraw_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "traffic-average-rate")
+    if(value_path == "declare-time")
     {
-        traffic_average_rate.yfilter = yfilter;
+        declare_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-max-burst")
+    if(value_path == "idt-end-time")
     {
-        traffic_max_burst.yfilter = yfilter;
+        idt_end_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-max-unit")
+    if(value_path == "idt-start-time")
     {
-        traffic_max_unit.yfilter = yfilter;
+        idt_start_time.yfilter = yfilter;
     }
-    if(value_path == "traffic-min-unit")
+    if(value_path == "not-ready-reason")
     {
-        traffic_min_unit.yfilter = yfilter;
+        not_ready_reason.yfilter = yfilter;
     }
-    if(value_path == "traffic-peak-rate")
+    if(value_path == "sync-status")
     {
-        traffic_peak_rate.yfilter = yfilter;
+        sync_status.yfilter = yfilter;
+    }
+    if(value_path == "withdraw-time")
+    {
+        withdraw_time.yfilter = yfilter;
     }
 }
 
-bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::IntsrvTspec::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::Summary::NsrStatus::PreviousIdtStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "traffic-average-rate" || name == "traffic-max-burst" || name == "traffic-max-unit" || name == "traffic-min-unit" || name == "traffic-peak-rate")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBriefs()
-{
-    yang_name = "global-neighbor-briefs"; yang_parent_name = "rsvp";
-}
-
-Rsvp::GlobalNeighborBriefs::~GlobalNeighborBriefs()
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::has_data() const
-{
-    for (std::size_t index=0; index<global_neighbor_brief.size(); index++)
-    {
-        if(global_neighbor_brief[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Rsvp::GlobalNeighborBriefs::has_operation() const
-{
-    for (std::size_t index=0; index<global_neighbor_brief.size(); index++)
-    {
-        if(global_neighbor_brief[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Rsvp::GlobalNeighborBriefs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-briefs";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborBriefs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global-neighbor-brief")
-    {
-        for(auto const & c : global_neighbor_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief>();
-        c->parent = this;
-        global_neighbor_brief.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : global_neighbor_brief)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::GlobalNeighborBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Rsvp::GlobalNeighborBriefs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-neighbor-brief")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborBrief()
-    :
-    neighbor_address{YType::str, "neighbor-address"},
-    is_gr_enabled{YType::boolean, "is-gr-enabled"},
-    local_node_address{YType::str, "local-node-address"},
-    lost_communication_reason{YType::enumeration, "lost-communication-reason"},
-    lost_communication_total{YType::uint16, "lost-communication-total"},
-    neighbor_hello_state{YType::enumeration, "neighbor-hello-state"},
-    node_address{YType::str, "node-address"},
-    restart_state{YType::enumeration, "restart-state"}
-    	,
-    global_neighbor_flags(std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags>())
-{
-    global_neighbor_flags->parent = this;
-
-    yang_name = "global-neighbor-brief"; yang_parent_name = "global-neighbor-briefs";
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::~GlobalNeighborBrief()
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_data() const
-{
-    for (std::size_t index=0; index<lost_communication_time.size(); index++)
-    {
-        if(lost_communication_time[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<up_time.size(); index++)
-    {
-        if(up_time[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : local_node_address.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : lost_communication_reason.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : lost_communication_total.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : neighbor_hello_state.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return neighbor_address.is_set
-	|| is_gr_enabled.is_set
-	|| node_address.is_set
-	|| restart_state.is_set
-	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_data());
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_operation() const
-{
-    for (std::size_t index=0; index<lost_communication_time.size(); index++)
-    {
-        if(lost_communication_time[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<up_time.size(); index++)
-    {
-        if(up_time[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : local_node_address.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : lost_communication_reason.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : lost_communication_total.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : neighbor_hello_state.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(neighbor_address.yfilter)
-	|| ydk::is_set(is_gr_enabled.yfilter)
-	|| ydk::is_set(local_node_address.yfilter)
-	|| ydk::is_set(lost_communication_reason.yfilter)
-	|| ydk::is_set(lost_communication_total.yfilter)
-	|| ydk::is_set(neighbor_hello_state.yfilter)
-	|| ydk::is_set(node_address.yfilter)
-	|| ydk::is_set(restart_state.yfilter)
-	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation());
-}
-
-std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-brief" <<"[neighbor-address='" <<neighbor_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/global-neighbor-briefs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (is_gr_enabled.is_set || is_set(is_gr_enabled.yfilter)) leaf_name_data.push_back(is_gr_enabled.get_name_leafdata());
-    if (node_address.is_set || is_set(node_address.yfilter)) leaf_name_data.push_back(node_address.get_name_leafdata());
-    if (restart_state.is_set || is_set(restart_state.yfilter)) leaf_name_data.push_back(restart_state.get_name_leafdata());
-
-    auto local_node_address_name_datas = local_node_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), local_node_address_name_datas.begin(), local_node_address_name_datas.end());
-    auto lost_communication_reason_name_datas = lost_communication_reason.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), lost_communication_reason_name_datas.begin(), lost_communication_reason_name_datas.end());
-    auto lost_communication_total_name_datas = lost_communication_total.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), lost_communication_total_name_datas.begin(), lost_communication_total_name_datas.end());
-    auto neighbor_hello_state_name_datas = neighbor_hello_state.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), neighbor_hello_state_name_datas.begin(), neighbor_hello_state_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global-neighbor-flags")
-    {
-        if(global_neighbor_flags == nullptr)
-        {
-            global_neighbor_flags = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags>();
-        }
-        return global_neighbor_flags;
-    }
-
-    if(child_yang_name == "lost-communication-time")
-    {
-        for(auto const & c : lost_communication_time)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime>();
-        c->parent = this;
-        lost_communication_time.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "up-time")
-    {
-        for(auto const & c : up_time)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime>();
-        c->parent = this;
-        up_time.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(global_neighbor_flags != nullptr)
-    {
-        children["global-neighbor-flags"] = global_neighbor_flags;
-    }
-
-    for (auto const & c : lost_communication_time)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : up_time)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address = value;
-        neighbor_address.value_namespace = name_space;
-        neighbor_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled = value;
-        is_gr_enabled.value_namespace = name_space;
-        is_gr_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-node-address")
-    {
-        local_node_address.append(value);
-    }
-    if(value_path == "lost-communication-reason")
-    {
-        lost_communication_reason.append(value);
-    }
-    if(value_path == "lost-communication-total")
-    {
-        lost_communication_total.append(value);
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state.append(value);
-    }
-    if(value_path == "node-address")
-    {
-        node_address = value;
-        node_address.value_namespace = name_space;
-        node_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "restart-state")
-    {
-        restart_state = value;
-        restart_state.value_namespace = name_space;
-        restart_state.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "neighbor-address")
-    {
-        neighbor_address.yfilter = yfilter;
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled.yfilter = yfilter;
-    }
-    if(value_path == "local-node-address")
-    {
-        local_node_address.yfilter = yfilter;
-    }
-    if(value_path == "lost-communication-reason")
-    {
-        lost_communication_reason.yfilter = yfilter;
-    }
-    if(value_path == "lost-communication-total")
-    {
-        lost_communication_total.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-hello-state")
-    {
-        neighbor_hello_state.yfilter = yfilter;
-    }
-    if(value_path == "node-address")
-    {
-        node_address.yfilter = yfilter;
-    }
-    if(value_path == "restart-state")
-    {
-        restart_state.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-neighbor-flags" || name == "lost-communication-time" || name == "up-time" || name == "neighbor-address" || name == "is-gr-enabled" || name == "local-node-address" || name == "lost-communication-reason" || name == "lost-communication-total" || name == "neighbor-hello-state" || name == "node-address" || name == "restart-state")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::GlobalNeighborFlags()
-    :
-    is_application_mpls{YType::boolean, "is-application-mpls"},
-    is_application_ouni{YType::boolean, "is-application-ouni"}
-{
-    yang_name = "global-neighbor-flags"; yang_parent_name = "global-neighbor-brief";
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::~GlobalNeighborFlags()
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::has_data() const
-{
-    return is_application_mpls.is_set
-	|| is_application_ouni.is_set;
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_application_mpls.yfilter)
-	|| ydk::is_set(is_application_ouni.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-neighbor-flags";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'GlobalNeighborFlags' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_application_mpls.is_set || is_set(is_application_mpls.yfilter)) leaf_name_data.push_back(is_application_mpls.get_name_leafdata());
-    if (is_application_ouni.is_set || is_set(is_application_ouni.yfilter)) leaf_name_data.push_back(is_application_ouni.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-application-mpls")
-    {
-        is_application_mpls = value;
-        is_application_mpls.value_namespace = name_space;
-        is_application_mpls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-application-ouni")
-    {
-        is_application_ouni = value;
-        is_application_ouni.value_namespace = name_space;
-        is_application_ouni.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-application-mpls")
-    {
-        is_application_mpls.yfilter = yfilter;
-    }
-    if(value_path == "is-application-ouni")
-    {
-        is_application_ouni.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-application-mpls" || name == "is-application-ouni")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::UpTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "up-time"; yang_parent_name = "global-neighbor-brief";
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::~UpTime()
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "up-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'UpTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
-        return true;
-    return false;
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::LostCommunicationTime()
-    :
-    nanoseconds{YType::int32, "nanoseconds"},
-    seconds{YType::int32, "seconds"}
-{
-    yang_name = "lost-communication-time"; yang_parent_name = "global-neighbor-brief";
-}
-
-Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::~LostCommunicationTime()
-{
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::has_data() const
-{
-    return nanoseconds.is_set
-	|| seconds.is_set;
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nanoseconds.yfilter)
-	|| ydk::is_set(seconds.yfilter);
-}
-
-std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lost-communication-time";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LostCommunicationTime' in Cisco_IOS_XR_ip_rsvp_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nanoseconds" || name == "seconds")
+    if(name == "declare-time" || name == "idt-end-time" || name == "idt-start-time" || name == "not-ready-reason" || name == "sync-status" || name == "withdraw-time")
         return true;
     return false;
 }

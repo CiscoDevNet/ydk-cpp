@@ -17,10 +17,9 @@ Crypto::Crypto()
 	,ssh(std::make_shared<Crypto::Ssh>())
 {
     sam->parent = this;
-
     ssh->parent = this;
 
-    yang_name = "crypto"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-cfg";
+    yang_name = "crypto"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Crypto::~Crypto()
@@ -44,26 +43,15 @@ std::string Crypto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -150,7 +138,8 @@ Crypto::Sam::Sam()
     :
     prompt_interval(nullptr) // presence node
 {
-    yang_name = "sam"; yang_parent_name = "crypto";
+
+    yang_name = "sam"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Sam::~Sam()
@@ -168,33 +157,26 @@ bool Crypto::Sam::has_operation() const
 	|| (prompt_interval !=  nullptr && prompt_interval->has_operation());
 }
 
+std::string Crypto::Sam::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Sam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sam";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Sam::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Sam::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -243,7 +225,8 @@ Crypto::Sam::PromptInterval::PromptInterval()
     action{YType::enumeration, "action"},
     prompt_time{YType::uint32, "prompt-time"}
 {
-    yang_name = "prompt-interval"; yang_parent_name = "sam";
+
+    yang_name = "prompt-interval"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Sam::PromptInterval::~PromptInterval()
@@ -263,35 +246,28 @@ bool Crypto::Sam::PromptInterval::has_operation() const
 	|| ydk::is_set(prompt_time.yfilter);
 }
 
+std::string Crypto::Sam::PromptInterval::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/sam/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Sam::PromptInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prompt-interval";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Sam::PromptInterval::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Sam::PromptInterval::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/sam/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (prompt_time.is_set || is_set(prompt_time.yfilter)) leaf_name_data.push_back(prompt_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -347,10 +323,9 @@ Crypto::Ssh::Ssh()
 	,server(std::make_shared<Crypto::Ssh::Server>())
 {
     client->parent = this;
-
     server->parent = this;
 
-    yang_name = "ssh"; yang_parent_name = "crypto";
+    yang_name = "ssh"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::~Ssh()
@@ -370,33 +345,26 @@ bool Crypto::Ssh::has_operation() const
 	|| (server !=  nullptr && server->has_operation());
 }
 
+std::string Crypto::Ssh::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Ssh::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -459,9 +427,15 @@ Crypto::Ssh::Client::Client()
     client_vrf{YType::str, "client-vrf"},
     dscp{YType::uint32, "dscp"},
     host_public_key{YType::str, "host-public-key"},
+    rekey_time{YType::uint32, "rekey-time"},
+    rekey_volume{YType::uint32, "rekey-volume"},
     source_interface{YType::str, "source-interface"}
+    	,
+    client_enable(std::make_shared<Crypto::Ssh::Client::ClientEnable>())
 {
-    yang_name = "client"; yang_parent_name = "ssh";
+    client_enable->parent = this;
+
+    yang_name = "client"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Client::~Client()
@@ -473,7 +447,10 @@ bool Crypto::Ssh::Client::has_data() const
     return client_vrf.is_set
 	|| dscp.is_set
 	|| host_public_key.is_set
-	|| source_interface.is_set;
+	|| rekey_time.is_set
+	|| rekey_volume.is_set
+	|| source_interface.is_set
+	|| (client_enable !=  nullptr && client_enable->has_data());
 }
 
 bool Crypto::Ssh::Client::has_operation() const
@@ -482,51 +459,63 @@ bool Crypto::Ssh::Client::has_operation() const
 	|| ydk::is_set(client_vrf.yfilter)
 	|| ydk::is_set(dscp.yfilter)
 	|| ydk::is_set(host_public_key.yfilter)
-	|| ydk::is_set(source_interface.yfilter);
+	|| ydk::is_set(rekey_time.yfilter)
+	|| ydk::is_set(rekey_volume.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| (client_enable !=  nullptr && client_enable->has_operation());
+}
+
+std::string Crypto::Ssh::Client::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/" << get_segment_path();
+    return path_buffer.str();
 }
 
 std::string Crypto::Ssh::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Client::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Client::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (client_vrf.is_set || is_set(client_vrf.yfilter)) leaf_name_data.push_back(client_vrf.get_name_leafdata());
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
     if (host_public_key.is_set || is_set(host_public_key.yfilter)) leaf_name_data.push_back(host_public_key.get_name_leafdata());
+    if (rekey_time.is_set || is_set(rekey_time.yfilter)) leaf_name_data.push_back(rekey_time.get_name_leafdata());
+    if (rekey_volume.is_set || is_set(rekey_volume.yfilter)) leaf_name_data.push_back(rekey_volume.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Crypto::Ssh::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "client-enable")
+    {
+        if(client_enable == nullptr)
+        {
+            client_enable = std::make_shared<Crypto::Ssh::Client::ClientEnable>();
+        }
+        return client_enable;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client_enable != nullptr)
+    {
+        children["client-enable"] = client_enable;
+    }
+
     return children;
 }
 
@@ -550,6 +539,18 @@ void Crypto::Ssh::Client::set_value(const std::string & value_path, const std::s
         host_public_key.value_namespace = name_space;
         host_public_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "rekey-time")
+    {
+        rekey_time = value;
+        rekey_time.value_namespace = name_space;
+        rekey_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rekey-volume")
+    {
+        rekey_volume = value;
+        rekey_volume.value_namespace = name_space;
+        rekey_volume.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "source-interface")
     {
         source_interface = value;
@@ -572,6 +573,14 @@ void Crypto::Ssh::Client::set_filter(const std::string & value_path, YFilter yfi
     {
         host_public_key.yfilter = yfilter;
     }
+    if(value_path == "rekey-time")
+    {
+        rekey_time.yfilter = yfilter;
+    }
+    if(value_path == "rekey-volume")
+    {
+        rekey_volume.yfilter = yfilter;
+    }
     if(value_path == "source-interface")
     {
         source_interface.yfilter = yfilter;
@@ -580,7 +589,177 @@ void Crypto::Ssh::Client::set_filter(const std::string & value_path, YFilter yfi
 
 bool Crypto::Ssh::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-vrf" || name == "dscp" || name == "host-public-key" || name == "source-interface")
+    if(name == "client-enable" || name == "client-vrf" || name == "dscp" || name == "host-public-key" || name == "rekey-time" || name == "rekey-volume" || name == "source-interface")
+        return true;
+    return false;
+}
+
+Crypto::Ssh::Client::ClientEnable::ClientEnable()
+    :
+    client_cipher(std::make_shared<Crypto::Ssh::Client::ClientEnable::ClientCipher>())
+{
+    client_cipher->parent = this;
+
+    yang_name = "client-enable"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Crypto::Ssh::Client::ClientEnable::~ClientEnable()
+{
+}
+
+bool Crypto::Ssh::Client::ClientEnable::has_data() const
+{
+    return (client_cipher !=  nullptr && client_cipher->has_data());
+}
+
+bool Crypto::Ssh::Client::ClientEnable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (client_cipher !=  nullptr && client_cipher->has_operation());
+}
+
+std::string Crypto::Ssh::Client::ClientEnable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/client/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Crypto::Ssh::Client::ClientEnable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client-enable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Client::ClientEnable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Crypto::Ssh::Client::ClientEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "client-cipher")
+    {
+        if(client_cipher == nullptr)
+        {
+            client_cipher = std::make_shared<Crypto::Ssh::Client::ClientEnable::ClientCipher>();
+        }
+        return client_cipher;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Client::ClientEnable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(client_cipher != nullptr)
+    {
+        children["client-cipher"] = client_cipher;
+    }
+
+    return children;
+}
+
+void Crypto::Ssh::Client::ClientEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Crypto::Ssh::Client::ClientEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Crypto::Ssh::Client::ClientEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-cipher")
+        return true;
+    return false;
+}
+
+Crypto::Ssh::Client::ClientEnable::ClientCipher::ClientCipher()
+    :
+    aescbc{YType::boolean, "aescbc"}
+{
+
+    yang_name = "client-cipher"; yang_parent_name = "client-enable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Crypto::Ssh::Client::ClientEnable::ClientCipher::~ClientCipher()
+{
+}
+
+bool Crypto::Ssh::Client::ClientEnable::ClientCipher::has_data() const
+{
+    return aescbc.is_set;
+}
+
+bool Crypto::Ssh::Client::ClientEnable::ClientCipher::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aescbc.yfilter);
+}
+
+std::string Crypto::Ssh::Client::ClientEnable::ClientCipher::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/client/client-enable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Crypto::Ssh::Client::ClientEnable::ClientCipher::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client-cipher";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Client::ClientEnable::ClientCipher::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aescbc.is_set || is_set(aescbc.yfilter)) leaf_name_data.push_back(aescbc.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Crypto::Ssh::Client::ClientEnable::ClientCipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Client::ClientEnable::ClientCipher::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Crypto::Ssh::Client::ClientEnable::ClientCipher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aescbc")
+    {
+        aescbc = value;
+        aescbc.value_namespace = name_space;
+        aescbc.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Crypto::Ssh::Client::ClientEnable::ClientCipher::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aescbc")
+    {
+        aescbc.yfilter = yfilter;
+    }
+}
+
+bool Crypto::Ssh::Client::ClientEnable::ClientCipher::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aescbc")
         return true;
     return false;
 }
@@ -599,18 +778,17 @@ Crypto::Ssh::Server::Server()
     	,
     capability(std::make_shared<Crypto::Ssh::Server::Capability>())
 	,disable(std::make_shared<Crypto::Ssh::Server::Disable>())
+	,enable(std::make_shared<Crypto::Ssh::Server::Enable>())
 	,netconf_vrf_table(std::make_shared<Crypto::Ssh::Server::NetconfVrfTable>())
 	,vrf_table(std::make_shared<Crypto::Ssh::Server::VrfTable>())
 {
     capability->parent = this;
-
     disable->parent = this;
-
+    enable->parent = this;
     netconf_vrf_table->parent = this;
-
     vrf_table->parent = this;
 
-    yang_name = "server"; yang_parent_name = "ssh";
+    yang_name = "server"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Server::~Server()
@@ -630,6 +808,7 @@ bool Crypto::Ssh::Server::has_data() const
 	|| v2.is_set
 	|| (capability !=  nullptr && capability->has_data())
 	|| (disable !=  nullptr && disable->has_data())
+	|| (enable !=  nullptr && enable->has_data())
 	|| (netconf_vrf_table !=  nullptr && netconf_vrf_table->has_data())
 	|| (vrf_table !=  nullptr && vrf_table->has_data());
 }
@@ -648,31 +827,27 @@ bool Crypto::Ssh::Server::has_operation() const
 	|| ydk::is_set(v2.yfilter)
 	|| (capability !=  nullptr && capability->has_operation())
 	|| (disable !=  nullptr && disable->has_operation())
+	|| (enable !=  nullptr && enable->has_operation())
 	|| (netconf_vrf_table !=  nullptr && netconf_vrf_table->has_operation())
 	|| (vrf_table !=  nullptr && vrf_table->has_operation());
+}
+
+std::string Crypto::Ssh::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/" << get_segment_path();
+    return path_buffer.str();
 }
 
 std::string Crypto::Ssh::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
@@ -685,9 +860,7 @@ const EntityPath Crypto::Ssh::Server::get_entity_path(Entity* ancestor) const
     if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
     if (v2.is_set || is_set(v2.yfilter)) leaf_name_data.push_back(v2.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -709,6 +882,15 @@ std::shared_ptr<Entity> Crypto::Ssh::Server::get_child_by_name(const std::string
             disable = std::make_shared<Crypto::Ssh::Server::Disable>();
         }
         return disable;
+    }
+
+    if(child_yang_name == "enable")
+    {
+        if(enable == nullptr)
+        {
+            enable = std::make_shared<Crypto::Ssh::Server::Enable>();
+        }
+        return enable;
     }
 
     if(child_yang_name == "netconf-vrf-table")
@@ -743,6 +925,11 @@ std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::get_children
     if(disable != nullptr)
     {
         children["disable"] = disable;
+    }
+
+    if(enable != nullptr)
+    {
+        children["enable"] = enable;
     }
 
     if(netconf_vrf_table != nullptr)
@@ -858,7 +1045,90 @@ void Crypto::Ssh::Server::set_filter(const std::string & value_path, YFilter yfi
 
 bool Crypto::Ssh::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capability" || name == "disable" || name == "netconf-vrf-table" || name == "vrf-table" || name == "dscp" || name == "logging" || name == "netconf" || name == "rate-limit" || name == "rekey-time" || name == "rekey-volume" || name == "session-limit" || name == "timeout" || name == "v2")
+    if(name == "capability" || name == "disable" || name == "enable" || name == "netconf-vrf-table" || name == "vrf-table" || name == "dscp" || name == "logging" || name == "netconf" || name == "rate-limit" || name == "rekey-time" || name == "rekey-volume" || name == "session-limit" || name == "timeout" || name == "v2")
+        return true;
+    return false;
+}
+
+Crypto::Ssh::Server::Capability::Capability()
+    :
+    netconf_xml{YType::boolean, "netconf-xml"}
+{
+
+    yang_name = "capability"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Crypto::Ssh::Server::Capability::~Capability()
+{
+}
+
+bool Crypto::Ssh::Server::Capability::has_data() const
+{
+    return netconf_xml.is_set;
+}
+
+bool Crypto::Ssh::Server::Capability::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(netconf_xml.yfilter);
+}
+
+std::string Crypto::Ssh::Server::Capability::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Crypto::Ssh::Server::Capability::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "capability";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::Capability::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (netconf_xml.is_set || is_set(netconf_xml.yfilter)) leaf_name_data.push_back(netconf_xml.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Crypto::Ssh::Server::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Capability::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Crypto::Ssh::Server::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "netconf-xml")
+    {
+        netconf_xml = value;
+        netconf_xml.value_namespace = name_space;
+        netconf_xml.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Crypto::Ssh::Server::Capability::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "netconf-xml")
+    {
+        netconf_xml.yfilter = yfilter;
+    }
+}
+
+bool Crypto::Ssh::Server::Capability::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "netconf-xml")
         return true;
     return false;
 }
@@ -869,7 +1139,7 @@ Crypto::Ssh::Server::Disable::Disable()
 {
     hmac->parent = this;
 
-    yang_name = "disable"; yang_parent_name = "server";
+    yang_name = "disable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Server::Disable::~Disable()
@@ -887,33 +1157,26 @@ bool Crypto::Ssh::Server::Disable::has_operation() const
 	|| (hmac !=  nullptr && hmac->has_operation());
 }
 
+std::string Crypto::Ssh::Server::Disable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Ssh::Server::Disable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::Disable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::Disable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -961,7 +1224,8 @@ Crypto::Ssh::Server::Disable::Hmac::Hmac()
     :
     hmac_sha512{YType::boolean, "hmac-sha512"}
 {
-    yang_name = "hmac"; yang_parent_name = "disable";
+
+    yang_name = "hmac"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Server::Disable::Hmac::~Hmac()
@@ -979,34 +1243,27 @@ bool Crypto::Ssh::Server::Disable::Hmac::has_operation() const
 	|| ydk::is_set(hmac_sha512.yfilter);
 }
 
+std::string Crypto::Ssh::Server::Disable::Hmac::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/disable/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Ssh::Server::Disable::Hmac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hmac";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::Disable::Hmac::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::Disable::Hmac::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/disable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hmac_sha512.is_set || is_set(hmac_sha512.yfilter)) leaf_name_data.push_back(hmac_sha512.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1046,335 +1303,180 @@ bool Crypto::Ssh::Server::Disable::Hmac::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Crypto::Ssh::Server::VrfTable::VrfTable()
+Crypto::Ssh::Server::Enable::Enable()
+    :
+    cipher(std::make_shared<Crypto::Ssh::Server::Enable::Cipher>())
 {
-    yang_name = "vrf-table"; yang_parent_name = "server";
+    cipher->parent = this;
+
+    yang_name = "enable"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Crypto::Ssh::Server::VrfTable::~VrfTable()
+Crypto::Ssh::Server::Enable::~Enable()
 {
 }
 
-bool Crypto::Ssh::Server::VrfTable::has_data() const
+bool Crypto::Ssh::Server::Enable::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return false;
+    return (cipher !=  nullptr && cipher->has_data());
 }
 
-bool Crypto::Ssh::Server::VrfTable::has_operation() const
+bool Crypto::Ssh::Server::Enable::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| (cipher !=  nullptr && cipher->has_operation());
 }
 
-std::string Crypto::Ssh::Server::VrfTable::get_segment_path() const
+std::string Crypto::Ssh::Server::Enable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-table";
-
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::VrfTable::get_entity_path(Entity* ancestor) const
+std::string Crypto::Ssh::Server::Enable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "enable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::Enable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Crypto::Ssh::Server::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vrf")
+    if(child_yang_name == "cipher")
     {
-        for(auto const & c : vrf)
+        if(cipher == nullptr)
         {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
+            cipher = std::make_shared<Crypto::Ssh::Server::Enable::Cipher>();
         }
-        auto c = std::make_shared<Crypto::Ssh::Server::VrfTable::Vrf>();
-        c->parent = this;
-        vrf.push_back(c);
-        return c;
+        return cipher;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Enable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vrf)
+    if(cipher != nullptr)
     {
-        children[c->get_segment_path()] = c;
+        children["cipher"] = cipher;
     }
 
     return children;
 }
 
-void Crypto::Ssh::Server::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Crypto::Ssh::Server::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Crypto::Ssh::Server::VrfTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Crypto::Ssh::Server::Enable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Crypto::Ssh::Server::VrfTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Crypto::Ssh::Server::Enable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf")
+    if(name == "cipher")
         return true;
     return false;
 }
 
-Crypto::Ssh::Server::VrfTable::Vrf::Vrf()
+Crypto::Ssh::Server::Enable::Cipher::Cipher()
     :
-    vrf_name{YType::str, "vrf-name"},
-    enable{YType::empty, "enable"},
-    ipv4_access_list{YType::str, "ipv4-access-list"},
-    ipv6_access_list{YType::str, "ipv6-access-list"}
+    aescbc{YType::boolean, "aescbc"}
 {
-    yang_name = "vrf"; yang_parent_name = "vrf-table";
+
+    yang_name = "cipher"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Crypto::Ssh::Server::VrfTable::Vrf::~Vrf()
+Crypto::Ssh::Server::Enable::Cipher::~Cipher()
 {
 }
 
-bool Crypto::Ssh::Server::VrfTable::Vrf::has_data() const
+bool Crypto::Ssh::Server::Enable::Cipher::has_data() const
 {
-    return vrf_name.is_set
-	|| enable.is_set
-	|| ipv4_access_list.is_set
-	|| ipv6_access_list.is_set;
+    return aescbc.is_set;
 }
 
-bool Crypto::Ssh::Server::VrfTable::Vrf::has_operation() const
+bool Crypto::Ssh::Server::Enable::Cipher::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(ipv4_access_list.yfilter)
-	|| ydk::is_set(ipv6_access_list.yfilter);
+	|| ydk::is_set(aescbc.yfilter);
 }
 
-std::string Crypto::Ssh::Server::VrfTable::Vrf::get_segment_path() const
+std::string Crypto::Ssh::Server::Enable::Cipher::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/enable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::VrfTable::Vrf::get_entity_path(Entity* ancestor) const
+std::string Crypto::Ssh::Server::Enable::Cipher::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/vrf-table/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "cipher";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::Enable::Cipher::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (ipv4_access_list.is_set || is_set(ipv4_access_list.yfilter)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
-    if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
+    if (aescbc.is_set || is_set(aescbc.yfilter)) leaf_name_data.push_back(aescbc.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Crypto::Ssh::Server::Enable::Cipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Enable::Cipher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Crypto::Ssh::Server::VrfTable::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Crypto::Ssh::Server::Enable::Cipher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "vrf-name")
+    if(value_path == "aescbc")
     {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-access-list")
-    {
-        ipv4_access_list = value;
-        ipv4_access_list.value_namespace = name_space;
-        ipv4_access_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-access-list")
-    {
-        ipv6_access_list = value;
-        ipv6_access_list.value_namespace = name_space;
-        ipv6_access_list.value_namespace_prefix = name_space_prefix;
+        aescbc = value;
+        aescbc.value_namespace = name_space;
+        aescbc.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Crypto::Ssh::Server::VrfTable::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Crypto::Ssh::Server::Enable::Cipher::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "vrf-name")
+    if(value_path == "aescbc")
     {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-access-list")
-    {
-        ipv4_access_list.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-access-list")
-    {
-        ipv6_access_list.yfilter = yfilter;
+        aescbc.yfilter = yfilter;
     }
 }
 
-bool Crypto::Ssh::Server::VrfTable::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Crypto::Ssh::Server::Enable::Cipher::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf-name" || name == "enable" || name == "ipv4-access-list" || name == "ipv6-access-list")
-        return true;
-    return false;
-}
-
-Crypto::Ssh::Server::Capability::Capability()
-    :
-    netconf_xml{YType::boolean, "netconf-xml"}
-{
-    yang_name = "capability"; yang_parent_name = "server";
-}
-
-Crypto::Ssh::Server::Capability::~Capability()
-{
-}
-
-bool Crypto::Ssh::Server::Capability::has_data() const
-{
-    return netconf_xml.is_set;
-}
-
-bool Crypto::Ssh::Server::Capability::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(netconf_xml.yfilter);
-}
-
-std::string Crypto::Ssh::Server::Capability::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "capability";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Crypto::Ssh::Server::Capability::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (netconf_xml.is_set || is_set(netconf_xml.yfilter)) leaf_name_data.push_back(netconf_xml.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Crypto::Ssh::Server::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::Capability::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Crypto::Ssh::Server::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "netconf-xml")
-    {
-        netconf_xml = value;
-        netconf_xml.value_namespace = name_space;
-        netconf_xml.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Crypto::Ssh::Server::Capability::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "netconf-xml")
-    {
-        netconf_xml.yfilter = yfilter;
-    }
-}
-
-bool Crypto::Ssh::Server::Capability::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "netconf-xml")
+    if(name == "aescbc")
         return true;
     return false;
 }
 
 Crypto::Ssh::Server::NetconfVrfTable::NetconfVrfTable()
 {
-    yang_name = "netconf-vrf-table"; yang_parent_name = "server";
+
+    yang_name = "netconf-vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Server::NetconfVrfTable::~NetconfVrfTable()
@@ -1401,33 +1503,26 @@ bool Crypto::Ssh::Server::NetconfVrfTable::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Crypto::Ssh::Server::NetconfVrfTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Ssh::Server::NetconfVrfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "netconf-vrf-table";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::NetconfVrfTable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::NetconfVrfTable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1485,7 +1580,8 @@ Crypto::Ssh::Server::NetconfVrfTable::Vrf::Vrf()
     ipv4_access_list{YType::str, "ipv4-access-list"},
     ipv6_access_list{YType::str, "ipv6-access-list"}
 {
-    yang_name = "vrf"; yang_parent_name = "netconf-vrf-table";
+
+    yang_name = "vrf"; yang_parent_name = "netconf-vrf-table"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Crypto::Ssh::Server::NetconfVrfTable::Vrf::~Vrf()
@@ -1509,27 +1605,22 @@ bool Crypto::Ssh::Server::NetconfVrfTable::Vrf::has_operation() const
 	|| ydk::is_set(ipv6_access_list.yfilter);
 }
 
+std::string Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/netconf-vrf-table/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/netconf-vrf-table/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
@@ -1537,9 +1628,7 @@ const EntityPath Crypto::Ssh::Server::NetconfVrfTable::Vrf::get_entity_path(Enti
     if (ipv4_access_list.is_set || is_set(ipv4_access_list.yfilter)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
     if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1603,6 +1692,231 @@ void Crypto::Ssh::Server::NetconfVrfTable::Vrf::set_filter(const std::string & v
 }
 
 bool Crypto::Ssh::Server::NetconfVrfTable::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "enable" || name == "ipv4-access-list" || name == "ipv6-access-list")
+        return true;
+    return false;
+}
+
+Crypto::Ssh::Server::VrfTable::VrfTable()
+{
+
+    yang_name = "vrf-table"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Crypto::Ssh::Server::VrfTable::~VrfTable()
+{
+}
+
+bool Crypto::Ssh::Server::VrfTable::has_data() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Crypto::Ssh::Server::VrfTable::has_operation() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Crypto::Ssh::Server::VrfTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Crypto::Ssh::Server::VrfTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::VrfTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf")
+    {
+        for(auto const & c : vrf)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Crypto::Ssh::Server::VrfTable::Vrf>();
+        c->parent = this;
+        vrf.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : vrf)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Crypto::Ssh::Server::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Crypto::Ssh::Server::VrfTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Crypto::Ssh::Server::VrfTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
+}
+
+Crypto::Ssh::Server::VrfTable::Vrf::Vrf()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    enable{YType::empty, "enable"},
+    ipv4_access_list{YType::str, "ipv4-access-list"},
+    ipv6_access_list{YType::str, "ipv6-access-list"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "vrf-table"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Crypto::Ssh::Server::VrfTable::Vrf::~Vrf()
+{
+}
+
+bool Crypto::Ssh::Server::VrfTable::Vrf::has_data() const
+{
+    return vrf_name.is_set
+	|| enable.is_set
+	|| ipv4_access_list.is_set
+	|| ipv6_access_list.is_set;
+}
+
+bool Crypto::Ssh::Server::VrfTable::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(ipv4_access_list.yfilter)
+	|| ydk::is_set(ipv6_access_list.yfilter);
+}
+
+std::string Crypto::Ssh::Server::VrfTable::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-sam-cfg:crypto/Cisco-IOS-XR-crypto-ssh-cfg:ssh/server/vrf-table/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Crypto::Ssh::Server::VrfTable::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Crypto::Ssh::Server::VrfTable::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (ipv4_access_list.is_set || is_set(ipv4_access_list.yfilter)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
+    if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Crypto::Ssh::Server::VrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Crypto::Ssh::Server::VrfTable::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Crypto::Ssh::Server::VrfTable::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-access-list")
+    {
+        ipv4_access_list = value;
+        ipv4_access_list.value_namespace = name_space;
+        ipv4_access_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-access-list")
+    {
+        ipv6_access_list = value;
+        ipv6_access_list.value_namespace = name_space;
+        ipv6_access_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Crypto::Ssh::Server::VrfTable::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-access-list")
+    {
+        ipv4_access_list.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-access-list")
+    {
+        ipv6_access_list.yfilter = yfilter;
+    }
+}
+
+bool Crypto::Ssh::Server::VrfTable::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "enable" || name == "ipv4-access-list" || name == "ipv6-access-list")
         return true;

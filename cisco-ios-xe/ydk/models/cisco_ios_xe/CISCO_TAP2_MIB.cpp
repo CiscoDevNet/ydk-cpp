@@ -11,35 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_TAP2_MIB {
 
-CiscoTap2Mib::CiscoTap2Mib()
+CISCOTAP2MIB::CISCOTAP2MIB()
     :
-    ctap2debuggroup(std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>())
-	,ctap2debugtable(std::make_shared<CiscoTap2Mib::Ctap2Debugtable>())
-	,ctap2debugusertable(std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>())
-	,ctap2mediationgroup(std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>())
-	,ctap2mediationtable(std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>())
-	,ctap2streamtable(std::make_shared<CiscoTap2Mib::Ctap2Streamtable>())
+    ctap2debuggroup(std::make_shared<CISCOTAP2MIB::Ctap2Debuggroup>())
+	,ctap2debugtable(std::make_shared<CISCOTAP2MIB::Ctap2Debugtable>())
+	,ctap2debugusertable(std::make_shared<CISCOTAP2MIB::Ctap2Debugusertable>())
+	,ctap2mediationgroup(std::make_shared<CISCOTAP2MIB::Ctap2Mediationgroup>())
+	,ctap2mediationtable(std::make_shared<CISCOTAP2MIB::Ctap2Mediationtable>())
+	,ctap2streamtable(std::make_shared<CISCOTAP2MIB::Ctap2Streamtable>())
 {
     ctap2debuggroup->parent = this;
-
     ctap2debugtable->parent = this;
-
     ctap2debugusertable->parent = this;
-
     ctap2mediationgroup->parent = this;
-
     ctap2mediationtable->parent = this;
-
     ctap2streamtable->parent = this;
 
-    yang_name = "CISCO-TAP2-MIB"; yang_parent_name = "CISCO-TAP2-MIB";
+    yang_name = "CISCO-TAP2-MIB"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::~CiscoTap2Mib()
+CISCOTAP2MIB::~CISCOTAP2MIB()
 {
 }
 
-bool CiscoTap2Mib::has_data() const
+bool CISCOTAP2MIB::has_data() const
 {
     return (ctap2debuggroup !=  nullptr && ctap2debuggroup->has_data())
 	|| (ctap2debugtable !=  nullptr && ctap2debugtable->has_data())
@@ -49,7 +44,7 @@ bool CiscoTap2Mib::has_data() const
 	|| (ctap2streamtable !=  nullptr && ctap2streamtable->has_data());
 }
 
-bool CiscoTap2Mib::has_operation() const
+bool CISCOTAP2MIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (ctap2debuggroup !=  nullptr && ctap2debuggroup->has_operation())
@@ -60,40 +55,29 @@ bool CiscoTap2Mib::has_operation() const
 	|| (ctap2streamtable !=  nullptr && ctap2streamtable->has_operation());
 }
 
-std::string CiscoTap2Mib::get_segment_path() const
+std::string CISCOTAP2MIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cTap2DebugGroup")
     {
         if(ctap2debuggroup == nullptr)
         {
-            ctap2debuggroup = std::make_shared<CiscoTap2Mib::Ctap2Debuggroup>();
+            ctap2debuggroup = std::make_shared<CISCOTAP2MIB::Ctap2Debuggroup>();
         }
         return ctap2debuggroup;
     }
@@ -102,7 +86,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     {
         if(ctap2debugtable == nullptr)
         {
-            ctap2debugtable = std::make_shared<CiscoTap2Mib::Ctap2Debugtable>();
+            ctap2debugtable = std::make_shared<CISCOTAP2MIB::Ctap2Debugtable>();
         }
         return ctap2debugtable;
     }
@@ -111,7 +95,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     {
         if(ctap2debugusertable == nullptr)
         {
-            ctap2debugusertable = std::make_shared<CiscoTap2Mib::Ctap2Debugusertable>();
+            ctap2debugusertable = std::make_shared<CISCOTAP2MIB::Ctap2Debugusertable>();
         }
         return ctap2debugusertable;
     }
@@ -120,7 +104,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     {
         if(ctap2mediationgroup == nullptr)
         {
-            ctap2mediationgroup = std::make_shared<CiscoTap2Mib::Ctap2Mediationgroup>();
+            ctap2mediationgroup = std::make_shared<CISCOTAP2MIB::Ctap2Mediationgroup>();
         }
         return ctap2mediationgroup;
     }
@@ -129,7 +113,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     {
         if(ctap2mediationtable == nullptr)
         {
-            ctap2mediationtable = std::make_shared<CiscoTap2Mib::Ctap2Mediationtable>();
+            ctap2mediationtable = std::make_shared<CISCOTAP2MIB::Ctap2Mediationtable>();
         }
         return ctap2mediationtable;
     }
@@ -138,7 +122,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     {
         if(ctap2streamtable == nullptr)
         {
-            ctap2streamtable = std::make_shared<CiscoTap2Mib::Ctap2Streamtable>();
+            ctap2streamtable = std::make_shared<CISCOTAP2MIB::Ctap2Streamtable>();
         }
         return ctap2streamtable;
     }
@@ -146,7 +130,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(ctap2debuggroup != nullptr)
@@ -182,216 +166,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::get_children() cons
     return children;
 }
 
-void CiscoTap2Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoTap2Mib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::clone_ptr() const
+std::shared_ptr<Entity> CISCOTAP2MIB::clone_ptr() const
 {
-    return std::make_shared<CiscoTap2Mib>();
+    return std::make_shared<CISCOTAP2MIB>();
 }
 
-std::string CiscoTap2Mib::get_bundle_yang_models_location() const
+std::string CISCOTAP2MIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoTap2Mib::get_bundle_name() const
+std::string CISCOTAP2MIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoTap2Mib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOTAP2MIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoTap2Mib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOTAP2MIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoTap2Mib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2DebugGroup" || name == "cTap2DebugTable" || name == "cTap2DebugUserTable" || name == "cTap2MediationGroup" || name == "cTap2MediationTable" || name == "cTap2StreamTable")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Mediationgroup::Ctap2Mediationgroup()
-    :
-    ctap2mediationcapabilities{YType::bits, "cTap2MediationCapabilities"},
-    ctap2mediationnewindex{YType::int32, "cTap2MediationNewIndex"}
-{
-    yang_name = "cTap2MediationGroup"; yang_parent_name = "CISCO-TAP2-MIB";
-}
-
-CiscoTap2Mib::Ctap2Mediationgroup::~Ctap2Mediationgroup()
-{
-}
-
-bool CiscoTap2Mib::Ctap2Mediationgroup::has_data() const
-{
-    return ctap2mediationcapabilities.is_set
-	|| ctap2mediationnewindex.is_set;
-}
-
-bool CiscoTap2Mib::Ctap2Mediationgroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ctap2mediationcapabilities.yfilter)
-	|| ydk::is_set(ctap2mediationnewindex.yfilter);
-}
-
-std::string CiscoTap2Mib::Ctap2Mediationgroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cTap2MediationGroup";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoTap2Mib::Ctap2Mediationgroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ctap2mediationcapabilities.is_set || is_set(ctap2mediationcapabilities.yfilter)) leaf_name_data.push_back(ctap2mediationcapabilities.get_name_leafdata());
-    if (ctap2mediationnewindex.is_set || is_set(ctap2mediationnewindex.yfilter)) leaf_name_data.push_back(ctap2mediationnewindex.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Mediationgroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoTap2Mib::Ctap2Mediationgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cTap2MediationCapabilities")
-    {
-        ctap2mediationcapabilities[value] = true;
-    }
-    if(value_path == "cTap2MediationNewIndex")
-    {
-        ctap2mediationnewindex = value;
-        ctap2mediationnewindex.value_namespace = name_space;
-        ctap2mediationnewindex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoTap2Mib::Ctap2Mediationgroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cTap2MediationCapabilities")
-    {
-        ctap2mediationcapabilities.yfilter = yfilter;
-    }
-    if(value_path == "cTap2MediationNewIndex")
-    {
-        ctap2mediationnewindex.yfilter = yfilter;
-    }
-}
-
-bool CiscoTap2Mib::Ctap2Mediationgroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cTap2MediationCapabilities" || name == "cTap2MediationNewIndex")
-        return true;
-    return false;
-}
-
-CiscoTap2Mib::Ctap2Debuggroup::Ctap2Debuggroup()
+CISCOTAP2MIB::Ctap2Debuggroup::Ctap2Debuggroup()
     :
     ctap2debugage{YType::int32, "cTap2DebugAge"},
     ctap2debugmaxentries{YType::int32, "cTap2DebugMaxEntries"}
 {
-    yang_name = "cTap2DebugGroup"; yang_parent_name = "CISCO-TAP2-MIB";
+
+    yang_name = "cTap2DebugGroup"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::Ctap2Debuggroup::~Ctap2Debuggroup()
+CISCOTAP2MIB::Ctap2Debuggroup::~Ctap2Debuggroup()
 {
 }
 
-bool CiscoTap2Mib::Ctap2Debuggroup::has_data() const
+bool CISCOTAP2MIB::Ctap2Debuggroup::has_data() const
 {
     return ctap2debugage.is_set
 	|| ctap2debugmaxentries.is_set;
 }
 
-bool CiscoTap2Mib::Ctap2Debuggroup::has_operation() const
+bool CISCOTAP2MIB::Ctap2Debuggroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ctap2debugage.yfilter)
 	|| ydk::is_set(ctap2debugmaxentries.yfilter);
 }
 
-std::string CiscoTap2Mib::Ctap2Debuggroup::get_segment_path() const
+std::string CISCOTAP2MIB::Ctap2Debuggroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Debuggroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cTap2DebugGroup";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::Ctap2Debuggroup::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Debuggroup::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ctap2debugage.is_set || is_set(ctap2debugage.yfilter)) leaf_name_data.push_back(ctap2debugage.get_name_leafdata());
     if (ctap2debugmaxentries.is_set || is_set(ctap2debugmaxentries.yfilter)) leaf_name_data.push_back(ctap2debugmaxentries.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debuggroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debuggroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debuggroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debuggroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoTap2Mib::Ctap2Debuggroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::Ctap2Debuggroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cTap2DebugAge")
     {
@@ -407,7 +284,7 @@ void CiscoTap2Mib::Ctap2Debuggroup::set_value(const std::string & value_path, co
     }
 }
 
-void CiscoTap2Mib::Ctap2Debuggroup::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::Ctap2Debuggroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cTap2DebugAge")
     {
@@ -419,23 +296,597 @@ void CiscoTap2Mib::Ctap2Debuggroup::set_filter(const std::string & value_path, Y
     }
 }
 
-bool CiscoTap2Mib::Ctap2Debuggroup::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::Ctap2Debuggroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2DebugAge" || name == "cTap2DebugMaxEntries")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationtable()
+CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugtable()
 {
-    yang_name = "cTap2MediationTable"; yang_parent_name = "CISCO-TAP2-MIB";
+
+    yang_name = "cTap2DebugTable"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::Ctap2Mediationtable::~Ctap2Mediationtable()
+CISCOTAP2MIB::Ctap2Debugtable::~Ctap2Debugtable()
 {
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::has_data() const
+bool CISCOTAP2MIB::Ctap2Debugtable::has_data() const
+{
+    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
+    {
+        if(ctap2debugentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOTAP2MIB::Ctap2Debugtable::has_operation() const
+{
+    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
+    {
+        if(ctap2debugentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugtable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cTap2DebugTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Debugtable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cTap2DebugEntry")
+    {
+        for(auto const & c : ctap2debugentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry>();
+        c->parent = this;
+        ctap2debugentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugtable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ctap2debugentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOTAP2MIB::Ctap2Debugtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOTAP2MIB::Ctap2Debugtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Debugtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cTap2DebugEntry")
+        return true;
+    return false;
+}
+
+CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::Ctap2Debugentry()
+    :
+    ctap2debugindex{YType::int32, "cTap2DebugIndex"},
+    ctap2debugmediationid{YType::uint32, "cTap2DebugMediationId"},
+    ctap2debugmessage{YType::str, "cTap2DebugMessage"},
+    ctap2debugstatus{YType::enumeration, "cTap2DebugStatus"},
+    ctap2debugstreamid{YType::uint32, "cTap2DebugStreamId"}
+{
+
+    yang_name = "cTap2DebugEntry"; yang_parent_name = "cTap2DebugTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::~Ctap2Debugentry()
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::has_data() const
+{
+    return ctap2debugindex.is_set
+	|| ctap2debugmediationid.is_set
+	|| ctap2debugmessage.is_set
+	|| ctap2debugstatus.is_set
+	|| ctap2debugstreamid.is_set;
+}
+
+bool CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ctap2debugindex.yfilter)
+	|| ydk::is_set(ctap2debugmediationid.yfilter)
+	|| ydk::is_set(ctap2debugmessage.yfilter)
+	|| ydk::is_set(ctap2debugstatus.yfilter)
+	|| ydk::is_set(ctap2debugstreamid.yfilter);
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2DebugTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cTap2DebugEntry" <<"[cTap2DebugIndex='" <<ctap2debugindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ctap2debugindex.is_set || is_set(ctap2debugindex.yfilter)) leaf_name_data.push_back(ctap2debugindex.get_name_leafdata());
+    if (ctap2debugmediationid.is_set || is_set(ctap2debugmediationid.yfilter)) leaf_name_data.push_back(ctap2debugmediationid.get_name_leafdata());
+    if (ctap2debugmessage.is_set || is_set(ctap2debugmessage.yfilter)) leaf_name_data.push_back(ctap2debugmessage.get_name_leafdata());
+    if (ctap2debugstatus.is_set || is_set(ctap2debugstatus.yfilter)) leaf_name_data.push_back(ctap2debugstatus.get_name_leafdata());
+    if (ctap2debugstreamid.is_set || is_set(ctap2debugstreamid.yfilter)) leaf_name_data.push_back(ctap2debugstreamid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cTap2DebugIndex")
+    {
+        ctap2debugindex = value;
+        ctap2debugindex.value_namespace = name_space;
+        ctap2debugindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugMediationId")
+    {
+        ctap2debugmediationid = value;
+        ctap2debugmediationid.value_namespace = name_space;
+        ctap2debugmediationid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugMessage")
+    {
+        ctap2debugmessage = value;
+        ctap2debugmessage.value_namespace = name_space;
+        ctap2debugmessage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugStatus")
+    {
+        ctap2debugstatus = value;
+        ctap2debugstatus.value_namespace = name_space;
+        ctap2debugstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugStreamId")
+    {
+        ctap2debugstreamid = value;
+        ctap2debugstreamid.value_namespace = name_space;
+        ctap2debugstreamid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cTap2DebugIndex")
+    {
+        ctap2debugindex.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugMediationId")
+    {
+        ctap2debugmediationid.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugMessage")
+    {
+        ctap2debugmessage.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugStatus")
+    {
+        ctap2debugstatus.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugStreamId")
+    {
+        ctap2debugstreamid.yfilter = yfilter;
+    }
+}
+
+bool CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cTap2DebugIndex" || name == "cTap2DebugMediationId" || name == "cTap2DebugMessage" || name == "cTap2DebugStatus" || name == "cTap2DebugStreamId")
+        return true;
+    return false;
+}
+
+CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debugusertable()
+{
+
+    yang_name = "cTap2DebugUserTable"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOTAP2MIB::Ctap2Debugusertable::~Ctap2Debugusertable()
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::has_data() const
+{
+    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
+    {
+        if(ctap2debuguserentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::has_operation() const
+{
+    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
+    {
+        if(ctap2debuguserentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugusertable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugusertable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cTap2DebugUserTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Debugusertable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugusertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cTap2DebugUserEntry")
+    {
+        for(auto const & c : ctap2debuguserentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry>();
+        c->parent = this;
+        ctap2debuguserentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugusertable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : ctap2debuguserentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void CISCOTAP2MIB::Ctap2Debugusertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CISCOTAP2MIB::Ctap2Debugusertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cTap2DebugUserEntry")
+        return true;
+    return false;
+}
+
+CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::Ctap2Debuguserentry()
+    :
+    ctap2mediationcontentid{YType::str, "cTap2MediationContentId"},
+    ctap2debugusername{YType::str, "cTap2DebugUserName"},
+    ctap2debuguserstatus{YType::enumeration, "cTap2DebugUserStatus"},
+    ctap2debuguserstoragetype{YType::enumeration, "cTap2DebugUserStorageType"},
+    ctap2debugusertimeout{YType::str, "cTap2DebugUserTimeout"}
+{
+
+    yang_name = "cTap2DebugUserEntry"; yang_parent_name = "cTap2DebugUserTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::~Ctap2Debuguserentry()
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::has_data() const
+{
+    return ctap2mediationcontentid.is_set
+	|| ctap2debugusername.is_set
+	|| ctap2debuguserstatus.is_set
+	|| ctap2debuguserstoragetype.is_set
+	|| ctap2debugusertimeout.is_set;
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ctap2mediationcontentid.yfilter)
+	|| ydk::is_set(ctap2debugusername.yfilter)
+	|| ydk::is_set(ctap2debuguserstatus.yfilter)
+	|| ydk::is_set(ctap2debuguserstoragetype.yfilter)
+	|| ydk::is_set(ctap2debugusertimeout.yfilter);
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2DebugUserTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cTap2DebugUserEntry" <<"[cTap2MediationContentId='" <<ctap2mediationcontentid <<"']" <<"[cTap2DebugUserName='" <<ctap2debugusername <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ctap2mediationcontentid.is_set || is_set(ctap2mediationcontentid.yfilter)) leaf_name_data.push_back(ctap2mediationcontentid.get_name_leafdata());
+    if (ctap2debugusername.is_set || is_set(ctap2debugusername.yfilter)) leaf_name_data.push_back(ctap2debugusername.get_name_leafdata());
+    if (ctap2debuguserstatus.is_set || is_set(ctap2debuguserstatus.yfilter)) leaf_name_data.push_back(ctap2debuguserstatus.get_name_leafdata());
+    if (ctap2debuguserstoragetype.is_set || is_set(ctap2debuguserstoragetype.yfilter)) leaf_name_data.push_back(ctap2debuguserstoragetype.get_name_leafdata());
+    if (ctap2debugusertimeout.is_set || is_set(ctap2debugusertimeout.yfilter)) leaf_name_data.push_back(ctap2debugusertimeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cTap2MediationContentId")
+    {
+        ctap2mediationcontentid = value;
+        ctap2mediationcontentid.value_namespace = name_space;
+        ctap2mediationcontentid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugUserName")
+    {
+        ctap2debugusername = value;
+        ctap2debugusername.value_namespace = name_space;
+        ctap2debugusername.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugUserStatus")
+    {
+        ctap2debuguserstatus = value;
+        ctap2debuguserstatus.value_namespace = name_space;
+        ctap2debuguserstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugUserStorageType")
+    {
+        ctap2debuguserstoragetype = value;
+        ctap2debuguserstoragetype.value_namespace = name_space;
+        ctap2debuguserstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cTap2DebugUserTimeout")
+    {
+        ctap2debugusertimeout = value;
+        ctap2debugusertimeout.value_namespace = name_space;
+        ctap2debugusertimeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cTap2MediationContentId")
+    {
+        ctap2mediationcontentid.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugUserName")
+    {
+        ctap2debugusername.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugUserStatus")
+    {
+        ctap2debuguserstatus.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugUserStorageType")
+    {
+        ctap2debuguserstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "cTap2DebugUserTimeout")
+    {
+        ctap2debugusertimeout.yfilter = yfilter;
+    }
+}
+
+bool CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cTap2MediationContentId" || name == "cTap2DebugUserName" || name == "cTap2DebugUserStatus" || name == "cTap2DebugUserStorageType" || name == "cTap2DebugUserTimeout")
+        return true;
+    return false;
+}
+
+CISCOTAP2MIB::Ctap2Mediationgroup::Ctap2Mediationgroup()
+    :
+    ctap2mediationcapabilities{YType::bits, "cTap2MediationCapabilities"},
+    ctap2mediationnewindex{YType::int32, "cTap2MediationNewIndex"}
+{
+
+    yang_name = "cTap2MediationGroup"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOTAP2MIB::Ctap2Mediationgroup::~Ctap2Mediationgroup()
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Mediationgroup::has_data() const
+{
+    return ctap2mediationcapabilities.is_set
+	|| ctap2mediationnewindex.is_set;
+}
+
+bool CISCOTAP2MIB::Ctap2Mediationgroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ctap2mediationcapabilities.yfilter)
+	|| ydk::is_set(ctap2mediationnewindex.yfilter);
+}
+
+std::string CISCOTAP2MIB::Ctap2Mediationgroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Mediationgroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cTap2MediationGroup";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Mediationgroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ctap2mediationcapabilities.is_set || is_set(ctap2mediationcapabilities.yfilter)) leaf_name_data.push_back(ctap2mediationcapabilities.get_name_leafdata());
+    if (ctap2mediationnewindex.is_set || is_set(ctap2mediationnewindex.yfilter)) leaf_name_data.push_back(ctap2mediationnewindex.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationgroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CISCOTAP2MIB::Ctap2Mediationgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cTap2MediationCapabilities")
+    {
+        ctap2mediationcapabilities[value] = true;
+    }
+    if(value_path == "cTap2MediationNewIndex")
+    {
+        ctap2mediationnewindex = value;
+        ctap2mediationnewindex.value_namespace = name_space;
+        ctap2mediationnewindex.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CISCOTAP2MIB::Ctap2Mediationgroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cTap2MediationCapabilities")
+    {
+        ctap2mediationcapabilities.yfilter = yfilter;
+    }
+    if(value_path == "cTap2MediationNewIndex")
+    {
+        ctap2mediationnewindex.yfilter = yfilter;
+    }
+}
+
+bool CISCOTAP2MIB::Ctap2Mediationgroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cTap2MediationCapabilities" || name == "cTap2MediationNewIndex")
+        return true;
+    return false;
+}
+
+CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationtable()
+{
+
+    yang_name = "cTap2MediationTable"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CISCOTAP2MIB::Ctap2Mediationtable::~Ctap2Mediationtable()
+{
+}
+
+bool CISCOTAP2MIB::Ctap2Mediationtable::has_data() const
 {
     for (std::size_t index=0; index<ctap2mediationentry.size(); index++)
     {
@@ -445,7 +896,7 @@ bool CiscoTap2Mib::Ctap2Mediationtable::has_data() const
     return false;
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::has_operation() const
+bool CISCOTAP2MIB::Ctap2Mediationtable::has_operation() const
 {
     for (std::size_t index=0; index<ctap2mediationentry.size(); index++)
     {
@@ -455,37 +906,30 @@ bool CiscoTap2Mib::Ctap2Mediationtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoTap2Mib::Ctap2Mediationtable::get_segment_path() const
+std::string CISCOTAP2MIB::Ctap2Mediationtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Mediationtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cTap2MediationTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::Ctap2Mediationtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Mediationtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cTap2MediationEntry")
     {
@@ -497,7 +941,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry>();
+        auto c = std::make_shared<CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry>();
         c->parent = this;
         ctap2mediationentry.push_back(c);
         return c;
@@ -506,7 +950,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Mediationtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ctap2mediationentry)
@@ -517,22 +961,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Mediationtable
     return children;
 }
 
-void CiscoTap2Mib::Ctap2Mediationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::Ctap2Mediationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoTap2Mib::Ctap2Mediationtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::Ctap2Mediationtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::Ctap2Mediationtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2MediationEntry")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationentry()
+CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationentry()
     :
     ctap2mediationcontentid{YType::int32, "cTap2MediationContentId"},
     ctap2mediationdatatype{YType::int32, "cTap2MediationDataType"},
@@ -549,14 +993,15 @@ CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationentry()
     ctap2mediationtimeout{YType::str, "cTap2MediationTimeout"},
     ctap2mediationtransport{YType::enumeration, "cTap2MediationTransport"}
 {
-    yang_name = "cTap2MediationEntry"; yang_parent_name = "cTap2MediationTable";
+
+    yang_name = "cTap2MediationEntry"; yang_parent_name = "cTap2MediationTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::~Ctap2Mediationentry()
+CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::~Ctap2Mediationentry()
 {
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::has_data() const
+bool CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::has_data() const
 {
     return ctap2mediationcontentid.is_set
 	|| ctap2mediationdatatype.is_set
@@ -574,7 +1019,7 @@ bool CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::has_data() const
 	|| ctap2mediationtransport.is_set;
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::has_operation() const
+bool CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ctap2mediationcontentid.yfilter)
@@ -593,27 +1038,22 @@ bool CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::has_operation() con
 	|| ydk::is_set(ctap2mediationtransport.yfilter);
 }
 
-std::string CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::get_segment_path() const
+std::string CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2MediationTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cTap2MediationEntry" <<"[cTap2MediationContentId='" <<ctap2mediationcontentid <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2MediationTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ctap2mediationcontentid.is_set || is_set(ctap2mediationcontentid.yfilter)) leaf_name_data.push_back(ctap2mediationcontentid.get_name_leafdata());
@@ -631,24 +1071,22 @@ const EntityPath CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::get_ent
     if (ctap2mediationtimeout.is_set || is_set(ctap2mediationtimeout.yfilter)) leaf_name_data.push_back(ctap2mediationtimeout.get_name_leafdata());
     if (ctap2mediationtransport.is_set || is_set(ctap2mediationtransport.yfilter)) leaf_name_data.push_back(ctap2mediationtransport.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -736,7 +1174,7 @@ void CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::set_value(const std
     }
 }
 
-void CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -796,23 +1234,24 @@ void CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::set_filter(const st
     }
 }
 
-bool CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2MediationContentId" || name == "cTap2MediationDataType" || name == "cTap2MediationDestAddress" || name == "cTap2MediationDestAddressType" || name == "cTap2MediationDestPort" || name == "cTap2MediationDscp" || name == "cTap2MediationNotificationEnable" || name == "cTap2MediationRadiusKey" || name == "cTap2MediationRetransmitType" || name == "cTap2MediationRtcpPort" || name == "cTap2MediationSrcInterface" || name == "cTap2MediationStatus" || name == "cTap2MediationTimeout" || name == "cTap2MediationTransport")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamtable()
+CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamtable()
 {
-    yang_name = "cTap2StreamTable"; yang_parent_name = "CISCO-TAP2-MIB";
+
+    yang_name = "cTap2StreamTable"; yang_parent_name = "CISCO-TAP2-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::Ctap2Streamtable::~Ctap2Streamtable()
+CISCOTAP2MIB::Ctap2Streamtable::~Ctap2Streamtable()
 {
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::has_data() const
+bool CISCOTAP2MIB::Ctap2Streamtable::has_data() const
 {
     for (std::size_t index=0; index<ctap2streamentry.size(); index++)
     {
@@ -822,7 +1261,7 @@ bool CiscoTap2Mib::Ctap2Streamtable::has_data() const
     return false;
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::has_operation() const
+bool CISCOTAP2MIB::Ctap2Streamtable::has_operation() const
 {
     for (std::size_t index=0; index<ctap2streamentry.size(); index++)
     {
@@ -832,37 +1271,30 @@ bool CiscoTap2Mib::Ctap2Streamtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoTap2Mib::Ctap2Streamtable::get_segment_path() const
+std::string CISCOTAP2MIB::Ctap2Streamtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Streamtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cTap2StreamTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::Ctap2Streamtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Streamtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Streamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cTap2StreamEntry")
     {
@@ -874,7 +1306,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const 
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry>();
+        auto c = std::make_shared<CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry>();
         c->parent = this;
         ctap2streamentry.push_back(c);
         return c;
@@ -883,7 +1315,7 @@ std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Streamtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Streamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : ctap2streamentry)
@@ -894,22 +1326,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Streamtable::g
     return children;
 }
 
-void CiscoTap2Mib::Ctap2Streamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::Ctap2Streamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoTap2Mib::Ctap2Streamtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::Ctap2Streamtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::Ctap2Streamtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2StreamEntry")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamentry()
+CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamentry()
     :
     ctap2mediationcontentid{YType::str, "cTap2MediationContentId"},
     ctap2streamindex{YType::int32, "cTap2StreamIndex"},
@@ -921,14 +1353,15 @@ CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamentry()
     ctap2streamstatus{YType::enumeration, "cTap2StreamStatus"},
     ctap2streamtype{YType::enumeration, "cTap2StreamType"}
 {
-    yang_name = "cTap2StreamEntry"; yang_parent_name = "cTap2StreamTable";
+
+    yang_name = "cTap2StreamEntry"; yang_parent_name = "cTap2StreamTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::~Ctap2Streamentry()
+CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::~Ctap2Streamentry()
 {
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::has_data() const
+bool CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::has_data() const
 {
     return ctap2mediationcontentid.is_set
 	|| ctap2streamindex.is_set
@@ -941,7 +1374,7 @@ bool CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::has_data() const
 	|| ctap2streamtype.is_set;
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::has_operation() const
+bool CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ctap2mediationcontentid.yfilter)
@@ -955,27 +1388,22 @@ bool CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::has_operation() const
 	|| ydk::is_set(ctap2streamtype.yfilter);
 }
 
-std::string CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::get_segment_path() const
+std::string CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2StreamTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cTap2StreamEntry" <<"[cTap2MediationContentId='" <<ctap2mediationcontentid <<"']" <<"[cTap2StreamIndex='" <<ctap2streamindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2StreamTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ctap2mediationcontentid.is_set || is_set(ctap2mediationcontentid.yfilter)) leaf_name_data.push_back(ctap2mediationcontentid.get_name_leafdata());
@@ -988,24 +1416,22 @@ const EntityPath CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::get_entity_pa
     if (ctap2streamstatus.is_set || is_set(ctap2streamstatus.yfilter)) leaf_name_data.push_back(ctap2streamstatus.get_name_leafdata());
     if (ctap2streamtype.is_set || is_set(ctap2streamtype.yfilter)) leaf_name_data.push_back(ctap2streamtype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -1063,7 +1489,7 @@ void CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::set_value(const std::stri
     }
 }
 
-void CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -1103,528 +1529,26 @@ void CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::set_filter(const std::str
     }
 }
 
-bool CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2MediationContentId" || name == "cTap2StreamIndex" || name == "cTap2StreamInterceptDrops" || name == "cTap2StreamInterceptedHCPackets" || name == "cTap2StreamInterceptedPackets" || name == "cTap2StreamInterceptEnable" || name == "cTap2StreamInterceptHCDrops" || name == "cTap2StreamStatus" || name == "cTap2StreamType")
         return true;
     return false;
 }
 
-CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugtable()
-{
-    yang_name = "cTap2DebugTable"; yang_parent_name = "CISCO-TAP2-MIB";
-}
-
-CiscoTap2Mib::Ctap2Debugtable::~Ctap2Debugtable()
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::has_data() const
-{
-    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
-    {
-        if(ctap2debugentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::has_operation() const
-{
-    for (std::size_t index=0; index<ctap2debugentry.size(); index++)
-    {
-        if(ctap2debugentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoTap2Mib::Ctap2Debugtable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cTap2DebugTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoTap2Mib::Ctap2Debugtable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cTap2DebugEntry")
-    {
-        for(auto const & c : ctap2debugentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry>();
-        c->parent = this;
-        ctap2debugentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugtable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2debugentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoTap2Mib::Ctap2Debugtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoTap2Mib::Ctap2Debugtable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cTap2DebugEntry")
-        return true;
-    return false;
-}
-
-CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::Ctap2Debugentry()
-    :
-    ctap2debugindex{YType::int32, "cTap2DebugIndex"},
-    ctap2debugmediationid{YType::uint32, "cTap2DebugMediationId"},
-    ctap2debugmessage{YType::str, "cTap2DebugMessage"},
-    ctap2debugstatus{YType::enumeration, "cTap2DebugStatus"},
-    ctap2debugstreamid{YType::uint32, "cTap2DebugStreamId"}
-{
-    yang_name = "cTap2DebugEntry"; yang_parent_name = "cTap2DebugTable";
-}
-
-CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::~Ctap2Debugentry()
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::has_data() const
-{
-    return ctap2debugindex.is_set
-	|| ctap2debugmediationid.is_set
-	|| ctap2debugmessage.is_set
-	|| ctap2debugstatus.is_set
-	|| ctap2debugstreamid.is_set;
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ctap2debugindex.yfilter)
-	|| ydk::is_set(ctap2debugmediationid.yfilter)
-	|| ydk::is_set(ctap2debugmessage.yfilter)
-	|| ydk::is_set(ctap2debugstatus.yfilter)
-	|| ydk::is_set(ctap2debugstreamid.yfilter);
-}
-
-std::string CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cTap2DebugEntry" <<"[cTap2DebugIndex='" <<ctap2debugindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2DebugTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ctap2debugindex.is_set || is_set(ctap2debugindex.yfilter)) leaf_name_data.push_back(ctap2debugindex.get_name_leafdata());
-    if (ctap2debugmediationid.is_set || is_set(ctap2debugmediationid.yfilter)) leaf_name_data.push_back(ctap2debugmediationid.get_name_leafdata());
-    if (ctap2debugmessage.is_set || is_set(ctap2debugmessage.yfilter)) leaf_name_data.push_back(ctap2debugmessage.get_name_leafdata());
-    if (ctap2debugstatus.is_set || is_set(ctap2debugstatus.yfilter)) leaf_name_data.push_back(ctap2debugstatus.get_name_leafdata());
-    if (ctap2debugstreamid.is_set || is_set(ctap2debugstreamid.yfilter)) leaf_name_data.push_back(ctap2debugstreamid.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cTap2DebugIndex")
-    {
-        ctap2debugindex = value;
-        ctap2debugindex.value_namespace = name_space;
-        ctap2debugindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugMediationId")
-    {
-        ctap2debugmediationid = value;
-        ctap2debugmediationid.value_namespace = name_space;
-        ctap2debugmediationid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugMessage")
-    {
-        ctap2debugmessage = value;
-        ctap2debugmessage.value_namespace = name_space;
-        ctap2debugmessage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugStatus")
-    {
-        ctap2debugstatus = value;
-        ctap2debugstatus.value_namespace = name_space;
-        ctap2debugstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugStreamId")
-    {
-        ctap2debugstreamid = value;
-        ctap2debugstreamid.value_namespace = name_space;
-        ctap2debugstreamid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cTap2DebugIndex")
-    {
-        ctap2debugindex.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugMediationId")
-    {
-        ctap2debugmediationid.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugMessage")
-    {
-        ctap2debugmessage.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugStatus")
-    {
-        ctap2debugstatus.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugStreamId")
-    {
-        ctap2debugstreamid.yfilter = yfilter;
-    }
-}
-
-bool CiscoTap2Mib::Ctap2Debugtable::Ctap2Debugentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cTap2DebugIndex" || name == "cTap2DebugMediationId" || name == "cTap2DebugMessage" || name == "cTap2DebugStatus" || name == "cTap2DebugStreamId")
-        return true;
-    return false;
-}
-
-CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debugusertable()
-{
-    yang_name = "cTap2DebugUserTable"; yang_parent_name = "CISCO-TAP2-MIB";
-}
-
-CiscoTap2Mib::Ctap2Debugusertable::~Ctap2Debugusertable()
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::has_data() const
-{
-    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
-    {
-        if(ctap2debuguserentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::has_operation() const
-{
-    for (std::size_t index=0; index<ctap2debuguserentry.size(); index++)
-    {
-        if(ctap2debuguserentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string CiscoTap2Mib::Ctap2Debugusertable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cTap2DebugUserTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoTap2Mib::Ctap2Debugusertable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugusertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cTap2DebugUserEntry")
-    {
-        for(auto const & c : ctap2debuguserentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry>();
-        c->parent = this;
-        ctap2debuguserentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugusertable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ctap2debuguserentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoTap2Mib::Ctap2Debugusertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CiscoTap2Mib::Ctap2Debugusertable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cTap2DebugUserEntry")
-        return true;
-    return false;
-}
-
-CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::Ctap2Debuguserentry()
-    :
-    ctap2mediationcontentid{YType::str, "cTap2MediationContentId"},
-    ctap2debugusername{YType::str, "cTap2DebugUserName"},
-    ctap2debuguserstatus{YType::enumeration, "cTap2DebugUserStatus"},
-    ctap2debuguserstoragetype{YType::enumeration, "cTap2DebugUserStorageType"},
-    ctap2debugusertimeout{YType::str, "cTap2DebugUserTimeout"}
-{
-    yang_name = "cTap2DebugUserEntry"; yang_parent_name = "cTap2DebugUserTable";
-}
-
-CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::~Ctap2Debuguserentry()
-{
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::has_data() const
-{
-    return ctap2mediationcontentid.is_set
-	|| ctap2debugusername.is_set
-	|| ctap2debuguserstatus.is_set
-	|| ctap2debuguserstoragetype.is_set
-	|| ctap2debugusertimeout.is_set;
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ctap2mediationcontentid.yfilter)
-	|| ydk::is_set(ctap2debugusername.yfilter)
-	|| ydk::is_set(ctap2debuguserstatus.yfilter)
-	|| ydk::is_set(ctap2debuguserstoragetype.yfilter)
-	|| ydk::is_set(ctap2debugusertimeout.yfilter);
-}
-
-std::string CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cTap2DebugUserEntry" <<"[cTap2MediationContentId='" <<ctap2mediationcontentid <<"']" <<"[cTap2DebugUserName='" <<ctap2debugusername <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-TAP2-MIB:CISCO-TAP2-MIB/cTap2DebugUserTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ctap2mediationcontentid.is_set || is_set(ctap2mediationcontentid.yfilter)) leaf_name_data.push_back(ctap2mediationcontentid.get_name_leafdata());
-    if (ctap2debugusername.is_set || is_set(ctap2debugusername.yfilter)) leaf_name_data.push_back(ctap2debugusername.get_name_leafdata());
-    if (ctap2debuguserstatus.is_set || is_set(ctap2debuguserstatus.yfilter)) leaf_name_data.push_back(ctap2debuguserstatus.get_name_leafdata());
-    if (ctap2debuguserstoragetype.is_set || is_set(ctap2debuguserstoragetype.yfilter)) leaf_name_data.push_back(ctap2debuguserstoragetype.get_name_leafdata());
-    if (ctap2debugusertimeout.is_set || is_set(ctap2debugusertimeout.yfilter)) leaf_name_data.push_back(ctap2debugusertimeout.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cTap2MediationContentId")
-    {
-        ctap2mediationcontentid = value;
-        ctap2mediationcontentid.value_namespace = name_space;
-        ctap2mediationcontentid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugUserName")
-    {
-        ctap2debugusername = value;
-        ctap2debugusername.value_namespace = name_space;
-        ctap2debugusername.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugUserStatus")
-    {
-        ctap2debuguserstatus = value;
-        ctap2debuguserstatus.value_namespace = name_space;
-        ctap2debuguserstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugUserStorageType")
-    {
-        ctap2debuguserstoragetype = value;
-        ctap2debuguserstoragetype.value_namespace = name_space;
-        ctap2debuguserstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cTap2DebugUserTimeout")
-    {
-        ctap2debugusertimeout = value;
-        ctap2debugusertimeout.value_namespace = name_space;
-        ctap2debugusertimeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cTap2MediationContentId")
-    {
-        ctap2mediationcontentid.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugUserName")
-    {
-        ctap2debugusername.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugUserStatus")
-    {
-        ctap2debuguserstatus.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugUserStorageType")
-    {
-        ctap2debuguserstoragetype.yfilter = yfilter;
-    }
-    if(value_path == "cTap2DebugUserTimeout")
-    {
-        ctap2debugusertimeout.yfilter = yfilter;
-    }
-}
-
-bool CiscoTap2Mib::Ctap2Debugusertable::Ctap2Debuguserentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cTap2MediationContentId" || name == "cTap2DebugUserName" || name == "cTap2DebugUserStatus" || name == "cTap2DebugUserStorageType" || name == "cTap2DebugUserTimeout")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::udp {1, "udp"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::rtpNack {2, "rtpNack"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::tcp {3, "tcp"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::sctp {4, "sctp"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::rtp {5, "rtp"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::radius {6, "radius"};
-
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::ip {1, "ip"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::mac {2, "mac"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::userConnection {3, "userConnection"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::msPdsn {4, "msPdsn"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::mobility {5, "mobility"};
-const Enum::YLeaf CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::voip {6, "voip"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::udp {1, "udp"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::rtpNack {2, "rtpNack"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::tcp {3, "tcp"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::sctp {4, "sctp"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::rtp {5, "rtp"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::Ctap2Mediationtransport::radius {6, "radius"};
+
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::ip {1, "ip"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::mac {2, "mac"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::userConnection {3, "userConnection"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::msPdsn {4, "msPdsn"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::mobility {5, "mobility"};
+const Enum::YLeaf CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::Ctap2Streamtype::voip {6, "voip"};
 
 
 }

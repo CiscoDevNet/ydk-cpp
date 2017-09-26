@@ -19,7 +19,7 @@ class Lpts : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -35,8 +35,8 @@ class Lpts : public ydk::Entity
         class Ipolicer; //type: Lpts::Ipolicer
         class Punt; //type: Lpts::Punt
 
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer> ipolicer; // presence node
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt> punt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer> ipolicer; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt> punt;
         
 }; // Lpts
 
@@ -49,7 +49,84 @@ class Lpts::Ipolicer : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+        class Ipv4Acls; //type: Lpts::Ipolicer::Ipv4Acls
+        class Flows; //type: Lpts::Ipolicer::Flows
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows> flows;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls> ipv4acls;
+        
+}; // Lpts::Ipolicer
+
+
+class Lpts::Ipolicer::Flows : public ydk::Entity
+{
+    public:
+        Flows();
+        ~Flows();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Flow; //type: Lpts::Ipolicer::Flows::Flow
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow> > flow;
+        
+}; // Lpts::Ipolicer::Flows
+
+
+class Lpts::Ipolicer::Flows::Flow : public ydk::Entity
+{
+    public:
+        Flow();
+        ~Flow();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf flow_type; //type: LptsFlow
+        ydk::YLeaf rate; //type: int32
+        class Precedences; //type: Lpts::Ipolicer::Flows::Flow::Precedences
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow::Precedences> precedences;
+        
+}; // Lpts::Ipolicer::Flows::Flow
+
+
+class Lpts::Ipolicer::Flows::Flow::Precedences : public ydk::Entity
+{
+    public:
+        Precedences();
+        ~Precedences();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -57,14 +134,9 @@ class Lpts::Ipolicer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
-        class Ipv4Acls; //type: Lpts::Ipolicer::Ipv4Acls
-        class Flows; //type: Lpts::Ipolicer::Flows
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint32
 
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows> flows;
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls> ipv4acls;
-        
-}; // Lpts::Ipolicer
+}; // Lpts::Ipolicer::Flows::Flow::Precedences
 
 
 class Lpts::Ipolicer::Ipv4Acls : public ydk::Entity
@@ -75,17 +147,18 @@ class Lpts::Ipolicer::Ipv4Acls : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Ipv4Acl; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl> > ipv4acl;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl> > ipv4acl;
         
 }; // Lpts::Ipolicer::Ipv4Acls
 
@@ -98,18 +171,19 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf acl_name; //type: string
         class Ipv4VrfNames; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
 
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames> ipv4vrf_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames> ipv4vrf_names;
         
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
@@ -122,7 +196,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -132,7 +206,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public ydk::Entity
 
         class Ipv4VrfName; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName> > ipv4vrf_name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName> > ipv4vrf_name;
         
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
 
@@ -145,7 +219,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public ydk:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -159,75 +233,6 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public ydk:
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
 
 
-class Lpts::Ipolicer::Flows : public ydk::Entity
-{
-    public:
-        Flows();
-        ~Flows();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Flow; //type: Lpts::Ipolicer::Flows::Flow
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow> > flow;
-        
-}; // Lpts::Ipolicer::Flows
-
-
-class Lpts::Ipolicer::Flows::Flow : public ydk::Entity
-{
-    public:
-        Flow();
-        ~Flow();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf flow_type; //type: LptsFlow
-        ydk::YLeaf rate; //type: int32
-        class Precedences; //type: Lpts::Ipolicer::Flows::Flow::Precedences
-
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow::Precedences> precedences;
-        
-}; // Lpts::Ipolicer::Flows::Flow
-
-
-class Lpts::Ipolicer::Flows::Flow::Precedences : public ydk::Entity
-{
-    public:
-        Precedences();
-        ~Precedences();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeafList precedence; //type: list of  one of uint32, enumeration
-
-}; // Lpts::Ipolicer::Flows::Flow::Precedences
-
-
 class Lpts::Punt : public ydk::Entity
 {
     public:
@@ -236,17 +241,18 @@ class Lpts::Punt : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Flowtrap; //type: Lpts::Punt::Flowtrap
 
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap> flowtrap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap> flowtrap;
         
 }; // Lpts::Punt
 
@@ -259,13 +265,14 @@ class Lpts::Punt::Flowtrap : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf max_flow_gap; //type: uint32
         ydk::YLeaf et_size; //type: uint32
@@ -282,11 +289,82 @@ class Lpts::Punt::Flowtrap : public ydk::Entity
         class PenaltyTimeouts; //type: Lpts::Punt::Flowtrap::PenaltyTimeouts
         class Exclude; //type: Lpts::Punt::Flowtrap::Exclude
 
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude> exclude;
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyRates> penalty_rates;
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyTimeouts> penalty_timeouts;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude> exclude;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyRates> penalty_rates;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyTimeouts> penalty_timeouts;
         
 }; // Lpts::Punt::Flowtrap
+
+
+class Lpts::Punt::Flowtrap::Exclude : public ydk::Entity
+{
+    public:
+        Exclude();
+        ~Exclude();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class InterfaceNames; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude::InterfaceNames> interface_names;
+        
+}; // Lpts::Punt::Flowtrap::Exclude
+
+
+class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public ydk::Entity
+{
+    public:
+        InterfaceNames();
+        ~InterfaceNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class InterfaceName; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName> > interface_name;
+        
+}; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames
+
+
+class Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName : public ydk::Entity
+{
+    public:
+        InterfaceName();
+        ~InterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf id1; //type: boolean
+
+}; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
 
 
 class Lpts::Punt::Flowtrap::PenaltyRates : public ydk::Entity
@@ -297,17 +375,18 @@ class Lpts::Punt::Flowtrap::PenaltyRates : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PenaltyRate; //type: Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate> > penalty_rate;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate> > penalty_rate;
         
 }; // Lpts::Punt::Flowtrap::PenaltyRates
 
@@ -320,13 +399,14 @@ class Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf protocol_name; //type: LptsPuntFlowtrapProtoId
         ydk::YLeaf rate; //type: uint32
@@ -342,17 +422,18 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PenaltyTimeout; //type: Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout> > penalty_timeout;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout> > penalty_timeout;
         
 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts
 
@@ -365,86 +446,19 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf protocol_name; //type: LptsPuntFlowtrapProtoId
         ydk::YLeaf timeout; //type: uint32
 
 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
-
-
-class Lpts::Punt::Flowtrap::Exclude : public ydk::Entity
-{
-    public:
-        Exclude();
-        ~Exclude();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InterfaceNames; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames
-
-        std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude::InterfaceNames> interface_names;
-        
-}; // Lpts::Punt::Flowtrap::Exclude
-
-
-class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public ydk::Entity
-{
-    public:
-        InterfaceNames();
-        ~InterfaceNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InterfaceName; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName> > interface_name;
-        
-}; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames
-
-
-class Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName : public ydk::Entity
-{
-    public:
-        InterfaceName();
-        ~InterfaceName();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ifname; //type: string
-        ydk::YLeaf id1; //type: boolean
-
-}; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
 
 
 }

@@ -11,38 +11,32 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace MPLS_LSR_STD_MIB {
 
-MplsLsrStdMib::MplsLsrStdMib()
+MPLSLSRSTDMIB::MPLSLSRSTDMIB()
     :
-    mplsinsegmentmaptable(std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>())
-	,mplsinsegmenttable(std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>())
-	,mplsinterfacetable(std::make_shared<MplsLsrStdMib::Mplsinterfacetable>())
-	,mplslabelstacktable(std::make_shared<MplsLsrStdMib::Mplslabelstacktable>())
-	,mplslsrobjects(std::make_shared<MplsLsrStdMib::Mplslsrobjects>())
-	,mplsoutsegmenttable(std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>())
-	,mplsxctable(std::make_shared<MplsLsrStdMib::Mplsxctable>())
+    mplsinsegmentmaptable(std::make_shared<MPLSLSRSTDMIB::Mplsinsegmentmaptable>())
+	,mplsinsegmenttable(std::make_shared<MPLSLSRSTDMIB::Mplsinsegmenttable>())
+	,mplsinterfacetable(std::make_shared<MPLSLSRSTDMIB::Mplsinterfacetable>())
+	,mplslabelstacktable(std::make_shared<MPLSLSRSTDMIB::Mplslabelstacktable>())
+	,mplslsrobjects(std::make_shared<MPLSLSRSTDMIB::Mplslsrobjects>())
+	,mplsoutsegmenttable(std::make_shared<MPLSLSRSTDMIB::Mplsoutsegmenttable>())
+	,mplsxctable(std::make_shared<MPLSLSRSTDMIB::Mplsxctable>())
 {
     mplsinsegmentmaptable->parent = this;
-
     mplsinsegmenttable->parent = this;
-
     mplsinterfacetable->parent = this;
-
     mplslabelstacktable->parent = this;
-
     mplslsrobjects->parent = this;
-
     mplsoutsegmenttable->parent = this;
-
     mplsxctable->parent = this;
 
-    yang_name = "MPLS-LSR-STD-MIB"; yang_parent_name = "MPLS-LSR-STD-MIB";
+    yang_name = "MPLS-LSR-STD-MIB"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::~MplsLsrStdMib()
+MPLSLSRSTDMIB::~MPLSLSRSTDMIB()
 {
 }
 
-bool MplsLsrStdMib::has_data() const
+bool MPLSLSRSTDMIB::has_data() const
 {
     return (mplsinsegmentmaptable !=  nullptr && mplsinsegmentmaptable->has_data())
 	|| (mplsinsegmenttable !=  nullptr && mplsinsegmenttable->has_data())
@@ -53,7 +47,7 @@ bool MplsLsrStdMib::has_data() const
 	|| (mplsxctable !=  nullptr && mplsxctable->has_data());
 }
 
-bool MplsLsrStdMib::has_operation() const
+bool MPLSLSRSTDMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (mplsinsegmentmaptable !=  nullptr && mplsinsegmentmaptable->has_operation())
@@ -65,40 +59,29 @@ bool MplsLsrStdMib::has_operation() const
 	|| (mplsxctable !=  nullptr && mplsxctable->has_operation());
 }
 
-std::string MplsLsrStdMib::get_segment_path() const
+std::string MPLSLSRSTDMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsInSegmentMapTable")
     {
         if(mplsinsegmentmaptable == nullptr)
         {
-            mplsinsegmentmaptable = std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable>();
+            mplsinsegmentmaptable = std::make_shared<MPLSLSRSTDMIB::Mplsinsegmentmaptable>();
         }
         return mplsinsegmentmaptable;
     }
@@ -107,7 +90,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplsinsegmenttable == nullptr)
         {
-            mplsinsegmenttable = std::make_shared<MplsLsrStdMib::Mplsinsegmenttable>();
+            mplsinsegmenttable = std::make_shared<MPLSLSRSTDMIB::Mplsinsegmenttable>();
         }
         return mplsinsegmenttable;
     }
@@ -116,7 +99,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplsinterfacetable == nullptr)
         {
-            mplsinterfacetable = std::make_shared<MplsLsrStdMib::Mplsinterfacetable>();
+            mplsinterfacetable = std::make_shared<MPLSLSRSTDMIB::Mplsinterfacetable>();
         }
         return mplsinterfacetable;
     }
@@ -125,7 +108,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplslabelstacktable == nullptr)
         {
-            mplslabelstacktable = std::make_shared<MplsLsrStdMib::Mplslabelstacktable>();
+            mplslabelstacktable = std::make_shared<MPLSLSRSTDMIB::Mplslabelstacktable>();
         }
         return mplslabelstacktable;
     }
@@ -134,7 +117,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplslsrobjects == nullptr)
         {
-            mplslsrobjects = std::make_shared<MplsLsrStdMib::Mplslsrobjects>();
+            mplslsrobjects = std::make_shared<MPLSLSRSTDMIB::Mplslsrobjects>();
         }
         return mplslsrobjects;
     }
@@ -143,7 +126,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplsoutsegmenttable == nullptr)
         {
-            mplsoutsegmenttable = std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable>();
+            mplsoutsegmenttable = std::make_shared<MPLSLSRSTDMIB::Mplsoutsegmenttable>();
         }
         return mplsoutsegmenttable;
     }
@@ -152,7 +135,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     {
         if(mplsxctable == nullptr)
         {
-            mplsxctable = std::make_shared<MplsLsrStdMib::Mplsxctable>();
+            mplsxctable = std::make_shared<MPLSLSRSTDMIB::Mplsxctable>();
         }
         return mplsxctable;
     }
@@ -160,7 +143,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(mplsinsegmentmaptable != nullptr)
@@ -201,269 +184,104 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::get_children() con
     return children;
 }
 
-void MplsLsrStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLsrStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::clone_ptr() const
+std::shared_ptr<Entity> MPLSLSRSTDMIB::clone_ptr() const
 {
-    return std::make_shared<MplsLsrStdMib>();
+    return std::make_shared<MPLSLSRSTDMIB>();
 }
 
-std::string MplsLsrStdMib::get_bundle_yang_models_location() const
+std::string MPLSLSRSTDMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string MplsLsrStdMib::get_bundle_name() const
+std::string MPLSLSRSTDMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function MplsLsrStdMib::get_augment_capabilities_function() const
+augment_capabilities_function MPLSLSRSTDMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> MplsLsrStdMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> MPLSLSRSTDMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool MplsLsrStdMib::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsInSegmentMapTable" || name == "mplsInSegmentTable" || name == "mplsInterfaceTable" || name == "mplsLabelStackTable" || name == "mplsLsrObjects" || name == "mplsOutSegmentTable" || name == "mplsXCTable")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplslsrobjects::Mplslsrobjects()
-    :
-    mplsinsegmentindexnext{YType::str, "mplsInSegmentIndexNext"},
-    mplslabelstackindexnext{YType::str, "mplsLabelStackIndexNext"},
-    mplsmaxlabelstackdepth{YType::uint32, "mplsMaxLabelStackDepth"},
-    mplsoutsegmentindexnext{YType::str, "mplsOutSegmentIndexNext"},
-    mplsxcindexnext{YType::str, "mplsXCIndexNext"},
-    mplsxcnotificationsenable{YType::boolean, "mplsXCNotificationsEnable"}
+MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmaptable()
 {
-    yang_name = "mplsLsrObjects"; yang_parent_name = "MPLS-LSR-STD-MIB";
+
+    yang_name = "mplsInSegmentMapTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplslsrobjects::~Mplslsrobjects()
+MPLSLSRSTDMIB::Mplsinsegmentmaptable::~Mplsinsegmentmaptable()
 {
 }
 
-bool MplsLsrStdMib::Mplslsrobjects::has_data() const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::has_data() const
 {
-    return mplsinsegmentindexnext.is_set
-	|| mplslabelstackindexnext.is_set
-	|| mplsmaxlabelstackdepth.is_set
-	|| mplsoutsegmentindexnext.is_set
-	|| mplsxcindexnext.is_set
-	|| mplsxcnotificationsenable.is_set;
-}
-
-bool MplsLsrStdMib::Mplslsrobjects::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mplsinsegmentindexnext.yfilter)
-	|| ydk::is_set(mplslabelstackindexnext.yfilter)
-	|| ydk::is_set(mplsmaxlabelstackdepth.yfilter)
-	|| ydk::is_set(mplsoutsegmentindexnext.yfilter)
-	|| ydk::is_set(mplsxcindexnext.yfilter)
-	|| ydk::is_set(mplsxcnotificationsenable.yfilter);
-}
-
-std::string MplsLsrStdMib::Mplslsrobjects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsLsrObjects";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsrStdMib::Mplslsrobjects::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
     {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mplsinsegmentindexnext.is_set || is_set(mplsinsegmentindexnext.yfilter)) leaf_name_data.push_back(mplsinsegmentindexnext.get_name_leafdata());
-    if (mplslabelstackindexnext.is_set || is_set(mplslabelstackindexnext.yfilter)) leaf_name_data.push_back(mplslabelstackindexnext.get_name_leafdata());
-    if (mplsmaxlabelstackdepth.is_set || is_set(mplsmaxlabelstackdepth.yfilter)) leaf_name_data.push_back(mplsmaxlabelstackdepth.get_name_leafdata());
-    if (mplsoutsegmentindexnext.is_set || is_set(mplsoutsegmentindexnext.yfilter)) leaf_name_data.push_back(mplsoutsegmentindexnext.get_name_leafdata());
-    if (mplsxcindexnext.is_set || is_set(mplsxcindexnext.yfilter)) leaf_name_data.push_back(mplsxcindexnext.get_name_leafdata());
-    if (mplsxcnotificationsenable.is_set || is_set(mplsxcnotificationsenable.yfilter)) leaf_name_data.push_back(mplsxcnotificationsenable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsrStdMib::Mplslsrobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplslsrobjects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsLsrStdMib::Mplslsrobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mplsInSegmentIndexNext")
-    {
-        mplsinsegmentindexnext = value;
-        mplsinsegmentindexnext.value_namespace = name_space;
-        mplsinsegmentindexnext.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackIndexNext")
-    {
-        mplslabelstackindexnext = value;
-        mplslabelstackindexnext.value_namespace = name_space;
-        mplslabelstackindexnext.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsMaxLabelStackDepth")
-    {
-        mplsmaxlabelstackdepth = value;
-        mplsmaxlabelstackdepth.value_namespace = name_space;
-        mplsmaxlabelstackdepth.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsOutSegmentIndexNext")
-    {
-        mplsoutsegmentindexnext = value;
-        mplsoutsegmentindexnext.value_namespace = name_space;
-        mplsoutsegmentindexnext.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsXCIndexNext")
-    {
-        mplsxcindexnext = value;
-        mplsxcindexnext.value_namespace = name_space;
-        mplsxcindexnext.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsXCNotificationsEnable")
-    {
-        mplsxcnotificationsenable = value;
-        mplsxcnotificationsenable.value_namespace = name_space;
-        mplsxcnotificationsenable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLsrStdMib::Mplslsrobjects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mplsInSegmentIndexNext")
-    {
-        mplsinsegmentindexnext.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackIndexNext")
-    {
-        mplslabelstackindexnext.yfilter = yfilter;
-    }
-    if(value_path == "mplsMaxLabelStackDepth")
-    {
-        mplsmaxlabelstackdepth.yfilter = yfilter;
-    }
-    if(value_path == "mplsOutSegmentIndexNext")
-    {
-        mplsoutsegmentindexnext.yfilter = yfilter;
-    }
-    if(value_path == "mplsXCIndexNext")
-    {
-        mplsxcindexnext.yfilter = yfilter;
-    }
-    if(value_path == "mplsXCNotificationsEnable")
-    {
-        mplsxcnotificationsenable.yfilter = yfilter;
-    }
-}
-
-bool MplsLsrStdMib::Mplslsrobjects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsInSegmentIndexNext" || name == "mplsLabelStackIndexNext" || name == "mplsMaxLabelStackDepth" || name == "mplsOutSegmentIndexNext" || name == "mplsXCIndexNext" || name == "mplsXCNotificationsEnable")
-        return true;
-    return false;
-}
-
-MplsLsrStdMib::Mplsinterfacetable::Mplsinterfacetable()
-{
-    yang_name = "mplsInterfaceTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
-}
-
-MplsLsrStdMib::Mplsinterfacetable::~Mplsinterfacetable()
-{
-}
-
-bool MplsLsrStdMib::Mplsinterfacetable::has_data() const
-{
-    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
-    {
-        if(mplsinterfaceentry[index]->has_data())
+        if(mplsinsegmentmapentry[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool MplsLsrStdMib::Mplsinterfacetable::has_operation() const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
     {
-        if(mplsinterfaceentry[index]->has_operation())
+        if(mplsinsegmentmapentry[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsinterfacetable::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsinsegmentmaptable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsInterfaceTable";
-
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsinterfacetable::get_entity_path(Entity* ancestor) const
+std::string MPLSLSRSTDMIB::Mplsinsegmentmaptable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "mplsInSegmentMapTable";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinsegmentmaptable::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinsegmentmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "mplsInterfaceEntry")
+    if(child_yang_name == "mplsInSegmentMapEntry")
     {
-        for(auto const & c : mplsinterfaceentry)
+        for(auto const & c : mplsinsegmentmapentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -471,19 +289,19 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry>();
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry>();
         c->parent = this;
-        mplsinterfaceentry.push_back(c);
+        mplsinsegmentmapentry.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinsegmentmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinterfaceentry)
+    for (auto const & c : mplsinsegmentmapentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -491,272 +309,157 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinterfacetable
     return children;
 }
 
-void MplsLsrStdMib::Mplsinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsinsegmentmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLsrStdMib::Mplsinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsinsegmentmaptable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsLsrStdMib::Mplsinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsInterfaceEntry")
+    if(name == "mplsInSegmentMapEntry")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::Mplsinterfaceentry()
+MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::Mplsinsegmentmapentry()
     :
-    mplsinterfaceindex{YType::int32, "mplsInterfaceIndex"},
-    mplsinterfaceavailablebandwidth{YType::uint32, "mplsInterfaceAvailableBandwidth"},
-    mplsinterfacelabelmaxin{YType::uint32, "mplsInterfaceLabelMaxIn"},
-    mplsinterfacelabelmaxout{YType::uint32, "mplsInterfaceLabelMaxOut"},
-    mplsinterfacelabelminin{YType::uint32, "mplsInterfaceLabelMinIn"},
-    mplsinterfacelabelminout{YType::uint32, "mplsInterfaceLabelMinOut"},
-    mplsinterfacelabelparticipationtype{YType::bits, "mplsInterfaceLabelParticipationType"},
-    mplsinterfaceperfinlabellookupfailures{YType::uint32, "mplsInterfacePerfInLabelLookupFailures"},
-    mplsinterfaceperfinlabelsinuse{YType::uint32, "mplsInterfacePerfInLabelsInUse"},
-    mplsinterfaceperfoutfragmentedpkts{YType::uint32, "mplsInterfacePerfOutFragmentedPkts"},
-    mplsinterfaceperfoutlabelsinuse{YType::uint32, "mplsInterfacePerfOutLabelsInUse"},
-    mplsinterfacetotalbandwidth{YType::uint32, "mplsInterfaceTotalBandwidth"}
+    mplsinsegmentmapinterface{YType::int32, "mplsInSegmentMapInterface"},
+    mplsinsegmentmaplabel{YType::uint32, "mplsInSegmentMapLabel"},
+    mplsinsegmentmaplabelptrindex{YType::str, "mplsInSegmentMapLabelPtrIndex"},
+    mplsinsegmentmapindex{YType::str, "mplsInSegmentMapIndex"}
 {
-    yang_name = "mplsInterfaceEntry"; yang_parent_name = "mplsInterfaceTable";
+
+    yang_name = "mplsInSegmentMapEntry"; yang_parent_name = "mplsInSegmentMapTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::~Mplsinterfaceentry()
+MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::~Mplsinsegmentmapentry()
 {
 }
 
-bool MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::has_data() const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_data() const
 {
-    return mplsinterfaceindex.is_set
-	|| mplsinterfaceavailablebandwidth.is_set
-	|| mplsinterfacelabelmaxin.is_set
-	|| mplsinterfacelabelmaxout.is_set
-	|| mplsinterfacelabelminin.is_set
-	|| mplsinterfacelabelminout.is_set
-	|| mplsinterfacelabelparticipationtype.is_set
-	|| mplsinterfaceperfinlabellookupfailures.is_set
-	|| mplsinterfaceperfinlabelsinuse.is_set
-	|| mplsinterfaceperfoutfragmentedpkts.is_set
-	|| mplsinterfaceperfoutlabelsinuse.is_set
-	|| mplsinterfacetotalbandwidth.is_set;
+    return mplsinsegmentmapinterface.is_set
+	|| mplsinsegmentmaplabel.is_set
+	|| mplsinsegmentmaplabelptrindex.is_set
+	|| mplsinsegmentmapindex.is_set;
 }
 
-bool MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::has_operation() const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(mplsinterfaceindex.yfilter)
-	|| ydk::is_set(mplsinterfaceavailablebandwidth.yfilter)
-	|| ydk::is_set(mplsinterfacelabelmaxin.yfilter)
-	|| ydk::is_set(mplsinterfacelabelmaxout.yfilter)
-	|| ydk::is_set(mplsinterfacelabelminin.yfilter)
-	|| ydk::is_set(mplsinterfacelabelminout.yfilter)
-	|| ydk::is_set(mplsinterfacelabelparticipationtype.yfilter)
-	|| ydk::is_set(mplsinterfaceperfinlabellookupfailures.yfilter)
-	|| ydk::is_set(mplsinterfaceperfinlabelsinuse.yfilter)
-	|| ydk::is_set(mplsinterfaceperfoutfragmentedpkts.yfilter)
-	|| ydk::is_set(mplsinterfaceperfoutlabelsinuse.yfilter)
-	|| ydk::is_set(mplsinterfacetotalbandwidth.yfilter);
+	|| ydk::is_set(mplsinsegmentmapinterface.yfilter)
+	|| ydk::is_set(mplsinsegmentmaplabel.yfilter)
+	|| ydk::is_set(mplsinsegmentmaplabelptrindex.yfilter)
+	|| ydk::is_set(mplsinsegmentmapindex.yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mplsInterfaceEntry" <<"[mplsInterfaceIndex='" <<mplsinterfaceindex <<"']";
-
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInSegmentMapTable/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::get_entity_path(Entity* ancestor) const
+std::string MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInterfaceTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "mplsInSegmentMapEntry" <<"[mplsInSegmentMapInterface='" <<mplsinsegmentmapinterface <<"']" <<"[mplsInSegmentMapLabel='" <<mplsinsegmentmaplabel <<"']" <<"[mplsInSegmentMapLabelPtrIndex='" <<mplsinsegmentmaplabelptrindex <<"']";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsinterfaceindex.is_set || is_set(mplsinterfaceindex.yfilter)) leaf_name_data.push_back(mplsinterfaceindex.get_name_leafdata());
-    if (mplsinterfaceavailablebandwidth.is_set || is_set(mplsinterfaceavailablebandwidth.yfilter)) leaf_name_data.push_back(mplsinterfaceavailablebandwidth.get_name_leafdata());
-    if (mplsinterfacelabelmaxin.is_set || is_set(mplsinterfacelabelmaxin.yfilter)) leaf_name_data.push_back(mplsinterfacelabelmaxin.get_name_leafdata());
-    if (mplsinterfacelabelmaxout.is_set || is_set(mplsinterfacelabelmaxout.yfilter)) leaf_name_data.push_back(mplsinterfacelabelmaxout.get_name_leafdata());
-    if (mplsinterfacelabelminin.is_set || is_set(mplsinterfacelabelminin.yfilter)) leaf_name_data.push_back(mplsinterfacelabelminin.get_name_leafdata());
-    if (mplsinterfacelabelminout.is_set || is_set(mplsinterfacelabelminout.yfilter)) leaf_name_data.push_back(mplsinterfacelabelminout.get_name_leafdata());
-    if (mplsinterfacelabelparticipationtype.is_set || is_set(mplsinterfacelabelparticipationtype.yfilter)) leaf_name_data.push_back(mplsinterfacelabelparticipationtype.get_name_leafdata());
-    if (mplsinterfaceperfinlabellookupfailures.is_set || is_set(mplsinterfaceperfinlabellookupfailures.yfilter)) leaf_name_data.push_back(mplsinterfaceperfinlabellookupfailures.get_name_leafdata());
-    if (mplsinterfaceperfinlabelsinuse.is_set || is_set(mplsinterfaceperfinlabelsinuse.yfilter)) leaf_name_data.push_back(mplsinterfaceperfinlabelsinuse.get_name_leafdata());
-    if (mplsinterfaceperfoutfragmentedpkts.is_set || is_set(mplsinterfaceperfoutfragmentedpkts.yfilter)) leaf_name_data.push_back(mplsinterfaceperfoutfragmentedpkts.get_name_leafdata());
-    if (mplsinterfaceperfoutlabelsinuse.is_set || is_set(mplsinterfaceperfoutlabelsinuse.yfilter)) leaf_name_data.push_back(mplsinterfaceperfoutlabelsinuse.get_name_leafdata());
-    if (mplsinterfacetotalbandwidth.is_set || is_set(mplsinterfacetotalbandwidth.yfilter)) leaf_name_data.push_back(mplsinterfacetotalbandwidth.get_name_leafdata());
+    if (mplsinsegmentmapinterface.is_set || is_set(mplsinsegmentmapinterface.yfilter)) leaf_name_data.push_back(mplsinsegmentmapinterface.get_name_leafdata());
+    if (mplsinsegmentmaplabel.is_set || is_set(mplsinsegmentmaplabel.yfilter)) leaf_name_data.push_back(mplsinsegmentmaplabel.get_name_leafdata());
+    if (mplsinsegmentmaplabelptrindex.is_set || is_set(mplsinsegmentmaplabelptrindex.yfilter)) leaf_name_data.push_back(mplsinsegmentmaplabelptrindex.get_name_leafdata());
+    if (mplsinsegmentmapindex.is_set || is_set(mplsinsegmentmapindex.yfilter)) leaf_name_data.push_back(mplsinsegmentmapindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "mplsInterfaceIndex")
+    if(value_path == "mplsInSegmentMapInterface")
     {
-        mplsinterfaceindex = value;
-        mplsinterfaceindex.value_namespace = name_space;
-        mplsinterfaceindex.value_namespace_prefix = name_space_prefix;
+        mplsinsegmentmapinterface = value;
+        mplsinsegmentmapinterface.value_namespace = name_space;
+        mplsinsegmentmapinterface.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsInterfaceAvailableBandwidth")
+    if(value_path == "mplsInSegmentMapLabel")
     {
-        mplsinterfaceavailablebandwidth = value;
-        mplsinterfaceavailablebandwidth.value_namespace = name_space;
-        mplsinterfaceavailablebandwidth.value_namespace_prefix = name_space_prefix;
+        mplsinsegmentmaplabel = value;
+        mplsinsegmentmaplabel.value_namespace = name_space;
+        mplsinsegmentmaplabel.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsInterfaceLabelMaxIn")
+    if(value_path == "mplsInSegmentMapLabelPtrIndex")
     {
-        mplsinterfacelabelmaxin = value;
-        mplsinterfacelabelmaxin.value_namespace = name_space;
-        mplsinterfacelabelmaxin.value_namespace_prefix = name_space_prefix;
+        mplsinsegmentmaplabelptrindex = value;
+        mplsinsegmentmaplabelptrindex.value_namespace = name_space;
+        mplsinsegmentmaplabelptrindex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mplsInterfaceLabelMaxOut")
+    if(value_path == "mplsInSegmentMapIndex")
     {
-        mplsinterfacelabelmaxout = value;
-        mplsinterfacelabelmaxout.value_namespace = name_space;
-        mplsinterfacelabelmaxout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfaceLabelMinIn")
-    {
-        mplsinterfacelabelminin = value;
-        mplsinterfacelabelminin.value_namespace = name_space;
-        mplsinterfacelabelminin.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfaceLabelMinOut")
-    {
-        mplsinterfacelabelminout = value;
-        mplsinterfacelabelminout.value_namespace = name_space;
-        mplsinterfacelabelminout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfaceLabelParticipationType")
-    {
-        mplsinterfacelabelparticipationtype[value] = true;
-    }
-    if(value_path == "mplsInterfacePerfInLabelLookupFailures")
-    {
-        mplsinterfaceperfinlabellookupfailures = value;
-        mplsinterfaceperfinlabellookupfailures.value_namespace = name_space;
-        mplsinterfaceperfinlabellookupfailures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfacePerfInLabelsInUse")
-    {
-        mplsinterfaceperfinlabelsinuse = value;
-        mplsinterfaceperfinlabelsinuse.value_namespace = name_space;
-        mplsinterfaceperfinlabelsinuse.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfacePerfOutFragmentedPkts")
-    {
-        mplsinterfaceperfoutfragmentedpkts = value;
-        mplsinterfaceperfoutfragmentedpkts.value_namespace = name_space;
-        mplsinterfaceperfoutfragmentedpkts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfacePerfOutLabelsInUse")
-    {
-        mplsinterfaceperfoutlabelsinuse = value;
-        mplsinterfaceperfoutlabelsinuse.value_namespace = name_space;
-        mplsinterfaceperfoutlabelsinuse.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInterfaceTotalBandwidth")
-    {
-        mplsinterfacetotalbandwidth = value;
-        mplsinterfacetotalbandwidth.value_namespace = name_space;
-        mplsinterfacetotalbandwidth.value_namespace_prefix = name_space_prefix;
+        mplsinsegmentmapindex = value;
+        mplsinsegmentmapindex.value_namespace = name_space;
+        mplsinsegmentmapindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "mplsInterfaceIndex")
+    if(value_path == "mplsInSegmentMapInterface")
     {
-        mplsinterfaceindex.yfilter = yfilter;
+        mplsinsegmentmapinterface.yfilter = yfilter;
     }
-    if(value_path == "mplsInterfaceAvailableBandwidth")
+    if(value_path == "mplsInSegmentMapLabel")
     {
-        mplsinterfaceavailablebandwidth.yfilter = yfilter;
+        mplsinsegmentmaplabel.yfilter = yfilter;
     }
-    if(value_path == "mplsInterfaceLabelMaxIn")
+    if(value_path == "mplsInSegmentMapLabelPtrIndex")
     {
-        mplsinterfacelabelmaxin.yfilter = yfilter;
+        mplsinsegmentmaplabelptrindex.yfilter = yfilter;
     }
-    if(value_path == "mplsInterfaceLabelMaxOut")
+    if(value_path == "mplsInSegmentMapIndex")
     {
-        mplsinterfacelabelmaxout.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfaceLabelMinIn")
-    {
-        mplsinterfacelabelminin.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfaceLabelMinOut")
-    {
-        mplsinterfacelabelminout.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfaceLabelParticipationType")
-    {
-        mplsinterfacelabelparticipationtype.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfacePerfInLabelLookupFailures")
-    {
-        mplsinterfaceperfinlabellookupfailures.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfacePerfInLabelsInUse")
-    {
-        mplsinterfaceperfinlabelsinuse.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfacePerfOutFragmentedPkts")
-    {
-        mplsinterfaceperfoutfragmentedpkts.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfacePerfOutLabelsInUse")
-    {
-        mplsinterfaceperfoutlabelsinuse.yfilter = yfilter;
-    }
-    if(value_path == "mplsInterfaceTotalBandwidth")
-    {
-        mplsinterfacetotalbandwidth.yfilter = yfilter;
+        mplsinsegmentmapindex.yfilter = yfilter;
     }
 }
 
-bool MplsLsrStdMib::Mplsinterfacetable::Mplsinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsInterfaceIndex" || name == "mplsInterfaceAvailableBandwidth" || name == "mplsInterfaceLabelMaxIn" || name == "mplsInterfaceLabelMaxOut" || name == "mplsInterfaceLabelMinIn" || name == "mplsInterfaceLabelMinOut" || name == "mplsInterfaceLabelParticipationType" || name == "mplsInterfacePerfInLabelLookupFailures" || name == "mplsInterfacePerfInLabelsInUse" || name == "mplsInterfacePerfOutFragmentedPkts" || name == "mplsInterfacePerfOutLabelsInUse" || name == "mplsInterfaceTotalBandwidth")
+    if(name == "mplsInSegmentMapInterface" || name == "mplsInSegmentMapLabel" || name == "mplsInSegmentMapLabelPtrIndex" || name == "mplsInSegmentMapIndex")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmenttable()
+MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmenttable()
 {
-    yang_name = "mplsInSegmentTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
+
+    yang_name = "mplsInSegmentTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsinsegmenttable::~Mplsinsegmenttable()
+MPLSLSRSTDMIB::Mplsinsegmenttable::~Mplsinsegmenttable()
 {
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::has_data() const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::has_data() const
 {
     for (std::size_t index=0; index<mplsinsegmententry.size(); index++)
     {
@@ -766,7 +469,7 @@ bool MplsLsrStdMib::Mplsinsegmenttable::has_data() const
     return false;
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::has_operation() const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::has_operation() const
 {
     for (std::size_t index=0; index<mplsinsegmententry.size(); index++)
     {
@@ -776,37 +479,30 @@ bool MplsLsrStdMib::Mplsinsegmenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsinsegmenttable::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsinsegmenttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsinsegmenttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsInSegmentTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsinsegmenttable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinsegmenttable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinsegmenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsInSegmentEntry")
     {
@@ -818,7 +514,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(con
                 return c;
             }
         }
-        auto c = std::make_shared<MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry>();
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry>();
         c->parent = this;
         mplsinsegmententry.push_back(c);
         return c;
@@ -827,7 +523,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinsegmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplsinsegmententry)
@@ -838,22 +534,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmenttable
     return children;
 }
 
-void MplsLsrStdMib::Mplsinsegmenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsinsegmenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLsrStdMib::Mplsinsegmenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsinsegmenttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsInSegmentEntry")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::Mplsinsegmententry()
+MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::Mplsinsegmententry()
     :
     mplsinsegmentindex{YType::str, "mplsInSegmentIndex"},
     mplsinsegmentaddrfamily{YType::enumeration, "mplsInSegmentAddrFamily"},
@@ -873,14 +569,15 @@ MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::Mplsinsegmententry()
     mplsinsegmenttrafficparamptr{YType::str, "mplsInSegmentTrafficParamPtr"},
     mplsinsegmentxcindex{YType::str, "mplsInSegmentXCIndex"}
 {
-    yang_name = "mplsInSegmentEntry"; yang_parent_name = "mplsInSegmentTable";
+
+    yang_name = "mplsInSegmentEntry"; yang_parent_name = "mplsInSegmentTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::~Mplsinsegmententry()
+MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::~Mplsinsegmententry()
 {
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::has_data() const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::has_data() const
 {
     return mplsinsegmentindex.is_set
 	|| mplsinsegmentaddrfamily.is_set
@@ -901,7 +598,7 @@ bool MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::has_data() const
 	|| mplsinsegmentxcindex.is_set;
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::has_operation() const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsinsegmentindex.yfilter)
@@ -923,27 +620,22 @@ bool MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::has_operation() cons
 	|| ydk::is_set(mplsinsegmentxcindex.yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInSegmentTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsInSegmentEntry" <<"[mplsInSegmentIndex='" <<mplsinsegmentindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInSegmentTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsinsegmentindex.is_set || is_set(mplsinsegmentindex.yfilter)) leaf_name_data.push_back(mplsinsegmentindex.get_name_leafdata());
@@ -964,24 +656,22 @@ const EntityPath MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::get_enti
     if (mplsinsegmenttrafficparamptr.is_set || is_set(mplsinsegmenttrafficparamptr.yfilter)) leaf_name_data.push_back(mplsinsegmenttrafficparamptr.get_name_leafdata());
     if (mplsinsegmentxcindex.is_set || is_set(mplsinsegmentxcindex.yfilter)) leaf_name_data.push_back(mplsinsegmentxcindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsInSegmentIndex")
     {
@@ -1087,7 +777,7 @@ void MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::set_value(const std:
     }
 }
 
-void MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsInSegmentIndex")
     {
@@ -1159,23 +849,765 @@ void MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::set_filter(const std
     }
 }
 
-bool MplsLsrStdMib::Mplsinsegmenttable::Mplsinsegmententry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsInSegmentIndex" || name == "mplsInSegmentAddrFamily" || name == "mplsInSegmentInterface" || name == "mplsInSegmentLabel" || name == "mplsInSegmentLabelPtr" || name == "mplsInSegmentNPop" || name == "mplsInSegmentOwner" || name == "mplsInSegmentPerfDiscards" || name == "mplsInSegmentPerfDiscontinuityTime" || name == "mplsInSegmentPerfErrors" || name == "mplsInSegmentPerfHCOctets" || name == "mplsInSegmentPerfOctets" || name == "mplsInSegmentPerfPackets" || name == "mplsInSegmentRowStatus" || name == "mplsInSegmentStorageType" || name == "mplsInSegmentTrafficParamPtr" || name == "mplsInSegmentXCIndex")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmenttable()
+MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfacetable()
 {
-    yang_name = "mplsOutSegmentTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
+
+    yang_name = "mplsInterfaceTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsoutsegmenttable::~Mplsoutsegmenttable()
+MPLSLSRSTDMIB::Mplsinterfacetable::~Mplsinterfacetable()
 {
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::has_data() const
+bool MPLSLSRSTDMIB::Mplsinterfacetable::has_data() const
+{
+    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
+    {
+        if(mplsinterfaceentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MPLSLSRSTDMIB::Mplsinterfacetable::has_operation() const
+{
+    for (std::size_t index=0; index<mplsinterfaceentry.size(); index++)
+    {
+        if(mplsinterfaceentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MPLSLSRSTDMIB::Mplsinterfacetable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsinterfacetable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsInterfaceTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinterfacetable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mplsInterfaceEntry")
+    {
+        for(auto const & c : mplsinterfaceentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry>();
+        c->parent = this;
+        mplsinterfaceentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinterfacetable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mplsinterfaceentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MPLSLSRSTDMIB::Mplsinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MPLSLSRSTDMIB::Mplsinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MPLSLSRSTDMIB::Mplsinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsInterfaceEntry")
+        return true;
+    return false;
+}
+
+MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::Mplsinterfaceentry()
+    :
+    mplsinterfaceindex{YType::int32, "mplsInterfaceIndex"},
+    mplsinterfaceavailablebandwidth{YType::uint32, "mplsInterfaceAvailableBandwidth"},
+    mplsinterfacelabelmaxin{YType::uint32, "mplsInterfaceLabelMaxIn"},
+    mplsinterfacelabelmaxout{YType::uint32, "mplsInterfaceLabelMaxOut"},
+    mplsinterfacelabelminin{YType::uint32, "mplsInterfaceLabelMinIn"},
+    mplsinterfacelabelminout{YType::uint32, "mplsInterfaceLabelMinOut"},
+    mplsinterfacelabelparticipationtype{YType::bits, "mplsInterfaceLabelParticipationType"},
+    mplsinterfaceperfinlabellookupfailures{YType::uint32, "mplsInterfacePerfInLabelLookupFailures"},
+    mplsinterfaceperfinlabelsinuse{YType::uint32, "mplsInterfacePerfInLabelsInUse"},
+    mplsinterfaceperfoutfragmentedpkts{YType::uint32, "mplsInterfacePerfOutFragmentedPkts"},
+    mplsinterfaceperfoutlabelsinuse{YType::uint32, "mplsInterfacePerfOutLabelsInUse"},
+    mplsinterfacetotalbandwidth{YType::uint32, "mplsInterfaceTotalBandwidth"}
+{
+
+    yang_name = "mplsInterfaceEntry"; yang_parent_name = "mplsInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::~Mplsinterfaceentry()
+{
+}
+
+bool MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::has_data() const
+{
+    return mplsinterfaceindex.is_set
+	|| mplsinterfaceavailablebandwidth.is_set
+	|| mplsinterfacelabelmaxin.is_set
+	|| mplsinterfacelabelmaxout.is_set
+	|| mplsinterfacelabelminin.is_set
+	|| mplsinterfacelabelminout.is_set
+	|| mplsinterfacelabelparticipationtype.is_set
+	|| mplsinterfaceperfinlabellookupfailures.is_set
+	|| mplsinterfaceperfinlabelsinuse.is_set
+	|| mplsinterfaceperfoutfragmentedpkts.is_set
+	|| mplsinterfaceperfoutlabelsinuse.is_set
+	|| mplsinterfacetotalbandwidth.is_set;
+}
+
+bool MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mplsinterfaceindex.yfilter)
+	|| ydk::is_set(mplsinterfaceavailablebandwidth.yfilter)
+	|| ydk::is_set(mplsinterfacelabelmaxin.yfilter)
+	|| ydk::is_set(mplsinterfacelabelmaxout.yfilter)
+	|| ydk::is_set(mplsinterfacelabelminin.yfilter)
+	|| ydk::is_set(mplsinterfacelabelminout.yfilter)
+	|| ydk::is_set(mplsinterfacelabelparticipationtype.yfilter)
+	|| ydk::is_set(mplsinterfaceperfinlabellookupfailures.yfilter)
+	|| ydk::is_set(mplsinterfaceperfinlabelsinuse.yfilter)
+	|| ydk::is_set(mplsinterfaceperfoutfragmentedpkts.yfilter)
+	|| ydk::is_set(mplsinterfaceperfoutlabelsinuse.yfilter)
+	|| ydk::is_set(mplsinterfacetotalbandwidth.yfilter);
+}
+
+std::string MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInterfaceTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsInterfaceEntry" <<"[mplsInterfaceIndex='" <<mplsinterfaceindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mplsinterfaceindex.is_set || is_set(mplsinterfaceindex.yfilter)) leaf_name_data.push_back(mplsinterfaceindex.get_name_leafdata());
+    if (mplsinterfaceavailablebandwidth.is_set || is_set(mplsinterfaceavailablebandwidth.yfilter)) leaf_name_data.push_back(mplsinterfaceavailablebandwidth.get_name_leafdata());
+    if (mplsinterfacelabelmaxin.is_set || is_set(mplsinterfacelabelmaxin.yfilter)) leaf_name_data.push_back(mplsinterfacelabelmaxin.get_name_leafdata());
+    if (mplsinterfacelabelmaxout.is_set || is_set(mplsinterfacelabelmaxout.yfilter)) leaf_name_data.push_back(mplsinterfacelabelmaxout.get_name_leafdata());
+    if (mplsinterfacelabelminin.is_set || is_set(mplsinterfacelabelminin.yfilter)) leaf_name_data.push_back(mplsinterfacelabelminin.get_name_leafdata());
+    if (mplsinterfacelabelminout.is_set || is_set(mplsinterfacelabelminout.yfilter)) leaf_name_data.push_back(mplsinterfacelabelminout.get_name_leafdata());
+    if (mplsinterfacelabelparticipationtype.is_set || is_set(mplsinterfacelabelparticipationtype.yfilter)) leaf_name_data.push_back(mplsinterfacelabelparticipationtype.get_name_leafdata());
+    if (mplsinterfaceperfinlabellookupfailures.is_set || is_set(mplsinterfaceperfinlabellookupfailures.yfilter)) leaf_name_data.push_back(mplsinterfaceperfinlabellookupfailures.get_name_leafdata());
+    if (mplsinterfaceperfinlabelsinuse.is_set || is_set(mplsinterfaceperfinlabelsinuse.yfilter)) leaf_name_data.push_back(mplsinterfaceperfinlabelsinuse.get_name_leafdata());
+    if (mplsinterfaceperfoutfragmentedpkts.is_set || is_set(mplsinterfaceperfoutfragmentedpkts.yfilter)) leaf_name_data.push_back(mplsinterfaceperfoutfragmentedpkts.get_name_leafdata());
+    if (mplsinterfaceperfoutlabelsinuse.is_set || is_set(mplsinterfaceperfoutlabelsinuse.yfilter)) leaf_name_data.push_back(mplsinterfaceperfoutlabelsinuse.get_name_leafdata());
+    if (mplsinterfacetotalbandwidth.is_set || is_set(mplsinterfacetotalbandwidth.yfilter)) leaf_name_data.push_back(mplsinterfacetotalbandwidth.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mplsInterfaceIndex")
+    {
+        mplsinterfaceindex = value;
+        mplsinterfaceindex.value_namespace = name_space;
+        mplsinterfaceindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceAvailableBandwidth")
+    {
+        mplsinterfaceavailablebandwidth = value;
+        mplsinterfaceavailablebandwidth.value_namespace = name_space;
+        mplsinterfaceavailablebandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceLabelMaxIn")
+    {
+        mplsinterfacelabelmaxin = value;
+        mplsinterfacelabelmaxin.value_namespace = name_space;
+        mplsinterfacelabelmaxin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceLabelMaxOut")
+    {
+        mplsinterfacelabelmaxout = value;
+        mplsinterfacelabelmaxout.value_namespace = name_space;
+        mplsinterfacelabelmaxout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceLabelMinIn")
+    {
+        mplsinterfacelabelminin = value;
+        mplsinterfacelabelminin.value_namespace = name_space;
+        mplsinterfacelabelminin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceLabelMinOut")
+    {
+        mplsinterfacelabelminout = value;
+        mplsinterfacelabelminout.value_namespace = name_space;
+        mplsinterfacelabelminout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceLabelParticipationType")
+    {
+        mplsinterfacelabelparticipationtype[value] = true;
+    }
+    if(value_path == "mplsInterfacePerfInLabelLookupFailures")
+    {
+        mplsinterfaceperfinlabellookupfailures = value;
+        mplsinterfaceperfinlabellookupfailures.value_namespace = name_space;
+        mplsinterfaceperfinlabellookupfailures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfacePerfInLabelsInUse")
+    {
+        mplsinterfaceperfinlabelsinuse = value;
+        mplsinterfaceperfinlabelsinuse.value_namespace = name_space;
+        mplsinterfaceperfinlabelsinuse.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfacePerfOutFragmentedPkts")
+    {
+        mplsinterfaceperfoutfragmentedpkts = value;
+        mplsinterfaceperfoutfragmentedpkts.value_namespace = name_space;
+        mplsinterfaceperfoutfragmentedpkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfacePerfOutLabelsInUse")
+    {
+        mplsinterfaceperfoutlabelsinuse = value;
+        mplsinterfaceperfoutlabelsinuse.value_namespace = name_space;
+        mplsinterfaceperfoutlabelsinuse.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsInterfaceTotalBandwidth")
+    {
+        mplsinterfacetotalbandwidth = value;
+        mplsinterfacetotalbandwidth.value_namespace = name_space;
+        mplsinterfacetotalbandwidth.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsInterfaceIndex")
+    {
+        mplsinterfaceindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceAvailableBandwidth")
+    {
+        mplsinterfaceavailablebandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceLabelMaxIn")
+    {
+        mplsinterfacelabelmaxin.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceLabelMaxOut")
+    {
+        mplsinterfacelabelmaxout.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceLabelMinIn")
+    {
+        mplsinterfacelabelminin.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceLabelMinOut")
+    {
+        mplsinterfacelabelminout.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceLabelParticipationType")
+    {
+        mplsinterfacelabelparticipationtype.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfacePerfInLabelLookupFailures")
+    {
+        mplsinterfaceperfinlabellookupfailures.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfacePerfInLabelsInUse")
+    {
+        mplsinterfaceperfinlabelsinuse.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfacePerfOutFragmentedPkts")
+    {
+        mplsinterfaceperfoutfragmentedpkts.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfacePerfOutLabelsInUse")
+    {
+        mplsinterfaceperfoutlabelsinuse.yfilter = yfilter;
+    }
+    if(value_path == "mplsInterfaceTotalBandwidth")
+    {
+        mplsinterfacetotalbandwidth.yfilter = yfilter;
+    }
+}
+
+bool MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsInterfaceIndex" || name == "mplsInterfaceAvailableBandwidth" || name == "mplsInterfaceLabelMaxIn" || name == "mplsInterfaceLabelMaxOut" || name == "mplsInterfaceLabelMinIn" || name == "mplsInterfaceLabelMinOut" || name == "mplsInterfaceLabelParticipationType" || name == "mplsInterfacePerfInLabelLookupFailures" || name == "mplsInterfacePerfInLabelsInUse" || name == "mplsInterfacePerfOutFragmentedPkts" || name == "mplsInterfacePerfOutLabelsInUse" || name == "mplsInterfaceTotalBandwidth")
+        return true;
+    return false;
+}
+
+MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstacktable()
+{
+
+    yang_name = "mplsLabelStackTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSLSRSTDMIB::Mplslabelstacktable::~Mplslabelstacktable()
+{
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::has_data() const
+{
+    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
+    {
+        if(mplslabelstackentry[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::has_operation() const
+{
+    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
+    {
+        if(mplslabelstackentry[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MPLSLSRSTDMIB::Mplslabelstacktable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplslabelstacktable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsLabelStackTable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplslabelstacktable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplslabelstacktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mplsLabelStackEntry")
+    {
+        for(auto const & c : mplslabelstackentry)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry>();
+        c->parent = this;
+        mplslabelstackentry.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplslabelstacktable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mplslabelstackentry)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MPLSLSRSTDMIB::Mplslabelstacktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MPLSLSRSTDMIB::Mplslabelstacktable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsLabelStackEntry")
+        return true;
+    return false;
+}
+
+MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::Mplslabelstackentry()
+    :
+    mplslabelstackindex{YType::str, "mplsLabelStackIndex"},
+    mplslabelstacklabelindex{YType::uint32, "mplsLabelStackLabelIndex"},
+    mplslabelstacklabel{YType::uint32, "mplsLabelStackLabel"},
+    mplslabelstacklabelptr{YType::str, "mplsLabelStackLabelPtr"},
+    mplslabelstackrowstatus{YType::enumeration, "mplsLabelStackRowStatus"},
+    mplslabelstackstoragetype{YType::enumeration, "mplsLabelStackStorageType"}
+{
+
+    yang_name = "mplsLabelStackEntry"; yang_parent_name = "mplsLabelStackTable"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::~Mplslabelstackentry()
+{
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::has_data() const
+{
+    return mplslabelstackindex.is_set
+	|| mplslabelstacklabelindex.is_set
+	|| mplslabelstacklabel.is_set
+	|| mplslabelstacklabelptr.is_set
+	|| mplslabelstackrowstatus.is_set
+	|| mplslabelstackstoragetype.is_set;
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mplslabelstackindex.yfilter)
+	|| ydk::is_set(mplslabelstacklabelindex.yfilter)
+	|| ydk::is_set(mplslabelstacklabel.yfilter)
+	|| ydk::is_set(mplslabelstacklabelptr.yfilter)
+	|| ydk::is_set(mplslabelstackrowstatus.yfilter)
+	|| ydk::is_set(mplslabelstackstoragetype.yfilter);
+}
+
+std::string MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsLabelStackTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsLabelStackEntry" <<"[mplsLabelStackIndex='" <<mplslabelstackindex <<"']" <<"[mplsLabelStackLabelIndex='" <<mplslabelstacklabelindex <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mplslabelstackindex.is_set || is_set(mplslabelstackindex.yfilter)) leaf_name_data.push_back(mplslabelstackindex.get_name_leafdata());
+    if (mplslabelstacklabelindex.is_set || is_set(mplslabelstacklabelindex.yfilter)) leaf_name_data.push_back(mplslabelstacklabelindex.get_name_leafdata());
+    if (mplslabelstacklabel.is_set || is_set(mplslabelstacklabel.yfilter)) leaf_name_data.push_back(mplslabelstacklabel.get_name_leafdata());
+    if (mplslabelstacklabelptr.is_set || is_set(mplslabelstacklabelptr.yfilter)) leaf_name_data.push_back(mplslabelstacklabelptr.get_name_leafdata());
+    if (mplslabelstackrowstatus.is_set || is_set(mplslabelstackrowstatus.yfilter)) leaf_name_data.push_back(mplslabelstackrowstatus.get_name_leafdata());
+    if (mplslabelstackstoragetype.is_set || is_set(mplslabelstackstoragetype.yfilter)) leaf_name_data.push_back(mplslabelstackstoragetype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mplsLabelStackIndex")
+    {
+        mplslabelstackindex = value;
+        mplslabelstackindex.value_namespace = name_space;
+        mplslabelstackindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackLabelIndex")
+    {
+        mplslabelstacklabelindex = value;
+        mplslabelstacklabelindex.value_namespace = name_space;
+        mplslabelstacklabelindex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackLabel")
+    {
+        mplslabelstacklabel = value;
+        mplslabelstacklabel.value_namespace = name_space;
+        mplslabelstacklabel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackLabelPtr")
+    {
+        mplslabelstacklabelptr = value;
+        mplslabelstacklabelptr.value_namespace = name_space;
+        mplslabelstacklabelptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackRowStatus")
+    {
+        mplslabelstackrowstatus = value;
+        mplslabelstackrowstatus.value_namespace = name_space;
+        mplslabelstackrowstatus.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackStorageType")
+    {
+        mplslabelstackstoragetype = value;
+        mplslabelstackstoragetype.value_namespace = name_space;
+        mplslabelstackstoragetype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsLabelStackIndex")
+    {
+        mplslabelstackindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackLabelIndex")
+    {
+        mplslabelstacklabelindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackLabel")
+    {
+        mplslabelstacklabel.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackLabelPtr")
+    {
+        mplslabelstacklabelptr.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackRowStatus")
+    {
+        mplslabelstackrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackStorageType")
+    {
+        mplslabelstackstoragetype.yfilter = yfilter;
+    }
+}
+
+bool MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsLabelStackIndex" || name == "mplsLabelStackLabelIndex" || name == "mplsLabelStackLabel" || name == "mplsLabelStackLabelPtr" || name == "mplsLabelStackRowStatus" || name == "mplsLabelStackStorageType")
+        return true;
+    return false;
+}
+
+MPLSLSRSTDMIB::Mplslsrobjects::Mplslsrobjects()
+    :
+    mplsinsegmentindexnext{YType::str, "mplsInSegmentIndexNext"},
+    mplslabelstackindexnext{YType::str, "mplsLabelStackIndexNext"},
+    mplsmaxlabelstackdepth{YType::uint32, "mplsMaxLabelStackDepth"},
+    mplsoutsegmentindexnext{YType::str, "mplsOutSegmentIndexNext"},
+    mplsxcindexnext{YType::str, "mplsXCIndexNext"},
+    mplsxcnotificationsenable{YType::boolean, "mplsXCNotificationsEnable"}
+{
+
+    yang_name = "mplsLsrObjects"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSLSRSTDMIB::Mplslsrobjects::~Mplslsrobjects()
+{
+}
+
+bool MPLSLSRSTDMIB::Mplslsrobjects::has_data() const
+{
+    return mplsinsegmentindexnext.is_set
+	|| mplslabelstackindexnext.is_set
+	|| mplsmaxlabelstackdepth.is_set
+	|| mplsoutsegmentindexnext.is_set
+	|| mplsxcindexnext.is_set
+	|| mplsxcnotificationsenable.is_set;
+}
+
+bool MPLSLSRSTDMIB::Mplslsrobjects::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mplsinsegmentindexnext.yfilter)
+	|| ydk::is_set(mplslabelstackindexnext.yfilter)
+	|| ydk::is_set(mplsmaxlabelstackdepth.yfilter)
+	|| ydk::is_set(mplsoutsegmentindexnext.yfilter)
+	|| ydk::is_set(mplsxcindexnext.yfilter)
+	|| ydk::is_set(mplsxcnotificationsenable.yfilter);
+}
+
+std::string MPLSLSRSTDMIB::Mplslsrobjects::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplslsrobjects::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mplsLsrObjects";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplslsrobjects::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mplsinsegmentindexnext.is_set || is_set(mplsinsegmentindexnext.yfilter)) leaf_name_data.push_back(mplsinsegmentindexnext.get_name_leafdata());
+    if (mplslabelstackindexnext.is_set || is_set(mplslabelstackindexnext.yfilter)) leaf_name_data.push_back(mplslabelstackindexnext.get_name_leafdata());
+    if (mplsmaxlabelstackdepth.is_set || is_set(mplsmaxlabelstackdepth.yfilter)) leaf_name_data.push_back(mplsmaxlabelstackdepth.get_name_leafdata());
+    if (mplsoutsegmentindexnext.is_set || is_set(mplsoutsegmentindexnext.yfilter)) leaf_name_data.push_back(mplsoutsegmentindexnext.get_name_leafdata());
+    if (mplsxcindexnext.is_set || is_set(mplsxcindexnext.yfilter)) leaf_name_data.push_back(mplsxcindexnext.get_name_leafdata());
+    if (mplsxcnotificationsenable.is_set || is_set(mplsxcnotificationsenable.yfilter)) leaf_name_data.push_back(mplsxcnotificationsenable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplslsrobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplslsrobjects::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MPLSLSRSTDMIB::Mplslsrobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mplsInSegmentIndexNext")
+    {
+        mplsinsegmentindexnext = value;
+        mplsinsegmentindexnext.value_namespace = name_space;
+        mplsinsegmentindexnext.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsLabelStackIndexNext")
+    {
+        mplslabelstackindexnext = value;
+        mplslabelstackindexnext.value_namespace = name_space;
+        mplslabelstackindexnext.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsMaxLabelStackDepth")
+    {
+        mplsmaxlabelstackdepth = value;
+        mplsmaxlabelstackdepth.value_namespace = name_space;
+        mplsmaxlabelstackdepth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsOutSegmentIndexNext")
+    {
+        mplsoutsegmentindexnext = value;
+        mplsoutsegmentindexnext.value_namespace = name_space;
+        mplsoutsegmentindexnext.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsXCIndexNext")
+    {
+        mplsxcindexnext = value;
+        mplsxcindexnext.value_namespace = name_space;
+        mplsxcindexnext.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mplsXCNotificationsEnable")
+    {
+        mplsxcnotificationsenable = value;
+        mplsxcnotificationsenable.value_namespace = name_space;
+        mplsxcnotificationsenable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MPLSLSRSTDMIB::Mplslsrobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsInSegmentIndexNext")
+    {
+        mplsinsegmentindexnext.yfilter = yfilter;
+    }
+    if(value_path == "mplsLabelStackIndexNext")
+    {
+        mplslabelstackindexnext.yfilter = yfilter;
+    }
+    if(value_path == "mplsMaxLabelStackDepth")
+    {
+        mplsmaxlabelstackdepth.yfilter = yfilter;
+    }
+    if(value_path == "mplsOutSegmentIndexNext")
+    {
+        mplsoutsegmentindexnext.yfilter = yfilter;
+    }
+    if(value_path == "mplsXCIndexNext")
+    {
+        mplsxcindexnext.yfilter = yfilter;
+    }
+    if(value_path == "mplsXCNotificationsEnable")
+    {
+        mplsxcnotificationsenable.yfilter = yfilter;
+    }
+}
+
+bool MPLSLSRSTDMIB::Mplslsrobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsInSegmentIndexNext" || name == "mplsLabelStackIndexNext" || name == "mplsMaxLabelStackDepth" || name == "mplsOutSegmentIndexNext" || name == "mplsXCIndexNext" || name == "mplsXCNotificationsEnable")
+        return true;
+    return false;
+}
+
+MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmenttable()
+{
+
+    yang_name = "mplsOutSegmentTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MPLSLSRSTDMIB::Mplsoutsegmenttable::~Mplsoutsegmenttable()
+{
+}
+
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::has_data() const
 {
     for (std::size_t index=0; index<mplsoutsegmententry.size(); index++)
     {
@@ -1185,7 +1617,7 @@ bool MplsLsrStdMib::Mplsoutsegmenttable::has_data() const
     return false;
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::has_operation() const
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::has_operation() const
 {
     for (std::size_t index=0; index<mplsoutsegmententry.size(); index++)
     {
@@ -1195,37 +1627,30 @@ bool MplsLsrStdMib::Mplsoutsegmenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsoutsegmenttable::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsoutsegmenttable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsoutsegmenttable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsOutSegmentTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsoutsegmenttable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsoutsegmenttable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsoutsegmenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsOutSegmentEntry")
     {
@@ -1237,7 +1662,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(co
                 return c;
             }
         }
-        auto c = std::make_shared<MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry>();
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry>();
         c->parent = this;
         mplsoutsegmententry.push_back(c);
         return c;
@@ -1246,7 +1671,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsoutsegmenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsoutsegmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplsoutsegmententry)
@@ -1257,22 +1682,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsoutsegmenttabl
     return children;
 }
 
-void MplsLsrStdMib::Mplsoutsegmenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsoutsegmenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLsrStdMib::Mplsoutsegmenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsoutsegmenttable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsOutSegmentEntry")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::Mplsoutsegmententry()
+MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::Mplsoutsegmententry()
     :
     mplsoutsegmentindex{YType::str, "mplsOutSegmentIndex"},
     mplsoutsegmentinterface{YType::int32, "mplsOutSegmentInterface"},
@@ -1293,14 +1718,15 @@ MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::Mplsoutsegmententry()
     mplsoutsegmenttrafficparamptr{YType::str, "mplsOutSegmentTrafficParamPtr"},
     mplsoutsegmentxcindex{YType::str, "mplsOutSegmentXCIndex"}
 {
-    yang_name = "mplsOutSegmentEntry"; yang_parent_name = "mplsOutSegmentTable";
+
+    yang_name = "mplsOutSegmentEntry"; yang_parent_name = "mplsOutSegmentTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::~Mplsoutsegmententry()
+MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::~Mplsoutsegmententry()
 {
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::has_data() const
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::has_data() const
 {
     return mplsoutsegmentindex.is_set
 	|| mplsoutsegmentinterface.is_set
@@ -1322,7 +1748,7 @@ bool MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::has_data() const
 	|| mplsoutsegmentxcindex.is_set;
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::has_operation() const
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsoutsegmentindex.yfilter)
@@ -1345,27 +1771,22 @@ bool MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::has_operation() co
 	|| ydk::is_set(mplsoutsegmentxcindex.yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsOutSegmentTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsOutSegmentEntry" <<"[mplsOutSegmentIndex='" <<mplsoutsegmentindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsOutSegmentTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsoutsegmentindex.is_set || is_set(mplsoutsegmentindex.yfilter)) leaf_name_data.push_back(mplsoutsegmentindex.get_name_leafdata());
@@ -1387,24 +1808,22 @@ const EntityPath MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::get_en
     if (mplsoutsegmenttrafficparamptr.is_set || is_set(mplsoutsegmenttrafficparamptr.yfilter)) leaf_name_data.push_back(mplsoutsegmenttrafficparamptr.get_name_leafdata());
     if (mplsoutsegmentxcindex.is_set || is_set(mplsoutsegmentxcindex.yfilter)) leaf_name_data.push_back(mplsoutsegmentxcindex.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsOutSegmentIndex")
     {
@@ -1516,7 +1935,7 @@ void MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::set_value(const st
     }
 }
 
-void MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsOutSegmentIndex")
     {
@@ -1592,23 +2011,24 @@ void MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::set_filter(const s
     }
 }
 
-bool MplsLsrStdMib::Mplsoutsegmenttable::Mplsoutsegmententry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsOutSegmentIndex" || name == "mplsOutSegmentInterface" || name == "mplsOutSegmentNextHopAddr" || name == "mplsOutSegmentNextHopAddrType" || name == "mplsOutSegmentOwner" || name == "mplsOutSegmentPerfDiscards" || name == "mplsOutSegmentPerfDiscontinuityTime" || name == "mplsOutSegmentPerfErrors" || name == "mplsOutSegmentPerfHCOctets" || name == "mplsOutSegmentPerfOctets" || name == "mplsOutSegmentPerfPackets" || name == "mplsOutSegmentPushTopLabel" || name == "mplsOutSegmentRowStatus" || name == "mplsOutSegmentStorageType" || name == "mplsOutSegmentTopLabel" || name == "mplsOutSegmentTopLabelPtr" || name == "mplsOutSegmentTrafficParamPtr" || name == "mplsOutSegmentXCIndex")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsxctable::Mplsxctable()
+MPLSLSRSTDMIB::Mplsxctable::Mplsxctable()
 {
-    yang_name = "mplsXCTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
+
+    yang_name = "mplsXCTable"; yang_parent_name = "MPLS-LSR-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsxctable::~Mplsxctable()
+MPLSLSRSTDMIB::Mplsxctable::~Mplsxctable()
 {
 }
 
-bool MplsLsrStdMib::Mplsxctable::has_data() const
+bool MPLSLSRSTDMIB::Mplsxctable::has_data() const
 {
     for (std::size_t index=0; index<mplsxcentry.size(); index++)
     {
@@ -1618,7 +2038,7 @@ bool MplsLsrStdMib::Mplsxctable::has_data() const
     return false;
 }
 
-bool MplsLsrStdMib::Mplsxctable::has_operation() const
+bool MPLSLSRSTDMIB::Mplsxctable::has_operation() const
 {
     for (std::size_t index=0; index<mplsxcentry.size(); index++)
     {
@@ -1628,37 +2048,30 @@ bool MplsLsrStdMib::Mplsxctable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsxctable::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsxctable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsxctable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsXCTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsxctable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsxctable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsxctable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsXCEntry")
     {
@@ -1670,7 +2083,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std:
                 return c;
             }
         }
-        auto c = std::make_shared<MplsLsrStdMib::Mplsxctable::Mplsxcentry>();
+        auto c = std::make_shared<MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry>();
         c->parent = this;
         mplsxcentry.push_back(c);
         return c;
@@ -1679,7 +2092,7 @@ std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsxctable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsxctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : mplsxcentry)
@@ -1690,22 +2103,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsxctable::get_c
     return children;
 }
 
-void MplsLsrStdMib::Mplsxctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsxctable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsLsrStdMib::Mplsxctable::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsxctable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsLsrStdMib::Mplsxctable::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsxctable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsXCEntry")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcentry()
+MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcentry()
     :
     mplsxcindex{YType::str, "mplsXCIndex"},
     mplsxcinsegmentindex{YType::str, "mplsXCInSegmentIndex"},
@@ -1718,14 +2131,15 @@ MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcentry()
     mplsxcrowstatus{YType::enumeration, "mplsXCRowStatus"},
     mplsxcstoragetype{YType::enumeration, "mplsXCStorageType"}
 {
-    yang_name = "mplsXCEntry"; yang_parent_name = "mplsXCTable";
+
+    yang_name = "mplsXCEntry"; yang_parent_name = "mplsXCTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-MplsLsrStdMib::Mplsxctable::Mplsxcentry::~Mplsxcentry()
+MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::~Mplsxcentry()
 {
 }
 
-bool MplsLsrStdMib::Mplsxctable::Mplsxcentry::has_data() const
+bool MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::has_data() const
 {
     return mplsxcindex.is_set
 	|| mplsxcinsegmentindex.is_set
@@ -1739,7 +2153,7 @@ bool MplsLsrStdMib::Mplsxctable::Mplsxcentry::has_data() const
 	|| mplsxcstoragetype.is_set;
 }
 
-bool MplsLsrStdMib::Mplsxctable::Mplsxcentry::has_operation() const
+bool MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsxcindex.yfilter)
@@ -1754,27 +2168,22 @@ bool MplsLsrStdMib::Mplsxctable::Mplsxcentry::has_operation() const
 	|| ydk::is_set(mplsxcstoragetype.yfilter);
 }
 
-std::string MplsLsrStdMib::Mplsxctable::Mplsxcentry::get_segment_path() const
+std::string MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsXCTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mplsXCEntry" <<"[mplsXCIndex='" <<mplsxcindex <<"']" <<"[mplsXCInSegmentIndex='" <<mplsxcinsegmentindex <<"']" <<"[mplsXCOutSegmentIndex='" <<mplsxcoutsegmentindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MplsLsrStdMib::Mplsxctable::Mplsxcentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsXCTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mplsxcindex.is_set || is_set(mplsxcindex.yfilter)) leaf_name_data.push_back(mplsxcindex.get_name_leafdata());
@@ -1788,24 +2197,22 @@ const EntityPath MplsLsrStdMib::Mplsxctable::Mplsxcentry::get_entity_path(Entity
     if (mplsxcrowstatus.is_set || is_set(mplsxcrowstatus.yfilter)) leaf_name_data.push_back(mplsxcrowstatus.get_name_leafdata());
     if (mplsxcstoragetype.is_set || is_set(mplsxcstoragetype.yfilter)) leaf_name_data.push_back(mplsxcstoragetype.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsxctable::Mplsxcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsxctable::Mplsxcentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void MplsLsrStdMib::Mplsxctable::Mplsxcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsXCIndex")
     {
@@ -1869,7 +2276,7 @@ void MplsLsrStdMib::Mplsxctable::Mplsxcentry::set_value(const std::string & valu
     }
 }
 
-void MplsLsrStdMib::Mplsxctable::Mplsxcentry::set_filter(const std::string & value_path, YFilter yfilter)
+void MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsXCIndex")
     {
@@ -1913,526 +2320,24 @@ void MplsLsrStdMib::Mplsxctable::Mplsxcentry::set_filter(const std::string & val
     }
 }
 
-bool MplsLsrStdMib::Mplsxctable::Mplsxcentry::has_leaf_or_child_of_name(const std::string & name) const
+bool MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsXCIndex" || name == "mplsXCInSegmentIndex" || name == "mplsXCOutSegmentIndex" || name == "mplsXCAdminStatus" || name == "mplsXCLabelStackIndex" || name == "mplsXCLspId" || name == "mplsXCOperStatus" || name == "mplsXCOwner" || name == "mplsXCRowStatus" || name == "mplsXCStorageType")
         return true;
     return false;
 }
 
-MplsLsrStdMib::Mplslabelstacktable::Mplslabelstacktable()
-{
-    yang_name = "mplsLabelStackTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
-}
-
-MplsLsrStdMib::Mplslabelstacktable::~Mplslabelstacktable()
-{
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::has_data() const
-{
-    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
-    {
-        if(mplslabelstackentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::has_operation() const
-{
-    for (std::size_t index=0; index<mplslabelstackentry.size(); index++)
-    {
-        if(mplslabelstackentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsLsrStdMib::Mplslabelstacktable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsLabelStackTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsrStdMib::Mplslabelstacktable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsrStdMib::Mplslabelstacktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mplsLabelStackEntry")
-    {
-        for(auto const & c : mplslabelstackentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry>();
-        c->parent = this;
-        mplslabelstackentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplslabelstacktable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplslabelstackentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MplsLsrStdMib::Mplslabelstacktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLsrStdMib::Mplslabelstacktable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsLabelStackEntry")
-        return true;
-    return false;
-}
-
-MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::Mplslabelstackentry()
-    :
-    mplslabelstackindex{YType::str, "mplsLabelStackIndex"},
-    mplslabelstacklabelindex{YType::uint32, "mplsLabelStackLabelIndex"},
-    mplslabelstacklabel{YType::uint32, "mplsLabelStackLabel"},
-    mplslabelstacklabelptr{YType::str, "mplsLabelStackLabelPtr"},
-    mplslabelstackrowstatus{YType::enumeration, "mplsLabelStackRowStatus"},
-    mplslabelstackstoragetype{YType::enumeration, "mplsLabelStackStorageType"}
-{
-    yang_name = "mplsLabelStackEntry"; yang_parent_name = "mplsLabelStackTable";
-}
-
-MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::~Mplslabelstackentry()
-{
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::has_data() const
-{
-    return mplslabelstackindex.is_set
-	|| mplslabelstacklabelindex.is_set
-	|| mplslabelstacklabel.is_set
-	|| mplslabelstacklabelptr.is_set
-	|| mplslabelstackrowstatus.is_set
-	|| mplslabelstackstoragetype.is_set;
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mplslabelstackindex.yfilter)
-	|| ydk::is_set(mplslabelstacklabelindex.yfilter)
-	|| ydk::is_set(mplslabelstacklabel.yfilter)
-	|| ydk::is_set(mplslabelstacklabelptr.yfilter)
-	|| ydk::is_set(mplslabelstackrowstatus.yfilter)
-	|| ydk::is_set(mplslabelstackstoragetype.yfilter);
-}
-
-std::string MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsLabelStackEntry" <<"[mplsLabelStackIndex='" <<mplslabelstackindex <<"']" <<"[mplsLabelStackLabelIndex='" <<mplslabelstacklabelindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsLabelStackTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mplslabelstackindex.is_set || is_set(mplslabelstackindex.yfilter)) leaf_name_data.push_back(mplslabelstackindex.get_name_leafdata());
-    if (mplslabelstacklabelindex.is_set || is_set(mplslabelstacklabelindex.yfilter)) leaf_name_data.push_back(mplslabelstacklabelindex.get_name_leafdata());
-    if (mplslabelstacklabel.is_set || is_set(mplslabelstacklabel.yfilter)) leaf_name_data.push_back(mplslabelstacklabel.get_name_leafdata());
-    if (mplslabelstacklabelptr.is_set || is_set(mplslabelstacklabelptr.yfilter)) leaf_name_data.push_back(mplslabelstacklabelptr.get_name_leafdata());
-    if (mplslabelstackrowstatus.is_set || is_set(mplslabelstackrowstatus.yfilter)) leaf_name_data.push_back(mplslabelstackrowstatus.get_name_leafdata());
-    if (mplslabelstackstoragetype.is_set || is_set(mplslabelstackstoragetype.yfilter)) leaf_name_data.push_back(mplslabelstackstoragetype.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mplsLabelStackIndex")
-    {
-        mplslabelstackindex = value;
-        mplslabelstackindex.value_namespace = name_space;
-        mplslabelstackindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackLabelIndex")
-    {
-        mplslabelstacklabelindex = value;
-        mplslabelstacklabelindex.value_namespace = name_space;
-        mplslabelstacklabelindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackLabel")
-    {
-        mplslabelstacklabel = value;
-        mplslabelstacklabel.value_namespace = name_space;
-        mplslabelstacklabel.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackLabelPtr")
-    {
-        mplslabelstacklabelptr = value;
-        mplslabelstacklabelptr.value_namespace = name_space;
-        mplslabelstacklabelptr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackRowStatus")
-    {
-        mplslabelstackrowstatus = value;
-        mplslabelstackrowstatus.value_namespace = name_space;
-        mplslabelstackrowstatus.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsLabelStackStorageType")
-    {
-        mplslabelstackstoragetype = value;
-        mplslabelstackstoragetype.value_namespace = name_space;
-        mplslabelstackstoragetype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mplsLabelStackIndex")
-    {
-        mplslabelstackindex.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackLabelIndex")
-    {
-        mplslabelstacklabelindex.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackLabel")
-    {
-        mplslabelstacklabel.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackLabelPtr")
-    {
-        mplslabelstacklabelptr.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackRowStatus")
-    {
-        mplslabelstackrowstatus.yfilter = yfilter;
-    }
-    if(value_path == "mplsLabelStackStorageType")
-    {
-        mplslabelstackstoragetype.yfilter = yfilter;
-    }
-}
-
-bool MplsLsrStdMib::Mplslabelstacktable::Mplslabelstackentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsLabelStackIndex" || name == "mplsLabelStackLabelIndex" || name == "mplsLabelStackLabel" || name == "mplsLabelStackLabelPtr" || name == "mplsLabelStackRowStatus" || name == "mplsLabelStackStorageType")
-        return true;
-    return false;
-}
-
-MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmaptable()
-{
-    yang_name = "mplsInSegmentMapTable"; yang_parent_name = "MPLS-LSR-STD-MIB";
-}
-
-MplsLsrStdMib::Mplsinsegmentmaptable::~Mplsinsegmentmaptable()
-{
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::has_data() const
-{
-    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
-    {
-        if(mplsinsegmentmapentry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::has_operation() const
-{
-    for (std::size_t index=0; index<mplsinsegmentmapentry.size(); index++)
-    {
-        if(mplsinsegmentmapentry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsLsrStdMib::Mplsinsegmentmaptable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsInSegmentMapTable";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsrStdMib::Mplsinsegmentmaptable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmentmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mplsInSegmentMapEntry")
-    {
-        for(auto const & c : mplsinsegmentmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry>();
-        c->parent = this;
-        mplsinsegmentmapentry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmentmaptable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsinsegmentmapentry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MplsLsrStdMib::Mplsinsegmentmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLsrStdMib::Mplsinsegmentmaptable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsInSegmentMapEntry")
-        return true;
-    return false;
-}
-
-MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::Mplsinsegmentmapentry()
-    :
-    mplsinsegmentmapinterface{YType::int32, "mplsInSegmentMapInterface"},
-    mplsinsegmentmaplabel{YType::uint32, "mplsInSegmentMapLabel"},
-    mplsinsegmentmaplabelptrindex{YType::str, "mplsInSegmentMapLabelPtrIndex"},
-    mplsinsegmentmapindex{YType::str, "mplsInSegmentMapIndex"}
-{
-    yang_name = "mplsInSegmentMapEntry"; yang_parent_name = "mplsInSegmentMapTable";
-}
-
-MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::~Mplsinsegmentmapentry()
-{
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_data() const
-{
-    return mplsinsegmentmapinterface.is_set
-	|| mplsinsegmentmaplabel.is_set
-	|| mplsinsegmentmaplabelptrindex.is_set
-	|| mplsinsegmentmapindex.is_set;
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mplsinsegmentmapinterface.yfilter)
-	|| ydk::is_set(mplsinsegmentmaplabel.yfilter)
-	|| ydk::is_set(mplsinsegmentmaplabelptrindex.yfilter)
-	|| ydk::is_set(mplsinsegmentmapindex.yfilter);
-}
-
-std::string MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mplsInSegmentMapEntry" <<"[mplsInSegmentMapInterface='" <<mplsinsegmentmapinterface <<"']" <<"[mplsInSegmentMapLabel='" <<mplsinsegmentmaplabel <<"']" <<"[mplsInSegmentMapLabelPtrIndex='" <<mplsinsegmentmaplabelptrindex <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "MPLS-LSR-STD-MIB:MPLS-LSR-STD-MIB/mplsInSegmentMapTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mplsinsegmentmapinterface.is_set || is_set(mplsinsegmentmapinterface.yfilter)) leaf_name_data.push_back(mplsinsegmentmapinterface.get_name_leafdata());
-    if (mplsinsegmentmaplabel.is_set || is_set(mplsinsegmentmaplabel.yfilter)) leaf_name_data.push_back(mplsinsegmentmaplabel.get_name_leafdata());
-    if (mplsinsegmentmaplabelptrindex.is_set || is_set(mplsinsegmentmaplabelptrindex.yfilter)) leaf_name_data.push_back(mplsinsegmentmaplabelptrindex.get_name_leafdata());
-    if (mplsinsegmentmapindex.is_set || is_set(mplsinsegmentmapindex.yfilter)) leaf_name_data.push_back(mplsinsegmentmapindex.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mplsInSegmentMapInterface")
-    {
-        mplsinsegmentmapinterface = value;
-        mplsinsegmentmapinterface.value_namespace = name_space;
-        mplsinsegmentmapinterface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInSegmentMapLabel")
-    {
-        mplsinsegmentmaplabel = value;
-        mplsinsegmentmaplabel.value_namespace = name_space;
-        mplsinsegmentmaplabel.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInSegmentMapLabelPtrIndex")
-    {
-        mplsinsegmentmaplabelptrindex = value;
-        mplsinsegmentmaplabelptrindex.value_namespace = name_space;
-        mplsinsegmentmaplabelptrindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mplsInSegmentMapIndex")
-    {
-        mplsinsegmentmapindex = value;
-        mplsinsegmentmapindex.value_namespace = name_space;
-        mplsinsegmentmapindex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mplsInSegmentMapInterface")
-    {
-        mplsinsegmentmapinterface.yfilter = yfilter;
-    }
-    if(value_path == "mplsInSegmentMapLabel")
-    {
-        mplsinsegmentmaplabel.yfilter = yfilter;
-    }
-    if(value_path == "mplsInSegmentMapLabelPtrIndex")
-    {
-        mplsinsegmentmaplabelptrindex.yfilter = yfilter;
-    }
-    if(value_path == "mplsInSegmentMapIndex")
-    {
-        mplsinsegmentmapindex.yfilter = yfilter;
-    }
-}
-
-bool MplsLsrStdMib::Mplsinsegmentmaptable::Mplsinsegmentmapentry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mplsInSegmentMapInterface" || name == "mplsInSegmentMapLabel" || name == "mplsInSegmentMapLabelPtrIndex" || name == "mplsInSegmentMapIndex")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::up {1, "up"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::down {2, "down"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::testing {3, "testing"};
-
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::up {1, "up"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::down {2, "down"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::testing {3, "testing"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::unknown {4, "unknown"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::dormant {5, "dormant"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::notPresent {6, "notPresent"};
-const Enum::YLeaf MplsLsrStdMib::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::lowerLayerDown {7, "lowerLayerDown"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::up {1, "up"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::down {2, "down"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus::testing {3, "testing"};
+
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::up {1, "up"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::down {2, "down"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::testing {3, "testing"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::unknown {4, "unknown"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::dormant {5, "dormant"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::notPresent {6, "notPresent"};
+const Enum::YLeaf MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus::lowerLayerDown {7, "lowerLayerDown"};
 
 
 }

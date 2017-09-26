@@ -10,7 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_CBP_TC_MIB {
 
-class Cbpexecutionstrategy : public ydk::Enum
+class CbpExecutionStrategy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

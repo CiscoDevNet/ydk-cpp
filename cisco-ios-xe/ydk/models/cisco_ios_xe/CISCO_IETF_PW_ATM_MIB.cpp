@@ -11,64 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_ATM_MIB {
 
-CiscoIetfPwAtmMib::CiscoIetfPwAtmMib()
+CISCOIETFPWATMMIB::CISCOIETFPWATMMIB()
     :
-    cpwvcatmtable(std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>())
+    cpwvcatmtable(std::make_shared<CISCOIETFPWATMMIB::Cpwvcatmtable>())
 {
     cpwvcatmtable->parent = this;
 
-    yang_name = "CISCO-IETF-PW-ATM-MIB"; yang_parent_name = "CISCO-IETF-PW-ATM-MIB";
+    yang_name = "CISCO-IETF-PW-ATM-MIB"; yang_parent_name = "CISCO-IETF-PW-ATM-MIB"; is_top_level_class = true; has_list_ancestor = false;
 }
 
-CiscoIetfPwAtmMib::~CiscoIetfPwAtmMib()
+CISCOIETFPWATMMIB::~CISCOIETFPWATMMIB()
 {
 }
 
-bool CiscoIetfPwAtmMib::has_data() const
+bool CISCOIETFPWATMMIB::has_data() const
 {
     return (cpwvcatmtable !=  nullptr && cpwvcatmtable->has_data());
 }
 
-bool CiscoIetfPwAtmMib::has_operation() const
+bool CISCOIETFPWATMMIB::has_operation() const
 {
     return is_set(yfilter)
 	|| (cpwvcatmtable !=  nullptr && cpwvcatmtable->has_operation());
 }
 
-std::string CiscoIetfPwAtmMib::get_segment_path() const
+std::string CISCOIETFPWATMMIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-PW-ATM-MIB:CISCO-IETF-PW-ATM-MIB";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfPwAtmMib::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWATMMIB::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfPwAtmMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWATMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcAtmTable")
     {
         if(cpwvcatmtable == nullptr)
         {
-            cpwvcatmtable = std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable>();
+            cpwvcatmtable = std::make_shared<CISCOIETFPWATMMIB::Cpwvcatmtable>();
         }
         return cpwvcatmtable;
     }
@@ -76,7 +65,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(cpwvcatmtable != nullptr)
@@ -87,56 +76,57 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::get_children()
     return children;
 }
 
-void CiscoIetfPwAtmMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWATMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIetfPwAtmMib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWATMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CiscoIetfPwAtmMib::clone_ptr() const
+std::shared_ptr<Entity> CISCOIETFPWATMMIB::clone_ptr() const
 {
-    return std::make_shared<CiscoIetfPwAtmMib>();
+    return std::make_shared<CISCOIETFPWATMMIB>();
 }
 
-std::string CiscoIetfPwAtmMib::get_bundle_yang_models_location() const
+std::string CISCOIETFPWATMMIB::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CiscoIetfPwAtmMib::get_bundle_name() const
+std::string CISCOIETFPWATMMIB::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CiscoIetfPwAtmMib::get_augment_capabilities_function() const
+augment_capabilities_function CISCOIETFPWATMMIB::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> CiscoIetfPwAtmMib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> CISCOIETFPWATMMIB::get_namespace_identity_lookup() const
 {
     return cisco_ios_xe_namespace_identity_lookup;
 }
 
-bool CiscoIetfPwAtmMib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWATMMIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcAtmTable")
         return true;
     return false;
 }
 
-CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmtable()
+CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmtable()
 {
-    yang_name = "cpwVcAtmTable"; yang_parent_name = "CISCO-IETF-PW-ATM-MIB";
+
+    yang_name = "cpwVcAtmTable"; yang_parent_name = "CISCO-IETF-PW-ATM-MIB"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfPwAtmMib::Cpwvcatmtable::~Cpwvcatmtable()
+CISCOIETFPWATMMIB::Cpwvcatmtable::~Cpwvcatmtable()
 {
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_data() const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::has_data() const
 {
     for (std::size_t index=0; index<cpwvcatmentry.size(); index++)
     {
@@ -146,7 +136,7 @@ bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_data() const
     return false;
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_operation() const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::has_operation() const
 {
     for (std::size_t index=0; index<cpwvcatmentry.size(); index++)
     {
@@ -156,37 +146,30 @@ bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CiscoIetfPwAtmMib::Cpwvcatmtable::get_segment_path() const
+std::string CISCOIETFPWATMMIB::Cpwvcatmtable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-PW-ATM-MIB:CISCO-IETF-PW-ATM-MIB/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFPWATMMIB::Cpwvcatmtable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcAtmTable";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfPwAtmMib::Cpwvcatmtable::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWATMMIB::Cpwvcatmtable::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-PW-ATM-MIB:CISCO-IETF-PW-ATM-MIB/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWATMMIB::Cpwvcatmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcAtmEntry")
     {
@@ -198,7 +181,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(cons
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry>();
+        auto c = std::make_shared<CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry>();
         c->parent = this;
         cpwvcatmentry.push_back(c);
         return c;
@@ -207,7 +190,7 @@ std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::Cpwvcatmtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::Cpwvcatmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : cpwvcatmentry)
@@ -218,22 +201,22 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::Cpwvcatmtable:
     return children;
 }
 
-void CiscoIetfPwAtmMib::Cpwvcatmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWATMMIB::Cpwvcatmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CiscoIetfPwAtmMib::Cpwvcatmtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWATMMIB::Cpwvcatmtable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcAtmEntry")
         return true;
     return false;
 }
 
-CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwvcatmentry()
+CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::Cpwvcatmentry()
     :
     cpwvcindex{YType::str, "cpwVcIndex"},
     cpwatmavgcellspacked{YType::uint32, "cpwAtmAvgCellsPacked"},
@@ -260,14 +243,15 @@ CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwvcatmentry()
     cpwatmvci{YType::int32, "cpwAtmVci"},
     cpwatmvpi{YType::int32, "cpwAtmVpi"}
 {
-    yang_name = "cpwVcAtmEntry"; yang_parent_name = "cpwVcAtmTable";
+
+    yang_name = "cpwVcAtmEntry"; yang_parent_name = "cpwVcAtmTable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::~Cpwvcatmentry()
+CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::~Cpwvcatmentry()
 {
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::has_data() const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::has_data() const
 {
     return cpwvcindex.is_set
 	|| cpwatmavgcellspacked.is_set
@@ -295,7 +279,7 @@ bool CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::has_data() const
 	|| cpwatmvpi.is_set;
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::has_operation() const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpwvcindex.yfilter)
@@ -324,27 +308,22 @@ bool CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::has_operation() const
 	|| ydk::is_set(cpwatmvpi.yfilter);
 }
 
-std::string CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::get_segment_path() const
+std::string CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "CISCO-IETF-PW-ATM-MIB:CISCO-IETF-PW-ATM-MIB/cpwVcAtmTable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpwVcAtmEntry" <<"[cpwVcIndex='" <<cpwvcindex <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "CISCO-IETF-PW-ATM-MIB:CISCO-IETF-PW-ATM-MIB/cpwVcAtmTable/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cpwvcindex.is_set || is_set(cpwvcindex.yfilter)) leaf_name_data.push_back(cpwvcindex.get_name_leafdata());
@@ -372,24 +351,22 @@ const EntityPath CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::get_entity_pat
     if (cpwatmvci.is_set || is_set(cpwatmvci.yfilter)) leaf_name_data.push_back(cpwatmvci.get_name_leafdata());
     if (cpwatmvpi.is_set || is_set(cpwatmvpi.yfilter)) leaf_name_data.push_back(cpwatmvpi.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -537,7 +514,7 @@ void CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::set_value(const std::strin
     }
 }
 
-void CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpwVcIndex")
     {
@@ -637,16 +614,16 @@ void CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::set_filter(const std::stri
     }
 }
 
-bool CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpwVcIndex" || name == "cpwAtmAvgCellsPacked" || name == "cpwAtmCellPacking" || name == "cpwAtmCellsReceived" || name == "cpwAtmCellsRejected" || name == "cpwAtmCellsSent" || name == "cpwAtmCellsTagged" || name == "cpwAtmClpQosMapping" || name == "cpwAtmEncap" || name == "cpwAtmHCCellsReceived" || name == "cpwAtmHCCellsRejected" || name == "cpwAtmHCCellsTagged" || name == "cpwAtmIf" || name == "cpwAtmMcptTimeout" || name == "cpwAtmMncp" || name == "cpwAtmOamCellSupported" || name == "cpwAtmPeerMncp" || name == "cpwAtmPktsReceived" || name == "cpwAtmPktsRejected" || name == "cpwAtmPktsSent" || name == "cpwAtmQosScalingFactor" || name == "cpwAtmRowStatus" || name == "cpwAtmVci" || name == "cpwAtmVpi")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::mpls {1, "mpls"};
-const Enum::YLeaf CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::l2tpv3 {2, "l2tpv3"};
-const Enum::YLeaf CiscoIetfPwAtmMib::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::unknown {3, "unknown"};
+const Enum::YLeaf CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::mpls {1, "mpls"};
+const Enum::YLeaf CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::l2tpv3 {2, "l2tpv3"};
+const Enum::YLeaf CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::Cpwatmencap::unknown {3, "unknown"};
 
 
 }

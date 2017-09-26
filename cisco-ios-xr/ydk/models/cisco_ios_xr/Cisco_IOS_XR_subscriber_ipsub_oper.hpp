@@ -18,7 +18,7 @@ class IpSubscriber : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class IpSubscriber : public ydk::Entity
 
         class Nodes; //type: IpSubscriber::Nodes
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes> nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes> nodes;
         
 }; // IpSubscriber
 
@@ -46,17 +46,18 @@ class IpSubscriber::Nodes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Node; //type: IpSubscriber::Nodes::Node
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node> > node;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node> > node;
         
 }; // IpSubscriber::Nodes
 
@@ -69,7 +70,36 @@ class IpSubscriber::Nodes::Node : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf node_name; //type: string
+        class Summary; //type: IpSubscriber::Nodes::Node::Summary
+        class Interfaces; //type: IpSubscriber::Nodes::Node::Interfaces
+        class AccessInterfaces; //type: IpSubscriber::Nodes::Node::AccessInterfaces
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces> access_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary> summary;
+        
+}; // IpSubscriber::Nodes::Node
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces : public ydk::Entity
+{
+    public:
+        AccessInterfaces();
+        ~AccessInterfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -77,16 +107,394 @@ class IpSubscriber::Nodes::Node : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf node_name; //type: string
-        class Summary; //type: IpSubscriber::Nodes::Node::Summary
-        class Interfaces; //type: IpSubscriber::Nodes::Node::Interfaces
-        class AccessInterfaces; //type: IpSubscriber::Nodes::Node::AccessInterfaces
+        class AccessInterface; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces> access_interfaces;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces> interfaces;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary> summary;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface> > access_interface;
         
-}; // IpSubscriber::Nodes::Node
+}; // IpSubscriber::Nodes::Node::AccessInterfaces
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface : public ydk::Entity
+{
+    public:
+        AccessInterface();
+        ~AccessInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_creation_time; //type: string
+        ydk::YLeaf age; //type: string
+        ydk::YLeaf interface_type; //type: string
+        ydk::YLeaf state; //type: IpsubMaParentIntfStateData
+        ydk::YLeaf ipv6_state; //type: IpsubMaParentIntfStateData
+        ydk::YLeaf vlan_type; //type: IpsubMaParentIntfVlan
+        class Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
+        class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
+        class SessionLimit; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators> initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators> ipv6_initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit> session_limit;
+        
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators : public ydk::Entity
+{
+    public:
+        Initiators();
+        ~Initiators();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
+        class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger> packet_trigger;
+        
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp : public ydk::Entity
+{
+    public:
+        Dhcp();
+        ~Dhcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf unique_ip_check; //type: boolean
+        ydk::YLeaf sessions; //type: uint32
+        ydk::YLeaf fsol_packets; //type: uint32
+        ydk::YLeaf fsol_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets; //type: uint32
+        ydk::YLeaf fsol_dropped_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger : public ydk::Entity
+{
+    public:
+        PacketTrigger();
+        ~PacketTrigger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf unique_ip_check; //type: boolean
+        ydk::YLeaf sessions; //type: uint32
+        ydk::YLeaf fsol_packets; //type: uint32
+        ydk::YLeaf fsol_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets; //type: uint32
+        ydk::YLeaf fsol_dropped_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators : public ydk::Entity
+{
+    public:
+        Ipv6Initiators();
+        ~Ipv6Initiators();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
+        class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger> packet_trigger;
+        
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp : public ydk::Entity
+{
+    public:
+        Dhcp();
+        ~Dhcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf unique_ip_check; //type: boolean
+        ydk::YLeaf sessions; //type: uint32
+        ydk::YLeaf fsol_packets; //type: uint32
+        ydk::YLeaf fsol_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets; //type: uint32
+        ydk::YLeaf fsol_dropped_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger : public ydk::Entity
+{
+    public:
+        PacketTrigger();
+        ~PacketTrigger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf unique_ip_check; //type: boolean
+        ydk::YLeaf sessions; //type: uint32
+        ydk::YLeaf fsol_packets; //type: uint32
+        ydk::YLeaf fsol_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets; //type: uint32
+        ydk::YLeaf fsol_dropped_bytes; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
+        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit : public ydk::Entity
+{
+    public:
+        SessionLimit();
+        ~SessionLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class UnclassifiedSource; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
+        class Total; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total> total;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource> unclassified_source;
+        
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total : public ydk::Entity
+{
+    public:
+        Total();
+        ~Total();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf per_vlan; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
+
+
+class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource : public ydk::Entity
+{
+    public:
+        UnclassifiedSource();
+        ~UnclassifiedSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf per_vlan; //type: uint32
+
+}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
+
+
+class IpSubscriber::Nodes::Node::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: IpSubscriber::Nodes::Node::Interfaces::Interface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface> > interface;
+        
+}; // IpSubscriber::Nodes::Node::Interfaces
+
+
+class IpSubscriber::Nodes::Node::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf access_interface; //type: string
+        ydk::YLeaf subscriber_ipv4_address; //type: string
+        ydk::YLeaf subscriber_ipv6_address; //type: string
+        ydk::YLeaf subscriber_mac_addres; //type: string
+        ydk::YLeaf subscriber_label; //type: uint32
+        ydk::YLeaf interface_creation_time; //type: string
+        ydk::YLeaf age; //type: string
+        ydk::YLeaf initiator; //type: IpsubMaIntfInitiatorData
+        ydk::YLeaf state; //type: IpsubMaIntfStateData
+        ydk::YLeaf old_state; //type: IpsubMaIntfStateData
+        ydk::YLeaf last_state_change_time; //type: string
+        ydk::YLeaf current_change_age; //type: string
+        ydk::YLeaf ipv6_initiator; //type: IpsubMaIntfInitiatorData
+        ydk::YLeaf ipv6_state; //type: IpsubMaIntfStateData
+        ydk::YLeaf ipv6_old_state; //type: IpsubMaIntfStateData
+        ydk::YLeaf ipv6_last_state_change_time; //type: string
+        ydk::YLeaf ipv6_current_change_age; //type: string
+        ydk::YLeaf is_l2_connected; //type: boolean
+        ydk::YLeaf session_type; //type: string
+        class Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
+        class Ipv6Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf> ipv6vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf> vrf;
+        
+}; // IpSubscriber::Nodes::Node::Interfaces::Interface
+
+
+class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf : public ydk::Entity
+{
+    public:
+        Ipv6Vrf();
+        ~Ipv6Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf table_name; //type: string
+
+}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
+
+
+class IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf : public ydk::Entity
+{
+    public:
+        Vrf();
+        ~Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf table_name; //type: string
+
+}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
 
 
 class IpSubscriber::Nodes::Node::Summary : public ydk::Entity
@@ -97,7 +505,7 @@ class IpSubscriber::Nodes::Node::Summary : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -109,9 +517,9 @@ class IpSubscriber::Nodes::Node::Summary : public ydk::Entity
         class InterfaceCounts; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts
         class Vrf; //type: IpSubscriber::Nodes::Node::Summary::Vrf
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary> access_interface_summary;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts> interface_counts;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::Vrf> > vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary> access_interface_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts> interface_counts;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::Vrf> > vrf;
         
 }; // IpSubscriber::Nodes::Node::Summary
 
@@ -124,7 +532,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary : public ydk::E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -136,8 +544,8 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary : public ydk::E
         class Initiators; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators
         class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators> initiators;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators> ipv6_initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators> initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators> ipv6_initiators;
         
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary
 
@@ -150,7 +558,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -161,8 +569,8 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators : p
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger> packet_trigger;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger> packet_trigger;
         
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators
 
@@ -175,7 +583,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dh
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -197,7 +605,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -219,7 +627,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -230,8 +638,8 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger> packet_trigger;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger> packet_trigger;
         
 }; // IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
@@ -244,7 +652,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -266,7 +674,7 @@ class IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -288,7 +696,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -299,8 +707,8 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts : public ydk::Entity
         class Initiators; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
         class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators> initiators;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators> ipv6_initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators> initiators;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators> ipv6_initiators;
         
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts
 
@@ -313,7 +721,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators : public y
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -324,8 +732,8 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators : public y
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger> packet_trigger;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger> packet_trigger;
         
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
 
@@ -338,7 +746,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -373,7 +781,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -408,7 +816,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -419,8 +827,8 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators : publ
         class Dhcp; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp
         class PacketTrigger; //type: IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger> packet_trigger;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger> packet_trigger;
         
 }; // IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators
 
@@ -433,7 +841,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -468,7 +876,7 @@ class IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Packe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -503,7 +911,7 @@ class IpSubscriber::Nodes::Node::Summary::Vrf : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -517,429 +925,6 @@ class IpSubscriber::Nodes::Node::Summary::Vrf : public ydk::Entity
         ydk::YLeaf ipv6_interfaces; //type: uint64
 
 }; // IpSubscriber::Nodes::Node::Summary::Vrf
-
-
-class IpSubscriber::Nodes::Node::Interfaces : public ydk::Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Interface; //type: IpSubscriber::Nodes::Node::Interfaces::Interface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface> > interface;
-        
-}; // IpSubscriber::Nodes::Node::Interfaces
-
-
-class IpSubscriber::Nodes::Node::Interfaces::Interface : public ydk::Entity
-{
-    public:
-        Interface();
-        ~Interface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf access_interface; //type: string
-        ydk::YLeaf subscriber_ipv4_address; //type: string
-        ydk::YLeaf subscriber_ipv6_address; //type: string
-        ydk::YLeaf subscriber_mac_addres; //type: string
-        ydk::YLeaf subscriber_label; //type: uint32
-        ydk::YLeaf interface_creation_time; //type: string
-        ydk::YLeaf age; //type: string
-        ydk::YLeaf initiator; //type: IpsubMaIntfInitiatorData
-        ydk::YLeaf state; //type: IpsubMaIntfStateData
-        ydk::YLeaf old_state; //type: IpsubMaIntfStateData
-        ydk::YLeaf last_state_change_time; //type: string
-        ydk::YLeaf current_change_age; //type: string
-        ydk::YLeaf ipv6_initiator; //type: IpsubMaIntfInitiatorData
-        ydk::YLeaf ipv6_state; //type: IpsubMaIntfStateData
-        ydk::YLeaf ipv6_old_state; //type: IpsubMaIntfStateData
-        ydk::YLeaf ipv6_last_state_change_time; //type: string
-        ydk::YLeaf ipv6_current_change_age; //type: string
-        ydk::YLeaf is_l2_connected; //type: boolean
-        ydk::YLeaf session_type; //type: string
-        class Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
-        class Ipv6Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf> ipv6vrf;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf> vrf;
-        
-}; // IpSubscriber::Nodes::Node::Interfaces::Interface
-
-
-class IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf : public ydk::Entity
-{
-    public:
-        Vrf();
-        ~Vrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf table_name; //type: string
-
-}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
-
-
-class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf : public ydk::Entity
-{
-    public:
-        Ipv6Vrf();
-        ~Ipv6Vrf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf table_name; //type: string
-
-}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces : public ydk::Entity
-{
-    public:
-        AccessInterfaces();
-        ~AccessInterfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AccessInterface; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface> > access_interface;
-        
-}; // IpSubscriber::Nodes::Node::AccessInterfaces
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface : public ydk::Entity
-{
-    public:
-        AccessInterface();
-        ~AccessInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf interface_creation_time; //type: string
-        ydk::YLeaf age; //type: string
-        ydk::YLeaf interface_type; //type: string
-        ydk::YLeaf state; //type: IpsubMaParentIntfStateData
-        ydk::YLeaf ipv6_state; //type: IpsubMaParentIntfStateData
-        ydk::YLeaf vlan_type; //type: IpsubMaParentIntfVlan
-        class Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
-        class Ipv6Initiators; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
-        class SessionLimit; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators> initiators;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators> ipv6_initiators;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit> session_limit;
-        
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators : public ydk::Entity
-{
-    public:
-        Initiators();
-        ~Initiators();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
-        class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger> packet_trigger;
-        
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp : public ydk::Entity
-{
-    public:
-        Dhcp();
-        ~Dhcp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_configured; //type: boolean
-        ydk::YLeaf unique_ip_check; //type: boolean
-        ydk::YLeaf sessions; //type: uint32
-        ydk::YLeaf fsol_packets; //type: uint32
-        ydk::YLeaf fsol_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets; //type: uint32
-        ydk::YLeaf fsol_dropped_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger : public ydk::Entity
-{
-    public:
-        PacketTrigger();
-        ~PacketTrigger();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_configured; //type: boolean
-        ydk::YLeaf unique_ip_check; //type: boolean
-        ydk::YLeaf sessions; //type: uint32
-        ydk::YLeaf fsol_packets; //type: uint32
-        ydk::YLeaf fsol_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets; //type: uint32
-        ydk::YLeaf fsol_dropped_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators : public ydk::Entity
-{
-    public:
-        Ipv6Initiators();
-        ~Ipv6Initiators();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Dhcp; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
-        class PacketTrigger; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp> dhcp;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger> packet_trigger;
-        
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp : public ydk::Entity
-{
-    public:
-        Dhcp();
-        ~Dhcp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_configured; //type: boolean
-        ydk::YLeaf unique_ip_check; //type: boolean
-        ydk::YLeaf sessions; //type: uint32
-        ydk::YLeaf fsol_packets; //type: uint32
-        ydk::YLeaf fsol_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets; //type: uint32
-        ydk::YLeaf fsol_dropped_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger : public ydk::Entity
-{
-    public:
-        PacketTrigger();
-        ~PacketTrigger();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_configured; //type: boolean
-        ydk::YLeaf unique_ip_check; //type: boolean
-        ydk::YLeaf sessions; //type: uint32
-        ydk::YLeaf fsol_packets; //type: uint32
-        ydk::YLeaf fsol_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets; //type: uint32
-        ydk::YLeaf fsol_dropped_bytes; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_flow; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_session_limit; //type: uint32
-        ydk::YLeaf fsol_dropped_packets_dup_addr; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit : public ydk::Entity
-{
-    public:
-        SessionLimit();
-        ~SessionLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class UnclassifiedSource; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
-        class Total; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
-
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total> total;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource> unclassified_source;
-        
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource : public ydk::Entity
-{
-    public:
-        UnclassifiedSource();
-        ~UnclassifiedSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf per_vlan; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource
-
-
-class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total : public ydk::Entity
-{
-    public:
-        Total();
-        ~Total();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf per_vlan; //type: uint32
-
-}; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
-
-class IpsubMaParentIntfVlan : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf plain;
-        static const ydk::Enum::YLeaf ambiguous;
-
-};
-
-class IpsubMaIntfInitiatorData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf packet_trigger;
-        static const ydk::Enum::YLeaf invalid_trigger;
-
-};
 
 class IpsubMaIntfStateData : public ydk::Enum
 {
@@ -969,6 +954,23 @@ class IpsubMaParentIntfStateData : public ydk::Enum
         static const ydk::Enum::YLeaf deleted;
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
+
+};
+
+class IpsubMaIntfInitiatorData : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf packet_trigger;
+        static const ydk::Enum::YLeaf invalid_trigger;
+
+};
+
+class IpsubMaParentIntfVlan : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf plain;
+        static const ydk::Enum::YLeaf ambiguous;
 
 };
 

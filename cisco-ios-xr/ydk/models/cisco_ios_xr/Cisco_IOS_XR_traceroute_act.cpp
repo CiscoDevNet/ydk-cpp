@@ -17,10 +17,9 @@ Traceroute::Traceroute()
 	,output(std::make_shared<Traceroute::Output>())
 {
     input->parent = this;
-
     output->parent = this;
 
-    yang_name = "traceroute"; yang_parent_name = "Cisco-IOS-XR-traceroute-act";
+    yang_name = "traceroute"; yang_parent_name = "Cisco-IOS-XR-traceroute-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Traceroute::~Traceroute()
@@ -44,26 +43,15 @@ std::string Traceroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -153,12 +141,10 @@ Traceroute::Input::Input()
 	,ipv6(std::make_shared<Traceroute::Input::Ipv6>())
 {
     destination->parent = this;
-
     ipv4->parent = this;
-
     ipv6->parent = this;
 
-    yang_name = "input"; yang_parent_name = "traceroute";
+    yang_name = "input"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Input::~Input()
@@ -180,33 +166,26 @@ bool Traceroute::Input::has_operation() const
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
+std::string Traceroute::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -293,7 +272,8 @@ Traceroute::Input::Destination::Destination()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "destination"; yang_parent_name = "input";
+
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Input::Destination::~Destination()
@@ -333,27 +313,22 @@ bool Traceroute::Input::Destination::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Traceroute::Input::Destination::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Input::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Input::Destination::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Destination::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
@@ -369,9 +344,7 @@ const EntityPath Traceroute::Input::Destination::get_entity_path(Entity* ancesto
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -534,7 +507,8 @@ Traceroute::Input::Ipv4::Ipv4()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "ipv4"; yang_parent_name = "input";
+
+    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Input::Ipv4::~Ipv4()
@@ -570,27 +544,22 @@ bool Traceroute::Input::Ipv4::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Traceroute::Input::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Input::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Input::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
@@ -604,9 +573,7 @@ const EntityPath Traceroute::Input::Ipv4::get_entity_path(Entity* ancestor) cons
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -751,7 +718,8 @@ Traceroute::Input::Ipv6::Ipv6()
     verbose{YType::boolean, "verbose"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "ipv6"; yang_parent_name = "input";
+
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Input::Ipv6::~Ipv6()
@@ -791,27 +759,22 @@ bool Traceroute::Input::Ipv6::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
+std::string Traceroute::Input::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Input::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Input::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Input::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
@@ -827,9 +790,7 @@ const EntityPath Traceroute::Input::Ipv6::get_entity_path(Entity* ancestor) cons
     if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -985,7 +946,7 @@ Traceroute::Output::Output()
 {
     traceroute_response->parent = this;
 
-    yang_name = "output"; yang_parent_name = "traceroute";
+    yang_name = "output"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::~Output()
@@ -1003,33 +964,26 @@ bool Traceroute::Output::has_operation() const
 	|| (traceroute_response !=  nullptr && traceroute_response->has_operation());
 }
 
+std::string Traceroute::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1079,10 +1033,9 @@ Traceroute::Output::TracerouteResponse::TracerouteResponse()
 	,ipv6(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6>())
 {
     ipv4->parent = this;
-
     ipv6->parent = this;
 
-    yang_name = "traceroute-response"; yang_parent_name = "output";
+    yang_name = "traceroute-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::TracerouteResponse::~TracerouteResponse()
@@ -1102,33 +1055,26 @@ bool Traceroute::Output::TracerouteResponse::has_operation() const
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
+std::string Traceroute::Output::TracerouteResponse::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::TracerouteResponse::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "traceroute-response";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1191,7 +1137,8 @@ Traceroute::Output::TracerouteResponse::Ipv4::Ipv4()
     destination{YType::str, "destination"},
     verbose_output{YType::str, "verbose-output"}
 {
-    yang_name = "ipv4"; yang_parent_name = "traceroute-response";
+
+    yang_name = "ipv4"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::~Ipv4()
@@ -1221,35 +1168,28 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::has_operation() const
 	|| ydk::is_set(verbose_output.yfilter);
 }
 
+std::string Traceroute::Output::TracerouteResponse::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::TracerouteResponse::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
     if (verbose_output.is_set || is_set(verbose_output.yfilter)) leaf_name_data.push_back(verbose_output.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1326,7 +1266,8 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hops()
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
 {
-    yang_name = "hops"; yang_parent_name = "ipv4";
+
+    yang_name = "hops"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::~Hops()
@@ -1358,36 +1299,29 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::has_operation() const
 	|| ydk::is_set(hop_hostname.yfilter);
 }
 
+std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/ipv4/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hops" <<"[hop-index='" <<hop_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/ipv4/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hop_index.is_set || is_set(hop_index.yfilter)) leaf_name_data.push_back(hop_index.get_name_leafdata());
     if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1476,7 +1410,8 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::Probes()
     hop_hostname{YType::str, "hop-hostname"},
     result{YType::str, "result"}
 {
-    yang_name = "probes"; yang_parent_name = "hops";
+
+    yang_name = "probes"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::~Probes()
@@ -1506,23 +1441,11 @@ std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "probes" <<"[probe-index='" <<probe_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Probes' in Cisco_IOS_XR_traceroute_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (probe_index.is_set || is_set(probe_index.yfilter)) leaf_name_data.push_back(probe_index.get_name_leafdata());
@@ -1531,9 +1454,7 @@ const EntityPath Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
     if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1618,7 +1539,8 @@ Traceroute::Output::TracerouteResponse::Ipv6::Ipv6()
     destination{YType::str, "destination"},
     verbose_output{YType::str, "verbose-output"}
 {
-    yang_name = "ipv6"; yang_parent_name = "traceroute-response";
+
+    yang_name = "ipv6"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::~Ipv6()
@@ -1648,35 +1570,28 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::has_operation() const
 	|| ydk::is_set(verbose_output.yfilter);
 }
 
+std::string Traceroute::Output::TracerouteResponse::Ipv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::TracerouteResponse::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
     if (verbose_output.is_set || is_set(verbose_output.yfilter)) leaf_name_data.push_back(verbose_output.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1753,7 +1668,8 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hops()
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
 {
-    yang_name = "hops"; yang_parent_name = "ipv6";
+
+    yang_name = "hops"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::~Hops()
@@ -1785,36 +1701,29 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::has_operation() const
 	|| ydk::is_set(hop_hostname.yfilter);
 }
 
+std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hops" <<"[hop-index='" <<hop_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-traceroute-act:traceroute/output/traceroute-response/ipv6/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hop_index.is_set || is_set(hop_index.yfilter)) leaf_name_data.push_back(hop_index.get_name_leafdata());
     if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1903,7 +1812,8 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::Probes()
     hop_hostname{YType::str, "hop-hostname"},
     result{YType::str, "result"}
 {
-    yang_name = "probes"; yang_parent_name = "hops";
+
+    yang_name = "probes"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::~Probes()
@@ -1933,23 +1843,11 @@ std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "probes" <<"[probe-index='" <<probe_index <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Probes' in Cisco_IOS_XR_traceroute_act cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (probe_index.is_set || is_set(probe_index.yfilter)) leaf_name_data.push_back(probe_index.get_name_leafdata());
@@ -1958,9 +1856,7 @@ const EntityPath Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get
     if (hop_hostname.is_set || is_set(hop_hostname.yfilter)) leaf_name_data.push_back(hop_hostname.get_name_leafdata());
     if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

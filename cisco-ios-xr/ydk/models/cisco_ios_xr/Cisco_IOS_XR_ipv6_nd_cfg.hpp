@@ -18,7 +18,7 @@ class Ipv6Neighbor : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,7 +34,7 @@ class Ipv6Neighbor : public ydk::Entity
         ydk::YLeaf scavenge_timeout; //type: uint32
         class Neighbors; //type: Ipv6Neighbor::Neighbors
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors> neighbors;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors> neighbors;
         
 }; // Ipv6Neighbor
 
@@ -47,17 +47,18 @@ class Ipv6Neighbor::Neighbors : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Neighbor; //type: Ipv6Neighbor::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors::Neighbor> > neighbor;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors::Neighbor> > neighbor;
         
 }; // Ipv6Neighbor::Neighbors
 
@@ -70,23 +71,41 @@ class Ipv6Neighbor::Neighbors::Neighbor : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf zone; //type: string
         ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf encapsulation; //type: Ipv6SrpEncapsulation
+        ydk::YLeaf encapsulation; //type: Ipv6srpEncapsulation
 
 }; // Ipv6Neighbor::Neighbors::Neighbor
 
-class Ipv6NdMonth : public ydk::Enum
+class Ipv6srpEncapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+};
+
+class Ipv6NdRouterPref : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+
+};
+
+class Ipv6ndMonth : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf january;
@@ -101,23 +120,6 @@ class Ipv6NdMonth : public ydk::Enum
         static const ydk::Enum::YLeaf october;
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
-
-};
-
-class Ipv6SrpEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
-class Ipv6NdRouterPref : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
 
 };
 

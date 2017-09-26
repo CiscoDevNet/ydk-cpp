@@ -29,18 +29,13 @@ Ntp::Ntp()
 	,sources(std::make_shared<Ntp::Sources>())
 {
     access_group_tables->parent = this;
-
     authentication->parent = this;
-
     interface_tables->parent = this;
-
     passive->parent = this;
-
     peer_vrfs->parent = this;
-
     sources->parent = this;
 
-    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-cfg";
+    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ntp::~Ntp()
@@ -86,20 +81,11 @@ std::string Ntp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (broadcast_delay.is_set || is_set(broadcast_delay.yfilter)) leaf_name_data.push_back(broadcast_delay.get_name_leafdata());
@@ -108,9 +94,7 @@ const EntityPath Ntp::get_entity_path(Entity* ancestor) const
     if (max_associations.is_set || is_set(max_associations.yfilter)) leaf_name_data.push_back(max_associations.get_name_leafdata());
     if (update_calendar.is_set || is_set(update_calendar.yfilter)) leaf_name_data.push_back(update_calendar.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -327,9 +311,2216 @@ bool Ntp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Ntp::AccessGroupTables::AccessGroupTables()
+{
+
+    yang_name = "access-group-tables"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::AccessGroupTables::~AccessGroupTables()
+{
+}
+
+bool Ntp::AccessGroupTables::has_data() const
+{
+    for (std::size_t index=0; index<access_group_table.size(); index++)
+    {
+        if(access_group_table[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::AccessGroupTables::has_operation() const
+{
+    for (std::size_t index=0; index<access_group_table.size(); index++)
+    {
+        if(access_group_table[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::AccessGroupTables::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::AccessGroupTables::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-group-tables";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::AccessGroupTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-group-table")
+    {
+        for(auto const & c : access_group_table)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable>();
+        c->parent = this;
+        access_group_table.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_group_table)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::AccessGroupTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::AccessGroupTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::AccessGroupTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-table")
+        return true;
+    return false;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::AccessGroupTable()
+    :
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "access-group-table"; yang_parent_name = "access-group-tables"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::~AccessGroupTable()
+{
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::has_data() const
+{
+    for (std::size_t index=0; index<access_group_af_table.size(); index++)
+    {
+        if(access_group_af_table[index]->has_data())
+            return true;
+    }
+    return vrf_name.is_set;
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::has_operation() const
+{
+    for (std::size_t index=0; index<access_group_af_table.size(); index++)
+    {
+        if(access_group_af_table[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Ntp::AccessGroupTables::AccessGroupTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/access-group-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::AccessGroupTables::AccessGroupTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-group-table" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGroupTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-group-af-table")
+    {
+        for(auto const & c : access_group_af_table)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable>();
+        c->parent = this;
+        access_group_af_table.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_group_af_table)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-af-table" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroupAfTable()
+    :
+    af{YType::enumeration, "af"}
+{
+
+    yang_name = "access-group-af-table"; yang_parent_name = "access-group-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::~AccessGroupAfTable()
+{
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_data() const
+{
+    for (std::size_t index=0; index<access_group.size(); index++)
+    {
+        if(access_group[index]->has_data())
+            return true;
+    }
+    return af.is_set;
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_operation() const
+{
+    for (std::size_t index=0; index<access_group.size(); index++)
+    {
+        if(access_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter);
+}
+
+std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-group-af-table" <<"[af='" <<af <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "access-group")
+    {
+        for(auto const & c : access_group)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup>();
+        c->parent = this;
+        access_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : access_group)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group" || name == "af")
+        return true;
+    return false;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::AccessGroup()
+    :
+    access_group_type{YType::enumeration, "access-group-type"},
+    access_list_name{YType::str, "access-list-name"}
+{
+
+    yang_name = "access-group"; yang_parent_name = "access-group-af-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::~AccessGroup()
+{
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_data() const
+{
+    return access_group_type.is_set
+	|| access_list_name.is_set;
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(access_group_type.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
+}
+
+std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "access-group" <<"[access-group-type='" <<access_group_type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (access_group_type.is_set || is_set(access_group_type.yfilter)) leaf_name_data.push_back(access_group_type.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "access-group-type")
+    {
+        access_group_type = value;
+        access_group_type.value_namespace = name_space;
+        access_group_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group-type")
+    {
+        access_group_type.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-type" || name == "access-list-name")
+        return true;
+    return false;
+}
+
+Ntp::Authentication::Authentication()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    keies(std::make_shared<Ntp::Authentication::Keies>())
+	,trusted_keies(std::make_shared<Ntp::Authentication::TrustedKeies>())
+{
+    keies->parent = this;
+    trusted_keies->parent = this;
+
+    yang_name = "authentication"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Authentication::~Authentication()
+{
+}
+
+bool Ntp::Authentication::has_data() const
+{
+    return enable.is_set
+	|| (keies !=  nullptr && keies->has_data())
+	|| (trusted_keies !=  nullptr && trusted_keies->has_data());
+}
+
+bool Ntp::Authentication::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (keies !=  nullptr && keies->has_operation())
+	|| (trusted_keies !=  nullptr && trusted_keies->has_operation());
+}
+
+std::string Ntp::Authentication::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Authentication::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "keies")
+    {
+        if(keies == nullptr)
+        {
+            keies = std::make_shared<Ntp::Authentication::Keies>();
+        }
+        return keies;
+    }
+
+    if(child_yang_name == "trusted-keies")
+    {
+        if(trusted_keies == nullptr)
+        {
+            trusted_keies = std::make_shared<Ntp::Authentication::TrustedKeies>();
+        }
+        return trusted_keies;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(keies != nullptr)
+    {
+        children["keies"] = keies;
+    }
+
+    if(trusted_keies != nullptr)
+    {
+        children["trusted-keies"] = trusted_keies;
+    }
+
+    return children;
+}
+
+void Ntp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keies" || name == "trusted-keies" || name == "enable")
+        return true;
+    return false;
+}
+
+Ntp::Authentication::Keies::Keies()
+{
+
+    yang_name = "keies"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Authentication::Keies::~Keies()
+{
+}
+
+bool Ntp::Authentication::Keies::has_data() const
+{
+    for (std::size_t index=0; index<key.size(); index++)
+    {
+        if(key[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::Authentication::Keies::has_operation() const
+{
+    for (std::size_t index=0; index<key.size(); index++)
+    {
+        if(key[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::Authentication::Keies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Authentication::Keies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "keies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "key")
+    {
+        for(auto const & c : key)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::Authentication::Keies::Key>();
+        c->parent = this;
+        key.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : key)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::Authentication::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::Authentication::Keies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::Authentication::Keies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key")
+        return true;
+    return false;
+}
+
+Ntp::Authentication::Keies::Key::Key()
+    :
+    key_number{YType::uint32, "key-number"},
+    authentication_key{YType::str, "authentication-key"}
+{
+
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Authentication::Keies::Key::~Key()
+{
+}
+
+bool Ntp::Authentication::Keies::Key::has_data() const
+{
+    return key_number.is_set
+	|| authentication_key.is_set;
+}
+
+bool Ntp::Authentication::Keies::Key::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_number.yfilter)
+	|| ydk::is_set(authentication_key.yfilter);
+}
+
+std::string Ntp::Authentication::Keies::Key::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/keies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Authentication::Keies::Key::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key" <<"[key-number='" <<key_number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keies::Key::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Authentication::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::Key::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-number")
+    {
+        key_number = value;
+        key_number.value_namespace = name_space;
+        key_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Authentication::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-number")
+    {
+        key_number.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-number" || name == "authentication-key")
+        return true;
+    return false;
+}
+
+Ntp::Authentication::TrustedKeies::TrustedKeies()
+{
+
+    yang_name = "trusted-keies"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Authentication::TrustedKeies::~TrustedKeies()
+{
+}
+
+bool Ntp::Authentication::TrustedKeies::has_data() const
+{
+    for (std::size_t index=0; index<trusted_key.size(); index++)
+    {
+        if(trusted_key[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::Authentication::TrustedKeies::has_operation() const
+{
+    for (std::size_t index=0; index<trusted_key.size(); index++)
+    {
+        if(trusted_key[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::Authentication::TrustedKeies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Authentication::TrustedKeies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trusted-keies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "trusted-key")
+    {
+        for(auto const & c : trusted_key)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::Authentication::TrustedKeies::TrustedKey>();
+        c->parent = this;
+        trusted_key.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : trusted_key)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::Authentication::TrustedKeies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::Authentication::TrustedKeies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::Authentication::TrustedKeies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trusted-key")
+        return true;
+    return false;
+}
+
+Ntp::Authentication::TrustedKeies::TrustedKey::TrustedKey()
+    :
+    key_number{YType::uint32, "key-number"}
+{
+
+    yang_name = "trusted-key"; yang_parent_name = "trusted-keies"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Authentication::TrustedKeies::TrustedKey::~TrustedKey()
+{
+}
+
+bool Ntp::Authentication::TrustedKeies::TrustedKey::has_data() const
+{
+    return key_number.is_set;
+}
+
+bool Ntp::Authentication::TrustedKeies::TrustedKey::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_number.yfilter);
+}
+
+std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/trusted-keies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trusted-key" <<"[key-number='" <<key_number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeies::TrustedKey::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::TrustedKey::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-number")
+    {
+        key_number = value;
+        key_number.value_namespace = name_space;
+        key_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Authentication::TrustedKeies::TrustedKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-number")
+    {
+        key_number.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::TrustedKeies::TrustedKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-number")
+        return true;
+    return false;
+}
+
+Ntp::DscpIpv4::DscpIpv4()
+    :
+    dscp_or_precedence_value{YType::uint32, "dscp-or-precedence-value"},
+    mode{YType::enumeration, "mode"}
+{
+
+    yang_name = "dscp-ipv4"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::DscpIpv4::~DscpIpv4()
+{
+}
+
+bool Ntp::DscpIpv4::has_data() const
+{
+    return dscp_or_precedence_value.is_set
+	|| mode.is_set;
+}
+
+bool Ntp::DscpIpv4::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_or_precedence_value.yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string Ntp::DscpIpv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::DscpIpv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dscp-ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::DscpIpv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::DscpIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::DscpIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value = value;
+        dscp_or_precedence_value.value_namespace = name_space;
+        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::DscpIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ntp::DscpIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-or-precedence-value" || name == "mode")
+        return true;
+    return false;
+}
+
+Ntp::DscpIpv6::DscpIpv6()
+    :
+    dscp_or_precedence_value{YType::uint32, "dscp-or-precedence-value"},
+    mode{YType::enumeration, "mode"}
+{
+
+    yang_name = "dscp-ipv6"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::DscpIpv6::~DscpIpv6()
+{
+}
+
+bool Ntp::DscpIpv6::has_data() const
+{
+    return dscp_or_precedence_value.is_set
+	|| mode.is_set;
+}
+
+bool Ntp::DscpIpv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_or_precedence_value.yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string Ntp::DscpIpv6::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::DscpIpv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dscp-ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::DscpIpv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::DscpIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::DscpIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value = value;
+        dscp_or_precedence_value.value_namespace = name_space;
+        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::DscpIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ntp::DscpIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-or-precedence-value" || name == "mode")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTables()
+{
+
+    yang_name = "interface-tables"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::InterfaceTables::~InterfaceTables()
+{
+}
+
+bool Ntp::InterfaceTables::has_data() const
+{
+    for (std::size_t index=0; index<interface_table.size(); index++)
+    {
+        if(interface_table[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::InterfaceTables::has_operation() const
+{
+    for (std::size_t index=0; index<interface_table.size(); index++)
+    {
+        if(interface_table[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::InterfaceTables::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::InterfaceTables::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-tables";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-table")
+    {
+        for(auto const & c : interface_table)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable>();
+        c->parent = this;
+        interface_table.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_table)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::InterfaceTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-table")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::InterfaceTable()
+    :
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "interface-table"; yang_parent_name = "interface-tables"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::~InterfaceTable()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return vrf_name.is_set;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/interface-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-table" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        for(auto const & c : interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::Interface()
+    :
+    interface{YType::str, "interface"},
+    disable{YType::empty, "disable"}
+    	,
+    interface_broadcast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast>())
+	,interface_multicast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>())
+{
+    interface_broadcast->parent = this;
+    interface_multicast->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::~Interface()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::has_data() const
+{
+    return interface.is_set
+	|| disable.is_set
+	|| (interface_broadcast !=  nullptr && interface_broadcast->has_data())
+	|| (interface_multicast !=  nullptr && interface_multicast->has_data());
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| (interface_broadcast !=  nullptr && interface_broadcast->has_operation())
+	|| (interface_multicast !=  nullptr && interface_multicast->has_operation());
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-broadcast")
+    {
+        if(interface_broadcast == nullptr)
+        {
+            interface_broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast>();
+        }
+        return interface_broadcast;
+    }
+
+    if(child_yang_name == "interface-multicast")
+    {
+        if(interface_multicast == nullptr)
+        {
+            interface_multicast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>();
+        }
+        return interface_multicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_broadcast != nullptr)
+    {
+        children["interface-broadcast"] = interface_broadcast;
+    }
+
+    if(interface_multicast != nullptr)
+    {
+        children["interface-multicast"] = interface_multicast;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-broadcast" || name == "interface-multicast" || name == "interface" || name == "disable")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::InterfaceBroadcast()
+    :
+    broadcast_client{YType::empty, "broadcast-client"}
+    	,
+    broadcast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>())
+{
+    broadcast->parent = this;
+
+    yang_name = "interface-broadcast"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::~InterfaceBroadcast()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_data() const
+{
+    return broadcast_client.is_set
+	|| (broadcast !=  nullptr && broadcast->has_data());
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast_client.yfilter)
+	|| (broadcast !=  nullptr && broadcast->has_operation());
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-broadcast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (broadcast_client.is_set || is_set(broadcast_client.yfilter)) leaf_name_data.push_back(broadcast_client.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "broadcast")
+    {
+        if(broadcast == nullptr)
+        {
+            broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>();
+        }
+        return broadcast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(broadcast != nullptr)
+    {
+        children["broadcast"] = broadcast;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "broadcast-client")
+    {
+        broadcast_client = value;
+        broadcast_client.value_namespace = name_space;
+        broadcast_client.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast-client")
+    {
+        broadcast_client.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast" || name == "broadcast-client")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::Broadcast()
+    :
+    address{YType::str, "address"},
+    authentication_key{YType::uint32, "authentication-key"},
+    ntp_version{YType::uint32, "ntp-version"}
+{
+
+    yang_name = "broadcast"; yang_parent_name = "interface-broadcast"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::~Broadcast()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_data() const
+{
+    return address.is_set
+	|| authentication_key.is_set
+	|| ntp_version.is_set;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(ntp_version.yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "broadcast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (ntp_version.is_set || is_set(ntp_version.yfilter)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ntp-version")
+    {
+        ntp_version = value;
+        ntp_version.value_namespace = name_space;
+        ntp_version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "ntp-version")
+    {
+        ntp_version.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "authentication-key" || name == "ntp-version")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::InterfaceMulticast()
+    :
+    multicast_clients(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients>())
+	,multicast_servers(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>())
+{
+    multicast_clients->parent = this;
+    multicast_servers->parent = this;
+
+    yang_name = "interface-multicast"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::~InterfaceMulticast()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_data() const
+{
+    return (multicast_clients !=  nullptr && multicast_clients->has_data())
+	|| (multicast_servers !=  nullptr && multicast_servers->has_data());
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (multicast_clients !=  nullptr && multicast_clients->has_operation())
+	|| (multicast_servers !=  nullptr && multicast_servers->has_operation());
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-multicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast-clients")
+    {
+        if(multicast_clients == nullptr)
+        {
+            multicast_clients = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients>();
+        }
+        return multicast_clients;
+    }
+
+    if(child_yang_name == "multicast-servers")
+    {
+        if(multicast_servers == nullptr)
+        {
+            multicast_servers = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>();
+        }
+        return multicast_servers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(multicast_clients != nullptr)
+    {
+        children["multicast-clients"] = multicast_clients;
+    }
+
+    if(multicast_servers != nullptr)
+    {
+        children["multicast-servers"] = multicast_servers;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-clients" || name == "multicast-servers")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClients()
+{
+
+    yang_name = "multicast-clients"; yang_parent_name = "interface-multicast"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::~MulticastClients()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_data() const
+{
+    for (std::size_t index=0; index<multicast_client.size(); index++)
+    {
+        if(multicast_client[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_operation() const
+{
+    for (std::size_t index=0; index<multicast_client.size(); index++)
+    {
+        if(multicast_client[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast-clients";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast-client")
+    {
+        for(auto const & c : multicast_client)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient>();
+        c->parent = this;
+        multicast_client.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : multicast_client)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-client")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::MulticastClient()
+    :
+    ip_address{YType::str, "ip-address"}
+{
+
+    yang_name = "multicast-client"; yang_parent_name = "multicast-clients"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::~MulticastClient()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_data() const
+{
+    return ip_address.is_set;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast-client" <<"[ip-address='" <<ip_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServers()
+{
+
+    yang_name = "multicast-servers"; yang_parent_name = "interface-multicast"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::~MulticastServers()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_data() const
+{
+    for (std::size_t index=0; index<multicast_server.size(); index++)
+    {
+        if(multicast_server[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_operation() const
+{
+    for (std::size_t index=0; index<multicast_server.size(); index++)
+    {
+        if(multicast_server[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast-servers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "multicast-server")
+    {
+        for(auto const & c : multicast_server)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer>();
+        c->parent = this;
+        multicast_server.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : multicast_server)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-server")
+        return true;
+    return false;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::MulticastServer()
+    :
+    ip_address{YType::str, "ip-address"},
+    authentication_key{YType::uint32, "authentication-key"},
+    ttl{YType::uint32, "ttl"},
+    version{YType::uint32, "version"}
+{
+
+    yang_name = "multicast-server"; yang_parent_name = "multicast-servers"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::~MulticastServer()
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_data() const
+{
+    return ip_address.is_set
+	|| authentication_key.is_set
+	|| ttl.is_set
+	|| version.is_set;
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(version.yfilter);
+}
+
+std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multicast-server" <<"[ip-address='" <<ip_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ttl")
+    {
+        ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "authentication-key" || name == "ttl" || name == "version")
+        return true;
+    return false;
+}
+
+Ntp::Passive::Passive()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "passive"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Passive::~Passive()
+{
+}
+
+bool Ntp::Passive::has_data() const
+{
+    return enable.is_set;
+}
+
+bool Ntp::Passive::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Ntp::Passive::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Passive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "passive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Passive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Passive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Passive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ntp::Passive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Passive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Passive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
 Ntp::PeerVrfs::PeerVrfs()
 {
-    yang_name = "peer-vrfs"; yang_parent_name = "ntp";
+
+    yang_name = "peer-vrfs"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ntp::PeerVrfs::~PeerVrfs()
@@ -356,33 +2547,26 @@ bool Ntp::PeerVrfs::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ntp::PeerVrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ntp::PeerVrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-vrfs";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -441,10 +2625,9 @@ Ntp::PeerVrfs::PeerVrf::PeerVrf()
 	,peer_ipv6s(std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6S>())
 {
     peer_ipv4s->parent = this;
-
     peer_ipv6s->parent = this;
 
-    yang_name = "peer-vrf"; yang_parent_name = "peer-vrfs";
+    yang_name = "peer-vrf"; yang_parent_name = "peer-vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ntp::PeerVrfs::PeerVrf::~PeerVrf()
@@ -466,34 +2649,27 @@ bool Ntp::PeerVrfs::PeerVrf::has_operation() const
 	|| (peer_ipv6s !=  nullptr && peer_ipv6s->has_operation());
 }
 
+std::string Ntp::PeerVrfs::PeerVrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/peer-vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ntp::PeerVrfs::PeerVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-vrf" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/peer-vrfs/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -563,7 +2739,8 @@ bool Ntp::PeerVrfs::PeerVrf::has_leaf_or_child_of_name(const std::string & name)
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4S()
 {
-    yang_name = "peer-ipv4s"; yang_parent_name = "peer-vrf";
+
+    yang_name = "peer-ipv4s"; yang_parent_name = "peer-vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::~PeerIpv4S()
@@ -594,29 +2771,15 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-ipv4s";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerIpv4S' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -671,7 +2834,8 @@ Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerIpv4()
     :
     address_ipv4{YType::str, "address-ipv4"}
 {
-    yang_name = "peer-ipv4"; yang_parent_name = "peer-ipv4s";
+
+    yang_name = "peer-ipv4"; yang_parent_name = "peer-ipv4s"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::~PeerIpv4()
@@ -703,30 +2867,16 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-ipv4" <<"[address-ipv4='" <<address_ipv4 <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerIpv4' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_ipv4.is_set || is_set(address_ipv4.yfilter)) leaf_name_data.push_back(address_ipv4.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -799,7 +2949,8 @@ Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::PeerTypeIpv4()
     preferred_peer{YType::empty, "preferred-peer"},
     source_interface{YType::str, "source-interface"}
 {
-    yang_name = "peer-type-ipv4"; yang_parent_name = "peer-ipv4";
+
+    yang_name = "peer-type-ipv4"; yang_parent_name = "peer-ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::~PeerTypeIpv4()
@@ -837,23 +2988,11 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-type-ipv4" <<"[peer-type='" <<peer_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerTypeIpv4' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
@@ -866,9 +3005,7 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_
     if (preferred_peer.is_set || is_set(preferred_peer.yfilter)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -990,7 +3127,8 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::has_leaf_or_chil
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6S()
 {
-    yang_name = "peer-ipv6s"; yang_parent_name = "peer-vrf";
+
+    yang_name = "peer-ipv6s"; yang_parent_name = "peer-vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::~PeerIpv6S()
@@ -1021,29 +3159,15 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-ipv6s";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerIpv6S' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1098,7 +3222,8 @@ Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerIpv6()
     :
     address_ipv6{YType::str, "address-ipv6"}
 {
-    yang_name = "peer-ipv6"; yang_parent_name = "peer-ipv6s";
+
+    yang_name = "peer-ipv6"; yang_parent_name = "peer-ipv6s"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::~PeerIpv6()
@@ -1130,30 +3255,16 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-ipv6" <<"[address-ipv6='" <<address_ipv6 <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerIpv6' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_ipv6.is_set || is_set(address_ipv6.yfilter)) leaf_name_data.push_back(address_ipv6.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1227,7 +3338,8 @@ Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::PeerTypeIpv6()
     preferred_peer{YType::empty, "preferred-peer"},
     source_interface{YType::str, "source-interface"}
 {
-    yang_name = "peer-type-ipv6"; yang_parent_name = "peer-ipv6";
+
+    yang_name = "peer-type-ipv6"; yang_parent_name = "peer-ipv6"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::~PeerTypeIpv6()
@@ -1267,23 +3379,11 @@ std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-type-ipv6" <<"[peer-type='" <<peer_type <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PeerTypeIpv6' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
@@ -1297,9 +3397,7 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_
     if (preferred_peer.is_set || is_set(preferred_peer.yfilter)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1429,215 +3527,10 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::has_leaf_or_chil
     return false;
 }
 
-Ntp::DscpIpv4::DscpIpv4()
-    :
-    dscp_or_precedence_value{YType::uint32, "dscp-or-precedence-value"},
-    mode{YType::enumeration, "mode"}
-{
-    yang_name = "dscp-ipv4"; yang_parent_name = "ntp";
-}
-
-Ntp::DscpIpv4::~DscpIpv4()
-{
-}
-
-bool Ntp::DscpIpv4::has_data() const
-{
-    return dscp_or_precedence_value.is_set
-	|| mode.is_set;
-}
-
-bool Ntp::DscpIpv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dscp_or_precedence_value.yfilter)
-	|| ydk::is_set(mode.yfilter);
-}
-
-std::string Ntp::DscpIpv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dscp-ipv4";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::DscpIpv4::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::DscpIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::DscpIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dscp-or-precedence-value")
-    {
-        dscp_or_precedence_value = value;
-        dscp_or_precedence_value.value_namespace = name_space;
-        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::DscpIpv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dscp-or-precedence-value")
-    {
-        dscp_or_precedence_value.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-}
-
-bool Ntp::DscpIpv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dscp-or-precedence-value" || name == "mode")
-        return true;
-    return false;
-}
-
-Ntp::DscpIpv6::DscpIpv6()
-    :
-    dscp_or_precedence_value{YType::uint32, "dscp-or-precedence-value"},
-    mode{YType::enumeration, "mode"}
-{
-    yang_name = "dscp-ipv6"; yang_parent_name = "ntp";
-}
-
-Ntp::DscpIpv6::~DscpIpv6()
-{
-}
-
-bool Ntp::DscpIpv6::has_data() const
-{
-    return dscp_or_precedence_value.is_set
-	|| mode.is_set;
-}
-
-bool Ntp::DscpIpv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dscp_or_precedence_value.yfilter)
-	|| ydk::is_set(mode.yfilter);
-}
-
-std::string Ntp::DscpIpv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dscp-ipv6";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::DscpIpv6::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::DscpIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::DscpIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dscp-or-precedence-value")
-    {
-        dscp_or_precedence_value = value;
-        dscp_or_precedence_value.value_namespace = name_space;
-        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::DscpIpv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dscp-or-precedence-value")
-    {
-        dscp_or_precedence_value.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-}
-
-bool Ntp::DscpIpv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dscp-or-precedence-value" || name == "mode")
-        return true;
-    return false;
-}
-
 Ntp::Sources::Sources()
 {
-    yang_name = "sources"; yang_parent_name = "ntp";
+
+    yang_name = "sources"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ntp::Sources::~Sources()
@@ -1664,33 +3557,26 @@ bool Ntp::Sources::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ntp::Sources::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ntp::Sources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::Sources::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::Sources::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1746,7 +3632,8 @@ Ntp::Sources::Source::Source()
     vrf_name{YType::str, "vrf-name"},
     source_interface{YType::str, "source-interface"}
 {
-    yang_name = "source"; yang_parent_name = "sources";
+
+    yang_name = "source"; yang_parent_name = "sources"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ntp::Sources::Source::~Source()
@@ -1766,35 +3653,28 @@ bool Ntp::Sources::Source::has_operation() const
 	|| ydk::is_set(source_interface.yfilter);
 }
 
+std::string Ntp::Sources::Source::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/sources/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ntp::Sources::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source" <<"[vrf-name='" <<vrf_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ntp::Sources::Source::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ntp::Sources::Source::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/sources/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1840,2215 +3720,6 @@ void Ntp::Sources::Source::set_filter(const std::string & value_path, YFilter yf
 bool Ntp::Sources::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "source-interface")
-        return true;
-    return false;
-}
-
-Ntp::Authentication::Authentication()
-    :
-    enable{YType::empty, "enable"}
-    	,
-    keies(std::make_shared<Ntp::Authentication::Keies>())
-	,trusted_keies(std::make_shared<Ntp::Authentication::TrustedKeies>())
-{
-    keies->parent = this;
-
-    trusted_keies->parent = this;
-
-    yang_name = "authentication"; yang_parent_name = "ntp";
-}
-
-Ntp::Authentication::~Authentication()
-{
-}
-
-bool Ntp::Authentication::has_data() const
-{
-    return enable.is_set
-	|| (keies !=  nullptr && keies->has_data())
-	|| (trusted_keies !=  nullptr && trusted_keies->has_data());
-}
-
-bool Ntp::Authentication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| (keies !=  nullptr && keies->has_operation())
-	|| (trusted_keies !=  nullptr && trusted_keies->has_operation());
-}
-
-std::string Ntp::Authentication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Authentication::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "keies")
-    {
-        if(keies == nullptr)
-        {
-            keies = std::make_shared<Ntp::Authentication::Keies>();
-        }
-        return keies;
-    }
-
-    if(child_yang_name == "trusted-keies")
-    {
-        if(trusted_keies == nullptr)
-        {
-            trusted_keies = std::make_shared<Ntp::Authentication::TrustedKeies>();
-        }
-        return trusted_keies;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(keies != nullptr)
-    {
-        children["keies"] = keies;
-    }
-
-    if(trusted_keies != nullptr)
-    {
-        children["trusted-keies"] = trusted_keies;
-    }
-
-    return children;
-}
-
-void Ntp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Ntp::Authentication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "keies" || name == "trusted-keies" || name == "enable")
-        return true;
-    return false;
-}
-
-Ntp::Authentication::Keies::Keies()
-{
-    yang_name = "keies"; yang_parent_name = "authentication";
-}
-
-Ntp::Authentication::Keies::~Keies()
-{
-}
-
-bool Ntp::Authentication::Keies::has_data() const
-{
-    for (std::size_t index=0; index<key.size(); index++)
-    {
-        if(key[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::Authentication::Keies::has_operation() const
-{
-    for (std::size_t index=0; index<key.size(); index++)
-    {
-        if(key[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::Authentication::Keies::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "keies";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Authentication::Keies::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Authentication::Keies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "key")
-    {
-        for(auto const & c : key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::Authentication::Keies::Key>();
-        c->parent = this;
-        key.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : key)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::Authentication::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::Authentication::Keies::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::Authentication::Keies::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key")
-        return true;
-    return false;
-}
-
-Ntp::Authentication::Keies::Key::Key()
-    :
-    key_number{YType::uint32, "key-number"},
-    authentication_key{YType::str, "authentication-key"}
-{
-    yang_name = "key"; yang_parent_name = "keies";
-}
-
-Ntp::Authentication::Keies::Key::~Key()
-{
-}
-
-bool Ntp::Authentication::Keies::Key::has_data() const
-{
-    return key_number.is_set
-	|| authentication_key.is_set;
-}
-
-bool Ntp::Authentication::Keies::Key::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_number.yfilter)
-	|| ydk::is_set(authentication_key.yfilter);
-}
-
-std::string Ntp::Authentication::Keies::Key::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key" <<"[key-number='" <<key_number <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Authentication::Keies::Key::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/keies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Authentication::Keies::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::Key::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-number")
-    {
-        key_number = value;
-        key_number.value_namespace = name_space;
-        key_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key = value;
-        authentication_key.value_namespace = name_space;
-        authentication_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::Authentication::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-number")
-    {
-        key_number.yfilter = yfilter;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key.yfilter = yfilter;
-    }
-}
-
-bool Ntp::Authentication::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-number" || name == "authentication-key")
-        return true;
-    return false;
-}
-
-Ntp::Authentication::TrustedKeies::TrustedKeies()
-{
-    yang_name = "trusted-keies"; yang_parent_name = "authentication";
-}
-
-Ntp::Authentication::TrustedKeies::~TrustedKeies()
-{
-}
-
-bool Ntp::Authentication::TrustedKeies::has_data() const
-{
-    for (std::size_t index=0; index<trusted_key.size(); index++)
-    {
-        if(trusted_key[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::Authentication::TrustedKeies::has_operation() const
-{
-    for (std::size_t index=0; index<trusted_key.size(); index++)
-    {
-        if(trusted_key[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::Authentication::TrustedKeies::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trusted-keies";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Authentication::TrustedKeies::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trusted-key")
-    {
-        for(auto const & c : trusted_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::Authentication::TrustedKeies::TrustedKey>();
-        c->parent = this;
-        trusted_key.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trusted_key)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::Authentication::TrustedKeies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::Authentication::TrustedKeies::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::Authentication::TrustedKeies::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trusted-key")
-        return true;
-    return false;
-}
-
-Ntp::Authentication::TrustedKeies::TrustedKey::TrustedKey()
-    :
-    key_number{YType::uint32, "key-number"}
-{
-    yang_name = "trusted-key"; yang_parent_name = "trusted-keies";
-}
-
-Ntp::Authentication::TrustedKeies::TrustedKey::~TrustedKey()
-{
-}
-
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_data() const
-{
-    return key_number.is_set;
-}
-
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key_number.yfilter);
-}
-
-std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trusted-key" <<"[key-number='" <<key_number <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Authentication::TrustedKeies::TrustedKey::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/authentication/trusted-keies/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeies::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies::TrustedKey::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key-number")
-    {
-        key_number = value;
-        key_number.value_namespace = name_space;
-        key_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::Authentication::TrustedKeies::TrustedKey::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key-number")
-    {
-        key_number.yfilter = yfilter;
-    }
-}
-
-bool Ntp::Authentication::TrustedKeies::TrustedKey::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-number")
-        return true;
-    return false;
-}
-
-Ntp::Passive::Passive()
-    :
-    enable{YType::empty, "enable"}
-{
-    yang_name = "passive"; yang_parent_name = "ntp";
-}
-
-Ntp::Passive::~Passive()
-{
-}
-
-bool Ntp::Passive::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Ntp::Passive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Ntp::Passive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "passive";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::Passive::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::Passive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Passive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::Passive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::Passive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Ntp::Passive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTables()
-{
-    yang_name = "interface-tables"; yang_parent_name = "ntp";
-}
-
-Ntp::InterfaceTables::~InterfaceTables()
-{
-}
-
-bool Ntp::InterfaceTables::has_data() const
-{
-    for (std::size_t index=0; index<interface_table.size(); index++)
-    {
-        if(interface_table[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::InterfaceTables::has_operation() const
-{
-    for (std::size_t index=0; index<interface_table.size(); index++)
-    {
-        if(interface_table[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::InterfaceTables::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-tables";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-table")
-    {
-        for(auto const & c : interface_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable>();
-        c->parent = this;
-        interface_table.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_table)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::InterfaceTables::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::InterfaceTables::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-table")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::InterfaceTable()
-    :
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "interface-table"; yang_parent_name = "interface-tables";
-}
-
-Ntp::InterfaceTables::InterfaceTable::~InterfaceTable()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::has_data() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_data())
-            return true;
-    }
-    return vrf_name.is_set;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-table" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/interface-tables/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface")
-    {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::Interface()
-    :
-    interface{YType::str, "interface"},
-    disable{YType::empty, "disable"}
-    	,
-    interface_broadcast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast>())
-	,interface_multicast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>())
-{
-    interface_broadcast->parent = this;
-
-    interface_multicast->parent = this;
-
-    yang_name = "interface"; yang_parent_name = "interface-table";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::~Interface()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::has_data() const
-{
-    return interface.is_set
-	|| disable.is_set
-	|| (interface_broadcast !=  nullptr && interface_broadcast->has_data())
-	|| (interface_multicast !=  nullptr && interface_multicast->has_data());
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| (interface_broadcast !=  nullptr && interface_broadcast->has_operation())
-	|| (interface_multicast !=  nullptr && interface_multicast->has_operation());
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-broadcast")
-    {
-        if(interface_broadcast == nullptr)
-        {
-            interface_broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast>();
-        }
-        return interface_broadcast;
-    }
-
-    if(child_yang_name == "interface-multicast")
-    {
-        if(interface_multicast == nullptr)
-        {
-            interface_multicast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast>();
-        }
-        return interface_multicast;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_broadcast != nullptr)
-    {
-        children["interface-broadcast"] = interface_broadcast;
-    }
-
-    if(interface_multicast != nullptr)
-    {
-        children["interface-multicast"] = interface_multicast;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-broadcast" || name == "interface-multicast" || name == "interface" || name == "disable")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::InterfaceMulticast()
-    :
-    multicast_clients(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients>())
-	,multicast_servers(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>())
-{
-    multicast_clients->parent = this;
-
-    multicast_servers->parent = this;
-
-    yang_name = "interface-multicast"; yang_parent_name = "interface";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::~InterfaceMulticast()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_data() const
-{
-    return (multicast_clients !=  nullptr && multicast_clients->has_data())
-	|| (multicast_servers !=  nullptr && multicast_servers->has_data());
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_operation() const
-{
-    return is_set(yfilter)
-	|| (multicast_clients !=  nullptr && multicast_clients->has_operation())
-	|| (multicast_servers !=  nullptr && multicast_servers->has_operation());
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-multicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceMulticast' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "multicast-clients")
-    {
-        if(multicast_clients == nullptr)
-        {
-            multicast_clients = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients>();
-        }
-        return multicast_clients;
-    }
-
-    if(child_yang_name == "multicast-servers")
-    {
-        if(multicast_servers == nullptr)
-        {
-            multicast_servers = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers>();
-        }
-        return multicast_servers;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(multicast_clients != nullptr)
-    {
-        children["multicast-clients"] = multicast_clients;
-    }
-
-    if(multicast_servers != nullptr)
-    {
-        children["multicast-servers"] = multicast_servers;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "multicast-clients" || name == "multicast-servers")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClients()
-{
-    yang_name = "multicast-clients"; yang_parent_name = "interface-multicast";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::~MulticastClients()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_data() const
-{
-    for (std::size_t index=0; index<multicast_client.size(); index++)
-    {
-        if(multicast_client[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_operation() const
-{
-    for (std::size_t index=0; index<multicast_client.size(); index++)
-    {
-        if(multicast_client[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-clients";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MulticastClients' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "multicast-client")
-    {
-        for(auto const & c : multicast_client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient>();
-        c->parent = this;
-        multicast_client.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : multicast_client)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "multicast-client")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::MulticastClient()
-    :
-    ip_address{YType::str, "ip-address"}
-{
-    yang_name = "multicast-client"; yang_parent_name = "multicast-clients";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::~MulticastClient()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_data() const
-{
-    return ip_address.is_set;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-client" <<"[ip-address='" <<ip_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MulticastClient' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-address")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServers()
-{
-    yang_name = "multicast-servers"; yang_parent_name = "interface-multicast";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::~MulticastServers()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_data() const
-{
-    for (std::size_t index=0; index<multicast_server.size(); index++)
-    {
-        if(multicast_server[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_operation() const
-{
-    for (std::size_t index=0; index<multicast_server.size(); index++)
-    {
-        if(multicast_server[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-servers";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MulticastServers' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "multicast-server")
-    {
-        for(auto const & c : multicast_server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer>();
-        c->parent = this;
-        multicast_server.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : multicast_server)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "multicast-server")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::MulticastServer()
-    :
-    ip_address{YType::str, "ip-address"},
-    authentication_key{YType::uint32, "authentication-key"},
-    ttl{YType::uint32, "ttl"},
-    version{YType::uint32, "version"}
-{
-    yang_name = "multicast-server"; yang_parent_name = "multicast-servers";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::~MulticastServer()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_data() const
-{
-    return ip_address.is_set
-	|| authentication_key.is_set
-	|| ttl.is_set
-	|| version.is_set;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(authentication_key.yfilter)
-	|| ydk::is_set(ttl.yfilter)
-	|| ydk::is_set(version.yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-server" <<"[ip-address='" <<ip_address <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MulticastServer' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key = value;
-        authentication_key.value_namespace = name_space;
-        authentication_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ttl")
-    {
-        ttl = value;
-        ttl.value_namespace = name_space;
-        ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key.yfilter = yfilter;
-    }
-    if(value_path == "ttl")
-    {
-        ttl.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-address" || name == "authentication-key" || name == "ttl" || name == "version")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::InterfaceBroadcast()
-    :
-    broadcast_client{YType::empty, "broadcast-client"}
-    	,
-    broadcast(std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>())
-{
-    broadcast->parent = this;
-
-    yang_name = "interface-broadcast"; yang_parent_name = "interface";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::~InterfaceBroadcast()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_data() const
-{
-    return broadcast_client.is_set
-	|| (broadcast !=  nullptr && broadcast->has_data());
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(broadcast_client.yfilter)
-	|| (broadcast !=  nullptr && broadcast->has_operation());
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-broadcast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceBroadcast' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (broadcast_client.is_set || is_set(broadcast_client.yfilter)) leaf_name_data.push_back(broadcast_client.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "broadcast")
-    {
-        if(broadcast == nullptr)
-        {
-            broadcast = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast>();
-        }
-        return broadcast;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(broadcast != nullptr)
-    {
-        children["broadcast"] = broadcast;
-    }
-
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "broadcast-client")
-    {
-        broadcast_client = value;
-        broadcast_client.value_namespace = name_space;
-        broadcast_client.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "broadcast-client")
-    {
-        broadcast_client.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "broadcast" || name == "broadcast-client")
-        return true;
-    return false;
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::Broadcast()
-    :
-    address{YType::str, "address"},
-    authentication_key{YType::uint32, "authentication-key"},
-    ntp_version{YType::uint32, "ntp-version"}
-{
-    yang_name = "broadcast"; yang_parent_name = "interface-broadcast";
-}
-
-Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::~Broadcast()
-{
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_data() const
-{
-    return address.is_set
-	|| authentication_key.is_set
-	|| ntp_version.is_set;
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(authentication_key.yfilter)
-	|| ydk::is_set(ntp_version.yfilter);
-}
-
-std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "broadcast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Broadcast' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (ntp_version.is_set || is_set(ntp_version.yfilter)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key = value;
-        authentication_key.value_namespace = name_space;
-        authentication_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ntp-version")
-    {
-        ntp_version = value;
-        ntp_version.value_namespace = name_space;
-        ntp_version.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "authentication-key")
-    {
-        authentication_key.yfilter = yfilter;
-    }
-    if(value_path == "ntp-version")
-    {
-        ntp_version.yfilter = yfilter;
-    }
-}
-
-bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "authentication-key" || name == "ntp-version")
-        return true;
-    return false;
-}
-
-Ntp::AccessGroupTables::AccessGroupTables()
-{
-    yang_name = "access-group-tables"; yang_parent_name = "ntp";
-}
-
-Ntp::AccessGroupTables::~AccessGroupTables()
-{
-}
-
-bool Ntp::AccessGroupTables::has_data() const
-{
-    for (std::size_t index=0; index<access_group_table.size(); index++)
-    {
-        if(access_group_table[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ntp::AccessGroupTables::has_operation() const
-{
-    for (std::size_t index=0; index<access_group_table.size(); index++)
-    {
-        if(access_group_table[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ntp::AccessGroupTables::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group-tables";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::AccessGroupTables::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::AccessGroupTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group-table")
-    {
-        for(auto const & c : access_group_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable>();
-        c->parent = this;
-        access_group_table.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : access_group_table)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::AccessGroupTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ntp::AccessGroupTables::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ntp::AccessGroupTables::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group-table")
-        return true;
-    return false;
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::AccessGroupTable()
-    :
-    vrf_name{YType::str, "vrf-name"}
-{
-    yang_name = "access-group-table"; yang_parent_name = "access-group-tables";
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::~AccessGroupTable()
-{
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::has_data() const
-{
-    for (std::size_t index=0; index<access_group_af_table.size(); index++)
-    {
-        if(access_group_af_table[index]->has_data())
-            return true;
-    }
-    return vrf_name.is_set;
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::has_operation() const
-{
-    for (std::size_t index=0; index<access_group_af_table.size(); index++)
-    {
-        if(access_group_af_table[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter);
-}
-
-std::string Ntp::AccessGroupTables::AccessGroupTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group-table" <<"[vrf-name='" <<vrf_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::AccessGroupTables::AccessGroupTable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/access-group-tables/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group-af-table")
-    {
-        for(auto const & c : access_group_af_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable>();
-        c->parent = this;
-        access_group_af_table.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : access_group_af_table)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group-af-table" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroupAfTable()
-    :
-    af{YType::enumeration, "af"}
-{
-    yang_name = "access-group-af-table"; yang_parent_name = "access-group-table";
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::~AccessGroupAfTable()
-{
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_data() const
-{
-    for (std::size_t index=0; index<access_group.size(); index++)
-    {
-        if(access_group[index]->has_data())
-            return true;
-    }
-    return af.is_set;
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_operation() const
-{
-    for (std::size_t index=0; index<access_group.size(); index++)
-    {
-        if(access_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(af.yfilter);
-}
-
-std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group-af-table" <<"[af='" <<af <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessGroupAfTable' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group")
-    {
-        for(auto const & c : access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup>();
-        c->parent = this;
-        access_group.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : access_group)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af")
-    {
-        af = value;
-        af.value_namespace = name_space;
-        af.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af")
-    {
-        af.yfilter = yfilter;
-    }
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group" || name == "af")
-        return true;
-    return false;
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::AccessGroup()
-    :
-    access_group_type{YType::enumeration, "access-group-type"},
-    access_list_name{YType::str, "access-list-name"}
-{
-    yang_name = "access-group"; yang_parent_name = "access-group-af-table";
-}
-
-Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::~AccessGroup()
-{
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_data() const
-{
-    return access_group_type.is_set
-	|| access_list_name.is_set;
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(access_group_type.yfilter)
-	|| ydk::is_set(access_list_name.yfilter);
-}
-
-std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group" <<"[access-group-type='" <<access_group_type <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'AccessGroup' in Cisco_IOS_XR_ip_ntp_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (access_group_type.is_set || is_set(access_group_type.yfilter)) leaf_name_data.push_back(access_group_type.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "access-group-type")
-    {
-        access_group_type = value;
-        access_group_type.value_namespace = name_space;
-        access_group_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-list-name")
-    {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "access-group-type")
-    {
-        access_group_type.yfilter = yfilter;
-    }
-    if(value_path == "access-list-name")
-    {
-        access_list_name.yfilter = yfilter;
-    }
-}
-
-bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group-type" || name == "access-list-name")
         return true;
     return false;
 }

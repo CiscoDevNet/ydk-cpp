@@ -37,7 +37,7 @@ namespace ydk {
 class Entity;
 namespace path
 {
-class ServiceProvider;
+class Session;
 }
 
 class ValidationService {
@@ -62,7 +62,7 @@ class ValidationService {
     }
     ~ValidationService(){}
 
-    void validate(const ydk::path::ServiceProvider& sp, ydk::Entity& entity, ydk::ValidationService::Option option);
+    void validate(const ydk::path::Session& session, ydk::Entity& entity, ydk::ValidationService::Option option);
 };
 
 

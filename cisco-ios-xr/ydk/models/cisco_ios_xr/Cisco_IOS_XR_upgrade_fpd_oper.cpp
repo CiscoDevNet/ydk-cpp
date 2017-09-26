@@ -17,10 +17,9 @@ Fpd_::Fpd_()
 	,packages(std::make_shared<Fpd_::Packages>())
 {
     nodes->parent = this;
-
     packages->parent = this;
 
-    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-oper";
+    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Fpd_::~Fpd_()
@@ -44,26 +43,15 @@ std::string Fpd_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,7 +136,8 @@ bool Fpd_::has_leaf_or_child_of_name(const std::string & name) const
 
 Fpd_::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "fpd";
+
+    yang_name = "nodes"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fpd_::Nodes::~Nodes()
@@ -175,33 +164,26 @@ bool Fpd_::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Fpd_::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fpd_::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -260,7 +242,7 @@ Fpd_::Nodes::Node::Node()
 {
     devices->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fpd_::Nodes::Node::~Node()
@@ -280,34 +262,27 @@ bool Fpd_::Nodes::Node::has_operation() const
 	|| (devices !=  nullptr && devices->has_operation());
 }
 
+std::string Fpd_::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fpd_::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -363,7 +338,8 @@ bool Fpd_::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 
 Fpd_::Nodes::Node::Devices::Devices()
 {
-    yang_name = "devices"; yang_parent_name = "node";
+
+    yang_name = "devices"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fpd_::Nodes::Node::Devices::~Devices()
@@ -394,29 +370,15 @@ std::string Fpd_::Nodes::Node::Devices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "devices";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Nodes::Node::Devices::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Nodes::Node::Devices::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Devices' in Cisco_IOS_XR_upgrade_fpd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -477,7 +439,8 @@ Fpd_::Nodes::Node::Devices::Device::Device()
     software_version{YType::str, "software-version"},
     sub_type{YType::enumeration, "sub-type"}
 {
-    yang_name = "device"; yang_parent_name = "devices";
+
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Fpd_::Nodes::Node::Devices::Device::~Device()
@@ -511,23 +474,11 @@ std::string Fpd_::Nodes::Node::Devices::Device::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "device";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Nodes::Node::Devices::Device::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Nodes::Node::Devices::Device::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Device' in Cisco_IOS_XR_upgrade_fpd_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
@@ -538,9 +489,7 @@ const EntityPath Fpd_::Nodes::Node::Devices::Device::get_entity_path(Entity* anc
     if (software_version.is_set || is_set(software_version.yfilter)) leaf_name_data.push_back(software_version.get_name_leafdata());
     if (sub_type.is_set || is_set(sub_type.yfilter)) leaf_name_data.push_back(sub_type.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -642,7 +591,8 @@ bool Fpd_::Nodes::Node::Devices::Device::has_leaf_or_child_of_name(const std::st
 
 Fpd_::Packages::Packages()
 {
-    yang_name = "packages"; yang_parent_name = "fpd";
+
+    yang_name = "packages"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fpd_::Packages::~Packages()
@@ -669,33 +619,26 @@ bool Fpd_::Packages::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Fpd_::Packages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fpd_::Packages::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packages";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Packages::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Packages::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -756,7 +699,8 @@ Fpd_::Packages::AllPackage::AllPackage()
     minimum_required_software_version{YType::str, "minimum-required-software-version"},
     software_version{YType::str, "software-version"}
 {
-    yang_name = "all-package"; yang_parent_name = "packages";
+
+    yang_name = "all-package"; yang_parent_name = "packages"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Fpd_::Packages::AllPackage::~AllPackage()
@@ -786,27 +730,22 @@ bool Fpd_::Packages::AllPackage::has_operation() const
 	|| ydk::is_set(software_version.yfilter);
 }
 
+std::string Fpd_::Packages::AllPackage::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/packages/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Fpd_::Packages::AllPackage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all-package";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Fpd_::Packages::AllPackage::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Fpd_::Packages::AllPackage::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-upgrade-fpd-oper:fpd/packages/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (card_description.is_set || is_set(card_description.yfilter)) leaf_name_data.push_back(card_description.get_name_leafdata());
@@ -817,9 +756,7 @@ const EntityPath Fpd_::Packages::AllPackage::get_entity_path(Entity* ancestor) c
     if (minimum_required_software_version.is_set || is_set(minimum_required_software_version.yfilter)) leaf_name_data.push_back(minimum_required_software_version.get_name_leafdata());
     if (software_version.is_set || is_set(software_version.yfilter)) leaf_name_data.push_back(software_version.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -919,6 +856,45 @@ bool Fpd_::Packages::AllPackage::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
+const Enum::YLeaf FpdSub1::fpga1 {0, "fpga1"};
+const Enum::YLeaf FpdSub1::rommon {1, "rommon"};
+const Enum::YLeaf FpdSub1::rommona {2, "rommona"};
+const Enum::YLeaf FpdSub1::fabric_loader {3, "fabric-loader"};
+const Enum::YLeaf FpdSub1::fpga2 {4, "fpga2"};
+const Enum::YLeaf FpdSub1::fpga3 {5, "fpga3"};
+const Enum::YLeaf FpdSub1::fpga4 {6, "fpga4"};
+const Enum::YLeaf FpdSub1::fpga5 {7, "fpga5"};
+const Enum::YLeaf FpdSub1::fpga6 {8, "fpga6"};
+const Enum::YLeaf FpdSub1::fpga7 {9, "fpga7"};
+const Enum::YLeaf FpdSub1::fpga8 {10, "fpga8"};
+const Enum::YLeaf FpdSub1::fpga9 {11, "fpga9"};
+const Enum::YLeaf FpdSub1::fpga10 {12, "fpga10"};
+const Enum::YLeaf FpdSub1::fpga11 {13, "fpga11"};
+const Enum::YLeaf FpdSub1::fpga12 {14, "fpga12"};
+const Enum::YLeaf FpdSub1::fpga13 {15, "fpga13"};
+const Enum::YLeaf FpdSub1::fpga14 {16, "fpga14"};
+const Enum::YLeaf FpdSub1::cpld1 {17, "cpld1"};
+const Enum::YLeaf FpdSub1::cpld2 {18, "cpld2"};
+const Enum::YLeaf FpdSub1::cpld3 {19, "cpld3"};
+const Enum::YLeaf FpdSub1::cpld4 {20, "cpld4"};
+const Enum::YLeaf FpdSub1::cpld5 {21, "cpld5"};
+const Enum::YLeaf FpdSub1::cpld6 {22, "cpld6"};
+const Enum::YLeaf FpdSub1::cbc {23, "cbc"};
+const Enum::YLeaf FpdSub1::hsbi {24, "hsbi"};
+const Enum::YLeaf FpdSub1::txpod {25, "txpod"};
+const Enum::YLeaf FpdSub1::rxpod {26, "rxpod"};
+const Enum::YLeaf FpdSub1::ibmc {27, "ibmc"};
+const Enum::YLeaf FpdSub1::fsbl {28, "fsbl"};
+const Enum::YLeaf FpdSub1::lnx {29, "lnx"};
+const Enum::YLeaf FpdSub1::fpga15 {30, "fpga15"};
+const Enum::YLeaf FpdSub1::fpga16 {31, "fpga16"};
+const Enum::YLeaf FpdSub1::fc_fsbl {32, "fc-fsbl"};
+const Enum::YLeaf FpdSub1::fc_lnx {33, "fc-lnx"};
+
+const Enum::YLeaf Fpd::spa {0, "spa"};
+const Enum::YLeaf Fpd::lc {1, "lc"};
+const Enum::YLeaf Fpd::sam {2, "sam"};
+
 const Enum::YLeaf FpdSub::fpga1 {0, "fpga1"};
 const Enum::YLeaf FpdSub::rommon {1, "rommon"};
 const Enum::YLeaf FpdSub::rommona {2, "rommona"};
@@ -954,48 +930,9 @@ const Enum::YLeaf FpdSub::fpga16 {31, "fpga16"};
 const Enum::YLeaf FpdSub::fc_fsbl {32, "fc-fsbl"};
 const Enum::YLeaf FpdSub::fc_lnx {33, "fc-lnx"};
 
-const Enum::YLeaf Fpd::spa {0, "spa"};
-const Enum::YLeaf Fpd::lc {1, "lc"};
-const Enum::YLeaf Fpd::sam {2, "sam"};
-
 const Enum::YLeaf Fpd1::spa {0, "spa"};
 const Enum::YLeaf Fpd1::lc {1, "lc"};
 const Enum::YLeaf Fpd1::sam {2, "sam"};
-
-const Enum::YLeaf FpdSub1::fpga1 {0, "fpga1"};
-const Enum::YLeaf FpdSub1::rommon {1, "rommon"};
-const Enum::YLeaf FpdSub1::rommona {2, "rommona"};
-const Enum::YLeaf FpdSub1::fabric_loader {3, "fabric-loader"};
-const Enum::YLeaf FpdSub1::fpga2 {4, "fpga2"};
-const Enum::YLeaf FpdSub1::fpga3 {5, "fpga3"};
-const Enum::YLeaf FpdSub1::fpga4 {6, "fpga4"};
-const Enum::YLeaf FpdSub1::fpga5 {7, "fpga5"};
-const Enum::YLeaf FpdSub1::fpga6 {8, "fpga6"};
-const Enum::YLeaf FpdSub1::fpga7 {9, "fpga7"};
-const Enum::YLeaf FpdSub1::fpga8 {10, "fpga8"};
-const Enum::YLeaf FpdSub1::fpga9 {11, "fpga9"};
-const Enum::YLeaf FpdSub1::fpga10 {12, "fpga10"};
-const Enum::YLeaf FpdSub1::fpga11 {13, "fpga11"};
-const Enum::YLeaf FpdSub1::fpga12 {14, "fpga12"};
-const Enum::YLeaf FpdSub1::fpga13 {15, "fpga13"};
-const Enum::YLeaf FpdSub1::fpga14 {16, "fpga14"};
-const Enum::YLeaf FpdSub1::cpld1 {17, "cpld1"};
-const Enum::YLeaf FpdSub1::cpld2 {18, "cpld2"};
-const Enum::YLeaf FpdSub1::cpld3 {19, "cpld3"};
-const Enum::YLeaf FpdSub1::cpld4 {20, "cpld4"};
-const Enum::YLeaf FpdSub1::cpld5 {21, "cpld5"};
-const Enum::YLeaf FpdSub1::cpld6 {22, "cpld6"};
-const Enum::YLeaf FpdSub1::cbc {23, "cbc"};
-const Enum::YLeaf FpdSub1::hsbi {24, "hsbi"};
-const Enum::YLeaf FpdSub1::txpod {25, "txpod"};
-const Enum::YLeaf FpdSub1::rxpod {26, "rxpod"};
-const Enum::YLeaf FpdSub1::ibmc {27, "ibmc"};
-const Enum::YLeaf FpdSub1::fsbl {28, "fsbl"};
-const Enum::YLeaf FpdSub1::lnx {29, "lnx"};
-const Enum::YLeaf FpdSub1::fpga15 {30, "fpga15"};
-const Enum::YLeaf FpdSub1::fpga16 {31, "fpga16"};
-const Enum::YLeaf FpdSub1::fc_fsbl {32, "fc-fsbl"};
-const Enum::YLeaf FpdSub1::fc_lnx {33, "fc-lnx"};
 
 
 }

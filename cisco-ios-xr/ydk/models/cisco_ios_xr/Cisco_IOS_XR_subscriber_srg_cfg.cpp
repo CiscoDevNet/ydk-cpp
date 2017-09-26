@@ -25,10 +25,9 @@ SubscriberRedundancy::SubscriberRedundancy()
 	,revertive_timer(std::make_shared<SubscriberRedundancy::RevertiveTimer>())
 {
     groups->parent = this;
-
     revertive_timer->parent = this;
 
-    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg";
+    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 SubscriberRedundancy::~SubscriberRedundancy()
@@ -66,20 +65,11 @@ std::string SubscriberRedundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -90,9 +80,7 @@ const EntityPath SubscriberRedundancy::get_entity_path(Entity* ancestor) const
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
     if (virtual_mac_prefix.is_set || is_set(virtual_mac_prefix.yfilter)) leaf_name_data.push_back(virtual_mac_prefix.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -247,7 +235,8 @@ bool SubscriberRedundancy::has_leaf_or_child_of_name(const std::string & name) c
 
 SubscriberRedundancy::Groups::Groups()
 {
-    yang_name = "groups"; yang_parent_name = "subscriber-redundancy";
+
+    yang_name = "groups"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SubscriberRedundancy::Groups::~Groups()
@@ -274,33 +263,26 @@ bool SubscriberRedundancy::Groups::has_operation() const
     return is_set(yfilter);
 }
 
+std::string SubscriberRedundancy::Groups::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SubscriberRedundancy::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groups";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -373,16 +355,12 @@ SubscriberRedundancy::Groups::Group::Group()
 	,virtual_mac(std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>())
 {
     interface_list->parent = this;
-
     peer->parent = this;
-
     revertive_timer->parent = this;
-
     state_control_route->parent = this;
-
     virtual_mac->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups";
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SubscriberRedundancy::Groups::Group::~Group()
@@ -432,27 +410,22 @@ bool SubscriberRedundancy::Groups::Group::has_operation() const
 	|| (virtual_mac !=  nullptr && virtual_mac->has_operation());
 }
 
+std::string SubscriberRedundancy::Groups::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/groups/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SubscriberRedundancy::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group" <<"[group-id='" <<group_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/groups/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
@@ -468,9 +441,7 @@ const EntityPath SubscriberRedundancy::Groups::Group::get_entity_path(Entity* an
     if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
     if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -698,10 +669,9 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceList()
 	,interfaces(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces>())
 {
     interface_ranges->parent = this;
-
     interfaces->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group";
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -727,30 +697,16 @@ std::string SubscriberRedundancy::Groups::Group::InterfaceList::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-list";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceList' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -818,218 +774,10 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_na
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
-{
-    yang_name = "interfaces"; yang_parent_name = "interface-list";
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
-    {
-        if(interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interfaces' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface")
-    {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface")
-        return true;
-    return false;
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Interface()
-    :
-    interface_name{YType::str, "interface-name"},
-    interface_id{YType::uint32, "interface-id"}
-{
-    yang_name = "interface"; yang_parent_name = "interfaces";
-}
-
-SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_data() const
-{
-    return interface_name.is_set
-	|| interface_id.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(interface_id.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-id")
-    {
-        interface_id = value;
-        interface_id.value_namespace = name_space;
-        interface_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "interface-id")
-    {
-        interface_id.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "interface-id")
-        return true;
-    return false;
-}
-
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
 {
-    yang_name = "interface-ranges"; yang_parent_name = "interface-list";
+
+    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
@@ -1060,29 +808,15 @@ std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ranges";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceRanges' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1141,7 +875,8 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRa
     interface_id_range_end{YType::uint32, "interface-id-range-end"},
     interface_id_range_start{YType::uint32, "interface-id-range-start"}
 {
-    yang_name = "interface-range"; yang_parent_name = "interface-ranges";
+
+    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
@@ -1171,23 +906,11 @@ std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceRange' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -1196,9 +919,7 @@ const EntityPath SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRa
     if (interface_id_range_end.is_set || is_set(interface_id_range_end.yfilter)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
     if (interface_id_range_start.is_set || is_set(interface_id_range_start.yfilter)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1278,6 +999,189 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interf
     return false;
 }
 
+SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        for(auto const & c : interface)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"},
+    interface_id{YType::uint32, "interface-id"}
+{
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_data() const
+{
+    return interface_name.is_set
+	|| interface_id.is_set;
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_id.yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-id")
+    {
+        interface_id = value;
+        interface_id.value_namespace = name_space;
+        interface_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-id")
+    {
+        interface_id.yfilter = yfilter;
+    }
+}
+
+bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-id")
+        return true;
+    return false;
+}
+
 SubscriberRedundancy::Groups::Group::Peer::Peer()
     :
     route_add_disable{YType::empty, "route-add-disable"}
@@ -1286,7 +1190,7 @@ SubscriberRedundancy::Groups::Group::Peer::Peer()
 {
     ipaddress->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "group";
+    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::Peer::~Peer()
@@ -1310,30 +1214,16 @@ std::string SubscriberRedundancy::Groups::Group::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::Peer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::Peer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Peer' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (route_add_disable.is_set || is_set(route_add_disable.yfilter)) leaf_name_data.push_back(route_add_disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1392,7 +1282,8 @@ SubscriberRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
     address_family{YType::enumeration, "address-family"},
     prefix_string{YType::str, "prefix-string"}
 {
-    yang_name = "ipaddress"; yang_parent_name = "peer";
+
+    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
@@ -1416,31 +1307,17 @@ std::string SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "ipaddress";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipaddress' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
     if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1495,7 +1372,8 @@ SubscriberRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
     max_value{YType::uint32, "max-value"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "revertive-timer"; yang_parent_name = "group";
+
+    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
@@ -1519,31 +1397,17 @@ std::string SubscriberRedundancy::Groups::Group::RevertiveTimer::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "revertive-timer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::RevertiveTimer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::RevertiveTimer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'RevertiveTimer' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1593,119 +1457,15 @@ bool SubscriberRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_n
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::VirtualMac::VirtualMac()
-    :
-    address{YType::str, "address"},
-    disable{YType::empty, "disable"}
-{
-    yang_name = "virtual-mac"; yang_parent_name = "group";
-}
-
-SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
-{
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_data() const
-{
-    return address.is_set
-	|| disable.is_set;
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string SubscriberRedundancy::Groups::Group::VirtualMac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "virtual-mac";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath SubscriberRedundancy::Groups::Group::VirtualMac::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VirtualMac' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void SubscriberRedundancy::Groups::Group::VirtualMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void SubscriberRedundancy::Groups::Group::VirtualMac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool SubscriberRedundancy::Groups::Group::VirtualMac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "disable")
-        return true;
-    return false;
-}
-
 SubscriberRedundancy::Groups::Group::StateControlRoute::StateControlRoute()
     :
     ipv4_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes>())
 	,ipv6_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route>())
 {
     ipv4_routes->parent = this;
-
     ipv6_route->parent = this;
 
-    yang_name = "state-control-route"; yang_parent_name = "group";
+    yang_name = "state-control-route"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::~StateControlRoute()
@@ -1729,29 +1489,15 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "state-control-route";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'StateControlRoute' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1811,7 +1557,8 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::has_leaf_or_child_o
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Routes()
 {
-    yang_name = "ipv4-routes"; yang_parent_name = "state-control-route";
+
+    yang_name = "ipv4-routes"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::~Ipv4Routes()
@@ -1842,29 +1589,15 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-routes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Routes' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1924,7 +1657,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::I
 {
     ipv4_route_data->parent = this;
 
-    yang_name = "ipv4-route"; yang_parent_name = "ipv4-routes";
+    yang_name = "ipv4-route"; yang_parent_name = "ipv4-routes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::~Ipv4Route()
@@ -1960,31 +1693,17 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-route" <<"[prefix-string='" <<prefix_string <<"']" <<"[prefix-length='" <<prefix_length <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Route' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2071,9 +1790,10 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::Ipv4RouteData()
     :
-    tagvalue{YType::int32, "tagvalue"}
+    tagvalue{YType::uint32, "tagvalue"}
 {
-    yang_name = "ipv4-route-data"; yang_parent_name = "ipv4-route";
+
+    yang_name = "ipv4-route-data"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::~Ipv4RouteData()
@@ -2095,30 +1815,16 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-route-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4RouteData' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2161,9 +1867,10 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::Vrfname()
     :
     vrfname{YType::str, "vrfname"},
-    tagvalue{YType::int32, "tagvalue"}
+    tagvalue{YType::uint32, "tagvalue"}
 {
-    yang_name = "vrfname"; yang_parent_name = "ipv4-route";
+
+    yang_name = "vrfname"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::~Vrfname()
@@ -2187,31 +1894,17 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfname" <<"[vrfname='" <<vrfname <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Vrfname' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrfname.is_set || is_set(vrfname.yfilter)) leaf_name_data.push_back(vrfname.get_name_leafdata());
     if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2267,10 +1960,9 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6Route()
 	,ipv6pd_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes>())
 {
     ipv6na_routes->parent = this;
-
     ipv6pd_routes->parent = this;
 
-    yang_name = "ipv6-route"; yang_parent_name = "state-control-route";
+    yang_name = "ipv6-route"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::~Ipv6Route()
@@ -2294,29 +1986,15 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::g
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-route";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Route' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2376,7 +2054,8 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::has_leaf
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoutes()
 {
-    yang_name = "ipv6na-routes"; yang_parent_name = "ipv6-route";
+
+    yang_name = "ipv6na-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::~Ipv6NaRoutes()
@@ -2407,29 +2086,15 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6na-routes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6NaRoutes' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2485,9 +2150,10 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes:
     vrfname{YType::str, "vrfname"},
     prefix_length{YType::int32, "prefix-length"},
     prefix_string{YType::str, "prefix-string"},
-    tagvalue{YType::int32, "tagvalue"}
+    tagvalue{YType::uint32, "tagvalue"}
 {
-    yang_name = "ipv6na-route"; yang_parent_name = "ipv6na-routes";
+
+    yang_name = "ipv6na-route"; yang_parent_name = "ipv6na-routes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::~Ipv6NaRoute()
@@ -2515,23 +2181,11 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6na-route" <<"[vrfname='" <<vrfname <<"']" <<"[prefix-length='" <<prefix_length <<"']" <<"[prefix-string='" <<prefix_string <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6NaRoute' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrfname.is_set || is_set(vrfname.yfilter)) leaf_name_data.push_back(vrfname.get_name_leafdata());
@@ -2539,9 +2193,7 @@ const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Rou
     if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
     if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2613,7 +2265,8 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoutes()
 {
-    yang_name = "ipv6pd-routes"; yang_parent_name = "ipv6-route";
+
+    yang_name = "ipv6pd-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::~Ipv6PdRoutes()
@@ -2644,29 +2297,15 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6pd-routes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6PdRoutes' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2722,9 +2361,10 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes:
     vrfname{YType::str, "vrfname"},
     prefix_length{YType::int32, "prefix-length"},
     prefix_string{YType::str, "prefix-string"},
-    tagvalue{YType::int32, "tagvalue"}
+    tagvalue{YType::uint32, "tagvalue"}
 {
-    yang_name = "ipv6pd-route"; yang_parent_name = "ipv6pd-routes";
+
+    yang_name = "ipv6pd-route"; yang_parent_name = "ipv6pd-routes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::~Ipv6PdRoute()
@@ -2752,23 +2392,11 @@ std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6pd-route" <<"[vrfname='" <<vrfname <<"']" <<"[prefix-length='" <<prefix_length <<"']" <<"[prefix-string='" <<prefix_string <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6PdRoute' in Cisco_IOS_XR_subscriber_srg_cfg cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vrfname.is_set || is_set(vrfname.yfilter)) leaf_name_data.push_back(vrfname.get_name_leafdata());
@@ -2776,9 +2404,7 @@ const EntityPath SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Rou
     if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
     if (tagvalue.is_set || is_set(tagvalue.yfilter)) leaf_name_data.push_back(tagvalue.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2848,12 +2474,103 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     return false;
 }
 
+SubscriberRedundancy::Groups::Group::VirtualMac::VirtualMac()
+    :
+    address{YType::str, "address"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "virtual-mac"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
+{
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_data() const
+{
+    return address.is_set
+	|| disable.is_set;
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string SubscriberRedundancy::Groups::Group::VirtualMac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual-mac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::VirtualMac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void SubscriberRedundancy::Groups::Group::VirtualMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberRedundancy::Groups::Group::VirtualMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool SubscriberRedundancy::Groups::Group::VirtualMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "disable")
+        return true;
+    return false;
+}
+
 SubscriberRedundancy::RevertiveTimer::RevertiveTimer()
     :
     max_value{YType::uint32, "max-value"},
     value_{YType::uint32, "value"}
 {
-    yang_name = "revertive-timer"; yang_parent_name = "subscriber-redundancy";
+
+    yang_name = "revertive-timer"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 SubscriberRedundancy::RevertiveTimer::~RevertiveTimer()
@@ -2873,35 +2590,28 @@ bool SubscriberRedundancy::RevertiveTimer::has_operation() const
 	|| ydk::is_set(value_.yfilter);
 }
 
+std::string SubscriberRedundancy::RevertiveTimer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string SubscriberRedundancy::RevertiveTimer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "revertive-timer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath SubscriberRedundancy::RevertiveTimer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::RevertiveTimer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-subscriber-srg-cfg:subscriber-redundancy/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

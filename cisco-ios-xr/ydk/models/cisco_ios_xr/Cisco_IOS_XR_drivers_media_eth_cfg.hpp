@@ -10,12 +10,50 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_drivers_media_eth_cfg {
 
+class EthernetPfc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+
+};
+
+class EthernetFec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf standard;
+
+};
+
+class EthernetIpg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf non_standard;
+
+};
+
 class EthernetFlowCtrl : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ingress;
         static const ydk::Enum::YLeaf egress;
         static const ydk::Enum::YLeaf bidirectional;
+
+};
+
+class EthernetDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf half;
+
+};
+
+class EthernetAutoNegotiation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf override;
 
 };
 
@@ -34,44 +72,6 @@ class EthernetLoopback : public ydk::Enum
         static const ydk::Enum::YLeaf external;
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf line;
-
-};
-
-class EthernetAutoNegotiation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf override;
-
-};
-
-class EthernetPfc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf on;
-
-};
-
-class EthernetFec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf standard;
-
-};
-
-class EthernetDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full;
-        static const ydk::Enum::YLeaf half;
-
-};
-
-class EthernetIpg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf non_standard;
 
 };
 

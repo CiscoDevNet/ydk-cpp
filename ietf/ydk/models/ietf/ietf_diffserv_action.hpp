@@ -12,7 +12,7 @@
 namespace ietf {
 namespace ietf_diffserv_action {
 
-class AlgorithmicDrop : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class AlgorithmicDrop : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         AlgorithmicDrop();
@@ -30,34 +30,7 @@ class DropType : public virtual ydk::Identity
 
 }; // DropType
 
-class Meter : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
-{
-    public:
-        Meter();
-        ~Meter();
-
-
-}; // Meter
-
-class Priority : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
-{
-    public:
-        Priority();
-        ~Priority();
-
-
-}; // Priority
-
-class MinRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
-{
-    public:
-        MinRate();
-        ~MinRate();
-
-
-}; // MinRate
-
-class Marking : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class Marking : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         Marking();
@@ -66,7 +39,7 @@ class Marking : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 }; // Marking
 
-class MaxRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
+class MaxRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
 {
     public:
         MaxRate();
@@ -74,6 +47,15 @@ class MaxRate : public ietf_diffserv_policy::ActionType, virtual ydk::Identity
 
 
 }; // MaxRate
+
+class Meter : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
+{
+    public:
+        Meter();
+        ~Meter();
+
+
+}; // Meter
 
 class MeterActionType : public virtual ydk::Identity
 {
@@ -84,7 +66,25 @@ class MeterActionType : public virtual ydk::Identity
 
 }; // MeterActionType
 
-class AlwaysDrop : public ietf_diffserv_action::DropType, virtual ydk::Identity
+class MinRate : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
+{
+    public:
+        MinRate();
+        ~MinRate();
+
+
+}; // MinRate
+
+class Priority : public ietf::ietf_diffserv_policy::ActionType, virtual ydk::Identity
+{
+    public:
+        Priority();
+        ~Priority();
+
+
+}; // Priority
+
+class AlwaysDrop : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
 {
     public:
         AlwaysDrop();
@@ -93,25 +93,7 @@ class AlwaysDrop : public ietf_diffserv_action::DropType, virtual ydk::Identity
 
 }; // AlwaysDrop
 
-class TailDrop : public ietf_diffserv_action::DropType, virtual ydk::Identity
-{
-    public:
-        TailDrop();
-        ~TailDrop();
-
-
-}; // TailDrop
-
-class MeterActionSet : public ietf_diffserv_action::MeterActionType, virtual ydk::Identity
-{
-    public:
-        MeterActionSet();
-        ~MeterActionSet();
-
-
-}; // MeterActionSet
-
-class MeterActionDrop : public ietf_diffserv_action::MeterActionType, virtual ydk::Identity
+class MeterActionDrop : public ietf::ietf_diffserv_action::MeterActionType, virtual ydk::Identity
 {
     public:
         MeterActionDrop();
@@ -120,7 +102,16 @@ class MeterActionDrop : public ietf_diffserv_action::MeterActionType, virtual yd
 
 }; // MeterActionDrop
 
-class RandomDetect : public ietf_diffserv_action::DropType, virtual ydk::Identity
+class MeterActionSet : public ietf::ietf_diffserv_action::MeterActionType, virtual ydk::Identity
+{
+    public:
+        MeterActionSet();
+        ~MeterActionSet();
+
+
+}; // MeterActionSet
+
+class RandomDetect : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
 {
     public:
         RandomDetect();
@@ -128,6 +119,15 @@ class RandomDetect : public ietf_diffserv_action::DropType, virtual ydk::Identit
 
 
 }; // RandomDetect
+
+class TailDrop : public ietf::ietf_diffserv_action::DropType, virtual ydk::Identity
+{
+    public:
+        TailDrop();
+        ~TailDrop();
+
+
+}; // TailDrop
 
 
 }

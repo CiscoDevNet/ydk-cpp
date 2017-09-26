@@ -10,7 +10,15 @@
 namespace cisco_ios_xe {
 namespace CISCO_CBP_TARGET_TC_MIB {
 
-class Ccbpttargetdirection : public ydk::Enum
+class CcbptPolicySourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ciscoCbQos;
+        static const ydk::Enum::YLeaf ciscoCbpBase;
+
+};
+
+class CcbptTargetDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf undirected;
@@ -20,7 +28,7 @@ class Ccbpttargetdirection : public ydk::Enum
 
 };
 
-class Ccbpttargettype : public ydk::Enum
+class CcbptTargetType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf genIf;
@@ -30,14 +38,6 @@ class Ccbpttargettype : public ydk::Enum
         static const ydk::Enum::YLeaf fwZone;
         static const ydk::Enum::YLeaf fwZonePair;
         static const ydk::Enum::YLeaf aaaSession;
-
-};
-
-class Ccbptpolicysourcetype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ciscoCbQos;
-        static const ydk::Enum::YLeaf ciscoCbpBase;
 
 };
 

@@ -18,7 +18,7 @@ class Bfd : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -44,14 +44,130 @@ class Bfd : public ydk::Entity
         class MultiPathIncludes; //type: Bfd::MultiPathIncludes
         class Bundle; //type: Bfd::Bundle
 
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::Bundle> bundle;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoLatency> echo_latency;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoStartup> echo_startup;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp> flap_damp;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::Interfaces> interfaces;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::MultiPathIncludes> multi_path_includes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::Bundle> bundle;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoLatency> echo_latency;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoStartup> echo_startup;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp> flap_damp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::MultiPathIncludes> multi_path_includes;
         
 }; // Bfd
+
+
+class Bfd::Bundle : public ydk::Entity
+{
+    public:
+        Bundle();
+        ~Bundle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Coexistence; //type: Bfd::Bundle::Coexistence
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::Bundle::Coexistence> coexistence;
+        
+}; // Bfd::Bundle
+
+
+class Bfd::Bundle::Coexistence : public ydk::Entity
+{
+    public:
+        Coexistence();
+        ~Coexistence();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf bob_blb; //type: BfdBundleCoexistenceBobBlb
+
+}; // Bfd::Bundle::Coexistence
+
+
+class Bfd::EchoLatency : public ydk::Entity
+{
+    public:
+        EchoLatency();
+        ~EchoLatency();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Detect; //type: Bfd::EchoLatency::Detect
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoLatency::Detect> detect;
+        
+}; // Bfd::EchoLatency
+
+
+class Bfd::EchoLatency::Detect : public ydk::Entity
+{
+    public:
+        Detect();
+        ~Detect();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf latency_detect_enabled; //type: boolean
+        ydk::YLeaf latency_detect_percentage; //type: uint32
+        ydk::YLeaf latency_detect_count; //type: uint32
+
+}; // Bfd::EchoLatency::Detect
+
+
+class Bfd::EchoStartup : public ydk::Entity
+{
+    public:
+        EchoStartup();
+        ~EchoStartup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf validate; //type: BfdEchoStartupValidate
+
+}; // Bfd::EchoStartup
 
 
 class Bfd::FlapDamp : public ydk::Entity
@@ -62,13 +178,14 @@ class Bfd::FlapDamp : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf threshold; //type: uint32
         ydk::YLeaf initial_delay; //type: uint32
@@ -78,8 +195,8 @@ class Bfd::FlapDamp : public ydk::Entity
         class BundleMember; //type: Bfd::FlapDamp::BundleMember
         class Extensions; //type: Bfd::FlapDamp::Extensions
 
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp::BundleMember> bundle_member;
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp::Extensions> extensions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp::BundleMember> bundle_member;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::FlapDamp::Extensions> extensions;
         
 }; // Bfd::FlapDamp
 
@@ -92,13 +209,14 @@ class Bfd::FlapDamp::BundleMember : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf initial_delay; //type: uint32
         ydk::YLeaf maximum_delay; //type: uint32
@@ -116,84 +234,18 @@ class Bfd::FlapDamp::Extensions : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf down_monitor; //type: empty
 
 }; // Bfd::FlapDamp::Extensions
-
-
-class Bfd::EchoLatency : public ydk::Entity
-{
-    public:
-        EchoLatency();
-        ~EchoLatency();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Detect; //type: Bfd::EchoLatency::Detect
-
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::EchoLatency::Detect> detect;
-        
-}; // Bfd::EchoLatency
-
-
-class Bfd::EchoLatency::Detect : public ydk::Entity
-{
-    public:
-        Detect();
-        ~Detect();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf latency_detect_enabled; //type: boolean
-        ydk::YLeaf latency_detect_percentage; //type: uint32
-        ydk::YLeaf latency_detect_count; //type: uint32
-
-}; // Bfd::EchoLatency::Detect
-
-
-class Bfd::EchoStartup : public ydk::Entity
-{
-    public:
-        EchoStartup();
-        ~EchoStartup();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf validate; //type: BfdEchoStartupValidate
-
-}; // Bfd::EchoStartup
 
 
 class Bfd::Interfaces : public ydk::Entity
@@ -204,17 +256,18 @@ class Bfd::Interfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Interface; //type: Bfd::Interfaces::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::Interfaces::Interface> > interface;
         
 }; // Bfd::Interfaces
 
@@ -227,13 +280,14 @@ class Bfd::Interfaces::Interface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf interface_echo_usage; //type: BfdIfEchoUsage
@@ -251,17 +305,18 @@ class Bfd::MultiPathIncludes : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class MultiPathInclude; //type: Bfd::MultiPathIncludes::MultiPathInclude
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::MultiPathIncludes::MultiPathInclude> > multi_path_include;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_cfg::Bfd::MultiPathIncludes::MultiPathInclude> > multi_path_include;
         
 }; // Bfd::MultiPathIncludes
 
@@ -274,67 +329,32 @@ class Bfd::MultiPathIncludes::MultiPathInclude : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
 
 }; // Bfd::MultiPathIncludes::MultiPathInclude
 
-
-class Bfd::Bundle : public ydk::Entity
+class BfdBundleCoexistenceBobBlb : public ydk::Enum
 {
     public:
-        Bundle();
-        ~Bundle();
+        static const ydk::Enum::YLeaf inherited;
+        static const ydk::Enum::YLeaf logical;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class Coexistence; //type: Bfd::Bundle::Coexistence
-
-        std::shared_ptr<Cisco_IOS_XR_ip_bfd_cfg::Bfd::Bundle::Coexistence> coexistence;
-        
-}; // Bfd::Bundle
-
-
-class Bfd::Bundle::Coexistence : public ydk::Entity
+class BfdIfEchoUsage : public ydk::Enum
 {
     public:
-        Coexistence();
-        ~Coexistence();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf bob_blb; //type: BfdBundleCoexistenceBobBlb
-
-}; // Bfd::Bundle::Coexistence
-
-class BfdIfIpv6ChecksumUsage : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -347,19 +367,11 @@ class BfdEchoStartupValidate : public ydk::Enum
 
 };
 
-class BfdIfEchoUsage : public ydk::Enum
+class BfdIfIpv6ChecksumUsage : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
-
-};
-
-class BfdBundleCoexistenceBobBlb : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inherited;
-        static const ydk::Enum::YLeaf logical;
+        static const ydk::Enum::YLeaf enable;
 
 };
 

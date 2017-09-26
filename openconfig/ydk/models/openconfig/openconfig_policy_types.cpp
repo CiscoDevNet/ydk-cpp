@@ -11,120 +11,132 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_policy_types {
 
-Install_Protocol_Type::Install_Protocol_Type()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:INSTALL_PROTOCOL_TYPE")
-{
-}
-
-Install_Protocol_Type::~Install_Protocol_Type()
-{
-}
-
-Attribute_Comparison::Attribute_Comparison()
+ATTRIBUTECOMPARISON::ATTRIBUTECOMPARISON()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ATTRIBUTE_COMPARISON")
 {
+
 }
 
-Attribute_Comparison::~Attribute_Comparison()
+ATTRIBUTECOMPARISON::~ATTRIBUTECOMPARISON()
 {
 }
 
-Ospf3::Ospf3()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:OSPF3")
+INSTALLPROTOCOLTYPE::INSTALLPROTOCOLTYPE()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:INSTALL_PROTOCOL_TYPE")
+{
+
+}
+
+INSTALLPROTOCOLTYPE::~INSTALLPROTOCOLTYPE()
 {
 }
 
-Ospf3::~Ospf3()
-{
-}
-
-Static_::Static_()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:STATIC")
-{
-}
-
-Static_::~Static_()
-{
-}
-
-Ospf::Ospf()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:OSPF")
-{
-}
-
-Ospf::~Ospf()
-{
-}
-
-Isis::Isis()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ISIS")
-{
-}
-
-Isis::~Isis()
-{
-}
-
-Attribute_Eq::Attribute_Eq()
+ATTRIBUTEEQ::ATTRIBUTEEQ()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ATTRIBUTE_EQ")
 {
+
 }
 
-Attribute_Eq::~Attribute_Eq()
+ATTRIBUTEEQ::~ATTRIBUTEEQ()
 {
 }
 
-Attribute_Ge::Attribute_Ge()
+ATTRIBUTEGE::ATTRIBUTEGE()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ATTRIBUTE_GE")
 {
+
 }
 
-Attribute_Ge::~Attribute_Ge()
+ATTRIBUTEGE::~ATTRIBUTEGE()
 {
 }
 
-Local_Aggregate::Local_Aggregate()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:LOCAL_AGGREGATE")
-{
-}
-
-Local_Aggregate::~Local_Aggregate()
-{
-}
-
-Bgp::Bgp()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:BGP")
-{
-}
-
-Bgp::~Bgp()
-{
-}
-
-Directly_Connected::Directly_Connected()
-     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:DIRECTLY_CONNECTED")
-{
-}
-
-Directly_Connected::~Directly_Connected()
-{
-}
-
-Attribute_Le::Attribute_Le()
+ATTRIBUTELE::ATTRIBUTELE()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ATTRIBUTE_LE")
 {
+
 }
 
-Attribute_Le::~Attribute_Le()
+ATTRIBUTELE::~ATTRIBUTELE()
 {
 }
 
-const Enum::YLeaf MatchSetOptionsRestrictedType::ANY {0, "ANY"};
-const Enum::YLeaf MatchSetOptionsRestrictedType::INVERT {1, "INVERT"};
+BGP::BGP()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:BGP")
+{
+
+}
+
+BGP::~BGP()
+{
+}
+
+DIRECTLYCONNECTED::DIRECTLYCONNECTED()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:DIRECTLY_CONNECTED")
+{
+
+}
+
+DIRECTLYCONNECTED::~DIRECTLYCONNECTED()
+{
+}
+
+ISIS::ISIS()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:ISIS")
+{
+
+}
+
+ISIS::~ISIS()
+{
+}
+
+LOCALAGGREGATE::LOCALAGGREGATE()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:LOCAL_AGGREGATE")
+{
+
+}
+
+LOCALAGGREGATE::~LOCALAGGREGATE()
+{
+}
+
+OSPF::OSPF()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:OSPF")
+{
+
+}
+
+OSPF::~OSPF()
+{
+}
+
+OSPF3::OSPF3()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:OSPF3")
+{
+
+}
+
+OSPF3::~OSPF3()
+{
+}
+
+STATIC_::STATIC_()
+     : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:STATIC")
+{
+
+}
+
+STATIC_::~STATIC_()
+{
+}
 
 const Enum::YLeaf MatchSetOptionsType::ANY {0, "ANY"};
 const Enum::YLeaf MatchSetOptionsType::ALL {1, "ALL"};
 const Enum::YLeaf MatchSetOptionsType::INVERT {2, "INVERT"};
+
+const Enum::YLeaf MatchSetOptionsRestrictedType::ANY {0, "ANY"};
+const Enum::YLeaf MatchSetOptionsRestrictedType::INVERT {1, "INVERT"};
 
 
 }

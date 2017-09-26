@@ -19,16 +19,7 @@ class GroupToRpMappingMode : public virtual ydk::Identity
 
 }; // GroupToRpMappingMode
 
-class SsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        SsmMappingMode();
-        ~SsmMappingMode();
-
-
-}; // SsmMappingMode
-
-class AsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class AsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         AsmMappingMode();
@@ -37,34 +28,7 @@ class AsmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
 
 }; // AsmMappingMode
 
-class OtherMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        OtherMappingMode();
-        ~OtherMappingMode();
-
-
-}; // OtherMappingMode
-
-class PimBidirMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        PimBidirMappingMode();
-        ~PimBidirMappingMode();
-
-
-}; // PimBidirMappingMode
-
-class SmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
-{
-    public:
-        SmMappingMode();
-        ~SmMappingMode();
-
-
-}; // SmMappingMode
-
-class DmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
+class DmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
         DmMappingMode();
@@ -73,39 +37,41 @@ class DmMappingMode : public pim::GroupToRpMappingMode, virtual ydk::Identity
 
 }; // DmMappingMode
 
-class MrouteProtocolType : public ydk::Enum
+class OtherMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf netmgmt;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf mospf;
-        static const ydk::Enum::YLeaf pimSparseDense;
-        static const ydk::Enum::YLeaf cbt;
-        static const ydk::Enum::YLeaf pimSparseMode;
-        static const ydk::Enum::YLeaf pimDenseMode;
-        static const ydk::Enum::YLeaf igmpOnly;
-        static const ydk::Enum::YLeaf bgmp;
-        static const ydk::Enum::YLeaf msdp;
+        OtherMappingMode();
+        ~OtherMappingMode();
 
-};
 
-class Origin : public ydk::Enum
+}; // OtherMappingMode
+
+class PimBidirMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
 {
     public:
-        static const ydk::Enum::YLeaf other_origin;
-        static const ydk::Enum::YLeaf pim_request;
-        static const ydk::Enum::YLeaf ssm_request;
-        static const ydk::Enum::YLeaf fixed;
-        static const ydk::Enum::YLeaf embedded;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf config_ssm;
-        static const ydk::Enum::YLeaf auto_rp;
-        static const ydk::Enum::YLeaf bsr;
-        static const ydk::Enum::YLeaf msdp;
+        PimBidirMappingMode();
+        ~PimBidirMappingMode();
 
-};
+
+}; // PimBidirMappingMode
+
+class SmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        SmMappingMode();
+        ~SmMappingMode();
+
+
+}; // SmMappingMode
+
+class SsmMappingMode : public cisco_ios_xe::pim::GroupToRpMappingMode, virtual ydk::Identity
+{
+    public:
+        SsmMappingMode();
+        ~SsmMappingMode();
+
+
+}; // SsmMappingMode
 
 class RouteProtocolType : public ydk::Enum
 {
@@ -138,6 +104,40 @@ class PimMode : public ydk::Enum
         static const ydk::Enum::YLeaf sparse_dense;
         static const ydk::Enum::YLeaf dm_proxy;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class Origin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other_origin;
+        static const ydk::Enum::YLeaf pim_request;
+        static const ydk::Enum::YLeaf ssm_request;
+        static const ydk::Enum::YLeaf fixed;
+        static const ydk::Enum::YLeaf embedded;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf config_ssm;
+        static const ydk::Enum::YLeaf auto_rp;
+        static const ydk::Enum::YLeaf bsr;
+        static const ydk::Enum::YLeaf msdp;
+
+};
+
+class MrouteProtocolType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf pimSparseDense;
+        static const ydk::Enum::YLeaf cbt;
+        static const ydk::Enum::YLeaf pimSparseMode;
+        static const ydk::Enum::YLeaf pimDenseMode;
+        static const ydk::Enum::YLeaf igmpOnly;
+        static const ydk::Enum::YLeaf bgmp;
+        static const ydk::Enum::YLeaf msdp;
 
 };
 

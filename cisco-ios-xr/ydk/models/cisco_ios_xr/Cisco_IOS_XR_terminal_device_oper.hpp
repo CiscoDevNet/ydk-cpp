@@ -18,7 +18,7 @@ class OpticalInterface : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -37,11 +37,11 @@ class OpticalInterface : public ydk::Entity
         class OperationalModes; //type: OpticalInterface::OperationalModes
         class OpticalLogicalInterfaces; //type: OpticalInterface::OpticalLogicalInterfaces
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus> config_status;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph> graph;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes> operational_modes;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces> optical_channel_interfaces;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces> optical_logical_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus> config_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph> graph;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes> operational_modes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces> optical_channel_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces> optical_logical_interfaces;
         
 }; // OpticalInterface
 
@@ -54,19 +54,20 @@ class OpticalInterface::ConfigStatus : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class PartialConfig; //type: OpticalInterface::ConfigStatus::PartialConfig
         class SliceTables; //type: OpticalInterface::ConfigStatus::SliceTables
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::PartialConfig> partial_config;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables> slice_tables;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::PartialConfig> partial_config;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables> slice_tables;
         
 }; // OpticalInterface::ConfigStatus
 
@@ -79,13 +80,14 @@ class OpticalInterface::ConfigStatus::PartialConfig : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf partial_config; //type: uint8
 
@@ -100,17 +102,18 @@ class OpticalInterface::ConfigStatus::SliceTables : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class SliceTable; //type: OpticalInterface::ConfigStatus::SliceTables::SliceTable
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables::SliceTable> > slice_table;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables::SliceTable> > slice_table;
         
 }; // OpticalInterface::ConfigStatus::SliceTables
 
@@ -123,18 +126,19 @@ class OpticalInterface::ConfigStatus::SliceTables::SliceTable : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf index_; //type: int32
         class SliceStatusAttr; //type: OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr> slice_status_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr> slice_status_attr;
         
 }; // OpticalInterface::ConfigStatus::SliceTables::SliceTable
 
@@ -147,7 +151,7 @@ class OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -167,6 +171,147 @@ class OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr :
 }; // OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr
 
 
+class OpticalInterface::Graph : public ydk::Entity
+{
+    public:
+        Graph();
+        ~Graph();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AdjListPath; //type: OpticalInterface::Graph::AdjListPath
+        class GraphStructurePath; //type: OpticalInterface::Graph::GraphStructurePath
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph::AdjListPath> adj_list_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph::GraphStructurePath> graph_structure_path;
+        
+}; // OpticalInterface::Graph
+
+
+class OpticalInterface::Graph::AdjListPath : public ydk::Entity
+{
+    public:
+        AdjListPath();
+        ~AdjListPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf path; //type: string
+
+}; // OpticalInterface::Graph::AdjListPath
+
+
+class OpticalInterface::Graph::GraphStructurePath : public ydk::Entity
+{
+    public:
+        GraphStructurePath();
+        ~GraphStructurePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf path; //type: string
+
+}; // OpticalInterface::Graph::GraphStructurePath
+
+
+class OpticalInterface::OperationalModes : public ydk::Entity
+{
+    public:
+        OperationalModes();
+        ~OperationalModes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class OperationalMode; //type: OpticalInterface::OperationalModes::OperationalMode
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes::OperationalMode> > operational_mode;
+        
+}; // OpticalInterface::OperationalModes
+
+
+class OpticalInterface::OperationalModes::OperationalMode : public ydk::Entity
+{
+    public:
+        OperationalMode();
+        ~OperationalMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mode_id; //type: int32
+        class OperationalModeAttributes; //type: OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes> operational_mode_attributes;
+        
+}; // OpticalInterface::OperationalModes::OperationalMode
+
+
+class OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes : public ydk::Entity
+{
+    public:
+        OperationalModeAttributes();
+        ~OperationalModeAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_id; //type: string
+
+}; // OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes
+
+
 class OpticalInterface::OpticalChannelInterfaces : public ydk::Entity
 {
     public:
@@ -175,17 +320,18 @@ class OpticalInterface::OpticalChannelInterfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class OpticalChannelInterface; //type: OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface> > optical_channel_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface> > optical_channel_interface;
         
 }; // OpticalInterface::OpticalChannelInterfaces
 
@@ -198,18 +344,19 @@ class OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
         class OpticalChannelInterfaceAttr; //type: OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr> optical_channel_interface_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr> optical_channel_interface_attr;
         
 }; // OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface
 
@@ -222,7 +369,7 @@ class OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::Optic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -240,142 +387,6 @@ class OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::Optic
 }; // OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr
 
 
-class OpticalInterface::Graph : public ydk::Entity
-{
-    public:
-        Graph();
-        ~Graph();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AdjListPath; //type: OpticalInterface::Graph::AdjListPath
-        class GraphStructurePath; //type: OpticalInterface::Graph::GraphStructurePath
-
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph::AdjListPath> adj_list_path;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::Graph::GraphStructurePath> graph_structure_path;
-        
-}; // OpticalInterface::Graph
-
-
-class OpticalInterface::Graph::AdjListPath : public ydk::Entity
-{
-    public:
-        AdjListPath();
-        ~AdjListPath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf path; //type: string
-
-}; // OpticalInterface::Graph::AdjListPath
-
-
-class OpticalInterface::Graph::GraphStructurePath : public ydk::Entity
-{
-    public:
-        GraphStructurePath();
-        ~GraphStructurePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf path; //type: string
-
-}; // OpticalInterface::Graph::GraphStructurePath
-
-
-class OpticalInterface::OperationalModes : public ydk::Entity
-{
-    public:
-        OperationalModes();
-        ~OperationalModes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class OperationalMode; //type: OpticalInterface::OperationalModes::OperationalMode
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes::OperationalMode> > operational_mode;
-        
-}; // OpticalInterface::OperationalModes
-
-
-class OpticalInterface::OperationalModes::OperationalMode : public ydk::Entity
-{
-    public:
-        OperationalMode();
-        ~OperationalMode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mode_id; //type: int32
-        class OperationalModeAttributes; //type: OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes
-
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes> operational_mode_attributes;
-        
-}; // OpticalInterface::OperationalModes::OperationalMode
-
-
-class OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes : public ydk::Entity
-{
-    public:
-        OperationalModeAttributes();
-        ~OperationalModeAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf vendor_id; //type: string
-
-}; // OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes
-
-
 class OpticalInterface::OpticalLogicalInterfaces : public ydk::Entity
 {
     public:
@@ -384,17 +395,18 @@ class OpticalInterface::OpticalLogicalInterfaces : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class OpticalLogicalInterface; //type: OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface> > optical_logical_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface> > optical_logical_interface;
         
 }; // OpticalInterface::OpticalLogicalInterfaces
 
@@ -407,20 +419,21 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf index_; //type: int32
         class OpticalLogicalInterfaceAttr; //type: OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr
         class OpticalLogicalInterfaceLogicalChannelAssignments; //type: OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr> optical_logical_interface_attr;
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments> optical_logical_interface_logical_channel_assignments;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr> optical_logical_interface_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments> optical_logical_interface_logical_channel_assignments;
         
 }; // OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface
 
@@ -433,7 +446,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -465,7 +478,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -475,7 +488,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
 
         class OpticalLogicalInterfaceLogicalChannelAssignment; //type: OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment> > optical_logical_interface_logical_channel_assignment;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment> > optical_logical_interface_logical_channel_assignment;
         
 }; // OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments
 
@@ -488,7 +501,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -499,7 +512,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
         ydk::YLeaf index_; //type: int32
         class OpticalLogicalInterfaceLogicalChannelAssignmentAttr; //type: OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr
 
-        std::shared_ptr<Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr> optical_logical_interface_logical_channel_assignment_attr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_terminal_device_oper::OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr> optical_logical_interface_logical_channel_assignment_attr;
         
 }; // OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment
 
@@ -512,7 +525,7 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -529,27 +542,6 @@ class OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optic
         ydk::YLeaf assignment_type; //type: uint32
 
 }; // OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr
-
-class TribRateClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf trib_rate_unknown;
-        static const ydk::Enum::YLeaf trib_rate1g;
-        static const ydk::Enum::YLeaf trib_rate25g;
-        static const ydk::Enum::YLeaf trib_rate10g;
-        static const ydk::Enum::YLeaf trib_rate40g;
-        static const ydk::Enum::YLeaf trib_rate100g;
-
-};
-
-class LogicalProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf proto_type_unknown;
-        static const ydk::Enum::YLeaf proto_type_ethernet;
-        static const ydk::Enum::YLeaf proto_type_otn;
-
-};
 
 class TribProtocol : public ydk::Enum
 {
@@ -577,6 +569,27 @@ class TribProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf trib_proto_type_otu4;
         static const ydk::Enum::YLeaf trib_proto_type_otu_cn;
         static const ydk::Enum::YLeaf trib_proto_type_odu4;
+
+};
+
+class LogicalProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf proto_type_unknown;
+        static const ydk::Enum::YLeaf proto_type_ethernet;
+        static const ydk::Enum::YLeaf proto_type_otn;
+
+};
+
+class TribRateClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf trib_rate_unknown;
+        static const ydk::Enum::YLeaf trib_rate1g;
+        static const ydk::Enum::YLeaf trib_rate25g;
+        static const ydk::Enum::YLeaf trib_rate10g;
+        static const ydk::Enum::YLeaf trib_rate40g;
+        static const ydk::Enum::YLeaf trib_rate100g;
 
 };
 

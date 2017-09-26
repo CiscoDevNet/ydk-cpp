@@ -18,7 +18,7 @@ class RestconfState : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -34,8 +34,8 @@ class RestconfState : public ydk::Entity
         class Capabilities; //type: RestconfState::Capabilities
         class Streams; //type: RestconfState::Streams
 
-        std::shared_ptr<ietf_restconf_monitoring::RestconfState::Capabilities> capabilities;
-        std::shared_ptr<ietf_restconf_monitoring::RestconfState::Streams> streams;
+        std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Capabilities> capabilities;
+        std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Streams> streams;
         
 }; // RestconfState
 
@@ -48,13 +48,14 @@ class RestconfState::Capabilities : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeafList capability; //type: list of  string
 
@@ -69,17 +70,18 @@ class RestconfState::Streams : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class Stream; //type: RestconfState::Streams::Stream
 
-        std::vector<std::shared_ptr<ietf_restconf_monitoring::RestconfState::Streams::Stream> > stream;
+        std::vector<std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Streams::Stream> > stream;
         
 }; // RestconfState::Streams
 
@@ -92,13 +94,14 @@ class RestconfState::Streams::Stream : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf description; //type: string
@@ -106,7 +109,7 @@ class RestconfState::Streams::Stream : public ydk::Entity
         ydk::YLeaf replay_log_creation_time; //type: string
         class Access; //type: RestconfState::Streams::Stream::Access
 
-        std::vector<std::shared_ptr<ietf_restconf_monitoring::RestconfState::Streams::Stream::Access> > access;
+        std::vector<std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Streams::Stream::Access> > access;
         
 }; // RestconfState::Streams::Stream
 
@@ -119,7 +122,7 @@ class RestconfState::Streams::Stream::Access : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

@@ -14,24 +14,17 @@ namespace cisco_routing_ext {
 Bgp::Bgp()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:bgp")
 {
+
 }
 
 Bgp::~Bgp()
 {
 }
 
-Rip::Rip()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
-{
-}
-
-Rip::~Rip()
-{
-}
-
 Eigrp::Eigrp()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:eigrp")
 {
+
 }
 
 Eigrp::~Eigrp()
@@ -41,6 +34,7 @@ Eigrp::~Eigrp()
 IsIs::IsIs()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:is-is")
 {
+
 }
 
 IsIs::~IsIs()
@@ -50,9 +44,20 @@ IsIs::~IsIs()
 Mobile::Mobile()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:mobile")
 {
+
 }
 
 Mobile::~Mobile()
+{
+}
+
+Rip::Rip()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
+{
+
+}
+
+Rip::~Rip()
 {
 }
 

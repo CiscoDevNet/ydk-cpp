@@ -25,23 +25,27 @@ CONFD_FLAGS = --addloadpath $(CONFD_DIR)/etc/confd --addloadpath $(CONFD_DIR)/sr
 START_FLAGS ?=
 
 
-all:  ydktest-filterread.fxs ydktest-sanity-augm.fxs ydktest-sanity-types.fxs ydktest-sanity.fxs\
+all:  openconfig-platform.deviation\
+ 	ydktest-filterread.fxs ydktest-sanity-augm.fxs ydktest-sanity-types.fxs ydktest-sanity.fxs\
 	ydktest-types.fxs openconfig-bgp-types.fxs openconfig-bgp-policy.fxs openconfig-extensions.fxs openconfig-policy-types.fxs\
-	ietf-interfaces.fxs openconfig-types.fxs openconfig-routing-policy.fxs openconfig-interfaces.fxs openconfig-bgp.fxs\
-	oc-pattern.fxs main.fxs main-aug1.fxs iana-if-type.fxs\
-	ietf-aug-base-1.fxs ietf-aug-base-2.fxs\
+	ietf-interfaces.fxs openconfig-types.fxs openconfig-routing-policy.fxs openconfig-platform.fxs openconfig-interfaces.fxs openconfig-bgp.fxs\
+	openconfig-platform-types.fxs openconfig-platform-transceiver.fxs oc-pattern.fxs main.fxs main-aug1.fxs iana-if-type.fxs\
+	openconfig-transport-types.fxs ietf-aug-base-1.fxs ietf-aug-base-2.fxs\
 	ydktest-aug-ietf-1.fxs ydktest-aug-ietf-2.fxs ydktest-aug-ietf-4.fxs ydktest-aug-ietf-5.fxs\
 		$(CDB_DIR) ssh-keydir
 	@echo "Build complete"
+
+openconfig-platform.deviation : cisco-xr-openconfig-platform-deviations.yang \
+ 		openconfig-platform.yang openconfig-platform-transceiver.yang openconfig-transport-types.yang openconfig-platform-types.yang\
+                openconfig-extensions.yang openconfig-interfaces.yang
+	$(CONFDC) $(FXS_WERR) $(EXTRA_LINK_FLAGS) -o $(basename $@).fxs -c $(basename $@).yang \
+		--deviation $(word 1, $^)
 
 iana-if-type.yang:
 	cp ../../../../../../yang/ietf/iana-if-type.yang iana-if-type.yang
 
 ietf-interfaces.yang:
 	cp ../../models/ietf-interfaces\@2014-05-08.yang ietf-interfaces.yang
-
-oc-pattern.yang:
-	cp ../../models/oc-pattern\@2015-11-17.yang oc-pattern.yang
 
 openconfig-bgp-common-multiprotocol.yang:
 	cp ../../models/openconfig-bgp-common-multiprotocol.yang openconfig-bgp-common-multiprotocol.yang
@@ -67,6 +71,9 @@ openconfig-bgp-policy.yang: openconfig-routing-policy.yang openconfig-policy-typ
 openconfig-bgp-types.yang: openconfig-types.yang openconfig-extensions.yang
 	cp ../../models/openconfig-bgp-types.yang openconfig-bgp-types.yang
 
+cisco-xr-openconfig-platform-deviations.yang:
+	cp ../../models/cisco-xr-openconfig-platform-deviations.yang cisco-xr-openconfig-platform-deviations.yang
+
 openconfig-bgp.yang: openconfig-bgp-common.yang openconfig-bgp-common-multiprotocol.yang \
 				openconfig-bgp-common-structure.yang openconfig-bgp-peer-group.yang \
 			openconfig-bgp-neighbor.yang openconfig-bgp-global.yang
@@ -86,6 +93,19 @@ openconfig-types.yang:
 
 openconfig-policy-types.yang:
 	cp ../../models/openconfig-policy-types.yang openconfig-policy-types.yang
+
+openconfig-platform.yang: openconfig-platform-types.yang openconfig-platform-transceiver.yang \
+				openconfig-transport-types.yang
+	cp ../../models/openconfig-platform.yang openconfig-platform.yang
+
+openconfig-platform-types.yang:
+	cp ../../models/openconfig-platform-types.yang openconfig-platform-types.yang
+
+openconfig-platform-transceiver.yang:
+	cp ../../models/openconfig-platform-transceiver.yang openconfig-platform-transceiver.yang
+
+openconfig-transport-types.yang:
+	cp ../../models/openconfig-transport-types.yang openconfig-transport-types.yang
 
 ydktest-filterread.yang:
 	cp ../../models/ydktest-filterread\@2015-11-17.yang ydktest-filterread.yang

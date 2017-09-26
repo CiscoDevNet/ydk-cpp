@@ -17,7 +17,7 @@ Ipv6Io::Ipv6Io()
 {
     nodes->parent = this;
 
-    yang_name = "ipv6-io"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-oper";
+    yang_name = "ipv6-io"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Ipv6Io::~Ipv6Io()
@@ -39,26 +39,15 @@ std::string Ipv6Io::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv6-io-oper:ipv6-io";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Ipv6Io::has_leaf_or_child_of_name(const std::string & name) const
 
 Ipv6Io::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "ipv6-io";
+
+    yang_name = "nodes"; yang_parent_name = "ipv6-io"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Io::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Ipv6Io::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Ipv6Io::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-io-oper:ipv6-io/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Io::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-io-oper:ipv6-io/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,7 +224,7 @@ Ipv6Io::Nodes::Node::Node()
 {
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Ipv6Io::Nodes::Node::~Node()
@@ -261,34 +244,27 @@ bool Ipv6Io::Nodes::Node::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
+std::string Ipv6Io::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv6-io-oper:ipv6-io/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Ipv6Io::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ipv6-io-oper:ipv6-io/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -348,7 +324,7 @@ Ipv6Io::Nodes::Node::Statistics::Statistics()
 {
     traffic->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node";
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6Io::Nodes::Node::Statistics::~Statistics()
@@ -370,29 +346,15 @@ std::string Ipv6Io::Nodes::Node::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_ipv6_io_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -443,12 +405,10 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Traffic()
 	,ipv6_node_discovery(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery>())
 {
     icmp->parent = this;
-
     ipv6->parent = this;
-
     ipv6_node_discovery->parent = this;
 
-    yang_name = "traffic"; yang_parent_name = "statistics";
+    yang_name = "traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::~Traffic()
@@ -474,29 +434,15 @@ std::string Ipv6Io::Nodes::Node::Statistics::Traffic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "traffic";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::Traffic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Traffic' in Cisco_IOS_XR_ipv6_io_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -568,515 +514,6 @@ bool Ipv6Io::Nodes::Node::Statistics::Traffic::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::Ipv6()
-    :
-    bad_header_packets{YType::uint32, "bad-header-packets"},
-    bad_source_address_packets{YType::uint32, "bad-source-address-packets"},
-    format_errors{YType::uint32, "format-errors"},
-    forwarded_packets{YType::uint32, "forwarded-packets"},
-    fragment_count{YType::uint32, "fragment-count"},
-    fragment_failures{YType::uint32, "fragment-failures"},
-    fragmented_packets{YType::uint32, "fragmented-packets"},
-    fragments{YType::uint32, "fragments"},
-    generated_packets{YType::uint32, "generated-packets"},
-    hop_count_exceeded_packets{YType::uint32, "hop-count-exceeded-packets"},
-    lisp_decap_errors{YType::uint32, "lisp-decap-errors"},
-    lisp_encap_errors{YType::uint32, "lisp-encap-errors"},
-    lisp_v4_decap_packets{YType::uint32, "lisp-v4-decap-packets"},
-    lisp_v4_encap_packets{YType::uint32, "lisp-v4-encap-packets"},
-    lisp_v6_decap_packets{YType::uint32, "lisp-v6-decap-packets"},
-    lisp_v6_encap_packets{YType::uint32, "lisp-v6-encap-packets"},
-    local_destination_packets{YType::uint32, "local-destination-packets"},
-    miscellaneous_drops{YType::uint32, "miscellaneous-drops"},
-    no_route_packets{YType::uint32, "no-route-packets"},
-    reassembled_packets{YType::uint32, "reassembled-packets"},
-    reassembly_failures{YType::uint32, "reassembly-failures"},
-    reassembly_maximum_drops{YType::uint32, "reassembly-maximum-drops"},
-    reassembly_timeouts{YType::uint32, "reassembly-timeouts"},
-    received_multicast_packets{YType::uint32, "received-multicast-packets"},
-    sent_multicast_packets{YType::uint32, "sent-multicast-packets"},
-    source_routed_packets{YType::uint32, "source-routed-packets"},
-    too_big_packets{YType::uint32, "too-big-packets"},
-    total_packets{YType::uint32, "total-packets"},
-    truncated_packets{YType::uint32, "truncated-packets"},
-    unknown_option_type_packets{YType::uint32, "unknown-option-type-packets"},
-    unknown_protocol_packets{YType::uint32, "unknown-protocol-packets"}
-{
-    yang_name = "ipv6"; yang_parent_name = "traffic";
-}
-
-Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::~Ipv6()
-{
-}
-
-bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_data() const
-{
-    return bad_header_packets.is_set
-	|| bad_source_address_packets.is_set
-	|| format_errors.is_set
-	|| forwarded_packets.is_set
-	|| fragment_count.is_set
-	|| fragment_failures.is_set
-	|| fragmented_packets.is_set
-	|| fragments.is_set
-	|| generated_packets.is_set
-	|| hop_count_exceeded_packets.is_set
-	|| lisp_decap_errors.is_set
-	|| lisp_encap_errors.is_set
-	|| lisp_v4_decap_packets.is_set
-	|| lisp_v4_encap_packets.is_set
-	|| lisp_v6_decap_packets.is_set
-	|| lisp_v6_encap_packets.is_set
-	|| local_destination_packets.is_set
-	|| miscellaneous_drops.is_set
-	|| no_route_packets.is_set
-	|| reassembled_packets.is_set
-	|| reassembly_failures.is_set
-	|| reassembly_maximum_drops.is_set
-	|| reassembly_timeouts.is_set
-	|| received_multicast_packets.is_set
-	|| sent_multicast_packets.is_set
-	|| source_routed_packets.is_set
-	|| too_big_packets.is_set
-	|| total_packets.is_set
-	|| truncated_packets.is_set
-	|| unknown_option_type_packets.is_set
-	|| unknown_protocol_packets.is_set;
-}
-
-bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bad_header_packets.yfilter)
-	|| ydk::is_set(bad_source_address_packets.yfilter)
-	|| ydk::is_set(format_errors.yfilter)
-	|| ydk::is_set(forwarded_packets.yfilter)
-	|| ydk::is_set(fragment_count.yfilter)
-	|| ydk::is_set(fragment_failures.yfilter)
-	|| ydk::is_set(fragmented_packets.yfilter)
-	|| ydk::is_set(fragments.yfilter)
-	|| ydk::is_set(generated_packets.yfilter)
-	|| ydk::is_set(hop_count_exceeded_packets.yfilter)
-	|| ydk::is_set(lisp_decap_errors.yfilter)
-	|| ydk::is_set(lisp_encap_errors.yfilter)
-	|| ydk::is_set(lisp_v4_decap_packets.yfilter)
-	|| ydk::is_set(lisp_v4_encap_packets.yfilter)
-	|| ydk::is_set(lisp_v6_decap_packets.yfilter)
-	|| ydk::is_set(lisp_v6_encap_packets.yfilter)
-	|| ydk::is_set(local_destination_packets.yfilter)
-	|| ydk::is_set(miscellaneous_drops.yfilter)
-	|| ydk::is_set(no_route_packets.yfilter)
-	|| ydk::is_set(reassembled_packets.yfilter)
-	|| ydk::is_set(reassembly_failures.yfilter)
-	|| ydk::is_set(reassembly_maximum_drops.yfilter)
-	|| ydk::is_set(reassembly_timeouts.yfilter)
-	|| ydk::is_set(received_multicast_packets.yfilter)
-	|| ydk::is_set(sent_multicast_packets.yfilter)
-	|| ydk::is_set(source_routed_packets.yfilter)
-	|| ydk::is_set(too_big_packets.yfilter)
-	|| ydk::is_set(total_packets.yfilter)
-	|| ydk::is_set(truncated_packets.yfilter)
-	|| ydk::is_set(unknown_option_type_packets.yfilter)
-	|| ydk::is_set(unknown_protocol_packets.yfilter);
-}
-
-std::string Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6' in Cisco_IOS_XR_ipv6_io_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bad_header_packets.is_set || is_set(bad_header_packets.yfilter)) leaf_name_data.push_back(bad_header_packets.get_name_leafdata());
-    if (bad_source_address_packets.is_set || is_set(bad_source_address_packets.yfilter)) leaf_name_data.push_back(bad_source_address_packets.get_name_leafdata());
-    if (format_errors.is_set || is_set(format_errors.yfilter)) leaf_name_data.push_back(format_errors.get_name_leafdata());
-    if (forwarded_packets.is_set || is_set(forwarded_packets.yfilter)) leaf_name_data.push_back(forwarded_packets.get_name_leafdata());
-    if (fragment_count.is_set || is_set(fragment_count.yfilter)) leaf_name_data.push_back(fragment_count.get_name_leafdata());
-    if (fragment_failures.is_set || is_set(fragment_failures.yfilter)) leaf_name_data.push_back(fragment_failures.get_name_leafdata());
-    if (fragmented_packets.is_set || is_set(fragmented_packets.yfilter)) leaf_name_data.push_back(fragmented_packets.get_name_leafdata());
-    if (fragments.is_set || is_set(fragments.yfilter)) leaf_name_data.push_back(fragments.get_name_leafdata());
-    if (generated_packets.is_set || is_set(generated_packets.yfilter)) leaf_name_data.push_back(generated_packets.get_name_leafdata());
-    if (hop_count_exceeded_packets.is_set || is_set(hop_count_exceeded_packets.yfilter)) leaf_name_data.push_back(hop_count_exceeded_packets.get_name_leafdata());
-    if (lisp_decap_errors.is_set || is_set(lisp_decap_errors.yfilter)) leaf_name_data.push_back(lisp_decap_errors.get_name_leafdata());
-    if (lisp_encap_errors.is_set || is_set(lisp_encap_errors.yfilter)) leaf_name_data.push_back(lisp_encap_errors.get_name_leafdata());
-    if (lisp_v4_decap_packets.is_set || is_set(lisp_v4_decap_packets.yfilter)) leaf_name_data.push_back(lisp_v4_decap_packets.get_name_leafdata());
-    if (lisp_v4_encap_packets.is_set || is_set(lisp_v4_encap_packets.yfilter)) leaf_name_data.push_back(lisp_v4_encap_packets.get_name_leafdata());
-    if (lisp_v6_decap_packets.is_set || is_set(lisp_v6_decap_packets.yfilter)) leaf_name_data.push_back(lisp_v6_decap_packets.get_name_leafdata());
-    if (lisp_v6_encap_packets.is_set || is_set(lisp_v6_encap_packets.yfilter)) leaf_name_data.push_back(lisp_v6_encap_packets.get_name_leafdata());
-    if (local_destination_packets.is_set || is_set(local_destination_packets.yfilter)) leaf_name_data.push_back(local_destination_packets.get_name_leafdata());
-    if (miscellaneous_drops.is_set || is_set(miscellaneous_drops.yfilter)) leaf_name_data.push_back(miscellaneous_drops.get_name_leafdata());
-    if (no_route_packets.is_set || is_set(no_route_packets.yfilter)) leaf_name_data.push_back(no_route_packets.get_name_leafdata());
-    if (reassembled_packets.is_set || is_set(reassembled_packets.yfilter)) leaf_name_data.push_back(reassembled_packets.get_name_leafdata());
-    if (reassembly_failures.is_set || is_set(reassembly_failures.yfilter)) leaf_name_data.push_back(reassembly_failures.get_name_leafdata());
-    if (reassembly_maximum_drops.is_set || is_set(reassembly_maximum_drops.yfilter)) leaf_name_data.push_back(reassembly_maximum_drops.get_name_leafdata());
-    if (reassembly_timeouts.is_set || is_set(reassembly_timeouts.yfilter)) leaf_name_data.push_back(reassembly_timeouts.get_name_leafdata());
-    if (received_multicast_packets.is_set || is_set(received_multicast_packets.yfilter)) leaf_name_data.push_back(received_multicast_packets.get_name_leafdata());
-    if (sent_multicast_packets.is_set || is_set(sent_multicast_packets.yfilter)) leaf_name_data.push_back(sent_multicast_packets.get_name_leafdata());
-    if (source_routed_packets.is_set || is_set(source_routed_packets.yfilter)) leaf_name_data.push_back(source_routed_packets.get_name_leafdata());
-    if (too_big_packets.is_set || is_set(too_big_packets.yfilter)) leaf_name_data.push_back(too_big_packets.get_name_leafdata());
-    if (total_packets.is_set || is_set(total_packets.yfilter)) leaf_name_data.push_back(total_packets.get_name_leafdata());
-    if (truncated_packets.is_set || is_set(truncated_packets.yfilter)) leaf_name_data.push_back(truncated_packets.get_name_leafdata());
-    if (unknown_option_type_packets.is_set || is_set(unknown_option_type_packets.yfilter)) leaf_name_data.push_back(unknown_option_type_packets.get_name_leafdata());
-    if (unknown_protocol_packets.is_set || is_set(unknown_protocol_packets.yfilter)) leaf_name_data.push_back(unknown_protocol_packets.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bad-header-packets")
-    {
-        bad_header_packets = value;
-        bad_header_packets.value_namespace = name_space;
-        bad_header_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-source-address-packets")
-    {
-        bad_source_address_packets = value;
-        bad_source_address_packets.value_namespace = name_space;
-        bad_source_address_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "format-errors")
-    {
-        format_errors = value;
-        format_errors.value_namespace = name_space;
-        format_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forwarded-packets")
-    {
-        forwarded_packets = value;
-        forwarded_packets.value_namespace = name_space;
-        forwarded_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fragment-count")
-    {
-        fragment_count = value;
-        fragment_count.value_namespace = name_space;
-        fragment_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fragment-failures")
-    {
-        fragment_failures = value;
-        fragment_failures.value_namespace = name_space;
-        fragment_failures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fragmented-packets")
-    {
-        fragmented_packets = value;
-        fragmented_packets.value_namespace = name_space;
-        fragmented_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fragments")
-    {
-        fragments = value;
-        fragments.value_namespace = name_space;
-        fragments.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "generated-packets")
-    {
-        generated_packets = value;
-        generated_packets.value_namespace = name_space;
-        generated_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hop-count-exceeded-packets")
-    {
-        hop_count_exceeded_packets = value;
-        hop_count_exceeded_packets.value_namespace = name_space;
-        hop_count_exceeded_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-decap-errors")
-    {
-        lisp_decap_errors = value;
-        lisp_decap_errors.value_namespace = name_space;
-        lisp_decap_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-encap-errors")
-    {
-        lisp_encap_errors = value;
-        lisp_encap_errors.value_namespace = name_space;
-        lisp_encap_errors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-v4-decap-packets")
-    {
-        lisp_v4_decap_packets = value;
-        lisp_v4_decap_packets.value_namespace = name_space;
-        lisp_v4_decap_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-v4-encap-packets")
-    {
-        lisp_v4_encap_packets = value;
-        lisp_v4_encap_packets.value_namespace = name_space;
-        lisp_v4_encap_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-v6-decap-packets")
-    {
-        lisp_v6_decap_packets = value;
-        lisp_v6_decap_packets.value_namespace = name_space;
-        lisp_v6_decap_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lisp-v6-encap-packets")
-    {
-        lisp_v6_encap_packets = value;
-        lisp_v6_encap_packets.value_namespace = name_space;
-        lisp_v6_encap_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-destination-packets")
-    {
-        local_destination_packets = value;
-        local_destination_packets.value_namespace = name_space;
-        local_destination_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "miscellaneous-drops")
-    {
-        miscellaneous_drops = value;
-        miscellaneous_drops.value_namespace = name_space;
-        miscellaneous_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "no-route-packets")
-    {
-        no_route_packets = value;
-        no_route_packets.value_namespace = name_space;
-        no_route_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reassembled-packets")
-    {
-        reassembled_packets = value;
-        reassembled_packets.value_namespace = name_space;
-        reassembled_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reassembly-failures")
-    {
-        reassembly_failures = value;
-        reassembly_failures.value_namespace = name_space;
-        reassembly_failures.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reassembly-maximum-drops")
-    {
-        reassembly_maximum_drops = value;
-        reassembly_maximum_drops.value_namespace = name_space;
-        reassembly_maximum_drops.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "reassembly-timeouts")
-    {
-        reassembly_timeouts = value;
-        reassembly_timeouts.value_namespace = name_space;
-        reassembly_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "received-multicast-packets")
-    {
-        received_multicast_packets = value;
-        received_multicast_packets.value_namespace = name_space;
-        received_multicast_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sent-multicast-packets")
-    {
-        sent_multicast_packets = value;
-        sent_multicast_packets.value_namespace = name_space;
-        sent_multicast_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-routed-packets")
-    {
-        source_routed_packets = value;
-        source_routed_packets.value_namespace = name_space;
-        source_routed_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "too-big-packets")
-    {
-        too_big_packets = value;
-        too_big_packets.value_namespace = name_space;
-        too_big_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-packets")
-    {
-        total_packets = value;
-        total_packets.value_namespace = name_space;
-        total_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "truncated-packets")
-    {
-        truncated_packets = value;
-        truncated_packets.value_namespace = name_space;
-        truncated_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-option-type-packets")
-    {
-        unknown_option_type_packets = value;
-        unknown_option_type_packets.value_namespace = name_space;
-        unknown_option_type_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-protocol-packets")
-    {
-        unknown_protocol_packets = value;
-        unknown_protocol_packets.value_namespace = name_space;
-        unknown_protocol_packets.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bad-header-packets")
-    {
-        bad_header_packets.yfilter = yfilter;
-    }
-    if(value_path == "bad-source-address-packets")
-    {
-        bad_source_address_packets.yfilter = yfilter;
-    }
-    if(value_path == "format-errors")
-    {
-        format_errors.yfilter = yfilter;
-    }
-    if(value_path == "forwarded-packets")
-    {
-        forwarded_packets.yfilter = yfilter;
-    }
-    if(value_path == "fragment-count")
-    {
-        fragment_count.yfilter = yfilter;
-    }
-    if(value_path == "fragment-failures")
-    {
-        fragment_failures.yfilter = yfilter;
-    }
-    if(value_path == "fragmented-packets")
-    {
-        fragmented_packets.yfilter = yfilter;
-    }
-    if(value_path == "fragments")
-    {
-        fragments.yfilter = yfilter;
-    }
-    if(value_path == "generated-packets")
-    {
-        generated_packets.yfilter = yfilter;
-    }
-    if(value_path == "hop-count-exceeded-packets")
-    {
-        hop_count_exceeded_packets.yfilter = yfilter;
-    }
-    if(value_path == "lisp-decap-errors")
-    {
-        lisp_decap_errors.yfilter = yfilter;
-    }
-    if(value_path == "lisp-encap-errors")
-    {
-        lisp_encap_errors.yfilter = yfilter;
-    }
-    if(value_path == "lisp-v4-decap-packets")
-    {
-        lisp_v4_decap_packets.yfilter = yfilter;
-    }
-    if(value_path == "lisp-v4-encap-packets")
-    {
-        lisp_v4_encap_packets.yfilter = yfilter;
-    }
-    if(value_path == "lisp-v6-decap-packets")
-    {
-        lisp_v6_decap_packets.yfilter = yfilter;
-    }
-    if(value_path == "lisp-v6-encap-packets")
-    {
-        lisp_v6_encap_packets.yfilter = yfilter;
-    }
-    if(value_path == "local-destination-packets")
-    {
-        local_destination_packets.yfilter = yfilter;
-    }
-    if(value_path == "miscellaneous-drops")
-    {
-        miscellaneous_drops.yfilter = yfilter;
-    }
-    if(value_path == "no-route-packets")
-    {
-        no_route_packets.yfilter = yfilter;
-    }
-    if(value_path == "reassembled-packets")
-    {
-        reassembled_packets.yfilter = yfilter;
-    }
-    if(value_path == "reassembly-failures")
-    {
-        reassembly_failures.yfilter = yfilter;
-    }
-    if(value_path == "reassembly-maximum-drops")
-    {
-        reassembly_maximum_drops.yfilter = yfilter;
-    }
-    if(value_path == "reassembly-timeouts")
-    {
-        reassembly_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "received-multicast-packets")
-    {
-        received_multicast_packets.yfilter = yfilter;
-    }
-    if(value_path == "sent-multicast-packets")
-    {
-        sent_multicast_packets.yfilter = yfilter;
-    }
-    if(value_path == "source-routed-packets")
-    {
-        source_routed_packets.yfilter = yfilter;
-    }
-    if(value_path == "too-big-packets")
-    {
-        too_big_packets.yfilter = yfilter;
-    }
-    if(value_path == "total-packets")
-    {
-        total_packets.yfilter = yfilter;
-    }
-    if(value_path == "truncated-packets")
-    {
-        truncated_packets.yfilter = yfilter;
-    }
-    if(value_path == "unknown-option-type-packets")
-    {
-        unknown_option_type_packets.yfilter = yfilter;
-    }
-    if(value_path == "unknown-protocol-packets")
-    {
-        unknown_protocol_packets.yfilter = yfilter;
-    }
-}
-
-bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bad-header-packets" || name == "bad-source-address-packets" || name == "format-errors" || name == "forwarded-packets" || name == "fragment-count" || name == "fragment-failures" || name == "fragmented-packets" || name == "fragments" || name == "generated-packets" || name == "hop-count-exceeded-packets" || name == "lisp-decap-errors" || name == "lisp-encap-errors" || name == "lisp-v4-decap-packets" || name == "lisp-v4-encap-packets" || name == "lisp-v6-decap-packets" || name == "lisp-v6-encap-packets" || name == "local-destination-packets" || name == "miscellaneous-drops" || name == "no-route-packets" || name == "reassembled-packets" || name == "reassembly-failures" || name == "reassembly-maximum-drops" || name == "reassembly-timeouts" || name == "received-multicast-packets" || name == "sent-multicast-packets" || name == "source-routed-packets" || name == "too-big-packets" || name == "total-packets" || name == "truncated-packets" || name == "unknown-option-type-packets" || name == "unknown-protocol-packets")
-        return true;
-    return false;
-}
-
 Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::Icmp()
     :
     checksum_error_messages{YType::uint32, "checksum-error-messages"},
@@ -1118,7 +555,8 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::Icmp()
     total_messages{YType::uint32, "total-messages"},
     unknown_error_type_messages{YType::uint32, "unknown-error-type-messages"}
 {
-    yang_name = "icmp"; yang_parent_name = "traffic";
+
+    yang_name = "icmp"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::~Icmp()
@@ -1214,23 +652,11 @@ std::string Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "icmp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Icmp' in Cisco_IOS_XR_ipv6_io_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (checksum_error_messages.is_set || is_set(checksum_error_messages.yfilter)) leaf_name_data.push_back(checksum_error_messages.get_name_leafdata());
@@ -1272,9 +698,7 @@ const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::get_entity_path
     if (total_messages.is_set || is_set(total_messages.yfilter)) leaf_name_data.push_back(total_messages.get_name_leafdata());
     if (unknown_error_type_messages.is_set || is_set(unknown_error_type_messages.yfilter)) leaf_name_data.push_back(unknown_error_type_messages.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1684,6 +1108,502 @@ bool Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::has_leaf_or_child_of_name(c
     return false;
 }
 
+Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::Ipv6()
+    :
+    bad_header_packets{YType::uint32, "bad-header-packets"},
+    bad_source_address_packets{YType::uint32, "bad-source-address-packets"},
+    format_errors{YType::uint32, "format-errors"},
+    forwarded_packets{YType::uint32, "forwarded-packets"},
+    fragment_count{YType::uint32, "fragment-count"},
+    fragment_failures{YType::uint32, "fragment-failures"},
+    fragmented_packets{YType::uint32, "fragmented-packets"},
+    fragments{YType::uint32, "fragments"},
+    generated_packets{YType::uint32, "generated-packets"},
+    hop_count_exceeded_packets{YType::uint32, "hop-count-exceeded-packets"},
+    lisp_decap_errors{YType::uint32, "lisp-decap-errors"},
+    lisp_encap_errors{YType::uint32, "lisp-encap-errors"},
+    lisp_v4_decap_packets{YType::uint32, "lisp-v4-decap-packets"},
+    lisp_v4_encap_packets{YType::uint32, "lisp-v4-encap-packets"},
+    lisp_v6_decap_packets{YType::uint32, "lisp-v6-decap-packets"},
+    lisp_v6_encap_packets{YType::uint32, "lisp-v6-encap-packets"},
+    local_destination_packets{YType::uint32, "local-destination-packets"},
+    miscellaneous_drops{YType::uint32, "miscellaneous-drops"},
+    no_route_packets{YType::uint32, "no-route-packets"},
+    reassembled_packets{YType::uint32, "reassembled-packets"},
+    reassembly_failures{YType::uint32, "reassembly-failures"},
+    reassembly_maximum_drops{YType::uint32, "reassembly-maximum-drops"},
+    reassembly_timeouts{YType::uint32, "reassembly-timeouts"},
+    received_multicast_packets{YType::uint32, "received-multicast-packets"},
+    sent_multicast_packets{YType::uint32, "sent-multicast-packets"},
+    source_routed_packets{YType::uint32, "source-routed-packets"},
+    too_big_packets{YType::uint32, "too-big-packets"},
+    total_packets{YType::uint32, "total-packets"},
+    truncated_packets{YType::uint32, "truncated-packets"},
+    unknown_option_type_packets{YType::uint32, "unknown-option-type-packets"},
+    unknown_protocol_packets{YType::uint32, "unknown-protocol-packets"}
+{
+
+    yang_name = "ipv6"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::~Ipv6()
+{
+}
+
+bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_data() const
+{
+    return bad_header_packets.is_set
+	|| bad_source_address_packets.is_set
+	|| format_errors.is_set
+	|| forwarded_packets.is_set
+	|| fragment_count.is_set
+	|| fragment_failures.is_set
+	|| fragmented_packets.is_set
+	|| fragments.is_set
+	|| generated_packets.is_set
+	|| hop_count_exceeded_packets.is_set
+	|| lisp_decap_errors.is_set
+	|| lisp_encap_errors.is_set
+	|| lisp_v4_decap_packets.is_set
+	|| lisp_v4_encap_packets.is_set
+	|| lisp_v6_decap_packets.is_set
+	|| lisp_v6_encap_packets.is_set
+	|| local_destination_packets.is_set
+	|| miscellaneous_drops.is_set
+	|| no_route_packets.is_set
+	|| reassembled_packets.is_set
+	|| reassembly_failures.is_set
+	|| reassembly_maximum_drops.is_set
+	|| reassembly_timeouts.is_set
+	|| received_multicast_packets.is_set
+	|| sent_multicast_packets.is_set
+	|| source_routed_packets.is_set
+	|| too_big_packets.is_set
+	|| total_packets.is_set
+	|| truncated_packets.is_set
+	|| unknown_option_type_packets.is_set
+	|| unknown_protocol_packets.is_set;
+}
+
+bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bad_header_packets.yfilter)
+	|| ydk::is_set(bad_source_address_packets.yfilter)
+	|| ydk::is_set(format_errors.yfilter)
+	|| ydk::is_set(forwarded_packets.yfilter)
+	|| ydk::is_set(fragment_count.yfilter)
+	|| ydk::is_set(fragment_failures.yfilter)
+	|| ydk::is_set(fragmented_packets.yfilter)
+	|| ydk::is_set(fragments.yfilter)
+	|| ydk::is_set(generated_packets.yfilter)
+	|| ydk::is_set(hop_count_exceeded_packets.yfilter)
+	|| ydk::is_set(lisp_decap_errors.yfilter)
+	|| ydk::is_set(lisp_encap_errors.yfilter)
+	|| ydk::is_set(lisp_v4_decap_packets.yfilter)
+	|| ydk::is_set(lisp_v4_encap_packets.yfilter)
+	|| ydk::is_set(lisp_v6_decap_packets.yfilter)
+	|| ydk::is_set(lisp_v6_encap_packets.yfilter)
+	|| ydk::is_set(local_destination_packets.yfilter)
+	|| ydk::is_set(miscellaneous_drops.yfilter)
+	|| ydk::is_set(no_route_packets.yfilter)
+	|| ydk::is_set(reassembled_packets.yfilter)
+	|| ydk::is_set(reassembly_failures.yfilter)
+	|| ydk::is_set(reassembly_maximum_drops.yfilter)
+	|| ydk::is_set(reassembly_timeouts.yfilter)
+	|| ydk::is_set(received_multicast_packets.yfilter)
+	|| ydk::is_set(sent_multicast_packets.yfilter)
+	|| ydk::is_set(source_routed_packets.yfilter)
+	|| ydk::is_set(too_big_packets.yfilter)
+	|| ydk::is_set(total_packets.yfilter)
+	|| ydk::is_set(truncated_packets.yfilter)
+	|| ydk::is_set(unknown_option_type_packets.yfilter)
+	|| ydk::is_set(unknown_protocol_packets.yfilter);
+}
+
+std::string Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bad_header_packets.is_set || is_set(bad_header_packets.yfilter)) leaf_name_data.push_back(bad_header_packets.get_name_leafdata());
+    if (bad_source_address_packets.is_set || is_set(bad_source_address_packets.yfilter)) leaf_name_data.push_back(bad_source_address_packets.get_name_leafdata());
+    if (format_errors.is_set || is_set(format_errors.yfilter)) leaf_name_data.push_back(format_errors.get_name_leafdata());
+    if (forwarded_packets.is_set || is_set(forwarded_packets.yfilter)) leaf_name_data.push_back(forwarded_packets.get_name_leafdata());
+    if (fragment_count.is_set || is_set(fragment_count.yfilter)) leaf_name_data.push_back(fragment_count.get_name_leafdata());
+    if (fragment_failures.is_set || is_set(fragment_failures.yfilter)) leaf_name_data.push_back(fragment_failures.get_name_leafdata());
+    if (fragmented_packets.is_set || is_set(fragmented_packets.yfilter)) leaf_name_data.push_back(fragmented_packets.get_name_leafdata());
+    if (fragments.is_set || is_set(fragments.yfilter)) leaf_name_data.push_back(fragments.get_name_leafdata());
+    if (generated_packets.is_set || is_set(generated_packets.yfilter)) leaf_name_data.push_back(generated_packets.get_name_leafdata());
+    if (hop_count_exceeded_packets.is_set || is_set(hop_count_exceeded_packets.yfilter)) leaf_name_data.push_back(hop_count_exceeded_packets.get_name_leafdata());
+    if (lisp_decap_errors.is_set || is_set(lisp_decap_errors.yfilter)) leaf_name_data.push_back(lisp_decap_errors.get_name_leafdata());
+    if (lisp_encap_errors.is_set || is_set(lisp_encap_errors.yfilter)) leaf_name_data.push_back(lisp_encap_errors.get_name_leafdata());
+    if (lisp_v4_decap_packets.is_set || is_set(lisp_v4_decap_packets.yfilter)) leaf_name_data.push_back(lisp_v4_decap_packets.get_name_leafdata());
+    if (lisp_v4_encap_packets.is_set || is_set(lisp_v4_encap_packets.yfilter)) leaf_name_data.push_back(lisp_v4_encap_packets.get_name_leafdata());
+    if (lisp_v6_decap_packets.is_set || is_set(lisp_v6_decap_packets.yfilter)) leaf_name_data.push_back(lisp_v6_decap_packets.get_name_leafdata());
+    if (lisp_v6_encap_packets.is_set || is_set(lisp_v6_encap_packets.yfilter)) leaf_name_data.push_back(lisp_v6_encap_packets.get_name_leafdata());
+    if (local_destination_packets.is_set || is_set(local_destination_packets.yfilter)) leaf_name_data.push_back(local_destination_packets.get_name_leafdata());
+    if (miscellaneous_drops.is_set || is_set(miscellaneous_drops.yfilter)) leaf_name_data.push_back(miscellaneous_drops.get_name_leafdata());
+    if (no_route_packets.is_set || is_set(no_route_packets.yfilter)) leaf_name_data.push_back(no_route_packets.get_name_leafdata());
+    if (reassembled_packets.is_set || is_set(reassembled_packets.yfilter)) leaf_name_data.push_back(reassembled_packets.get_name_leafdata());
+    if (reassembly_failures.is_set || is_set(reassembly_failures.yfilter)) leaf_name_data.push_back(reassembly_failures.get_name_leafdata());
+    if (reassembly_maximum_drops.is_set || is_set(reassembly_maximum_drops.yfilter)) leaf_name_data.push_back(reassembly_maximum_drops.get_name_leafdata());
+    if (reassembly_timeouts.is_set || is_set(reassembly_timeouts.yfilter)) leaf_name_data.push_back(reassembly_timeouts.get_name_leafdata());
+    if (received_multicast_packets.is_set || is_set(received_multicast_packets.yfilter)) leaf_name_data.push_back(received_multicast_packets.get_name_leafdata());
+    if (sent_multicast_packets.is_set || is_set(sent_multicast_packets.yfilter)) leaf_name_data.push_back(sent_multicast_packets.get_name_leafdata());
+    if (source_routed_packets.is_set || is_set(source_routed_packets.yfilter)) leaf_name_data.push_back(source_routed_packets.get_name_leafdata());
+    if (too_big_packets.is_set || is_set(too_big_packets.yfilter)) leaf_name_data.push_back(too_big_packets.get_name_leafdata());
+    if (total_packets.is_set || is_set(total_packets.yfilter)) leaf_name_data.push_back(total_packets.get_name_leafdata());
+    if (truncated_packets.is_set || is_set(truncated_packets.yfilter)) leaf_name_data.push_back(truncated_packets.get_name_leafdata());
+    if (unknown_option_type_packets.is_set || is_set(unknown_option_type_packets.yfilter)) leaf_name_data.push_back(unknown_option_type_packets.get_name_leafdata());
+    if (unknown_protocol_packets.is_set || is_set(unknown_protocol_packets.yfilter)) leaf_name_data.push_back(unknown_protocol_packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bad-header-packets")
+    {
+        bad_header_packets = value;
+        bad_header_packets.value_namespace = name_space;
+        bad_header_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bad-source-address-packets")
+    {
+        bad_source_address_packets = value;
+        bad_source_address_packets.value_namespace = name_space;
+        bad_source_address_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "format-errors")
+    {
+        format_errors = value;
+        format_errors.value_namespace = name_space;
+        format_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "forwarded-packets")
+    {
+        forwarded_packets = value;
+        forwarded_packets.value_namespace = name_space;
+        forwarded_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fragment-count")
+    {
+        fragment_count = value;
+        fragment_count.value_namespace = name_space;
+        fragment_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fragment-failures")
+    {
+        fragment_failures = value;
+        fragment_failures.value_namespace = name_space;
+        fragment_failures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fragmented-packets")
+    {
+        fragmented_packets = value;
+        fragmented_packets.value_namespace = name_space;
+        fragmented_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fragments")
+    {
+        fragments = value;
+        fragments.value_namespace = name_space;
+        fragments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "generated-packets")
+    {
+        generated_packets = value;
+        generated_packets.value_namespace = name_space;
+        generated_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hop-count-exceeded-packets")
+    {
+        hop_count_exceeded_packets = value;
+        hop_count_exceeded_packets.value_namespace = name_space;
+        hop_count_exceeded_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-decap-errors")
+    {
+        lisp_decap_errors = value;
+        lisp_decap_errors.value_namespace = name_space;
+        lisp_decap_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-encap-errors")
+    {
+        lisp_encap_errors = value;
+        lisp_encap_errors.value_namespace = name_space;
+        lisp_encap_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-v4-decap-packets")
+    {
+        lisp_v4_decap_packets = value;
+        lisp_v4_decap_packets.value_namespace = name_space;
+        lisp_v4_decap_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-v4-encap-packets")
+    {
+        lisp_v4_encap_packets = value;
+        lisp_v4_encap_packets.value_namespace = name_space;
+        lisp_v4_encap_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-v6-decap-packets")
+    {
+        lisp_v6_decap_packets = value;
+        lisp_v6_decap_packets.value_namespace = name_space;
+        lisp_v6_decap_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lisp-v6-encap-packets")
+    {
+        lisp_v6_encap_packets = value;
+        lisp_v6_encap_packets.value_namespace = name_space;
+        lisp_v6_encap_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-destination-packets")
+    {
+        local_destination_packets = value;
+        local_destination_packets.value_namespace = name_space;
+        local_destination_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "miscellaneous-drops")
+    {
+        miscellaneous_drops = value;
+        miscellaneous_drops.value_namespace = name_space;
+        miscellaneous_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-route-packets")
+    {
+        no_route_packets = value;
+        no_route_packets.value_namespace = name_space;
+        no_route_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reassembled-packets")
+    {
+        reassembled_packets = value;
+        reassembled_packets.value_namespace = name_space;
+        reassembled_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reassembly-failures")
+    {
+        reassembly_failures = value;
+        reassembly_failures.value_namespace = name_space;
+        reassembly_failures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reassembly-maximum-drops")
+    {
+        reassembly_maximum_drops = value;
+        reassembly_maximum_drops.value_namespace = name_space;
+        reassembly_maximum_drops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reassembly-timeouts")
+    {
+        reassembly_timeouts = value;
+        reassembly_timeouts.value_namespace = name_space;
+        reassembly_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-multicast-packets")
+    {
+        received_multicast_packets = value;
+        received_multicast_packets.value_namespace = name_space;
+        received_multicast_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sent-multicast-packets")
+    {
+        sent_multicast_packets = value;
+        sent_multicast_packets.value_namespace = name_space;
+        sent_multicast_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-routed-packets")
+    {
+        source_routed_packets = value;
+        source_routed_packets.value_namespace = name_space;
+        source_routed_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "too-big-packets")
+    {
+        too_big_packets = value;
+        too_big_packets.value_namespace = name_space;
+        too_big_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-packets")
+    {
+        total_packets = value;
+        total_packets.value_namespace = name_space;
+        total_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "truncated-packets")
+    {
+        truncated_packets = value;
+        truncated_packets.value_namespace = name_space;
+        truncated_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-option-type-packets")
+    {
+        unknown_option_type_packets = value;
+        unknown_option_type_packets.value_namespace = name_space;
+        unknown_option_type_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-protocol-packets")
+    {
+        unknown_protocol_packets = value;
+        unknown_protocol_packets.value_namespace = name_space;
+        unknown_protocol_packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-header-packets")
+    {
+        bad_header_packets.yfilter = yfilter;
+    }
+    if(value_path == "bad-source-address-packets")
+    {
+        bad_source_address_packets.yfilter = yfilter;
+    }
+    if(value_path == "format-errors")
+    {
+        format_errors.yfilter = yfilter;
+    }
+    if(value_path == "forwarded-packets")
+    {
+        forwarded_packets.yfilter = yfilter;
+    }
+    if(value_path == "fragment-count")
+    {
+        fragment_count.yfilter = yfilter;
+    }
+    if(value_path == "fragment-failures")
+    {
+        fragment_failures.yfilter = yfilter;
+    }
+    if(value_path == "fragmented-packets")
+    {
+        fragmented_packets.yfilter = yfilter;
+    }
+    if(value_path == "fragments")
+    {
+        fragments.yfilter = yfilter;
+    }
+    if(value_path == "generated-packets")
+    {
+        generated_packets.yfilter = yfilter;
+    }
+    if(value_path == "hop-count-exceeded-packets")
+    {
+        hop_count_exceeded_packets.yfilter = yfilter;
+    }
+    if(value_path == "lisp-decap-errors")
+    {
+        lisp_decap_errors.yfilter = yfilter;
+    }
+    if(value_path == "lisp-encap-errors")
+    {
+        lisp_encap_errors.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v4-decap-packets")
+    {
+        lisp_v4_decap_packets.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v4-encap-packets")
+    {
+        lisp_v4_encap_packets.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v6-decap-packets")
+    {
+        lisp_v6_decap_packets.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v6-encap-packets")
+    {
+        lisp_v6_encap_packets.yfilter = yfilter;
+    }
+    if(value_path == "local-destination-packets")
+    {
+        local_destination_packets.yfilter = yfilter;
+    }
+    if(value_path == "miscellaneous-drops")
+    {
+        miscellaneous_drops.yfilter = yfilter;
+    }
+    if(value_path == "no-route-packets")
+    {
+        no_route_packets.yfilter = yfilter;
+    }
+    if(value_path == "reassembled-packets")
+    {
+        reassembled_packets.yfilter = yfilter;
+    }
+    if(value_path == "reassembly-failures")
+    {
+        reassembly_failures.yfilter = yfilter;
+    }
+    if(value_path == "reassembly-maximum-drops")
+    {
+        reassembly_maximum_drops.yfilter = yfilter;
+    }
+    if(value_path == "reassembly-timeouts")
+    {
+        reassembly_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "received-multicast-packets")
+    {
+        received_multicast_packets.yfilter = yfilter;
+    }
+    if(value_path == "sent-multicast-packets")
+    {
+        sent_multicast_packets.yfilter = yfilter;
+    }
+    if(value_path == "source-routed-packets")
+    {
+        source_routed_packets.yfilter = yfilter;
+    }
+    if(value_path == "too-big-packets")
+    {
+        too_big_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-packets")
+    {
+        total_packets.yfilter = yfilter;
+    }
+    if(value_path == "truncated-packets")
+    {
+        truncated_packets.yfilter = yfilter;
+    }
+    if(value_path == "unknown-option-type-packets")
+    {
+        unknown_option_type_packets.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets")
+    {
+        unknown_protocol_packets.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-header-packets" || name == "bad-source-address-packets" || name == "format-errors" || name == "forwarded-packets" || name == "fragment-count" || name == "fragment-failures" || name == "fragmented-packets" || name == "fragments" || name == "generated-packets" || name == "hop-count-exceeded-packets" || name == "lisp-decap-errors" || name == "lisp-encap-errors" || name == "lisp-v4-decap-packets" || name == "lisp-v4-encap-packets" || name == "lisp-v6-decap-packets" || name == "lisp-v6-encap-packets" || name == "local-destination-packets" || name == "miscellaneous-drops" || name == "no-route-packets" || name == "reassembled-packets" || name == "reassembly-failures" || name == "reassembly-maximum-drops" || name == "reassembly-timeouts" || name == "received-multicast-packets" || name == "sent-multicast-packets" || name == "source-routed-packets" || name == "too-big-packets" || name == "total-packets" || name == "truncated-packets" || name == "unknown-option-type-packets" || name == "unknown-protocol-packets")
+        return true;
+    return false;
+}
+
 Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::Ipv6NodeDiscovery()
     :
     received_neighbor_advertisement_messages{YType::uint32, "received-neighbor-advertisement-messages"},
@@ -1697,7 +1617,8 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::Ipv6NodeDiscovery()
     sent_router_advertisement_messages{YType::uint32, "sent-router-advertisement-messages"},
     sent_router_solicitation_messages{YType::uint32, "sent-router-solicitation-messages"}
 {
-    yang_name = "ipv6-node-discovery"; yang_parent_name = "traffic";
+
+    yang_name = "ipv6-node-discovery"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::~Ipv6NodeDiscovery()
@@ -1737,23 +1658,11 @@ std::string Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-node-discovery";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6NodeDiscovery' in Cisco_IOS_XR_ipv6_io_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (received_neighbor_advertisement_messages.is_set || is_set(received_neighbor_advertisement_messages.yfilter)) leaf_name_data.push_back(received_neighbor_advertisement_messages.get_name_leafdata());
@@ -1767,9 +1676,7 @@ const EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::ge
     if (sent_router_advertisement_messages.is_set || is_set(sent_router_advertisement_messages.yfilter)) leaf_name_data.push_back(sent_router_advertisement_messages.get_name_leafdata());
     if (sent_router_solicitation_messages.is_set || is_set(sent_router_solicitation_messages.yfilter)) leaf_name_data.push_back(sent_router_solicitation_messages.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

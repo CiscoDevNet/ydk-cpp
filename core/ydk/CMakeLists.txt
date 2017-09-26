@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.6.0 LANGUAGES C CXX)
+project(ydk VERSION 0.6.1 LANGUAGES C CXX)
 
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
@@ -91,7 +91,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
         # <name>-<version>-<release>.<architecture>.(src).rpm
         # libydk-0.6.0-0.1.alpha.x86_64.rpm  // RPM
-        set (CPACK_PACKAGE_FILE_NAME 
+        set (CPACK_PACKAGE_FILE_NAME
             "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE}")
     endif()
 endif()
@@ -145,12 +145,13 @@ set(libydk_src
     src/ietf_parser.cpp
     src/leaf_data.cpp
     src/logging_callback.cpp
+    src/service_provider.cpp
     src/netconf_client.cpp
     src/netconf_ssh_client.cpp
     src/netconf_tcp_client.cpp
-    src/netconf_model_provider.cpp
     src/netconf_provider.cpp
     src/netconf_service.cpp
+    src/path/netconf_session.cpp
     src/network_topology.cpp
     src/opendaylight_parser.cpp
     src/opendaylight_provider.cpp
@@ -165,13 +166,16 @@ set(libydk_src
     src/path/annotation.cpp
     src/path/capability.cpp
     src/path/data_node.cpp
+    src/path/netconf_model_provider.cpp
     src/path/path.cpp
     src/path/repository.cpp
+    src/path/restconf_session.cpp
     src/path/root_data_node.cpp
     src/path/root_schema_node.cpp
     src/path/rpc.cpp
     src/path/schema_node.cpp
     src/path/statement.cpp)
+
 
 file(GLOB SPDLOG_HEADERS src/spdlog/*.h)
 file(GLOB SPDLOG_DETAILS_HEADERS src/spdlog/details/*.h)
@@ -197,16 +201,16 @@ set(libydk_install_headers
     src/executor_service.hpp
     src/filters.hpp
     src/logging_callback.hpp
-    src/netconf_provider.hpp
-    src/network_topology.hpp
     src/netconf_client.hpp
+    src/netconf_provider.hpp
     src/netconf_service.hpp
+    src/network_topology.hpp
     src/opendaylight_parser.hpp
     src/opendaylight_provider.hpp
     src/path_api.hpp
+    src/restconf_client.hpp
     src/restconf_provider.hpp
-    src/service.hpp
-    src/service.hpp
+    src/service_provider.hpp
     src/types.hpp
     src/xml_subtree_codec.hpp
     src/validation_service.hpp)
@@ -473,4 +477,3 @@ if(ENABLE_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif(ENABLE_BUILD_TESTS)
-

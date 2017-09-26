@@ -10,12 +10,36 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_link_oam_cfg {
 
+class EtherLinkOamWindowUnitsFramesEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf frames;
+
+};
+
+class EtherLinkOamEventActionPrimEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf log;
+
+};
+
 class EtherLinkOamRequireModeEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf passive;
         static const ydk::Enum::YLeaf active;
         static const ydk::Enum::YLeaf dont_care;
+
+};
+
+class EtherLinkOamHelloIntervalEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_1s;
+        static const ydk::Enum::YLeaf Y_100ms;
 
 };
 
@@ -29,19 +53,11 @@ class EtherLinkOamEventActionEnumEfd : public ydk::Enum
 
 };
 
-class EtherLinkOamThresholdUnitsFramesEnum : public ydk::Enum
+class EtherLinkOamThresholdUnitsSymbolsEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf frames;
+        static const ydk::Enum::YLeaf symbols;
         static const ydk::Enum::YLeaf ppm;
-
-};
-
-class EtherLinkOamHelloIntervalEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_1s;
-        static const ydk::Enum::YLeaf Y_100ms;
 
 };
 
@@ -53,20 +69,19 @@ class EtherLinkOamWindowUnitsSymbolsEnum : public ydk::Enum
 
 };
 
-class EtherLinkOamWindowUnitsFramesEnum : public ydk::Enum
+class EtherLinkOamModeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf milliseconds;
-        static const ydk::Enum::YLeaf frames;
+        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf active;
 
 };
 
-class EtherLinkOamEventActionEnum : public ydk::Enum
+class EtherLinkOamThresholdUnitsFramesEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf error_disable;
-        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf frames;
+        static const ydk::Enum::YLeaf ppm;
 
 };
 
@@ -80,26 +95,11 @@ class EtherLinkOamThresholdWindowMultiplierEnum : public ydk::Enum
 
 };
 
-class EtherLinkOamModeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf passive;
-        static const ydk::Enum::YLeaf active;
-
-};
-
-class EtherLinkOamThresholdUnitsSymbolsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf symbols;
-        static const ydk::Enum::YLeaf ppm;
-
-};
-
-class EtherLinkOamEventActionPrimEnum : public ydk::Enum
+class EtherLinkOamEventActionEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf error_disable;
         static const ydk::Enum::YLeaf log;
 
 };

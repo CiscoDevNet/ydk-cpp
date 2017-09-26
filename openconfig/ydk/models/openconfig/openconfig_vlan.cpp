@@ -13,7 +13,8 @@ namespace openconfig_vlan {
 
 Vlans::Vlans()
 {
-    yang_name = "vlans"; yang_parent_name = "openconfig-vlan";
+
+    yang_name = "vlans"; yang_parent_name = "openconfig-vlan"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Vlans::~Vlans()
@@ -44,26 +45,15 @@ std::string Vlans::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "openconfig-vlan:vlans";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vlans::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vlans::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -148,12 +138,10 @@ Vlans::Vlan::Vlan()
 	,state(std::make_shared<Vlans::Vlan::State>())
 {
     config->parent = this;
-
     members->parent = this;
-
     state->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "vlans";
+    yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Vlans::Vlan::~Vlan()
@@ -177,34 +165,27 @@ bool Vlans::Vlan::has_operation() const
 	|| (state !=  nullptr && state->has_operation());
 }
 
+std::string Vlans::Vlan::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-vlan:vlans/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Vlans::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan" <<"[vlan-id='" <<vlan_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vlans::Vlan::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "openconfig-vlan:vlans/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -293,7 +274,8 @@ Vlans::Vlan::Config::Config()
     tpid{YType::identityref, "tpid"},
     vlan_id{YType::uint16, "vlan-id"}
 {
-    yang_name = "config"; yang_parent_name = "vlan";
+
+    yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Vlans::Vlan::Config::~Config()
@@ -321,23 +303,11 @@ std::string Vlans::Vlan::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Config::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -345,9 +315,7 @@ const EntityPath Vlans::Vlan::Config::get_entity_path(Entity* ancestor) const
     if (tpid.is_set || is_set(tpid.yfilter)) leaf_name_data.push_back(tpid.get_name_leafdata());
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -417,6 +385,349 @@ bool Vlans::Vlan::Config::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
+Vlans::Vlan::Members::Members()
+{
+
+    yang_name = "members"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vlans::Vlan::Members::~Members()
+{
+}
+
+bool Vlans::Vlan::Members::has_data() const
+{
+    for (std::size_t index=0; index<member.size(); index++)
+    {
+        if(member[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Vlans::Vlan::Members::has_operation() const
+{
+    for (std::size_t index=0; index<member.size(); index++)
+    {
+        if(member[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Vlans::Vlan::Members::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "members";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Members::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "member")
+    {
+        for(auto const & c : member)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Vlans::Vlan::Members::Member>();
+        c->parent = this;
+        member.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : member)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Vlans::Vlan::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vlans::Vlan::Members::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlans::Vlan::Members::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member")
+        return true;
+    return false;
+}
+
+Vlans::Vlan::Members::Member::Member()
+    :
+    interface_ref(std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef>())
+{
+    interface_ref->parent = this;
+
+    yang_name = "member"; yang_parent_name = "members"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vlans::Vlan::Members::Member::~Member()
+{
+}
+
+bool Vlans::Vlan::Members::Member::has_data() const
+{
+    return (interface_ref !=  nullptr && interface_ref->has_data());
+}
+
+bool Vlans::Vlan::Members::Member::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interface_ref !=  nullptr && interface_ref->has_operation());
+}
+
+std::string Vlans::Vlan::Members::Member::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "member";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Members::Member::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-ref")
+    {
+        if(interface_ref == nullptr)
+        {
+            interface_ref = std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef>();
+        }
+        return interface_ref;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface_ref != nullptr)
+    {
+        children["interface-ref"] = interface_ref;
+    }
+
+    return children;
+}
+
+void Vlans::Vlan::Members::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vlans::Vlan::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlans::Vlan::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-ref")
+        return true;
+    return false;
+}
+
+Vlans::Vlan::Members::Member::InterfaceRef::InterfaceRef()
+    :
+    state(std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef::State>())
+{
+    state->parent = this;
+
+    yang_name = "interface-ref"; yang_parent_name = "member"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vlans::Vlan::Members::Member::InterfaceRef::~InterfaceRef()
+{
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::has_data() const
+{
+    return (state !=  nullptr && state->has_data());
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::has_operation() const
+{
+    return is_set(yfilter)
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Vlans::Vlan::Members::Member::InterfaceRef::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-ref";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Members::Member::InterfaceRef::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Vlans::Vlan::Members::Member::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vlans::Vlan::Members::Member::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
+Vlans::Vlan::Members::Member::InterfaceRef::State::State()
+    :
+    interface{YType::str, "interface"},
+    subinterface{YType::str, "subinterface"}
+{
+
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vlans::Vlan::Members::Member::InterfaceRef::State::~State()
+{
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_data() const
+{
+    return interface.is_set
+	|| subinterface.is_set;
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(subinterface.yfilter);
+}
+
+std::string Vlans::Vlan::Members::Member::InterfaceRef::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Members::Member::InterfaceRef::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (subinterface.is_set || is_set(subinterface.yfilter)) leaf_name_data.push_back(subinterface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Vlans::Vlan::Members::Member::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subinterface")
+    {
+        subinterface = value;
+        subinterface.value_namespace = name_space;
+        subinterface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlans::Vlan::Members::Member::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "subinterface")
+    {
+        subinterface.yfilter = yfilter;
+    }
+}
+
+bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "subinterface")
+        return true;
+    return false;
+}
+
 Vlans::Vlan::State::State()
     :
     name{YType::str, "name"},
@@ -424,7 +735,8 @@ Vlans::Vlan::State::State()
     tpid{YType::identityref, "tpid"},
     vlan_id{YType::uint16, "vlan-id"}
 {
-    yang_name = "state"; yang_parent_name = "vlan";
+
+    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Vlans::Vlan::State::~State()
@@ -452,23 +764,11 @@ std::string Vlans::Vlan::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::State::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
@@ -476,9 +776,7 @@ const EntityPath Vlans::Vlan::State::get_entity_path(Entity* ancestor) const
     if (tpid.is_set || is_set(tpid.yfilter)) leaf_name_data.push_back(tpid.get_name_leafdata());
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -544,403 +842,6 @@ void Vlans::Vlan::State::set_filter(const std::string & value_path, YFilter yfil
 bool Vlans::Vlan::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "status" || name == "tpid" || name == "vlan-id")
-        return true;
-    return false;
-}
-
-Vlans::Vlan::Members::Members()
-{
-    yang_name = "members"; yang_parent_name = "vlan";
-}
-
-Vlans::Vlan::Members::~Members()
-{
-}
-
-bool Vlans::Vlan::Members::has_data() const
-{
-    for (std::size_t index=0; index<member.size(); index++)
-    {
-        if(member[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Vlans::Vlan::Members::has_operation() const
-{
-    for (std::size_t index=0; index<member.size(); index++)
-    {
-        if(member[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Vlans::Vlan::Members::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "members";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vlans::Vlan::Members::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Members' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vlans::Vlan::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "member")
-    {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Vlans::Vlan::Members::Member>();
-        c->parent = this;
-        member.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : member)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Vlans::Vlan::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Vlans::Vlan::Members::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Vlans::Vlan::Members::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "member")
-        return true;
-    return false;
-}
-
-Vlans::Vlan::Members::Member::Member()
-    :
-    interface_ref(std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef>())
-{
-    interface_ref->parent = this;
-
-    yang_name = "member"; yang_parent_name = "members";
-}
-
-Vlans::Vlan::Members::Member::~Member()
-{
-}
-
-bool Vlans::Vlan::Members::Member::has_data() const
-{
-    return (interface_ref !=  nullptr && interface_ref->has_data());
-}
-
-bool Vlans::Vlan::Members::Member::has_operation() const
-{
-    return is_set(yfilter)
-	|| (interface_ref !=  nullptr && interface_ref->has_operation());
-}
-
-std::string Vlans::Vlan::Members::Member::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "member";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vlans::Vlan::Members::Member::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Member' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vlans::Vlan::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-ref")
-    {
-        if(interface_ref == nullptr)
-        {
-            interface_ref = std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef>();
-        }
-        return interface_ref;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(interface_ref != nullptr)
-    {
-        children["interface-ref"] = interface_ref;
-    }
-
-    return children;
-}
-
-void Vlans::Vlan::Members::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Vlans::Vlan::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Vlans::Vlan::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-ref")
-        return true;
-    return false;
-}
-
-Vlans::Vlan::Members::Member::InterfaceRef::InterfaceRef()
-    :
-    state(std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef::State>())
-{
-    state->parent = this;
-
-    yang_name = "interface-ref"; yang_parent_name = "member";
-}
-
-Vlans::Vlan::Members::Member::InterfaceRef::~InterfaceRef()
-{
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::has_data() const
-{
-    return (state !=  nullptr && state->has_data());
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::has_operation() const
-{
-    return is_set(yfilter)
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Vlans::Vlan::Members::Member::InterfaceRef::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-ref";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vlans::Vlan::Members::Member::InterfaceRef::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceRef' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Vlans::Vlan::Members::Member::InterfaceRef::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Vlans::Vlan::Members::Member::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Vlans::Vlan::Members::Member::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "state")
-        return true;
-    return false;
-}
-
-Vlans::Vlan::Members::Member::InterfaceRef::State::State()
-    :
-    interface{YType::str, "interface"},
-    subinterface{YType::str, "subinterface"}
-{
-    yang_name = "state"; yang_parent_name = "interface-ref";
-}
-
-Vlans::Vlan::Members::Member::InterfaceRef::State::~State()
-{
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_data() const
-{
-    return interface.is_set
-	|| subinterface.is_set;
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface.yfilter)
-	|| ydk::is_set(subinterface.yfilter);
-}
-
-std::string Vlans::Vlan::Members::Member::InterfaceRef::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Vlans::Vlan::Members::Member::InterfaceRef::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_vlan cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (subinterface.is_set || is_set(subinterface.yfilter)) leaf_name_data.push_back(subinterface.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Vlans::Vlan::Members::Member::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-        interface.value_namespace = name_space;
-        interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "subinterface")
-    {
-        subinterface = value;
-        subinterface.value_namespace = name_space;
-        subinterface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vlans::Vlan::Members::Member::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface")
-    {
-        interface.yfilter = yfilter;
-    }
-    if(value_path == "subinterface")
-    {
-        subinterface.yfilter = yfilter;
-    }
-}
-
-bool Vlans::Vlan::Members::Member::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface" || name == "subinterface")
         return true;
     return false;
 }

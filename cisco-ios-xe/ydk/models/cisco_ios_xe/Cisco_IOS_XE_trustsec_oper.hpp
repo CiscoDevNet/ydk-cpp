@@ -18,7 +18,7 @@ class TrustsecState : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -35,58 +35,11 @@ class TrustsecState : public ydk::Entity
         class CtsRolebasedPolicies; //type: TrustsecState::CtsRolebasedPolicies
         class CtsSxpConnections; //type: TrustsecState::CtsSxpConnections
 
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies> cts_rolebased_policies;
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps> cts_rolebased_sgtmaps;
-        std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections> cts_sxp_connections;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies> cts_rolebased_policies;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps> cts_rolebased_sgtmaps;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections> cts_sxp_connections;
         
 }; // TrustsecState
-
-
-class TrustsecState::CtsRolebasedSgtmaps : public ydk::Entity
-{
-    public:
-        CtsRolebasedSgtmaps();
-        ~CtsRolebasedSgtmaps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class CtsRolebasedSgtmap; //type: TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
-
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap> > cts_rolebased_sgtmap;
-        
-}; // TrustsecState::CtsRolebasedSgtmaps
-
-
-class TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap : public ydk::Entity
-{
-    public:
-        CtsRolebasedSgtmap();
-        ~CtsRolebasedSgtmap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: string
-        ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf sgt; //type: int32
-        ydk::YLeaf source; //type: CtsOdmBindingSource
-
-}; // TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
 
 
 class TrustsecState::CtsRolebasedPolicies : public ydk::Entity
@@ -97,17 +50,18 @@ class TrustsecState::CtsRolebasedPolicies : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class CtsRolebasedPolicy; //type: TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy> > cts_rolebased_policy;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy> > cts_rolebased_policy;
         
 }; // TrustsecState::CtsRolebasedPolicies
 
@@ -120,13 +74,14 @@ class TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf src_sgt; //type: int32
         ydk::YLeaf dst_sgt; //type: int32
@@ -147,6 +102,55 @@ class TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy : public ydk::Enti
 }; // TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy
 
 
+class TrustsecState::CtsRolebasedSgtmaps : public ydk::Entity
+{
+    public:
+        CtsRolebasedSgtmaps();
+        ~CtsRolebasedSgtmaps();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class CtsRolebasedSgtmap; //type: TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap> > cts_rolebased_sgtmap;
+        
+}; // TrustsecState::CtsRolebasedSgtmaps
+
+
+class TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap : public ydk::Entity
+{
+    public:
+        CtsRolebasedSgtmap();
+        ~CtsRolebasedSgtmap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf sgt; //type: int32
+        ydk::YLeaf source; //type: CtsOdmBindingSource
+
+}; // TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap
+
+
 class TrustsecState::CtsSxpConnections : public ydk::Entity
 {
     public:
@@ -155,17 +159,18 @@ class TrustsecState::CtsSxpConnections : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         class CtsSxpConnection; //type: TrustsecState::CtsSxpConnections::CtsSxpConnection
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections::CtsSxpConnection> > cts_sxp_connection;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_trustsec_oper::TrustsecState::CtsSxpConnections::CtsSxpConnection> > cts_sxp_connection;
         
 }; // TrustsecState::CtsSxpConnections
 
@@ -178,13 +183,14 @@ class TrustsecState::CtsSxpConnections::CtsSxpConnection : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf peer_ip; //type: string
         ydk::YLeaf vrf_name; //type: string
@@ -196,6 +202,21 @@ class TrustsecState::CtsSxpConnections::CtsSxpConnection : public ydk::Entity
         ydk::YLeaf local_mode; //type: SxpConMode
 
 }; // TrustsecState::CtsSxpConnections::CtsSxpConnection
+
+class CtsOdmBindingSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf from_vlan;
+        static const ydk::Enum::YLeaf from_cli;
+        static const ydk::Enum::YLeaf from_l3if;
+        static const ydk::Enum::YLeaf from_cfp;
+        static const ydk::Enum::YLeaf from_ip_arp;
+        static const ydk::Enum::YLeaf from_local;
+        static const ydk::Enum::YLeaf from_sgt_caching;
+        static const ydk::Enum::YLeaf from_cli_hi;
+
+};
 
 class SxpConMode : public ydk::Enum
 {
@@ -215,21 +236,6 @@ class SxpConState : public ydk::Enum
         static const ydk::Enum::YLeaf state_on;
         static const ydk::Enum::YLeaf state_delete_hold_down;
         static const ydk::Enum::YLeaf state_not_applicable;
-
-};
-
-class CtsOdmBindingSource : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf from_vlan;
-        static const ydk::Enum::YLeaf from_cli;
-        static const ydk::Enum::YLeaf from_l3if;
-        static const ydk::Enum::YLeaf from_cfp;
-        static const ydk::Enum::YLeaf from_ip_arp;
-        static const ydk::Enum::YLeaf from_local;
-        static const ydk::Enum::YLeaf from_sgt_caching;
-        static const ydk::Enum::YLeaf from_cli_hi;
 
 };
 

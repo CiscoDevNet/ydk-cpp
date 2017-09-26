@@ -18,7 +18,7 @@ class SystemMonitoring : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -33,7 +33,7 @@ class SystemMonitoring : public ydk::Entity
 
         class CpuUtilization; //type: SystemMonitoring::CpuUtilization
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization> > cpu_utilization;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization> > cpu_utilization;
         
 }; // SystemMonitoring
 
@@ -46,13 +46,14 @@ class SystemMonitoring::CpuUtilization : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
         ydk::YLeaf total_cpu_one_minute; //type: uint32
@@ -60,7 +61,7 @@ class SystemMonitoring::CpuUtilization : public ydk::Entity
         ydk::YLeaf total_cpu_fifteen_minute; //type: uint32
         class ProcessCpu; //type: SystemMonitoring::CpuUtilization::ProcessCpu
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization::ProcessCpu> > process_cpu;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wdsysmon_fd_oper::SystemMonitoring::CpuUtilization::ProcessCpu> > process_cpu;
         
 }; // SystemMonitoring::CpuUtilization
 
@@ -73,7 +74,7 @@ class SystemMonitoring::CpuUtilization::ProcessCpu : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;

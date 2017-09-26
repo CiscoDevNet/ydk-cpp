@@ -17,7 +17,7 @@ MasterKeyAdd::MasterKeyAdd()
 {
     input->parent = this;
 
-    yang_name = "master-key-add"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act";
+    yang_name = "master-key-add"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MasterKeyAdd::~MasterKeyAdd()
@@ -39,26 +39,15 @@ std::string MasterKeyAdd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-add";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MasterKeyAdd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MasterKeyAdd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -131,7 +120,8 @@ MasterKeyAdd::Input::Input()
     :
     new_key{YType::str, "new-key"}
 {
-    yang_name = "input"; yang_parent_name = "master-key-add";
+
+    yang_name = "input"; yang_parent_name = "master-key-add"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MasterKeyAdd::Input::~Input()
@@ -149,34 +139,27 @@ bool MasterKeyAdd::Input::has_operation() const
 	|| ydk::is_set(new_key.yfilter);
 }
 
+std::string MasterKeyAdd::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-add/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MasterKeyAdd::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MasterKeyAdd::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MasterKeyAdd::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-add/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (new_key.is_set || is_set(new_key.yfilter)) leaf_name_data.push_back(new_key.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -218,7 +201,8 @@ bool MasterKeyAdd::Input::has_leaf_or_child_of_name(const std::string & name) co
 
 MasterKeyDelete::MasterKeyDelete()
 {
-    yang_name = "master-key-delete"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act";
+
+    yang_name = "master-key-delete"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MasterKeyDelete::~MasterKeyDelete()
@@ -239,26 +223,15 @@ std::string MasterKeyDelete::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-delete";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MasterKeyDelete::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MasterKeyDelete::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -317,7 +290,7 @@ MasterKeyUpdate::MasterKeyUpdate()
 {
     input->parent = this;
 
-    yang_name = "master-key-update"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act";
+    yang_name = "master-key-update"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MasterKeyUpdate::~MasterKeyUpdate()
@@ -339,26 +312,15 @@ std::string MasterKeyUpdate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-update";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MasterKeyUpdate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MasterKeyUpdate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -432,7 +394,8 @@ MasterKeyUpdate::Input::Input()
     new_key{YType::str, "new-key"},
     old_key{YType::str, "old-key"}
 {
-    yang_name = "input"; yang_parent_name = "master-key-update";
+
+    yang_name = "input"; yang_parent_name = "master-key-update"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MasterKeyUpdate::Input::~Input()
@@ -452,35 +415,28 @@ bool MasterKeyUpdate::Input::has_operation() const
 	|| ydk::is_set(old_key.yfilter);
 }
 
+std::string MasterKeyUpdate::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-update/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MasterKeyUpdate::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MasterKeyUpdate::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MasterKeyUpdate::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-lib-keychain-act:master-key-update/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (new_key.is_set || is_set(new_key.yfilter)) leaf_name_data.push_back(new_key.get_name_leafdata());
     if (old_key.is_set || is_set(old_key.yfilter)) leaf_name_data.push_back(old_key.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

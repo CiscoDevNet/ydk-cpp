@@ -17,7 +17,7 @@ Logging::Logging()
 {
     history->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper";
+    yang_name = "logging"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Logging::~Logging()
@@ -39,26 +39,15 @@ std::string Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-syslog-oper:logging";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Logging::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Logging::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -132,7 +121,8 @@ Logging::History::History()
     message{YType::str, "message"},
     properties{YType::str, "properties"}
 {
-    yang_name = "history"; yang_parent_name = "logging";
+
+    yang_name = "history"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Logging::History::~History()
@@ -152,35 +142,28 @@ bool Logging::History::has_operation() const
 	|| ydk::is_set(properties.yfilter);
 }
 
+std::string Logging::History::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:logging/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Logging::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "history";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Logging::History::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Logging::History::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:logging/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
     if (properties.is_set || is_set(properties.yfilter)) leaf_name_data.push_back(properties.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -238,14 +221,11 @@ Syslog::Syslog()
 	,messages(std::make_shared<Syslog::Messages>())
 {
     an_remote_servers->parent = this;
-
     logging_files->parent = this;
-
     logging_statistics->parent = this;
-
     messages->parent = this;
 
-    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper";
+    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Syslog::~Syslog()
@@ -273,26 +253,15 @@ std::string Syslog::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -403,218 +372,10 @@ bool Syslog::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Syslog::LoggingFiles::LoggingFiles()
-{
-    yang_name = "logging-files"; yang_parent_name = "syslog";
-}
-
-Syslog::LoggingFiles::~LoggingFiles()
-{
-}
-
-bool Syslog::LoggingFiles::has_data() const
-{
-    for (std::size_t index=0; index<file_log_detail.size(); index++)
-    {
-        if(file_log_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Syslog::LoggingFiles::has_operation() const
-{
-    for (std::size_t index=0; index<file_log_detail.size(); index++)
-    {
-        if(file_log_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Syslog::LoggingFiles::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging-files";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingFiles::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "file-log-detail")
-    {
-        for(auto const & c : file_log_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
-        c->parent = this;
-        file_log_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : file_log_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Syslog::LoggingFiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Syslog::LoggingFiles::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Syslog::LoggingFiles::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "file-log-detail")
-        return true;
-    return false;
-}
-
-Syslog::LoggingFiles::FileLogDetail::FileLogDetail()
-    :
-    file_name{YType::str, "file-name"},
-    file_path{YType::str, "file-path"}
-{
-    yang_name = "file-log-detail"; yang_parent_name = "logging-files";
-}
-
-Syslog::LoggingFiles::FileLogDetail::~FileLogDetail()
-{
-}
-
-bool Syslog::LoggingFiles::FileLogDetail::has_data() const
-{
-    return file_name.is_set
-	|| file_path.is_set;
-}
-
-bool Syslog::LoggingFiles::FileLogDetail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(file_name.yfilter)
-	|| ydk::is_set(file_path.yfilter);
-}
-
-std::string Syslog::LoggingFiles::FileLogDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "file-log-detail";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingFiles::FileLogDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-files/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (file_name.is_set || is_set(file_name.yfilter)) leaf_name_data.push_back(file_name.get_name_leafdata());
-    if (file_path.is_set || is_set(file_path.yfilter)) leaf_name_data.push_back(file_path.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Syslog::LoggingFiles::FileLogDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "file-name")
-    {
-        file_name = value;
-        file_name.value_namespace = name_space;
-        file_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file-path")
-    {
-        file_path = value;
-        file_path.value_namespace = name_space;
-        file_path.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::LoggingFiles::FileLogDetail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "file-name")
-    {
-        file_name.yfilter = yfilter;
-    }
-    if(value_path == "file-path")
-    {
-        file_path.yfilter = yfilter;
-    }
-}
-
-bool Syslog::LoggingFiles::FileLogDetail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "file-name" || name == "file-path")
-        return true;
-    return false;
-}
-
 Syslog::AnRemoteServers::AnRemoteServers()
 {
-    yang_name = "an-remote-servers"; yang_parent_name = "syslog";
+
+    yang_name = "an-remote-servers"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::AnRemoteServers::~AnRemoteServers()
@@ -641,33 +402,26 @@ bool Syslog::AnRemoteServers::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Syslog::AnRemoteServers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::AnRemoteServers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "an-remote-servers";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::AnRemoteServers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::AnRemoteServers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -725,7 +479,8 @@ Syslog::AnRemoteServers::AnRemoteLogServer::AnRemoteLogServer()
     vrf_name{YType::str, "vrf-name"},
     vrf_severity{YType::str, "vrf-severity"}
 {
-    yang_name = "an-remote-log-server"; yang_parent_name = "an-remote-servers";
+
+    yang_name = "an-remote-log-server"; yang_parent_name = "an-remote-servers"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::AnRemoteServers::AnRemoteLogServer::~AnRemoteLogServer()
@@ -749,27 +504,22 @@ bool Syslog::AnRemoteServers::AnRemoteLogServer::has_operation() const
 	|| ydk::is_set(vrf_severity.yfilter);
 }
 
+std::string Syslog::AnRemoteServers::AnRemoteLogServer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/an-remote-servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::AnRemoteServers::AnRemoteLogServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "an-remote-log-server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::AnRemoteServers::AnRemoteLogServer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::AnRemoteServers::AnRemoteLogServer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/an-remote-servers/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
@@ -777,9 +527,7 @@ const EntityPath Syslog::AnRemoteServers::AnRemoteLogServer::get_entity_path(Ent
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
     if (vrf_severity.is_set || is_set(vrf_severity.yfilter)) leaf_name_data.push_back(vrf_severity.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -849,70 +597,64 @@ bool Syslog::AnRemoteServers::AnRemoteLogServer::has_leaf_or_child_of_name(const
     return false;
 }
 
-Syslog::Messages::Messages()
+Syslog::LoggingFiles::LoggingFiles()
 {
-    yang_name = "messages"; yang_parent_name = "syslog";
+
+    yang_name = "logging-files"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Syslog::Messages::~Messages()
+Syslog::LoggingFiles::~LoggingFiles()
 {
 }
 
-bool Syslog::Messages::has_data() const
+bool Syslog::LoggingFiles::has_data() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<file_log_detail.size(); index++)
     {
-        if(message[index]->has_data())
+        if(file_log_detail[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Syslog::Messages::has_operation() const
+bool Syslog::LoggingFiles::has_operation() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<file_log_detail.size(); index++)
     {
-        if(message[index]->has_operation())
+        if(file_log_detail[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Syslog::Messages::get_segment_path() const
+std::string Syslog::LoggingFiles::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "messages";
-
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::Messages::get_entity_path(Entity* ancestor) const
+std::string Syslog::LoggingFiles::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "logging-files";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingFiles::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "message")
+    if(child_yang_name == "file-log-detail")
     {
-        for(auto const & c : message)
+        for(auto const & c : file_log_detail)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -920,19 +662,19 @@ std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & 
                 return c;
             }
         }
-        auto c = std::make_shared<Syslog::Messages::Message>();
+        auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
         c->parent = this;
-        message.push_back(c);
+        file_log_detail.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : message)
+    for (auto const & c : file_log_detail)
     {
         children[c->get_segment_path()] = c;
     }
@@ -940,260 +682,114 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() 
     return children;
 }
 
-void Syslog::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::LoggingFiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Syslog::Messages::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::LoggingFiles::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Syslog::Messages::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::LoggingFiles::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "message")
+    if(name == "file-log-detail")
         return true;
     return false;
 }
 
-Syslog::Messages::Message::Message()
+Syslog::LoggingFiles::FileLogDetail::FileLogDetail()
     :
-    message_id{YType::int32, "message-id"},
-    card_type{YType::str, "card-type"},
-    category{YType::str, "category"},
-    group{YType::str, "group"},
-    message_name{YType::str, "message-name"},
-    node_name{YType::str, "node-name"},
-    process_name{YType::str, "process-name"},
-    severity{YType::enumeration, "severity"},
-    text{YType::str, "text"},
-    time_of_day{YType::str, "time-of-day"},
-    time_stamp{YType::uint64, "time-stamp"},
-    time_zone{YType::str, "time-zone"}
+    file_name{YType::str, "file-name"},
+    file_path{YType::str, "file-path"}
 {
-    yang_name = "message"; yang_parent_name = "messages";
+
+    yang_name = "file-log-detail"; yang_parent_name = "logging-files"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Syslog::Messages::Message::~Message()
+Syslog::LoggingFiles::FileLogDetail::~FileLogDetail()
 {
 }
 
-bool Syslog::Messages::Message::has_data() const
+bool Syslog::LoggingFiles::FileLogDetail::has_data() const
 {
-    return message_id.is_set
-	|| card_type.is_set
-	|| category.is_set
-	|| group.is_set
-	|| message_name.is_set
-	|| node_name.is_set
-	|| process_name.is_set
-	|| severity.is_set
-	|| text.is_set
-	|| time_of_day.is_set
-	|| time_stamp.is_set
-	|| time_zone.is_set;
+    return file_name.is_set
+	|| file_path.is_set;
 }
 
-bool Syslog::Messages::Message::has_operation() const
+bool Syslog::LoggingFiles::FileLogDetail::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(message_id.yfilter)
-	|| ydk::is_set(card_type.yfilter)
-	|| ydk::is_set(category.yfilter)
-	|| ydk::is_set(group.yfilter)
-	|| ydk::is_set(message_name.yfilter)
-	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(process_name.yfilter)
-	|| ydk::is_set(severity.yfilter)
-	|| ydk::is_set(text.yfilter)
-	|| ydk::is_set(time_of_day.yfilter)
-	|| ydk::is_set(time_stamp.yfilter)
-	|| ydk::is_set(time_zone.yfilter);
+	|| ydk::is_set(file_name.yfilter)
+	|| ydk::is_set(file_path.yfilter);
 }
 
-std::string Syslog::Messages::Message::get_segment_path() const
+std::string Syslog::LoggingFiles::FileLogDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "message" <<"[message-id='" <<message_id <<"']";
-
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-files/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::Messages::Message::get_entity_path(Entity* ancestor) const
+std::string Syslog::LoggingFiles::FileLogDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/messages/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "file-log-detail";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingFiles::FileLogDetail::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (message_id.is_set || is_set(message_id.yfilter)) leaf_name_data.push_back(message_id.get_name_leafdata());
-    if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
-    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (message_name.is_set || is_set(message_name.yfilter)) leaf_name_data.push_back(message_name.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
-    if (time_of_day.is_set || is_set(time_of_day.yfilter)) leaf_name_data.push_back(time_of_day.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
-    if (time_zone.is_set || is_set(time_zone.yfilter)) leaf_name_data.push_back(time_zone.get_name_leafdata());
+    if (file_name.is_set || is_set(file_name.yfilter)) leaf_name_data.push_back(file_name.get_name_leafdata());
+    if (file_path.is_set || is_set(file_path.yfilter)) leaf_name_data.push_back(file_path.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::Message::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Syslog::Messages::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::LoggingFiles::FileLogDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "message-id")
+    if(value_path == "file-name")
     {
-        message_id = value;
-        message_id.value_namespace = name_space;
-        message_id.value_namespace_prefix = name_space_prefix;
+        file_name = value;
+        file_name.value_namespace = name_space;
+        file_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "card-type")
+    if(value_path == "file-path")
     {
-        card_type = value;
-        card_type.value_namespace = name_space;
-        card_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "category")
-    {
-        category = value;
-        category.value_namespace = name_space;
-        category.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "message-name")
-    {
-        message_name = value;
-        message_name.value_namespace = name_space;
-        message_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-name")
-    {
-        node_name = value;
-        node_name.value_namespace = name_space;
-        node_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-name")
-    {
-        process_name = value;
-        process_name.value_namespace = name_space;
-        process_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "text")
-    {
-        text = value;
-        text.value_namespace = name_space;
-        text.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-of-day")
-    {
-        time_of_day = value;
-        time_of_day.value_namespace = name_space;
-        time_of_day.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-stamp")
-    {
-        time_stamp = value;
-        time_stamp.value_namespace = name_space;
-        time_stamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-zone")
-    {
-        time_zone = value;
-        time_zone.value_namespace = name_space;
-        time_zone.value_namespace_prefix = name_space_prefix;
+        file_path = value;
+        file_path.value_namespace = name_space;
+        file_path.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Syslog::Messages::Message::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::LoggingFiles::FileLogDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "message-id")
+    if(value_path == "file-name")
     {
-        message_id.yfilter = yfilter;
+        file_name.yfilter = yfilter;
     }
-    if(value_path == "card-type")
+    if(value_path == "file-path")
     {
-        card_type.yfilter = yfilter;
-    }
-    if(value_path == "category")
-    {
-        category.yfilter = yfilter;
-    }
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-    if(value_path == "message-name")
-    {
-        message_name.yfilter = yfilter;
-    }
-    if(value_path == "node-name")
-    {
-        node_name.yfilter = yfilter;
-    }
-    if(value_path == "process-name")
-    {
-        process_name.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-    if(value_path == "text")
-    {
-        text.yfilter = yfilter;
-    }
-    if(value_path == "time-of-day")
-    {
-        time_of_day.yfilter = yfilter;
-    }
-    if(value_path == "time-stamp")
-    {
-        time_stamp.yfilter = yfilter;
-    }
-    if(value_path == "time-zone")
-    {
-        time_zone.yfilter = yfilter;
+        file_path.yfilter = yfilter;
     }
 }
 
-bool Syslog::Messages::Message::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::LoggingFiles::FileLogDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "message-id" || name == "card-type" || name == "category" || name == "group" || name == "message-name" || name == "node-name" || name == "process-name" || name == "severity" || name == "text" || name == "time-of-day" || name == "time-stamp" || name == "time-zone")
+    if(name == "file-name" || name == "file-path")
         return true;
     return false;
 }
@@ -1207,16 +803,12 @@ Syslog::LoggingStatistics::LoggingStatistics()
 	,trap_logging_stats(std::make_shared<Syslog::LoggingStatistics::TrapLoggingStats>())
 {
     buffer_logging_stats->parent = this;
-
     console_logging_stats->parent = this;
-
     logging_stats->parent = this;
-
     monitor_logging_stats->parent = this;
-
     trap_logging_stats->parent = this;
 
-    yang_name = "logging-statistics"; yang_parent_name = "syslog";
+    yang_name = "logging-statistics"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::LoggingStatistics::~LoggingStatistics()
@@ -1272,33 +864,26 @@ bool Syslog::LoggingStatistics::has_operation() const
 	|| (trap_logging_stats !=  nullptr && trap_logging_stats->has_operation());
 }
 
+std::string Syslog::LoggingStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::LoggingStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging-statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::LoggingStatistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1461,530 +1046,6 @@ bool Syslog::LoggingStatistics::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Syslog::LoggingStatistics::LoggingStats::LoggingStats()
-    :
-    drop_count{YType::uint32, "drop-count"},
-    flush_count{YType::uint32, "flush-count"},
-    is_log_enabled{YType::boolean, "is-log-enabled"},
-    overrun_count{YType::uint32, "overrun-count"}
-{
-    yang_name = "logging-stats"; yang_parent_name = "logging-statistics";
-}
-
-Syslog::LoggingStatistics::LoggingStats::~LoggingStats()
-{
-}
-
-bool Syslog::LoggingStatistics::LoggingStats::has_data() const
-{
-    return drop_count.is_set
-	|| flush_count.is_set
-	|| is_log_enabled.is_set
-	|| overrun_count.is_set;
-}
-
-bool Syslog::LoggingStatistics::LoggingStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(drop_count.yfilter)
-	|| ydk::is_set(flush_count.yfilter)
-	|| ydk::is_set(is_log_enabled.yfilter)
-	|| ydk::is_set(overrun_count.yfilter);
-}
-
-std::string Syslog::LoggingStatistics::LoggingStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingStatistics::LoggingStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (drop_count.is_set || is_set(drop_count.yfilter)) leaf_name_data.push_back(drop_count.get_name_leafdata());
-    if (flush_count.is_set || is_set(flush_count.yfilter)) leaf_name_data.push_back(flush_count.get_name_leafdata());
-    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
-    if (overrun_count.is_set || is_set(overrun_count.yfilter)) leaf_name_data.push_back(overrun_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Syslog::LoggingStatistics::LoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "drop-count")
-    {
-        drop_count = value;
-        drop_count.value_namespace = name_space;
-        drop_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flush-count")
-    {
-        flush_count = value;
-        flush_count.value_namespace = name_space;
-        flush_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled = value;
-        is_log_enabled.value_namespace = name_space;
-        is_log_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "overrun-count")
-    {
-        overrun_count = value;
-        overrun_count.value_namespace = name_space;
-        overrun_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::LoggingStatistics::LoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "drop-count")
-    {
-        drop_count.yfilter = yfilter;
-    }
-    if(value_path == "flush-count")
-    {
-        flush_count.yfilter = yfilter;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled.yfilter = yfilter;
-    }
-    if(value_path == "overrun-count")
-    {
-        overrun_count.yfilter = yfilter;
-    }
-}
-
-bool Syslog::LoggingStatistics::LoggingStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "drop-count" || name == "flush-count" || name == "is-log-enabled" || name == "overrun-count")
-        return true;
-    return false;
-}
-
-Syslog::LoggingStatistics::ConsoleLoggingStats::ConsoleLoggingStats()
-    :
-    buffer_size{YType::uint32, "buffer-size"},
-    is_log_enabled{YType::boolean, "is-log-enabled"},
-    message_count{YType::uint32, "message-count"},
-    severity{YType::enumeration, "severity"}
-{
-    yang_name = "console-logging-stats"; yang_parent_name = "logging-statistics";
-}
-
-Syslog::LoggingStatistics::ConsoleLoggingStats::~ConsoleLoggingStats()
-{
-}
-
-bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_data() const
-{
-    return buffer_size.is_set
-	|| is_log_enabled.is_set
-	|| message_count.is_set
-	|| severity.is_set;
-}
-
-bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(buffer_size.yfilter)
-	|| ydk::is_set(is_log_enabled.yfilter)
-	|| ydk::is_set(message_count.yfilter)
-	|| ydk::is_set(severity.yfilter);
-}
-
-std::string Syslog::LoggingStatistics::ConsoleLoggingStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "console-logging-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingStatistics::ConsoleLoggingStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
-    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
-    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Syslog::LoggingStatistics::ConsoleLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size = value;
-        buffer_size.value_namespace = name_space;
-        buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled = value;
-        is_log_enabled.value_namespace = name_space;
-        is_log_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "message-count")
-    {
-        message_count = value;
-        message_count.value_namespace = name_space;
-        message_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::LoggingStatistics::ConsoleLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled.yfilter = yfilter;
-    }
-    if(value_path == "message-count")
-    {
-        message_count.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-}
-
-bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
-        return true;
-    return false;
-}
-
-Syslog::LoggingStatistics::MonitorLoggingStats::MonitorLoggingStats()
-    :
-    buffer_size{YType::uint32, "buffer-size"},
-    is_log_enabled{YType::boolean, "is-log-enabled"},
-    message_count{YType::uint32, "message-count"},
-    severity{YType::enumeration, "severity"}
-{
-    yang_name = "monitor-logging-stats"; yang_parent_name = "logging-statistics";
-}
-
-Syslog::LoggingStatistics::MonitorLoggingStats::~MonitorLoggingStats()
-{
-}
-
-bool Syslog::LoggingStatistics::MonitorLoggingStats::has_data() const
-{
-    return buffer_size.is_set
-	|| is_log_enabled.is_set
-	|| message_count.is_set
-	|| severity.is_set;
-}
-
-bool Syslog::LoggingStatistics::MonitorLoggingStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(buffer_size.yfilter)
-	|| ydk::is_set(is_log_enabled.yfilter)
-	|| ydk::is_set(message_count.yfilter)
-	|| ydk::is_set(severity.yfilter);
-}
-
-std::string Syslog::LoggingStatistics::MonitorLoggingStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor-logging-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingStatistics::MonitorLoggingStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
-    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
-    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Syslog::LoggingStatistics::MonitorLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size = value;
-        buffer_size.value_namespace = name_space;
-        buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled = value;
-        is_log_enabled.value_namespace = name_space;
-        is_log_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "message-count")
-    {
-        message_count = value;
-        message_count.value_namespace = name_space;
-        message_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::LoggingStatistics::MonitorLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled.yfilter = yfilter;
-    }
-    if(value_path == "message-count")
-    {
-        message_count.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-}
-
-bool Syslog::LoggingStatistics::MonitorLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
-        return true;
-    return false;
-}
-
-Syslog::LoggingStatistics::TrapLoggingStats::TrapLoggingStats()
-    :
-    buffer_size{YType::uint32, "buffer-size"},
-    is_log_enabled{YType::boolean, "is-log-enabled"},
-    message_count{YType::uint32, "message-count"},
-    severity{YType::enumeration, "severity"}
-{
-    yang_name = "trap-logging-stats"; yang_parent_name = "logging-statistics";
-}
-
-Syslog::LoggingStatistics::TrapLoggingStats::~TrapLoggingStats()
-{
-}
-
-bool Syslog::LoggingStatistics::TrapLoggingStats::has_data() const
-{
-    return buffer_size.is_set
-	|| is_log_enabled.is_set
-	|| message_count.is_set
-	|| severity.is_set;
-}
-
-bool Syslog::LoggingStatistics::TrapLoggingStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(buffer_size.yfilter)
-	|| ydk::is_set(is_log_enabled.yfilter)
-	|| ydk::is_set(message_count.yfilter)
-	|| ydk::is_set(severity.yfilter);
-}
-
-std::string Syslog::LoggingStatistics::TrapLoggingStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-logging-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Syslog::LoggingStatistics::TrapLoggingStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
-    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
-    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Syslog::LoggingStatistics::TrapLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size = value;
-        buffer_size.value_namespace = name_space;
-        buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled = value;
-        is_log_enabled.value_namespace = name_space;
-        is_log_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "message-count")
-    {
-        message_count = value;
-        message_count.value_namespace = name_space;
-        message_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::LoggingStatistics::TrapLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "buffer-size")
-    {
-        buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "is-log-enabled")
-    {
-        is_log_enabled.yfilter = yfilter;
-    }
-    if(value_path == "message-count")
-    {
-        message_count.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-}
-
-bool Syslog::LoggingStatistics::TrapLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
-        return true;
-    return false;
-}
-
 Syslog::LoggingStatistics::BufferLoggingStats::BufferLoggingStats()
     :
     buffer_size{YType::uint32, "buffer-size"},
@@ -1992,7 +1053,8 @@ Syslog::LoggingStatistics::BufferLoggingStats::BufferLoggingStats()
     message_count{YType::uint32, "message-count"},
     severity{YType::enumeration, "severity"}
 {
-    yang_name = "buffer-logging-stats"; yang_parent_name = "logging-statistics";
+
+    yang_name = "buffer-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::LoggingStatistics::BufferLoggingStats::~BufferLoggingStats()
@@ -2016,27 +1078,22 @@ bool Syslog::LoggingStatistics::BufferLoggingStats::has_operation() const
 	|| ydk::is_set(severity.yfilter);
 }
 
+std::string Syslog::LoggingStatistics::BufferLoggingStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::LoggingStatistics::BufferLoggingStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "buffer-logging-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::LoggingStatistics::BufferLoggingStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::BufferLoggingStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
@@ -2044,9 +1101,7 @@ const EntityPath Syslog::LoggingStatistics::BufferLoggingStats::get_entity_path(
     if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
     if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2116,12 +1171,485 @@ bool Syslog::LoggingStatistics::BufferLoggingStats::has_leaf_or_child_of_name(co
     return false;
 }
 
+Syslog::LoggingStatistics::ConsoleLoggingStats::ConsoleLoggingStats()
+    :
+    buffer_size{YType::uint32, "buffer-size"},
+    is_log_enabled{YType::boolean, "is-log-enabled"},
+    message_count{YType::uint32, "message-count"},
+    severity{YType::enumeration, "severity"}
+{
+
+    yang_name = "console-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::LoggingStatistics::ConsoleLoggingStats::~ConsoleLoggingStats()
+{
+}
+
+bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_data() const
+{
+    return buffer_size.is_set
+	|| is_log_enabled.is_set
+	|| message_count.is_set
+	|| severity.is_set;
+}
+
+bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(buffer_size.yfilter)
+	|| ydk::is_set(is_log_enabled.yfilter)
+	|| ydk::is_set(message_count.yfilter)
+	|| ydk::is_set(severity.yfilter);
+}
+
+std::string Syslog::LoggingStatistics::ConsoleLoggingStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::LoggingStatistics::ConsoleLoggingStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "console-logging-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::ConsoleLoggingStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
+    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
+    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Syslog::LoggingStatistics::ConsoleLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "buffer-size")
+    {
+        buffer_size = value;
+        buffer_size.value_namespace = name_space;
+        buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled = value;
+        is_log_enabled.value_namespace = name_space;
+        is_log_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "message-count")
+    {
+        message_count = value;
+        message_count.value_namespace = name_space;
+        message_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::LoggingStatistics::ConsoleLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "buffer-size")
+    {
+        buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled.yfilter = yfilter;
+    }
+    if(value_path == "message-count")
+    {
+        message_count.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
+        return true;
+    return false;
+}
+
+Syslog::LoggingStatistics::FileLoggingStat::FileLoggingStat()
+    :
+    file_name{YType::str, "file-name"},
+    message_count{YType::uint32, "message-count"}
+{
+
+    yang_name = "file-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::LoggingStatistics::FileLoggingStat::~FileLoggingStat()
+{
+}
+
+bool Syslog::LoggingStatistics::FileLoggingStat::has_data() const
+{
+    return file_name.is_set
+	|| message_count.is_set;
+}
+
+bool Syslog::LoggingStatistics::FileLoggingStat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(file_name.yfilter)
+	|| ydk::is_set(message_count.yfilter);
+}
+
+std::string Syslog::LoggingStatistics::FileLoggingStat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::LoggingStatistics::FileLoggingStat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "file-logging-stat";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::FileLoggingStat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (file_name.is_set || is_set(file_name.yfilter)) leaf_name_data.push_back(file_name.get_name_leafdata());
+    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Syslog::LoggingStatistics::FileLoggingStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "file-name")
+    {
+        file_name = value;
+        file_name.value_namespace = name_space;
+        file_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "message-count")
+    {
+        message_count = value;
+        message_count.value_namespace = name_space;
+        message_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::LoggingStatistics::FileLoggingStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "file-name")
+    {
+        file_name.yfilter = yfilter;
+    }
+    if(value_path == "message-count")
+    {
+        message_count.yfilter = yfilter;
+    }
+}
+
+bool Syslog::LoggingStatistics::FileLoggingStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "file-name" || name == "message-count")
+        return true;
+    return false;
+}
+
+Syslog::LoggingStatistics::LoggingStats::LoggingStats()
+    :
+    drop_count{YType::uint32, "drop-count"},
+    flush_count{YType::uint32, "flush-count"},
+    is_log_enabled{YType::boolean, "is-log-enabled"},
+    overrun_count{YType::uint32, "overrun-count"}
+{
+
+    yang_name = "logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::LoggingStatistics::LoggingStats::~LoggingStats()
+{
+}
+
+bool Syslog::LoggingStatistics::LoggingStats::has_data() const
+{
+    return drop_count.is_set
+	|| flush_count.is_set
+	|| is_log_enabled.is_set
+	|| overrun_count.is_set;
+}
+
+bool Syslog::LoggingStatistics::LoggingStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(drop_count.yfilter)
+	|| ydk::is_set(flush_count.yfilter)
+	|| ydk::is_set(is_log_enabled.yfilter)
+	|| ydk::is_set(overrun_count.yfilter);
+}
+
+std::string Syslog::LoggingStatistics::LoggingStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::LoggingStatistics::LoggingStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::LoggingStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (drop_count.is_set || is_set(drop_count.yfilter)) leaf_name_data.push_back(drop_count.get_name_leafdata());
+    if (flush_count.is_set || is_set(flush_count.yfilter)) leaf_name_data.push_back(flush_count.get_name_leafdata());
+    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
+    if (overrun_count.is_set || is_set(overrun_count.yfilter)) leaf_name_data.push_back(overrun_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Syslog::LoggingStatistics::LoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "drop-count")
+    {
+        drop_count = value;
+        drop_count.value_namespace = name_space;
+        drop_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flush-count")
+    {
+        flush_count = value;
+        flush_count.value_namespace = name_space;
+        flush_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled = value;
+        is_log_enabled.value_namespace = name_space;
+        is_log_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "overrun-count")
+    {
+        overrun_count = value;
+        overrun_count.value_namespace = name_space;
+        overrun_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::LoggingStatistics::LoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop-count")
+    {
+        drop_count.yfilter = yfilter;
+    }
+    if(value_path == "flush-count")
+    {
+        flush_count.yfilter = yfilter;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled.yfilter = yfilter;
+    }
+    if(value_path == "overrun-count")
+    {
+        overrun_count.yfilter = yfilter;
+    }
+}
+
+bool Syslog::LoggingStatistics::LoggingStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop-count" || name == "flush-count" || name == "is-log-enabled" || name == "overrun-count")
+        return true;
+    return false;
+}
+
+Syslog::LoggingStatistics::MonitorLoggingStats::MonitorLoggingStats()
+    :
+    buffer_size{YType::uint32, "buffer-size"},
+    is_log_enabled{YType::boolean, "is-log-enabled"},
+    message_count{YType::uint32, "message-count"},
+    severity{YType::enumeration, "severity"}
+{
+
+    yang_name = "monitor-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::LoggingStatistics::MonitorLoggingStats::~MonitorLoggingStats()
+{
+}
+
+bool Syslog::LoggingStatistics::MonitorLoggingStats::has_data() const
+{
+    return buffer_size.is_set
+	|| is_log_enabled.is_set
+	|| message_count.is_set
+	|| severity.is_set;
+}
+
+bool Syslog::LoggingStatistics::MonitorLoggingStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(buffer_size.yfilter)
+	|| ydk::is_set(is_log_enabled.yfilter)
+	|| ydk::is_set(message_count.yfilter)
+	|| ydk::is_set(severity.yfilter);
+}
+
+std::string Syslog::LoggingStatistics::MonitorLoggingStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::LoggingStatistics::MonitorLoggingStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "monitor-logging-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::MonitorLoggingStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
+    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
+    if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Syslog::LoggingStatistics::MonitorLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "buffer-size")
+    {
+        buffer_size = value;
+        buffer_size.value_namespace = name_space;
+        buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled = value;
+        is_log_enabled.value_namespace = name_space;
+        is_log_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "message-count")
+    {
+        message_count = value;
+        message_count.value_namespace = name_space;
+        message_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::LoggingStatistics::MonitorLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "buffer-size")
+    {
+        buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled.yfilter = yfilter;
+    }
+    if(value_path == "message-count")
+    {
+        message_count.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool Syslog::LoggingStatistics::MonitorLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
+        return true;
+    return false;
+}
+
 Syslog::LoggingStatistics::RemoteLoggingStat::RemoteLoggingStat()
     :
     message_count{YType::uint32, "message-count"},
     remote_host_name{YType::str, "remote-host-name"}
 {
-    yang_name = "remote-logging-stat"; yang_parent_name = "logging-statistics";
+
+    yang_name = "remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::LoggingStatistics::RemoteLoggingStat::~RemoteLoggingStat()
@@ -2141,35 +1669,28 @@ bool Syslog::LoggingStatistics::RemoteLoggingStat::has_operation() const
 	|| ydk::is_set(remote_host_name.yfilter);
 }
 
+std::string Syslog::LoggingStatistics::RemoteLoggingStat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::LoggingStatistics::RemoteLoggingStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-logging-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::LoggingStatistics::RemoteLoggingStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::RemoteLoggingStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
     if (remote_host_name.is_set || is_set(remote_host_name.yfilter)) leaf_name_data.push_back(remote_host_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2224,7 +1745,8 @@ Syslog::LoggingStatistics::TlsRemoteLoggingStat::TlsRemoteLoggingStat()
     message_count{YType::uint32, "message-count"},
     remote_host_name{YType::str, "remote-host-name"}
 {
-    yang_name = "tls-remote-logging-stat"; yang_parent_name = "logging-statistics";
+
+    yang_name = "tls-remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Syslog::LoggingStatistics::TlsRemoteLoggingStat::~TlsRemoteLoggingStat()
@@ -2244,35 +1766,28 @@ bool Syslog::LoggingStatistics::TlsRemoteLoggingStat::has_operation() const
 	|| ydk::is_set(remote_host_name.yfilter);
 }
 
+std::string Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tls-remote-logging-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
     if (remote_host_name.is_set || is_set(remote_host_name.yfilter)) leaf_name_data.push_back(remote_host_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2322,81 +1837,89 @@ bool Syslog::LoggingStatistics::TlsRemoteLoggingStat::has_leaf_or_child_of_name(
     return false;
 }
 
-Syslog::LoggingStatistics::FileLoggingStat::FileLoggingStat()
+Syslog::LoggingStatistics::TrapLoggingStats::TrapLoggingStats()
     :
-    file_name{YType::str, "file-name"},
-    message_count{YType::uint32, "message-count"}
+    buffer_size{YType::uint32, "buffer-size"},
+    is_log_enabled{YType::boolean, "is-log-enabled"},
+    message_count{YType::uint32, "message-count"},
+    severity{YType::enumeration, "severity"}
 {
-    yang_name = "file-logging-stat"; yang_parent_name = "logging-statistics";
+
+    yang_name = "trap-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Syslog::LoggingStatistics::FileLoggingStat::~FileLoggingStat()
+Syslog::LoggingStatistics::TrapLoggingStats::~TrapLoggingStats()
 {
 }
 
-bool Syslog::LoggingStatistics::FileLoggingStat::has_data() const
+bool Syslog::LoggingStatistics::TrapLoggingStats::has_data() const
 {
-    return file_name.is_set
-	|| message_count.is_set;
+    return buffer_size.is_set
+	|| is_log_enabled.is_set
+	|| message_count.is_set
+	|| severity.is_set;
 }
 
-bool Syslog::LoggingStatistics::FileLoggingStat::has_operation() const
+bool Syslog::LoggingStatistics::TrapLoggingStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(file_name.yfilter)
-	|| ydk::is_set(message_count.yfilter);
+	|| ydk::is_set(buffer_size.yfilter)
+	|| ydk::is_set(is_log_enabled.yfilter)
+	|| ydk::is_set(message_count.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
-std::string Syslog::LoggingStatistics::FileLoggingStat::get_segment_path() const
+std::string Syslog::LoggingStatistics::TrapLoggingStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "file-logging-stat";
-
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Syslog::LoggingStatistics::FileLoggingStat::get_entity_path(Entity* ancestor) const
+std::string Syslog::LoggingStatistics::TrapLoggingStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/logging-statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "trap-logging-stats";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::TrapLoggingStats::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (file_name.is_set || is_set(file_name.yfilter)) leaf_name_data.push_back(file_name.get_name_leafdata());
+    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
+    if (is_log_enabled.is_set || is_set(is_log_enabled.yfilter)) leaf_name_data.push_back(is_log_enabled.get_name_leafdata());
     if (message_count.is_set || is_set(message_count.yfilter)) leaf_name_data.push_back(message_count.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Syslog::LoggingStatistics::FileLoggingStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Syslog::LoggingStatistics::TrapLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "file-name")
+    if(value_path == "buffer-size")
     {
-        file_name = value;
-        file_name.value_namespace = name_space;
-        file_name.value_namespace_prefix = name_space_prefix;
+        buffer_size = value;
+        buffer_size.value_namespace = name_space;
+        buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled = value;
+        is_log_enabled.value_namespace = name_space;
+        is_log_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "message-count")
     {
@@ -2404,23 +1927,374 @@ void Syslog::LoggingStatistics::FileLoggingStat::set_value(const std::string & v
         message_count.value_namespace = name_space;
         message_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Syslog::LoggingStatistics::FileLoggingStat::set_filter(const std::string & value_path, YFilter yfilter)
+void Syslog::LoggingStatistics::TrapLoggingStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "file-name")
+    if(value_path == "buffer-size")
     {
-        file_name.yfilter = yfilter;
+        buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "is-log-enabled")
+    {
+        is_log_enabled.yfilter = yfilter;
     }
     if(value_path == "message-count")
     {
         message_count.yfilter = yfilter;
     }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
 }
 
-bool Syslog::LoggingStatistics::FileLoggingStat::has_leaf_or_child_of_name(const std::string & name) const
+bool Syslog::LoggingStatistics::TrapLoggingStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "file-name" || name == "message-count")
+    if(name == "buffer-size" || name == "is-log-enabled" || name == "message-count" || name == "severity")
+        return true;
+    return false;
+}
+
+Syslog::Messages::Messages()
+{
+
+    yang_name = "messages"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::Messages::~Messages()
+{
+}
+
+bool Syslog::Messages::has_data() const
+{
+    for (std::size_t index=0; index<message.size(); index++)
+    {
+        if(message[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Syslog::Messages::has_operation() const
+{
+    for (std::size_t index=0; index<message.size(); index++)
+    {
+        if(message[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Syslog::Messages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::Messages::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "messages";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::Messages::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "message")
+    {
+        for(auto const & c : message)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Syslog::Messages::Message>();
+        c->parent = this;
+        message.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : message)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Syslog::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Syslog::Messages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Syslog::Messages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+Syslog::Messages::Message::Message()
+    :
+    message_id{YType::int32, "message-id"},
+    card_type{YType::str, "card-type"},
+    category{YType::str, "category"},
+    group{YType::str, "group"},
+    message_name{YType::str, "message-name"},
+    node_name{YType::str, "node-name"},
+    process_name{YType::str, "process-name"},
+    severity{YType::enumeration, "severity"},
+    text{YType::str, "text"},
+    time_of_day{YType::str, "time-of-day"},
+    time_stamp{YType::uint64, "time-stamp"},
+    time_zone{YType::str, "time-zone"}
+{
+
+    yang_name = "message"; yang_parent_name = "messages"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Syslog::Messages::Message::~Message()
+{
+}
+
+bool Syslog::Messages::Message::has_data() const
+{
+    return message_id.is_set
+	|| card_type.is_set
+	|| category.is_set
+	|| group.is_set
+	|| message_name.is_set
+	|| node_name.is_set
+	|| process_name.is_set
+	|| severity.is_set
+	|| text.is_set
+	|| time_of_day.is_set
+	|| time_stamp.is_set
+	|| time_zone.is_set;
+}
+
+bool Syslog::Messages::Message::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message_id.yfilter)
+	|| ydk::is_set(card_type.yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(message_name.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(text.yfilter)
+	|| ydk::is_set(time_of_day.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
+	|| ydk::is_set(time_zone.yfilter);
+}
+
+std::string Syslog::Messages::Message::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:syslog/messages/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::Messages::Message::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "message" <<"[message-id='" <<message_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::Messages::Message::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message_id.is_set || is_set(message_id.yfilter)) leaf_name_data.push_back(message_id.get_name_leafdata());
+    if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (message_name.is_set || is_set(message_name.yfilter)) leaf_name_data.push_back(message_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
+    if (time_of_day.is_set || is_set(time_of_day.yfilter)) leaf_name_data.push_back(time_of_day.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (time_zone.is_set || is_set(time_zone.yfilter)) leaf_name_data.push_back(time_zone.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::Message::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Syslog::Messages::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message-id")
+    {
+        message_id = value;
+        message_id.value_namespace = name_space;
+        message_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card-type")
+    {
+        card_type = value;
+        card_type.value_namespace = name_space;
+        card_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "category")
+    {
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "message-name")
+    {
+        message_name = value;
+        message_name.value_namespace = name_space;
+        message_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "process-name")
+    {
+        process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "text")
+    {
+        text = value;
+        text.value_namespace = name_space;
+        text.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-of-day")
+    {
+        time_of_day = value;
+        time_of_day.value_namespace = name_space;
+        time_of_day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-zone")
+    {
+        time_zone = value;
+        time_zone.value_namespace = name_space;
+        time_zone.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::Messages::Message::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message-id")
+    {
+        message_id.yfilter = yfilter;
+    }
+    if(value_path == "card-type")
+    {
+        card_type.yfilter = yfilter;
+    }
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "message-name")
+    {
+        message_name.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "text")
+    {
+        text.yfilter = yfilter;
+    }
+    if(value_path == "time-of-day")
+    {
+        time_of_day.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "time-zone")
+    {
+        time_zone.yfilter = yfilter;
+    }
+}
+
+bool Syslog::Messages::Message::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message-id" || name == "card-type" || name == "category" || name == "group" || name == "message-name" || name == "node-name" || name == "process-name" || name == "severity" || name == "text" || name == "time-of-day" || name == "time-stamp" || name == "time-zone")
         return true;
     return false;
 }

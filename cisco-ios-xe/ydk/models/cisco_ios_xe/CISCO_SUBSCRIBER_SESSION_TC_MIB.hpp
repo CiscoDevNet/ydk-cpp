@@ -10,17 +10,7 @@
 namespace cisco_ios_xe {
 namespace CISCO_SUBSCRIBER_SESSION_TC_MIB {
 
-class Subsessionredundancymode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
-
-};
-
-class Subsessiontype : public ydk::Enum
+class SubSessionType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
@@ -39,7 +29,17 @@ class Subsessiontype : public ydk::Enum
 
 };
 
-class Subsessionstate : public ydk::Enum
+class SubSessionRedundancyMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
+
+};
+
+class SubSessionState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

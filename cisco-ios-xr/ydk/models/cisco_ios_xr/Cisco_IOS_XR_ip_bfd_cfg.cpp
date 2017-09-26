@@ -28,18 +28,13 @@ Bfd::Bfd()
 	,multi_path_includes(std::make_shared<Bfd::MultiPathIncludes>())
 {
     bundle->parent = this;
-
     echo_latency->parent = this;
-
     echo_startup->parent = this;
-
     flap_damp->parent = this;
-
     interfaces->parent = this;
-
     multi_path_includes->parent = this;
 
-    yang_name = "bfd"; yang_parent_name = "Cisco-IOS-XR-ip-bfd-cfg";
+    yang_name = "bfd"; yang_parent_name = "Cisco-IOS-XR-ip-bfd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Bfd::~Bfd()
@@ -83,20 +78,11 @@ std::string Bfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (global_echo_min_interval.is_set || is_set(global_echo_min_interval.yfilter)) leaf_name_data.push_back(global_echo_min_interval.get_name_leafdata());
@@ -106,9 +92,7 @@ const EntityPath Bfd::get_entity_path(Entity* ancestor) const
     if (single_hop_trap.is_set || is_set(single_hop_trap.yfilter)) leaf_name_data.push_back(single_hop_trap.get_name_leafdata());
     if (ttl_drop_threshold.is_set || is_set(ttl_drop_threshold.yfilter)) leaf_name_data.push_back(ttl_drop_threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -307,6 +291,457 @@ bool Bfd::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Bfd::Bundle::Bundle()
+    :
+    coexistence(std::make_shared<Bfd::Bundle::Coexistence>())
+{
+    coexistence->parent = this;
+
+    yang_name = "bundle"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Bfd::Bundle::~Bundle()
+{
+}
+
+bool Bfd::Bundle::has_data() const
+{
+    return (coexistence !=  nullptr && coexistence->has_data());
+}
+
+bool Bfd::Bundle::has_operation() const
+{
+    return is_set(yfilter)
+	|| (coexistence !=  nullptr && coexistence->has_operation());
+}
+
+std::string Bfd::Bundle::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Bfd::Bundle::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bundle";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bfd::Bundle::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bfd::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "coexistence")
+    {
+        if(coexistence == nullptr)
+        {
+            coexistence = std::make_shared<Bfd::Bundle::Coexistence>();
+        }
+        return coexistence;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(coexistence != nullptr)
+    {
+        children["coexistence"] = coexistence;
+    }
+
+    return children;
+}
+
+void Bfd::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bfd::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "coexistence")
+        return true;
+    return false;
+}
+
+Bfd::Bundle::Coexistence::Coexistence()
+    :
+    bob_blb{YType::enumeration, "bob-blb"}
+{
+
+    yang_name = "coexistence"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Bfd::Bundle::Coexistence::~Coexistence()
+{
+}
+
+bool Bfd::Bundle::Coexistence::has_data() const
+{
+    return bob_blb.is_set;
+}
+
+bool Bfd::Bundle::Coexistence::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bob_blb.yfilter);
+}
+
+std::string Bfd::Bundle::Coexistence::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/bundle/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Bfd::Bundle::Coexistence::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "coexistence";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bfd::Bundle::Coexistence::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bob_blb.is_set || is_set(bob_blb.yfilter)) leaf_name_data.push_back(bob_blb.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bfd::Bundle::Coexistence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::Coexistence::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bfd::Bundle::Coexistence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bob-blb")
+    {
+        bob_blb = value;
+        bob_blb.value_namespace = name_space;
+        bob_blb.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bfd::Bundle::Coexistence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bob-blb")
+    {
+        bob_blb.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Bundle::Coexistence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bob-blb")
+        return true;
+    return false;
+}
+
+Bfd::EchoLatency::EchoLatency()
+    :
+    detect(std::make_shared<Bfd::EchoLatency::Detect>())
+{
+    detect->parent = this;
+
+    yang_name = "echo-latency"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Bfd::EchoLatency::~EchoLatency()
+{
+}
+
+bool Bfd::EchoLatency::has_data() const
+{
+    return (detect !=  nullptr && detect->has_data());
+}
+
+bool Bfd::EchoLatency::has_operation() const
+{
+    return is_set(yfilter)
+	|| (detect !=  nullptr && detect->has_operation());
+}
+
+std::string Bfd::EchoLatency::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Bfd::EchoLatency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "echo-latency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bfd::EchoLatency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bfd::EchoLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detect")
+    {
+        if(detect == nullptr)
+        {
+            detect = std::make_shared<Bfd::EchoLatency::Detect>();
+        }
+        return detect;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(detect != nullptr)
+    {
+        children["detect"] = detect;
+    }
+
+    return children;
+}
+
+void Bfd::EchoLatency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bfd::EchoLatency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::EchoLatency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detect")
+        return true;
+    return false;
+}
+
+Bfd::EchoLatency::Detect::Detect()
+    :
+    latency_detect_count{YType::uint32, "latency-detect-count"},
+    latency_detect_enabled{YType::boolean, "latency-detect-enabled"},
+    latency_detect_percentage{YType::uint32, "latency-detect-percentage"}
+{
+
+    yang_name = "detect"; yang_parent_name = "echo-latency"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Bfd::EchoLatency::Detect::~Detect()
+{
+}
+
+bool Bfd::EchoLatency::Detect::has_data() const
+{
+    return latency_detect_count.is_set
+	|| latency_detect_enabled.is_set
+	|| latency_detect_percentage.is_set;
+}
+
+bool Bfd::EchoLatency::Detect::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(latency_detect_count.yfilter)
+	|| ydk::is_set(latency_detect_enabled.yfilter)
+	|| ydk::is_set(latency_detect_percentage.yfilter);
+}
+
+std::string Bfd::EchoLatency::Detect::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/echo-latency/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Bfd::EchoLatency::Detect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "detect";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bfd::EchoLatency::Detect::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (latency_detect_count.is_set || is_set(latency_detect_count.yfilter)) leaf_name_data.push_back(latency_detect_count.get_name_leafdata());
+    if (latency_detect_enabled.is_set || is_set(latency_detect_enabled.yfilter)) leaf_name_data.push_back(latency_detect_enabled.get_name_leafdata());
+    if (latency_detect_percentage.is_set || is_set(latency_detect_percentage.yfilter)) leaf_name_data.push_back(latency_detect_percentage.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bfd::EchoLatency::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::Detect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bfd::EchoLatency::Detect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "latency-detect-count")
+    {
+        latency_detect_count = value;
+        latency_detect_count.value_namespace = name_space;
+        latency_detect_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "latency-detect-enabled")
+    {
+        latency_detect_enabled = value;
+        latency_detect_enabled.value_namespace = name_space;
+        latency_detect_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "latency-detect-percentage")
+    {
+        latency_detect_percentage = value;
+        latency_detect_percentage.value_namespace = name_space;
+        latency_detect_percentage.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bfd::EchoLatency::Detect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "latency-detect-count")
+    {
+        latency_detect_count.yfilter = yfilter;
+    }
+    if(value_path == "latency-detect-enabled")
+    {
+        latency_detect_enabled.yfilter = yfilter;
+    }
+    if(value_path == "latency-detect-percentage")
+    {
+        latency_detect_percentage.yfilter = yfilter;
+    }
+}
+
+bool Bfd::EchoLatency::Detect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "latency-detect-count" || name == "latency-detect-enabled" || name == "latency-detect-percentage")
+        return true;
+    return false;
+}
+
+Bfd::EchoStartup::EchoStartup()
+    :
+    validate{YType::enumeration, "validate"}
+{
+
+    yang_name = "echo-startup"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Bfd::EchoStartup::~EchoStartup()
+{
+}
+
+bool Bfd::EchoStartup::has_data() const
+{
+    return validate.is_set;
+}
+
+bool Bfd::EchoStartup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(validate.yfilter);
+}
+
+std::string Bfd::EchoStartup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Bfd::EchoStartup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "echo-startup";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bfd::EchoStartup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bfd::EchoStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoStartup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bfd::EchoStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "validate")
+    {
+        validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bfd::EchoStartup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool Bfd::EchoStartup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "validate")
+        return true;
+    return false;
+}
+
 Bfd::FlapDamp::FlapDamp()
     :
     dampen_disable{YType::empty, "dampen-disable"},
@@ -319,10 +754,9 @@ Bfd::FlapDamp::FlapDamp()
 	,extensions(std::make_shared<Bfd::FlapDamp::Extensions>())
 {
     bundle_member->parent = this;
-
     extensions->parent = this;
 
-    yang_name = "flap-damp"; yang_parent_name = "bfd";
+    yang_name = "flap-damp"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::FlapDamp::~FlapDamp()
@@ -352,27 +786,22 @@ bool Bfd::FlapDamp::has_operation() const
 	|| (extensions !=  nullptr && extensions->has_operation());
 }
 
+std::string Bfd::FlapDamp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::FlapDamp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "flap-damp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::FlapDamp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (dampen_disable.is_set || is_set(dampen_disable.yfilter)) leaf_name_data.push_back(dampen_disable.get_name_leafdata());
@@ -381,9 +810,7 @@ const EntityPath Bfd::FlapDamp::get_entity_path(Entity* ancestor) const
     if (secondary_delay.is_set || is_set(secondary_delay.yfilter)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -498,7 +925,8 @@ Bfd::FlapDamp::BundleMember::BundleMember()
     maximum_delay{YType::uint32, "maximum-delay"},
     secondary_delay{YType::uint32, "secondary-delay"}
 {
-    yang_name = "bundle-member"; yang_parent_name = "flap-damp";
+
+    yang_name = "bundle-member"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::FlapDamp::BundleMember::~BundleMember()
@@ -522,27 +950,22 @@ bool Bfd::FlapDamp::BundleMember::has_operation() const
 	|| ydk::is_set(secondary_delay.yfilter);
 }
 
+std::string Bfd::FlapDamp::BundleMember::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/flap-damp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::FlapDamp::BundleMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-member";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::FlapDamp::BundleMember::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::BundleMember::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/flap-damp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (initial_delay.is_set || is_set(initial_delay.yfilter)) leaf_name_data.push_back(initial_delay.get_name_leafdata());
@@ -550,9 +973,7 @@ const EntityPath Bfd::FlapDamp::BundleMember::get_entity_path(Entity* ancestor) 
     if (maximum_delay.is_set || is_set(maximum_delay.yfilter)) leaf_name_data.push_back(maximum_delay.get_name_leafdata());
     if (secondary_delay.is_set || is_set(secondary_delay.yfilter)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -626,7 +1047,8 @@ Bfd::FlapDamp::Extensions::Extensions()
     :
     down_monitor{YType::empty, "down-monitor"}
 {
-    yang_name = "extensions"; yang_parent_name = "flap-damp";
+
+    yang_name = "extensions"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::FlapDamp::Extensions::~Extensions()
@@ -644,34 +1066,27 @@ bool Bfd::FlapDamp::Extensions::has_operation() const
 	|| ydk::is_set(down_monitor.yfilter);
 }
 
+std::string Bfd::FlapDamp::Extensions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/flap-damp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::FlapDamp::Extensions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "extensions";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::FlapDamp::Extensions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::Extensions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/flap-damp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (down_monitor.is_set || is_set(down_monitor.yfilter)) leaf_name_data.push_back(down_monitor.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -711,309 +1126,10 @@ bool Bfd::FlapDamp::Extensions::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Bfd::EchoLatency::EchoLatency()
-    :
-    detect(std::make_shared<Bfd::EchoLatency::Detect>())
-{
-    detect->parent = this;
-
-    yang_name = "echo-latency"; yang_parent_name = "bfd";
-}
-
-Bfd::EchoLatency::~EchoLatency()
-{
-}
-
-bool Bfd::EchoLatency::has_data() const
-{
-    return (detect !=  nullptr && detect->has_data());
-}
-
-bool Bfd::EchoLatency::has_operation() const
-{
-    return is_set(yfilter)
-	|| (detect !=  nullptr && detect->has_operation());
-}
-
-std::string Bfd::EchoLatency::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "echo-latency";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bfd::EchoLatency::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bfd::EchoLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "detect")
-    {
-        if(detect == nullptr)
-        {
-            detect = std::make_shared<Bfd::EchoLatency::Detect>();
-        }
-        return detect;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(detect != nullptr)
-    {
-        children["detect"] = detect;
-    }
-
-    return children;
-}
-
-void Bfd::EchoLatency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Bfd::EchoLatency::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Bfd::EchoLatency::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "detect")
-        return true;
-    return false;
-}
-
-Bfd::EchoLatency::Detect::Detect()
-    :
-    latency_detect_count{YType::uint32, "latency-detect-count"},
-    latency_detect_enabled{YType::boolean, "latency-detect-enabled"},
-    latency_detect_percentage{YType::uint32, "latency-detect-percentage"}
-{
-    yang_name = "detect"; yang_parent_name = "echo-latency";
-}
-
-Bfd::EchoLatency::Detect::~Detect()
-{
-}
-
-bool Bfd::EchoLatency::Detect::has_data() const
-{
-    return latency_detect_count.is_set
-	|| latency_detect_enabled.is_set
-	|| latency_detect_percentage.is_set;
-}
-
-bool Bfd::EchoLatency::Detect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(latency_detect_count.yfilter)
-	|| ydk::is_set(latency_detect_enabled.yfilter)
-	|| ydk::is_set(latency_detect_percentage.yfilter);
-}
-
-std::string Bfd::EchoLatency::Detect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "detect";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bfd::EchoLatency::Detect::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/echo-latency/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (latency_detect_count.is_set || is_set(latency_detect_count.yfilter)) leaf_name_data.push_back(latency_detect_count.get_name_leafdata());
-    if (latency_detect_enabled.is_set || is_set(latency_detect_enabled.yfilter)) leaf_name_data.push_back(latency_detect_enabled.get_name_leafdata());
-    if (latency_detect_percentage.is_set || is_set(latency_detect_percentage.yfilter)) leaf_name_data.push_back(latency_detect_percentage.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bfd::EchoLatency::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::Detect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bfd::EchoLatency::Detect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "latency-detect-count")
-    {
-        latency_detect_count = value;
-        latency_detect_count.value_namespace = name_space;
-        latency_detect_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "latency-detect-enabled")
-    {
-        latency_detect_enabled = value;
-        latency_detect_enabled.value_namespace = name_space;
-        latency_detect_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "latency-detect-percentage")
-    {
-        latency_detect_percentage = value;
-        latency_detect_percentage.value_namespace = name_space;
-        latency_detect_percentage.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bfd::EchoLatency::Detect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "latency-detect-count")
-    {
-        latency_detect_count.yfilter = yfilter;
-    }
-    if(value_path == "latency-detect-enabled")
-    {
-        latency_detect_enabled.yfilter = yfilter;
-    }
-    if(value_path == "latency-detect-percentage")
-    {
-        latency_detect_percentage.yfilter = yfilter;
-    }
-}
-
-bool Bfd::EchoLatency::Detect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "latency-detect-count" || name == "latency-detect-enabled" || name == "latency-detect-percentage")
-        return true;
-    return false;
-}
-
-Bfd::EchoStartup::EchoStartup()
-    :
-    validate{YType::enumeration, "validate"}
-{
-    yang_name = "echo-startup"; yang_parent_name = "bfd";
-}
-
-Bfd::EchoStartup::~EchoStartup()
-{
-}
-
-bool Bfd::EchoStartup::has_data() const
-{
-    return validate.is_set;
-}
-
-bool Bfd::EchoStartup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(validate.yfilter);
-}
-
-std::string Bfd::EchoStartup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "echo-startup";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bfd::EchoStartup::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bfd::EchoStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoStartup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bfd::EchoStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "validate")
-    {
-        validate = value;
-        validate.value_namespace = name_space;
-        validate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bfd::EchoStartup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "validate")
-    {
-        validate.yfilter = yfilter;
-    }
-}
-
-bool Bfd::EchoStartup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "validate")
-        return true;
-    return false;
-}
-
 Bfd::Interfaces::Interfaces()
 {
-    yang_name = "interfaces"; yang_parent_name = "bfd";
+
+    yang_name = "interfaces"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::Interfaces::~Interfaces()
@@ -1040,33 +1156,26 @@ bool Bfd::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Bfd::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::Interfaces::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::Interfaces::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1124,7 +1233,8 @@ Bfd::Interfaces::Interface::Interface()
     interface_ipv4_echo_source{YType::str, "interface-ipv4-echo-source"},
     ipv6_checksum{YType::enumeration, "ipv6-checksum"}
 {
-    yang_name = "interface"; yang_parent_name = "interfaces";
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::Interfaces::Interface::~Interface()
@@ -1148,27 +1258,22 @@ bool Bfd::Interfaces::Interface::has_operation() const
 	|| ydk::is_set(ipv6_checksum.yfilter);
 }
 
+std::string Bfd::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::Interfaces::Interface::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::Interfaces::Interface::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
@@ -1176,9 +1281,7 @@ const EntityPath Bfd::Interfaces::Interface::get_entity_path(Entity* ancestor) c
     if (interface_ipv4_echo_source.is_set || is_set(interface_ipv4_echo_source.yfilter)) leaf_name_data.push_back(interface_ipv4_echo_source.get_name_leafdata());
     if (ipv6_checksum.is_set || is_set(ipv6_checksum.yfilter)) leaf_name_data.push_back(ipv6_checksum.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1250,7 +1353,8 @@ bool Bfd::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & n
 
 Bfd::MultiPathIncludes::MultiPathIncludes()
 {
-    yang_name = "multi-path-includes"; yang_parent_name = "bfd";
+
+    yang_name = "multi-path-includes"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::MultiPathIncludes::~MultiPathIncludes()
@@ -1277,33 +1381,26 @@ bool Bfd::MultiPathIncludes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Bfd::MultiPathIncludes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::MultiPathIncludes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-path-includes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::MultiPathIncludes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::MultiPathIncludes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1358,7 +1455,8 @@ Bfd::MultiPathIncludes::MultiPathInclude::MultiPathInclude()
     :
     location{YType::str, "location"}
 {
-    yang_name = "multi-path-include"; yang_parent_name = "multi-path-includes";
+
+    yang_name = "multi-path-include"; yang_parent_name = "multi-path-includes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Bfd::MultiPathIncludes::MultiPathInclude::~MultiPathInclude()
@@ -1376,34 +1474,27 @@ bool Bfd::MultiPathIncludes::MultiPathInclude::has_operation() const
 	|| ydk::is_set(location.yfilter);
 }
 
+std::string Bfd::MultiPathIncludes::MultiPathInclude::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/multi-path-includes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Bfd::MultiPathIncludes::MultiPathInclude::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multi-path-include" <<"[location='" <<location <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Bfd::MultiPathIncludes::MultiPathInclude::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Bfd::MultiPathIncludes::MultiPathInclude::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/multi-path-includes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1443,201 +1534,18 @@ bool Bfd::MultiPathIncludes::MultiPathInclude::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Bfd::Bundle::Bundle()
-    :
-    coexistence(std::make_shared<Bfd::Bundle::Coexistence>())
-{
-    coexistence->parent = this;
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
 
-    yang_name = "bundle"; yang_parent_name = "bfd";
-}
-
-Bfd::Bundle::~Bundle()
-{
-}
-
-bool Bfd::Bundle::has_data() const
-{
-    return (coexistence !=  nullptr && coexistence->has_data());
-}
-
-bool Bfd::Bundle::has_operation() const
-{
-    return is_set(yfilter)
-	|| (coexistence !=  nullptr && coexistence->has_operation());
-}
-
-std::string Bfd::Bundle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bundle";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bfd::Bundle::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bfd::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "coexistence")
-    {
-        if(coexistence == nullptr)
-        {
-            coexistence = std::make_shared<Bfd::Bundle::Coexistence>();
-        }
-        return coexistence;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(coexistence != nullptr)
-    {
-        children["coexistence"] = coexistence;
-    }
-
-    return children;
-}
-
-void Bfd::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Bfd::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Bfd::Bundle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "coexistence")
-        return true;
-    return false;
-}
-
-Bfd::Bundle::Coexistence::Coexistence()
-    :
-    bob_blb{YType::enumeration, "bob-blb"}
-{
-    yang_name = "coexistence"; yang_parent_name = "bundle";
-}
-
-Bfd::Bundle::Coexistence::~Coexistence()
-{
-}
-
-bool Bfd::Bundle::Coexistence::has_data() const
-{
-    return bob_blb.is_set;
-}
-
-bool Bfd::Bundle::Coexistence::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bob_blb.yfilter);
-}
-
-std::string Bfd::Bundle::Coexistence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "coexistence";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bfd::Bundle::Coexistence::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd/bundle/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bob_blb.is_set || is_set(bob_blb.yfilter)) leaf_name_data.push_back(bob_blb.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bfd::Bundle::Coexistence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::Coexistence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bfd::Bundle::Coexistence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bob-blb")
-    {
-        bob_blb = value;
-        bob_blb.value_namespace = name_space;
-        bob_blb.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bfd::Bundle::Coexistence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bob-blb")
-    {
-        bob_blb.yfilter = yfilter;
-    }
-}
-
-bool Bfd::Bundle::Coexistence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bob-blb")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
+const Enum::YLeaf BfdIfEchoUsage::enable {0, "enable"};
+const Enum::YLeaf BfdIfEchoUsage::disable {1, "disable"};
 
 const Enum::YLeaf BfdEchoStartupValidate::off {0, "off"};
 const Enum::YLeaf BfdEchoStartupValidate::on {1, "on"};
 const Enum::YLeaf BfdEchoStartupValidate::force {2, "force"};
 
-const Enum::YLeaf BfdIfEchoUsage::enable {0, "enable"};
-const Enum::YLeaf BfdIfEchoUsage::disable {1, "disable"};
-
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
 
 
 }

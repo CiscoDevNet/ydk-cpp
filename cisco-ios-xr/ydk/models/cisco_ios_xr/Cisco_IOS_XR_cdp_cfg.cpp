@@ -19,7 +19,8 @@ Cdp::Cdp()
     log_adjacency{YType::empty, "log-adjacency"},
     timer{YType::uint32, "timer"}
 {
-    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-cfg";
+
+    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Cdp::~Cdp()
@@ -49,20 +50,11 @@ std::string Cdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cdp-cfg:cdp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Cdp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Cdp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (advertise_v1_only.is_set || is_set(advertise_v1_only.yfilter)) leaf_name_data.push_back(advertise_v1_only.get_name_leafdata());
@@ -71,9 +63,7 @@ const EntityPath Cdp::get_entity_path(Entity* ancestor) const
     if (log_adjacency.is_set || is_set(log_adjacency.yfilter)) leaf_name_data.push_back(log_adjacency.get_name_leafdata());
     if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

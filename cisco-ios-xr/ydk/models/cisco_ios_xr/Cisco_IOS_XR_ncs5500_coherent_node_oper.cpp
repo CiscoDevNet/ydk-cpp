@@ -17,7 +17,7 @@ Coherent::Coherent()
 {
     nodes->parent = this;
 
-    yang_name = "coherent"; yang_parent_name = "Cisco-IOS-XR-ncs5500-coherent-node-oper";
+    yang_name = "coherent"; yang_parent_name = "Cisco-IOS-XR-ncs5500-coherent-node-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Coherent::~Coherent()
@@ -39,26 +39,15 @@ std::string Coherent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs5500-coherent-node-oper:coherent";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool Coherent::has_leaf_or_child_of_name(const std::string & name) const
 
 Coherent::Nodes::Nodes()
 {
-    yang_name = "nodes"; yang_parent_name = "coherent";
+
+    yang_name = "nodes"; yang_parent_name = "coherent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Coherent::Nodes::~Nodes()
@@ -156,33 +146,26 @@ bool Coherent::Nodes::has_operation() const
     return is_set(yfilter);
 }
 
+std::string Coherent::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs5500-coherent-node-oper:coherent/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Coherent::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs5500-coherent-node-oper:coherent/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -243,14 +226,11 @@ Coherent::Nodes::Node::Node()
 	,port_mode_all_info(std::make_shared<Coherent::Nodes::Node::PortModeAllInfo>())
 {
     coherent_time_stats->parent = this;
-
     coherenthealth->parent = this;
-
     devicemapping->parent = this;
-
     port_mode_all_info->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes";
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Coherent::Nodes::Node::~Node()
@@ -276,34 +256,27 @@ bool Coherent::Nodes::Node::has_operation() const
 	|| (port_mode_all_info !=  nullptr && port_mode_all_info->has_operation());
 }
 
+std::string Coherent::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ncs5500-coherent-node-oper:coherent/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Coherent::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ncs5500-coherent-node-oper:coherent/nodes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -414,14 +387,11 @@ Coherent::Nodes::Node::CoherentTimeStats::CoherentTimeStats()
 	,opts_ea_bulk_update(std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate>())
 {
     dsp_ea_bulk_create->parent = this;
-
     dsp_ea_bulk_update->parent = this;
-
     opts_ea_bulk_create->parent = this;
-
     opts_ea_bulk_update->parent = this;
 
-    yang_name = "coherent-time-stats"; yang_parent_name = "node";
+    yang_name = "coherent-time-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::~CoherentTimeStats()
@@ -471,23 +441,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "coherent-time-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CoherentTimeStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (device_created.is_set || is_set(device_created.yfilter)) leaf_name_data.push_back(device_created.get_name_leafdata());
@@ -497,9 +455,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::get_entity_path(Entit
     if (eth_intf_created.is_set || is_set(eth_intf_created.yfilter)) leaf_name_data.push_back(eth_intf_created.get_name_leafdata());
     if (optics_controllers_created.is_set || is_set(optics_controllers_created.yfilter)) leaf_name_data.push_back(optics_controllers_created.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -666,268 +622,6 @@ bool Coherent::Nodes::Node::CoherentTimeStats::has_leaf_or_child_of_name(const s
     return false;
 }
 
-Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::OptsEaBulkCreate()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "opts-ea-bulk-create"; yang_parent_name = "coherent-time-stats";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::~OptsEaBulkCreate()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "opts-ea-bulk-create";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OptsEaBulkCreate' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::OptsEaBulkUpdate()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "opts-ea-bulk-update"; yang_parent_name = "coherent-time-stats";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::~OptsEaBulkUpdate()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "opts-ea-bulk-update";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OptsEaBulkUpdate' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
 Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::DspEaBulkCreate()
     :
     end{YType::str, "end"},
@@ -935,7 +629,8 @@ Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::DspEaBulkCreate()
     time_taken{YType::str, "time-taken"},
     worst_time{YType::str, "worst-time"}
 {
-    yang_name = "dsp-ea-bulk-create"; yang_parent_name = "coherent-time-stats";
+
+    yang_name = "dsp-ea-bulk-create"; yang_parent_name = "coherent-time-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::~DspEaBulkCreate()
@@ -963,23 +658,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "dsp-ea-bulk-create";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DspEaBulkCreate' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
@@ -987,9 +670,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_
     if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
     if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1066,7 +747,8 @@ Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::DspEaBulkUpdate()
     time_taken{YType::str, "time-taken"},
     worst_time{YType::str, "worst-time"}
 {
-    yang_name = "dsp-ea-bulk-update"; yang_parent_name = "coherent-time-stats";
+
+    yang_name = "dsp-ea-bulk-update"; yang_parent_name = "coherent-time-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::~DspEaBulkUpdate()
@@ -1094,23 +776,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "dsp-ea-bulk-update";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DspEaBulkUpdate' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
@@ -1118,9 +788,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_
     if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
     if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1190,13 +858,249 @@ bool Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::has_leaf_or_chil
     return false;
 }
 
+Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::OptsEaBulkCreate()
+    :
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
+{
+
+    yang_name = "opts-ea-bulk-create"; yang_parent_name = "coherent-time-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::~OptsEaBulkCreate()
+{
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_data() const
+{
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
+}
+
+std::string Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "opts-ea-bulk-create";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
+        return true;
+    return false;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::OptsEaBulkUpdate()
+    :
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
+{
+
+    yang_name = "opts-ea-bulk-update"; yang_parent_name = "coherent-time-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::~OptsEaBulkUpdate()
+{
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_data() const
+{
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
+}
+
+std::string Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "opts-ea-bulk-update";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
+        return true;
+    return false;
+}
+
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::PortStat()
     :
     cd_max{YType::uint32, "cd-max"},
     cd_min{YType::uint32, "cd-min"},
     laser_state{YType::boolean, "laser-state"},
     provisioned_frequency{YType::uint32, "provisioned-frequency"},
-    traffic_type{YType::uint32, "traffic-type"},
+    traffic_type{YType::str, "traffic-type"},
     tx_power{YType::uint32, "tx-power"}
     	,
     cdmax_op_stats(std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats>())
@@ -1208,20 +1112,14 @@ Coherent::Nodes::Node::CoherentTimeStats::PortStat::PortStat()
 	,wl_op_stats(std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats>())
 {
     cdmax_op_stats->parent = this;
-
     cdmin_op_stats->parent = this;
-
     laser_off_stats->parent = this;
-
     laser_on_stats->parent = this;
-
     traffictype_op_stats->parent = this;
-
     txpwr_op_stats->parent = this;
-
     wl_op_stats->parent = this;
 
-    yang_name = "port-stat"; yang_parent_name = "coherent-time-stats";
+    yang_name = "port-stat"; yang_parent_name = "coherent-time-stats"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::~PortStat()
@@ -1267,23 +1165,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "port-stat";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortStat' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cd_max.is_set || is_set(cd_max.yfilter)) leaf_name_data.push_back(cd_max.get_name_leafdata());
@@ -1293,9 +1179,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_entity_
     if (traffic_type.is_set || is_set(traffic_type.yfilter)) leaf_name_data.push_back(traffic_type.get_name_leafdata());
     if (tx_power.is_set || is_set(tx_power.yfilter)) leaf_name_data.push_back(tx_power.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1483,661 +1367,6 @@ bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::has_leaf_or_child_of_na
     return false;
 }
 
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::LaserOnStats()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "laser-on-stats"; yang_parent_name = "port-stat";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::~LaserOnStats()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "laser-on-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LaserOnStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::LaserOffStats()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "laser-off-stats"; yang_parent_name = "port-stat";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::~LaserOffStats()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "laser-off-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'LaserOffStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::WlOpStats()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "wl-op-stats"; yang_parent_name = "port-stat";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::~WlOpStats()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "wl-op-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'WlOpStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::TxpwrOpStats()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "txpwr-op-stats"; yang_parent_name = "port-stat";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::~TxpwrOpStats()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "txpwr-op-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TxpwrOpStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::CdminOpStats()
-    :
-    end{YType::str, "end"},
-    start{YType::str, "start"},
-    time_taken{YType::str, "time-taken"},
-    worst_time{YType::str, "worst-time"}
-{
-    yang_name = "cdmin-op-stats"; yang_parent_name = "port-stat";
-}
-
-Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::~CdminOpStats()
-{
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_data() const
-{
-    return end.is_set
-	|| start.is_set
-	|| time_taken.is_set
-	|| worst_time.is_set;
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(end.yfilter)
-	|| ydk::is_set(start.yfilter)
-	|| ydk::is_set(time_taken.yfilter)
-	|| ydk::is_set(worst_time.yfilter);
-}
-
-std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cdmin-op-stats";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdminOpStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
-    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
-    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "end")
-    {
-        end = value;
-        end.value_namespace = name_space;
-        end.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start")
-    {
-        start = value;
-        start.value_namespace = name_space;
-        start.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken = value;
-        time_taken.value_namespace = name_space;
-        time_taken.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time = value;
-        worst_time.value_namespace = name_space;
-        worst_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "end")
-    {
-        end.yfilter = yfilter;
-    }
-    if(value_path == "start")
-    {
-        start.yfilter = yfilter;
-    }
-    if(value_path == "time-taken")
-    {
-        time_taken.yfilter = yfilter;
-    }
-    if(value_path == "worst-time")
-    {
-        worst_time.yfilter = yfilter;
-    }
-}
-
-bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
-        return true;
-    return false;
-}
-
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::CdmaxOpStats()
     :
     end{YType::str, "end"},
@@ -2145,7 +1374,8 @@ Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::CdmaxOpStats()
     time_taken{YType::str, "time-taken"},
     worst_time{YType::str, "worst-time"}
 {
-    yang_name = "cdmax-op-stats"; yang_parent_name = "port-stat";
+
+    yang_name = "cdmax-op-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::~CdmaxOpStats()
@@ -2173,23 +1403,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "cdmax-op-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CdmaxOpStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
@@ -2197,9 +1415,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStat
     if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
     if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2269,6 +1485,360 @@ bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::has_leaf_
     return false;
 }
 
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::CdminOpStats()
+    :
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
+{
+
+    yang_name = "cdmin-op-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::~CdminOpStats()
+{
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_data() const
+{
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
+}
+
+std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cdmin-op-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
+        return true;
+    return false;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::LaserOffStats()
+    :
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
+{
+
+    yang_name = "laser-off-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::~LaserOffStats()
+{
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_data() const
+{
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
+}
+
+std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "laser-off-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
+        return true;
+    return false;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::LaserOnStats()
+    :
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
+{
+
+    yang_name = "laser-on-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::~LaserOnStats()
+{
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_data() const
+{
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
+}
+
+std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "laser-on-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "end")
+    {
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end")
+    {
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
+        return true;
+    return false;
+}
+
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::TraffictypeOpStats()
     :
     end{YType::str, "end"},
@@ -2276,7 +1846,8 @@ Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::Traffict
     time_taken{YType::str, "time-taken"},
     worst_time{YType::str, "worst-time"}
 {
-    yang_name = "traffictype-op-stats"; yang_parent_name = "port-stat";
+
+    yang_name = "traffictype-op-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::~TraffictypeOpStats()
@@ -2304,23 +1875,11 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpSta
 {
     std::ostringstream path_buffer;
     path_buffer << "traffictype-op-stats";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TraffictypeOpStats' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
@@ -2328,9 +1887,7 @@ const EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::Traffictype
     if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
     if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -2400,239 +1957,238 @@ bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::has
     return false;
 }
 
-Coherent::Nodes::Node::Devicemapping::Devicemapping()
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::TxpwrOpStats()
     :
-    num_entries{YType::uint32, "num-entries"}
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
 {
-    yang_name = "devicemapping"; yang_parent_name = "node";
+
+    yang_name = "txpwr-op-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Coherent::Nodes::Node::Devicemapping::~Devicemapping()
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::~TxpwrOpStats()
 {
 }
 
-bool Coherent::Nodes::Node::Devicemapping::has_data() const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_data() const
 {
-    for (std::size_t index=0; index<dev_map.size(); index++)
-    {
-        if(dev_map[index]->has_data())
-            return true;
-    }
-    return num_entries.is_set;
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
 }
 
-bool Coherent::Nodes::Node::Devicemapping::has_operation() const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_operation() const
 {
-    for (std::size_t index=0; index<dev_map.size(); index++)
-    {
-        if(dev_map[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(num_entries.yfilter);
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
 }
 
-std::string Coherent::Nodes::Node::Devicemapping::get_segment_path() const
+std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "devicemapping";
-
+    path_buffer << "txpwr-op-stats";
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Devicemapping::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Devicemapping' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_entries.is_set || is_set(num_entries.yfilter)) leaf_name_data.push_back(num_entries.get_name_leafdata());
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "dev-map")
-    {
-        for(auto const & c : dev_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Coherent::Nodes::Node::Devicemapping::DevMap>();
-        c->parent = this;
-        dev_map.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dev_map)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Coherent::Nodes::Node::Devicemapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "num-entries")
+    if(value_path == "end")
     {
-        num_entries = value;
-        num_entries.value_namespace = name_space;
-        num_entries.value_namespace_prefix = name_space_prefix;
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start")
+    {
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Coherent::Nodes::Node::Devicemapping::set_filter(const std::string & value_path, YFilter yfilter)
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "num-entries")
+    if(value_path == "end")
     {
-        num_entries.yfilter = yfilter;
+        end.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "time-taken")
+    {
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
     }
 }
 
-bool Coherent::Nodes::Node::Devicemapping::has_leaf_or_child_of_name(const std::string & name) const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dev-map" || name == "num-entries")
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
         return true;
     return false;
 }
 
-Coherent::Nodes::Node::Devicemapping::DevMap::DevMap()
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::WlOpStats()
     :
-    device_address{YType::uint32, "device-address"},
-    ifhandle{YType::uint32, "ifhandle"},
-    intf_name{YType::str, "intf-name"}
+    end{YType::str, "end"},
+    start{YType::str, "start"},
+    time_taken{YType::str, "time-taken"},
+    worst_time{YType::str, "worst-time"}
 {
-    yang_name = "dev-map"; yang_parent_name = "devicemapping";
+
+    yang_name = "wl-op-stats"; yang_parent_name = "port-stat"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Coherent::Nodes::Node::Devicemapping::DevMap::~DevMap()
+Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::~WlOpStats()
 {
 }
 
-bool Coherent::Nodes::Node::Devicemapping::DevMap::has_data() const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_data() const
 {
-    return device_address.is_set
-	|| ifhandle.is_set
-	|| intf_name.is_set;
+    return end.is_set
+	|| start.is_set
+	|| time_taken.is_set
+	|| worst_time.is_set;
 }
 
-bool Coherent::Nodes::Node::Devicemapping::DevMap::has_operation() const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(device_address.yfilter)
-	|| ydk::is_set(ifhandle.yfilter)
-	|| ydk::is_set(intf_name.yfilter);
+	|| ydk::is_set(end.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(time_taken.yfilter)
+	|| ydk::is_set(worst_time.yfilter);
 }
 
-std::string Coherent::Nodes::Node::Devicemapping::DevMap::get_segment_path() const
+std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dev-map";
-
+    path_buffer << "wl-op-stats";
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Devicemapping::DevMap::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DevMap' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (device_address.is_set || is_set(device_address.yfilter)) leaf_name_data.push_back(device_address.get_name_leafdata());
-    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
-    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+    if (end.is_set || is_set(end.yfilter)) leaf_name_data.push_back(end.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (time_taken.is_set || is_set(time_taken.yfilter)) leaf_name_data.push_back(time_taken.get_name_leafdata());
+    if (worst_time.is_set || is_set(worst_time.yfilter)) leaf_name_data.push_back(worst_time.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::DevMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::DevMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Coherent::Nodes::Node::Devicemapping::DevMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "device-address")
+    if(value_path == "end")
     {
-        device_address = value;
-        device_address.value_namespace = name_space;
-        device_address.value_namespace_prefix = name_space_prefix;
+        end = value;
+        end.value_namespace = name_space;
+        end.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ifhandle")
+    if(value_path == "start")
     {
-        ifhandle = value;
-        ifhandle.value_namespace = name_space;
-        ifhandle.value_namespace_prefix = name_space_prefix;
+        start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "intf-name")
+    if(value_path == "time-taken")
     {
-        intf_name = value;
-        intf_name.value_namespace = name_space;
-        intf_name.value_namespace_prefix = name_space_prefix;
+        time_taken = value;
+        time_taken.value_namespace = name_space;
+        time_taken.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time = value;
+        worst_time.value_namespace = name_space;
+        worst_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Coherent::Nodes::Node::Devicemapping::DevMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "device-address")
+    if(value_path == "end")
     {
-        device_address.yfilter = yfilter;
+        end.yfilter = yfilter;
     }
-    if(value_path == "ifhandle")
+    if(value_path == "start")
     {
-        ifhandle.yfilter = yfilter;
+        start.yfilter = yfilter;
     }
-    if(value_path == "intf-name")
+    if(value_path == "time-taken")
     {
-        intf_name.yfilter = yfilter;
+        time_taken.yfilter = yfilter;
+    }
+    if(value_path == "worst-time")
+    {
+        worst_time.yfilter = yfilter;
     }
 }
 
-bool Coherent::Nodes::Node::Devicemapping::DevMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "device-address" || name == "ifhandle" || name == "intf-name")
+    if(name == "end" || name == "start" || name == "time-taken" || name == "worst-time")
         return true;
     return false;
 }
@@ -2664,7 +2220,8 @@ Coherent::Nodes::Node::Coherenthealth::Coherenthealth()
     sysdb_state{YType::boolean, "sysdb-state"},
     vether_state{YType::boolean, "vether-state"}
 {
-    yang_name = "coherenthealth"; yang_parent_name = "node";
+
+    yang_name = "coherenthealth"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::Coherenthealth::~Coherenthealth()
@@ -2742,23 +2299,11 @@ std::string Coherent::Nodes::Node::Coherenthealth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "coherenthealth";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Coherenthealth::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthealth::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Coherenthealth' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (aipc_srvr_state.is_set || is_set(aipc_srvr_state.yfilter)) leaf_name_data.push_back(aipc_srvr_state.get_name_leafdata());
@@ -2786,9 +2331,7 @@ const EntityPath Coherent::Nodes::Node::Coherenthealth::get_entity_path(Entity* 
     if (sysdb_state.is_set || is_set(sysdb_state.yfilter)) leaf_name_data.push_back(sysdb_state.get_name_leafdata());
     if (vether_state.is_set || is_set(vether_state.yfilter)) leaf_name_data.push_back(vether_state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3083,17 +2626,17 @@ Coherent::Nodes::Node::Coherenthealth::PortData::PortData()
     :
     cd_max_op_rc{YType::int32, "cd-max-op-rc"},
     cd_min_op_rc{YType::int32, "cd-min-op-rc"},
-    configured_cd_max{YType::uint32, "configured-cd-max"},
-    configured_cd_min{YType::uint32, "configured-cd-min"},
+    configured_cd_max{YType::str, "configured-cd-max"},
+    configured_cd_min{YType::str, "configured-cd-min"},
     configured_frequency{YType::uint32, "configured-frequency"},
-    configured_loopback_mode{YType::uint32, "configured-loopback-mode"},
-    configured_traffic_type{YType::uint32, "configured-traffic-type"},
-    configured_tx_power{YType::int32, "configured-tx-power"},
+    configured_loopback_mode{YType::str, "configured-loopback-mode"},
+    configured_traffic_type{YType::str, "configured-traffic-type"},
+    configured_tx_power{YType::str, "configured-tx-power"},
     ctp2_hw_alarms{YType::str, "ctp2-hw-alarms"},
     denali_hw_alarms{YType::str, "denali-hw-alarms"},
     dsp_admin_up{YType::boolean, "dsp-admin-up"},
     dsp_ctrl_created{YType::boolean, "dsp-ctrl-created"},
-    expected_ctp2_led_state{YType::int32, "expected-ctp2-led-state"},
+    expected_ctp2_led_state{YType::str, "expected-ctp2-led-state"},
     force_reprovision{YType::boolean, "force-reprovision"},
     fp_port_idx{YType::uint32, "fp-port-idx"},
     has_pluggable{YType::boolean, "has-pluggable"},
@@ -3110,13 +2653,13 @@ Coherent::Nodes::Node::Coherenthealth::PortData::PortData()
     optics_ctrl_created{YType::boolean, "optics-ctrl-created"},
     pm_port_state_dsp{YType::int32, "pm-port-state-dsp"},
     pm_port_state_opt{YType::int32, "pm-port-state-opt"},
-    provisioned_cd_max{YType::uint32, "provisioned-cd-max"},
-    provisioned_cd_min{YType::uint32, "provisioned-cd-min"},
-    provisioned_ctp2_led_state{YType::int32, "provisioned-ctp2-led-state"},
+    provisioned_cd_max{YType::str, "provisioned-cd-max"},
+    provisioned_cd_min{YType::str, "provisioned-cd-min"},
+    provisioned_ctp2_led_state{YType::str, "provisioned-ctp2-led-state"},
     provisioned_frequency{YType::uint32, "provisioned-frequency"},
-    provisioned_loopback_mode{YType::uint32, "provisioned-loopback-mode"},
-    provisioned_traffic_type{YType::uint32, "provisioned-traffic-type"},
-    provisioned_tx_power{YType::int32, "provisioned-tx-power"},
+    provisioned_loopback_mode{YType::str, "provisioned-loopback-mode"},
+    provisioned_traffic_type{YType::str, "provisioned-traffic-type"},
+    provisioned_tx_power{YType::str, "provisioned-tx-power"},
     provisioning_failed{YType::boolean, "provisioning-failed"},
     provisioning_needed{YType::boolean, "provisioning-needed"},
     rc_alarm_port_dsp{YType::int32, "rc-alarm-port-dsp"},
@@ -3133,10 +2676,9 @@ Coherent::Nodes::Node::Coherenthealth::PortData::PortData()
 	,interface_info(std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo>())
 {
     ctp_info->parent = this;
-
     interface_info->parent = this;
 
-    yang_name = "port-data"; yang_parent_name = "coherenthealth";
+    yang_name = "port-data"; yang_parent_name = "coherenthealth"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::Coherenthealth::PortData::~PortData()
@@ -3254,23 +2796,11 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "port-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthealth::PortData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortData' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cd_max_op_rc.is_set || is_set(cd_max_op_rc.yfilter)) leaf_name_data.push_back(cd_max_op_rc.get_name_leafdata());
@@ -3321,9 +2851,7 @@ const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::get_entity_pat
     if (tx_power_op_rc.is_set || is_set(tx_power_op_rc.yfilter)) leaf_name_data.push_back(tx_power_op_rc.get_name_leafdata());
     if (wlen_op_rc.is_set || is_set(wlen_op_rc.yfilter)) leaf_name_data.push_back(wlen_op_rc.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -3867,7 +3395,8 @@ Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::CtpInfo()
     vendorname{YType::str, "vendorname"},
     vid{YType::str, "vid"}
 {
-    yang_name = "ctp-info"; yang_parent_name = "port-data";
+
+    yang_name = "ctp-info"; yang_parent_name = "port-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::~CtpInfo()
@@ -3913,23 +3442,11 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ctp-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'CtpInfo' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (clei_code_number.is_set || is_set(clei_code_number.yfilter)) leaf_name_data.push_back(clei_code_number.get_name_leafdata());
@@ -3946,9 +3463,7 @@ const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_e
     if (vendorname.is_set || is_set(vendorname.yfilter)) leaf_name_data.push_back(vendorname.get_name_leafdata());
     if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4110,7 +3625,8 @@ bool Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::has_leaf_or_child
 
 Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::InterfaceInfo()
 {
-    yang_name = "interface-info"; yang_parent_name = "port-data";
+
+    yang_name = "interface-info"; yang_parent_name = "port-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::~InterfaceInfo()
@@ -4141,29 +3657,15 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceInfo' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4216,13 +3718,14 @@ bool Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::has_leaf_or
 
 Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::EthData()
     :
-    admin_state{YType::uint32, "admin-state"},
+    admin_state{YType::str, "admin-state"},
     admin_up{YType::boolean, "admin-up"},
     ifname{YType::str, "ifname"},
-    intf_handle{YType::uint32, "intf-handle"},
+    intf_handle{YType::str, "intf-handle"},
     is_created{YType::boolean, "is-created"}
 {
-    yang_name = "eth-data"; yang_parent_name = "interface-info";
+
+    yang_name = "eth-data"; yang_parent_name = "interface-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::~EthData()
@@ -4252,23 +3755,11 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthD
 {
     std::ostringstream path_buffer;
     path_buffer << "eth-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EthData' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
@@ -4277,9 +3768,7 @@ const EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo:
     if (intf_handle.is_set || is_set(intf_handle.yfilter)) leaf_name_data.push_back(intf_handle.get_name_leafdata());
     if (is_created.is_set || is_set(is_created.yfilter)) leaf_name_data.push_back(is_created.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4359,11 +3848,223 @@ bool Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::ha
     return false;
 }
 
+Coherent::Nodes::Node::Devicemapping::Devicemapping()
+    :
+    idx{YType::uint32, "idx"}
+{
+
+    yang_name = "devicemapping"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::Devicemapping::~Devicemapping()
+{
+}
+
+bool Coherent::Nodes::Node::Devicemapping::has_data() const
+{
+    for (std::size_t index=0; index<dev_map.size(); index++)
+    {
+        if(dev_map[index]->has_data())
+            return true;
+    }
+    return idx.is_set;
+}
+
+bool Coherent::Nodes::Node::Devicemapping::has_operation() const
+{
+    for (std::size_t index=0; index<dev_map.size(); index++)
+    {
+        if(dev_map[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(idx.yfilter);
+}
+
+std::string Coherent::Nodes::Node::Devicemapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "devicemapping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Devicemapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (idx.is_set || is_set(idx.yfilter)) leaf_name_data.push_back(idx.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dev-map")
+    {
+        for(auto const & c : dev_map)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Coherent::Nodes::Node::Devicemapping::DevMap>();
+        c->parent = this;
+        dev_map.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : dev_map)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Coherent::Nodes::Node::Devicemapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "idx")
+    {
+        idx = value;
+        idx.value_namespace = name_space;
+        idx.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::Devicemapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "idx")
+    {
+        idx.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::Devicemapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dev-map" || name == "idx")
+        return true;
+    return false;
+}
+
+Coherent::Nodes::Node::Devicemapping::DevMap::DevMap()
+    :
+    device_address{YType::str, "device-address"},
+    ifhandle{YType::str, "ifhandle"},
+    intf_name{YType::str, "intf-name"}
+{
+
+    yang_name = "dev-map"; yang_parent_name = "devicemapping"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Coherent::Nodes::Node::Devicemapping::DevMap::~DevMap()
+{
+}
+
+bool Coherent::Nodes::Node::Devicemapping::DevMap::has_data() const
+{
+    return device_address.is_set
+	|| ifhandle.is_set
+	|| intf_name.is_set;
+}
+
+bool Coherent::Nodes::Node::Devicemapping::DevMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(device_address.yfilter)
+	|| ydk::is_set(ifhandle.yfilter)
+	|| ydk::is_set(intf_name.yfilter);
+}
+
+std::string Coherent::Nodes::Node::Devicemapping::DevMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dev-map";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Devicemapping::DevMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (device_address.is_set || is_set(device_address.yfilter)) leaf_name_data.push_back(device_address.get_name_leafdata());
+    if (ifhandle.is_set || is_set(ifhandle.yfilter)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
+    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::DevMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::DevMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Coherent::Nodes::Node::Devicemapping::DevMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "device-address")
+    {
+        device_address = value;
+        device_address.value_namespace = name_space;
+        device_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ifhandle")
+    {
+        ifhandle = value;
+        ifhandle.value_namespace = name_space;
+        ifhandle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "intf-name")
+    {
+        intf_name = value;
+        intf_name.value_namespace = name_space;
+        intf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Coherent::Nodes::Node::Devicemapping::DevMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-address")
+    {
+        device_address.yfilter = yfilter;
+    }
+    if(value_path == "ifhandle")
+    {
+        ifhandle.yfilter = yfilter;
+    }
+    if(value_path == "intf-name")
+    {
+        intf_name.yfilter = yfilter;
+    }
+}
+
+bool Coherent::Nodes::Node::Devicemapping::DevMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "device-address" || name == "ifhandle" || name == "intf-name")
+        return true;
+    return false;
+}
+
 Coherent::Nodes::Node::PortModeAllInfo::PortModeAllInfo()
     :
-    num_entries{YType::uint32, "num-entries"}
+    idx{YType::uint32, "idx"}
 {
-    yang_name = "port-mode-all-info"; yang_parent_name = "node";
+
+    yang_name = "port-mode-all-info"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::PortModeAllInfo::~PortModeAllInfo()
@@ -4377,7 +4078,7 @@ bool Coherent::Nodes::Node::PortModeAllInfo::has_data() const
         if(portmode_entry[index]->has_data())
             return true;
     }
-    return num_entries.is_set;
+    return idx.is_set;
 }
 
 bool Coherent::Nodes::Node::PortModeAllInfo::has_operation() const
@@ -4388,37 +4089,23 @@ bool Coherent::Nodes::Node::PortModeAllInfo::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(num_entries.yfilter);
+	|| ydk::is_set(idx.yfilter);
 }
 
 std::string Coherent::Nodes::Node::PortModeAllInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-mode-all-info";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::PortModeAllInfo::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::PortModeAllInfo::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortModeAllInfo' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_entries.is_set || is_set(num_entries.yfilter)) leaf_name_data.push_back(num_entries.get_name_leafdata());
+    if (idx.is_set || is_set(idx.yfilter)) leaf_name_data.push_back(idx.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -4456,25 +4143,25 @@ std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::PortModeAl
 
 void Coherent::Nodes::Node::PortModeAllInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "num-entries")
+    if(value_path == "idx")
     {
-        num_entries = value;
-        num_entries.value_namespace = name_space;
-        num_entries.value_namespace_prefix = name_space_prefix;
+        idx = value;
+        idx.value_namespace = name_space;
+        idx.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Coherent::Nodes::Node::PortModeAllInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "num-entries")
+    if(value_path == "idx")
     {
-        num_entries.yfilter = yfilter;
+        idx.yfilter = yfilter;
     }
 }
 
 bool Coherent::Nodes::Node::PortModeAllInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "portmode-entry" || name == "num-entries")
+    if(name == "portmode-entry" || name == "idx")
         return true;
     return false;
 }
@@ -4487,7 +4174,8 @@ Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::PortmodeEntry()
     modulation{YType::str, "modulation"},
     speed{YType::str, "speed"}
 {
-    yang_name = "portmode-entry"; yang_parent_name = "port-mode-all-info";
+
+    yang_name = "portmode-entry"; yang_parent_name = "port-mode-all-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::~PortmodeEntry()
@@ -4517,23 +4205,11 @@ std::string Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "portmode-entry";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PortmodeEntry' in Cisco_IOS_XR_ncs5500_coherent_node_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (diff.is_set || is_set(diff.yfilter)) leaf_name_data.push_back(diff.get_name_leafdata());
@@ -4542,9 +4218,7 @@ const EntityPath Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_enti
     if (modulation.is_set || is_set(modulation.yfilter)) leaf_name_data.push_back(modulation.get_name_leafdata());
     if (speed.is_set || is_set(speed.yfilter)) leaf_name_data.push_back(speed.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

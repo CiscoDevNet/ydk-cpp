@@ -43,10 +43,17 @@ namespace ydk
 
 map<pair<string, string>, string> NetconfSSHClient::password_lookup;
 
-NetconfSSHClient::NetconfSSHClient(string  username, string  password,
-        string  hostname, int port) :
+NetconfSSHClient::NetconfSSHClient(
+    string username,
+    string password,
+    string hostname,
+    int port,
+    int timeout) :
         NetconfClient(),
-        username(username), hostname(hostname), port(port)
+        username(username),
+        hostname(hostname),
+        port(port),
+        timeout(timeout)
 {
     nc_verbosity(NC_VERB_DEBUG);
     nc_callback_print(clb_print);
@@ -98,13 +105,22 @@ string NetconfSSHClient::execute_payload(const string & payload)
     nc_reply *reply;
     nc_rpc *rpc = build_rpc_request(payload);
 
-    NC_MSG_TYPE reply_type = nc_session_send_recv(session, rpc, &reply);
-    string reply_payload = process_rpc_reply(reply_type, reply);
+    YLOG_DEBUG("Netconf SSH Client: sending rpc");
+    const nc_msgid msgid = nc_session_send_rpc(session, rpc);
+    if (msgid == NULL) {
+        YLOG_ERROR("Could not send payload {}", payload );
+        throw(YCPPClientError{"Could not send payload"});
+    }
+
+    YLOG_DEBUG("Netconf SSH Client: receiving rpc");
+    NC_MSG_TYPE msg_type = nc_session_recv_reply(session, timeout, &reply);
+    YLOG_DEBUG("Netconf SSH Client: processing reply");
+    string receive_msg = process_rpc_reply(msg_type, reply);
 
     nc_reply_free(reply);
     nc_rpc_free(rpc);
 
-    return reply_payload;
+    return receive_msg;
 }
 
 NetconfSSHClient::~NetconfSSHClient()
@@ -118,21 +134,25 @@ nc_rpc* NetconfSSHClient::build_rpc_request(const string & payload)
 
     if (rpc == NULL)
     {
-          YLOG_ERROR("Could not build rpc payload: {}", payload );
-          throw(YCPPClientError{"Could not build payload"});
+        YLOG_ERROR("Could not build rpc payload: {}", payload );
+        throw(YCPPClientError{"Could not build payload"});
     }
     return rpc;
 }
 
-string NetconfSSHClient::process_rpc_reply(int reply_type, const nc_reply* reply)
+string NetconfSSHClient::process_rpc_reply(int msg_type, const nc_rpc* reply)
 {
-    switch (reply_type)
+    switch (msg_type)
     {
         case NC_MSG_REPLY:
-            return nc_reply_dump(reply);
+            return nc_rpc_dump(reply);
+        case NC_MSG_HELLO:
+            return nc_rpc_dump(reply);
 
         default:
-        case NC_MSG_NONE:
+        case NC_MSG_WOULDBLOCK:
+            YLOG_ERROR("Connection timed out");
+            throw(YCPPClientError{"Connection timed out"});
         case NC_MSG_UNKNOWN:
             YLOG_ERROR("RPC error occurred");
             throw(YCPPClientError{"RPC error occured"});

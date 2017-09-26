@@ -28,17 +28,21 @@
 #ifndef YDK_CORE_HPP
 #define YDK_CORE_HPP
 
-#include <string>
-#include <memory>
-#include <vector>
 #include <algorithm>
+#include <memory>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
 #include "errors.hpp"
 #include "types.hpp"
 #include "validation_service.hpp"
 
 namespace ydk {
+
+class NetconfClient;
+class RestconfClient;
+
 namespace path {
 
 ///
@@ -48,7 +52,7 @@ namespace path {
 ///
 /// @section about-features Main Features
 ///
-/// - A ServiceProvider interface for ServiceProviders
+/// - A Session interface for Sessions
 /// - A Repository class to help create a SchemaNode Tree based on capabilities.
 /// - Creation of DataNode Tree's for config and oper
 /// - Create and Invoke RPC's
@@ -84,7 +88,7 @@ namespace path {
 /// @page howto How To ...
 ///
 /// - @subpage howtoErrors
-/// - @subpage howtoserviceprovider
+/// - @subpage howtosession
 /// - @subpage howtoschemas
 /// - @subpage howtodata
 /// - @subpage howtomemory
@@ -101,14 +105,12 @@ namespace path {
 ///
 
 ///
-/// @page howtoserviceprovider ServiceProvider.
-/// A ServiceProvider extends the class ydk::ServiceProvider
+/// @page howtosession Session.
+/// A Session extends the class ydk::Session
 /// and provides an interface to obtain the root SchemaTree
 /// based on the set of Capability(s) supported by it.
 ///
-/// The ServiceProvider is also responsible for Servicing RPC's.
-///
-/// @section ServiceProvider Errors
+/// @section Session Errors
 /// TODO
 ///
 /// @section Capability
@@ -117,9 +119,6 @@ namespace path {
 /// - revision
 /// - set of enabled features
 /// - set of deviations active on this module
-///
-/// @note to ServiceProvider implementors
-/// Use the Repository class to instantiate a SchemaTree based on the Capabilities.
 ///
 ///
 
@@ -209,9 +208,9 @@ namespace path {
 ///
 /// The input DataNode can be obtained using Rpc#input. This can be used to populate/create the child
 /// nodes of input as per this rpc's schema.
-/// The Rpc is a callable that takes  a single argument which is the ServiceProvider. To invoke the rpc
+/// The Rpc is a callable that takes  a single argument which is the Session. To invoke the rpc
 /// do this
-/// auto config = get_config(sp); /// sp is a service provider
+/// auto config = get_config(session);
 /// The config variable above is the DataNode representing the output of the rpc
 ///
 ///
@@ -902,7 +901,7 @@ class ModelProvider {
 ///
 /// A instance of the Repository will be used to create a RootSchemaNode given a set of Capabilities.
 /// Behind the scenes the repository is responsible for loading and parsing the YANG modules and
-/// creating the SchemaNode tree. ServiceProviders are expected to use the Repository#create_root_schema
+/// creating the SchemaNode tree. Sessions are expected to use the Repository#create_root_schema
 /// to generate the RootSchemaNode.
 ///
 class Repository {
@@ -936,9 +935,9 @@ public:
     /// @param[in] capabilities vector of Capability
     /// @return pointer to the RootSchemaNode or nullptr if one could not be created.
     ///
-    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<path::Capability> & capabilities);
-    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<std::unordered_map<std::string, path::Capability>>& lookup_tables,
-                                                       const std::vector<path::Capability> &caps_to_load);
+    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<Capability> & capabilities);
+    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<std::unordered_map<std::string, Capability>>& lookup_tables,
+                                                       const std::vector<Capability> &caps_to_load);
 
     ///
     /// @brief Adds a model provider.
@@ -972,33 +971,25 @@ public:
     std::string path;
  private:
     std::vector<ModelProvider*> model_providers;
-    bool using_temp_directory;
 
     // class Repository is the resource manager class for RepositoryPtr,
     // which is shared by all DataNode/SchemaNode/RootDataNode/RootSchemaNode
     std::shared_ptr<RepositoryPtr> m_priv_repo;
 };
 
-
-///
-/// @brief Interface for all ServiceProvider implementations
-///
-/// Concretes instances of ServiceProviders are expected to extend this interface.
-///
-class ServiceProvider
+/// @note to Session implementors
+/// Use the Repository class to instantiate a SchemaTree based on the Capabilities.
+class Session
 {
 public:
+    virtual ~Session();
+
     ///
-    /// @brief return the SchemaTree supported by this instance of the ServiceProvider
+    /// @brief return the SchemaTree supported by this instance of the Session
     ///
     /// @return pointer to the RootSchemaNode or nullptr if one could not be created
     ///
     virtual RootSchemaNode& get_root_schema() const = 0;
-
-
-    virtual ~ServiceProvider();
-
-    virtual EncodingFormat get_encoding() const = 0;
 
     ///
     /// @brief invoke the Rpc
@@ -1010,8 +1001,93 @@ public:
     /// @return The pointer to the DataNode representing the output.
     ///
     virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const = 0 ;
-
 };
+
+class NetconfSession : public Session {
+public:
+    NetconfSession(Repository & repo,
+                   const std::string& address,
+                   const std::string& username,
+                   const std::string& password,
+                   int port = 830,
+                   const std::string& protocol = "ssh",
+                   bool on_demand = true,
+                   int timeout = -1);
+
+    NetconfSession(const std::string& address,
+                   const std::string& username,
+                   const std::string& password,
+                   int port = 830,
+                   const std::string& protocol = "ssh",
+                   bool on_demand = true,
+                   bool common_cache = false,
+                   int timeout = -1);
+
+    virtual ~NetconfSession();
+
+    virtual RootSchemaNode& get_root_schema() const;
+    virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+    std::vector<std::string> get_capabilities() const;
+
+private:
+    std::shared_ptr<DataNode> handle_edit(
+        Rpc& rpc, Annotation ann) const;
+    std::shared_ptr<DataNode> handle_read(Rpc& rpc) const;
+    std::shared_ptr<DataNode> handle_netconf_operation(Rpc& ydk_rpc) const;
+    void initialize(Repository& repo, bool on_demand);
+    void initialize_client(const std::string& address,
+                           const std::string& username,
+                           const std::string& password,
+                           int port,
+                           const std::string& protocol,
+                           int timeout);
+    std::string execute_payload(const std::string & payload) const;
+private:
+    std::unique_ptr<NetconfClient> client;
+    std::unique_ptr<ModelProvider> model_provider;
+    std::shared_ptr<RootSchemaNode> root_schema;
+    std::vector<std::string> server_capabilities;
+};
+
+
+class RestconfSession : public Session {
+public:
+    RestconfSession(Repository & repo,
+                    const std::string & address,
+                    const std::string & username,
+                    const std::string & password,
+                    int port = 80,
+                    EncodingFormat encoding = EncodingFormat::JSON,
+                    const std::string & config_url_root = "/data",
+                    const std::string & state_url_root = "/data");
+
+    RestconfSession(std::shared_ptr<RestconfClient> client,
+                    const std::shared_ptr<RootSchemaNode>& root_schema,
+                    const std::string & edit_method,
+                    EncodingFormat encoding,
+                    const std::string & config_url_root,
+                    const std::string & state_url_root);
+
+    virtual ~RestconfSession();
+
+    virtual RootSchemaNode& get_root_schema() const;
+    virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+
+private:
+    void initialize(Repository & repo);
+    std::shared_ptr<DataNode> handle_edit(Rpc& rpc, const std::string & yfilter) const;
+    std::shared_ptr<DataNode> handle_read(Rpc& rpc) const;
+private:
+        std::shared_ptr<RestconfClient> client;
+        std::shared_ptr<RootSchemaNode> root_schema;
+        std::vector<std::string> server_capabilities;
+
+        EncodingFormat encoding;
+        std::string edit_method;
+        std::string config_url_root;
+        std::string state_url_root;
+};
+
 
 ///
 ///
@@ -1020,7 +1096,7 @@ public:
 /// Instances of this class represent a YANG rpc and are modelled as Callables.
 /// The input data node tree is used to populate the input parameters to the rpc
 /// if any.
-/// The Callable takes as a parameter the ServiceProvider that can execute this rpc
+/// The Callable takes as a parameter the Session that can execute this rpc
 /// as its parameter returning a pointer to a DataNode tree if output is available
 ///
 class Rpc
@@ -1030,12 +1106,12 @@ public:
     virtual ~Rpc();
 
     ///
-    /// @brief execute/invoke the rpc through the given service provider.
+    /// @brief execute/invoke the rpc through the given session.
     ///
-    /// @param[in] sp The Service provider
+    /// @param[in] session The Session
     /// @areturn pointer to the DataNode or nullptr if none exists
     ///
-    virtual std::shared_ptr<DataNode> operator()(const ServiceProvider& provider) = 0;
+    virtual std::shared_ptr<DataNode> operator()(const Session& session) = 0;
 
     ///
     /// @brief get the input data tree

@@ -11,120 +11,133 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_platform_types {
 
-Openconfig_Software_Component::Openconfig_Software_Component()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPENCONFIG_SOFTWARE_COMPONENT")
-{
-}
-
-Openconfig_Software_Component::~Openconfig_Software_Component()
-{
-}
-
-Openconfig_Hardware_Component::Openconfig_Hardware_Component()
+OPENCONFIGHARDWARECOMPONENT::OPENCONFIGHARDWARECOMPONENT()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPENCONFIG_HARDWARE_COMPONENT")
 {
+
 }
 
-Openconfig_Hardware_Component::~Openconfig_Hardware_Component()
+OPENCONFIGHARDWARECOMPONENT::~OPENCONFIGHARDWARECOMPONENT()
 {
 }
 
-Transceiver::Transceiver()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:TRANSCEIVER")
+OPENCONFIGSOFTWARECOMPONENT::OPENCONFIGSOFTWARECOMPONENT()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPENCONFIG_SOFTWARE_COMPONENT")
+{
+
+}
+
+OPENCONFIGSOFTWARECOMPONENT::~OPENCONFIGSOFTWARECOMPONENT()
 {
 }
 
-Transceiver::~Transceiver()
-{
-}
-
-Backplane::Backplane()
+BACKPLANE::BACKPLANE()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:BACKPLANE")
 {
+
 }
 
-Backplane::~Backplane()
+BACKPLANE::~BACKPLANE()
 {
 }
 
-Power_Supply::Power_Supply()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:POWER_SUPPLY")
-{
-}
-
-Power_Supply::~Power_Supply()
-{
-}
-
-Operating_System::Operating_System()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPERATING_SYSTEM")
-{
-}
-
-Operating_System::~Operating_System()
-{
-}
-
-Cpu::Cpu()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CPU")
-{
-}
-
-Cpu::~Cpu()
-{
-}
-
-Module::Module()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:MODULE")
-{
-}
-
-Module::~Module()
-{
-}
-
-Chassis::Chassis()
+CHASSIS::CHASSIS()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CHASSIS")
 {
+
 }
 
-Chassis::~Chassis()
+CHASSIS::~CHASSIS()
 {
 }
 
-Fan::Fan()
+CPU::CPU()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CPU")
+{
+
+}
+
+CPU::~CPU()
+{
+}
+
+FAN::FAN()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:FAN")
 {
+
 }
 
-Fan::~Fan()
+FAN::~FAN()
 {
 }
 
-Linecard::Linecard()
+LINECARD::LINECARD()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:LINECARD")
 {
+
 }
 
-Linecard::~Linecard()
+LINECARD::~LINECARD()
 {
 }
 
-Port::Port()
+MODULE::MODULE()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:MODULE")
+{
+
+}
+
+MODULE::~MODULE()
+{
+}
+
+OPERATINGSYSTEM::OPERATINGSYSTEM()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPERATING_SYSTEM")
+{
+
+}
+
+OPERATINGSYSTEM::~OPERATINGSYSTEM()
+{
+}
+
+PORT::PORT()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:PORT")
 {
+
 }
 
-Port::~Port()
+PORT::~PORT()
 {
 }
 
-Sensor::Sensor()
+POWERSUPPLY::POWERSUPPLY()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:POWER_SUPPLY")
+{
+
+}
+
+POWERSUPPLY::~POWERSUPPLY()
+{
+}
+
+SENSOR::SENSOR()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:SENSOR")
 {
+
 }
 
-Sensor::~Sensor()
+SENSOR::~SENSOR()
+{
+}
+
+TRANSCEIVER::TRANSCEIVER()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:TRANSCEIVER")
+{
+
+}
+
+TRANSCEIVER::~TRANSCEIVER()
 {
 }
 

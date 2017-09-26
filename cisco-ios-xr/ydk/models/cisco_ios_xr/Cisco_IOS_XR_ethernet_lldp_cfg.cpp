@@ -22,7 +22,8 @@ Lldp::Lldp()
     	,
     tlv_select(nullptr) // presence node
 {
-    yang_name = "lldp"; yang_parent_name = "Cisco-IOS-XR-ethernet-lldp-cfg";
+
+    yang_name = "lldp"; yang_parent_name = "Cisco-IOS-XR-ethernet-lldp-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 Lldp::~Lldp()
@@ -56,20 +57,11 @@ std::string Lldp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lldp::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -79,9 +71,7 @@ const EntityPath Lldp::get_entity_path(Entity* ancestor) const
     if (reinit.is_set || is_set(reinit.yfilter)) leaf_name_data.push_back(reinit.get_name_leafdata());
     if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -221,16 +211,12 @@ Lldp::TlvSelect::TlvSelect()
 	,system_name(std::make_shared<Lldp::TlvSelect::SystemName>())
 {
     management_address->parent = this;
-
     port_description->parent = this;
-
     system_capabilities->parent = this;
-
     system_description->parent = this;
-
     system_name->parent = this;
 
-    yang_name = "tlv-select"; yang_parent_name = "lldp";
+    yang_name = "tlv-select"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lldp::TlvSelect::~TlvSelect()
@@ -258,34 +244,27 @@ bool Lldp::TlvSelect::has_operation() const
 	|| (system_name !=  nullptr && system_name->has_operation());
 }
 
+std::string Lldp::TlvSelect::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lldp::TlvSelect::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-select";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::TlvSelect::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (tlv_select_enter.is_set || is_set(tlv_select_enter.yfilter)) leaf_name_data.push_back(tlv_select_enter.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -395,71 +374,65 @@ bool Lldp::TlvSelect::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Lldp::TlvSelect::SystemName::SystemName()
+Lldp::TlvSelect::ManagementAddress::ManagementAddress()
     :
     disable{YType::boolean, "disable"}
 {
-    yang_name = "system-name"; yang_parent_name = "tlv-select";
+
+    yang_name = "management-address"; yang_parent_name = "tlv-select"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Lldp::TlvSelect::SystemName::~SystemName()
+Lldp::TlvSelect::ManagementAddress::~ManagementAddress()
 {
 }
 
-bool Lldp::TlvSelect::SystemName::has_data() const
+bool Lldp::TlvSelect::ManagementAddress::has_data() const
 {
     return disable.is_set;
 }
 
-bool Lldp::TlvSelect::SystemName::has_operation() const
+bool Lldp::TlvSelect::ManagementAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Lldp::TlvSelect::SystemName::get_segment_path() const
+std::string Lldp::TlvSelect::ManagementAddress::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "system-name";
-
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::TlvSelect::SystemName::get_entity_path(Entity* ancestor) const
+std::string Lldp::TlvSelect::ManagementAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "management-address";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::ManagementAddress::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -469,7 +442,7 @@ void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, cons
     }
 }
 
-void Lldp::TlvSelect::SystemName::set_filter(const std::string & value_path, YFilter yfilter)
+void Lldp::TlvSelect::ManagementAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -477,7 +450,7 @@ void Lldp::TlvSelect::SystemName::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool Lldp::TlvSelect::SystemName::has_leaf_or_child_of_name(const std::string & name) const
+bool Lldp::TlvSelect::ManagementAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;
@@ -488,7 +461,8 @@ Lldp::TlvSelect::PortDescription::PortDescription()
     :
     disable{YType::boolean, "disable"}
 {
-    yang_name = "port-description"; yang_parent_name = "tlv-select";
+
+    yang_name = "port-description"; yang_parent_name = "tlv-select"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lldp::TlvSelect::PortDescription::~PortDescription()
@@ -506,34 +480,27 @@ bool Lldp::TlvSelect::PortDescription::has_operation() const
 	|| ydk::is_set(disable.yfilter);
 }
 
+std::string Lldp::TlvSelect::PortDescription::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lldp::TlvSelect::PortDescription::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-description";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::TlvSelect::PortDescription::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::PortDescription::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -573,100 +540,12 @@ bool Lldp::TlvSelect::PortDescription::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-Lldp::TlvSelect::SystemDescription::SystemDescription()
-    :
-    disable{YType::boolean, "disable"}
-{
-    yang_name = "system-description"; yang_parent_name = "tlv-select";
-}
-
-Lldp::TlvSelect::SystemDescription::~SystemDescription()
-{
-}
-
-bool Lldp::TlvSelect::SystemDescription::has_data() const
-{
-    return disable.is_set;
-}
-
-bool Lldp::TlvSelect::SystemDescription::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Lldp::TlvSelect::SystemDescription::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "system-description";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Lldp::TlvSelect::SystemDescription::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Lldp::TlvSelect::SystemDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lldp::TlvSelect::SystemDescription::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Lldp::TlvSelect::SystemDescription::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable")
-        return true;
-    return false;
-}
-
 Lldp::TlvSelect::SystemCapabilities::SystemCapabilities()
     :
     disable{YType::boolean, "disable"}
 {
-    yang_name = "system-capabilities"; yang_parent_name = "tlv-select";
+
+    yang_name = "system-capabilities"; yang_parent_name = "tlv-select"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 Lldp::TlvSelect::SystemCapabilities::~SystemCapabilities()
@@ -684,34 +563,27 @@ bool Lldp::TlvSelect::SystemCapabilities::has_operation() const
 	|| ydk::is_set(disable.yfilter);
 }
 
+std::string Lldp::TlvSelect::SystemCapabilities::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string Lldp::TlvSelect::SystemCapabilities::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "system-capabilities";
-
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::TlvSelect::SystemCapabilities::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemCapabilities::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -751,71 +623,65 @@ bool Lldp::TlvSelect::SystemCapabilities::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Lldp::TlvSelect::ManagementAddress::ManagementAddress()
+Lldp::TlvSelect::SystemDescription::SystemDescription()
     :
     disable{YType::boolean, "disable"}
 {
-    yang_name = "management-address"; yang_parent_name = "tlv-select";
+
+    yang_name = "system-description"; yang_parent_name = "tlv-select"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Lldp::TlvSelect::ManagementAddress::~ManagementAddress()
+Lldp::TlvSelect::SystemDescription::~SystemDescription()
 {
 }
 
-bool Lldp::TlvSelect::ManagementAddress::has_data() const
+bool Lldp::TlvSelect::SystemDescription::has_data() const
 {
     return disable.is_set;
 }
 
-bool Lldp::TlvSelect::ManagementAddress::has_operation() const
+bool Lldp::TlvSelect::SystemDescription::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(disable.yfilter);
 }
 
-std::string Lldp::TlvSelect::ManagementAddress::get_segment_path() const
+std::string Lldp::TlvSelect::SystemDescription::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "management-address";
-
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
     return path_buffer.str();
-
 }
 
-const EntityPath Lldp::TlvSelect::ManagementAddress::get_entity_path(Entity* ancestor) const
+std::string Lldp::TlvSelect::SystemDescription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
+    path_buffer << "system-description";
+    return path_buffer.str();
+}
 
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemDescription::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lldp::TlvSelect::SystemDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
@@ -825,7 +691,7 @@ void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_pat
     }
 }
 
-void Lldp::TlvSelect::ManagementAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Lldp::TlvSelect::SystemDescription::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "disable")
     {
@@ -833,7 +699,90 @@ void Lldp::TlvSelect::ManagementAddress::set_filter(const std::string & value_pa
     }
 }
 
-bool Lldp::TlvSelect::ManagementAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Lldp::TlvSelect::SystemDescription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Lldp::TlvSelect::SystemName::SystemName()
+    :
+    disable{YType::boolean, "disable"}
+{
+
+    yang_name = "system-name"; yang_parent_name = "tlv-select"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Lldp::TlvSelect::SystemName::~SystemName()
+{
+}
+
+bool Lldp::TlvSelect::SystemName::has_data() const
+{
+    return disable.is_set;
+}
+
+bool Lldp::TlvSelect::SystemName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Lldp::TlvSelect::SystemName::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-lldp-cfg:lldp/tlv-select/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lldp::TlvSelect::SystemName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "system-name";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lldp::TlvSelect::SystemName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::SystemName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
         return true;

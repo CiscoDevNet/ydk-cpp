@@ -17,7 +17,7 @@ MdtOperData::MdtOperData()
 {
     mdt_streams->parent = this;
 
-    yang_name = "mdt-oper-data"; yang_parent_name = "Cisco-IOS-XE-mdt-oper";
+    yang_name = "mdt-oper-data"; yang_parent_name = "Cisco-IOS-XE-mdt-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 MdtOperData::~MdtOperData()
@@ -59,26 +59,15 @@ std::string MdtOperData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtOperData::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtOperData::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -189,11 +178,286 @@ bool MdtOperData::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+MdtOperData::MdtConnections::MdtConnections()
+    :
+    address{YType::str, "address"},
+    port{YType::uint16, "port"},
+    peer_id{YType::str, "peer-id"},
+    state{YType::enumeration, "state"},
+    transport{YType::str, "transport"}
+{
+
+    yang_name = "mdt-connections"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+MdtOperData::MdtConnections::~MdtConnections()
+{
+}
+
+bool MdtOperData::MdtConnections::has_data() const
+{
+    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
+    {
+        if(mdt_sub_con_stats[index]->has_data())
+            return true;
+    }
+    return address.is_set
+	|| port.is_set
+	|| peer_id.is_set
+	|| state.is_set
+	|| transport.is_set;
+}
+
+bool MdtOperData::MdtConnections::has_operation() const
+{
+    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
+    {
+        if(mdt_sub_con_stats[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(peer_id.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(transport.yfilter);
+}
+
+std::string MdtOperData::MdtConnections::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MdtOperData::MdtConnections::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mdt-connections" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtConnections::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MdtOperData::MdtConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mdt-sub-con-stats")
+    {
+        for(auto const & c : mdt_sub_con_stats)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<MdtOperData::MdtConnections::MdtSubConStats>();
+        c->parent = this;
+        mdt_sub_con_stats.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : mdt_sub_con_stats)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void MdtOperData::MdtConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-id")
+    {
+        peer_id = value;
+        peer_id.value_namespace = name_space;
+        peer_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transport")
+    {
+        transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "peer-id")
+    {
+        peer_id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+}
+
+bool MdtOperData::MdtConnections::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "peer-id" || name == "state" || name == "transport")
+        return true;
+    return false;
+}
+
+MdtOperData::MdtConnections::MdtSubConStats::MdtSubConStats()
+    :
+    sub_id{YType::uint32, "sub-id"},
+    updates_dropped{YType::uint64, "updates-dropped"},
+    updates_sent{YType::uint64, "updates-sent"}
+{
+
+    yang_name = "mdt-sub-con-stats"; yang_parent_name = "mdt-connections"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+MdtOperData::MdtConnections::MdtSubConStats::~MdtSubConStats()
+{
+}
+
+bool MdtOperData::MdtConnections::MdtSubConStats::has_data() const
+{
+    return sub_id.is_set
+	|| updates_dropped.is_set
+	|| updates_sent.is_set;
+}
+
+bool MdtOperData::MdtConnections::MdtSubConStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sub_id.yfilter)
+	|| ydk::is_set(updates_dropped.yfilter)
+	|| ydk::is_set(updates_sent.yfilter);
+}
+
+std::string MdtOperData::MdtConnections::MdtSubConStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mdt-sub-con-stats" <<"[sub-id='" <<sub_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtConnections::MdtSubConStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sub_id.is_set || is_set(sub_id.yfilter)) leaf_name_data.push_back(sub_id.get_name_leafdata());
+    if (updates_dropped.is_set || is_set(updates_dropped.yfilter)) leaf_name_data.push_back(updates_dropped.get_name_leafdata());
+    if (updates_sent.is_set || is_set(updates_sent.yfilter)) leaf_name_data.push_back(updates_sent.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MdtOperData::MdtConnections::MdtSubConStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::MdtSubConStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void MdtOperData::MdtConnections::MdtSubConStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sub-id")
+    {
+        sub_id = value;
+        sub_id.value_namespace = name_space;
+        sub_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "updates-dropped")
+    {
+        updates_dropped = value;
+        updates_dropped.value_namespace = name_space;
+        updates_dropped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "updates-sent")
+    {
+        updates_sent = value;
+        updates_sent.value_namespace = name_space;
+        updates_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MdtOperData::MdtConnections::MdtSubConStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sub-id")
+    {
+        sub_id.yfilter = yfilter;
+    }
+    if(value_path == "updates-dropped")
+    {
+        updates_dropped.yfilter = yfilter;
+    }
+    if(value_path == "updates-sent")
+    {
+        updates_sent.yfilter = yfilter;
+    }
+}
+
+bool MdtOperData::MdtConnections::MdtSubConStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sub-id" || name == "updates-dropped" || name == "updates-sent")
+        return true;
+    return false;
+}
+
 MdtOperData::MdtStreams::MdtStreams()
     :
     stream{YType::str, "stream"}
 {
-    yang_name = "mdt-streams"; yang_parent_name = "mdt-oper-data";
+
+    yang_name = "mdt-streams"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MdtOperData::MdtStreams::~MdtStreams()
@@ -221,35 +485,28 @@ bool MdtOperData::MdtStreams::has_operation() const
 	|| ydk::is_set(stream.yfilter);
 }
 
+std::string MdtOperData::MdtStreams::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MdtOperData::MdtStreams::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mdt-streams";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtOperData::MdtStreams::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtStreams::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
     auto stream_name_datas = stream.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), stream_name_datas.begin(), stream_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -301,7 +558,7 @@ MdtOperData::MdtSubscriptions::MdtSubscriptions()
 {
     base->parent = this;
 
-    yang_name = "mdt-subscriptions"; yang_parent_name = "mdt-oper-data";
+    yang_name = "mdt-subscriptions"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 MdtOperData::MdtSubscriptions::~MdtSubscriptions()
@@ -343,27 +600,22 @@ bool MdtOperData::MdtSubscriptions::has_operation() const
 	|| (base !=  nullptr && base->has_operation());
 }
 
+std::string MdtOperData::MdtSubscriptions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string MdtOperData::MdtSubscriptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mdt-subscriptions" <<"[subscription-id='" <<subscription_id <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtOperData::MdtSubscriptions::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (subscription_id.is_set || is_set(subscription_id.yfilter)) leaf_name_data.push_back(subscription_id.get_name_leafdata());
@@ -374,9 +626,7 @@ const EntityPath MdtOperData::MdtSubscriptions::get_entity_path(Entity* ancestor
     if (updates_dropped.is_set || is_set(updates_dropped.yfilter)) leaf_name_data.push_back(updates_dropped.get_name_leafdata());
     if (updates_in.is_set || is_set(updates_in.yfilter)) leaf_name_data.push_back(updates_in.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -521,7 +771,8 @@ MdtOperData::MdtSubscriptions::Base::Base()
     stream{YType::str, "stream"},
     xpath{YType::str, "xpath"}
 {
-    yang_name = "base"; yang_parent_name = "mdt-subscriptions";
+
+    yang_name = "base"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MdtOperData::MdtSubscriptions::Base::~Base()
@@ -555,23 +806,11 @@ std::string MdtOperData::MdtSubscriptions::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtOperData::MdtSubscriptions::Base::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::Base::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Base' in Cisco_IOS_XE_mdt_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
@@ -582,9 +821,7 @@ const EntityPath MdtOperData::MdtSubscriptions::Base::get_entity_path(Entity* an
     if (stream.is_set || is_set(stream.yfilter)) leaf_name_data.push_back(stream.get_name_leafdata());
     if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -692,7 +929,8 @@ MdtOperData::MdtSubscriptions::MdtReceivers::MdtReceivers()
     protocol{YType::str, "protocol"},
     state{YType::enumeration, "state"}
 {
-    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscriptions";
+
+    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 MdtOperData::MdtSubscriptions::MdtReceivers::~MdtReceivers()
@@ -722,23 +960,11 @@ std::string MdtOperData::MdtSubscriptions::MdtReceivers::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "mdt-receivers" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath MdtOperData::MdtSubscriptions::MdtReceivers::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::MdtReceivers::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MdtReceivers' in Cisco_IOS_XE_mdt_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
@@ -747,9 +973,7 @@ const EntityPath MdtOperData::MdtSubscriptions::MdtReceivers::get_entity_path(En
     if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -829,311 +1053,18 @@ bool MdtOperData::MdtSubscriptions::MdtReceivers::has_leaf_or_child_of_name(cons
     return false;
 }
 
-MdtOperData::MdtConnections::MdtConnections()
-    :
-    address{YType::str, "address"},
-    port{YType::uint16, "port"},
-    peer_id{YType::str, "peer-id"},
-    state{YType::enumeration, "state"},
-    transport{YType::str, "transport"}
-{
-    yang_name = "mdt-connections"; yang_parent_name = "mdt-oper-data";
-}
-
-MdtOperData::MdtConnections::~MdtConnections()
-{
-}
-
-bool MdtOperData::MdtConnections::has_data() const
-{
-    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
-    {
-        if(mdt_sub_con_stats[index]->has_data())
-            return true;
-    }
-    return address.is_set
-	|| port.is_set
-	|| peer_id.is_set
-	|| state.is_set
-	|| transport.is_set;
-}
-
-bool MdtOperData::MdtConnections::has_operation() const
-{
-    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
-    {
-        if(mdt_sub_con_stats[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(peer_id.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(transport.yfilter);
-}
-
-std::string MdtOperData::MdtConnections::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mdt-connections" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MdtOperData::MdtConnections::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-mdt-oper:mdt-oper-data/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MdtOperData::MdtConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mdt-sub-con-stats")
-    {
-        for(auto const & c : mdt_sub_con_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<MdtOperData::MdtConnections::MdtSubConStats>();
-        c->parent = this;
-        mdt_sub_con_stats.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mdt_sub_con_stats)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void MdtOperData::MdtConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peer-id")
-    {
-        peer_id = value;
-        peer_id.value_namespace = name_space;
-        peer_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "transport")
-    {
-        transport = value;
-        transport.value_namespace = name_space;
-        transport.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "peer-id")
-    {
-        peer_id.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "transport")
-    {
-        transport.yfilter = yfilter;
-    }
-}
-
-bool MdtOperData::MdtConnections::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "peer-id" || name == "state" || name == "transport")
-        return true;
-    return false;
-}
-
-MdtOperData::MdtConnections::MdtSubConStats::MdtSubConStats()
-    :
-    sub_id{YType::uint32, "sub-id"},
-    updates_dropped{YType::uint64, "updates-dropped"},
-    updates_sent{YType::uint64, "updates-sent"}
-{
-    yang_name = "mdt-sub-con-stats"; yang_parent_name = "mdt-connections";
-}
-
-MdtOperData::MdtConnections::MdtSubConStats::~MdtSubConStats()
-{
-}
-
-bool MdtOperData::MdtConnections::MdtSubConStats::has_data() const
-{
-    return sub_id.is_set
-	|| updates_dropped.is_set
-	|| updates_sent.is_set;
-}
-
-bool MdtOperData::MdtConnections::MdtSubConStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sub_id.yfilter)
-	|| ydk::is_set(updates_dropped.yfilter)
-	|| ydk::is_set(updates_sent.yfilter);
-}
-
-std::string MdtOperData::MdtConnections::MdtSubConStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mdt-sub-con-stats" <<"[sub-id='" <<sub_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath MdtOperData::MdtConnections::MdtSubConStats::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MdtSubConStats' in Cisco_IOS_XE_mdt_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sub_id.is_set || is_set(sub_id.yfilter)) leaf_name_data.push_back(sub_id.get_name_leafdata());
-    if (updates_dropped.is_set || is_set(updates_dropped.yfilter)) leaf_name_data.push_back(updates_dropped.get_name_leafdata());
-    if (updates_sent.is_set || is_set(updates_sent.yfilter)) leaf_name_data.push_back(updates_sent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> MdtOperData::MdtConnections::MdtSubConStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::MdtSubConStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void MdtOperData::MdtConnections::MdtSubConStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sub-id")
-    {
-        sub_id = value;
-        sub_id.value_namespace = name_space;
-        sub_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "updates-dropped")
-    {
-        updates_dropped = value;
-        updates_dropped.value_namespace = name_space;
-        updates_dropped.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "updates-sent")
-    {
-        updates_sent = value;
-        updates_sent.value_namespace = name_space;
-        updates_sent.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MdtOperData::MdtConnections::MdtSubConStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sub-id")
-    {
-        sub_id.yfilter = yfilter;
-    }
-    if(value_path == "updates-dropped")
-    {
-        updates_dropped.yfilter = yfilter;
-    }
-    if(value_path == "updates-sent")
-    {
-        updates_sent.yfilter = yfilter;
-    }
-}
-
-bool MdtOperData::MdtConnections::MdtSubConStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sub-id" || name == "updates-dropped" || name == "updates-sent")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf MdtSubType::sub_type_dynamic {1, "sub-type-dynamic"};
 const Enum::YLeaf MdtSubType::sub_type_static {2, "sub-type-static"};
-
-const Enum::YLeaf MdtConState::con_state_active {0, "con-state-active"};
-const Enum::YLeaf MdtConState::con_state_connecting {1, "con-state-connecting"};
-const Enum::YLeaf MdtConState::con_state_pending {2, "con-state-pending"};
-const Enum::YLeaf MdtConState::con_state_disconnecting {3, "con-state-disconnecting"};
 
 const Enum::YLeaf MdtReceiverState::rcvr_state_invalid {1, "rcvr-state-invalid"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_disconnected {2, "rcvr-state-disconnected"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_connecting {3, "rcvr-state-connecting"};
 const Enum::YLeaf MdtReceiverState::rcvr_state_connected {4, "rcvr-state-connected"};
+
+const Enum::YLeaf MdtConState::con_state_active {0, "con-state-active"};
+const Enum::YLeaf MdtConState::con_state_connecting {1, "con-state-connecting"};
+const Enum::YLeaf MdtConState::con_state_pending {2, "con-state-pending"};
+const Enum::YLeaf MdtConState::con_state_disconnecting {3, "con-state-disconnecting"};
 
 const Enum::YLeaf MdtSubState::sub_state_valid {0, "sub-state-valid"};
 const Enum::YLeaf MdtSubState::sub_state_suspended {1, "sub-state-suspended"};

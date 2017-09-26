@@ -17,7 +17,7 @@ NetFlow::NetFlow()
 {
     statistics->parent = this;
 
-    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-dnx-netflow-oper";
+    yang_name = "net-flow"; yang_parent_name = "Cisco-IOS-XR-dnx-netflow-oper"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 NetFlow::~NetFlow()
@@ -39,26 +39,15 @@ std::string NetFlow::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dnx-netflow-oper:net-flow";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -129,7 +118,8 @@ bool NetFlow::has_leaf_or_child_of_name(const std::string & name) const
 
 NetFlow::Statistics::Statistics()
 {
-    yang_name = "statistics"; yang_parent_name = "net-flow";
+
+    yang_name = "statistics"; yang_parent_name = "net-flow"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetFlow::Statistics::~Statistics()
@@ -156,33 +146,26 @@ bool NetFlow::Statistics::has_operation() const
     return is_set(yfilter);
 }
 
+std::string NetFlow::Statistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dnx-netflow-oper:net-flow/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetFlow::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dnx-netflow-oper:net-flow/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -241,10 +224,9 @@ NetFlow::Statistics::Statistic::Statistic()
 	,server(std::make_shared<NetFlow::Statistics::Statistic::Server>())
 {
     producer->parent = this;
-
     server->parent = this;
 
-    yang_name = "statistic"; yang_parent_name = "statistics";
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 NetFlow::Statistics::Statistic::~Statistic()
@@ -266,34 +248,27 @@ bool NetFlow::Statistics::Statistic::has_operation() const
 	|| (server !=  nullptr && server->has_operation());
 }
 
+std::string NetFlow::Statistics::Statistic::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dnx-netflow-oper:net-flow/statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string NetFlow::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistic" <<"[node='" <<node <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-dnx-netflow-oper:net-flow/statistics/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -367,7 +342,7 @@ NetFlow::Statistics::Statistic::Producer::Producer()
 {
     statistics->parent = this;
 
-    yang_name = "producer"; yang_parent_name = "statistic";
+    yang_name = "producer"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Producer::~Producer()
@@ -389,29 +364,15 @@ std::string NetFlow::Statistics::Statistic::Producer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Producer::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Producer::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Producer' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -470,7 +431,8 @@ NetFlow::Statistics::Statistic::Producer::Statistics_::Statistics_()
     unknown_ingress_flows{YType::uint64, "unknown-ingress-flows"},
     waiting_servers{YType::uint64, "waiting-servers"}
 {
-    yang_name = "statistics"; yang_parent_name = "producer";
+
+    yang_name = "statistics"; yang_parent_name = "producer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Producer::Statistics_::~Statistics_()
@@ -514,23 +476,11 @@ std::string NetFlow::Statistics::Statistic::Producer::Statistics_::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Producer::Statistics_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Producer::Statistics_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics_' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (drops_no_space.is_set || is_set(drops_no_space.yfilter)) leaf_name_data.push_back(drops_no_space.get_name_leafdata());
@@ -546,9 +496,7 @@ const EntityPath NetFlow::Statistics::Statistic::Producer::Statistics_::get_enti
     if (unknown_ingress_flows.is_set || is_set(unknown_ingress_flows.yfilter)) leaf_name_data.push_back(unknown_ingress_flows.get_name_leafdata());
     if (waiting_servers.is_set || is_set(waiting_servers.yfilter)) leaf_name_data.push_back(waiting_servers.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -704,7 +652,7 @@ NetFlow::Statistics::Statistic::Server::Server()
 {
     flow_exporters->parent = this;
 
-    yang_name = "server"; yang_parent_name = "statistic";
+    yang_name = "server"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::~Server()
@@ -726,29 +674,15 @@ std::string NetFlow::Statistics::Statistic::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Server' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -794,7 +728,8 @@ bool NetFlow::Statistics::Statistic::Server::has_leaf_or_child_of_name(const std
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporters()
 {
-    yang_name = "flow-exporters"; yang_parent_name = "server";
+
+    yang_name = "flow-exporters"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::~FlowExporters()
@@ -825,29 +760,15 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-exporters";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::FlowExporters::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FlowExporters' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -906,7 +827,7 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::FlowExporte
 {
     exporter->parent = this;
 
-    yang_name = "flow-exporter"; yang_parent_name = "flow-exporters";
+    yang_name = "flow-exporter"; yang_parent_name = "flow-exporters"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::~FlowExporter()
@@ -930,30 +851,16 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-exporter" <<"[exporter-name='" <<exporter_name <<"']";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FlowExporter' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (exporter_name.is_set || is_set(exporter_name.yfilter)) leaf_name_data.push_back(exporter_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1009,7 +916,8 @@ bool NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::has_le
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Exporter()
 {
-    yang_name = "exporter"; yang_parent_name = "flow-exporter";
+
+    yang_name = "exporter"; yang_parent_name = "flow-exporter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::~Exporter()
@@ -1040,29 +948,15 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "exporter";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Exporter' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1119,7 +1013,8 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
     name{YType::str, "name"},
     used_by_flow_monitor{YType::str, "used-by-flow-monitor"}
 {
-    yang_name = "statistic"; yang_parent_name = "exporter";
+
+    yang_name = "statistic"; yang_parent_name = "exporter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::~Statistic_()
@@ -1164,23 +1059,11 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "statistic";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Statistic_' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (memory_usage.is_set || is_set(memory_usage.yfilter)) leaf_name_data.push_back(memory_usage.get_name_leafdata());
@@ -1188,9 +1071,7 @@ const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExpo
 
     auto used_by_flow_monitor_name_datas = used_by_flow_monitor.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), used_by_flow_monitor_name_datas.begin(), used_by_flow_monitor_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -1308,7 +1189,8 @@ NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::S
     transport_protocol{YType::str, "transport-protocol"},
     vrf_name{YType::str, "vrf-name"}
 {
-    yang_name = "collector"; yang_parent_name = "statistic";
+
+    yang_name = "collector"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
 NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::~Collector()
@@ -1400,23 +1282,11 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "collector";
-
     return path_buffer.str();
-
 }
 
-const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Collector' in Cisco_IOS_XR_dnx_netflow_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bytes_dropped.is_set || is_set(bytes_dropped.yfilter)) leaf_name_data.push_back(bytes_dropped.get_name_leafdata());
@@ -1456,9 +1326,7 @@ const EntityPath NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExpo
     if (transport_protocol.is_set || is_set(transport_protocol.yfilter)) leaf_name_data.push_back(transport_protocol.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 

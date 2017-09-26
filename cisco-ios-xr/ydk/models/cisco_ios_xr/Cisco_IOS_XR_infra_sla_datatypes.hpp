@@ -10,33 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_sla_datatypes {
 
-class SlaProbeIntervalUnitsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf minutes;
-        static const ydk::Enum::YLeaf hours;
-        static const ydk::Enum::YLeaf day;
-        static const ydk::Enum::YLeaf week;
-
-};
-
-class SlaSend : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf packet;
-        static const ydk::Enum::YLeaf burst;
-
-};
-
-class SlaOnDemandProbeDurationUnitsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf seconds;
-        static const ydk::Enum::YLeaf minutes;
-        static const ydk::Enum::YLeaf hours;
-
-};
-
 class SlaOnDemandStartTimeTypesEnum : public ydk::Enum
 {
     public:
@@ -46,31 +19,14 @@ class SlaOnDemandStartTimeTypesEnum : public ydk::Enum
 
 };
 
-class SlaPaddingPattern : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf hex;
-        static const ydk::Enum::YLeaf pseudo_random;
-
-};
-
-class SlaBurstIntervalUnitsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf once;
-        static const ydk::Enum::YLeaf milliseconds;
-        static const ydk::Enum::YLeaf seconds;
-        static const ydk::Enum::YLeaf minutes;
-        static const ydk::Enum::YLeaf hours;
-
-};
-
-class SlaOnDemandRepeatIntervalUnitsEnum : public ydk::Enum
+class SlaProbeDurationUnitsEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf seconds;
         static const ydk::Enum::YLeaf minutes;
         static const ydk::Enum::YLeaf hours;
+        static const ydk::Enum::YLeaf day;
+        static const ydk::Enum::YLeaf week;
 
 };
 
@@ -87,37 +43,20 @@ class SlaProbeIntervalDayEnum : public ydk::Enum
 
 };
 
+class SlaPaddingPattern : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf pseudo_random;
+
+};
+
 class SlaOnDemandStartTimeRelativeUnitsEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf seconds;
         static const ydk::Enum::YLeaf minutes;
         static const ydk::Enum::YLeaf hours;
-
-};
-
-class SlaStatisticTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf round_trip_delay;
-        static const ydk::Enum::YLeaf one_way_delay_sd;
-        static const ydk::Enum::YLeaf one_way_delay_ds;
-        static const ydk::Enum::YLeaf round_trip_jitter;
-        static const ydk::Enum::YLeaf one_way_jitter_sd;
-        static const ydk::Enum::YLeaf one_way_jitter_ds;
-        static const ydk::Enum::YLeaf one_way_loss_sd;
-        static const ydk::Enum::YLeaf one_way_loss_ds;
-
-};
-
-class SlaProbeDurationUnitsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf seconds;
-        static const ydk::Enum::YLeaf minutes;
-        static const ydk::Enum::YLeaf hours;
-        static const ydk::Enum::YLeaf day;
-        static const ydk::Enum::YLeaf week;
 
 };
 
@@ -129,11 +68,50 @@ class SlaBucketsSizeUnitsEnum : public ydk::Enum
 
 };
 
+class SlaProbeIntervalUnitsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf minutes;
+        static const ydk::Enum::YLeaf hours;
+        static const ydk::Enum::YLeaf day;
+        static const ydk::Enum::YLeaf week;
+
+};
+
+class SlaOnDemandRepeatIntervalUnitsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf seconds;
+        static const ydk::Enum::YLeaf minutes;
+        static const ydk::Enum::YLeaf hours;
+
+};
+
 class SlaPacketIntervalUnitsEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf once;
         static const ydk::Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf seconds;
+        static const ydk::Enum::YLeaf minutes;
+        static const ydk::Enum::YLeaf hours;
+
+};
+
+class SlaBurstIntervalUnitsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf once;
+        static const ydk::Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf seconds;
+        static const ydk::Enum::YLeaf minutes;
+        static const ydk::Enum::YLeaf hours;
+
+};
+
+class SlaOnDemandProbeDurationUnitsEnum : public ydk::Enum
+{
+    public:
         static const ydk::Enum::YLeaf seconds;
         static const ydk::Enum::YLeaf minutes;
         static const ydk::Enum::YLeaf hours;
@@ -155,6 +133,28 @@ class SlaOnDemandStartMonthEnum : public ydk::Enum
         static const ydk::Enum::YLeaf october;
         static const ydk::Enum::YLeaf november;
         static const ydk::Enum::YLeaf december;
+
+};
+
+class SlaSend : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf packet;
+        static const ydk::Enum::YLeaf burst;
+
+};
+
+class SlaStatisticTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf round_trip_delay;
+        static const ydk::Enum::YLeaf one_way_delay_sd;
+        static const ydk::Enum::YLeaf one_way_delay_ds;
+        static const ydk::Enum::YLeaf round_trip_jitter;
+        static const ydk::Enum::YLeaf one_way_jitter_sd;
+        static const ydk::Enum::YLeaf one_way_jitter_ds;
+        static const ydk::Enum::YLeaf one_way_loss_sd;
+        static const ydk::Enum::YLeaf one_way_loss_ds;
 
 };
 

@@ -11,18 +11,20 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_yang_push {
 
-YangPush::YangPush()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:yang-push")
+CustomStream::CustomStream()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:custom-stream")
 {
+
 }
 
-YangPush::~YangPush()
+CustomStream::~CustomStream()
 {
 }
 
 ErrorDataNotAuthorized::ErrorDataNotAuthorized()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:error-data-not-authorized")
 {
+
 }
 
 ErrorDataNotAuthorized::~ErrorDataNotAuthorized()
@@ -32,18 +34,20 @@ ErrorDataNotAuthorized::~ErrorDataNotAuthorized()
 Http2::Http2()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:http2")
 {
+
 }
 
 Http2::~Http2()
 {
 }
 
-CustomStream::CustomStream()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:custom-stream")
+YangPush::YangPush()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:yang-push")
 {
+
 }
 
-CustomStream::~CustomStream()
+YangPush::~YangPush()
 {
 }
 

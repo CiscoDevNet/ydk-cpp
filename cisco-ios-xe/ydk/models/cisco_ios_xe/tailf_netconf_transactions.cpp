@@ -11,13 +11,268 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace tailf_netconf_transactions {
 
+AbortTransaction::AbortTransaction()
+{
+
+    yang_name = "abort-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+AbortTransaction::~AbortTransaction()
+{
+}
+
+bool AbortTransaction::has_data() const
+{
+    return false;
+}
+
+bool AbortTransaction::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string AbortTransaction::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-transactions:abort-transaction";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AbortTransaction::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AbortTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AbortTransaction::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void AbortTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AbortTransaction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> AbortTransaction::clone_ptr() const
+{
+    return std::make_shared<AbortTransaction>();
+}
+
+std::string AbortTransaction::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string AbortTransaction::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function AbortTransaction::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> AbortTransaction::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool AbortTransaction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+CommitTransaction::CommitTransaction()
+{
+
+    yang_name = "commit-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+CommitTransaction::~CommitTransaction()
+{
+}
+
+bool CommitTransaction::has_data() const
+{
+    return false;
+}
+
+bool CommitTransaction::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string CommitTransaction::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-transactions:commit-transaction";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CommitTransaction::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CommitTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CommitTransaction::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void CommitTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CommitTransaction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> CommitTransaction::clone_ptr() const
+{
+    return std::make_shared<CommitTransaction>();
+}
+
+std::string CommitTransaction::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string CommitTransaction::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function CommitTransaction::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CommitTransaction::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CommitTransaction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+PrepareTransaction::PrepareTransaction()
+{
+
+    yang_name = "prepare-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+PrepareTransaction::~PrepareTransaction()
+{
+}
+
+bool PrepareTransaction::has_data() const
+{
+    return false;
+}
+
+bool PrepareTransaction::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string PrepareTransaction::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-transactions:prepare-transaction";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PrepareTransaction::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PrepareTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PrepareTransaction::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PrepareTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PrepareTransaction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> PrepareTransaction::clone_ptr() const
+{
+    return std::make_shared<PrepareTransaction>();
+}
+
+std::string PrepareTransaction::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string PrepareTransaction::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function PrepareTransaction::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PrepareTransaction::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool PrepareTransaction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
 StartTransaction::StartTransaction()
     :
     input(std::make_shared<StartTransaction::Input>())
 {
     input->parent = this;
 
-    yang_name = "start-transaction"; yang_parent_name = "tailf-netconf-transactions";
+    yang_name = "start-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
 }
 
 StartTransaction::~StartTransaction()
@@ -39,26 +294,15 @@ std::string StartTransaction::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tailf-netconf-transactions:start-transaction";
-
     return path_buffer.str();
-
 }
 
-const EntityPath StartTransaction::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > StartTransaction::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -135,7 +379,7 @@ StartTransaction::Input::Input()
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "start-transaction";
+    yang_name = "input"; yang_parent_name = "start-transaction"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 StartTransaction::Input::~Input()
@@ -155,34 +399,27 @@ bool StartTransaction::Input::has_operation() const
 	|| (target !=  nullptr && target->has_operation());
 }
 
+std::string StartTransaction::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-transactions:start-transaction/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string StartTransaction::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
-
     return path_buffer.str();
-
 }
 
-const EntityPath StartTransaction::Input::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > StartTransaction::Input::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-netconf-transactions:start-transaction/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (with_inactive.is_set || is_set(with_inactive.yfilter)) leaf_name_data.push_back(with_inactive.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -242,7 +479,8 @@ StartTransaction::Input::Target::Target()
     running{YType::empty, "running"},
     startup{YType::empty, "startup"}
 {
-    yang_name = "target"; yang_parent_name = "input";
+
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
 }
 
 StartTransaction::Input::Target::~Target()
@@ -264,36 +502,29 @@ bool StartTransaction::Input::Target::has_operation() const
 	|| ydk::is_set(startup.yfilter);
 }
 
+std::string StartTransaction::Input::Target::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-netconf-transactions:start-transaction/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
 std::string StartTransaction::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
-
     return path_buffer.str();
-
 }
 
-const EntityPath StartTransaction::Input::Target::get_entity_path(Entity* ancestor) const
+std::vector<std::pair<std::string, LeafData> > StartTransaction::Input::Target::get_name_leaf_data() const
 {
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "tailf-netconf-transactions:start-transaction/input/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
     if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
     if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
 
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
+    return leaf_name_data;
 
 }
 
@@ -350,291 +581,6 @@ bool StartTransaction::Input::Target::has_leaf_or_child_of_name(const std::strin
 {
     if(name == "candidate" || name == "running" || name == "startup")
         return true;
-    return false;
-}
-
-PrepareTransaction::PrepareTransaction()
-{
-    yang_name = "prepare-transaction"; yang_parent_name = "tailf-netconf-transactions";
-}
-
-PrepareTransaction::~PrepareTransaction()
-{
-}
-
-bool PrepareTransaction::has_data() const
-{
-    return false;
-}
-
-bool PrepareTransaction::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string PrepareTransaction::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-transactions:prepare-transaction";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath PrepareTransaction::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> PrepareTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PrepareTransaction::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void PrepareTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PrepareTransaction::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> PrepareTransaction::clone_ptr() const
-{
-    return std::make_shared<PrepareTransaction>();
-}
-
-std::string PrepareTransaction::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xe_models_path;
-}
-
-std::string PrepareTransaction::get_bundle_name() const
-{
-    return "cisco_ios_xe";
-}
-
-augment_capabilities_function PrepareTransaction::get_augment_capabilities_function() const
-{
-    return cisco_ios_xe_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> PrepareTransaction::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xe_namespace_identity_lookup;
-}
-
-bool PrepareTransaction::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-CommitTransaction::CommitTransaction()
-{
-    yang_name = "commit-transaction"; yang_parent_name = "tailf-netconf-transactions";
-}
-
-CommitTransaction::~CommitTransaction()
-{
-}
-
-bool CommitTransaction::has_data() const
-{
-    return false;
-}
-
-bool CommitTransaction::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string CommitTransaction::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-transactions:commit-transaction";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CommitTransaction::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CommitTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CommitTransaction::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CommitTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void CommitTransaction::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> CommitTransaction::clone_ptr() const
-{
-    return std::make_shared<CommitTransaction>();
-}
-
-std::string CommitTransaction::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xe_models_path;
-}
-
-std::string CommitTransaction::get_bundle_name() const
-{
-    return "cisco_ios_xe";
-}
-
-augment_capabilities_function CommitTransaction::get_augment_capabilities_function() const
-{
-    return cisco_ios_xe_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> CommitTransaction::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xe_namespace_identity_lookup;
-}
-
-bool CommitTransaction::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-AbortTransaction::AbortTransaction()
-{
-    yang_name = "abort-transaction"; yang_parent_name = "tailf-netconf-transactions";
-}
-
-AbortTransaction::~AbortTransaction()
-{
-}
-
-bool AbortTransaction::has_data() const
-{
-    return false;
-}
-
-bool AbortTransaction::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string AbortTransaction::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tailf-netconf-transactions:abort-transaction";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath AbortTransaction::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor != nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
-    }
-
-    path_buffer << get_segment_path();
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> AbortTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> AbortTransaction::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void AbortTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void AbortTransaction::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> AbortTransaction::clone_ptr() const
-{
-    return std::make_shared<AbortTransaction>();
-}
-
-std::string AbortTransaction::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xe_models_path;
-}
-
-std::string AbortTransaction::get_bundle_name() const
-{
-    return "cisco_ios_xe";
-}
-
-augment_capabilities_function AbortTransaction::get_augment_capabilities_function() const
-{
-    return cisco_ios_xe_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> AbortTransaction::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xe_namespace_identity_lookup;
-}
-
-bool AbortTransaction::has_leaf_or_child_of_name(const std::string & name) const
-{
     return false;
 }
 

@@ -11,15 +11,15 @@
 namespace cisco_ios_xe {
 namespace INTEGRATED_SERVICES_MIB {
 
-class IntegratedServicesMib : public ydk::Entity
+class INTEGRATEDSERVICESMIB : public ydk::Entity
 {
     public:
-        IntegratedServicesMib();
-        ~IntegratedServicesMib();
+        INTEGRATEDSERVICESMIB();
+        ~INTEGRATEDSERVICESMIB();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
@@ -32,90 +32,18 @@ class IntegratedServicesMib : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Intsrvgenobjects; //type: IntegratedServicesMib::Intsrvgenobjects
-        class Intsrvifattribtable; //type: IntegratedServicesMib::Intsrvifattribtable
-        class Intsrvflowtable; //type: IntegratedServicesMib::Intsrvflowtable
+        class Intsrvgenobjects; //type: INTEGRATEDSERVICESMIB::Intsrvgenobjects
+        class Intsrvifattribtable; //type: INTEGRATEDSERVICESMIB::Intsrvifattribtable
+        class Intsrvflowtable; //type: INTEGRATEDSERVICESMIB::Intsrvflowtable
 
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable> intsrvflowtable;
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvgenobjects> intsrvgenobjects;
-        std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable> intsrvifattribtable;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvflowtable> intsrvflowtable;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvgenobjects> intsrvgenobjects;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvifattribtable> intsrvifattribtable;
         
-}; // IntegratedServicesMib
+}; // INTEGRATEDSERVICESMIB
 
 
-class IntegratedServicesMib::Intsrvgenobjects : public ydk::Entity
-{
-    public:
-        Intsrvgenobjects();
-        ~Intsrvgenobjects();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf intsrvflownewindex; //type: int32
-
-}; // IntegratedServicesMib::Intsrvgenobjects
-
-
-class IntegratedServicesMib::Intsrvifattribtable : public ydk::Entity
-{
-    public:
-        Intsrvifattribtable();
-        ~Intsrvifattribtable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Intsrvifattribentry; //type: IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry
-
-        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
-        
-}; // IntegratedServicesMib::Intsrvifattribtable
-
-
-class IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
-{
-    public:
-        Intsrvifattribentry();
-        ~Intsrvifattribentry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        ydk::YLeaf ifindex;
-        ydk::YLeaf intsrvifattriballocatedbits; //type: int32
-        ydk::YLeaf intsrvifattribmaxallocatedbits; //type: int32
-        ydk::YLeaf intsrvifattriballocatedbuffer; //type: int32
-        ydk::YLeaf intsrvifattribflows; //type: uint32
-        ydk::YLeaf intsrvifattribpropagationdelay; //type: int32
-        ydk::YLeaf intsrvifattribstatus; //type: Rowstatus
-
-}; // IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry
-
-
-class IntegratedServicesMib::Intsrvflowtable : public ydk::Entity
+class INTEGRATEDSERVICESMIB::Intsrvflowtable : public ydk::Entity
 {
     public:
         Intsrvflowtable();
@@ -123,22 +51,23 @@ class IntegratedServicesMib::Intsrvflowtable : public ydk::Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        class Intsrvflowentry; //type: IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry
+        class Intsrvflowentry; //type: INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry
 
-        std::vector<std::shared_ptr<INTEGRATED_SERVICES_MIB::IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
+        std::vector<std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
         
-}; // IntegratedServicesMib::Intsrvflowtable
+}; // INTEGRATEDSERVICESMIB::Intsrvflowtable
 
 
-class IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
+class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
 {
     public:
         Intsrvflowentry();
@@ -146,13 +75,14 @@ class IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry : public ydk::Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
         std::string get_segment_path() const override;
         std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
         void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf intsrvflownumber; //type: int32
         ydk::YLeaf intsrvflowtype; //type: int32
@@ -176,14 +106,89 @@ class IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry : public ydk::Enti
         ydk::YLeaf intsrvflowbesteffort; //type: uint32
         ydk::YLeaf intsrvflowpoliced; //type: uint32
         ydk::YLeaf intsrvflowdiscard; //type: boolean
-        ydk::YLeaf intsrvflowservice; //type: Qosservice
+        ydk::YLeaf intsrvflowservice; //type: QosService
         ydk::YLeaf intsrvfloworder; //type: int32
-        ydk::YLeaf intsrvflowstatus; //type: Rowstatus
+        ydk::YLeaf intsrvflowstatus; //type: RowStatus
         class Intsrvflowowner;
 
-}; // IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry
+}; // INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry
 
-class Qosservice : public ydk::Enum
+
+class INTEGRATEDSERVICESMIB::Intsrvgenobjects : public ydk::Entity
+{
+    public:
+        Intsrvgenobjects();
+        ~Intsrvgenobjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf intsrvflownewindex; //type: int32
+
+}; // INTEGRATEDSERVICESMIB::Intsrvgenobjects
+
+
+class INTEGRATEDSERVICESMIB::Intsrvifattribtable : public ydk::Entity
+{
+    public:
+        Intsrvifattribtable();
+        ~Intsrvifattribtable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Intsrvifattribentry; //type: INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry
+
+        std::vector<std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
+        
+}; // INTEGRATEDSERVICESMIB::Intsrvifattribtable
+
+
+class INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
+{
+    public:
+        Intsrvifattribentry();
+        ~Intsrvifattribentry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        ydk::YLeaf ifindex;
+        ydk::YLeaf intsrvifattriballocatedbits; //type: int32
+        ydk::YLeaf intsrvifattribmaxallocatedbits; //type: int32
+        ydk::YLeaf intsrvifattriballocatedbuffer; //type: int32
+        ydk::YLeaf intsrvifattribflows; //type: uint32
+        ydk::YLeaf intsrvifattribpropagationdelay; //type: int32
+        ydk::YLeaf intsrvifattribstatus; //type: RowStatus
+
+}; // INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry
+
+class QosService : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bestEffort;
@@ -192,7 +197,7 @@ class Qosservice : public ydk::Enum
 
 };
 
-class IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner : public ydk::Enum
+class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

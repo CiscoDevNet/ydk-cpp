@@ -12,149 +12,14 @@
 namespace cisco_ios_xe {
 namespace policy_types {
 
-class MplsExpImp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Application : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        MplsExpImp();
-        ~MplsExpImp();
+        Application();
+        ~Application();
 
 
-}; // MplsExpImp
-
-class FlowDlci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowDlci();
-        ~FlowDlci();
-
-
-}; // FlowDlci
-
-class Cos : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Cos();
-        ~Cos();
-
-
-}; // Cos
-
-class SecurityGroupName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        SecurityGroupName();
-        ~SecurityGroupName();
-
-
-}; // SecurityGroupName
-
-class Ipv4AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv4AclName();
-        ~Ipv4AclName();
-
-
-}; // Ipv4AclName
-
-class Dei : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Dei();
-        ~Dei();
-
-
-}; // Dei
-
-class Ipv6AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv6AclName();
-        ~Ipv6AclName();
-
-
-}; // Ipv6AclName
-
-class SrcMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        SrcMac();
-        ~SrcMac();
-
-
-}; // SrcMac
-
-class FlowDe : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowDe();
-        ~FlowDe();
-
-
-}; // FlowDe
-
-class Vlan : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Vlan();
-        ~Vlan();
-
-
-}; // Vlan
-
-class PacketLength : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        PacketLength();
-        ~PacketLength();
-
-
-}; // PacketLength
-
-class InputInterface : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        InputInterface();
-        ~InputInterface();
-
-
-}; // InputInterface
-
-class QosGroup : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        QosGroup();
-        ~QosGroup();
-
-
-}; // QosGroup
-
-class Ipv4Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv4Acl();
-        ~Ipv4Acl();
-
-
-}; // Ipv4Acl
-
-class Ipv6Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Ipv6Acl();
-        ~Ipv6Acl();
-
-
-}; // Ipv6Acl
-
-class FlowRecord : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowRecord();
-        ~FlowRecord();
-
-
-}; // FlowRecord
+}; // Application
 
 class AtmClp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
@@ -165,86 +30,14 @@ class AtmClp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // AtmClp
 
-class DeiInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class AtmVci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DeiInner();
-        ~DeiInner();
+        AtmVci();
+        ~AtmVci();
 
 
-}; // DeiInner
-
-class Vpls : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Vpls();
-        ~Vpls();
-
-
-}; // Vpls
-
-class DstMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        DstMac();
-        ~DstMac();
-
-
-}; // DstMac
-
-class Prec : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Prec();
-        ~Prec();
-
-
-}; // Prec
-
-class ClassType : public virtual ydk::Identity
-{
-    public:
-        ClassType();
-        ~ClassType();
-
-
-}; // ClassType
-
-class MplsExpTop : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        MplsExpTop();
-        ~MplsExpTop();
-
-
-}; // MplsExpTop
-
-class DiscardClass : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        DiscardClass();
-        ~DiscardClass();
-
-
-}; // DiscardClass
-
-class FlowIp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        FlowIp();
-        ~FlowIp();
-
-
-}; // FlowIp
-
-class WlanUserPriority : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        WlanUserPriority();
-        ~WlanUserPriority();
-
-
-}; // WlanUserPriority
+}; // AtmVci
 
 class ClassMap : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
@@ -255,14 +48,23 @@ class ClassMap : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // ClassMap
 
-class Application : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class ClassType : public virtual ydk::Identity
 {
     public:
-        Application();
-        ~Application();
+        ClassType();
+        ~ClassType();
 
 
-}; // Application
+}; // ClassType
+
+class Cos : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Cos();
+        ~Cos();
+
+
+}; // Cos
 
 class CosInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
@@ -273,23 +75,86 @@ class CosInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // CosInner
 
-class SecurityGroupTag : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Dei : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SecurityGroupTag();
-        ~SecurityGroupTag();
+        Dei();
+        ~Dei();
 
 
-}; // SecurityGroupTag
+}; // Dei
 
-class PolicyType : public virtual ydk::Identity
+class DeiInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        PolicyType();
-        ~PolicyType();
+        DeiInner();
+        ~DeiInner();
 
 
-}; // PolicyType
+}; // DeiInner
+
+class DiscardClass : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        DiscardClass();
+        ~DiscardClass();
+
+
+}; // DiscardClass
+
+class DstMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        DstMac();
+        ~DstMac();
+
+
+}; // DstMac
+
+class FlowDe : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowDe();
+        ~FlowDe();
+
+
+}; // FlowDe
+
+class FlowDlci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowDlci();
+        ~FlowDlci();
+
+
+}; // FlowDlci
+
+class FlowIp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowIp();
+        ~FlowIp();
+
+
+}; // FlowIp
+
+class FlowRecord : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        FlowRecord();
+        ~FlowRecord();
+
+
+}; // FlowRecord
+
+class InputInterface : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        InputInterface();
+        ~InputInterface();
+
+
+}; // InputInterface
 
 class IpRtp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
@@ -300,14 +165,41 @@ class IpRtp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Id
 
 }; // IpRtp
 
-class AtmVci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Ipv4Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        AtmVci();
-        ~AtmVci();
+        Ipv4Acl();
+        ~Ipv4Acl();
 
 
-}; // AtmVci
+}; // Ipv4Acl
+
+class Ipv4AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv4AclName();
+        ~Ipv4AclName();
+
+
+}; // Ipv4AclName
+
+class Ipv6Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv6Acl();
+        ~Ipv6Acl();
+
+
+}; // Ipv6Acl
+
+class Ipv6AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Ipv6AclName();
+        ~Ipv6AclName();
+
+
+}; // Ipv6AclName
 
 class Metadata : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
@@ -318,6 +210,96 @@ class Metadata : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // Metadata
 
+class MplsExpImp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        MplsExpImp();
+        ~MplsExpImp();
+
+
+}; // MplsExpImp
+
+class MplsExpTop : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        MplsExpTop();
+        ~MplsExpTop();
+
+
+}; // MplsExpTop
+
+class PacketLength : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        PacketLength();
+        ~PacketLength();
+
+
+}; // PacketLength
+
+class PolicyType : public virtual ydk::Identity
+{
+    public:
+        PolicyType();
+        ~PolicyType();
+
+
+}; // PolicyType
+
+class Prec : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Prec();
+        ~Prec();
+
+
+}; // Prec
+
+class QosGroup : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        QosGroup();
+        ~QosGroup();
+
+
+}; // QosGroup
+
+class SecurityGroupName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SecurityGroupName();
+        ~SecurityGroupName();
+
+
+}; // SecurityGroupName
+
+class SecurityGroupTag : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SecurityGroupTag();
+        ~SecurityGroupTag();
+
+
+}; // SecurityGroupTag
+
+class SrcMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SrcMac();
+        ~SrcMac();
+
+
+}; // SrcMac
+
+class Vlan : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Vlan();
+        ~Vlan();
+
+
+}; // Vlan
+
 class VlanInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
@@ -327,97 +309,25 @@ class VlanInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk
 
 }; // VlanInner
 
-class Pbr : public policy_types::PolicyType, virtual ydk::Identity
+class Vpls : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Pbr();
-        ~Pbr();
+        Vpls();
+        ~Vpls();
 
 
-}; // Pbr
+}; // Vpls
 
-class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
+class WlanUserPriority : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        AccessControlClass();
-        ~AccessControlClass();
+        WlanUserPriority();
+        ~WlanUserPriority();
 
 
-}; // AccessControlClass
+}; // WlanUserPriority
 
-class PacketService : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        PacketService();
-        ~PacketService();
-
-
-}; // PacketService
-
-class Inspect : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Inspect();
-        ~Inspect();
-
-
-}; // Inspect
-
-class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        PerfMon();
-        ~PerfMon();
-
-
-}; // PerfMon
-
-class Qos : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Qos();
-        ~Qos();
-
-
-}; // Qos
-
-class AppnavClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        AppnavClass();
-        ~AppnavClass();
-
-
-}; // AppnavClass
-
-class QosClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        QosClass();
-        ~QosClass();
-
-
-}; // QosClass
-
-class ControlClass : public policy_types::ClassType, virtual ydk::Identity
-{
-    public:
-        ControlClass();
-        ~ControlClass();
-
-
-}; // ControlClass
-
-class Control : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Control();
-        ~Control();
-
-
-}; // Control
-
-class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
+class AccessControl : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         AccessControl();
@@ -426,25 +336,16 @@ class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // AccessControl
 
-class InspectClass : public policy_types::ClassType, virtual ydk::Identity
+class AccessControlClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        InspectClass();
-        ~InspectClass();
+        AccessControlClass();
+        ~AccessControlClass();
 
 
-}; // InspectClass
+}; // AccessControlClass
 
-class Service : public policy_types::PolicyType, virtual ydk::Identity
-{
-    public:
-        Service();
-        ~Service();
-
-
-}; // Service
-
-class Appnav : public policy_types::PolicyType, virtual ydk::Identity
+class Appnav : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Appnav();
@@ -453,13 +354,104 @@ class Appnav : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Appnav
 
-class Direction : public ydk::Enum
+class AppnavClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        static const ydk::Enum::YLeaf inbound;
-        static const ydk::Enum::YLeaf outbound;
+        AppnavClass();
+        ~AppnavClass();
 
-};
+
+}; // AppnavClass
+
+class Control : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Control();
+        ~Control();
+
+
+}; // Control
+
+class ControlClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        ControlClass();
+        ~ControlClass();
+
+
+}; // ControlClass
+
+class Inspect : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Inspect();
+        ~Inspect();
+
+
+}; // Inspect
+
+class InspectClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        InspectClass();
+        ~InspectClass();
+
+
+}; // InspectClass
+
+class PacketService : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        PacketService();
+        ~PacketService();
+
+
+}; // PacketService
+
+class Pbr : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Pbr();
+        ~Pbr();
+
+
+}; // Pbr
+
+class PerfMon : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        PerfMon();
+        ~PerfMon();
+
+
+}; // PerfMon
+
+class Qos : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Qos();
+        ~Qos();
+
+
+}; // Qos
+
+class QosClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+{
+    public:
+        QosClass();
+        ~QosClass();
+
+
+}; // QosClass
+
+class Service : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+{
+    public:
+        Service();
+        ~Service();
+
+
+}; // Service
 
 class Metric : public ydk::Enum
 {
@@ -483,6 +475,14 @@ class RateUnit : public ydk::Enum
         static const ydk::Enum::YLeaf bps;
         static const ydk::Enum::YLeaf perc;
         static const ydk::Enum::YLeaf ratio;
+
+};
+
+class Direction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inbound;
+        static const ydk::Enum::YLeaf outbound;
 
 };
 
